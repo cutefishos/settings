@@ -58,6 +58,7 @@ Dialog {
                      passwordField.text != "" &&
                      passwordField.text == verifyPasswordField.text
             DialogButtonBox.buttonRole: DialogButtonBox.Ok
+            flat: true
             onClicked: {
                 if (manager.createUser(userNameField.text, "", accountTypeCombo.currentIndex))
                     control.accept()

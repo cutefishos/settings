@@ -35,6 +35,7 @@ Dialog {
         id: detailsLayout
         // I couldn't find a way of making the GridLayout resize.
         anchors.centerIn: parent
+
         GridLayout {
             id: gridLayout
             columns: 2

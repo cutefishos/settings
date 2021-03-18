@@ -33,8 +33,8 @@
 FontsModel::FontsModel(QObject *parent)
     : QThread(parent)
 {
-    QThread::setPriority(QThread::HighestPriority);
     QThread::start();
+    QThread::setPriority(QThread::HighestPriority);
 }
 
 void FontsModel::run()

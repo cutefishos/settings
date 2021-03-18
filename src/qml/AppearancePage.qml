@@ -128,26 +128,32 @@ ItemPage {
 
                 delegate: Rectangle {
                     property bool checked: Qt.colorEqual(Meui.Theme.highlightColor, accentColor)
+                    property color currentColor: accentColor
 
                     width: accentColorView.itemSize + Meui.Units.largeSpacing
                     height: width
                     color: "transparent"
                     radius: width / 2
-                    border.color: Qt.rgba(Meui.Theme.highlightColor.r,
-                                          Meui.Theme.highlightColor.g,
-                                          Meui.Theme.highlightColor.b, 0.5)
-                    border.width: checked ? 2 : 0
+                    border.color: _mouseArea.pressed ? Qt.rgba(currentColor.r,
+                                                               currentColor.g,
+                                                               currentColor.b, 0.6)
+                                                     : Qt.rgba(currentColor.r,
+                                                               currentColor.g,
+                                                               currentColor.b, 0.4)
+                    border.width: checked ? 3 : _mouseArea.containsMouse ? 2 : 0
 
                     MouseArea {
                         id: _mouseArea
+                        anchors.fill: parent
                         hoverEnabled: true
+                        onClicked: appearance.setAccentColor(index)
                     }
 
                     Rectangle {
-                        color: accentColor
                         width: 32
                         height: width
                         anchors.centerIn: parent
+                        color: currentColor
                         radius: width / 2
 
                         Image {
@@ -164,14 +170,6 @@ ItemPage {
                                 color: Meui.Theme.highlightedTextColor
                                 opacity: 1
                                 visible: true
-                            }
-                        }
-
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: function() {
-                                appearance.setAccentColor(index)
-                                console.log(`Set accent color to ${index}.`)
                             }
                         }
                     }
