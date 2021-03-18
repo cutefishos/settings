@@ -19,8 +19,8 @@ Item {
 
         Behavior on color {
             ColorAnimation {
-                duration: 0
-                easing.type: Easing.InOutCubic
+                duration: 250
+                easing.type: Easing.Linear
             }
         }
     }

@@ -9,6 +9,6 @@ Page {
     property string headerTitle
 
     background: Rectangle {
-        color: Meui.Theme.backgroundColor
+        color: "transparent"
     }
 }

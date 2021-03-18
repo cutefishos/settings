@@ -24,6 +24,13 @@ Meui.Window {
             anchors.bottom: parent.bottom
             implicitWidth: sideBar.width
             color: Meui.Theme.secondBackgroundColor
+
+            Behavior on color {
+                ColorAnimation {
+                    duration: 250
+                    easing.type: Easing.Linear
+                }
+            }
         }
 
         RowLayout {

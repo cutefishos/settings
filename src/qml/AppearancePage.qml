@@ -1,6 +1,8 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
+import QtGraphicalEffects 1.0
+
 import Cutefish.Settings 1.0
 import MeuiKit 1.0 as Meui
 
@@ -105,12 +107,15 @@ ItemPage {
             }
 
             GridView {
-                height: 32 + Meui.Units.largeSpacing * 2
+                id: accentColorView
+                height: itemSize + Meui.Units.largeSpacing * 2
                 Layout.fillWidth: true
                 cellWidth: height
                 cellHeight: height
                 interactive: false
                 model: ListModel {}
+
+                property var itemSize: 32
 
                 Component.onCompleted: {
                     model.append({"accentColor": String(Meui.Theme.blueColor)})
@@ -122,13 +127,16 @@ ItemPage {
                 }
 
                 delegate: Rectangle {
-                    property bool isSelected: Qt.colorEqual(Meui.Theme.highlightColor, accentColor)
-                    width: 32 + Meui.Units.largeSpacing
+                    property bool checked: Qt.colorEqual(Meui.Theme.highlightColor, accentColor)
+
+                    width: accentColorView.itemSize + Meui.Units.largeSpacing
                     height: width
                     color: "transparent"
                     radius: width / 2
-                    border.color: Meui.Theme.highlightColor
-                    border.width: isSelected ? 2 : 0
+                    border.color: Qt.rgba(Meui.Theme.highlightColor.r,
+                                          Meui.Theme.highlightColor.g,
+                                          Meui.Theme.highlightColor.b, 0.5)
+                    border.width: checked ? 2 : 0
 
                     MouseArea {
                         id: _mouseArea
@@ -141,6 +149,23 @@ ItemPage {
                         height: width
                         anchors.centerIn: parent
                         radius: width / 2
+
+                        Image {
+                            anchors.centerIn: parent
+                            width: parent.height * 0.5
+                            height: width
+                            sourceSize: Qt.size(width, height)
+                            source: "qrc:/images/checked.svg"
+                            visible: checked
+
+                            ColorOverlay {
+                                anchors.fill: parent
+                                source: parent
+                                color: Meui.Theme.highlightedTextColor
+                                opacity: 1
+                                visible: true
+                            }
+                        }
 
                         MouseArea {
                             anchors.fill: parent
