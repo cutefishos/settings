@@ -64,5 +64,10 @@
         <file>images/dock_right.svg</file>
         <file>qml/HistoryGraph.qml</file>
         <file>images/sidebar/bluetooth.svg</file>
+        <file>images/rot90.svg</file>
+        <file>images/rot180.svg</file>
+        <file>images/rot270.svg</file>
+        <file>images/rotnormal.svg</file>
+        <file>qml/RotationButton.qml</file>
     </qresource>
 </RCC>

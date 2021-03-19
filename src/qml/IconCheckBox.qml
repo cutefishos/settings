@@ -12,6 +12,8 @@ Item {
     property alias text: label.text
     property bool checked: false
 
+    property var iconSize: 128
+
     signal clicked
 
     implicitHeight: mainLayout.implicitHeight
@@ -25,7 +27,7 @@ Item {
 
         Rectangle {
             id: _box
-            width: 128
+            width: control.iconSize
             height: width
             color: "transparent"
             border.width: 3
@@ -85,6 +87,7 @@ Item {
         Label {
             id: label
             color: control.checked ? Meui.Theme.highlightColor : Meui.Theme.textColor
+            visible: label.text
             Layout.alignment: Qt.AlignHCenter
         }
     }

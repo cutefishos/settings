@@ -43,20 +43,6 @@ ItemPage {
                 visible: brightness.enabled
             }
 
-            SwipeView {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-
-                Repeater {
-                    model: screen.outputModel
-
-                    ComboBox {
-                        model: model.resolutions
-                    }
-                }
-            }
-
-
             RowLayout {
                 spacing: Meui.Units.largeSpacing
                 visible: brightness.enabled
@@ -96,6 +82,137 @@ ItemPage {
             HorizontalDivider {
                 visible: brightness.enabled
             }
+
+            Label {
+                text: qsTr("Screen")
+                color: Meui.Theme.disabledTextColor
+                bottomPadding: Meui.Units.smallSpacing
+                visible: _screenView.count > 0
+            }
+
+            ListView {
+                id: _screenView
+                Layout.fillWidth: true
+                model: screen.outputModel
+                orientation: ListView.Horizontal
+                interactive: false
+                clip: true
+
+                Layout.preferredHeight: currentItem ? currentItem.layout.implicitHeight : 0
+
+                delegate: Item {
+                    id: screenItem
+                    height: ListView.view.height
+                    width: ListView.view.width
+
+                    property var element: model
+                    property var layout: _mainLayout
+
+                    ColumnLayout {
+                        id: _mainLayout
+                        anchors.fill: parent
+
+                        // Label {
+                        //     text: element.display
+                        // }
+
+                        GridLayout {
+                            columns: 2
+                            columnSpacing: Meui.Units.largeSpacing
+                            rowSpacing: Meui.Units.smallSpacing
+
+                            Label {
+                                text: qsTr("Resolution")
+                            }
+
+                            ComboBox {
+                                Layout.fillWidth: true
+                                model: element.resolutions
+                                currentIndex: element.resolutionIndex !== undefined ?
+                                                  element.resolutionIndex : -1
+                                onActivated: {
+                                    element.resolutionIndex = currentIndex
+                                    screen.save()
+                                }
+                            }
+
+                            Label {
+                                text: qsTr("Refresh rate")
+                            }
+
+                            ComboBox {
+                                id: refreshRate
+                                Layout.fillWidth: true
+                                model: element.refreshRates
+                                currentIndex: element.refreshRateIndex ?
+                                                  element.refreshRateIndex : 0
+                                onActivated: {
+                                    element.refreshRateIndex = currentIndex
+                                    screen.save()
+                                }
+                            }
+
+                            Label {
+                                text: qsTr("Rotation")
+                            }
+
+                            Item {
+                                id: rotationItem
+                                Layout.fillWidth: true
+                                height: rotationLayout.implicitHeight
+
+                                RowLayout {
+                                    id: rotationLayout
+                                    anchors.fill: parent
+
+                                    RotationButton {
+                                        value: 0
+                                    }
+
+                                    RotationButton {
+                                        value: 90
+                                    }
+
+                                    RotationButton {
+                                        value: 180
+                                    }
+
+                                    RotationButton {
+                                        value: 270
+                                    }
+                                }
+                            }
+
+                            Label {
+                                text: qsTr("Enabled")
+                                visible: enabledBox.visible
+                            }
+
+                            CheckBox {
+                                id: enabledBox
+                                checked: element.enabled
+                                visible: _screenView.count > 1
+                                onClicked: {
+                                    element.enabled = checked
+                                    screen.save()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            PageIndicator {
+                id: screenPageIndicator
+                Layout.alignment: Qt.AlignHCenter
+                count: _screenView.count
+                currentIndex: _screenView.currentIndex
+                onCurrentIndexChanged: _screenView.currentIndex = currentIndex
+                interactive: true
+                visible: count > 1
+            }
+
+            HorizontalDivider { }
 
             Label {
                 text: qsTr("Scale")

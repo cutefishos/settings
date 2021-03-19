@@ -80,35 +80,35 @@
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../src/qml/AddUserDialog.qml" line="75"/>
-        <location filename="../src/qml/AddUserDialog.qml" line="80"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="76"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="81"/>
         <source>User name</source>
         <translation>用户名</translation>
     </message>
     <message>
-        <location filename="../src/qml/AddUserDialog.qml" line="86"/>
-        <location filename="../src/qml/AddUserDialog.qml" line="91"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="87"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="92"/>
         <source>Password</source>
         <translation>密码</translation>
     </message>
     <message>
-        <location filename="../src/qml/AddUserDialog.qml" line="98"/>
-        <location filename="../src/qml/AddUserDialog.qml" line="103"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="99"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="104"/>
         <source>Verify password</source>
         <translation>验证密码</translation>
     </message>
     <message>
-        <location filename="../src/qml/AddUserDialog.qml" line="110"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="111"/>
         <source>Account type</source>
         <translation>类型</translation>
     </message>
     <message>
-        <location filename="../src/qml/AddUserDialog.qml" line="115"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="116"/>
         <source>Standard</source>
         <translation>标准</translation>
     </message>
     <message>
-        <location filename="../src/qml/AddUserDialog.qml" line="115"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="116"/>
         <source>Administrator</source>
         <translation>管理员</translation>
     </message>
@@ -116,72 +116,72 @@
 <context>
     <name>AppearancePage</name>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="8"/>
+        <location filename="../src/qml/AppearancePage.qml" line="10"/>
         <source>Appearance</source>
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="50"/>
+        <location filename="../src/qml/AppearancePage.qml" line="52"/>
         <source>Theme</source>
         <translation>主题</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="61"/>
+        <location filename="../src/qml/AppearancePage.qml" line="63"/>
         <source>Light</source>
         <translation>浅色模式</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="68"/>
+        <location filename="../src/qml/AppearancePage.qml" line="70"/>
         <source>Dark</source>
         <translation>深色模式</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="83"/>
+        <location filename="../src/qml/AppearancePage.qml" line="85"/>
         <source>Dim the wallpaper in dark theme</source>
         <translation>在深色模式下调暗壁纸</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="102"/>
+        <location filename="../src/qml/AppearancePage.qml" line="104"/>
         <source>Accent color</source>
         <translation>强调色</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="160"/>
+        <location filename="../src/qml/AppearancePage.qml" line="183"/>
         <source>Font</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="172"/>
+        <location filename="../src/qml/AppearancePage.qml" line="195"/>
         <source>General Font</source>
         <translation>常规字体</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="185"/>
+        <location filename="../src/qml/AppearancePage.qml" line="208"/>
         <source>Fixed Font</source>
         <translation>固定字体</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="198"/>
+        <location filename="../src/qml/AppearancePage.qml" line="221"/>
         <source>Font Size</source>
         <translation>字体大小</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="206"/>
+        <location filename="../src/qml/AppearancePage.qml" line="229"/>
         <source>Small</source>
         <translation>小</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="210"/>
+        <location filename="../src/qml/AppearancePage.qml" line="233"/>
         <source>Medium</source>
         <translation>中</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="214"/>
+        <location filename="../src/qml/AppearancePage.qml" line="237"/>
         <source>Large</source>
         <translation>大</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="218"/>
+        <location filename="../src/qml/AppearancePage.qml" line="241"/>
         <source>Huge</source>
         <translation>巨大</translation>
     </message>
@@ -197,39 +197,62 @@
 <context>
     <name>BatteryPage</name>
     <message>
-        <location filename="../src/qml/BatteryPage.qml" line="8"/>
+        <location filename="../src/qml/BatteryPage.qml" line="9"/>
         <source>Battery</source>
         <translation>电池</translation>
     </message>
     <message>
-        <location filename="../src/qml/BatteryPage.qml" line="95"/>
+        <location filename="../src/qml/BatteryPage.qml" line="12"/>
+        <source>Last hour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BatteryPage.qml" line="12"/>
+        <source>Last 2 hours</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BatteryPage.qml" line="12"/>
+        <source>Last 12 hours</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BatteryPage.qml" line="12"/>
+        <source>Last 24 hours</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BatteryPage.qml" line="12"/>
+        <source>Last 48 hours</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BatteryPage.qml" line="12"/>
+        <source>Last 7 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/BatteryPage.qml" line="107"/>
         <source>History</source>
         <translation>历史</translation>
     </message>
     <message>
-        <location filename="../src/qml/BatteryPage.qml" line="229"/>
-        <location filename="../src/qml/BatteryPage.qml" line="231"/>
-        <source>Yesterday</source>
-        <translation>昨天</translation>
+        <location filename="../src/qml/BatteryPage.qml" line="135"/>
+        <source>W</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/BatteryPage.qml" line="237"/>
-        <location filename="../src/qml/BatteryPage.qml" line="239"/>
-        <source>Today</source>
-        <translation>今天</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/BatteryPage.qml" line="253"/>
+        <location filename="../src/qml/BatteryPage.qml" line="156"/>
         <source>Last Charged to</source>
         <translation>上一次充电至</translation>
     </message>
     <message>
-        <location filename="../src/qml/BatteryPage.qml" line="259"/>
+        <location filename="../src/qml/BatteryPage.qml" line="162"/>
         <source>Maximum Capacity</source>
         <translation>最大容量</translation>
     </message>
     <message>
-        <location filename="../src/qml/BatteryPage.qml" line="267"/>
+        <location filename="../src/qml/BatteryPage.qml" line="170"/>
         <source>No battery found</source>
         <translation>找不到电池</translation>
     </message>
@@ -260,7 +283,32 @@
         <translation>亮度</translation>
     </message>
     <message>
-        <location filename="../src/qml/DisplayPage.qml" line="101"/>
+        <location filename="../src/qml/DisplayPage.qml" line="87"/>
+        <source>Screen</source>
+        <translation>屏幕</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DisplayPage.qml" line="123"/>
+        <source>Enabled</source>
+        <translation>已开启</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DisplayPage.qml" line="139"/>
+        <source>Resolution</source>
+        <translation>分辨率</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DisplayPage.qml" line="154"/>
+        <source>Refresh rate</source>
+        <translation>刷新率</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DisplayPage.qml" line="170"/>
+        <source>Rotation</source>
+        <translation>方向</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DisplayPage.qml" line="238"/>
         <source>Scale</source>
         <translation>缩放</translation>
     </message>
@@ -329,12 +377,12 @@
         <translation>网络</translation>
     </message>
     <message>
-        <location filename="../src/qml/NetworkPage.qml" line="44"/>
+        <location filename="../src/qml/NetworkPage.qml" line="45"/>
         <source>Wired</source>
         <translation>有线网络</translation>
     </message>
     <message>
-        <location filename="../src/qml/NetworkPage.qml" line="84"/>
+        <location filename="../src/qml/NetworkPage.qml" line="85"/>
         <source>Wi-Fi</source>
         <translation>无线网络</translation>
     </message>
@@ -395,52 +443,52 @@
 <context>
     <name>WirelessDetailsDialog</name>
     <message>
-        <location filename="../src/qml/WirelessDetailsDialog.qml" line="46"/>
+        <location filename="../src/qml/WirelessDetailsDialog.qml" line="47"/>
         <source>Auto-Join</source>
         <translation>自动加入网络</translation>
     </message>
     <message>
-        <location filename="../src/qml/WirelessDetailsDialog.qml" line="61"/>
+        <location filename="../src/qml/WirelessDetailsDialog.qml" line="62"/>
         <source>Security</source>
         <translation>安全性</translation>
     </message>
     <message>
-        <location filename="../src/qml/WirelessDetailsDialog.qml" line="72"/>
+        <location filename="../src/qml/WirelessDetailsDialog.qml" line="73"/>
         <source>Signal</source>
         <translation>信号</translation>
     </message>
     <message>
-        <location filename="../src/qml/WirelessDetailsDialog.qml" line="83"/>
+        <location filename="../src/qml/WirelessDetailsDialog.qml" line="84"/>
         <source>IPv4 Address</source>
         <translation>IPv4地址</translation>
     </message>
     <message>
-        <location filename="../src/qml/WirelessDetailsDialog.qml" line="95"/>
+        <location filename="../src/qml/WirelessDetailsDialog.qml" line="96"/>
         <source>IPv6 Address</source>
         <translation>IPv6地址</translation>
     </message>
     <message>
-        <location filename="../src/qml/WirelessDetailsDialog.qml" line="107"/>
+        <location filename="../src/qml/WirelessDetailsDialog.qml" line="108"/>
         <source>MAC Address</source>
         <translation>MAC地址</translation>
     </message>
     <message>
-        <location filename="../src/qml/WirelessDetailsDialog.qml" line="119"/>
+        <location filename="../src/qml/WirelessDetailsDialog.qml" line="120"/>
         <source>Gateway</source>
         <translation>路由器</translation>
     </message>
     <message>
-        <location filename="../src/qml/WirelessDetailsDialog.qml" line="131"/>
+        <location filename="../src/qml/WirelessDetailsDialog.qml" line="132"/>
         <source>DNS</source>
         <translation>DNS</translation>
     </message>
     <message>
-        <location filename="../src/qml/WirelessDetailsDialog.qml" line="154"/>
+        <location filename="../src/qml/WirelessDetailsDialog.qml" line="155"/>
         <source>Forget this network</source>
         <translation>忘记这个网络</translation>
     </message>
     <message>
-        <location filename="../src/qml/WirelessDetailsDialog.qml" line="147"/>
+        <location filename="../src/qml/WirelessDetailsDialog.qml" line="148"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
