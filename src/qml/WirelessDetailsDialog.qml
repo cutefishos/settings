@@ -11,8 +11,8 @@ Dialog {
 
     width: Math.max(detailsLayout.implicitWidth, footer.implicitWidth)
 
-    x: (rootWindow.width - width) / 4
-    y: (rootWindow.height - height) / 4
+    x: (parent.width - width) / 2
+    y: (parent.height - height) / 2
     modal: true
     padding: Meui.Units.largeSpacing * 2
 
@@ -155,7 +155,9 @@ Dialog {
             text: qsTr("Forget this network")
             Layout.alignment: Qt.AlignHCenter
             DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
-            onClicked: control.forgetBtnClicked()
+            onClicked: {
+                networking.removeConnection(model.connectionPath)
+            }
         }
     }
 }

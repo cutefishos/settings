@@ -118,16 +118,13 @@ Item {
 
         IconButton {
             source: "qrc:/images/info.svg"
-            onClicked: detailsDialog.open()
-        }
-    }
-
-    WirelessDetailsDialog {
-        id: detailsDialog
-
-        onForgetBtnClicked: {
-            networking.removeConnection(model.connectionPath)
-            detailsDialog.close()
+            onClicked: {
+                var component = Qt.createComponent("WirelessDetailsDialog.qml")
+                if (component.status === Component.Ready) {
+                    var dialog = component.createObject(rootWindow)
+                    dialog.open()
+                }
+            }
         }
     }
 

@@ -8,7 +8,6 @@ import Cutefish.Accounts 1.0
 Dialog {
     id: control
 
-    // parent: rootWindow
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
     modal: true

@@ -27,42 +27,36 @@
 <context>
     <name>AccountsPage</name>
     <message>
-        <location filename="../src/qml/AccountsPage.qml" line="12"/>
+        <location filename="../src/qml/AccountsPage.qml" line="13"/>
         <source>User</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="../src/qml/AccountsPage.qml" line="40"/>
         <source>Currently logged in as</source>
-        <translation>当前登陆</translation>
+        <translation type="vanished">当前登陆</translation>
     </message>
     <message>
-        <location filename="../src/qml/AccountsPage.qml" line="126"/>
         <source>Hide additional settings</source>
-        <translation>隐藏其他设置</translation>
+        <translation type="vanished">隐藏其他设置</translation>
     </message>
     <message>
-        <location filename="../src/qml/AccountsPage.qml" line="126"/>
         <source>Show additional settings</source>
-        <translation>显示其他设置</translation>
+        <translation type="vanished">显示其他设置</translation>
     </message>
     <message>
-        <location filename="../src/qml/AccountsPage.qml" line="135"/>
         <source>Additional settings</source>
-        <translation>其他设置</translation>
+        <translation type="vanished">其他设置</translation>
     </message>
     <message>
-        <location filename="../src/qml/AccountsPage.qml" line="145"/>
         <source>Automatic login</source>
-        <translation>自动登陆</translation>
+        <translation type="vanished">自动登陆</translation>
     </message>
     <message>
-        <location filename="../src/qml/AccountsPage.qml" line="170"/>
         <source>Other Accounts</source>
-        <translation>其他用户</translation>
+        <translation type="vanished">其他用户</translation>
     </message>
     <message>
-        <location filename="../src/qml/AccountsPage.qml" line="247"/>
+        <location filename="../src/qml/AccountsPage.qml" line="65"/>
         <source>Add user</source>
         <translation>添加用户</translation>
     </message>
@@ -70,45 +64,45 @@
 <context>
     <name>AddUserDialog</name>
     <message>
-        <location filename="../src/qml/AddUserDialog.qml" line="56"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="55"/>
         <source>Add</source>
         <translation>添加</translation>
     </message>
     <message>
-        <location filename="../src/qml/AddUserDialog.qml" line="49"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="48"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../src/qml/AddUserDialog.qml" line="76"/>
-        <location filename="../src/qml/AddUserDialog.qml" line="81"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="75"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="80"/>
         <source>User name</source>
         <translation>用户名</translation>
     </message>
     <message>
-        <location filename="../src/qml/AddUserDialog.qml" line="87"/>
-        <location filename="../src/qml/AddUserDialog.qml" line="92"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="86"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="91"/>
         <source>Password</source>
         <translation>密码</translation>
     </message>
     <message>
-        <location filename="../src/qml/AddUserDialog.qml" line="99"/>
-        <location filename="../src/qml/AddUserDialog.qml" line="104"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="98"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="103"/>
         <source>Verify password</source>
         <translation>验证密码</translation>
     </message>
     <message>
-        <location filename="../src/qml/AddUserDialog.qml" line="111"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="110"/>
         <source>Account type</source>
         <translation>类型</translation>
     </message>
     <message>
-        <location filename="../src/qml/AddUserDialog.qml" line="116"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="115"/>
         <source>Standard</source>
         <translation>标准</translation>
     </message>
     <message>
-        <location filename="../src/qml/AddUserDialog.qml" line="116"/>
+        <location filename="../src/qml/AddUserDialog.qml" line="115"/>
         <source>Administrator</source>
         <translation>管理员</translation>
     </message>
@@ -121,67 +115,67 @@
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="52"/>
+        <location filename="../src/qml/AppearancePage.qml" line="53"/>
         <source>Theme</source>
         <translation>主题</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="63"/>
+        <location filename="../src/qml/AppearancePage.qml" line="64"/>
         <source>Light</source>
         <translation>浅色模式</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="70"/>
+        <location filename="../src/qml/AppearancePage.qml" line="71"/>
         <source>Dark</source>
         <translation>深色模式</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="85"/>
+        <location filename="../src/qml/AppearancePage.qml" line="86"/>
         <source>Dim the wallpaper in dark theme</source>
         <translation>在深色模式下调暗壁纸</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="104"/>
+        <location filename="../src/qml/AppearancePage.qml" line="105"/>
         <source>Accent color</source>
         <translation>强调色</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="183"/>
+        <location filename="../src/qml/AppearancePage.qml" line="184"/>
         <source>Font</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="195"/>
+        <location filename="../src/qml/AppearancePage.qml" line="196"/>
         <source>General Font</source>
         <translation>常规字体</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="208"/>
+        <location filename="../src/qml/AppearancePage.qml" line="209"/>
         <source>Fixed Font</source>
         <translation>固定字体</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="221"/>
+        <location filename="../src/qml/AppearancePage.qml" line="222"/>
         <source>Font Size</source>
         <translation>字体大小</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="229"/>
+        <location filename="../src/qml/AppearancePage.qml" line="230"/>
         <source>Small</source>
         <translation>小</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="233"/>
+        <location filename="../src/qml/AppearancePage.qml" line="234"/>
         <source>Medium</source>
         <translation>中</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="237"/>
+        <location filename="../src/qml/AppearancePage.qml" line="238"/>
         <source>Large</source>
         <translation>大</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="241"/>
+        <location filename="../src/qml/AppearancePage.qml" line="242"/>
         <source>Huge</source>
         <translation>巨大</translation>
     </message>
@@ -288,27 +282,27 @@
         <translation>屏幕</translation>
     </message>
     <message>
-        <location filename="../src/qml/DisplayPage.qml" line="123"/>
+        <location filename="../src/qml/DisplayPage.qml" line="187"/>
         <source>Enabled</source>
         <translation>已开启</translation>
     </message>
     <message>
-        <location filename="../src/qml/DisplayPage.qml" line="139"/>
+        <location filename="../src/qml/DisplayPage.qml" line="125"/>
         <source>Resolution</source>
         <translation>分辨率</translation>
     </message>
     <message>
-        <location filename="../src/qml/DisplayPage.qml" line="154"/>
+        <location filename="../src/qml/DisplayPage.qml" line="140"/>
         <source>Refresh rate</source>
         <translation>刷新率</translation>
     </message>
     <message>
-        <location filename="../src/qml/DisplayPage.qml" line="170"/>
+        <location filename="../src/qml/DisplayPage.qml" line="156"/>
         <source>Rotation</source>
         <translation>方向</translation>
     </message>
     <message>
-        <location filename="../src/qml/DisplayPage.qml" line="238"/>
+        <location filename="../src/qml/DisplayPage.qml" line="218"/>
         <source>Scale</source>
         <translation>缩放</translation>
     </message>
@@ -441,6 +435,34 @@
     </message>
 </context>
 <context>
+    <name>UserDelegateItem</name>
+    <message>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="87"/>
+        <source>Currently logged</source>
+        <translation>当前登录</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="122"/>
+        <source>Avatar</source>
+        <translation>头像</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="127"/>
+        <source>Choose</source>
+        <translation>选择</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="133"/>
+        <source>Automatic login</source>
+        <translation>自动登陆</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="153"/>
+        <source>Delete this user</source>
+        <translation>删除该用户</translation>
+    </message>
+</context>
+<context>
     <name>WirelessDetailsDialog</name>
     <message>
         <location filename="../src/qml/WirelessDetailsDialog.qml" line="47"/>
@@ -496,22 +518,22 @@
 <context>
     <name>WirelessItem</name>
     <message>
-        <location filename="../src/qml/WirelessItem.qml" line="175"/>
+        <location filename="../src/qml/WirelessItem.qml" line="172"/>
         <source>Password</source>
         <translation>密码</translation>
     </message>
     <message>
-        <location filename="../src/qml/WirelessItem.qml" line="194"/>
+        <location filename="../src/qml/WirelessItem.qml" line="191"/>
         <source>Show password</source>
         <translation>显示密码</translation>
     </message>
     <message>
-        <location filename="../src/qml/WirelessItem.qml" line="209"/>
+        <location filename="../src/qml/WirelessItem.qml" line="206"/>
         <source>Connect</source>
         <translation>连接</translation>
     </message>
     <message>
-        <location filename="../src/qml/WirelessItem.qml" line="203"/>
+        <location filename="../src/qml/WirelessItem.qml" line="200"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
