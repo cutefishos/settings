@@ -5,7 +5,7 @@ import QtGraphicalEffects 1.0
 import MeuiKit 1.0 as Meui
 
 Item {
-    implicitWidth: 260
+    implicitWidth: 230
 
     property int itemRadiusV: 8
 
@@ -100,10 +100,7 @@ Item {
     }
 
     ColumnLayout {
-        anchors {
-            fill: parent
-            margins: Meui.Units.largeSpacing
-        }
+        anchors.fill: parent
 
         ListView {
             id: listView
@@ -113,6 +110,9 @@ Item {
             model: listModel
 
             spacing: Meui.Units.smallSpacing * 1.5
+            leftMargin: Meui.Units.largeSpacing
+            rightMargin: Meui.Units.largeSpacing
+            topMargin: Meui.Units.smallSpacing * 1.5
 
             ScrollBar.vertical: ScrollBar {}
 
@@ -120,15 +120,15 @@ Item {
             highlightMoveDuration: 0
             highlightResizeDuration : 0
             highlight: Rectangle {
-                radius: Meui.Theme.bigRadius
+                radius: Meui.Theme.mediumRadius
                 color: Meui.Theme.highlightColor
                 smooth: true
             }
 
             delegate: Item {
                 id: item
-                implicitWidth: listView.width
-                implicitHeight: 48
+                width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
+                height: 43
 
                 property bool isCurrent: listView.currentIndex === index
 
@@ -143,7 +143,7 @@ Item {
                         onClicked: listView.currentIndex = index
                     }
 
-                    radius: Meui.Theme.bigRadius
+                    radius: Meui.Theme.mediumRadius
                     color: isCurrent ? "transparent" : mouseArea.containsMouse ? Qt.rgba(Meui.Theme.textColor.r,
                                                                                          Meui.Theme.textColor.g,
                                                                                          Meui.Theme.textColor.b,

@@ -9,8 +9,8 @@ Meui.Window {
     id: rootWindow
     title: qsTr("Settings")
     visible: true
-    width: 1000
-    height: 650
+    width: 900
+    height: 610
 
     minimumWidth: 900
     minimumHeight: 600
@@ -38,7 +38,7 @@ Meui.Window {
 
             Label {
                 text: rootWindow.title
-                leftPadding: Meui.Units.largeSpacing * 2 + Meui.Units.smallSpacing
+                leftPadding: Meui.Units.largeSpacing + Meui.Units.smallSpacing
                 font.pointSize: parent.height / 3
                 Layout.preferredWidth: sideBar.width
                 Layout.alignment: Qt.AlignBottom

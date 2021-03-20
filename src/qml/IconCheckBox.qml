@@ -12,7 +12,7 @@ Item {
     property alias text: label.text
     property bool checked: false
 
-    property var iconSize: 128
+    property var iconSize: 120
 
     signal clicked
 
