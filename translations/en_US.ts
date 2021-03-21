@@ -326,24 +326,29 @@
         <translation>Size</translation>
     </message>
     <message>
-        <location filename="../src/qml/DockPage.qml" line="60"/>
+        <location filename="../src/qml/DockPage.qml" line="61"/>
         <source>Small</source>
         <translation>Small</translation>
     </message>
     <message>
-        <location filename="../src/qml/DockPage.qml" line="64"/>
+        <location filename="../src/qml/DockPage.qml" line="65"/>
         <source>Medium</source>
         <translation>Medium</translation>
     </message>
     <message>
-        <location filename="../src/qml/DockPage.qml" line="68"/>
+        <location filename="../src/qml/DockPage.qml" line="69"/>
         <source>Large</source>
         <translation>Large</translation>
     </message>
     <message>
-        <location filename="../src/qml/DockPage.qml" line="72"/>
+        <location filename="../src/qml/DockPage.qml" line="73"/>
         <source>Huge</source>
         <translation>Huge</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DockPage.qml" line="119"/>
+        <source>Rounded window</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -433,22 +438,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="122"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="124"/>
         <source>Avatar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="127"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="129"/>
         <source>Choose</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="133"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="135"/>
         <source>Automatic login</source>
         <translation type="unfinished">Automatic login</translation>
     </message>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="153"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="155"/>
         <source>Delete this user</source>
         <translation type="unfinished"></translation>
     </message>

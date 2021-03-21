@@ -86,6 +86,13 @@ ItemPage {
 
                 width: 200
                 height: _view.height
+                scale: 1.0
+
+                Behavior on scale {
+                    NumberAnimation {
+                        duration: 100
+                    }
+                }
 
                 Rectangle {
                     anchors.fill: parent
@@ -143,6 +150,8 @@ ItemPage {
                         onExited: function() {
                             image.opacity = 1.0
                         }
+
+                        onPressedChanged: item.scale = pressed ? 0.97 : 1.0
                     }
                 }
             }

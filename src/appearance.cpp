@@ -39,6 +39,7 @@ Appearance::Appearance(QObject *parent)
 {
     m_dockIconSize = m_dockSettings->value("IconSize").toInt();
     m_dockDirection = m_dockSettings->value("Direction").toInt();
+    m_dockRoundedWindow = m_dockSettings->value("RoundedWindow").toBool();
 
     m_dockConfigWacher->addPath(m_dockSettings->fileName());
     connect(m_dockConfigWacher, &QFileSystemWatcher::fileChanged, this, [=] {
@@ -46,8 +47,11 @@ Appearance::Appearance(QObject *parent)
         m_dockIconSize = m_dockSettings->value("IconSize").toInt();
         m_dockDirection = m_dockSettings->value("Direction").toInt();
         m_dockConfigWacher->addPath(m_dockSettings->fileName());
+        m_dockRoundedWindow = m_dockSettings->value("RoundedWindow").toBool();
+
         emit dockIconSizeChanged();
         emit dockDirectionChanged();
+        emit dockRoundedWindowChanged();
     });
 
     // Init
@@ -101,6 +105,20 @@ void Appearance::setDockDirection(int dockDirection)
 
     m_dockDirection = dockDirection;
     m_dockSettings->setValue("Direction", m_dockDirection);
+}
+
+int Appearance::dockRoundedWindow() const
+{
+    return m_dockRoundedWindow;
+}
+
+void Appearance::setDockRoundedWindow(bool enable)
+{
+    if (m_dockRoundedWindow == enable)
+        return;
+
+    m_dockRoundedWindow = enable;
+    m_dockSettings->setValue("RoundedWindow", m_dockRoundedWindow);
 }
 
 void Appearance::setGenericFontFamily(const QString &name)

@@ -55,6 +55,7 @@ ItemPage {
             TabBar {
                 id: dockSizeTabbar
                 Layout.fillWidth: true
+                bottomPadding: Meui.Units.smallSpacing
 
                 TabButton {
                     text: qsTr("Small")
@@ -106,6 +107,26 @@ ItemPage {
                     }
 
                     appearance.setDockIconSize(iconSize)
+                }
+            }
+
+            HorizontalDivider {}
+
+            GridLayout {
+                columns: 2
+
+                Label {
+                    text: qsTr("Rounded window")
+                    Layout.fillWidth: true
+                }
+
+                Switch {
+                    Layout.fillHeight: true
+                    checked: appearance.dockRoundedWindow
+
+                    onCheckedChanged: {
+                        appearance.setDockRoundedWindow(checked)
+                    }
                 }
             }
 

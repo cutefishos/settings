@@ -94,6 +94,8 @@ Item {
 
                 implicitWidth: height
 
+                background: Item {}
+
                 Image {
                     anchors.centerIn: parent
                     width: 22
