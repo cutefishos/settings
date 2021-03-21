@@ -32,31 +32,7 @@
         <translation>用户</translation>
     </message>
     <message>
-        <source>Currently logged in as</source>
-        <translation type="vanished">当前登陆</translation>
-    </message>
-    <message>
-        <source>Hide additional settings</source>
-        <translation type="vanished">隐藏其他设置</translation>
-    </message>
-    <message>
-        <source>Show additional settings</source>
-        <translation type="vanished">显示其他设置</translation>
-    </message>
-    <message>
-        <source>Additional settings</source>
-        <translation type="vanished">其他设置</translation>
-    </message>
-    <message>
-        <source>Automatic login</source>
-        <translation type="vanished">自动登陆</translation>
-    </message>
-    <message>
-        <source>Other Accounts</source>
-        <translation type="vanished">其他用户</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/AccountsPage.qml" line="65"/>
+        <location filename="../src/qml/AccountsPage.qml" line="64"/>
         <source>Add user</source>
         <translation>添加用户</translation>
     </message>
@@ -115,67 +91,67 @@
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="53"/>
+        <location filename="../src/qml/AppearancePage.qml" line="52"/>
         <source>Theme</source>
         <translation>主题</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="64"/>
+        <location filename="../src/qml/AppearancePage.qml" line="63"/>
         <source>Light</source>
         <translation>浅色模式</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="71"/>
+        <location filename="../src/qml/AppearancePage.qml" line="70"/>
         <source>Dark</source>
         <translation>深色模式</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="86"/>
+        <location filename="../src/qml/AppearancePage.qml" line="85"/>
         <source>Dim the wallpaper in dark theme</source>
         <translation>在深色模式下调暗壁纸</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="105"/>
+        <location filename="../src/qml/AppearancePage.qml" line="104"/>
         <source>Accent color</source>
         <translation>强调色</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="184"/>
+        <location filename="../src/qml/AppearancePage.qml" line="183"/>
         <source>Font</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="196"/>
+        <location filename="../src/qml/AppearancePage.qml" line="195"/>
         <source>General Font</source>
         <translation>常规字体</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="209"/>
+        <location filename="../src/qml/AppearancePage.qml" line="208"/>
         <source>Fixed Font</source>
         <translation>固定字体</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="222"/>
+        <location filename="../src/qml/AppearancePage.qml" line="221"/>
         <source>Font Size</source>
         <translation>字体大小</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="230"/>
+        <location filename="../src/qml/AppearancePage.qml" line="229"/>
         <source>Small</source>
         <translation>小</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="234"/>
+        <location filename="../src/qml/AppearancePage.qml" line="233"/>
         <source>Medium</source>
         <translation>中</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="238"/>
+        <location filename="../src/qml/AppearancePage.qml" line="237"/>
         <source>Large</source>
         <translation>大</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="242"/>
+        <location filename="../src/qml/AppearancePage.qml" line="241"/>
         <source>Huge</source>
         <translation>巨大</translation>
     </message>
@@ -183,9 +159,24 @@
 <context>
     <name>BackgroundPage</name>
     <message>
-        <location filename="../src/qml/BackgroundPage.qml" line="9"/>
-        <source>Wallpaper</source>
-        <translation>壁纸</translation>
+        <location filename="../src/qml/Wallpaper/BackgroundPage.qml" line="11"/>
+        <source>Background</source>
+        <translation>背景</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Wallpaper/BackgroundPage.qml" line="37"/>
+        <source>Background type</source>
+        <translation>背景类型</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Wallpaper/BackgroundPage.qml" line="51"/>
+        <source>Picture</source>
+        <translation>图片</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Wallpaper/BackgroundPage.qml" line="55"/>
+        <source>Color</source>
+        <translation>纯色</translation>
     </message>
 </context>
 <context>
@@ -226,27 +217,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/BatteryPage.qml" line="107"/>
+        <location filename="../src/qml/BatteryPage.qml" line="106"/>
         <source>History</source>
         <translation>历史</translation>
     </message>
     <message>
-        <location filename="../src/qml/BatteryPage.qml" line="135"/>
+        <location filename="../src/qml/BatteryPage.qml" line="134"/>
         <source>W</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/BatteryPage.qml" line="156"/>
+        <location filename="../src/qml/BatteryPage.qml" line="155"/>
         <source>Last Charged to</source>
         <translation>上一次充电至</translation>
     </message>
     <message>
-        <location filename="../src/qml/BatteryPage.qml" line="162"/>
+        <location filename="../src/qml/BatteryPage.qml" line="161"/>
         <source>Maximum Capacity</source>
         <translation>最大容量</translation>
     </message>
     <message>
-        <location filename="../src/qml/BatteryPage.qml" line="170"/>
+        <location filename="../src/qml/BatteryPage.qml" line="169"/>
         <source>No battery found</source>
         <translation>找不到电池</translation>
     </message>
@@ -371,12 +362,12 @@
         <translation>网络</translation>
     </message>
     <message>
-        <location filename="../src/qml/NetworkPage.qml" line="45"/>
+        <location filename="../src/qml/NetworkPage.qml" line="40"/>
         <source>Wired</source>
         <translation>有线网络</translation>
     </message>
     <message>
-        <location filename="../src/qml/NetworkPage.qml" line="85"/>
+        <location filename="../src/qml/NetworkPage.qml" line="80"/>
         <source>Wi-Fi</source>
         <translation>无线网络</translation>
     </message>
@@ -404,11 +395,6 @@
         <translation>程序坞</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="67"/>
-        <source>Wallpaper</source>
-        <translation>壁纸</translation>
-    </message>
-    <message>
         <location filename="../src/qml/SideBar.qml" line="32"/>
         <source>User</source>
         <translation>用户</translation>
@@ -417,6 +403,11 @@
         <location filename="../src/qml/SideBar.qml" line="53"/>
         <source>Bluetooth</source>
         <translation>蓝牙</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="67"/>
+        <source>Background</source>
+        <translation>背景</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="81"/>

@@ -14,13 +14,22 @@ static QVariantList getBackgroundPaths()
 
 Background::Background(QObject *parent)
     : QObject(parent)
+    , m_interface("org.cutefish.Settings",
+                  "/Theme",
+                  "org.cutefish.Theme",
+                  QDBusConnection::sessionBus(), this)
 {
-    QDBusInterface iface("org.cutefish.Settings",
-                         "/Theme",
-                         "org.cutefish.Theme",
-                         QDBusConnection::sessionBus(), this);
-    if (iface.isValid()) {
-        m_currentPath = iface.property("wallpaper").toString();
+    if (m_interface.isValid()) {
+        m_currentPath = m_interface.property("wallpaper").toString();
+
+        QDBusConnection::sessionBus().connect(m_interface.service(),
+                                              m_interface.path(),
+                                              m_interface.interface(),
+                                              "backgroundTypeChanged", this, SIGNAL(backgroundTypeChanged()));
+        QDBusConnection::sessionBus().connect(m_interface.service(),
+                                              m_interface.path(),
+                                              m_interface.interface(),
+                                              "backgroundColorChanged", this, SIGNAL(backgroundColorChanged()));
     }
 }
 
@@ -41,13 +50,29 @@ void Background::setBackground(QString path)
     if (m_currentPath != path && !path.isEmpty()) {
         m_currentPath = path;
 
-        QDBusInterface iface("org.cutefish.Settings",
-                             "/Theme",
-                             "org.cutefish.Theme",
-                             QDBusConnection::sessionBus(), this);
-        if (iface.isValid()) {
-            iface.call("setWallpaper", path);
+        if (m_interface.isValid()) {
+            m_interface.call("setWallpaper", path);
             emit backgroundChanged();
         }
     }
+}
+
+int Background::backgroundType()
+{
+    return m_interface.property("backgroundType").toInt();
+}
+
+void Background::setBackgroundType(int type)
+{
+    m_interface.call("setBackgroundType", QVariant::fromValue(type));
+}
+
+QString Background::backgroundColor()
+{
+    return m_interface.property("backgroundColor").toString();
+}
+
+void Background::setBackgroundColor(const QString &color)
+{
+    m_interface.call("setBackgroundColor", QVariant::fromValue(color));
 }

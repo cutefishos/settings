@@ -32,31 +32,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Currently logged in as</source>
-        <translation type="vanished">Currently logged in as</translation>
-    </message>
-    <message>
-        <source>Hide additional settings</source>
-        <translation type="vanished">Hide additional settings</translation>
-    </message>
-    <message>
-        <source>Show additional settings</source>
-        <translation type="vanished">Show additional settings</translation>
-    </message>
-    <message>
-        <source>Additional settings</source>
-        <translation type="vanished">Additional settings</translation>
-    </message>
-    <message>
-        <source>Automatic login</source>
-        <translation type="vanished">Automatic login</translation>
-    </message>
-    <message>
-        <source>Other Accounts</source>
-        <translation type="vanished">Other Accounts</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/AccountsPage.qml" line="65"/>
+        <location filename="../src/qml/AccountsPage.qml" line="64"/>
         <source>Add user</source>
         <translation>Add user</translation>
     </message>
@@ -115,67 +91,67 @@
         <translation>Appearance</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="53"/>
+        <location filename="../src/qml/AppearancePage.qml" line="52"/>
         <source>Theme</source>
         <translation>Theme</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="64"/>
+        <location filename="../src/qml/AppearancePage.qml" line="63"/>
         <source>Light</source>
         <translation>Light</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="71"/>
+        <location filename="../src/qml/AppearancePage.qml" line="70"/>
         <source>Dark</source>
         <translation>Dark</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="86"/>
+        <location filename="../src/qml/AppearancePage.qml" line="85"/>
         <source>Dim the wallpaper in dark theme</source>
         <translation>Dim the wallpaper in dark theme</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="105"/>
+        <location filename="../src/qml/AppearancePage.qml" line="104"/>
         <source>Accent color</source>
         <translation>Accent color</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="184"/>
+        <location filename="../src/qml/AppearancePage.qml" line="183"/>
         <source>Font</source>
         <translation>Font</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="196"/>
+        <location filename="../src/qml/AppearancePage.qml" line="195"/>
         <source>General Font</source>
         <translation>General Font</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="209"/>
+        <location filename="../src/qml/AppearancePage.qml" line="208"/>
         <source>Fixed Font</source>
         <translation>Fixed Font</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="222"/>
+        <location filename="../src/qml/AppearancePage.qml" line="221"/>
         <source>Font Size</source>
         <translation>Font Size</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="230"/>
+        <location filename="../src/qml/AppearancePage.qml" line="229"/>
         <source>Small</source>
         <translation>Small</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="234"/>
+        <location filename="../src/qml/AppearancePage.qml" line="233"/>
         <source>Medium</source>
         <translation>Medium</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="238"/>
+        <location filename="../src/qml/AppearancePage.qml" line="237"/>
         <source>Large</source>
         <translation>Large</translation>
     </message>
     <message>
-        <location filename="../src/qml/AppearancePage.qml" line="242"/>
+        <location filename="../src/qml/AppearancePage.qml" line="241"/>
         <source>Huge</source>
         <translation>Huge</translation>
     </message>
@@ -183,9 +159,24 @@
 <context>
     <name>BackgroundPage</name>
     <message>
-        <location filename="../src/qml/BackgroundPage.qml" line="9"/>
-        <source>Wallpaper</source>
-        <translation>Wallpaper</translation>
+        <location filename="../src/qml/Wallpaper/BackgroundPage.qml" line="11"/>
+        <source>Background</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Wallpaper/BackgroundPage.qml" line="37"/>
+        <source>Background type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Wallpaper/BackgroundPage.qml" line="51"/>
+        <source>Picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Wallpaper/BackgroundPage.qml" line="55"/>
+        <source>Color</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -226,35 +217,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/BatteryPage.qml" line="107"/>
+        <location filename="../src/qml/BatteryPage.qml" line="106"/>
         <source>History</source>
         <translation>History</translation>
     </message>
     <message>
-        <location filename="../src/qml/BatteryPage.qml" line="135"/>
+        <location filename="../src/qml/BatteryPage.qml" line="134"/>
         <source>W</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Yesterday</source>
-        <translation type="vanished">Yesterday</translation>
-    </message>
-    <message>
-        <source>Today</source>
-        <translation type="vanished">Today</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/BatteryPage.qml" line="156"/>
+        <location filename="../src/qml/BatteryPage.qml" line="155"/>
         <source>Last Charged to</source>
         <translation>Last Charged to</translation>
     </message>
     <message>
-        <location filename="../src/qml/BatteryPage.qml" line="162"/>
+        <location filename="../src/qml/BatteryPage.qml" line="161"/>
         <source>Maximum Capacity</source>
         <translation>Maximum Capacity</translation>
     </message>
     <message>
-        <location filename="../src/qml/BatteryPage.qml" line="170"/>
+        <location filename="../src/qml/BatteryPage.qml" line="169"/>
         <source>No battery found</source>
         <translation>No battery found</translation>
     </message>
@@ -379,12 +362,12 @@
         <translation>Network</translation>
     </message>
     <message>
-        <location filename="../src/qml/NetworkPage.qml" line="45"/>
+        <location filename="../src/qml/NetworkPage.qml" line="40"/>
         <source>Wired</source>
         <translation>Wired</translation>
     </message>
     <message>
-        <location filename="../src/qml/NetworkPage.qml" line="85"/>
+        <location filename="../src/qml/NetworkPage.qml" line="80"/>
         <source>Wi-Fi</source>
         <translation>Wi-Fi</translation>
     </message>
@@ -412,11 +395,6 @@
         <translation>Dock</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="67"/>
-        <source>Wallpaper</source>
-        <translation>Wallpaper</translation>
-    </message>
-    <message>
         <location filename="../src/qml/SideBar.qml" line="32"/>
         <source>User</source>
         <translation type="unfinished"></translation>
@@ -424,6 +402,11 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="53"/>
         <source>Bluetooth</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="67"/>
+        <source>Background</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -445,22 +428,27 @@
 <context>
     <name>UserDelegateItem</name>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="116"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="87"/>
+        <source>Currently logged</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="122"/>
         <source>Avatar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="121"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="127"/>
         <source>Choose</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="127"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="133"/>
         <source>Automatic login</source>
         <translation type="unfinished">Automatic login</translation>
     </message>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="147"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="153"/>
         <source>Delete this user</source>
         <translation type="unfinished"></translation>
     </message>

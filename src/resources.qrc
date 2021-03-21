@@ -16,7 +16,6 @@
         <file>qml/BatteryItem.qml</file>
         <file>images/sensors-voltage-symbolic.svg</file>
         <file>qml/StandardItem.qml</file>
-        <file>qml/BackgroundPage.qml</file>
         <file>images/dark_mode.svg</file>
         <file>images/light_mode.svg</file>
         <file>images/dock_bottom.svg</file>
@@ -74,5 +73,7 @@
         <file>images/light/up.svg</file>
         <file>images/dark/down.svg</file>
         <file>images/dark/up.svg</file>
+        <file>qml/Wallpaper/BackgroundPage.qml</file>
+        <file>qml/Wallpaper/DesktopPreview.qml</file>
     </qresource>
 </RCC>

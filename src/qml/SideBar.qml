@@ -64,9 +64,9 @@ Item {
         }
 
         ListElement {
-            title: qsTr("Wallpaper")
-            name: "wallpaper"
-            page: "qrc:/qml/BackgroundPage.qml"
+            title: qsTr("Background")
+            name: "background"
+            page: "qrc:/qml/Wallpaper/BackgroundPage.qml"
             iconSource: "qrc:/images/sidebar/wallpaper.svg"
         }
 
