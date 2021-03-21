@@ -38,7 +38,6 @@ ItemPage {
 
     Scrollable {
         anchors.fill: parent
-        anchors.bottomMargin: Meui.Units.largeSpacing
         contentHeight: layout.implicitHeight
         visible: battery.available
 

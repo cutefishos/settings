@@ -15,10 +15,6 @@ ItemPage {
 
     NM.Networking {
         id: networking
-
-        onWirelessEnabledChanged: {
-            wirelessSwitch.checked = wirelessEnabled
-        }
     }
 
     NM.NetworkModel {
@@ -27,7 +23,6 @@ ItemPage {
 
     Scrollable {
         anchors.fill: parent
-        anchors.bottomMargin: Meui.Units.largeSpacing
         contentHeight: mainLayout.implicitHeight
 
         ColumnLayout {

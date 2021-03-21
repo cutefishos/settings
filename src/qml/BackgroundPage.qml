@@ -14,7 +14,6 @@ ItemPage {
 
     GridView {
         anchors.fill: parent
-        anchors.bottomMargin: Meui.Units.largeSpacing
         leftMargin: Meui.Units.smallSpacing
 
         cellWidth: 320
@@ -25,7 +24,9 @@ ItemPage {
 
         currentIndex: -1
 
-        ScrollBar.vertical: ScrollBar {}
+        ScrollBar.vertical: ScrollBar {
+            bottomPadding: Meui.Theme.smallRadius
+        }
 
         delegate: Item {
             id: item

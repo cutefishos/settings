@@ -14,7 +14,6 @@ ItemPage {
     ColumnLayout {
         anchors.fill: parent
         anchors.topMargin: Meui.Units.smallSpacing
-        anchors.bottomMargin: Meui.Units.largeSpacing
 
         ListView {
             id: listView
@@ -32,7 +31,9 @@ ItemPage {
 
             currentIndex: language.currentLanguage
 
-            ScrollBar.vertical: ScrollBar {}
+            ScrollBar.vertical: ScrollBar {
+                bottomPadding: Meui.Theme.smallRadius
+            }
 
             highlightFollowsCurrentItem: true
             highlightMoveDuration: 0

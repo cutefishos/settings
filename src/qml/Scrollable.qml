@@ -13,5 +13,7 @@ Flickable {
 
     contentWidth: width - (leftMargin + rightMargin)
 
-    ScrollBar.vertical: ScrollBar {}
+    ScrollBar.vertical: ScrollBar {
+        bottomPadding: Meui.Theme.smallRadius
+    }
 }

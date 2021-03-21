@@ -41,7 +41,6 @@ ItemPage {
 
     Scrollable {
         anchors.fill: parent
-        anchors.bottomMargin: Meui.Units.smallSpacing
         contentHeight: layout.implicitHeight
 
         ColumnLayout {
