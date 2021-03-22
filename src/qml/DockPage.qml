@@ -110,25 +110,25 @@ ItemPage {
                 }
             }
 
-            HorizontalDivider {}
+            //HorizontalDivider {}
 
-            GridLayout {
-                columns: 2
+            //GridLayout {
+                //columns: 2
 
-                Label {
-                    text: qsTr("Rounded window")
-                    Layout.fillWidth: true
-                }
+                //Label {
+                    //text: qsTr("Rounded window")
+                    //Layout.fillWidth: true
+                //}
 
-                Switch {
-                    Layout.fillHeight: true
-                    checked: appearance.dockRoundedWindow
+                //Switch {
+                    //Layout.fillHeight: true
+                    //checked: appearance.dockRoundedWindow
 
-                    onCheckedChanged: {
-                        appearance.setDockRoundedWindow(checked)
-                    }
-                }
-            }
+                    //onCheckedChanged: {
+                        //appearance.setDockRoundedWindow(checked)
+                    //}
+                //}
+            //}
 
             Item {
                 Layout.fillHeight: true

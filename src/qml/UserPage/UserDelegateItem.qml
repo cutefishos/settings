@@ -1,8 +1,8 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import QtQuick.Dialogs 1.2
 import QtGraphicalEffects 1.0
-import Qt.labs.platform 1.0 as LabsPlatform
 
 import Cutefish.Settings 1.0
 import Cutefish.Accounts 1.0
@@ -20,15 +20,20 @@ Item {
         userId: model.userId
     }
 
-    LabsPlatform.FileDialog {
-        id: currentUserFileDialog
-        folder: LabsPlatform.StandardPaths.writableLocation(LabsPlatform.StandardPaths.PicturesLocation)
-        nameFilters: ["Pictures (*.png *.jpg *.gif)"]
-        onFileChanged: {
-            currentUser.iconFileName = currentFile.toString().replace("file://", "")
-            _userImage.source = currentFile
+    FileDialog {
+        id: fileDialog
+        folder: shortcuts.pictures
+        nameFilters: ["Image files (*.jpg *.png)", "All files (*)"]
+        onAccepted: {
+            currentUser.iconFileName = fileDialog.fileUrl.toString().replace("file://", "")
+            _userImage.source = fileDialog.fileUrl
             _userImage.update()
         }
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onDoubleClicked: additionalSettings.toggle()
     }
 
     ColumnLayout {
@@ -128,7 +133,7 @@ Item {
                 Button {
                     text: qsTr("Choose")
                     Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                    onClicked: currentUserFileDialog.open()
+                    onClicked: fileDialog.open()
                 }
 
                 Label {

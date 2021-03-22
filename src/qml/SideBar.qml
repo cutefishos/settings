@@ -144,10 +144,10 @@ Item {
                     }
 
                     radius: Meui.Theme.mediumRadius
-                    color: isCurrent ? "transparent" : mouseArea.containsMouse ? Qt.rgba(Meui.Theme.textColor.r,
-                                                                                         Meui.Theme.textColor.g,
-                                                                                         Meui.Theme.textColor.b,
-                                                                                         0.1) : "transparent"
+                    color: mouseArea.containsMouse ? Qt.rgba(Meui.Theme.textColor.r,
+                                                             Meui.Theme.textColor.g,
+                                                             Meui.Theme.textColor.b,
+                                                             0.1) : "transparent"
                     smooth: true
                 }
 
