@@ -113,6 +113,7 @@ ItemPage {
                         mipmap: true
                         cache: true
                         opacity: 1.0
+                        smooth: false
 
                         Behavior on opacity {
                             NumberAnimation {

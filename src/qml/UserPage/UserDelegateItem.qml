@@ -31,11 +31,6 @@ Item {
         }
     }
 
-    MouseArea {
-        anchors.fill: parent
-        onDoubleClicked: additionalSettings.toggle()
-    }
-
     ColumnLayout {
         id: mainLayout
         anchors.fill: parent
@@ -45,72 +40,89 @@ Item {
             id: _itemLayout
             spacing: 0
 
-            Image {
-                id: _userImage
-                width: 50
-                height: 50
-                sourceSize: Qt.size(width, height)
-                source: iconFileName ? "file:///" + iconFileName : "image://icontheme/default-user"
-                visible: status === Image.Ready
+            Item {
+                id: _topItem
 
-                layer.enabled: true
-                layer.effect: OpacityMask {
-                    maskSource: Item {
-                        width: _userImage.width
-                        height: width
+                Layout.fillWidth: true
+                height: _topLayout.implicitHeight
 
-                        Rectangle {
-                            anchors.fill: parent
-                            radius: width / 2
+                MouseArea {
+                    anchors.fill: parent
+                    onDoubleClicked: additionalSettings.toggle()
+                }
+
+                RowLayout {
+                    id: _topLayout
+                    anchors.fill: parent
+
+                    Image {
+                        id: _userImage
+                        width: 50
+                        height: 50
+                        sourceSize: Qt.size(width, height)
+                        source: iconFileName ? "file:///" + iconFileName : "image://icontheme/default-user"
+                        visible: status === Image.Ready
+
+                        layer.enabled: true
+                        layer.effect: OpacityMask {
+                            maskSource: Item {
+                                width: _userImage.width
+                                height: width
+
+                                Rectangle {
+                                    anchors.fill: parent
+                                    radius: width / 2
+                                }
+                            }
+                        }
+                    }
+
+                    Label {
+                        Layout.alignment: Qt.AlignVCenter
+                        text: userName
+                        font.pointSize: 16
+                        bottomPadding: Meui.Units.smallSpacing
+                        leftPadding: Meui.Units.largeSpacing
+                    }
+
+                    Label {
+                        Layout.alignment: Qt.AlignVCenter
+                        text: realName
+                        color: Meui.Theme.disabledTextColor
+                        visible: realName !== userName
+                        font.pointSize: 16
+                        bottomPadding: Meui.Units.smallSpacing
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    Label {
+                        text: qsTr("Currently logged")
+                        rightPadding: Meui.Units.largeSpacing
+                        visible: currentUser.userId === loggedUser.userId
+                    }
+
+                    Button {
+                        onClicked: additionalSettings.toggle()
+
+                        implicitWidth: height
+
+                        background: Item {}
+
+                        Image {
+                            anchors.centerIn: parent
+                            width: 22
+                            height: 22
+                            sourceSize: Qt.size(width, height)
+                            source: Meui.Theme.darkMode ? additionalSettings.shown ? "qrc:/images/dark/up.svg" : "qrc:/images/dark/down.svg"
+                                                        : additionalSettings.shown ? "qrc:/images/light/up.svg" : "qrc:/images/light/down.svg"
                         }
                     }
                 }
-            }
-
-            Label {
-                Layout.alignment: Qt.AlignVCenter
-                text: userName
-                font.pointSize: 16
-                bottomPadding: Meui.Units.smallSpacing
-                leftPadding: Meui.Units.largeSpacing
-            }
-
-            Label {
-                Layout.alignment: Qt.AlignVCenter
-                text: realName
-                color: Meui.Theme.disabledTextColor
-                visible: realName !== userName
-                font.pointSize: 16
-                bottomPadding: Meui.Units.smallSpacing
-            }
-
-            Item {
-                Layout.fillWidth: true
-            }
-
-            Label {
-                text: qsTr("Currently logged")
-                rightPadding: Meui.Units.largeSpacing
-                visible: currentUser.userId === loggedUser.userId
-            }
-
-            Button {
-                onClicked: additionalSettings.toggle()
-
-                implicitWidth: height
-
-                background: Item {}
-
-                Image {
-                    anchors.centerIn: parent
-                    width: 22
-                    height: 22
-                    sourceSize: Qt.size(width, height)
-                    source: Meui.Theme.darkMode ? additionalSettings.shown ? "qrc:/images/dark/up.svg" : "qrc:/images/dark/down.svg"
-                                                : additionalSettings.shown ? "qrc:/images/light/up.svg" : "qrc:/images/light/down.svg"
                 }
             }
-        }
 
         Item {
             height: Meui.Units.largeSpacing
