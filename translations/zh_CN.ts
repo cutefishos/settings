@@ -313,7 +313,7 @@
     <message>
         <location filename="../src/qml/DockPage.qml" line="34"/>
         <source>Left</source>
-        <translation>左边</translation>
+        <translation>左侧</translation>
     </message>
     <message>
         <location filename="../src/qml/DockPage.qml" line="41"/>
@@ -321,34 +321,38 @@
         <translation>底部</translation>
     </message>
     <message>
-        <location filename="../src/qml/DockPage.qml" line="50"/>
+        <location filename="../src/qml/DockPage.qml" line="48"/>
+        <source>Right</source>
+        <translation>右侧</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DockPage.qml" line="57"/>
         <source>Size</source>
         <translation>尺寸</translation>
     </message>
     <message>
-        <location filename="../src/qml/DockPage.qml" line="61"/>
+        <location filename="../src/qml/DockPage.qml" line="68"/>
         <source>Small</source>
         <translation>小</translation>
     </message>
     <message>
-        <location filename="../src/qml/DockPage.qml" line="65"/>
+        <location filename="../src/qml/DockPage.qml" line="72"/>
         <source>Medium</source>
         <translation>中</translation>
     </message>
     <message>
-        <location filename="../src/qml/DockPage.qml" line="69"/>
+        <location filename="../src/qml/DockPage.qml" line="76"/>
         <source>Large</source>
         <translation>大</translation>
     </message>
     <message>
-        <location filename="../src/qml/DockPage.qml" line="73"/>
+        <location filename="../src/qml/DockPage.qml" line="80"/>
         <source>Huge</source>
         <translation>巨大</translation>
     </message>
     <message>
-        <location filename="../src/qml/DockPage.qml" line="119"/>
         <source>Rounded window</source>
-        <translation>圆角</translation>
+        <translation type="vanished">圆角</translation>
     </message>
 </context>
 <context>
@@ -433,27 +437,27 @@
 <context>
     <name>UserDelegateItem</name>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="87"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="102"/>
         <source>Currently logged</source>
         <translation>当前登录</translation>
     </message>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="124"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="141"/>
         <source>Avatar</source>
         <translation>头像</translation>
     </message>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="129"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="146"/>
         <source>Choose</source>
         <translation>选择</translation>
     </message>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="135"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="152"/>
         <source>Automatic login</source>
         <translation>自动登陆</translation>
     </message>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="155"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="172"/>
         <source>Delete this user</source>
         <translation>删除该用户</translation>
     </message>

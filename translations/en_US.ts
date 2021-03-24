@@ -321,34 +321,34 @@
         <translation>Bottom</translation>
     </message>
     <message>
-        <location filename="../src/qml/DockPage.qml" line="50"/>
+        <location filename="../src/qml/DockPage.qml" line="48"/>
+        <source>Right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DockPage.qml" line="57"/>
         <source>Size</source>
         <translation>Size</translation>
     </message>
     <message>
-        <location filename="../src/qml/DockPage.qml" line="61"/>
+        <location filename="../src/qml/DockPage.qml" line="68"/>
         <source>Small</source>
         <translation>Small</translation>
     </message>
     <message>
-        <location filename="../src/qml/DockPage.qml" line="65"/>
+        <location filename="../src/qml/DockPage.qml" line="72"/>
         <source>Medium</source>
         <translation>Medium</translation>
     </message>
     <message>
-        <location filename="../src/qml/DockPage.qml" line="69"/>
+        <location filename="../src/qml/DockPage.qml" line="76"/>
         <source>Large</source>
         <translation>Large</translation>
     </message>
     <message>
-        <location filename="../src/qml/DockPage.qml" line="73"/>
+        <location filename="../src/qml/DockPage.qml" line="80"/>
         <source>Huge</source>
         <translation>Huge</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/DockPage.qml" line="119"/>
-        <source>Rounded window</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -433,27 +433,27 @@
 <context>
     <name>UserDelegateItem</name>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="87"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="102"/>
         <source>Currently logged</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="124"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="141"/>
         <source>Avatar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="129"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="146"/>
         <source>Choose</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="135"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="152"/>
         <source>Automatic login</source>
         <translation type="unfinished">Automatic login</translation>
     </message>
     <message>
-        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="155"/>
+        <location filename="../src/qml/UserPage/UserDelegateItem.qml" line="172"/>
         <source>Delete this user</source>
         <translation type="unfinished"></translation>
     </message>

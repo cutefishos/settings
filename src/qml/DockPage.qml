@@ -42,6 +42,13 @@ ItemPage {
                     checked: appearance.dockDirection === 1
                     onClicked: appearance.setDockDirection(1)
                 }
+
+                IconCheckBox {
+                    source: "qrc:/images/dock_right.svg"
+                    text: qsTr("Right")
+                    checked: appearance.dockDirection === 2
+                    onClicked: appearance.setDockDirection(2)
+                }
             }
 
             HorizontalDivider {}
