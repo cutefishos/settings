@@ -32,9 +32,15 @@ ItemPage {
                 text: "CutefishOS"
                 font.pointSize: 24
                 font.bold: true
-                bottomPadding: Meui.Units.largeSpacing * 2
                 leftPadding: Meui.Units.largeSpacing * 2
                 rightPadding: Meui.Units.largeSpacing * 2
+            }
+
+            Label {
+                text: qsTr("Built on ") + about.prettyProductName
+                Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
+                bottomPadding: Meui.Units.largeSpacing * 2
+                color: Meui.Theme.disabledTextColor
             }
 
             StandardItem {

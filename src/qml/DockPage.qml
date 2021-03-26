@@ -83,13 +83,13 @@ ItemPage {
                 currentIndex: {
                     var index = 0
 
-                    if (appearance.dockIconSize <= 48)
+                    if (appearance.dockIconSize <= 50)
                         index = 0
-                    else if (appearance.dockIconSize <= 64)
+                    else if (appearance.dockIconSize <= 65)
                         index = 1
-                    else if (appearance.dockIconSize <= 88)
+                    else if (appearance.dockIconSize <= 90)
                         index = 2
-                    else if (appearance.dockIconSize <= 128)
+                    else if (appearance.dockIconSize <= 130)
                         index = 3
 
                     return index
@@ -100,16 +100,16 @@ ItemPage {
 
                     switch (currentIndex) {
                     case 0:
-                        iconSize = 48
+                        iconSize = 50
                         break;
                     case 1:
-                        iconSize = 64
+                        iconSize = 65
                         break;
                     case 2:
-                        iconSize = 88
+                        iconSize = 90
                         break;
                     case 3:
-                        iconSize = 128
+                        iconSize = 130
                         break;
                     }
 

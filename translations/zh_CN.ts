@@ -9,17 +9,22 @@
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../src/qml/AboutPage.qml" line="41"/>
+        <location filename="../src/qml/AboutPage.qml" line="40"/>
+        <source>Built on </source>
+        <translation>构建在 </translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AboutPage.qml" line="47"/>
         <source>Software Version</source>
         <translation>软件版本</translation>
     </message>
     <message>
-        <location filename="../src/qml/AboutPage.qml" line="46"/>
+        <location filename="../src/qml/AboutPage.qml" line="52"/>
         <source>Kernel Version</source>
         <translation>内核版本</translation>
     </message>
     <message>
-        <location filename="../src/qml/AboutPage.qml" line="51"/>
+        <location filename="../src/qml/AboutPage.qml" line="57"/>
         <source>RAM</source>
         <translation>内存大小</translation>
     </message>
@@ -189,32 +194,32 @@
     <message>
         <location filename="../src/qml/BatteryPage.qml" line="12"/>
         <source>Last hour</source>
-        <translation type="unfinished"></translation>
+        <translation>最近1小时</translation>
     </message>
     <message>
         <location filename="../src/qml/BatteryPage.qml" line="12"/>
         <source>Last 2 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>最近两小时</translation>
     </message>
     <message>
         <location filename="../src/qml/BatteryPage.qml" line="12"/>
         <source>Last 12 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>最近12小时</translation>
     </message>
     <message>
         <location filename="../src/qml/BatteryPage.qml" line="12"/>
         <source>Last 24 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>最近24小时</translation>
     </message>
     <message>
         <location filename="../src/qml/BatteryPage.qml" line="12"/>
         <source>Last 48 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>最近48小时</translation>
     </message>
     <message>
         <location filename="../src/qml/BatteryPage.qml" line="12"/>
         <source>Last 7 days</source>
-        <translation type="unfinished"></translation>
+        <translation>最近7天</translation>
     </message>
     <message>
         <location filename="../src/qml/BatteryPage.qml" line="106"/>
@@ -224,7 +229,7 @@
     <message>
         <location filename="../src/qml/BatteryPage.qml" line="134"/>
         <source>W</source>
-        <translation type="unfinished"></translation>
+        <translation>瓦特</translation>
     </message>
     <message>
         <location filename="../src/qml/BatteryPage.qml" line="155"/>

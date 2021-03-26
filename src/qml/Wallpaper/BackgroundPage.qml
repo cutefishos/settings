@@ -24,11 +24,11 @@ ItemPage {
             anchors.topMargin: Meui.Units.smallSpacing
             spacing: Meui.Units.largeSpacing
 
-            DesktopPreview {
-                Layout.alignment: Qt.AlignHCenter
-                width: 500
-                height: 300
-            }
+//            DesktopPreview {
+//                Layout.alignment: Qt.AlignHCenter
+//                width: 500
+//                height: 300
+//            }
 
             RowLayout {
                 spacing: Meui.Units.largeSpacing * 2
@@ -68,24 +68,29 @@ ItemPage {
     Component {
         id: imageView
 
-        ListView {
+        GridView {
             id: _view
-            Layout.fillWidth: true
-            spacing: Meui.Units.smallSpacing
-            orientation: Qt.Horizontal
+            // spacing: Meui.Units.smallSpacing
+            // orientation: Qt.Horizontal
 
-            height: 150
+            height: count * itemSize
+
             clip: true
             model: background.backgrounds
             currentIndex: -1
+
+            cellHeight: itemSize
+            cellWidth: itemSize
+
+            property int itemSize: 200
 
             delegate: Item {
                 id: item
 
                 property bool isSelected: modelData === background.currentBackgroundPath
 
-                width: 200
-                height: _view.height
+                width: GridView.view.cellWidth
+                height: GridView.view.cellHeight
                 scale: 1.0
 
                 Behavior on scale {

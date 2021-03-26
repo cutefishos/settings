@@ -9,17 +9,22 @@
         <translation>About</translation>
     </message>
     <message>
-        <location filename="../src/qml/AboutPage.qml" line="41"/>
+        <location filename="../src/qml/AboutPage.qml" line="40"/>
+        <source>Built on </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AboutPage.qml" line="47"/>
         <source>Software Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/AboutPage.qml" line="46"/>
+        <location filename="../src/qml/AboutPage.qml" line="52"/>
         <source>Kernel Version</source>
         <translation>Kernel Version</translation>
     </message>
     <message>
-        <location filename="../src/qml/AboutPage.qml" line="51"/>
+        <location filename="../src/qml/AboutPage.qml" line="57"/>
         <source>RAM</source>
         <translation type="unfinished"></translation>
     </message>

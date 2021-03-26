@@ -19,6 +19,11 @@ QString About::osName()
     return QSysInfo::prettyProductName();
 }
 
+QString About::kernelType()
+{
+    return QSysInfo::kernelType();
+}
+
 QString About::kernelVersion()
 {
     return QSysInfo::kernelVersion();
@@ -48,6 +53,11 @@ QString About::memorySize()
         ram = KFormat().formatByteSize(totalRam, 0);
     }
     return ram;
+}
+
+QString About::prettyProductName()
+{
+    return QSysInfo::prettyProductName();
 }
 
 qlonglong About::calculateTotalRam() const

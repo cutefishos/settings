@@ -14,18 +14,20 @@ class About : public QObject
     Q_PROPERTY(QString hostname READ hostname NOTIFY stub)
     Q_PROPERTY(QString userName READ userName NOTIFY stub)
     Q_PROPERTY(QString memorySize READ memorySize NOTIFY stub)
+    Q_PROPERTY(QString prettyProductName READ prettyProductName NOTIFY stub)
 
 public:
     explicit About(QObject *parent = nullptr);
 
     QString osName();
+    QString kernelType();
     QString kernelVersion();
     QString hostname();
     QString userName();
     QString settingsVersion();
     QString memorySize();
 
-    QString developers();
+    QString prettyProductName();
 
 private:
     qlonglong calculateTotalRam() const;
