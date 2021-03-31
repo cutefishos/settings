@@ -15,8 +15,12 @@
     </message>
     <message>
         <location filename="../src/qml/AboutPage.qml" line="47"/>
+        <source>System Version</source>
+        <translation>系统版本</translation>
+    </message>
+    <message>
         <source>Software Version</source>
-        <translation>软件版本</translation>
+        <translation type="vanished">软件版本</translation>
     </message>
     <message>
         <location filename="../src/qml/AboutPage.qml" line="52"/>

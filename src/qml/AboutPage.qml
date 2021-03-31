@@ -44,7 +44,7 @@ ItemPage {
             }
 
             StandardItem {
-                key: qsTr("Software Version")
+                key: qsTr("System Version")
                 value: "0.1"
             }
 
