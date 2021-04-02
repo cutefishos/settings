@@ -39,14 +39,14 @@ Meui.Window {
             Label {
                 text: rootWindow.title
                 leftPadding: Meui.Units.largeSpacing + Meui.Units.smallSpacing
-                font.pointSize: parent.height / 3
+                font.pointSize: parent.height > 0 ? parent.height / 3 : 1
                 Layout.preferredWidth: sideBar.width
                 Layout.alignment: Qt.AlignBottom
             }
 
             Label {
                 text: stackView.currentItem.headerTitle
-                font.pointSize: parent.height / 3
+                font.pointSize: parent.height > 0 ? parent.height / 3 : 1
                 leftPadding: Meui.Units.largeSpacing + Meui.Units.smallSpacing
                 Layout.alignment: Qt.AlignBottom
             }

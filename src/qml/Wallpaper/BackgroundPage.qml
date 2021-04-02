@@ -83,7 +83,7 @@ ItemPage {
             cellWidth: calcExtraSpacing(itemWidth, _view.width) + itemWidth
 
             property int itemWidth: 250
-            property int itemHeight: 150
+            property int itemHeight: 170
 
             delegate: Item {
                 id: item
