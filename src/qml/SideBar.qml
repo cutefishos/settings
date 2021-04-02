@@ -49,12 +49,12 @@ Item {
             iconSource: "qrc:/images/sidebar/network.svg"
         }
 
-        ListElement {
-            title: qsTr("Bluetooth")
-            name: "bluetooth"
-            page: "qrc:/qml/BluetoothPage.qml"
-            iconSource: "qrc:/images/sidebar/bluetooth.svg"
-        }
+//        ListElement {
+//            title: qsTr("Bluetooth")
+//            name: "bluetooth"
+//            page: "qrc:/qml/BluetoothPage.qml"
+//            iconSource: "qrc:/images/sidebar/bluetooth.svg"
+//        }
 
         ListElement {
             title: qsTr("Appearance")

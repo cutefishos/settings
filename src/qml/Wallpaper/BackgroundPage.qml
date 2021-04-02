@@ -24,11 +24,11 @@ ItemPage {
             anchors.topMargin: Meui.Units.smallSpacing
             spacing: Meui.Units.largeSpacing
 
-//            DesktopPreview {
-//                Layout.alignment: Qt.AlignHCenter
-//                width: 500
-//                height: 300
-//            }
+            // DesktopPreview {
+            //     Layout.alignment: Qt.AlignHCenter
+            //     width: 500
+            //     height: 300
+            // }
 
             RowLayout {
                 spacing: Meui.Units.largeSpacing * 2
@@ -73,16 +73,17 @@ ItemPage {
             // spacing: Meui.Units.smallSpacing
             // orientation: Qt.Horizontal
 
-            height: count * itemSize
+            height: count * itemHeight
 
             clip: true
             model: background.backgrounds
             currentIndex: -1
 
-            cellHeight: itemSize
-            cellWidth: itemSize
+            cellHeight: calcExtraSpacing(itemHeight, _view.height) + itemHeight
+            cellWidth: calcExtraSpacing(itemWidth, _view.width) + itemWidth
 
-            property int itemSize: 200
+            property int itemWidth: 250
+            property int itemHeight: 150
 
             delegate: Item {
                 id: item
@@ -160,6 +161,17 @@ ItemPage {
                         onPressedChanged: item.scale = pressed ? 0.97 : 1.0
                     }
                 }
+            }
+
+            function calcExtraSpacing(cellSize, containerSize) {
+                var availableColumns = Math.floor(containerSize / cellSize)
+                var extraSpacing = 0
+                if (availableColumns > 0) {
+                    var allColumnSize = availableColumns * cellSize
+                    var extraSpace = Math.max(containerSize - allColumnSize, Meui.Units.largeSpacing)
+                    extraSpacing = extraSpace / availableColumns
+                }
+                return Math.floor(extraSpacing)
             }
         }
     }

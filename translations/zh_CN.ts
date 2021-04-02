@@ -19,16 +19,31 @@
         <translation>系统版本</translation>
     </message>
     <message>
+        <location filename="../src/qml/AboutPage.qml" line="52"/>
+        <source>System Type</source>
+        <translation>系统类型</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AboutPage.qml" line="72"/>
+        <source>Internal Storage</source>
+        <translation>内部存储</translation>
+    </message>
+    <message>
         <source>Software Version</source>
         <translation type="vanished">软件版本</translation>
     </message>
     <message>
-        <location filename="../src/qml/AboutPage.qml" line="52"/>
+        <location filename="../src/qml/AboutPage.qml" line="57"/>
         <source>Kernel Version</source>
         <translation>内核版本</translation>
     </message>
     <message>
-        <location filename="../src/qml/AboutPage.qml" line="57"/>
+        <location filename="../src/qml/AboutPage.qml" line="62"/>
+        <source>Processor</source>
+        <translation>处理器</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/AboutPage.qml" line="67"/>
         <source>RAM</source>
         <translation>内存大小</translation>
     </message>
@@ -418,9 +433,8 @@
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="53"/>
         <source>Bluetooth</source>
-        <translation>蓝牙</translation>
+        <translation type="vanished">蓝牙</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="67"/>

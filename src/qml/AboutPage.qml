@@ -45,7 +45,12 @@ ItemPage {
 
             StandardItem {
                 key: qsTr("System Version")
-                value: "0.1"
+                value: "0.2"
+            }
+
+            StandardItem {
+                key: qsTr("System Type")
+                value: about.architecture
             }
 
             StandardItem {
@@ -54,8 +59,18 @@ ItemPage {
             }
 
             StandardItem {
+                key: qsTr("Processor")
+                value: about.cpuInfo
+            }
+
+            StandardItem {
                 key: qsTr("RAM")
                 value: about.memorySize
+            }
+
+            StandardItem {
+                key: qsTr("Internal Storage")
+                value: about.internalStorage
             }
         }
     }

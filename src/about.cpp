@@ -1,6 +1,8 @@
 #include "about.h"
 
 #include <KFormat>
+#include <QStorageInfo>
+#include <QRegularExpression>
 
 #ifdef Q_OS_LINUX
 #include <sys/sysinfo.h>
@@ -17,6 +19,11 @@ About::About(QObject *parent)
 QString About::osName()
 {
     return QSysInfo::prettyProductName();
+}
+
+QString About::architecture()
+{
+    return QSysInfo::currentCpuArchitecture();
 }
 
 QString About::kernelType()
@@ -58,6 +65,37 @@ QString About::memorySize()
 QString About::prettyProductName()
 {
     return QSysInfo::prettyProductName();
+}
+
+QString About::internalStorage()
+{
+    QStorageInfo storage = QStorageInfo::root();
+    return QString("%1 / %2")
+            .arg(KFormat().formatByteSize(storage.bytesTotal() - storage.bytesAvailable()))
+            .arg(KFormat().formatByteSize(storage.bytesTotal(), 0));
+}
+
+QString About::cpuInfo()
+{
+    QFile file("/proc/cpuinfo");
+
+    if (file.open(QIODevice::ReadOnly)) {
+        QString buffer = file.readAll();
+        QStringList modelLine = buffer.split('\n').filter(QRegularExpression("^model name"));
+        QStringList lines = buffer.split('\n');
+
+        int count = lines.filter(QRegularExpression("^processor")).count();
+
+        QString result;
+        result.append(modelLine.first().split(':').at(1));
+
+        if (count > 0)
+            result.append(QString(" x %1").arg(count));
+
+        return result;
+    }
+
+    return QString();
 }
 
 qlonglong About::calculateTotalRam() const
