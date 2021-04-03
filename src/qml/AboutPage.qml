@@ -29,9 +29,9 @@ ItemPage {
 
             Label {
                 Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
-                text: "CutefishOS"
+                text: "<b>CutefishOS</b>"
                 font.pointSize: 24
-                font.bold: true
+                color: "#3385FF"
                 leftPadding: Meui.Units.largeSpacing * 2
                 rightPadding: Meui.Units.largeSpacing * 2
             }

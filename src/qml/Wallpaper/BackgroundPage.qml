@@ -78,6 +78,7 @@ ItemPage {
             clip: true
             model: background.backgrounds
             currentIndex: -1
+            interactive: false
 
             cellHeight: calcExtraSpacing(itemHeight, _view.height) + itemHeight
             cellWidth: calcExtraSpacing(itemWidth, _view.width) + itemWidth
