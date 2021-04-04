@@ -36,12 +36,12 @@ ItemPage {
                 rightPadding: Meui.Units.largeSpacing * 2
             }
 
-            Label {
-                text: qsTr("Built on ") + about.prettyProductName
-                Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
-                bottomPadding: Meui.Units.largeSpacing * 2
-                color: Meui.Theme.disabledTextColor
-            }
+//            Label {
+//                text: qsTr("Built on ") + about.prettyProductName
+//                Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
+//                bottomPadding: Meui.Units.largeSpacing * 2
+//                color: Meui.Theme.disabledTextColor
+//            }
 
             StandardItem {
                 key: qsTr("System Version")
