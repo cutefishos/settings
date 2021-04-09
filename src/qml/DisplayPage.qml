@@ -220,7 +220,6 @@ ItemPage {
                 bottomPadding: Meui.Units.smallSpacing
             }
 
-
             TabBar {
                 id: dockSizeTabbar
                 Layout.fillWidth: true
@@ -282,6 +281,8 @@ ItemPage {
                         value = 2.0
                         break;
                     }
+
+                    rootWindow.showPassiveNotification(qsTr("Need to log in again to take effect"), "short")
 
                     appearance.setDevicePixelRatio(value)
                 }
