@@ -3,7 +3,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 import Cutefish.Settings 1.0
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 
 import "../"
 
@@ -21,8 +21,8 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            anchors.topMargin: Meui.Units.smallSpacing
-            spacing: Meui.Units.largeSpacing
+            anchors.topMargin: FishUI.Units.smallSpacing
+            spacing: FishUI.Units.largeSpacing
 
             // DesktopPreview {
             //     Layout.alignment: Qt.AlignHCenter
@@ -31,7 +31,7 @@ ItemPage {
             // }
 
             RowLayout {
-                spacing: Meui.Units.largeSpacing * 2
+                spacing: FishUI.Units.largeSpacing * 2
 
                 Label {
                     text: qsTr("Background type")
@@ -70,7 +70,7 @@ ItemPage {
 
         GridView {
             id: _view
-            // spacing: Meui.Units.smallSpacing
+            // spacing: FishUI.Units.smallSpacing
             // orientation: Qt.Horizontal
 
             height: count * itemHeight
@@ -104,15 +104,15 @@ ItemPage {
                 Rectangle {
                     anchors.fill: parent
                     color: "transparent"
-                    radius: Meui.Theme.bigRadius + Meui.Units.smallSpacing / 2
+                    radius: FishUI.Theme.bigRadius + FishUI.Units.smallSpacing / 2
 
-                    border.color: Meui.Theme.highlightColor
+                    border.color: FishUI.Theme.highlightColor
                     border.width: image.status == Image.Ready & isSelected ? 3 : 0
 
                     Image {
                         id: image
                         anchors.fill: parent
-                        anchors.margins: Meui.Units.smallSpacing
+                        anchors.margins: FishUI.Units.smallSpacing
                         source: "file://" + modelData
                         sourceSize: Qt.size(width, height)
                         fillMode: Image.PreserveAspectCrop
@@ -137,7 +137,7 @@ ItemPage {
 
                                 Rectangle {
                                     anchors.fill: parent
-                                    radius: Meui.Theme.bigRadius
+                                    radius: FishUI.Theme.bigRadius
                                 }
                             }
                         }
@@ -169,7 +169,7 @@ ItemPage {
                 var extraSpacing = 0
                 if (availableColumns > 0) {
                     var allColumnSize = availableColumns * cellSize
-                    var extraSpace = Math.max(containerSize - allColumnSize, Meui.Units.largeSpacing)
+                    var extraSpace = Math.max(containerSize - allColumnSize, FishUI.Units.largeSpacing)
                     extraSpacing = extraSpace / availableColumns
                 }
                 return Math.floor(extraSpacing)
@@ -207,7 +207,7 @@ ItemPage {
                 property bool checked: Qt.colorEqual(background.backgroundColor, bgColor)
                 property color currentColor: bgColor
 
-                width: _colorView.itemSize + Meui.Units.largeSpacing
+                width: _colorView.itemSize + FishUI.Units.largeSpacing
                 height: width
                 color: "transparent"
                 radius: width / 2

@@ -1,7 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 import Cutefish.Settings 1.0
 import Cutefish.Accounts 1.0
 
@@ -11,7 +11,7 @@ Dialog {
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
     modal: true
-    padding: Meui.Units.largeSpacing * 2
+    padding: FishUI.Units.largeSpacing * 2
 
     onRejected: clear()
 
@@ -41,7 +41,7 @@ Dialog {
     }
 
     footer: DialogButtonBox {
-        padding: Meui.Units.largeSpacing * 2
+        padding: FishUI.Units.largeSpacing * 2
 
         Button {
             id: cancelButton
@@ -68,8 +68,8 @@ Dialog {
     ColumnLayout {
         GridLayout {
             columns: 2
-            columnSpacing: Meui.Units.largeSpacing
-            rowSpacing: Meui.Units.smallSpacing
+            columnSpacing: FishUI.Units.largeSpacing
+            rowSpacing: FishUI.Units.smallSpacing
 
             Label {
                 text: qsTr("User name")

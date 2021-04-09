@@ -1,5 +1,5 @@
 import QtQuick 2.12
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 import Cutefish.Screen 1.0 as CS
 
 IconCheckBox {

@@ -1,12 +1,12 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 
 Item {
     id: control
 
-    height: mainLayout.implicitHeight + Meui.Theme.smallRadius * 2
+    height: mainLayout.implicitHeight + FishUI.Theme.smallRadius * 2
 
     property alias key: keyLabel.text
     property alias value: valueLabel.text
@@ -17,7 +17,7 @@ Item {
         id: background
         anchors.fill: parent
         color: "transparent"
-        radius: Meui.Theme.smallRadius
+        radius: FishUI.Theme.smallRadius
     }
 
     RowLayout {
@@ -26,7 +26,7 @@ Item {
 
         Label {
             id: keyLabel
-            color: Meui.Theme.textColor
+            color: FishUI.Theme.textColor
         }
 
         Item {
@@ -35,7 +35,7 @@ Item {
 
         Label {
             id: valueLabel
-            color: Meui.Theme.disabledTextColor
+            color: FishUI.Theme.disabledTextColor
         }
     }
 }

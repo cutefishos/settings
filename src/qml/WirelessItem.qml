@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.0
 import QtQuick.Window 2.3
 
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 import Cutefish.NetworkManagement 1.0 as NM
 
 Item {
@@ -16,10 +16,10 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        radius: Meui.Theme.smallRadius
-        color: mouseArea.containsMouse ? Qt.rgba(Meui.Theme.textColor.r,
-                                                 Meui.Theme.textColor.g,
-                                                 Meui.Theme.textColor.b,
+        radius: FishUI.Theme.smallRadius
+        color: mouseArea.containsMouse ? Qt.rgba(FishUI.Theme.textColor.r,
+                                                 FishUI.Theme.textColor.g,
+                                                 FishUI.Theme.textColor.b,
                                                  0.1) : "transparent"
 
         Behavior on color {
@@ -55,14 +55,14 @@ Item {
 
     RowLayout {
         anchors.fill: parent
-        anchors.margins: Meui.Units.smallSpacing
-        spacing: Meui.Units.largeSpacing
+        anchors.margins: FishUI.Units.smallSpacing
+        spacing: FishUI.Units.largeSpacing
 
         Image {
             width: 22
             height: width
             sourceSize: Qt.size(width, height)
-            source: "qrc:/images/" + (Meui.Theme.darkMode ? "dark/" : "light/") + model.connectionIcon + ".svg"
+            source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark/" : "light/") + model.connectionIcon + ".svg"
         }
 
         Label {
@@ -73,7 +73,7 @@ Item {
             Layout.fillWidth: true
         }
 
-        Meui.BusyIndicator {
+        FishUI.BusyIndicator {
             id: busyIndicator
             width: 22
             height: width
@@ -93,7 +93,7 @@ Item {
             ColorOverlay {
                 anchors.fill: parent
                 source: parent
-                color: Meui.Theme.highlightColor
+                color: FishUI.Theme.highlightColor
                 opacity: 1
                 visible: true
             }
@@ -110,7 +110,7 @@ Item {
             ColorOverlay {
                 anchors.fill: parent
                 source: parent
-                color: Meui.Theme.textColor
+                color: FishUI.Theme.textColor
                 opacity: 1
                 visible: true
             }
@@ -133,7 +133,7 @@ Item {
         title: model.itemUniqueName
 
         width: 300
-        height: mainLayout.implicitHeight + Meui.Units.largeSpacing * 2
+        height: mainLayout.implicitHeight + FishUI.Units.largeSpacing * 2
         minimumWidth: width
         minimumHeight: height
         maximumHeight: height
@@ -156,13 +156,13 @@ Item {
 
         Rectangle {
             anchors.fill: parent
-            color: Meui.Theme.backgroundColor
+            color: FishUI.Theme.backgroundColor
         }
 
         ColumnLayout {
             id: mainLayout
             anchors.fill: parent
-            anchors.margins: Meui.Units.largeSpacing
+            anchors.margins: FishUI.Units.largeSpacing
 
             TextField {
                 id: passwordField
@@ -182,7 +182,7 @@ Item {
             }
 
             Item {
-                height: Meui.Units.smallSpacing
+                height: FishUI.Units.smallSpacing
             }
 
             CheckBox {
@@ -192,7 +192,7 @@ Item {
             }
 
             Item {
-                height: Meui.Units.largeSpacing
+                height: FishUI.Units.largeSpacing
             }
 
             RowLayout {

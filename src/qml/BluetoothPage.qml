@@ -2,7 +2,7 @@ import QtQuick 2.4
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import Cutefish.Settings 1.0
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 import org.kde.bluezqt 1.0 as BluezQt
 import org.kde.plasma.private.bluetooth 1.0
 
@@ -38,7 +38,7 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            anchors.bottomMargin: Meui.Units.largeSpacing
+            anchors.bottomMargin: FishUI.Units.largeSpacing
 
             Switch {
                 id: bluetoothSwitch

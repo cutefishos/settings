@@ -2,7 +2,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtGraphicalEffects 1.0
 import QtQuick.Particles 2.12
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 
 Item {
     id: control
@@ -15,9 +15,9 @@ Item {
     Rectangle {
         id: bgRect
         anchors.fill: parent
-        color: Qt.rgba(Meui.Theme.highlightColor.r,
-                       Meui.Theme.highlightColor.g,
-                       Meui.Theme.highlightColor.b, 0.5)
+        color: Qt.rgba(FishUI.Theme.highlightColor.r,
+                       FishUI.Theme.highlightColor.g,
+                       FishUI.Theme.highlightColor.b, 0.5)
         radius: control.radius
 
         layer.enabled: true
@@ -39,16 +39,16 @@ Item {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             width: control.width * (control.value / 100)
-            color: Meui.Theme.highlightColor
+            color: FishUI.Theme.highlightColor
             opacity: 1
 
             gradient: Gradient {
-                GradientStop { position: 0.0; color: Qt.rgba(Meui.Theme.highlightColor.r,
-                                                             Meui.Theme.highlightColor.g,
-                                                             Meui.Theme.highlightColor.b, 1) }
-                GradientStop { position: 1.0; color: Qt.rgba(Meui.Theme.highlightColor.r,
-                                                             Meui.Theme.highlightColor.g,
-                                                             Meui.Theme.highlightColor.b, 0.6) }
+                GradientStop { position: 0.0; color: Qt.rgba(FishUI.Theme.highlightColor.r,
+                                                             FishUI.Theme.highlightColor.g,
+                                                             FishUI.Theme.highlightColor.b, 1) }
+                GradientStop { position: 1.0; color: Qt.rgba(FishUI.Theme.highlightColor.r,
+                                                             FishUI.Theme.highlightColor.g,
+                                                             FishUI.Theme.highlightColor.b, 0.6) }
             }
 
             Behavior on width {

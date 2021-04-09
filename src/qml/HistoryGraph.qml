@@ -1,5 +1,5 @@
 import QtQuick 2.12
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 
 /**
  * We need to draw a graph, all other libs are not suitable as we are basically
@@ -53,10 +53,10 @@ Canvas {
             height - yPadding - scaledY);
     }
 
-    property bool darkMode: Meui.Theme.darkMode
-    property color textColor: Meui.Theme.textColor
-    property color bgColor: Meui.Theme.secondBackgroundColor
-    property color highlightColor: Meui.Theme.highlightColor
+    property bool darkMode: FishUI.Theme.darkMode
+    property color textColor: FishUI.Theme.textColor
+    property color bgColor: FishUI.Theme.secondBackgroundColor
+    property color highlightColor: FishUI.Theme.highlightColor
 
     onDarkModeChanged: {
         canvas.requestPaint()

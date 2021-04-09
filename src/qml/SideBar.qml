@@ -2,7 +2,7 @@ import QtQuick 2.4
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.0
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 
 Item {
     implicitWidth: 230
@@ -15,7 +15,7 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: Meui.Theme.secondBackgroundColor
+        color: FishUI.Theme.secondBackgroundColor
 
         Behavior on color {
             ColorAnimation {
@@ -109,10 +109,10 @@ Item {
             clip: true
             model: listModel
 
-            spacing: Meui.Units.smallSpacing * 1.5
-            leftMargin: Meui.Units.largeSpacing
-            rightMargin: Meui.Units.largeSpacing
-            topMargin: Meui.Units.smallSpacing * 1.5
+            spacing: FishUI.Units.smallSpacing * 1.5
+            leftMargin: FishUI.Units.largeSpacing
+            rightMargin: FishUI.Units.largeSpacing
+            topMargin: FishUI.Units.smallSpacing * 1.5
 
             ScrollBar.vertical: ScrollBar {}
 
@@ -120,8 +120,8 @@ Item {
             highlightMoveDuration: 0
             highlightResizeDuration : 0
             highlight: Rectangle {
-                radius: Meui.Theme.mediumRadius
-                color: Meui.Theme.highlightColor
+                radius: FishUI.Theme.mediumRadius
+                color: FishUI.Theme.highlightColor
                 smooth: true
             }
 
@@ -143,18 +143,18 @@ Item {
                         onClicked: listView.currentIndex = index
                     }
 
-                    radius: Meui.Theme.mediumRadius
-                    color: mouseArea.containsMouse ? Qt.rgba(Meui.Theme.textColor.r,
-                                                             Meui.Theme.textColor.g,
-                                                             Meui.Theme.textColor.b,
+                    radius: FishUI.Theme.mediumRadius
+                    color: mouseArea.containsMouse ? Qt.rgba(FishUI.Theme.textColor.r,
+                                                             FishUI.Theme.textColor.g,
+                                                             FishUI.Theme.textColor.b,
                                                              0.1) : "transparent"
                     smooth: true
                 }
 
                 RowLayout {
                     anchors.fill: parent
-                    anchors.leftMargin: Meui.Units.largeSpacing
-                    spacing: Meui.Units.largeSpacing
+                    anchors.leftMargin: FishUI.Units.largeSpacing
+                    spacing: FishUI.Units.largeSpacing
 
                     Image {
                         id: icon
@@ -169,16 +169,16 @@ Item {
                             id: colorOverlay
                             anchors.fill: icon
                             source: icon
-                            color: isCurrent ? Meui.Theme.highlightedTextColor : Meui.Theme.textColor
+                            color: isCurrent ? FishUI.Theme.highlightedTextColor : FishUI.Theme.textColor
                             opacity: 1
-                            visible: Meui.Theme.darkMode || isCurrent
+                            visible: FishUI.Theme.darkMode || isCurrent
                         }
                     }
 
                     Label {
                         id: itemTitle
                         text: model.title
-                        color: isCurrent ? Meui.Theme.highlightedTextColor : Meui.Theme.textColor
+                        color: isCurrent ? FishUI.Theme.highlightedTextColor : FishUI.Theme.textColor
                     }
 
                     Item {

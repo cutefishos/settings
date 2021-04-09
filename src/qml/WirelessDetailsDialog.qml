@@ -2,7 +2,7 @@ import QtQuick 2.4
 import QtQuick.Window 2.3
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 import Cutefish.NetworkManagement 1.0 as NM
 
 Dialog {
@@ -14,7 +14,7 @@ Dialog {
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
     modal: true
-    padding: Meui.Units.largeSpacing * 2
+    padding: FishUI.Units.largeSpacing * 2
 
     signal forgetBtnClicked()
 
@@ -39,14 +39,14 @@ Dialog {
         GridLayout {
             id: gridLayout
             columns: 2
-            columnSpacing: Meui.Units.largeSpacing
-            rowSpacing: Meui.Units.smallSpacing
+            columnSpacing: FishUI.Units.largeSpacing
+            rowSpacing: FishUI.Units.smallSpacing
 
             Label {
                 id: autoJoinLabel
                 text: qsTr("Auto-Join")
                 visible: false
-                color: Meui.Theme.disabledTextColor
+                color: FishUI.Theme.disabledTextColor
             }
 
             Switch {
@@ -60,7 +60,7 @@ Dialog {
 
             Label {
                 text: qsTr("Security")
-                color: Meui.Theme.disabledTextColor
+                color: FishUI.Theme.disabledTextColor
             }
 
             Label {
@@ -71,7 +71,7 @@ Dialog {
 
             Label {
                 text: qsTr("Signal")
-                color: Meui.Theme.disabledTextColor
+                color: FishUI.Theme.disabledTextColor
             }
 
             Label {
@@ -82,7 +82,7 @@ Dialog {
 
             Label {
                 text: qsTr("IPv4 Address")
-                color: Meui.Theme.disabledTextColor
+                color: FishUI.Theme.disabledTextColor
             }
 
             Label {
@@ -94,7 +94,7 @@ Dialog {
             Label {
                 font.bold: true
                 text: qsTr("IPv6 Address")
-                color: Meui.Theme.disabledTextColor
+                color: FishUI.Theme.disabledTextColor
             }
 
             Label {
@@ -106,7 +106,7 @@ Dialog {
             Label {
                 font.bold: true
                 text: qsTr("MAC Address")
-                color: Meui.Theme.disabledTextColor
+                color: FishUI.Theme.disabledTextColor
             }
 
             Label {
@@ -118,7 +118,7 @@ Dialog {
             Label {
                 font.bold: true
                 text: qsTr("Gateway")
-                color: Meui.Theme.disabledTextColor
+                color: FishUI.Theme.disabledTextColor
             }
 
             Label {
@@ -130,7 +130,7 @@ Dialog {
             Label {
                 font.bold: true
                 text: qsTr("DNS")
-                color: Meui.Theme.disabledTextColor
+                color: FishUI.Theme.disabledTextColor
             }
 
             Label {
@@ -142,7 +142,7 @@ Dialog {
     }
 
     footer: DialogButtonBox {
-        padding: Meui.Units.largeSpacing * 2
+        padding: FishUI.Units.largeSpacing * 2
 
         Button {
             text: qsTr("Close")

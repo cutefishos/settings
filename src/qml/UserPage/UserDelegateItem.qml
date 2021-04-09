@@ -6,7 +6,7 @@ import QtGraphicalEffects 1.0
 
 import Cutefish.Settings 1.0
 import Cutefish.Accounts 1.0
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 
 import "../"
 
@@ -81,17 +81,17 @@ Item {
                         Layout.alignment: Qt.AlignVCenter
                         text: userName
                         font.pointSize: 16
-                        bottomPadding: Meui.Units.smallSpacing
-                        leftPadding: Meui.Units.largeSpacing
+                        bottomPadding: FishUI.Units.smallSpacing
+                        leftPadding: FishUI.Units.largeSpacing
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignVCenter
                         text: realName
-                        color: Meui.Theme.disabledTextColor
+                        color: FishUI.Theme.disabledTextColor
                         visible: realName !== userName
                         font.pointSize: 16
-                        bottomPadding: Meui.Units.smallSpacing
+                        bottomPadding: FishUI.Units.smallSpacing
                     }
 
                     Item {
@@ -100,7 +100,7 @@ Item {
 
                     Label {
                         text: qsTr("Currently logged")
-                        rightPadding: Meui.Units.largeSpacing
+                        rightPadding: FishUI.Units.largeSpacing
                         visible: currentUser.userId === loggedUser.userId
                     }
 
@@ -116,7 +116,7 @@ Item {
                             width: 22
                             height: 22
                             sourceSize: Qt.size(width, height)
-                            source: Meui.Theme.darkMode ? additionalSettings.shown ? "qrc:/images/dark/up.svg" : "qrc:/images/dark/down.svg"
+                            source: FishUI.Theme.darkMode ? additionalSettings.shown ? "qrc:/images/dark/up.svg" : "qrc:/images/dark/down.svg"
                                                         : additionalSettings.shown ? "qrc:/images/light/up.svg" : "qrc:/images/light/down.svg"
                         }
                     }
@@ -125,7 +125,7 @@ Item {
             }
 
         Item {
-            height: Meui.Units.largeSpacing
+            height: FishUI.Units.largeSpacing
         }
 
         Hideable {
@@ -133,8 +133,8 @@ Item {
 
             GridLayout {
                 Layout.fillWidth: true
-                Layout.bottomMargin: Meui.Units.smallSpacing
-                rowSpacing: Meui.Units.largeSpacing
+                Layout.bottomMargin: FishUI.Units.smallSpacing
+                rowSpacing: FishUI.Units.largeSpacing
                 columns: 2
 
                 Label {

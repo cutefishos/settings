@@ -1,7 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 import Cutefish.Settings 1.0 as Settings
 
 ItemPage {
@@ -13,7 +13,7 @@ ItemPage {
 
     ColumnLayout {
         anchors.fill: parent
-        anchors.topMargin: Meui.Units.smallSpacing
+        anchors.topMargin: FishUI.Units.smallSpacing
 
         ListView {
             id: listView
@@ -24,23 +24,23 @@ ItemPage {
             model: language.languages
             clip: true
 
-            topMargin: Meui.Units.largeSpacing
-            leftMargin: Meui.Units.largeSpacing * 2
-            rightMargin: Meui.Units.largeSpacing * 2
-            spacing: Meui.Units.largeSpacing
+            topMargin: FishUI.Units.largeSpacing
+            leftMargin: FishUI.Units.largeSpacing * 2
+            rightMargin: FishUI.Units.largeSpacing * 2
+            spacing: FishUI.Units.largeSpacing
 
             currentIndex: language.currentLanguage
 
             ScrollBar.vertical: ScrollBar {
-                bottomPadding: Meui.Theme.smallRadius
+                bottomPadding: FishUI.Theme.smallRadius
             }
 
             highlightFollowsCurrentItem: true
             highlightMoveDuration: 0
             highlightResizeDuration : 0
             highlight: Rectangle {
-                color: Meui.Theme.highlightColor
-                radius: Meui.Theme.smallRadius
+                color: FishUI.Theme.highlightColor
+                radius: FishUI.Theme.smallRadius
             }
 
             delegate: MouseArea {
@@ -58,16 +58,16 @@ ItemPage {
 
                 Rectangle {
                     anchors.fill: parent
-                    color: isSelected ? "transparent" : item.containsMouse ? Meui.Theme.disabledTextColor : "transparent"
+                    color: isSelected ? "transparent" : item.containsMouse ? FishUI.Theme.disabledTextColor : "transparent"
                     opacity: isSelected ? 1 : 0.1
-                    radius: Meui.Theme.smallRadius
+                    radius: FishUI.Theme.smallRadius
                 }
 
                 Label {
                     anchors.fill: parent
-                    anchors.leftMargin: Meui.Units.smallSpacing
-                    anchors.rightMargin: Meui.Units.smallSpacing
-                    color: isSelected ? Meui.Theme.highlightedTextColor : Meui.Theme.textColor
+                    anchors.leftMargin: FishUI.Units.smallSpacing
+                    anchors.rightMargin: FishUI.Units.smallSpacing
+                    color: isSelected ? FishUI.Theme.highlightedTextColor : FishUI.Theme.textColor
                     text: modelData
                 }
             }

@@ -3,9 +3,9 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.3
 import QtGraphicalEffects 1.0
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 
-Meui.Window {
+FishUI.Window {
     id: rootWindow
     title: qsTr("Settings")
     visible: true
@@ -23,7 +23,7 @@ Meui.Window {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             implicitWidth: sideBar.width
-            color: Meui.Theme.secondBackgroundColor
+            color: FishUI.Theme.secondBackgroundColor
 
             Behavior on color {
                 ColorAnimation {
@@ -38,7 +38,7 @@ Meui.Window {
 
             Label {
                 text: rootWindow.title
-                leftPadding: Meui.Units.largeSpacing + Meui.Units.smallSpacing
+                leftPadding: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
                 font.pointSize: parent.height > 0 ? parent.height / 3 : 1
                 Layout.preferredWidth: sideBar.width
                 Layout.alignment: Qt.AlignBottom
@@ -47,7 +47,7 @@ Meui.Window {
             Label {
                 text: stackView.currentItem.headerTitle
                 font.pointSize: parent.height > 0 ? parent.height / 3 : 1
-                leftPadding: Meui.Units.largeSpacing + Meui.Units.smallSpacing
+                leftPadding: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
                 Layout.alignment: Qt.AlignBottom
             }
 

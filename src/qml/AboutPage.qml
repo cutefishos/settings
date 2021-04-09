@@ -1,7 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 import Cutefish.Settings 1.0
 
 ItemPage {
@@ -32,15 +32,15 @@ ItemPage {
                 text: "<b>CutefishOS</b>"
                 font.pointSize: 24
                 color: "#3385FF"
-                leftPadding: Meui.Units.largeSpacing * 2
-                rightPadding: Meui.Units.largeSpacing * 2
+                leftPadding: FishUI.Units.largeSpacing * 2
+                rightPadding: FishUI.Units.largeSpacing * 2
             }
 
 //            Label {
 //                text: qsTr("Built on ") + about.prettyProductName
 //                Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
-//                bottomPadding: Meui.Units.largeSpacing * 2
-//                color: Meui.Theme.disabledTextColor
+//                bottomPadding: FishUI.Units.largeSpacing * 2
+//                color: FishUI.Theme.disabledTextColor
 //            }
 
             StandardItem {

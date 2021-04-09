@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.0
 
 import Cutefish.Settings 1.0
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 
 ItemPage {
     headerTitle: qsTr("Appearance")
@@ -46,39 +46,39 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            anchors.bottomMargin: Meui.Units.largeSpacing
+            anchors.bottomMargin: FishUI.Units.largeSpacing
 
             Label {
                 text: qsTr("Theme")
-                color: Meui.Theme.disabledTextColor
-                bottomPadding: Meui.Units.smallSpacing
+                color: FishUI.Theme.disabledTextColor
+                bottomPadding: FishUI.Units.smallSpacing
             }
 
             // Light Mode and Dark Mode
             RowLayout {
-                spacing: Meui.Units.largeSpacing * 2
+                spacing: FishUI.Units.largeSpacing * 2
 
                 IconCheckBox {
                     source: "qrc:/images/light_mode.svg"
                     text: qsTr("Light")
-                    checked: !Meui.Theme.darkMode
+                    checked: !FishUI.Theme.darkMode
                     onClicked: appearance.switchDarkMode(false)
                 }
 
                 IconCheckBox {
                     source: "qrc:/images/dark_mode.svg"
                     text: qsTr("Dark")
-                    checked: Meui.Theme.darkMode
+                    checked: FishUI.Theme.darkMode
                     onClicked: appearance.switchDarkMode(true)
                 }
             }
 
             Item {
-                height: Meui.Units.largeSpacing
+                height: FishUI.Units.largeSpacing
             }
 
             RowLayout {
-                spacing: Meui.Units.largeSpacing
+                spacing: FishUI.Units.largeSpacing
 
                 Label {
                     id: dimsTipsLabel
@@ -102,13 +102,13 @@ ItemPage {
 
             Label {
                 text: qsTr("Accent color")
-                color: Meui.Theme.disabledTextColor
-                bottomPadding: Meui.Units.smallSpacing
+                color: FishUI.Theme.disabledTextColor
+                bottomPadding: FishUI.Units.smallSpacing
             }
 
             GridView {
                 id: accentColorView
-                height: itemSize + Meui.Units.largeSpacing * 2
+                height: itemSize + FishUI.Units.largeSpacing * 2
                 Layout.fillWidth: true
                 cellWidth: height
                 cellHeight: height
@@ -118,19 +118,19 @@ ItemPage {
                 property var itemSize: 32
 
                 Component.onCompleted: {
-                    model.append({"accentColor": String(Meui.Theme.blueColor)})
-                    model.append({"accentColor": String(Meui.Theme.redColor)})
-                    model.append({"accentColor": String(Meui.Theme.greenColor)})
-                    model.append({"accentColor": String(Meui.Theme.purpleColor)})
-                    model.append({"accentColor": String(Meui.Theme.pinkColor)})
-                    model.append({"accentColor": String(Meui.Theme.orangeColor)})
+                    model.append({"accentColor": String(FishUI.Theme.blueColor)})
+                    model.append({"accentColor": String(FishUI.Theme.redColor)})
+                    model.append({"accentColor": String(FishUI.Theme.greenColor)})
+                    model.append({"accentColor": String(FishUI.Theme.purpleColor)})
+                    model.append({"accentColor": String(FishUI.Theme.pinkColor)})
+                    model.append({"accentColor": String(FishUI.Theme.orangeColor)})
                 }
 
                 delegate: Rectangle {
-                    property bool checked: Qt.colorEqual(Meui.Theme.highlightColor, accentColor)
+                    property bool checked: Qt.colorEqual(FishUI.Theme.highlightColor, accentColor)
                     property color currentColor: accentColor
 
-                    width: accentColorView.itemSize + Meui.Units.largeSpacing
+                    width: accentColorView.itemSize + FishUI.Units.largeSpacing
                     height: width
                     color: "transparent"
                     radius: width / 2
@@ -167,7 +167,7 @@ ItemPage {
                             ColorOverlay {
                                 anchors.fill: parent
                                 source: parent
-                                color: Meui.Theme.highlightedTextColor
+                                color: FishUI.Theme.highlightedTextColor
                                 opacity: 1
                                 visible: true
                             }
@@ -181,19 +181,19 @@ ItemPage {
             // Font
             Label {
                 text: qsTr("Font")
-                color: Meui.Theme.disabledTextColor
-                bottomPadding: Meui.Units.smallSpacing
+                color: FishUI.Theme.disabledTextColor
+                bottomPadding: FishUI.Units.smallSpacing
             }
 
             GridLayout {
                 rows: 3
                 columns: 2
 
-                columnSpacing: Meui.Units.largeSpacing * 2
+                columnSpacing: FishUI.Units.largeSpacing * 2
 
                 Label {
                     text: qsTr("General Font")
-                    bottomPadding: Meui.Units.smallSpacing
+                    bottomPadding: FishUI.Units.smallSpacing
                 }
 
                 ComboBox {
@@ -206,7 +206,7 @@ ItemPage {
 
                 Label {
                     text: qsTr("Fixed Font")
-                    bottomPadding: Meui.Units.smallSpacing
+                    bottomPadding: FishUI.Units.smallSpacing
                 }
 
                 ComboBox {
@@ -219,7 +219,7 @@ ItemPage {
 
                 Label {
                     text: qsTr("Font Size")
-                    bottomPadding: Meui.Units.smallSpacing
+                    bottomPadding: FishUI.Units.smallSpacing
                 }
 
                 TabBar {

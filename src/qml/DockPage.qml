@@ -2,7 +2,7 @@ import QtQuick 2.4
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import Cutefish.Settings 1.0
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 
 ItemPage {
     headerTitle: qsTr("Dock")
@@ -22,12 +22,12 @@ ItemPage {
             // Dock
             Label {
                 text: qsTr("Position on screen")
-                color: Meui.Theme.disabledTextColor
-                bottomPadding: Meui.Units.smallSpacing
+                color: FishUI.Theme.disabledTextColor
+                bottomPadding: FishUI.Units.smallSpacing
             }
 
             RowLayout {
-                spacing: Meui.Units.largeSpacing * 2
+                spacing: FishUI.Units.largeSpacing * 2
 
                 IconCheckBox {
                     source: "qrc:/images/dock_left.svg"
@@ -55,14 +55,14 @@ ItemPage {
 
             Label {
                 text: qsTr("Size")
-                color: Meui.Theme.disabledTextColor
-                bottomPadding: Meui.Units.smallSpacing
+                color: FishUI.Theme.disabledTextColor
+                bottomPadding: FishUI.Units.smallSpacing
             }
 
             TabBar {
                 id: dockSizeTabbar
                 Layout.fillWidth: true
-                bottomPadding: Meui.Units.smallSpacing
+                bottomPadding: FishUI.Units.smallSpacing
 
                 TabButton {
                     text: qsTr("Small")

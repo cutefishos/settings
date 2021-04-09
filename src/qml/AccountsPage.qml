@@ -3,7 +3,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 import Cutefish.Settings 1.0
 import Cutefish.Accounts 1.0
 
@@ -36,7 +36,7 @@ ItemPage {
                 id: _userView
                 model: userModel
                 Layout.fillWidth: true
-                spacing: Meui.Units.largeSpacing
+                spacing: FishUI.Units.largeSpacing
                 interactive: false
 
                 Layout.preferredHeight: {
@@ -56,7 +56,7 @@ ItemPage {
             }
 
             Item {
-                height: Meui.Units.smallSpacing
+                height: FishUI.Units.smallSpacing
             }
 
             Button {

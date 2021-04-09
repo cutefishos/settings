@@ -3,7 +3,7 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import Cutefish.Settings 1.0
 import Cutefish.Screen 1.0 as CS
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 
 ItemPage {
     headerTitle: qsTr("Display")
@@ -38,13 +38,13 @@ ItemPage {
 
             Label {
                 text: qsTr("Brightness")
-                color: Meui.Theme.disabledTextColor
-                bottomPadding: Meui.Units.largeSpacing
+                color: FishUI.Theme.disabledTextColor
+                bottomPadding: FishUI.Units.largeSpacing
                 visible: brightness.enabled
             }
 
             RowLayout {
-                spacing: Meui.Units.largeSpacing
+                spacing: FishUI.Units.largeSpacing
                 visible: brightness.enabled
 
                 Image {
@@ -52,7 +52,7 @@ ItemPage {
                     height: width
                     sourceSize.width: width
                     sourceSize.height: height
-                    source: "qrc:/images/" + (Meui.Theme.darkMode ? "dark" : "light") + "/display-brightness-low-symbolic.svg"
+                    source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/display-brightness-low-symbolic.svg"
                 }
 
                 Slider {
@@ -70,12 +70,12 @@ ItemPage {
                     height: width
                     sourceSize.width: width
                     sourceSize.height: height
-                    source: "qrc:/images/" + (Meui.Theme.darkMode ? "dark" : "light") + "/display-brightness-symbolic.svg"
+                    source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/display-brightness-symbolic.svg"
                 }
             }
 
             Item {
-                height: Meui.Units.largeSpacing
+                height: FishUI.Units.largeSpacing
                 visible: brightness.enabled
             }
 
@@ -85,8 +85,8 @@ ItemPage {
 
             Label {
                 text: qsTr("Screen")
-                color: Meui.Theme.disabledTextColor
-                bottomPadding: Meui.Units.smallSpacing
+                color: FishUI.Theme.disabledTextColor
+                bottomPadding: FishUI.Units.smallSpacing
                 visible: _screenView.count > 0
             }
 
@@ -118,8 +118,8 @@ ItemPage {
 
                         GridLayout {
                             columns: 2
-                            columnSpacing: Meui.Units.largeSpacing
-                            rowSpacing: Meui.Units.smallSpacing
+                            columnSpacing: FishUI.Units.largeSpacing
+                            rowSpacing: FishUI.Units.smallSpacing
 
                             Label {
                                 text: qsTr("Resolution")
@@ -216,8 +216,8 @@ ItemPage {
 
             Label {
                 text: qsTr("Scale")
-                color: Meui.Theme.disabledTextColor
-                bottomPadding: Meui.Units.smallSpacing
+                color: FishUI.Theme.disabledTextColor
+                bottomPadding: FishUI.Units.smallSpacing
             }
 
             TabBar {

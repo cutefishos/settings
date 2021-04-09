@@ -1,7 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 import Cutefish.Settings 1.0
 
 ItemPage {
@@ -44,7 +44,7 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: Meui.Units.largeSpacing
+            spacing: FishUI.Units.largeSpacing
 
             // Battery Info
             BatteryItem {
@@ -55,7 +55,7 @@ ItemPage {
 
                 ColumnLayout {
                     anchors.fill: parent
-                    anchors.leftMargin: batteryBackground.radius + Meui.Units.smallSpacing
+                    anchors.leftMargin: batteryBackground.radius + FishUI.Units.smallSpacing
 
                     Item {
                         Layout.fillHeight: true
@@ -99,12 +99,12 @@ ItemPage {
             }
 
             Item {
-                height: Meui.Units.largeSpacing
+                height: FishUI.Units.largeSpacing
             }
 
             Label {
                 text: qsTr("History")
-                color: Meui.Theme.disabledTextColor
+                color: FishUI.Theme.disabledTextColor
             }
 
             HistoryGraph {
@@ -148,7 +148,7 @@ ItemPage {
             }
 
             Item {
-                height: Meui.Units.smallSpacing
+                height: FishUI.Units.smallSpacing
             }
 
             StandardItem {

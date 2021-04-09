@@ -3,7 +3,7 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.0
 
-import MeuiKit 1.0 as Meui
+import FishUI 1.0 as FishUI
 import Cutefish.NetworkManagement 1.0 as NM
 
 ItemPage {
@@ -38,7 +38,7 @@ ItemPage {
                 RowLayout {
                     Label {
                         text: qsTr("Wired")
-                        color: Meui.Theme.disabledTextColor
+                        color: FishUI.Theme.disabledTextColor
                         Layout.fillWidth: true
                     }
                 }
@@ -71,17 +71,17 @@ ItemPage {
             // Wireless
             ColumnLayout {
                 id: wirelessLayout
-                spacing: Meui.Units.largeSpacing
+                spacing: FishUI.Units.largeSpacing
 
                 RowLayout {
-                    spacing: Meui.Units.largeSpacing
+                    spacing: FishUI.Units.largeSpacing
 
                     Label {
                         text: qsTr("Wi-Fi")
-                        color: Meui.Theme.disabledTextColor
+                        color: FishUI.Theme.disabledTextColor
                     }
 
-                    Meui.BusyIndicator {
+                    FishUI.BusyIndicator {
                         id: wlanBusyIndicator
                         width: wirelessSwitch.height
                         height: width
