@@ -23,16 +23,8 @@
         <file>qml/IconCheckBox.qml</file>
         <file>qml/HorizontalDivider.qml</file>
         <file>qml/DockPage.qml</file>
-        <file>images/sidebar/about.svg</file>
-        <file>images/sidebar/battery.svg</file>
-        <file>images/sidebar/display.svg</file>
-        <file>images/sidebar/wallpaper.svg</file>
-        <file>images/sidebar/dock.svg</file>
-        <file>images/sidebar/appearance.svg</file>
         <file>qml/LanguagePage.qml</file>
-        <file>images/sidebar/network.svg</file>
         <file>qml/NetworkPage.qml</file>
-        <file>images/sidebar/language.svg</file>
         <file>images/locked.svg</file>
         <file>images/checked.svg</file>
         <file>images/light/network-wired.svg</file>
@@ -55,14 +47,12 @@
         <file>qml/WirelessDetailsDialog.qml</file>
         <file>qml/WiredItem.qml</file>
         <file>qml/AccountsPage.qml</file>
-        <file>images/sidebar/accounts.svg</file>
         <file>qml/Hideable.qml</file>
         <file>qml/AddUserDialog.qml</file>
         <file>qml/BluetoothPage.qml</file>
         <file>images/dock_top.svg</file>
         <file>images/dock_right.svg</file>
         <file>qml/HistoryGraph.qml</file>
-        <file>images/sidebar/bluetooth.svg</file>
         <file>images/rot90.svg</file>
         <file>images/rot180.svg</file>
         <file>images/rot270.svg</file>
@@ -75,5 +65,25 @@
         <file>images/dark/up.svg</file>
         <file>qml/Wallpaper/BackgroundPage.qml</file>
         <file>qml/Wallpaper/DesktopPreview.qml</file>
+        <file>images/sidebar/dark/about.svg</file>
+        <file>images/sidebar/dark/accounts.svg</file>
+        <file>images/sidebar/dark/appearance.svg</file>
+        <file>images/sidebar/dark/battery.svg</file>
+        <file>images/sidebar/dark/bluetooth.svg</file>
+        <file>images/sidebar/dark/display.svg</file>
+        <file>images/sidebar/dark/dock.svg</file>
+        <file>images/sidebar/dark/language.svg</file>
+        <file>images/sidebar/dark/network.svg</file>
+        <file>images/sidebar/dark/wallpaper.svg</file>
+        <file>images/sidebar/light/about.svg</file>
+        <file>images/sidebar/light/accounts.svg</file>
+        <file>images/sidebar/light/appearance.svg</file>
+        <file>images/sidebar/light/battery.svg</file>
+        <file>images/sidebar/light/bluetooth.svg</file>
+        <file>images/sidebar/light/display.svg</file>
+        <file>images/sidebar/light/dock.svg</file>
+        <file>images/sidebar/light/language.svg</file>
+        <file>images/sidebar/light/network.svg</file>
+        <file>images/sidebar/light/wallpaper.svg</file>
     </qresource>
 </RCC>

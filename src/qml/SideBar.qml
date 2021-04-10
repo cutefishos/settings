@@ -32,70 +32,70 @@ Item {
             title: qsTr("User")
             name: "accounts"
             page: "qrc:/qml/AccountsPage.qml"
-            iconSource: "qrc:/images/sidebar/accounts.svg"
+            iconSource: "accounts.svg"
         }
 
         ListElement {
             title: qsTr("Display")
             name: "display"
             page: "qrc:/qml/DisplayPage.qml"
-            iconSource: "qrc:/images/sidebar/display.svg"
+            iconSource: "display.svg"
         }
 
         ListElement {
             title: qsTr("Network")
             name: "network"
             page: "qrc:/qml/NetworkPage.qml"
-            iconSource: "qrc:/images/sidebar/network.svg"
+            iconSource: "network.svg"
         }
 
 //        ListElement {
 //            title: qsTr("Bluetooth")
 //            name: "bluetooth"
 //            page: "qrc:/qml/BluetoothPage.qml"
-//            iconSource: "qrc:/images/sidebar/bluetooth.svg"
+//            iconSource: "bluetooth.svg"
 //        }
 
         ListElement {
             title: qsTr("Appearance")
             name: "appearance"
             page: "qrc:/qml/AppearancePage.qml"
-            iconSource: "qrc:/images/sidebar/appearance.svg"
+            iconSource: "appearance.svg"
         }
 
         ListElement {
             title: qsTr("Background")
             name: "background"
             page: "qrc:/qml/Wallpaper/BackgroundPage.qml"
-            iconSource: "qrc:/images/sidebar/wallpaper.svg"
+            iconSource: "wallpaper.svg"
         }
 
         ListElement {
             title: qsTr("Dock")
             name: "dock"
             page: "qrc:/qml/DockPage.qml"
-            iconSource: "qrc:/images/sidebar/dock.svg"
+            iconSource: "dock.svg"
         }
 
         ListElement {
             title: qsTr("Language")
             name: "language"
             page: "qrc:/qml/LanguagePage.qml"
-            iconSource: "qrc:/images/sidebar/language.svg"
+            iconSource: "language.svg"
         }
 
         ListElement {
             title: qsTr("Battery")
             name: "battery"
             page: "qrc:/qml/BatteryPage.qml"
-            iconSource: "qrc:/images/sidebar/battery.svg"
+            iconSource: "battery.svg"
         }
 
         ListElement {
             title: qsTr("About")
             name: "about"
             page: "qrc:/qml/AboutPage.qml"
-            iconSource: "qrc:/images/sidebar/about.svg"
+            iconSource: "about.svg"
         }
     }
 
@@ -160,19 +160,10 @@ Item {
                         id: icon
                         width: 16
                         height: width
-                        source: model.iconSource
+                        source: FishUI.Theme.darkMode || isCurrent ? "qrc:/images/sidebar/dark/" + model.iconSource
+                                                                   : "qrc:/images/sidebar/light/" + model.iconSource
                         sourceSize: Qt.size(width, height)
-
                         Layout.alignment: Qt.AlignVCenter
-
-                        ColorOverlay {
-                            id: colorOverlay
-                            anchors.fill: icon
-                            source: icon
-                            color: isCurrent ? FishUI.Theme.highlightedTextColor : FishUI.Theme.textColor
-                            opacity: 1
-                            visible: FishUI.Theme.darkMode || isCurrent
-                        }
                     }
 
                     Label {
