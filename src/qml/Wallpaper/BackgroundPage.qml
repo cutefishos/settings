@@ -73,7 +73,9 @@ ItemPage {
             // spacing: FishUI.Units.smallSpacing
             // orientation: Qt.Horizontal
 
-            height: count * itemHeight
+            property int rowCount: _view.width / itemWidth
+
+            implicitHeight: Math.ceil(_view.count / rowCount) * (itemHeight + FishUI.Units.largeSpacing * 2)
 
             clip: true
             model: background.backgrounds
