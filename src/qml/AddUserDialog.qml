@@ -8,6 +8,8 @@ import Cutefish.Accounts 1.0
 Dialog {
     id: control
 
+    width: _mainLayout.implicitWidth + FishUI.Units.largeSpacing * 4
+    height: _mainLayout.implicitHeight + FishUI.Units.largeSpacing * 3
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
     modal: true
@@ -40,32 +42,10 @@ Dialog {
         accountTypeCombo.currentIndex = 0
     }
 
-    footer: DialogButtonBox {
-        padding: FishUI.Units.largeSpacing * 2
-
-        Button {
-            id: cancelButton
-            text: qsTr("Cancel")
-            DialogButtonBox.buttonRole: DialogButtonBox.Cancel
-            onClicked: control.reject()
-        }
-
-        Button {
-            id: addButton
-            text: qsTr("Add")
-            enabled: userNameField.text != "" &&
-                     passwordField.text != "" &&
-                     passwordField.text == verifyPasswordField.text
-            DialogButtonBox.buttonRole: DialogButtonBox.Ok
-            flat: true
-            onClicked: {
-                if (manager.createUser(userNameField.text, "", accountTypeCombo.currentIndex))
-                    control.accept()
-            }
-        }
-    }
-
     ColumnLayout {
+        id: _mainLayout
+        spacing: FishUI.Units.largeSpacing
+
         GridLayout {
             columns: 2
             columnSpacing: FishUI.Units.largeSpacing
@@ -73,17 +53,20 @@ Dialog {
 
             Label {
                 text: qsTr("User name")
+                Layout.alignment: Qt.AlignRight
             }
 
             TextField {
                 id: userNameField
                 placeholderText: qsTr("User name")
                 Layout.fillWidth: true
+                Layout.alignment: Qt.AlignRight
                 selectByMouse: true
             }
 
             Label {
                 text: qsTr("Password")
+                Layout.alignment: Qt.AlignRight
             }
 
             TextField {
@@ -96,6 +79,7 @@ Dialog {
 
             Label {
                 text: qsTr("Verify password")
+                Layout.alignment: Qt.AlignRight
             }
 
             TextField {
@@ -108,12 +92,38 @@ Dialog {
 
             Label {
                 text: qsTr("Account type")
+                Layout.alignment: Qt.AlignRight
             }
 
             ComboBox {
                 id: accountTypeCombo
                 model: [qsTr("Standard"), qsTr("Administrator")]
                 Layout.fillWidth: true
+            }
+        }
+
+        RowLayout {
+            id: footerLayout
+
+            Button {
+                id: cancelButton
+                text: qsTr("Cancel")
+                onClicked: control.reject()
+                Layout.fillWidth: true
+            }
+
+            Button {
+                id: addButton
+                text: qsTr("Add")
+                enabled: userNameField.text != "" &&
+                         passwordField.text != "" &&
+                         passwordField.text == verifyPasswordField.text
+                Layout.fillWidth: true
+                flat: true
+                onClicked: {
+                    if (manager.createUser(userNameField.text, "", accountTypeCombo.currentIndex))
+                        control.accept()
+                }
             }
         }
     }
