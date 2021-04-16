@@ -100,7 +100,6 @@ Item {
 
                     Label {
                         text: qsTr("Currently logged")
-                        rightPadding: FishUI.Units.largeSpacing
                         visible: currentUser.userId === loggedUser.userId
                     }
 

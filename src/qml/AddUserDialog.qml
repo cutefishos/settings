@@ -8,12 +8,9 @@ import Cutefish.Accounts 1.0
 Dialog {
     id: control
 
-    width: _mainLayout.implicitWidth + FishUI.Units.largeSpacing * 4
-    height: _mainLayout.implicitHeight + FishUI.Units.largeSpacing * 3
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
     modal: true
-    padding: FishUI.Units.largeSpacing * 2
 
     onRejected: clear()
 
@@ -42,7 +39,7 @@ Dialog {
         accountTypeCombo.currentIndex = 0
     }
 
-    ColumnLayout {
+    contentItem: ColumnLayout {
         id: _mainLayout
         spacing: FishUI.Units.largeSpacing
 

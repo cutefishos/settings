@@ -48,7 +48,7 @@ ItemPage {
 
                 id: item
                 width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
-                height: 50
+                height: 43
                 hoverEnabled: true
                 acceptedButtons: Qt.LeftButton
 

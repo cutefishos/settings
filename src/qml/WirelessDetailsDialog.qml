@@ -9,12 +9,11 @@ Dialog {
     id: control
     title: model.itemUniqueName
 
-    width: Math.max(detailsLayout.implicitWidth, footer.implicitWidth)
+    // width: Math.max(detailsLayout.implicitWidth, footer.implicitWidth)
 
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
     modal: true
-    padding: FishUI.Units.largeSpacing * 2
 
     signal forgetBtnClicked()
 
@@ -31,10 +30,9 @@ Dialog {
         }
     }
 
-    ColumnLayout {
+    contentItem: ColumnLayout {
         id: detailsLayout
-        // I couldn't find a way of making the GridLayout resize.
-        anchors.centerIn: parent
+        spacing: FishUI.Units.largeSpacing
 
         GridLayout {
             id: gridLayout
@@ -46,6 +44,7 @@ Dialog {
                 id: autoJoinLabel
                 text: qsTr("Auto-Join")
                 visible: false
+                Layout.alignment: Qt.AlignRight
                 color: FishUI.Theme.disabledTextColor
             }
 
@@ -61,6 +60,7 @@ Dialog {
             Label {
                 text: qsTr("Security")
                 color: FishUI.Theme.disabledTextColor
+                Layout.alignment: Qt.AlignRight
             }
 
             Label {
@@ -72,6 +72,7 @@ Dialog {
             Label {
                 text: qsTr("Signal")
                 color: FishUI.Theme.disabledTextColor
+                Layout.alignment: Qt.AlignRight
             }
 
             Label {
@@ -83,23 +84,27 @@ Dialog {
             Label {
                 text: qsTr("IPv4 Address")
                 color: FishUI.Theme.disabledTextColor
+                Layout.alignment: Qt.AlignRight
             }
 
             Label {
                 id: ipv4AddressLabel
                 // text: model.ipV4Address
                 Layout.alignment: Qt.AlignRight
+                Layout.fillWidth: true
             }
 
             Label {
                 font.bold: true
                 text: qsTr("IPv6 Address")
                 color: FishUI.Theme.disabledTextColor
+                Layout.alignment: Qt.AlignRight
             }
 
             Label {
                 id: ipV6AddressLabel
                 // text: model.ipV6Address
+                Layout.fillWidth: true
                 Layout.alignment: Qt.AlignRight
             }
 
@@ -107,11 +112,13 @@ Dialog {
                 font.bold: true
                 text: qsTr("MAC Address")
                 color: FishUI.Theme.disabledTextColor
+                Layout.alignment: Qt.AlignRight
             }
 
             Label {
                 id: macAddressLabel
                 // text: model.macAddress
+                Layout.fillWidth: true
                 Layout.alignment: Qt.AlignRight
             }
 
@@ -119,6 +126,7 @@ Dialog {
                 font.bold: true
                 text: qsTr("Gateway")
                 color: FishUI.Theme.disabledTextColor
+                Layout.alignment: Qt.AlignRight
             }
 
             Label {
@@ -131,6 +139,7 @@ Dialog {
                 font.bold: true
                 text: qsTr("DNS")
                 color: FishUI.Theme.disabledTextColor
+                Layout.alignment: Qt.AlignRight
             }
 
             Label {
@@ -139,24 +148,22 @@ Dialog {
                 Layout.alignment: Qt.AlignRight
             }
         }
-    }
 
-    footer: DialogButtonBox {
-        padding: FishUI.Units.largeSpacing * 2
+        RowLayout {
+            id: footerLayout
 
-        Button {
-            text: qsTr("Close")
-            Layout.alignment: Qt.AlignHCenter
-            DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
-            onClicked: control.reject()
-        }
+            Button {
+                text: qsTr("Close")
+                Layout.fillWidth: true
+                onClicked: control.reject()
+            }
 
-        Button {
-            text: qsTr("Forget this network")
-            Layout.alignment: Qt.AlignHCenter
-            DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
-            onClicked: {
-                networking.removeConnection(model.connectionPath)
+            Button {
+                text: qsTr("Forget this network")
+                Layout.fillWidth: true
+                onClicked: {
+                    networking.removeConnection(model.connectionPath)
+                }
             }
         }
     }
