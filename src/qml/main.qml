@@ -16,6 +16,9 @@ FishUI.Window {
     minimumHeight: 600
     headerBarHeight: 50
 
+    backgroundColor: FishUI.Theme.darkMode ? Qt.rgba(38 / 255, 38 / 255, 38 / 255, 255)
+                                           : Qt.rgba(237 / 255, 237 / 255, 242 / 255, 255)
+
     headerBar: Item {
         Rectangle {
             id: leftArea
@@ -23,7 +26,7 @@ FishUI.Window {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             implicitWidth: sideBar.width
-            color: FishUI.Theme.secondBackgroundColor
+            color: FishUI.Theme.backgroundColor
 
             Behavior on color {
                 ColorAnimation {

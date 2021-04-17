@@ -54,9 +54,10 @@ Item {
         ListView {
             id: wirelessView
             Layout.fillWidth: true
-            Layout.preferredHeight: itemHeight * count
+            Layout.preferredHeight: itemHeight * count + ((count - 1) * FishUI.Units.smallSpacing)
             clip: true
             model: appletProxyModel
+            spacing: FishUI.Units.smallSpacing
             interactive: false
 
             visible: enabledConnections.wirelessEnabled

@@ -47,234 +47,237 @@ ItemPage {
             id: layout
             anchors.fill: parent
             anchors.bottomMargin: FishUI.Units.largeSpacing
+            spacing: FishUI.Units.largeSpacing * 2
 
-            Label {
-                text: qsTr("Theme")
-                color: FishUI.Theme.disabledTextColor
-                bottomPadding: FishUI.Units.smallSpacing
-            }
-
-            // Light Mode and Dark Mode
-            RowLayout {
-                spacing: FishUI.Units.largeSpacing * 2
-
-                IconCheckBox {
-                    source: "qrc:/images/light_mode.svg"
-                    text: qsTr("Light")
-                    checked: !FishUI.Theme.darkMode
-                    onClicked: appearance.switchDarkMode(false)
-                }
-
-                IconCheckBox {
-                    source: "qrc:/images/dark_mode.svg"
-                    text: qsTr("Dark")
-                    checked: FishUI.Theme.darkMode
-                    onClicked: appearance.switchDarkMode(true)
-                }
-            }
-
-            Item {
-                height: FishUI.Units.largeSpacing
-            }
-
-            RowLayout {
-                spacing: FishUI.Units.largeSpacing
-
+            RoundedItem {
                 Label {
-                    id: dimsTipsLabel
-                    text: qsTr("Dim the wallpaper in dark theme")
-                    Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
+                    text: qsTr("Theme")
+                    color: FishUI.Theme.disabledTextColor
+                    bottomPadding: FishUI.Units.smallSpacing
+                }
+
+                // Light Mode and Dark Mode
+                RowLayout {
+                    spacing: FishUI.Units.largeSpacing * 2
+
+                    IconCheckBox {
+                        source: "qrc:/images/light_mode.svg"
+                        text: qsTr("Light")
+                        checked: !FishUI.Theme.darkMode
+                        onClicked: appearance.switchDarkMode(false)
+                    }
+
+                    IconCheckBox {
+                        source: "qrc:/images/dark_mode.svg"
+                        text: qsTr("Dark")
+                        checked: FishUI.Theme.darkMode
+                        onClicked: appearance.switchDarkMode(true)
+                    }
                 }
 
                 Item {
-                    Layout.fillWidth: true
+                    height: FishUI.Units.largeSpacing
                 }
 
-                Switch {
-                    checked: appearance.dimsWallpaper
-                    height: dimsTipsLabel.height
-                    Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                    onCheckedChanged: appearance.setDimsWallpaper(checked)
-                }
-            }
+                RowLayout {
+                    spacing: FishUI.Units.largeSpacing
 
-            HorizontalDivider {}
-
-            Label {
-                text: qsTr("Accent color")
-                color: FishUI.Theme.disabledTextColor
-                bottomPadding: FishUI.Units.smallSpacing
-            }
-
-            GridView {
-                id: accentColorView
-                height: itemSize + FishUI.Units.largeSpacing * 2
-                Layout.fillWidth: true
-                cellWidth: height
-                cellHeight: height
-                interactive: false
-                model: ListModel {}
-
-                property var itemSize: 32
-
-                Component.onCompleted: {
-                    model.append({"accentColor": String(FishUI.Theme.blueColor)})
-                    model.append({"accentColor": String(FishUI.Theme.redColor)})
-                    model.append({"accentColor": String(FishUI.Theme.greenColor)})
-                    model.append({"accentColor": String(FishUI.Theme.purpleColor)})
-                    model.append({"accentColor": String(FishUI.Theme.pinkColor)})
-                    model.append({"accentColor": String(FishUI.Theme.orangeColor)})
-                }
-
-                delegate: Rectangle {
-                    property bool checked: Qt.colorEqual(FishUI.Theme.highlightColor, accentColor)
-                    property color currentColor: accentColor
-
-                    width: accentColorView.itemSize + FishUI.Units.largeSpacing
-                    height: width
-                    color: "transparent"
-                    radius: width / 2
-                    border.color: _mouseArea.pressed ? Qt.rgba(currentColor.r,
-                                                               currentColor.g,
-                                                               currentColor.b, 0.6)
-                                                     : Qt.rgba(currentColor.r,
-                                                               currentColor.g,
-                                                               currentColor.b, 0.4)
-                    border.width: checked ? 3 : _mouseArea.containsMouse ? 2 : 0
-
-                    MouseArea {
-                        id: _mouseArea
-                        anchors.fill: parent
-                        hoverEnabled: true
-                        onClicked: appearance.setAccentColor(index)
+                    Label {
+                        id: dimsTipsLabel
+                        text: qsTr("Dim the wallpaper in dark theme")
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
                     }
 
-                    Rectangle {
-                        width: 32
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    Switch {
+                        checked: appearance.dimsWallpaper
+                        height: dimsTipsLabel.height
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                        onCheckedChanged: appearance.setDimsWallpaper(checked)
+                    }
+                }
+            }
+
+            RoundedItem {
+                Label {
+                    text: qsTr("Accent color")
+                    color: FishUI.Theme.disabledTextColor
+                    bottomPadding: FishUI.Units.smallSpacing
+                }
+
+                GridView {
+                    id: accentColorView
+                    height: itemSize + FishUI.Units.largeSpacing * 2
+                    Layout.fillWidth: true
+                    cellWidth: height
+                    cellHeight: height
+                    interactive: false
+                    model: ListModel {}
+
+                    property var itemSize: 32
+
+                    Component.onCompleted: {
+                        model.append({"accentColor": String(FishUI.Theme.blueColor)})
+                        model.append({"accentColor": String(FishUI.Theme.redColor)})
+                        model.append({"accentColor": String(FishUI.Theme.greenColor)})
+                        model.append({"accentColor": String(FishUI.Theme.purpleColor)})
+                        model.append({"accentColor": String(FishUI.Theme.pinkColor)})
+                        model.append({"accentColor": String(FishUI.Theme.orangeColor)})
+                    }
+
+                    delegate: Rectangle {
+                        property bool checked: Qt.colorEqual(FishUI.Theme.highlightColor, accentColor)
+                        property color currentColor: accentColor
+
+                        width: accentColorView.itemSize + FishUI.Units.largeSpacing
                         height: width
-                        anchors.centerIn: parent
-                        color: currentColor
+                        color: "transparent"
                         radius: width / 2
+                        border.color: _mouseArea.pressed ? Qt.rgba(currentColor.r,
+                                                                   currentColor.g,
+                                                                   currentColor.b, 0.6)
+                                                         : Qt.rgba(currentColor.r,
+                                                                   currentColor.g,
+                                                                   currentColor.b, 0.4)
+                        border.width: checked ? 3 : _mouseArea.containsMouse ? 2 : 0
 
-                        Image {
-                            anchors.centerIn: parent
-                            width: parent.height * 0.5
+                        MouseArea {
+                            id: _mouseArea
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            onClicked: appearance.setAccentColor(index)
+                        }
+
+                        Rectangle {
+                            width: 32
                             height: width
-                            sourceSize: Qt.size(width, height)
-                            source: "qrc:/images/checked.svg"
-                            visible: checked
+                            anchors.centerIn: parent
+                            color: currentColor
+                            radius: width / 2
 
-                            ColorOverlay {
-                                anchors.fill: parent
-                                source: parent
-                                color: FishUI.Theme.highlightedTextColor
-                                opacity: 1
-                                visible: true
+                            Image {
+                                anchors.centerIn: parent
+                                width: parent.height * 0.5
+                                height: width
+                                sourceSize: Qt.size(width, height)
+                                source: "qrc:/images/checked.svg"
+                                visible: checked
+
+                                ColorOverlay {
+                                    anchors.fill: parent
+                                    source: parent
+                                    color: FishUI.Theme.highlightedTextColor
+                                    opacity: 1
+                                    visible: true
+                                }
                             }
                         }
                     }
                 }
             }
 
-            HorizontalDivider {}
-
-            // Font
-            Label {
-                text: qsTr("Font")
-                color: FishUI.Theme.disabledTextColor
-                bottomPadding: FishUI.Units.smallSpacing
-            }
-
-            GridLayout {
-                rows: 3
-                columns: 2
-
-                columnSpacing: FishUI.Units.largeSpacing * 2
-
+            RoundedItem {
+                // Font
                 Label {
-                    text: qsTr("General Font")
+                    text: qsTr("Font")
+                    color: FishUI.Theme.disabledTextColor
                     bottomPadding: FishUI.Units.smallSpacing
                 }
 
-                ComboBox {
-                    id: generalFontComboBox
-                    model: fontsModel.generalFonts
-                    enabled: true
-                    Layout.fillWidth: true
-                    onActivated: appearance.setGenericFontFamily(currentText)
-                }
+                GridLayout {
+                    rows: 3
+                    columns: 2
 
-                Label {
-                    text: qsTr("Fixed Font")
-                    bottomPadding: FishUI.Units.smallSpacing
-                }
+                    columnSpacing: FishUI.Units.largeSpacing * 2
 
-                ComboBox {
-                    id: fixedFontComboBox
-                    model: fontsModel.fixedFonts
-                    enabled: true
-                    Layout.fillWidth: true
-                    onActivated: appearance.setFixedFontFamily(currentText)
-                }
-
-                Label {
-                    text: qsTr("Font Size")
-                    bottomPadding: FishUI.Units.smallSpacing
-                }
-
-                TabBar {
-                    Layout.fillWidth: true
-
-                    TabButton {
-                        text: qsTr("Small")
+                    Label {
+                        text: qsTr("General Font")
+                        bottomPadding: FishUI.Units.smallSpacing
                     }
 
-                    TabButton {
-                        text: qsTr("Medium")
+                    ComboBox {
+                        id: generalFontComboBox
+                        model: fontsModel.generalFonts
+                        enabled: true
+                        Layout.fillWidth: true
+                        onActivated: appearance.setGenericFontFamily(currentText)
                     }
 
-                    TabButton {
-                        text: qsTr("Large")
+                    Label {
+                        text: qsTr("Fixed Font")
+                        bottomPadding: FishUI.Units.smallSpacing
                     }
 
-                    TabButton {
-                        text: qsTr("Huge")
+                    ComboBox {
+                        id: fixedFontComboBox
+                        model: fontsModel.fixedFonts
+                        enabled: true
+                        Layout.fillWidth: true
+                        onActivated: appearance.setFixedFontFamily(currentText)
                     }
 
-                    currentIndex: {
-                        var index = 0
-
-                        if (appearance.fontPointSize <= 10)
-                            index = 0
-                        else if (appearance.fontPointSize <= 11)
-                            index = 1
-                        else if (appearance.fontPointSize <= 13)
-                            index = 2
-                        else if (appearance.fontPointSize <= 16)
-                            index = 3
-
-                        return index
+                    Label {
+                        text: qsTr("Font Size")
+                        bottomPadding: FishUI.Units.smallSpacing
                     }
 
-                    onCurrentIndexChanged: {
-                        var fontSize = 0
+                    TabBar {
+                        Layout.fillWidth: true
 
-                        switch (currentIndex) {
-                        case 0:
-                            fontSize = 10
-                            break;
-                        case 1:
-                            fontSize = 11
-                            break;
-                        case 2:
-                            fontSize = 13
-                            break;
-                        case 3:
-                            fontSize = 16
-                            break;
+                        TabButton {
+                            text: qsTr("Small")
                         }
 
-                        appearance.setFontPointSize(fontSize)
+                        TabButton {
+                            text: qsTr("Medium")
+                        }
+
+                        TabButton {
+                            text: qsTr("Large")
+                        }
+
+                        TabButton {
+                            text: qsTr("Huge")
+                        }
+
+                        currentIndex: {
+                            var index = 0
+
+                            if (appearance.fontPointSize <= 10)
+                                index = 0
+                            else if (appearance.fontPointSize <= 11)
+                                index = 1
+                            else if (appearance.fontPointSize <= 13)
+                                index = 2
+                            else if (appearance.fontPointSize <= 16)
+                                index = 3
+
+                            return index
+                        }
+
+                        onCurrentIndexChanged: {
+                            var fontSize = 0
+
+                            switch (currentIndex) {
+                            case 0:
+                                fontSize = 10
+                                break;
+                            case 1:
+                                fontSize = 11
+                                break;
+                            case 2:
+                                fontSize = 13
+                                break;
+                            case 3:
+                                fontSize = 16
+                                break;
+                            }
+
+                            appearance.setFontPointSize(fontSize)
+                        }
                     }
                 }
             }

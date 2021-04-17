@@ -15,7 +15,7 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: FishUI.Theme.secondBackgroundColor
+        color: FishUI.Theme.backgroundColor
 
         Behavior on color {
             ColorAnimation {

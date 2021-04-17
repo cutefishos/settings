@@ -36,6 +36,10 @@ ItemPage {
                 rightPadding: FishUI.Units.largeSpacing * 2
             }
 
+            Item {
+                height: FishUI.Units.largeSpacing
+            }
+
 //            Label {
 //                text: qsTr("Built on ") + about.prettyProductName
 //                Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
@@ -43,34 +47,36 @@ ItemPage {
 //                color: FishUI.Theme.disabledTextColor
 //            }
 
-            StandardItem {
-                key: qsTr("System Version")
-                value: "0.2"
-            }
+            RoundedItem {
+                StandardItem {
+                    key: qsTr("System Version")
+                    value: "0.2"
+                }
 
-            StandardItem {
-                key: qsTr("System Type")
-                value: about.architecture
-            }
+                StandardItem {
+                    key: qsTr("System Type")
+                    value: about.architecture
+                }
 
-            StandardItem {
-                key: qsTr("Kernel Version")
-                value: about.kernelVersion
-            }
+                StandardItem {
+                    key: qsTr("Kernel Version")
+                    value: about.kernelVersion
+                }
 
-            StandardItem {
-                key: qsTr("Processor")
-                value: about.cpuInfo
-            }
+                StandardItem {
+                    key: qsTr("Processor")
+                    value: about.cpuInfo
+                }
 
-            StandardItem {
-                key: qsTr("RAM")
-                value: about.memorySize
-            }
+                StandardItem {
+                    key: qsTr("RAM")
+                    value: about.memorySize
+                }
 
-            StandardItem {
-                key: qsTr("Internal Storage")
-                value: about.internalStorage
+                StandardItem {
+                    key: qsTr("Internal Storage")
+                    value: about.internalStorage
+                }
             }
         }
     }

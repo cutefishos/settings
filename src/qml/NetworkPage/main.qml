@@ -97,9 +97,11 @@ ItemPage {
                 visible: wiredView.visible && enabledConnections.wirelessHwEnabled
             }
 
-            WifiView {
-                Layout.fillWidth: true
-                visible: enabledConnections.wirelessHwEnabled
+            RoundedItem {
+                WifiView {
+                    Layout.fillWidth: true
+                    visible: enabledConnections.wirelessHwEnabled
+                }
             }
         }
     }
