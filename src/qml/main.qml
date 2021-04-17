@@ -50,7 +50,7 @@ FishUI.Window {
             Label {
                 text: stackView.currentItem.headerTitle
                 font.pointSize: parent.height > 0 ? parent.height / 3 : 1
-                leftPadding: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
+                leftPadding: FishUI.Units.largeSpacing * 2
                 Layout.alignment: Qt.AlignBottom
             }
 

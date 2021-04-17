@@ -101,6 +101,12 @@ ItemPage {
 
                     Layout.preferredHeight: currentItem ? currentItem.layout.implicitHeight : 0
 
+                    Behavior on Layout.preferredHeight {
+                        NumberAnimation {
+                            duration: 200
+                        }
+                    }
+
                     delegate: Item {
                         id: screenItem
                         height: ListView.view.height
