@@ -1,6 +1,8 @@
-import QtQuick 2.4
-import QtQuick.Controls 2.4
-import QtQuick.Layouts 1.3
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.12
+import QtGraphicalEffects 1.0
+
 import FishUI 1.0 as FishUI
 import Cutefish.Settings 1.0 as Settings
 
@@ -63,12 +65,35 @@ ItemPage {
                     radius: FishUI.Theme.smallRadius
                 }
 
-                Label {
+                RowLayout {
                     anchors.fill: parent
                     anchors.leftMargin: FishUI.Units.smallSpacing
-                    anchors.rightMargin: FishUI.Units.smallSpacing
-                    color: isSelected ? FishUI.Theme.highlightedTextColor : FishUI.Theme.textColor
-                    text: modelData
+                    anchors.rightMargin: FishUI.Units.largeSpacing
+
+                    Label {
+                        color: isSelected ? FishUI.Theme.highlightedTextColor : FishUI.Theme.textColor
+                        text: modelData
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    Image {
+                        width: item.height * 0.4
+                        height: width
+                        sourceSize: Qt.size(width, height)
+                        source: "qrc:/images/checked.svg"
+                        visible: isSelected
+
+                        ColorOverlay {
+                            anchors.fill: parent
+                            source: parent
+                            color: FishUI.Theme.highlightedTextColor
+                            opacity: 1
+                            visible: true
+                        }
+                    }
                 }
             }
         }
