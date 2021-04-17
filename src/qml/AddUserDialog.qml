@@ -101,6 +101,7 @@ Dialog {
 
         RowLayout {
             id: footerLayout
+            spacing: FishUI.Theme.hugeRadius / 2
 
             Button {
                 id: cancelButton

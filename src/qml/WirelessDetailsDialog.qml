@@ -151,6 +151,7 @@ Dialog {
 
         RowLayout {
             id: footerLayout
+            spacing: FishUI.Theme.hugeRadius / 2
 
             Button {
                 text: qsTr("Close")
@@ -161,6 +162,7 @@ Dialog {
             Button {
                 text: qsTr("Forget this network")
                 Layout.fillWidth: true
+                flat: true
                 onClicked: {
                     networking.removeConnection(model.connectionPath)
                 }

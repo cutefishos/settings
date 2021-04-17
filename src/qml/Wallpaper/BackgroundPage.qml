@@ -105,6 +105,7 @@ ItemPage {
 
                 Rectangle {
                     anchors.fill: parent
+                    anchors.margins: FishUI.Units.smallSpacing
                     color: "transparent"
                     radius: FishUI.Theme.bigRadius + FishUI.Units.smallSpacing / 2
 

@@ -9,7 +9,7 @@ Item {
     height: 150
 
     property int value: 0
-    property int radius: height * 0.15
+    property int radius: height * 0.2
     property bool enableAnimation: false
 
     Rectangle {
