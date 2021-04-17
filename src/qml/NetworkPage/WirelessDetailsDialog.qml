@@ -164,7 +164,8 @@ Dialog {
                 Layout.fillWidth: true
                 flat: true
                 onClicked: {
-                    networking.removeConnection(model.connectionPath)
+                    handler.removeConnection(model.connectionPath)
+                    control.reject()
                 }
             }
         }

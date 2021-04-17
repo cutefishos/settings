@@ -24,7 +24,6 @@
         <file>qml/HorizontalDivider.qml</file>
         <file>qml/DockPage.qml</file>
         <file>qml/LanguagePage.qml</file>
-        <file>qml/NetworkPage.qml</file>
         <file>images/locked.svg</file>
         <file>images/checked.svg</file>
         <file>images/light/network-wired.svg</file>
@@ -42,10 +41,7 @@
         <file>images/view-refresh.svg</file>
         <file>images/info.svg</file>
         <file>qml/IconButton.qml</file>
-        <file>qml/WirelessItem.qml</file>
         <file>images/go-previous.svg</file>
-        <file>qml/WirelessDetailsDialog.qml</file>
-        <file>qml/WiredItem.qml</file>
         <file>qml/AccountsPage.qml</file>
         <file>qml/Hideable.qml</file>
         <file>qml/AddUserDialog.qml</file>
@@ -85,5 +81,10 @@
         <file>images/sidebar/light/language.svg</file>
         <file>images/sidebar/light/network.svg</file>
         <file>images/sidebar/light/wallpaper.svg</file>
+        <file>qml/NetworkPage/WifiView.qml</file>
+        <file>qml/NetworkPage/main.qml</file>
+        <file>qml/NetworkPage/WifiItem.qml</file>
+        <file>qml/NetworkPage/WirelessDetailsDialog.qml</file>
+        <file>qml/NetworkPage/WiredItem.qml</file>
     </qresource>
 </RCC>

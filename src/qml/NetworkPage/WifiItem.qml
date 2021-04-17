@@ -6,13 +6,14 @@ import QtQuick.Window 2.3
 
 import FishUI 1.0 as FishUI
 import Cutefish.NetworkManagement 1.0 as NM
+import "../"
 
 Item {
     id: control
 
-    property bool passwordIsStatic: (model.securityType === NM.NetworkModel.StaticWep || model.securityType === NM.NetworkModel.WpaPsk ||
-                                     model.securityType === NM.NetworkModel.Wpa2Psk || model.securityType === NM.NetworkModel.SAE)
-    property bool predictableWirelessPassword: !model.uuid && model.type === NM.NetworkModel.Wireless && passwordIsStatic
+    property bool passwordIsStatic: (model.securityType === NM.Enums.StaticWep || model.securityType === NM.Enums.WpaPsk ||
+                                     model.securityType === NM.Enums.Wpa2Psk || model.securityType === NM.Enums.SAE)
+    property bool predictableWirelessPassword: !model.uuid && model.type === NM.Enums.Wireless && passwordIsStatic
 
     Rectangle {
         anchors.fill: parent
@@ -38,14 +39,14 @@ Item {
 
         onClicked: {
             if (model.uuid || !predictableWirelessPassword) {
-                if (connectionState === NM.NetworkModel.Deactivated) {
+                if (connectionState === NM.Enums.Deactivated) {
                     if (!predictableWirelessPassword && !model.uuid) {
-                        networking.addAndActivateConnection(model.devicePath, model.specificPath);
+                        handler.addAndActivateConnection(model.devicePath, model.specificPath);
                     } else {
-                        networking.activateConnection(model.connectionPath, model.devicePath, model.specificPath);
+                        handler.activateConnection(model.connectionPath, model.devicePath, model.specificPath);
                     }
                 } else {
-                    networking.deactivateConnection(model.connectionPath, model.devicePath);
+                    handler.deactivateConnection(model.connectionPath, model.devicePath);
                 }
             } else if (predictableWirelessPassword) {
                 passwordDialog.show()
@@ -77,8 +78,8 @@ Item {
             id: busyIndicator
             width: 22
             height: width
-            visible: connectionState === NM.NetworkModel.Activating ||
-                     connectionState === NM.NetworkModel.Deactivating
+            visible: connectionState === NM.Enums.Activating ||
+                     connectionState === NM.Enums.Deactivating
             running: busyIndicator.visible
         }
 
@@ -88,7 +89,7 @@ Item {
             height: width
             sourceSize: Qt.size(width, height)
             source: "qrc:/images/checked.svg"
-            visible: model.connectionState === NM.NetworkModel.Activated
+            visible: model.connectionState === NM.Enums.Activated
 
             ColorOverlay {
                 anchors.fill: parent
@@ -105,7 +106,7 @@ Item {
             height: width
             sourceSize: Qt.size(width, height)
             source: "qrc:/images/locked.svg"
-            visible: model.securityType !== -1 && model.securityType !== 0
+            visible: (model.securityType === -1 | model.securityType === 0) ? false : true
 
             ColorOverlay {
                 anchors.fill: parent
@@ -150,7 +151,7 @@ Item {
         }
 
         onAccept: {
-            networking.addAndActivateConnection(model.devicePath, model.specificPath, passwordField.text)
+            handler.addAndActivateConnection(model.devicePath, model.specificPath, passwordField.text)
             passwordDialog.close()
         }
 
@@ -172,7 +173,7 @@ Item {
                 placeholderText: qsTr("Password")
                 validator: RegExpValidator {
                     regExp: {
-                        if (model.securityType === NM.NetworkModel.StaticWep)
+                        if (model.securityType === NM.Enums.StaticWep)
                             return /^(?:[\x20-\x7F]{5}|[0-9a-fA-F]{10}|[\x20-\x7F]{13}|[0-9a-fA-F]{26}){1}$/;
                         return /^(?:[\x20-\x7F]{8,64}){1}$/;
                     }

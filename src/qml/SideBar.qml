@@ -45,7 +45,7 @@ Item {
         ListElement {
             title: qsTr("Network")
             name: "network"
-            page: "qrc:/qml/NetworkPage.qml"
+            page: "qrc:/qml/NetworkPage/main.qml"
             iconSource: "network.svg"
         }
 

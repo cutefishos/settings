@@ -57,125 +57,123 @@ ItemPage {
                 }
             }
 
-            Loader {
+            GridView {
+                id: _view
+
+                property int rowCount: _view.width / itemWidth
+
                 Layout.fillWidth: true
-                height: item.height
-                sourceComponent: background.backgroundType === 0 ? imageView : colorView
-            }
-        }
-    }
+                implicitHeight: Math.ceil(_view.count / rowCount) * cellHeight + FishUI.Units.largeSpacing
 
-    Component {
-        id: imageView
+                visible: background.backgroundType === 0
 
-        GridView {
-            id: _view
-            // spacing: FishUI.Units.smallSpacing
-            // orientation: Qt.Horizontal
+                clip: true
+                model: background.backgrounds
+                currentIndex: -1
+                interactive: false
 
-            property int rowCount: _view.width / itemWidth
+                cellHeight: itemHeight
+                cellWidth: calcExtraSpacing(itemWidth, _view.width) + itemWidth
 
-            implicitHeight: Math.ceil(_view.count / rowCount) * (itemHeight + FishUI.Units.largeSpacing * 2)
+                property int itemWidth: 250
+                property int itemHeight: 170
 
-            clip: true
-            model: background.backgrounds
-            currentIndex: -1
-            interactive: false
+                delegate: Item {
+                    id: item
 
-            cellHeight: calcExtraSpacing(itemHeight, _view.height) + itemHeight
-            cellWidth: calcExtraSpacing(itemWidth, _view.width) + itemWidth
+                    property bool isSelected: modelData === background.currentBackgroundPath
 
-            property int itemWidth: 250
-            property int itemHeight: 170
+                    width: GridView.view.cellWidth
+                    height: GridView.view.cellHeight
+                    scale: 1.0
 
-            delegate: Item {
-                id: item
-
-                property bool isSelected: modelData === background.currentBackgroundPath
-
-                width: GridView.view.cellWidth
-                height: GridView.view.cellHeight
-                scale: 1.0
-
-                Behavior on scale {
-                    NumberAnimation {
-                        duration: 100
+                    Behavior on scale {
+                        NumberAnimation {
+                            duration: 100
+                        }
                     }
-                }
 
-                Rectangle {
-                    anchors.fill: parent
-                    anchors.margins: FishUI.Units.smallSpacing
-                    color: "transparent"
-                    radius: FishUI.Theme.bigRadius + FishUI.Units.smallSpacing / 2
-
-                    border.color: FishUI.Theme.highlightColor
-                    border.width: image.status == Image.Ready & isSelected ? 3 : 0
-
-                    Image {
-                        id: image
+                    Rectangle {
                         anchors.fill: parent
                         anchors.margins: FishUI.Units.smallSpacing
-                        source: "file://" + modelData
-                        sourceSize: Qt.size(width, height)
-                        fillMode: Image.PreserveAspectCrop
-                        asynchronous: true
-                        mipmap: true
-                        cache: true
-                        opacity: 1.0
-                        smooth: false
+                        color: "transparent"
+                        radius: FishUI.Theme.bigRadius + FishUI.Units.smallSpacing / 2
 
-                        Behavior on opacity {
-                            NumberAnimation {
-                                duration: 100
-                                easing.type: Easing.InOutCubic
+                        border.color: FishUI.Theme.highlightColor
+                        border.width: image.status == Image.Ready & isSelected ? 3 : 0
+
+                        Image {
+                            id: image
+                            anchors.fill: parent
+                            anchors.margins: FishUI.Units.smallSpacing
+                            source: "file://" + modelData
+                            sourceSize: Qt.size(width, height)
+                            fillMode: Image.PreserveAspectCrop
+                            asynchronous: true
+                            mipmap: true
+                            cache: true
+                            smooth: true
+                            opacity: 1.0
+
+                            Behavior on opacity {
+                                NumberAnimation {
+                                    duration: 100
+                                    easing.type: Easing.InOutCubic
+                                }
                             }
-                        }
 
-                        layer.enabled: true
-                        layer.effect: OpacityMask {
-                            maskSource: Item {
-                                width: image.width
-                                height: image.height
+                            layer.enabled: true
+                            layer.effect: OpacityMask {
+                                maskSource: Item {
+                                    width: image.width
+                                    height: image.height
 
-                                Rectangle {
-                                    anchors.fill: parent
-                                    radius: FishUI.Theme.bigRadius
+                                    Rectangle {
+                                        anchors.fill: parent
+                                        radius: FishUI.Theme.bigRadius
+                                    }
                                 }
                             }
                         }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            acceptedButtons: Qt.LeftButton
+                            hoverEnabled: true
+
+                            onClicked: {
+                                background.setBackground(modelData)
+                            }
+
+                            onEntered: function() {
+                                image.opacity = 0.7
+                            }
+                            onExited: function() {
+                                image.opacity = 1.0
+                            }
+
+                            onPressedChanged: item.scale = pressed ? 0.97 : 1.0
+                        }
                     }
+                }
 
-                    MouseArea {
-                        anchors.fill: parent
-                        acceptedButtons: Qt.LeftButton
-                        hoverEnabled: true
-
-                        onClicked: {
-                            background.setBackground(modelData)
-                        }
-
-                        onEntered: function() {
-                            image.opacity = 0.7
-                        }
-                        onExited: function() {
-                            image.opacity = 1.0
-                        }
-
-                        onPressedChanged: item.scale = pressed ? 0.97 : 1.0
+                function calcExtraSpacing(cellSize, containerSize) {
+                    var availableColumns = Math.floor(containerSize / cellSize)
+                    var extraSpacing = 0
+                    if (availableColumns > 0) {
+                        var allColumnSize = availableColumns * cellSize
+                        var extraSpace = Math.max(containerSize - allColumnSize, FishUI.Units.largeSpacing)
+                        extraSpacing = extraSpace / availableColumns
                     }
+                    return Math.floor(extraSpacing)
                 }
             }
 
-            function calcExtraSpacing(cellSize, containerSize) {
-                var availableColumns = Math.floor(containerSize / cellSize)
-                var extraSpacing = 0
-                if (availableColumns > 0) {
-                    var allColumnSize = availableColumns * cellSize
-                    var extraSpace = Math.max(containerSize - allColumnSize, FishUI.Units.largeSpacing)
-                    extraSpacing = extraSpace / availableColumns
-                }
-                return Math.floor(extraSpacing)
+            Loader {
+                Layout.fillWidth: true
+                height: item.height
+                visible: background.backgroundType === 1
+                sourceComponent: colorView
             }
         }
     }
