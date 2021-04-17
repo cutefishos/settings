@@ -15,6 +15,7 @@ Item {
             Label {
                 id: wlanLabel
                 text: qsTr("WLAN")
+                color: FishUI.Theme.disabledTextColor
             }
 
             FishUI.BusyIndicator {
@@ -59,8 +60,6 @@ Item {
             model: appletProxyModel
             spacing: FishUI.Units.smallSpacing
             interactive: false
-
-            visible: enabledConnections.wirelessEnabled
 
             property var itemHeight: 45
 

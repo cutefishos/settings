@@ -9,6 +9,17 @@ import Cutefish.NetworkManagement 1.0 as NM
 Item {
     id: control
 
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            if (model.connectionState === NM.Enums.Deactivated) {
+                handler.activateConnection(model.connectionPath, model.devicePath, model.specificPath)
+            } else {
+                handler.deactivateConnection(model.connectionPath, model.devicePath)
+            }
+        }
+    }
+
     RowLayout {
         anchors.fill: parent
         spacing: FishUI.Units.largeSpacing

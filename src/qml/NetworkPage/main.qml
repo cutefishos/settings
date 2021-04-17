@@ -57,30 +57,52 @@ ItemPage {
         ColumnLayout {
             id: mainLayout
             anchors.fill: parent
+            spacing: FishUI.Units.largeSpacing * 2
 
             // Wired connection
-            ColumnLayout {
-                id: wiredLayout
-
-                visible: enabledConnections.wwanEnabled && wiredView.count > 0
+            RoundedItem {
+                visible: enabledConnections.wwanHwEnabled
 
                 RowLayout {
+                    spacing: FishUI.Units.largeSpacing
+
                     Label {
                         text: qsTr("Wired")
                         color: FishUI.Theme.disabledTextColor
                         Layout.fillWidth: true
+                    }
+
+                    Switch {
+                        Layout.fillHeight: true
+                        rightPadding: 0
+                        checked: enabledConnections.wwanEnabled
+                        onCheckedChanged: {
+                            if (checked) {
+                                if (!enabledConnections.wwanEnabled) {
+                                    handler.enableWwan(checked)
+                                }
+                            } else {
+                                if (enabledConnections.wwanEnabled) {
+                                    handler.enableWwan(checked)
+                                }
+                            }
+                        }
                     }
                 }
 
                 ListView {
                     id: wiredView
 
+                    visible: enabledConnections.wwanEnabled
+
                     Layout.fillWidth: true
-                    implicitHeight: wiredView.count * control.itemHeight
+                    Layout.preferredHeight: wiredView.count * control.itemHeight
+                    interactive: false
                     clip: true
 
                     model: NM.TechnologyProxyModel {
                         type: NM.TechnologyProxyModel.WiredType
+                        showInactiveConnections: true
                         sourceModel: networkModel
                     }
 
@@ -91,10 +113,6 @@ ItemPage {
                         width: wiredView.width
                     }
                 }
-            }
-
-            HorizontalDivider {
-                visible: wiredView.visible && enabledConnections.wirelessHwEnabled
             }
 
             RoundedItem {
