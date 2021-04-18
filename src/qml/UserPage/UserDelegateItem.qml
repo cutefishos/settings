@@ -63,6 +63,12 @@ Item {
                         source: iconFileName ? "file:///" + iconFileName : "image://icontheme/default-user"
                         visible: status === Image.Ready
 
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: fileDialog.open()
+                            cursorShape: Qt.PointingHandCursor
+                        }
+
                         layer.enabled: true
                         layer.effect: OpacityMask {
                             maskSource: Item {
@@ -120,32 +126,21 @@ Item {
                         }
                     }
                 }
-                }
             }
-
-        Item {
-            height: FishUI.Units.largeSpacing
         }
 
         Hideable {
             id: additionalSettings
+
+            Item {
+                height: FishUI.Units.largeSpacing
+            }
 
             GridLayout {
                 Layout.fillWidth: true
                 Layout.bottomMargin: FishUI.Units.smallSpacing
                 rowSpacing: FishUI.Units.largeSpacing
                 columns: 2
-
-                Label {
-                    text: qsTr("Avatar")
-                    Layout.fillWidth: true
-                }
-
-                Button {
-                    text: qsTr("Choose")
-                    Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                    onClicked: fileDialog.open()
-                }
 
                 Label {
                     text: qsTr("Automatic login")
@@ -158,7 +153,6 @@ Item {
                     leftPadding: 0
                     rightPadding: 0
                     onCheckedChanged: currentUser.automaticLogin = checked
-
                     Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
 
                     Component.onCompleted: {
@@ -171,9 +165,8 @@ Item {
                 text: qsTr("Delete this user")
                 enabled: model.userId !== loggedUser.userId
                 onClicked: accountsManager.deleteUser(userId, true)
+                Layout.fillWidth: true
             }
-
-            HorizontalDivider {}
         }
     }
 }

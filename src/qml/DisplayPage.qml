@@ -125,8 +125,8 @@ ItemPage {
 
                             GridLayout {
                                 columns: 2
-                                columnSpacing: FishUI.Units.largeSpacing
-                                rowSpacing: FishUI.Units.smallSpacing
+                                columnSpacing: FishUI.Units.largeSpacing * 1.5
+                                rowSpacing: FishUI.Units.largeSpacing
 
                                 Label {
                                     text: qsTr("Resolution")
@@ -135,6 +135,8 @@ ItemPage {
                                 ComboBox {
                                     Layout.fillWidth: true
                                     model: element.resolutions
+                                    topInset: 0
+                                    bottomInset: 0
                                     currentIndex: element.resolutionIndex !== undefined ?
                                                       element.resolutionIndex : -1
                                     onActivated: {
@@ -151,6 +153,8 @@ ItemPage {
                                     id: refreshRate
                                     Layout.fillWidth: true
                                     model: element.refreshRates
+                                    topInset: 0
+                                    bottomInset: 0
                                     currentIndex: element.refreshRateIndex ?
                                                       element.refreshRateIndex : 0
                                     onActivated: {

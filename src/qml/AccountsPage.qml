@@ -31,14 +31,14 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
+            spacing: FishUI.Units.largeSpacing
 
             RoundedItem {
-
                 ListView {
                     id: _userView
                     model: userModel
                     Layout.fillWidth: true
-                    spacing: FishUI.Units.largeSpacing
+                    spacing: FishUI.Units.largeSpacing * 2
                     interactive: false
 
                     Layout.preferredHeight: {
@@ -46,7 +46,7 @@ ItemPage {
                         for (var i = 0; i < _userView.visibleChildren.length; ++i) {
                             totalHeight += _userView.visibleChildren[i].height
                         }
-                        totalHeight += (_userView.count - 1) * _userView.spacing
+                        // totalHeight += (_userView.count - 1) * _userView.spacing
                         return totalHeight
                     }
 
@@ -56,20 +56,17 @@ ItemPage {
                         width: _userView.width
                     }
                 }
+            }
 
-                Item {
-                    height: FishUI.Units.smallSpacing
-                }
-
-                Button {
-                    id: _addUserButton
-                    text: qsTr("Add user")
-                    onClicked: {
-                        var component = Qt.createComponent("AddUserDialog.qml")
-                        if (component.status === Component.Ready) {
-                            var dialog = component.createObject(rootWindow)
-                            dialog.open()
-                        }
+            Button {
+                id: _addUserButton
+                text: qsTr("Add user")
+                Layout.fillWidth: true
+                onClicked: {
+                    var component = Qt.createComponent("AddUserDialog.qml")
+                    if (component.status === Component.Ready) {
+                        var dialog = component.createObject(rootWindow)
+                        dialog.open()
                     }
                 }
             }

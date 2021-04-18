@@ -191,7 +191,8 @@ ItemPage {
                     rows: 3
                     columns: 2
 
-                    columnSpacing: FishUI.Units.largeSpacing * 2
+                    columnSpacing: FishUI.Units.largeSpacing * 1.5
+                    rowSpacing: FishUI.Units.largeSpacing
 
                     Label {
                         text: qsTr("General Font")
@@ -203,6 +204,8 @@ ItemPage {
                         model: fontsModel.generalFonts
                         enabled: true
                         Layout.fillWidth: true
+                        topInset: 0
+                        bottomInset: 0
                         onActivated: appearance.setGenericFontFamily(currentText)
                     }
 
@@ -216,6 +219,8 @@ ItemPage {
                         model: fontsModel.fixedFonts
                         enabled: true
                         Layout.fillWidth: true
+                        topInset: 0
+                        bottomInset: 0
                         onActivated: appearance.setFixedFontFamily(currentText)
                     }
 

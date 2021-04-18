@@ -144,10 +144,11 @@ Item {
                     }
 
                     radius: FishUI.Theme.mediumRadius
-                    color: mouseArea.containsMouse ? Qt.rgba(FishUI.Theme.textColor.r,
-                                                             FishUI.Theme.textColor.g,
-                                                             FishUI.Theme.textColor.b,
-                                                             0.1) : "transparent"
+                    color: mouseArea.containsMouse && !isCurrent ? Qt.rgba(FishUI.Theme.textColor.r,
+                                                                           FishUI.Theme.textColor.g,
+                                                                           FishUI.Theme.textColor.b,
+                                                                   0.1) : "transparent"
+
                     smooth: true
                 }
 
