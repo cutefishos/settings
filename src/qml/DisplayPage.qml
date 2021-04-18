@@ -84,6 +84,8 @@ ItemPage {
             }
 
             RoundedItem {
+                visible: _screenView.count > 0
+
                 Label {
                     text: qsTr("Screen")
                     color: FishUI.Theme.disabledTextColor
