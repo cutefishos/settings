@@ -46,7 +46,7 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            anchors.bottomMargin: FishUI.Units.largeSpacing
+            // anchors.bottomMargin: FishUI.Units.largeSpacing
             spacing: FishUI.Units.largeSpacing * 2
 
             RoundedItem {
@@ -110,14 +110,14 @@ ItemPage {
 
                 GridView {
                     id: accentColorView
-                    height: itemSize + FishUI.Units.largeSpacing * 2
+                    height: itemSize
                     Layout.fillWidth: true
                     cellWidth: height
                     cellHeight: height
                     interactive: false
                     model: ListModel {}
 
-                    property var itemSize: 32
+                    property var itemSize: 30 + FishUI.Units.largeSpacing * 2
 
                     Component.onCompleted: {
                         model.append({"accentColor": String(FishUI.Theme.blueColor)})
@@ -128,21 +128,14 @@ ItemPage {
                         model.append({"accentColor": String(FishUI.Theme.orangeColor)})
                     }
 
-                    delegate: Rectangle {
+                    delegate: Item {
+                        id: _accentColorItem
+
                         property bool checked: Qt.colorEqual(FishUI.Theme.highlightColor, accentColor)
                         property color currentColor: accentColor
 
-                        width: accentColorView.itemSize + FishUI.Units.largeSpacing
+                        width: GridView.view.itemSize
                         height: width
-                        color: "transparent"
-                        radius: width / 2
-                        border.color: _mouseArea.pressed ? Qt.rgba(currentColor.r,
-                                                                   currentColor.g,
-                                                                   currentColor.b, 0.6)
-                                                         : Qt.rgba(currentColor.r,
-                                                                   currentColor.g,
-                                                                   currentColor.b, 0.4)
-                        border.width: checked ? 3 : _mouseArea.containsMouse ? 2 : 0
 
                         MouseArea {
                             id: _mouseArea
@@ -152,26 +145,40 @@ ItemPage {
                         }
 
                         Rectangle {
-                            width: 32
-                            height: width
-                            anchors.centerIn: parent
-                            color: currentColor
+                            anchors.fill: parent
+                            anchors.margins: FishUI.Units.smallSpacing
+                            color: "transparent"
                             radius: width / 2
 
-                            Image {
-                                anchors.centerIn: parent
-                                width: parent.height * 0.5
-                                height: width
-                                sourceSize: Qt.size(width, height)
-                                source: "qrc:/images/checked.svg"
-                                visible: checked
+                            border.color: _mouseArea.pressed ? Qt.rgba(currentColor.r,
+                                                                       currentColor.g,
+                                                                       currentColor.b, 0.6)
+                                                             : Qt.rgba(currentColor.r,
+                                                                       currentColor.g,
+                                                                       currentColor.b, 0.4)
+                            border.width: checked || _mouseArea.containsMouse ? 3 : 0
 
-                                ColorOverlay {
-                                    anchors.fill: parent
-                                    source: parent
-                                    color: FishUI.Theme.highlightedTextColor
-                                    opacity: 1
-                                    visible: true
+                            Rectangle {
+                                anchors.fill: parent
+                                anchors.margins: FishUI.Units.smallSpacing
+                                color: currentColor
+                                radius: width / 2
+
+                                Image {
+                                    anchors.centerIn: parent
+                                    width: parent.height * 0.5
+                                    height: width
+                                    sourceSize: Qt.size(width, height)
+                                    source: "qrc:/images/checked.svg"
+                                    visible: checked
+
+                                    ColorOverlay {
+                                        anchors.fill: parent
+                                        source: parent
+                                        color: FishUI.Theme.highlightedTextColor
+                                        opacity: 1
+                                        visible: true
+                                    }
                                 }
                             }
                         }

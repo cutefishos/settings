@@ -41,12 +41,12 @@ Dialog {
 
     contentItem: ColumnLayout {
         id: _mainLayout
-        spacing: FishUI.Units.largeSpacing
+        spacing: FishUI.Units.largeSpacing * 1.5
 
         GridLayout {
             columns: 2
-            columnSpacing: FishUI.Units.largeSpacing
-            rowSpacing: FishUI.Units.smallSpacing
+            columnSpacing: FishUI.Units.largeSpacing * 2
+            rowSpacing: FishUI.Units.smallSpacing * 2
 
             Label {
                 text: qsTr("User name")
@@ -96,6 +96,8 @@ Dialog {
                 id: accountTypeCombo
                 model: [qsTr("Standard"), qsTr("Administrator")]
                 Layout.fillWidth: true
+                topInset: 0
+                bottomInset: 0
             }
         }
 
