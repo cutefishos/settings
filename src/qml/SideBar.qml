@@ -15,7 +15,8 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: FishUI.Theme.backgroundColor
+
+        color: FishUI.Theme.darkMode ? "#333333" : "#E5E5EB"
 
         Behavior on color {
             ColorAnimation {
