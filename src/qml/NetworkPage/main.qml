@@ -12,7 +12,7 @@ ItemPage {
     id: control
     headerTitle: qsTr("Network")
 
-    property var itemHeight: 50
+    property var itemHeight: 45
     property var settingsMap: ({})
 
     NM.Handler {
@@ -93,7 +93,7 @@ ItemPage {
                 ListView {
                     id: wiredView
 
-                    visible: enabledConnections.wwanEnabled
+                    visible: enabledConnections.wwanEnabled && wiredView.count > 0
 
                     Layout.fillWidth: true
                     Layout.preferredHeight: wiredView.count * control.itemHeight

@@ -9,8 +9,26 @@ import Cutefish.NetworkManagement 1.0 as NM
 Item {
     id: control
 
-    MouseArea {
+    Rectangle {
         anchors.fill: parent
+        radius: FishUI.Theme.smallRadius
+        color: mouseArea.containsMouse ? Qt.rgba(FishUI.Theme.textColor.r,
+                                                 FishUI.Theme.textColor.g,
+                                                 FishUI.Theme.textColor.b,
+                                                 0.1) : "transparent"
+
+        Behavior on color {
+            ColorAnimation {
+                duration: 125
+                easing.type: Easing.InOutCubic
+            }
+        }
+    }
+
+    MouseArea {
+        id: mouseArea
+        anchors.fill: parent
+        hoverEnabled: true
         onClicked: {
             if (model.connectionState === NM.Enums.Deactivated) {
                 handler.activateConnection(model.connectionPath, model.devicePath, model.specificPath)
@@ -22,6 +40,7 @@ Item {
 
     RowLayout {
         anchors.fill: parent
+        anchors.margins: FishUI.Units.smallSpacing
         spacing: FishUI.Units.largeSpacing
 
         Image {

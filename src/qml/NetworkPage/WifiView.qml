@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.12
 import FishUI 1.0 as FishUI
 
 Item {
-    implicitHeight: _contentLayout.implicitHeight + FishUI.Theme.mediumRadius * 2
+    implicitHeight: _contentLayout.implicitHeight + FishUI.Theme.mediumRadius
 
     ColumnLayout {
         id: _contentLayout
