@@ -213,6 +213,8 @@ ItemPage {
                         Layout.fillWidth: true
                         topInset: 0
                         bottomInset: 0
+                        leftPadding: FishUI.Units.largeSpacing
+                        rightPadding: FishUI.Units.largeSpacing
                         onActivated: appearance.setGenericFontFamily(currentText)
                     }
 
@@ -228,6 +230,8 @@ ItemPage {
                         Layout.fillWidth: true
                         topInset: 0
                         bottomInset: 0
+                        leftPadding: FishUI.Units.largeSpacing
+                        rightPadding: FishUI.Units.largeSpacing
                         onActivated: appearance.setFixedFontFamily(currentText)
                     }
 

@@ -137,6 +137,8 @@ ItemPage {
                                 ComboBox {
                                     Layout.fillWidth: true
                                     model: element.resolutions
+                                    leftPadding: FishUI.Units.largeSpacing
+                                    rightPadding: FishUI.Units.largeSpacing
                                     topInset: 0
                                     bottomInset: 0
                                     currentIndex: element.resolutionIndex !== undefined ?
@@ -155,6 +157,8 @@ ItemPage {
                                     id: refreshRate
                                     Layout.fillWidth: true
                                     model: element.refreshRates
+                                    leftPadding: FishUI.Units.largeSpacing
+                                    rightPadding: FishUI.Units.largeSpacing
                                     topInset: 0
                                     bottomInset: 0
                                     currentIndex: element.refreshRateIndex ?

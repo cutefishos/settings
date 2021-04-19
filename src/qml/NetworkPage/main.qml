@@ -59,6 +59,13 @@ ItemPage {
             anchors.fill: parent
             spacing: FishUI.Units.largeSpacing * 2
 
+            RoundedItem {
+                WifiView {
+                    Layout.fillWidth: true
+                    visible: enabledConnections.wirelessHwEnabled
+                }
+            }
+
             // Wired connection
             RoundedItem {
                 visible: enabledConnections.wwanHwEnabled
@@ -112,13 +119,6 @@ ItemPage {
                         height: control.itemHeight
                         width: wiredView.width
                     }
-                }
-            }
-
-            RoundedItem {
-                WifiView {
-                    Layout.fillWidth: true
-                    visible: enabledConnections.wirelessHwEnabled
                 }
             }
         }
