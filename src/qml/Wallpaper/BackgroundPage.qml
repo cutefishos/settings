@@ -39,6 +39,12 @@ ItemPage {
 
                 TabBar {
                     Layout.fillWidth: true
+
+                    background: Rectangle {
+                        color: FishUI.Theme.darkMode ? "#4A4A4D" : "#E5E5EB"
+                        radius: FishUI.Theme.mediumRadius
+                    }
+
                     onCurrentIndexChanged: {
                         background.backgroundType = currentIndex
                     }

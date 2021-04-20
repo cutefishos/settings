@@ -22,7 +22,9 @@ ItemPage {
 
     Timer {
         id: brightnessTimer
-        interval: 100
+        interval: 200
+        repeat: false
+
         onTriggered: {
             brightness.setValue(brightnessSlider.value)
         }
