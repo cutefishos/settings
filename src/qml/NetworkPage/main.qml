@@ -40,6 +40,10 @@ ItemPage {
         sourceModel: connectionModel
     }
 
+    NM.Configuration {
+        id: configuration
+    }
+
     Component.onCompleted: handler.requestScan()
 
     Timer {
@@ -57,6 +61,7 @@ ItemPage {
         ColumnLayout {
             id: mainLayout
             anchors.fill: parent
+            anchors.bottomMargin: FishUI.Units.largeSpacing
             spacing: FishUI.Units.largeSpacing * 2
 
             RoundedItem {
@@ -65,6 +70,53 @@ ItemPage {
                     visible: enabledConnections.wirelessHwEnabled
                 }
             }
+
+            // Hotspot
+            // 还未完善
+//            RoundedItem {
+//                id: hotspotItem
+//                visible: handler.hotspotSupported
+
+//                RowLayout {
+//                    Label {
+//                        text: qsTr("Hotspot")
+//                        color: FishUI.Theme.disabledTextColor
+//                    }
+
+//                    Item {
+//                        Layout.fillWidth: true
+//                    }
+
+//                    Switch {
+//                        Layout.fillHeight: true
+//                        rightPadding: 0
+
+//                        onToggled: {
+//                            if (checked) {
+//                                handler.createHotspot()
+//                            } else {
+//                                handler.stopHotspot()
+//                            }
+//                        }
+//                    }
+//                }
+
+//                Item {
+//                    height: FishUI.Units.largeSpacing
+//                }
+
+//                TextField {
+//                    id: ssidName
+//                    text: configuration.hotspotName
+//                    placeholderText: qsTr("SSID")
+//                }
+
+//                TextField {
+//                    id: hotspotPassword
+//                    placeholderText: qsTr("Password")
+//                    text: configuration.hotspotPassword
+//                }
+//            }
 
             // Wired connection
             RoundedItem {
@@ -120,6 +172,10 @@ ItemPage {
                         width: wiredView.width
                     }
                 }
+            }
+
+            Item {
+                height: FishUI.Units.largeSpacing
             }
         }
     }
