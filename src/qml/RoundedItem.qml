@@ -10,15 +10,16 @@ Rectangle {
     color: FishUI.Theme.darkMode ? "#363636" : "#FFFFFF"
     radius: FishUI.Theme.mediumRadius
 
-    implicitHeight: _mainLayout.implicitHeight + FishUI.Units.largeSpacing * 2
+    implicitHeight: _mainLayout.implicitHeight +
+                    _mainLayout.anchors.topMargin +
+                    _mainLayout.anchors.bottomMargin
 
     ColumnLayout {
         id: _mainLayout
         anchors.fill: parent
-
         anchors.leftMargin: FishUI.Units.largeSpacing * 1.5
         anchors.rightMargin: FishUI.Units.largeSpacing * 1.5
         anchors.topMargin: FishUI.Units.largeSpacing
-        anchors.bottomMargin: FishUI.Units.largeSpacing
+        anchors.bottomMargin: FishUI.Units.largeSpacing * 1.5
     }
 }

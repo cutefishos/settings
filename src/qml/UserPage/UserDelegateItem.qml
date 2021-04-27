@@ -62,6 +62,7 @@ Item {
                         sourceSize: Qt.size(width, height)
                         source: iconFileName ? "file:///" + iconFileName : "image://icontheme/default-user"
                         visible: status === Image.Ready
+                        Layout.alignment: Qt.AlignVCenter
 
                         MouseArea {
                             anchors.fill: parent
@@ -106,10 +107,13 @@ Item {
 
                     Label {
                         text: qsTr("Currently logged")
+                        Layout.alignment: Qt.AlignVCenter
                         visible: currentUser.userId === loggedUser.userId
                     }
 
                     Button {
+                        Layout.alignment: Qt.AlignVCenter
+
                         onClicked: additionalSettings.toggle()
 
                         implicitWidth: height
