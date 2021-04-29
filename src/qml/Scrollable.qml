@@ -13,6 +13,11 @@ Flickable {
 
     contentWidth: width - (leftMargin + rightMargin)
 
+    FishUI.WheelHandler {
+        id: wheelHandler
+        target: root
+    }
+
     ScrollBar.vertical: ScrollBar {
         bottomPadding: FishUI.Theme.smallRadius
     }

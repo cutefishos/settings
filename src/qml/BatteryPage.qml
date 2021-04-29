@@ -99,6 +99,8 @@ ItemPage {
             }
 
             RoundedItem {
+                visible: history.count
+
                 Label {
                     text: qsTr("History")
                     color: FishUI.Theme.disabledTextColor
