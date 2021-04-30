@@ -73,6 +73,7 @@ ItemPage {
                     Label {
                         color: isSelected ? FishUI.Theme.highlightedTextColor : FishUI.Theme.textColor
                         text: modelData
+                        Layout.alignment: Qt.AlignVCenter
                     }
 
                     Item {
