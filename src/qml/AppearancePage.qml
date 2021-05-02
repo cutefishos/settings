@@ -97,6 +97,7 @@ ItemPage {
                         height: dimsTipsLabel.height
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         onCheckedChanged: appearance.setDimsWallpaper(checked)
+                        rightPadding: 0
                     }
                 }
             }
