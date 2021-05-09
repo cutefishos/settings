@@ -92,6 +92,13 @@ Item {
             iconSource: "battery.svg"
         }
 
+//        ListElement {
+//            title: qsTr("Power")
+//            name: "power"
+//            page: "qrc:/qml/Power/main.qml"
+//            iconSource: "battery.svg"
+//        }
+
         ListElement {
             title: qsTr("About")
             name: "about"

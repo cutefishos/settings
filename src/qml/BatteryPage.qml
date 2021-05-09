@@ -99,7 +99,7 @@ ItemPage {
             }
 
             RoundedItem {
-                visible: history.count
+                visible: history.count > 2
 
                 Label {
                     text: qsTr("History")
@@ -143,7 +143,7 @@ ItemPage {
                         }
                     }
                     yStep: batteryPage.historyType === BatteryHistoryModel.RateType ? 10 : 20
-                    visible: history.count > 1
+                    visible: history.count > 2
                 }
             }
 

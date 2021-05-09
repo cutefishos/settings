@@ -108,6 +108,10 @@ Canvas {
             }
         }
 
+        // The data is empty.
+        if (point === undefined)
+            return
+
         c.stroke();
         c.strokeStyle = 'rgba(0, 0, 0, 0)';
         c.lineTo(point.x, height - yPadding);

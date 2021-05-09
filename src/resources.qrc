@@ -87,5 +87,8 @@
         <file>qml/NetworkPage/WirelessDetailsDialog.qml</file>
         <file>qml/NetworkPage/WiredItem.qml</file>
         <file>qml/RoundedItem.qml</file>
+        <file>images/powersave.svg</file>
+        <file>images/performance.svg</file>
+        <file>qml/Power/main.qml</file>
     </qresource>
 </RCC>
