@@ -99,6 +99,17 @@ ItemPage {
                         }
                     }
 
+                    // Preload image
+                    Image {
+                        anchors.centerIn: parent
+                        width: 64
+                        height: width
+                        sourceSize: Qt.size(width, height)
+                        source: FishUI.Theme.darkMode ? "qrc:/images/dark/picture.svg"
+                                                      : "qrc:/images/light/picture.svg"
+                        visible: _image.status !== Image.Ready
+                    }
+
                     Rectangle {
                         anchors.fill: parent
                         anchors.margins: FishUI.Units.smallSpacing
@@ -106,10 +117,10 @@ ItemPage {
                         radius: FishUI.Theme.bigRadius + FishUI.Units.smallSpacing / 2
 
                         border.color: FishUI.Theme.highlightColor
-                        border.width: image.status == Image.Ready & isSelected ? 3 : 0
+                        border.width: _image.status == Image.Ready & isSelected ? 3 : 0
 
                         Image {
-                            id: image
+                            id: _image
                             anchors.fill: parent
                             anchors.margins: FishUI.Units.smallSpacing
                             source: "file://" + modelData
@@ -131,8 +142,8 @@ ItemPage {
                             layer.enabled: true
                             layer.effect: OpacityMask {
                                 maskSource: Item {
-                                    width: image.width
-                                    height: image.height
+                                    width: _image.width
+                                    height: _image.height
 
                                     Rectangle {
                                         anchors.fill: parent
@@ -152,10 +163,10 @@ ItemPage {
                             }
 
                             onEntered: function() {
-                                image.opacity = 0.7
+                                _image.opacity = 0.7
                             }
                             onExited: function() {
-                                image.opacity = 1.0
+                                _image.opacity = 1.0
                             }
 
                             onPressedChanged: item.scale = pressed ? 0.97 : 1.0

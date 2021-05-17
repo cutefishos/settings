@@ -90,5 +90,7 @@
         <file>images/powersave.svg</file>
         <file>images/performance.svg</file>
         <file>qml/Power/main.qml</file>
+        <file>images/light/picture.svg</file>
+        <file>images/dark/picture.svg</file>
     </qresource>
 </RCC>
