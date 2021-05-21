@@ -120,7 +120,7 @@ Item {
             spacing: FishUI.Units.smallSpacing * 1.5
             leftMargin: FishUI.Units.largeSpacing
             rightMargin: FishUI.Units.largeSpacing
-            topMargin: FishUI.Units.smallSpacing * 1.5
+            topMargin: FishUI.Units.largeSpacing
 
             ScrollBar.vertical: ScrollBar {}
 

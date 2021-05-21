@@ -131,7 +131,7 @@ Canvas {
         c.fillStyle = textColor
         c.textAlign = "right"
         c.textBaseline = "middle";
-        for(var i = 0; i <=  yMax; i += yStep) {
+        for(i = 0; i <=  yMax; i += yStep) {
             var y = scalePoint(Qt.point(0,i)).y;
 
             c.fillText(i + canvas.yUnits, xPadding - 10, y);
@@ -190,7 +190,7 @@ Canvas {
         var dashedLineLength = plotHeight / dashedLines
         var dashedLineDutyCycle
 
-        for (var i = xDivisions; i >= -1; i--) {
+        for (i = xDivisions; i >= -1; i--) {
             xTickPos = i * xGridDistance + xPadding - xGridOffset
 
             if ((xTickPos > xPadding) && (xTickPos < plotWidth + xPadding)) {
