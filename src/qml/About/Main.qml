@@ -3,6 +3,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import FishUI 1.0 as FishUI
 import Cutefish.Settings 1.0
+import "../"
 
 ItemPage {
     headerTitle: qsTr("About")

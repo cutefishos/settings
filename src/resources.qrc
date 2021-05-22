@@ -3,17 +3,12 @@
         <file>qml/main.qml</file>
         <file>qml/SideBar.qml</file>
         <file>qml/ItemPage.qml</file>
-        <file>qml/AppearancePage.qml</file>
-        <file>qml/AboutPage.qml</file>
-        <file>qml/DisplayPage.qml</file>
         <file>images/dark/display-brightness-low-symbolic.svg</file>
         <file>images/dark/display-brightness-symbolic.svg</file>
         <file>images/light/display-brightness-low-symbolic.svg</file>
         <file>images/light/display-brightness-symbolic.svg</file>
         <file>images/logo.svg</file>
         <file>qml/Scrollable.qml</file>
-        <file>qml/BatteryPage.qml</file>
-        <file>qml/BatteryItem.qml</file>
         <file>images/sensors-voltage-symbolic.svg</file>
         <file>qml/StandardItem.qml</file>
         <file>images/dark_mode.svg</file>
@@ -22,7 +17,6 @@
         <file>images/dock_left.svg</file>
         <file>qml/IconCheckBox.qml</file>
         <file>qml/HorizontalDivider.qml</file>
-        <file>qml/DockPage.qml</file>
         <file>qml/LanguagePage.qml</file>
         <file>images/locked.svg</file>
         <file>images/checked.svg</file>
@@ -42,24 +36,20 @@
         <file>images/info.svg</file>
         <file>qml/IconButton.qml</file>
         <file>images/go-previous.svg</file>
-        <file>qml/AccountsPage.qml</file>
         <file>qml/Hideable.qml</file>
-        <file>qml/AddUserDialog.qml</file>
         <file>qml/BluetoothPage.qml</file>
         <file>images/dock_top.svg</file>
         <file>images/dock_right.svg</file>
-        <file>qml/HistoryGraph.qml</file>
         <file>images/rot90.svg</file>
         <file>images/rot180.svg</file>
         <file>images/rot270.svg</file>
         <file>images/rotnormal.svg</file>
-        <file>qml/RotationButton.qml</file>
-        <file>qml/UserPage/UserDelegateItem.qml</file>
+        <file>qml/User/UserDelegateItem.qml</file>
         <file>images/light/down.svg</file>
         <file>images/light/up.svg</file>
         <file>images/dark/down.svg</file>
         <file>images/dark/up.svg</file>
-        <file>qml/Wallpaper/BackgroundPage.qml</file>
+        <file>qml/Wallpaper/Main.qml</file>
         <file>qml/Wallpaper/DesktopPreview.qml</file>
         <file>images/sidebar/dark/about.svg</file>
         <file>images/sidebar/dark/accounts.svg</file>
@@ -81,16 +71,28 @@
         <file>images/sidebar/light/language.svg</file>
         <file>images/sidebar/light/network.svg</file>
         <file>images/sidebar/light/wallpaper.svg</file>
-        <file>qml/NetworkPage/WifiView.qml</file>
-        <file>qml/NetworkPage/main.qml</file>
-        <file>qml/NetworkPage/WifiItem.qml</file>
-        <file>qml/NetworkPage/WirelessDetailsDialog.qml</file>
-        <file>qml/NetworkPage/WiredItem.qml</file>
+        <file>qml/Network/WifiView.qml</file>
+        <file>qml/Network/Main.qml</file>
+        <file>qml/Network/WifiItem.qml</file>
+        <file>qml/Network/WirelessDetailsDialog.qml</file>
+        <file>qml/Network/WiredItem.qml</file>
         <file>qml/RoundedItem.qml</file>
         <file>images/powersave.svg</file>
         <file>images/performance.svg</file>
-        <file>qml/Power/main.qml</file>
+        <file>qml/Power/Main.qml</file>
         <file>images/light/picture.svg</file>
         <file>images/dark/picture.svg</file>
+        <file>images/light/checked.svg</file>
+        <file>images/dark/checked.svg</file>
+        <file>qml/About/Main.qml</file>
+        <file>qml/User/Main.qml</file>
+        <file>qml/User/AddUserDialog.qml</file>
+        <file>qml/Appearance/Main.qml</file>
+        <file>qml/Display/Main.qml</file>
+        <file>qml/Battery/Main.qml</file>
+        <file>qml/Battery/BatteryItem.qml</file>
+        <file>qml/Battery/HistoryGraph.qml</file>
+        <file>qml/Dock/Main.qml</file>
+        <file>qml/Display/RotationButton.qml</file>
     </qresource>
 </RCC>

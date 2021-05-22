@@ -6,8 +6,7 @@ import QtGraphicalEffects 1.0
 import FishUI 1.0 as FishUI
 import Cutefish.Settings 1.0
 import Cutefish.Accounts 1.0
-
-import "./UserPage"
+import "../"
 
 ItemPage {
     headerTitle: qsTr("User")

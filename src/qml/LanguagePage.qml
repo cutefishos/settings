@@ -81,19 +81,11 @@ ItemPage {
                     }
 
                     Image {
-                        width: item.height * 0.4
+                        width: item.height * 0.45
                         height: width
                         sourceSize: Qt.size(width, height)
-                        source: "qrc:/images/checked.svg"
+                        source: "qrc:/images/dark/checked.svg"
                         visible: isSelected
-
-                        ColorOverlay {
-                            anchors.fill: parent
-                            source: parent
-                            color: FishUI.Theme.highlightedTextColor
-                            opacity: 1
-                            visible: true
-                        }
                     }
                 }
             }

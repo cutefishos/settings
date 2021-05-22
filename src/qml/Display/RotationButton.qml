@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import FishUI 1.0 as FishUI
 import Cutefish.Screen 1.0 as CS
+import "../"
 
 IconCheckBox {
     id: control

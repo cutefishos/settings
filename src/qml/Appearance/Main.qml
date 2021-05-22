@@ -5,6 +5,7 @@ import QtGraphicalEffects 1.0
 
 import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
+import "../"
 
 ItemPage {
     headerTitle: qsTr("Appearance")
@@ -167,19 +168,11 @@ ItemPage {
 
                                 Image {
                                     anchors.centerIn: parent
-                                    width: parent.height * 0.5
+                                    width: parent.height * 0.6
                                     height: width
                                     sourceSize: Qt.size(width, height)
-                                    source: "qrc:/images/checked.svg"
+                                    source: "qrc:/images/dark/checked.svg"
                                     visible: checked
-
-                                    ColorOverlay {
-                                        anchors.fill: parent
-                                        source: parent
-                                        color: FishUI.Theme.highlightedTextColor
-                                        opacity: 1
-                                        visible: true
-                                    }
                                 }
                             }
                         }

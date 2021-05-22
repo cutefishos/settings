@@ -4,6 +4,7 @@ import QtQuick.Layouts 1.3
 import Cutefish.Settings 1.0
 import Cutefish.Screen 1.0 as CS
 import FishUI 1.0 as FishUI
+import "../"
 
 ItemPage {
     headerTitle: qsTr("Display")

@@ -32,21 +32,21 @@ Item {
         ListElement {
             title: qsTr("User")
             name: "accounts"
-            page: "qrc:/qml/AccountsPage.qml"
+            page: "qrc:/qml/User/Main.qml"
             iconSource: "accounts.svg"
         }
 
         ListElement {
             title: qsTr("Display")
             name: "display"
-            page: "qrc:/qml/DisplayPage.qml"
+            page: "qrc:/qml/Display/Main.qml"
             iconSource: "display.svg"
         }
 
         ListElement {
             title: qsTr("Network")
             name: "network"
-            page: "qrc:/qml/NetworkPage/main.qml"
+            page: "qrc:/qml/Network/Main.qml"
             iconSource: "network.svg"
         }
 
@@ -60,21 +60,21 @@ Item {
         ListElement {
             title: qsTr("Appearance")
             name: "appearance"
-            page: "qrc:/qml/AppearancePage.qml"
+            page: "qrc:/qml/Appearance/Main.qml"
             iconSource: "appearance.svg"
         }
 
         ListElement {
             title: qsTr("Background")
             name: "background"
-            page: "qrc:/qml/Wallpaper/BackgroundPage.qml"
+            page: "qrc:/qml/Wallpaper/Main.qml"
             iconSource: "wallpaper.svg"
         }
 
         ListElement {
             title: qsTr("Dock")
             name: "dock"
-            page: "qrc:/qml/DockPage.qml"
+            page: "qrc:/qml/Dock/Main.qml"
             iconSource: "dock.svg"
         }
 
@@ -88,21 +88,21 @@ Item {
         ListElement {
             title: qsTr("Battery")
             name: "battery"
-            page: "qrc:/qml/BatteryPage.qml"
+            page: "qrc:/qml/Battery/Main.qml"
             iconSource: "battery.svg"
         }
 
 //        ListElement {
 //            title: qsTr("Power")
 //            name: "power"
-//            page: "qrc:/qml/Power/main.qml"
+//            page: "qrc:/qml/Power/Main.qml"
 //            iconSource: "battery.svg"
 //        }
 
         ListElement {
             title: qsTr("About")
             name: "about"
-            page: "qrc:/qml/AboutPage.qml"
+            page: "qrc:/qml/About/Main.qml"
             iconSource: "about.svg"
         }
     }

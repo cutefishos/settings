@@ -60,7 +60,7 @@ Item {
             width: 16
             height: width
             sourceSize: Qt.size(width, height)
-            source: "qrc:/images/checked.svg"
+            source: "qrc:/images/light/checked.svg"
             visible: model.connectionState === NM.NetworkModel.Activated
 
             ColorOverlay {

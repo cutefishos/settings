@@ -4,6 +4,7 @@ import QtQuick.Layouts 1.12
 import FishUI 1.0 as FishUI
 import Cutefish.Settings 1.0
 import Cutefish.Accounts 1.0
+import "../"
 
 Dialog {
     id: control
