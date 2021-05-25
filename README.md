@@ -28,3 +28,7 @@ sudo make install
 ```shell
 sudo make install
 ```
+
+## License
+
+This project has been licensed by GPLv3.
