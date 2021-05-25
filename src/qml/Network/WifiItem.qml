@@ -102,19 +102,11 @@ Item {
 
         // Locked
         Image {
-            width: 16
+            width: 22
             height: width
             sourceSize: Qt.size(width, height)
-            source: "qrc:/images/locked.svg"
+            source: FishUI.Theme.darkMode ? "qrc:/images/dark/locked.svg" : "qrc:/images/light/locked.svg"
             visible: (model.securityType === -1 | model.securityType === 0) ? false : true
-
-            ColorOverlay {
-                anchors.fill: parent
-                source: parent
-                color: FishUI.Theme.textColor
-                opacity: 1
-                visible: true
-            }
         }
 
         IconButton {
@@ -179,6 +171,7 @@ Item {
                     }
                 }
                 onAccepted: passwordDialog.accept()
+                Keys.onEscapePressed: passwordDialog.close()
                 Layout.fillWidth: true
             }
 

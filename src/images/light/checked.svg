@@ -32,9 +32,9 @@
      showgrid="false"
      units="px"
      inkscape:window-width="2160"
-     inkscape:window-height="1247"
+     inkscape:window-height="1221"
      inkscape:window-x="0"
-     inkscape:window-y="35"
+     inkscape:window-y="42"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
@@ -53,8 +53,8 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       d="M 1.9839198,4.9599263 -8.3433333e-5,2.9759226 0.26194017,2.713899 1.9839198,4.4358794 5.5588928,0.86090703 5.8209168,1.1229306 Z"
+       d="M 1.9839465,4.9598675 1.6666666e-8,2.9759207 0.26201611,2.7139047 1.9839465,4.4358356 5.5588169,0.86096581 5.8208333,1.1229818 Z"
        id="path2-3"
-       style="stroke-width:0.0107589;fill-opacity:1;fill:#000000" />
+       style="fill:#000000;fill-opacity:1;stroke-width:0.0107586" />
   </g>
 </svg>

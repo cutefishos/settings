@@ -13,6 +13,7 @@ Dialog {
 
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
+    height: detailsLayout.childrenRect.height + footerLayout.childrenRect.height + FishUI.Units.largeSpacing * 1.5
     modal: true
 
     signal forgetBtnClicked()
@@ -30,9 +31,9 @@ Dialog {
         }
     }
 
-    contentItem: ColumnLayout {
+    ColumnLayout {
         id: detailsLayout
-        spacing: FishUI.Units.largeSpacing
+        spacing: FishUI.Units.largeSpacing * 1.5
 
         GridLayout {
             id: gridLayout
