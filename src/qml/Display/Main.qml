@@ -321,9 +321,10 @@ ItemPage {
                             break;
                         }
 
-                        rootWindow.showPassiveNotification(qsTr("Need to log in again to take effect"), "short")
-
-                        appearance.setDevicePixelRatio(value)
+                        if (appearance.devicePixelRatio !== value) {
+                            rootWindow.showPassiveNotification(qsTr("Need to log in again to take effect"), "short")
+                            appearance.setDevicePixelRatio(value)
+                        }
                     }
                 }
             }
