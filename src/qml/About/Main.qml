@@ -39,18 +39,26 @@ ItemPage {
             id: layout
             anchors.fill: parent
 
+            Item {
+                height: FishUI.Units.largeSpacing
+            }
+
             Image {
                 Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
-                width: 128
-                height: width
+                width: 140
+                height: 72
                 sourceSize: Qt.size(width, height)
                 source: "qrc:/images/logo.svg"
+            }
+
+            Item {
+                height: FishUI.Units.smallSpacing
             }
 
             Label {
                 Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
                 text: "<b>CutefishOS</b>"
-                font.pointSize: 24
+                font.pointSize: 22
                 color: "#3385FF"
                 leftPadding: FishUI.Units.largeSpacing * 2
                 rightPadding: FishUI.Units.largeSpacing * 2

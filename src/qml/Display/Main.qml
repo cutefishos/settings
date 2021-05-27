@@ -219,6 +219,10 @@ ItemPage {
                                         RotationButton {
                                             value: 270
                                         }
+
+                                        Item {
+                                            Layout.fillWidth: true
+                                        }
                                     }
                                 }
 
