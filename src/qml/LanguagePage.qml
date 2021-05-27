@@ -39,6 +39,12 @@ ItemPage {
         ListView {
             id: listView
 
+            boundsBehavior: Flickable.StopAtBounds
+
+            FishUI.WheelHandler {
+                target: listView
+            }
+
             Layout.fillWidth: true
             Layout.fillHeight: true
 
