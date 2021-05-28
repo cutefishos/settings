@@ -25,6 +25,7 @@ Rectangle {
     Layout.fillWidth: true
 
     default property alias content : _mainLayout.data
+    property alias spacing: _mainLayout.spacing
 
     color: FishUI.Theme.darkMode ? "#363636" : "#FFFFFF"
     radius: FishUI.Theme.mediumRadius

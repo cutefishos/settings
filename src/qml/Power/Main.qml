@@ -51,13 +51,19 @@ ItemPage {
                     IconCheckBox {
                         source: "qrc:/images/powersave.svg"
                         text: qsTr("Power Save")
-                        checked: true
+                        checked: false
+                    }
+
+                    IconCheckBox {
+                        source: "qrc:/images/balance.svg"
+                        text: qsTr("Balance")
+                        checked: false
                     }
 
                     IconCheckBox {
                         source: "qrc:/images/performance.svg"
                         text: qsTr("Performance")
-                        checked: false
+                        checked: true
                     }
                 }
             }

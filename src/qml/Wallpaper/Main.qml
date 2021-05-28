@@ -118,6 +118,15 @@ ItemPage {
                         }
                     }
 
+                    // Preload background
+                    Rectangle {
+                        anchors.fill: parent
+                        anchors.margins: FishUI.Units.largeSpacing
+                        radius: FishUI.Theme.bigRadius + FishUI.Units.smallSpacing / 2
+                        color: FishUI.Theme.backgroundColor
+                        visible: _image.status !== Image.Ready
+                    }
+
                     // Preload image
                     Image {
                         anchors.centerIn: parent

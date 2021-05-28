@@ -95,5 +95,8 @@
         <file>qml/Display/RotationButton.qml</file>
         <file>images/dark/locked.svg</file>
         <file>images/light/locked.svg</file>
+        <file>images/sidebar/light/power.svg</file>
+        <file>images/sidebar/dark/power.svg</file>
+        <file>images/balance.svg</file>
     </qresource>
 </RCC>

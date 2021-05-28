@@ -21,6 +21,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import FishUI 1.0 as FishUI
+import Cutefish.NetworkManagement 1.0 as NM
 
 ColumnLayout {
     id: _contentLayout
@@ -74,7 +75,12 @@ ColumnLayout {
         Layout.fillWidth: true
         Layout.preferredHeight: itemHeight * count + ((count - 1) * spacing)
         clip: true
-        model: appletProxyModel
+
+        model: NM.AppletProxyModel {
+            type: NM.AppletProxyModel.WirelessType
+            sourceModel: connectionModel
+        }
+
         spacing: FishUI.Units.smallSpacing * 1.5
         interactive: false
         visible: count > 0

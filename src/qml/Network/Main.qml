@@ -54,11 +54,6 @@ ItemPage {
         id: connectionModel
     }
 
-    NM.AppletProxyModel {
-        id: appletProxyModel
-        sourceModel: connectionModel
-    }
-
     NM.Configuration {
         id: configuration
     }
@@ -140,6 +135,7 @@ ItemPage {
             // Wired connection
             RoundedItem {
                 visible: enabledConnections.wwanHwEnabled
+                spacing: FishUI.Units.largeSpacing
 
                 RowLayout {
                     spacing: FishUI.Units.largeSpacing
@@ -178,10 +174,9 @@ ItemPage {
                     interactive: false
                     clip: true
 
-                    model: NM.TechnologyProxyModel {
-                        type: NM.TechnologyProxyModel.WiredType
-                        showInactiveConnections: true
-                        sourceModel: networkModel
+                    model: NM.AppletProxyModel {
+                        type: NM.AppletProxyModel.WiredType
+                        sourceModel: connectionModel
                     }
 
                     ScrollBar.vertical: ScrollBar {}

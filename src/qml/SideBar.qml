@@ -115,7 +115,7 @@ Item {
 //            title: qsTr("Power")
 //            name: "power"
 //            page: "qrc:/qml/Power/Main.qml"
-//            iconSource: "battery.svg"
+//            iconSource: "power.svg"
 //        }
 
         ListElement {
@@ -155,7 +155,7 @@ Item {
             delegate: Item {
                 id: item
                 width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
-                height: 43
+                height: FishUI.Units.fontMetrics.height + FishUI.Units.largeSpacing * 2
 
                 property bool isCurrent: listView.currentIndex === index
 
