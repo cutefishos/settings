@@ -207,7 +207,7 @@ ItemPage {
                     var extraSpacing = 0
                     if (availableColumns > 0) {
                         var allColumnSize = availableColumns * cellSize
-                        var extraSpace = Math.max(containerSize - allColumnSize, FishUI.Units.largeSpacing)
+                        var extraSpace = Math.max(containerSize - allColumnSize, 0)
                         extraSpacing = extraSpace / availableColumns
                     }
                     return Math.floor(extraSpacing)
