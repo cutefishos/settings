@@ -49,24 +49,11 @@ Item {
         id: listModel
 
         ListElement {
-            title: qsTr("User")
-            name: "accounts"
-            page: "qrc:/qml/User/Main.qml"
-            iconSource: "accounts.svg"
-        }
-
-        ListElement {
-            title: qsTr("Display")
-            name: "display"
-            page: "qrc:/qml/Display/Main.qml"
-            iconSource: "display.svg"
-        }
-
-        ListElement {
             title: qsTr("Network")
             name: "network"
             page: "qrc:/qml/Network/Main.qml"
             iconSource: "network.svg"
+            category: qsTr("Network and connection")
         }
 
 //        ListElement {
@@ -77,10 +64,19 @@ Item {
 //        }
 
         ListElement {
+            title: qsTr("Display")
+            name: "display"
+            page: "qrc:/qml/Display/Main.qml"
+            iconSource: "display.svg"
+            category: qsTr("Display and appearance")
+        }
+
+        ListElement {
             title: qsTr("Appearance")
             name: "appearance"
             page: "qrc:/qml/Appearance/Main.qml"
             iconSource: "appearance.svg"
+            category: qsTr("Display and appearance")
         }
 
         ListElement {
@@ -88,6 +84,7 @@ Item {
             name: "background"
             page: "qrc:/qml/Wallpaper/Main.qml"
             iconSource: "wallpaper.svg"
+            category: qsTr("Display and appearance")
         }
 
         ListElement {
@@ -95,6 +92,15 @@ Item {
             name: "dock"
             page: "qrc:/qml/Dock/Main.qml"
             iconSource: "dock.svg"
+            category: qsTr("Display and appearance")
+        }
+
+        ListElement {
+            title: qsTr("User")
+            name: "accounts"
+            page: "qrc:/qml/User/Main.qml"
+            iconSource: "accounts.svg"
+            category: qsTr("System")
         }
 
         ListElement {
@@ -102,6 +108,7 @@ Item {
             name: "language"
             page: "qrc:/qml/LanguagePage.qml"
             iconSource: "language.svg"
+            category: qsTr("System")
         }
 
         ListElement {
@@ -109,6 +116,7 @@ Item {
             name: "battery"
             page: "qrc:/qml/Battery/Main.qml"
             iconSource: "battery.svg"
+            category: qsTr("System")
         }
 
 //        ListElement {
@@ -123,6 +131,7 @@ Item {
             name: "about"
             page: "qrc:/qml/About/Main.qml"
             iconSource: "about.svg"
+            category: qsTr("System")
         }
     }
 
@@ -136,7 +145,7 @@ Item {
             clip: true
             model: listModel
 
-            spacing: FishUI.Units.smallSpacing * 1.5
+            spacing: FishUI.Units.smallSpacing
             leftMargin: FishUI.Units.largeSpacing
             rightMargin: FishUI.Units.largeSpacing
             topMargin: FishUI.Units.largeSpacing
@@ -150,6 +159,21 @@ Item {
                 radius: FishUI.Theme.mediumRadius
                 color: FishUI.Theme.highlightColor
                 smooth: true
+            }
+
+            section.property: "category"
+            section.delegate: Item {
+                width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
+                height: FishUI.Units.fontMetrics.height + FishUI.Units.smallSpacing * 3
+
+                Text {
+                    anchors.fill: parent
+                    anchors.leftMargin: FishUI.Units.smallSpacing
+                    anchors.topMargin: FishUI.Units.smallSpacing
+                    anchors.bottomMargin: FishUI.Units.smallSpacing * 2
+                    color: FishUI.Theme.disabledTextColor
+                    text: section
+                }
             }
 
             delegate: Item {
@@ -182,7 +206,7 @@ Item {
                 RowLayout {
                     anchors.fill: parent
                     anchors.leftMargin: FishUI.Units.largeSpacing
-                    spacing: FishUI.Units.largeSpacing
+                    spacing: FishUI.Units.smallSpacing * 1.5
 
                     Image {
                         id: icon
