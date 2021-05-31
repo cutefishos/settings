@@ -29,7 +29,7 @@ import "../"
 
 ItemPage {
     id: control
-    headerTitle: qsTr("Network")
+    headerTitle: qsTr("WLAN")
 
     property var itemHeight: 45
     property var settingsMap: ({})
@@ -131,62 +131,6 @@ ItemPage {
 //                    text: configuration.hotspotPassword
 //                }
 //            }
-
-            // Wired connection
-            RoundedItem {
-                visible: enabledConnections.wwanHwEnabled
-                spacing: FishUI.Units.largeSpacing
-
-                RowLayout {
-                    spacing: FishUI.Units.largeSpacing
-
-                    Label {
-                        text: qsTr("Wired")
-                        color: FishUI.Theme.disabledTextColor
-                        Layout.fillWidth: true
-                    }
-
-                    Switch {
-                        Layout.fillHeight: true
-                        rightPadding: 0
-                        checked: enabledConnections.wwanEnabled
-                        onCheckedChanged: {
-                            if (checked) {
-                                if (!enabledConnections.wwanEnabled) {
-                                    handler.enableWwan(checked)
-                                }
-                            } else {
-                                if (enabledConnections.wwanEnabled) {
-                                    handler.enableWwan(checked)
-                                }
-                            }
-                        }
-                    }
-                }
-
-                ListView {
-                    id: wiredView
-
-                    visible: enabledConnections.wwanEnabled && wiredView.count > 0
-
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: wiredView.count * control.itemHeight
-                    interactive: false
-                    clip: true
-
-                    model: NM.AppletProxyModel {
-                        type: NM.AppletProxyModel.WiredType
-                        sourceModel: connectionModel
-                    }
-
-                    ScrollBar.vertical: ScrollBar {}
-
-                    delegate: WiredItem {
-                        height: control.itemHeight
-                        width: wiredView.width
-                    }
-                }
-            }
 
             Item {
                 height: FishUI.Units.largeSpacing

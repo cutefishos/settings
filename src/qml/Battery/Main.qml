@@ -120,6 +120,7 @@ ItemPage {
 
             RoundedItem {
                 visible: history.count > 2
+                spacing: 0
 
                 Label {
                     text: qsTr("History")

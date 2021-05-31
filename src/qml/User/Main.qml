@@ -52,6 +52,8 @@ ItemPage {
             spacing: FishUI.Units.largeSpacing * 2
 
             RoundedItem {
+                visible: _userView.count > 0
+
                 ListView {
                     id: _userView
                     model: userModel

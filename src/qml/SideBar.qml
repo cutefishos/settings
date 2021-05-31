@@ -49,9 +49,17 @@ Item {
         id: listModel
 
         ListElement {
-            title: qsTr("Network")
+            title: qsTr("WLAN")
             name: "network"
-            page: "qrc:/qml/Network/Main.qml"
+            page: "qrc:/qml/WLAN/Main.qml"
+            iconSource: "wlan.svg"
+            category: qsTr("Network and connection")
+        }
+
+        ListElement {
+            title: qsTr("Wired")
+            name: "wired"
+            page: "qrc:/qml/Wired/Main.qml"
             iconSource: "network.svg"
             category: qsTr("Network and connection")
         }
@@ -148,7 +156,7 @@ Item {
             spacing: FishUI.Units.smallSpacing
             leftMargin: FishUI.Units.largeSpacing
             rightMargin: FishUI.Units.largeSpacing
-            topMargin: FishUI.Units.largeSpacing
+            topMargin: 0
 
             ScrollBar.vertical: ScrollBar {}
 
@@ -164,13 +172,14 @@ Item {
             section.property: "category"
             section.delegate: Item {
                 width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
-                height: FishUI.Units.fontMetrics.height + FishUI.Units.smallSpacing * 3
+                height: FishUI.Units.fontMetrics.height + FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
 
                 Text {
                     anchors.fill: parent
                     anchors.leftMargin: FishUI.Units.smallSpacing
-                    anchors.topMargin: FishUI.Units.smallSpacing
-                    anchors.bottomMargin: FishUI.Units.smallSpacing * 2
+                    anchors.rightMargin: FishUI.Units.largeSpacing
+                    anchors.topMargin: FishUI.Units.largeSpacing
+                    anchors.bottomMargin: FishUI.Units.smallSpacing
                     color: FishUI.Theme.disabledTextColor
                     text: section
                 }
@@ -179,7 +188,7 @@ Item {
             delegate: Item {
                 id: item
                 width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
-                height: FishUI.Units.fontMetrics.height + FishUI.Units.largeSpacing * 2
+                height: FishUI.Units.fontMetrics.height + FishUI.Units.largeSpacing * 1.5
 
                 property bool isCurrent: listView.currentIndex === index
 

@@ -215,27 +215,27 @@
         <translation>最近7天</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="125"/>
+        <location filename="../src/qml/Battery/Main.qml" line="126"/>
         <source>History</source>
         <translation>历史</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="153"/>
+        <location filename="../src/qml/Battery/Main.qml" line="154"/>
         <source>W</source>
         <translation>瓦特</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="172"/>
+        <location filename="../src/qml/Battery/Main.qml" line="173"/>
         <source>Last Charged to</source>
         <translation>上一次充电至</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="178"/>
+        <location filename="../src/qml/Battery/Main.qml" line="179"/>
         <source>Maximum Capacity</source>
         <translation>最大容量</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="191"/>
+        <location filename="../src/qml/Battery/Main.qml" line="192"/>
         <source>No battery found</source>
         <translation>找不到电池</translation>
     </message>
@@ -321,6 +321,8 @@
     </message>
     <message>
         <location filename="../src/qml/Network/Main.qml" line="144"/>
+        <location filename="../src/qml/Wired/Main.qml" line="32"/>
+        <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Wired</source>
         <translation>有线网络</translation>
     </message>
@@ -355,7 +357,7 @@
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/Main.qml" line="81"/>
+        <location filename="../src/qml/User/Main.qml" line="83"/>
         <source>Add user</source>
         <translation>添加用户</translation>
     </message>
@@ -379,72 +381,87 @@
         <source>Color</source>
         <translation>纯色</translation>
     </message>
+    <message>
+        <location filename="../src/qml/WLAN/Main.qml" line="32"/>
+        <source>WLAN</source>
+        <translation>WLAN</translation>
+    </message>
 </context>
 <context>
     <name>SideBar</name>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="67"/>
+        <location filename="../src/qml/SideBar.qml" line="75"/>
         <source>Display</source>
         <translation>显示</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="52"/>
         <source>Network</source>
-        <translation>网络</translation>
+        <translation type="vanished">网络</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="56"/>
+        <location filename="../src/qml/SideBar.qml" line="64"/>
         <source>Network and connection</source>
         <translation>网络与连接</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="71"/>
         <location filename="../src/qml/SideBar.qml" line="79"/>
         <location filename="../src/qml/SideBar.qml" line="87"/>
         <location filename="../src/qml/SideBar.qml" line="95"/>
+        <location filename="../src/qml/SideBar.qml" line="103"/>
         <source>Display and appearance</source>
         <translation>显示与外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="75"/>
+        <location filename="../src/qml/SideBar.qml" line="83"/>
         <source>Appearance</source>
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="91"/>
+        <location filename="../src/qml/SideBar.qml" line="99"/>
         <source>Dock</source>
         <translation>程序坞</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="99"/>
+        <location filename="../src/qml/SideBar.qml" line="107"/>
         <source>User</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="83"/>
+        <location filename="../src/qml/SideBar.qml" line="91"/>
         <source>Background</source>
         <translation>背景</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="103"/>
+        <location filename="../src/qml/SideBar.qml" line="52"/>
+        <source>WLAN</source>
+        <translation>WLAN</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="60"/>
+        <source>Wired</source>
+        <translation>有线网络</translation>
+    </message>
+    <message>
         <location filename="../src/qml/SideBar.qml" line="111"/>
         <location filename="../src/qml/SideBar.qml" line="119"/>
-        <location filename="../src/qml/SideBar.qml" line="134"/>
+        <location filename="../src/qml/SideBar.qml" line="127"/>
+        <location filename="../src/qml/SideBar.qml" line="142"/>
         <source>System</source>
         <translation>系统</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="107"/>
+        <location filename="../src/qml/SideBar.qml" line="115"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="115"/>
+        <location filename="../src/qml/SideBar.qml" line="123"/>
         <source>Battery</source>
         <translation>电池</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="130"/>
+        <location filename="../src/qml/SideBar.qml" line="138"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
@@ -471,21 +488,25 @@
     <name>WifiItem</name>
     <message>
         <location filename="../src/qml/Network/WifiItem.qml" line="184"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="184"/>
         <source>Password</source>
         <translation>密码</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WifiItem.qml" line="204"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
         <source>Show password</source>
         <translation>显示密码</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WifiItem.qml" line="213"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="213"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WifiItem.qml" line="219"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="219"/>
         <source>Connect</source>
         <translation>连接</translation>
     </message>
@@ -494,6 +515,7 @@
     <name>WifiView</name>
     <message>
         <location filename="../src/qml/Network/WifiView.qml" line="35"/>
+        <location filename="../src/qml/WLAN/WifiView.qml" line="35"/>
         <source>WLAN</source>
         <translation>WLAN</translation>
     </message>
@@ -502,51 +524,61 @@
     <name>WirelessDetailsDialog</name>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="65"/>
+        <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="65"/>
         <source>Auto-Join</source>
         <translation>自动加入网络</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="81"/>
+        <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="81"/>
         <source>Security</source>
         <translation>安全性</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="93"/>
+        <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="93"/>
         <source>Signal</source>
         <translation>信号</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="105"/>
+        <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="105"/>
         <source>IPv4 Address</source>
         <translation>IPv4地址</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="119"/>
+        <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="119"/>
         <source>IPv6 Address</source>
         <translation>IPv6地址</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="133"/>
+        <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="133"/>
         <source>MAC Address</source>
         <translation>MAC地址</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="147"/>
+        <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="147"/>
         <source>Gateway</source>
         <translation>路由器</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="160"/>
+        <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="160"/>
         <source>DNS</source>
         <translation>DNS</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="183"/>
+        <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="183"/>
         <source>Forget this network</source>
         <translation>忘记这个网络</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="177"/>
+        <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="177"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>

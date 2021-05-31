@@ -70,11 +70,6 @@
         <file>images/sidebar/light/language.svg</file>
         <file>images/sidebar/light/network.svg</file>
         <file>images/sidebar/light/wallpaper.svg</file>
-        <file>qml/Network/WifiView.qml</file>
-        <file>qml/Network/Main.qml</file>
-        <file>qml/Network/WifiItem.qml</file>
-        <file>qml/Network/WirelessDetailsDialog.qml</file>
-        <file>qml/Network/WiredItem.qml</file>
         <file>qml/RoundedItem.qml</file>
         <file>images/powersave.svg</file>
         <file>images/performance.svg</file>
@@ -98,5 +93,13 @@
         <file>images/sidebar/light/power.svg</file>
         <file>images/sidebar/dark/power.svg</file>
         <file>images/balance.svg</file>
+        <file>qml/WLAN/Main.qml</file>
+        <file>qml/Wired/Main.qml</file>
+        <file>qml/Wired/WiredItem.qml</file>
+        <file>qml/WLAN/WifiItem.qml</file>
+        <file>qml/WLAN/WifiView.qml</file>
+        <file>qml/WLAN/WirelessDetailsDialog.qml</file>
+        <file>images/sidebar/light/wlan.svg</file>
+        <file>images/sidebar/dark/wlan.svg</file>
     </qresource>
 </RCC>
