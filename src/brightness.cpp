@@ -37,7 +37,7 @@ Brightness::Brightness(QObject *parent)
 
 void Brightness::setValue(int value)
 {
-    m_iface.call("setValue", value);
+    m_iface.asyncCall("setValue", value);
 }
 
 int Brightness::value() const
