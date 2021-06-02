@@ -153,6 +153,12 @@ Item {
             clip: true
             model: listModel
 
+            boundsBehavior: Flickable.StopAtBounds
+
+            FishUI.WheelHandler {
+                target: listView
+            }
+
             spacing: FishUI.Units.smallSpacing
             leftMargin: FishUI.Units.largeSpacing
             rightMargin: FishUI.Units.largeSpacing
