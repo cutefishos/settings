@@ -39,8 +39,6 @@ ItemPage {
         ListView {
             id: listView
 
-            boundsBehavior: Flickable.StopAtBounds
-
             FishUI.WheelHandler {
                 target: listView
             }
@@ -54,6 +52,7 @@ ItemPage {
             topMargin: FishUI.Units.largeSpacing
             leftMargin: FishUI.Units.largeSpacing * 2
             rightMargin: FishUI.Units.largeSpacing * 2
+            bottomMargin: FishUI.Units.largeSpacing
             spacing: FishUI.Units.largeSpacing
 
             currentIndex: language.currentLanguage

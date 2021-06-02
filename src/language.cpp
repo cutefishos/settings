@@ -8,8 +8,13 @@
 
 static const QStringList supportList = {"en_US", "en_AU", "en_CA", "en_NZ", "en_GB",
                                         "es_MX", "ja", "ko", "pl", "pt_BR", "ru", "de", "it", 
-                                        "zh_CN", "zh_HK"
+                                        "zh_CN", "zh_HK", "zh_TW"
                                        };
+
+static const QMap<QString, QString> s_displayName = {   {"zh_CN", "简体中文"},
+                                                        {"zh_HK", "繁體中文(香港)"},
+                                                        {"zh_TW", "正體中文"}
+                                                  };
 
 Language::Language(QObject *parent)
     : QObject(parent)
@@ -28,7 +33,8 @@ Language::Language(QObject *parent)
         locale.getDisplayName(locale, unicodeString);
         unicodeString.toUTF8String(string);
 
-        QString displayName = string.c_str();
+        QString displayName = s_displayName.contains(code) ? s_displayName.value(code)
+                                                           : string.c_str();
 
         if (displayName.isEmpty() || displayName == "C")
             continue;
