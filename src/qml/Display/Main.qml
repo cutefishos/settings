@@ -42,7 +42,7 @@ ItemPage {
 
     Timer {
         id: brightnessTimer
-        interval: 200
+        interval: 100
         repeat: false
 
         onTriggered: {
