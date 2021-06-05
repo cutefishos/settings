@@ -78,7 +78,7 @@ ItemPage {
             RoundedItem {
                 StandardItem {
                     key: qsTr("System Version")
-                    value: "0.1 Beta"
+                    value: "0.2"
                 }
 
                 StandardItem {

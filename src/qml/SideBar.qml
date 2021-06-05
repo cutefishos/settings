@@ -34,8 +34,7 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-
-        color: FishUI.Theme.darkMode ? "#333333" : "#E5E5EB"
+        color: rootWindow.sideBarColor
 
         Behavior on color {
             ColorAnimation {

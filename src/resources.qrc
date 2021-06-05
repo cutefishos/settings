@@ -101,5 +101,6 @@
         <file>qml/WLAN/WirelessDetailsDialog.qml</file>
         <file>images/sidebar/light/wlan.svg</file>
         <file>images/sidebar/dark/wlan.svg</file>
+        <file>qml/Bluetooth/Main.qml</file>
     </qresource>
 </RCC>

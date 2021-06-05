@@ -34,8 +34,9 @@ FishUI.Window {
     minimumWidth: 900
     minimumHeight: 600
     headerBarHeight: 50
+    backgroundColor: FishUI.Theme.darkMode ? "#262626" : "#F3F4F9"
 
-    backgroundColor: FishUI.Theme.darkMode ? "#262626" : "#F2F2F7"
+    property var sideBarColor: FishUI.Theme.darkMode ? "#333333" : "#EBECF2"
 
     headerBar: Item {
         Rectangle {
@@ -44,7 +45,7 @@ FishUI.Window {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             implicitWidth: sideBar.width
-            color: FishUI.Theme.darkMode ? "#333333" : "#E5E5EB"
+            color: rootWindow.sideBarColor
 
             Behavior on color {
                 ColorAnimation {
