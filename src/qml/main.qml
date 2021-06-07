@@ -116,7 +116,7 @@ FishUI.Window {
             }
         }
 
-        // If the window is minimized, it needs to be displayed agin.
+        // If the window is minimized, it needs to be displayed again.
         rootWindow.show()
         rootWindow.raise()
     }
