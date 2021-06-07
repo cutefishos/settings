@@ -57,23 +57,19 @@ ItemPage {
 
             Label {
                 Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
-                text: "<b>CutefishOS</b>"
+                text: about.isCutefishOS ? "<b>CutefishOS</b>" : "<b>Cutefish</b>"
                 font.pointSize: 22
                 color: "#3385FF"
                 leftPadding: FishUI.Units.largeSpacing * 2
                 rightPadding: FishUI.Units.largeSpacing * 2
             }
 
-            Item {
-                height: FishUI.Units.largeSpacing
+            Label {
+                text: qsTr("Built on ") + about.prettyProductName
+                Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
+                bottomPadding: FishUI.Units.largeSpacing * 2
+                color: FishUI.Theme.disabledTextColor
             }
-
-//            Label {
-//                text: qsTr("Built on ") + about.prettyProductName
-//                Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
-//                bottomPadding: FishUI.Units.largeSpacing * 2
-//                color: FishUI.Theme.disabledTextColor
-//            }
 
             RoundedItem {
                 StandardItem {

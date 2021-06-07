@@ -1,5 +1,6 @@
 #include "about.h"
 
+#include <QFile>
 #include <KFormat>
 #include <QStorageInfo>
 #include <QRegularExpression>
@@ -14,6 +15,11 @@
 About::About(QObject *parent)
     : QObject(parent)
 {
+}
+
+bool About::isCutefishOS()
+{
+    return QFile::exists("/etc/cutefishos");
 }
 
 QString About::osName()
