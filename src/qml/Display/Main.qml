@@ -61,17 +61,16 @@ ItemPage {
 
             RoundedItem {
                 Layout.fillWidth: true
+                visible: brightness.enabled
 
                 Label {
                     text: qsTr("Brightness")
                     color: FishUI.Theme.disabledTextColor
                     bottomPadding: FishUI.Units.largeSpacing
-                    visible: brightness.enabled
                 }
 
                 RowLayout {
                     spacing: FishUI.Units.largeSpacing
-                    visible: brightness.enabled
 
                     Image {
                         width: brightnessSlider.height
