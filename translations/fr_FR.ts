@@ -98,7 +98,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="100"/>
         <source>RAM</source>
-        <translation>RAM</translation>
+        <translation>Mémoire vive</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="105"/>
@@ -492,7 +492,7 @@
         <location filename="../src/qml/Network/WifiItem.qml" line="204"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
         <source>Show password</source>
-        <translation>Montrer le mot de passe</translation>
+        <translation>Afficher le mot de passe</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WifiItem.qml" line="213"/>
