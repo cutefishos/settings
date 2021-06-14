@@ -148,7 +148,7 @@
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="235"/>
         <source>Fixed Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Фиксированный шрифт</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="252"/>
@@ -222,12 +222,12 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="154"/>
         <source>W</source>
-        <translation type="unfinished"></translation>
+        <translation>W</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="173"/>
         <source>Last Charged to</source>
-        <translation type="unfinished"></translation>
+        <translation>Последний раз заряжен на</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="179"/>
@@ -262,7 +262,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="175"/>
         <source>Refresh rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Частота обновления</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="195"/>
@@ -272,7 +272,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="230"/>
         <source>Enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Включено</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="261"/>
@@ -339,12 +339,12 @@
     <message>
         <location filename="../src/qml/Power/Main.qml" line="53"/>
         <source>Power Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Энергосбережение</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="59"/>
         <source>Balance</source>
-        <translation type="unfinished"></translation>
+        <translation>Баланс</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="65"/>
@@ -402,7 +402,7 @@
         <location filename="../src/qml/SideBar.qml" line="56"/>
         <location filename="../src/qml/SideBar.qml" line="64"/>
         <source>Network and connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Сеть и подключения</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="79"/>
@@ -410,7 +410,7 @@
         <location filename="../src/qml/SideBar.qml" line="95"/>
         <location filename="../src/qml/SideBar.qml" line="103"/>
         <source>Display and appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Дисплей и внешний вид</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="83"/>
@@ -471,7 +471,7 @@
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="128"/>
         <source>Currently logged</source>
-        <translation type="unfinished"></translation>
+        <translation>Сейчас в системе</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="169"/>
@@ -562,7 +562,7 @@
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="147"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="147"/>
         <source>Gateway</source>
-        <translation type="unfinished"></translation>
+        <translation>Шлюз</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="160"/>
