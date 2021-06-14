@@ -133,7 +133,7 @@
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="127"/>
         <source>Accent color</source>
-        <translation type="unfinished"></translation>
+        <translation>Цветовой акцент</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="205"/>
@@ -143,7 +143,7 @@
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="218"/>
         <source>General Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Основной шрифт</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="235"/>
@@ -287,7 +287,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
-        <translation type="unfinished"></translation>
+        <translation>Док-панель</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="46"/>
