@@ -344,7 +344,7 @@
     <message>
         <location filename="../src/qml/Power/Main.qml" line="59"/>
         <source>Balance</source>
-        <translation type="unfinished"></translation>
+        <translation>均衡</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="65"/>
