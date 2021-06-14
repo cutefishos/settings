@@ -7,7 +7,7 @@
         <location filename="../src/qml/User/AddUserDialog.qml" line="72"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="78"/>
         <source>User name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de usuario</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="85"/>
