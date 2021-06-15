@@ -142,14 +142,19 @@ ItemPage {
                             id: _mainLayout
                             anchors.fill: parent
 
-                            // Label {
-                            //     text: element.display
-                            // }
-
                             GridLayout {
                                 columns: 2
                                 columnSpacing: FishUI.Units.largeSpacing * 1.5
-                                rowSpacing: FishUI.Units.largeSpacing
+                                rowSpacing: FishUI.Units.largeSpacing * 1.5
+
+                                Label {
+                                    text: qsTr("Screen Name")
+                                }
+
+                                Label {
+                                    text: element.display
+                                    color: FishUI.Theme.disabledTextColor
+                                }
 
                                 Label {
                                     text: qsTr("Resolution")
@@ -202,25 +207,34 @@ ItemPage {
                                     RowLayout {
                                         id: rotationLayout
                                         anchors.fill: parent
+                                        spacing: 0
 
                                         RotationButton {
                                             value: 0
+                                        }
+
+                                        Item {
+                                            Layout.fillWidth: true
                                         }
 
                                         RotationButton {
                                             value: 90
                                         }
 
+                                        Item {
+                                            Layout.fillWidth: true
+                                        }
+
                                         RotationButton {
                                             value: 180
                                         }
 
-                                        RotationButton {
-                                            value: 270
-                                        }
-
                                         Item {
                                             Layout.fillWidth: true
+                                        }
+
+                                        RotationButton {
+                                            value: 270
                                         }
                                     }
                                 }

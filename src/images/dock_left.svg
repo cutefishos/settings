@@ -5,6 +5,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="64"
@@ -12,7 +13,7 @@
    version="1.1"
    id="svg26"
    sodipodi:docname="dock_left.svg"
-   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)">
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)">
   <metadata
      id="metadata30">
     <rdf:RDF>
@@ -35,46 +36,56 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="2160"
-     inkscape:window-height="1312"
+     inkscape:window-height="1229"
      id="namedview28"
      showgrid="false"
      inkscape:zoom="11.484375"
      inkscape:cx="32"
-     inkscape:cy="32.17415"
+     inkscape:cy="31.129252"
      inkscape:window-x="0"
-     inkscape:window-y="30"
+     inkscape:window-y="42"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg26"
      inkscape:document-rotation="0" />
   <defs
      id="defs12">
     <linearGradient
-       id="linearGradient862-3"
-       x1="7.9373"
-       x2="7.9373"
-       y1="15.081"
-       y2="1.852"
-       gradientTransform="matrix(4.3193889,0,0,4.3193889,-4.5712655,-4.5353812)"
-       gradientUnits="userSpaceOnUse">
+       inkscape:collect="always"
+       xlink:href="#SVGID_1_"
+       id="linearGradient865"
+       x1="0"
+       y1="32"
+       x2="64"
+       y2="32"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-64)" />
+    <linearGradient
+       id="SVGID_1_"
+       gradientUnits="userSpaceOnUse"
+       x1="-26.875"
+       y1="559.505"
+       x2="-26.875"
+       y2="622.40997"
+       gradientTransform="matrix(0.15793544,0,0,-0.29099568,77.648598,191.546)">
       <stop
-         stop-color="#427fff"
          offset="0"
-         id="stop7" />
+         style="stop-color:#006DF0"
+         id="stop2-3" />
       <stop
-         stop-color="#59e3ff"
          offset="1"
-         id="stop9" />
+         style="stop-color:#00E7F0"
+         id="stop4-6" />
     </linearGradient>
   </defs>
   <rect
-     x="0"
+     x="-64"
      y="0"
      width="64"
      height="64"
-     fill="url(#linearGradient862-3)"
      stroke-width="4.31939"
      id="rect16"
-     style="opacity:1;fill:url(#linearGradient862-3)" />
+     style="opacity:1;fill:url(#linearGradient865);fill-opacity:1"
+     transform="rotate(-90)" />
   <rect
      x="10.000828"
      y="-20.000095"

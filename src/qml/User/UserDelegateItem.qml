@@ -76,8 +76,8 @@ Item {
 
                     Image {
                         id: _userImage
-                        width: 50
-                        height: 50
+                        width: 32
+                        height: 32
                         sourceSize: Qt.size(width, height)
                         source: iconFileName ? "file:///" + iconFileName : "image://icontheme/default-user"
                         visible: status === Image.Ready
@@ -105,9 +105,7 @@ Item {
 
                     Label {
                         Layout.alignment: Qt.AlignVCenter
-                        text: userName
-                        font.pointSize: 16
-                        bottomPadding: FishUI.Units.smallSpacing
+                        text: "<b>%1</b>".arg(userName)
                         leftPadding: FishUI.Units.largeSpacing
                     }
 
@@ -116,8 +114,6 @@ Item {
                         text: realName
                         color: FishUI.Theme.disabledTextColor
                         visible: realName !== userName
-                        font.pointSize: 16
-                        bottomPadding: FishUI.Units.smallSpacing
                     }
 
                     Item {

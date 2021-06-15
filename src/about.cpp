@@ -29,23 +29,23 @@ static QString formatByteSize(double size, int precision)
 
     switch (unit) {
     case 0:
-        return QObject::tr("%1 B").arg(numString);
+        return QString("%1 B").arg(numString);
     case 1:
-        return QObject::tr("%1 KB").arg(numString);
+        return QString("%1 KB").arg(numString);
     case 2:
-        return QObject::tr("%1 MB").arg(numString);
+        return QString("%1 MB").arg(numString);
     case 3:
-        return QObject::tr("%1 GB").arg(numString);
+        return QString("%1 GB").arg(numString);
     case 4:
-        return QObject::tr("%1 TB").arg(numString);
+        return QString("%1 TB").arg(numString);
     case 5:
-        return QObject::tr("%1 PB").arg(numString);
+        return QString("%1 PB").arg(numString);
     case 6:
-        return QObject::tr("%1 EB").arg(numString);
+        return QString("%1 EB").arg(numString);
     case 7:
-        return QObject::tr("%1 ZB").arg(numString);
+        return QString("%1 ZB").arg(numString);
     case 8:
-        return QObject::tr("%1 YB").arg(numString);
+        return QString("%1 YB").arg(numString);
     default:
         return QString();
     }

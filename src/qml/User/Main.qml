@@ -66,11 +66,8 @@ ItemPage {
                         for (var i = 0; i < _userView.visibleChildren.length; ++i) {
                             totalHeight += _userView.visibleChildren[i].height
                         }
-                        // totalHeight += (_userView.count - 1) * _userView.spacing
                         return totalHeight
                     }
-
-                    property int itemHeight: 64
 
                     delegate: UserDelegateItem {
                         width: _userView.width

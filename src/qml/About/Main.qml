@@ -65,7 +65,7 @@ ItemPage {
             }
 
             Label {
-                text: qsTr("Built on ") + about.prettyProductName
+                text: qsTr("Built on %1").arg(about.prettyProductName)
                 Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
                 bottomPadding: FishUI.Units.largeSpacing * 2
                 color: FishUI.Theme.disabledTextColor
@@ -74,7 +74,7 @@ ItemPage {
             RoundedItem {
                 StandardItem {
                     key: qsTr("System Version")
-                    value: "0.2"
+                    value: "0.3"
                 }
 
                 StandardItem {
