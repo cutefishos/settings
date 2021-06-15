@@ -1,7 +1,6 @@
 #include "about.h"
 
 #include <QFile>
-#include <KFormat>
 #include <QStorageInfo>
 #include <QRegularExpression>
 
@@ -11,6 +10,48 @@
 #include <sys/types.h>
 #include <sys/sysctl.h>
 #endif
+
+static QString formatByteSize(double size, int precision)
+{
+    int unit = 0;
+    double multiplier = 1024.0;
+
+    while (qAbs(size) >= multiplier && unit < int(8)) {
+        size /= multiplier;
+        ++unit;
+    }
+
+    if (unit == 0) {
+        precision = 0;
+    }
+
+    QString numString = QString::number(size, 'f', precision);
+
+    switch (unit) {
+    case 0:
+        return QObject::tr("%1 B").arg(numString);
+    case 1:
+        return QObject::tr("%1 KB").arg(numString);
+    case 2:
+        return QObject::tr("%1 MB").arg(numString);
+    case 3:
+        return QObject::tr("%1 GB").arg(numString);
+    case 4:
+        return QObject::tr("%1 TB").arg(numString);
+    case 5:
+        return QObject::tr("%1 PB").arg(numString);
+    case 6:
+        return QObject::tr("%1 EB").arg(numString);
+    case 7:
+        return QObject::tr("%1 ZB").arg(numString);
+    case 8:
+        return QObject::tr("%1 YB").arg(numString);
+    default:
+        return QString();
+    }
+
+    return QString();
+}
 
 About::About(QObject *parent)
     : QObject(parent)
@@ -63,7 +104,7 @@ QString About::memorySize()
     const qlonglong totalRam = calculateTotalRam();
 
     if (totalRam > 0) {
-        ram = KFormat().formatByteSize(totalRam, 0);
+        ram = formatByteSize(totalRam, 0);
     }
     return ram;
 }
@@ -77,8 +118,8 @@ QString About::internalStorage()
 {
     QStorageInfo storage = QStorageInfo::root();
     return QString("%1 / %2")
-            .arg(KFormat().formatByteSize(storage.bytesTotal() - storage.bytesAvailable()))
-            .arg(KFormat().formatByteSize(storage.bytesTotal(), 0));
+            .arg(formatByteSize(storage.bytesTotal() - storage.bytesAvailable(), 0))
+            .arg(formatByteSize(storage.bytesTotal(), 0));
 }
 
 QString About::cpuInfo()
