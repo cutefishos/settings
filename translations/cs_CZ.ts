@@ -103,176 +103,176 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="105"/>
         <source>Internal Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Interní úložiště</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="30"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzhled</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="74"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Motiv</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="85"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Světlý</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="92"/>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Tmavý</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="107"/>
         <source>Dim the wallpaper in dark theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Ztmavit pozadí plochy v tmavém motivu</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="127"/>
         <source>Accent color</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekundární barva</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="205"/>
         <source>Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Styl písma</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="218"/>
         <source>General Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Primární styl písma</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="235"/>
         <source>Fixed Font</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fixovaný styl písma</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="252"/>
         <source>Font Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost písma</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="260"/>
         <location filename="../src/qml/Dock/Main.qml" line="90"/>
         <source>Small</source>
-        <translation type="unfinished"></translation>
+        <translation>Malý</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="264"/>
         <location filename="../src/qml/Dock/Main.qml" line="94"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Střední</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="268"/>
         <location filename="../src/qml/Dock/Main.qml" line="98"/>
         <source>Large</source>
-        <translation type="unfinished"></translation>
+        <translation>Velký</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="272"/>
         <location filename="../src/qml/Dock/Main.qml" line="102"/>
         <source>Huge</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrovský</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="29"/>
         <source>Battery</source>
-        <translation type="unfinished"></translation>
+        <translation>Baterie</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last hour</source>
-        <translation type="unfinished"></translation>
+        <translation>Poslední hodina</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 2 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>Poslední 2 hodiny</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 12 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>Posledních 12 hodin</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 24 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>Posledních 24 hodin</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 48 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>Posledních 48 hodin</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 7 days</source>
-        <translation type="unfinished"></translation>
+        <translation>Posledních 7 dní</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="126"/>
         <source>History</source>
-        <translation type="unfinished"></translation>
+        <translation>Historie</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="154"/>
         <source>W</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">W</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="173"/>
         <source>Last Charged to</source>
-        <translation type="unfinished"></translation>
+        <translation>Naposledy nabito na</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="179"/>
         <source>Maximum Capacity</source>
-        <translation type="unfinished"></translation>
+        <translation>Maximální kapacita</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="192"/>
         <source>No battery found</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenalezen žádná baterie</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="29"/>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Displej</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="66"/>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>Jas</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="112"/>
         <source>Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrazovka</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="156"/>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozlišení</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="175"/>
         <source>Refresh rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnovovací frekvence</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="195"/>
         <source>Rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Rotace</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="230"/>
         <source>Enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapnutá</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="261"/>
