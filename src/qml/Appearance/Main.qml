@@ -275,13 +275,13 @@ ItemPage {
                         currentIndex: {
                             var index = 0
 
-                            if (appearance.fontPointSize <= 10)
+                            if (appearance.fontPointSize <= 9)
                                 index = 0
-                            else if (appearance.fontPointSize <= 11)
+                            else if (appearance.fontPointSize <= 10)
                                 index = 1
-                            else if (appearance.fontPointSize <= 13)
+                            else if (appearance.fontPointSize <= 12)
                                 index = 2
-                            else if (appearance.fontPointSize <= 16)
+                            else if (appearance.fontPointSize <= 15)
                                 index = 3
 
                             return index
@@ -292,16 +292,16 @@ ItemPage {
 
                             switch (currentIndex) {
                             case 0:
-                                fontSize = 10
+                                fontSize = 9
                                 break;
                             case 1:
-                                fontSize = 11
+                                fontSize = 10
                                 break;
                             case 2:
-                                fontSize = 13
+                                fontSize = 12
                                 break;
                             case 3:
-                                fontSize = 16
+                                fontSize = 15
                                 break;
                             }
 

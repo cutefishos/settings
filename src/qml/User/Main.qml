@@ -78,7 +78,7 @@ ItemPage {
                 }
             }
 
-            Button {
+            StandardButton {
                 id: _addUserButton
                 text: qsTr("Add user")
                 Layout.fillWidth: true

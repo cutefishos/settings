@@ -102,5 +102,6 @@
         <file>images/sidebar/light/wlan.svg</file>
         <file>images/sidebar/dark/wlan.svg</file>
         <file>qml/Bluetooth/Main.qml</file>
+        <file>qml/StandardButton.qml</file>
     </qresource>
 </RCC>
