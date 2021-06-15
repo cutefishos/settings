@@ -7,44 +7,44 @@
         <location filename="../src/qml/User/AddUserDialog.qml" line="72"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="78"/>
         <source>User name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama pengguna</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="85"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="91"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Kata sandi</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="98"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="104"/>
         <source>Verify password</source>
-        <translation type="unfinished"></translation>
+        <translation>Verifikasi kata sandi</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="111"/>
         <source>Account type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipe akun</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>Standar</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Administrator</source>
-        <translation type="unfinished"></translation>
+        <translation>Administrator</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="130"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Batal</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="137"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Tambah</translation>
     </message>
 </context>
 <context>
@@ -52,12 +52,12 @@
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="29"/>
         <source>Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth</translation>
     </message>
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="49"/>
         <source>Bluetooth is disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth mati</translation>
     </message>
 </context>
 <context>
@@ -65,7 +65,7 @@
     <message>
         <location filename="../src/qml/LanguagePage.qml" line="29"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Bahasa</translation>
     </message>
 </context>
 <context>
@@ -73,176 +73,176 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="28"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Tentang</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="80"/>
         <source>System Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Versi Sistem</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="85"/>
         <source>System Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipe Sistem</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="90"/>
         <source>Kernel Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Versi Kernel</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="95"/>
         <source>Processor</source>
-        <translation type="unfinished"></translation>
+        <translation>Prosesor</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="100"/>
         <source>RAM</source>
-        <translation type="unfinished"></translation>
+        <translation>RAM</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="105"/>
         <source>Internal Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Memori Internal</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="30"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Penampilan</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="74"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Tema</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="85"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Terang</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="92"/>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Gelap</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="107"/>
         <source>Dim the wallpaper in dark theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Redupkan wallpaper dalam tema gelap</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="127"/>
         <source>Accent color</source>
-        <translation type="unfinished"></translation>
+        <translation>Aksen warna</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="205"/>
         <source>Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Jenis Huruf</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="218"/>
         <source>General Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Font Umum</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="235"/>
         <source>Fixed Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Font Tetap</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="252"/>
         <source>Font Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukuran Huruf</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="260"/>
         <location filename="../src/qml/Dock/Main.qml" line="90"/>
         <source>Small</source>
-        <translation type="unfinished"></translation>
+        <translation>Kecil</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="264"/>
         <location filename="../src/qml/Dock/Main.qml" line="94"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Sedang</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="268"/>
         <location filename="../src/qml/Dock/Main.qml" line="98"/>
         <source>Large</source>
-        <translation type="unfinished"></translation>
+        <translation>Besar</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="272"/>
         <location filename="../src/qml/Dock/Main.qml" line="102"/>
         <source>Huge</source>
-        <translation type="unfinished"></translation>
+        <translation>Sangat Besar</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="29"/>
         <source>Battery</source>
-        <translation type="unfinished"></translation>
+        <translation>Baterai</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last hour</source>
-        <translation type="unfinished"></translation>
+        <translation>Satu jam terakhir</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 2 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>2 jam terakhir</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 12 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>12 jam terakhir</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 24 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>24 jam terakhir</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 48 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>48 jam terakhir</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 7 days</source>
-        <translation type="unfinished"></translation>
+        <translation>7 hari terakhir</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="126"/>
         <source>History</source>
-        <translation type="unfinished"></translation>
+        <translation>Riwayat</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="154"/>
         <source>W</source>
-        <translation type="unfinished"></translation>
+        <translation>W</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="173"/>
         <source>Last Charged to</source>
-        <translation type="unfinished"></translation>
+        <translation>Terakhir Diisi pada</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="179"/>
         <source>Maximum Capacity</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapasitas Maksimum</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="192"/>
         <source>No battery found</source>
-        <translation type="unfinished"></translation>
+        <translation>Baterai tidak ditemukan</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="29"/>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Display</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="66"/>
