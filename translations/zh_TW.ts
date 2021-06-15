@@ -103,7 +103,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="105"/>
         <source>Internal Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>內部儲存</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="30"/>
@@ -222,17 +222,17 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="154"/>
         <source>W</source>
-        <translation type="unfinished"></translation>
+        <translation>瓦</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="173"/>
         <source>Last Charged to</source>
-        <translation type="unfinished"></translation>
+        <translation>上一次充電於</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="179"/>
         <source>Maximum Capacity</source>
-        <translation type="unfinished"></translation>
+        <translation>容限</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="192"/>
@@ -436,7 +436,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="99"/>
         <source>Dock</source>
-        <translation type="unfinished"></translation>
+        <translation>Dock</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="111"/>
@@ -522,7 +522,7 @@
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="65"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="65"/>
         <source>Auto-Join</source>
-        <translation type="unfinished"></translation>
+        <translation>自動加入網路</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="81"/>
@@ -564,7 +564,7 @@
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="160"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="160"/>
         <source>DNS</source>
-        <translation type="unfinished"></translation>
+        <translation>DNS</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="177"/>
