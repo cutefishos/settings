@@ -282,94 +282,94 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="329"/>
         <source>Need to log in again to take effect</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रभाव लागू गर्न पुन: लगइन गर्नुपर्छ</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
-        <translation type="unfinished"></translation>
+        <translation>डक</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="46"/>
         <source>Position on screen</source>
-        <translation type="unfinished"></translation>
+        <translation>स्क्रिनमा स्थिति</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="56"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>बायाँ</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="63"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>पिँधमा</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="70"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation>दायाँ</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="79"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>आकार</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/Main.qml" line="32"/>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>नेटवर्क</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/Main.qml" line="144"/>
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
         <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Wired</source>
-        <translation type="unfinished"></translation>
+        <translation>तार जडान</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
         <source>Power</source>
-        <translation type="unfinished"></translation>
+        <translation>पावर</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="43"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>मोड</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="53"/>
         <source>Power Save</source>
-        <translation type="unfinished"></translation>
+        <translation>शक्ति वचत</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="59"/>
         <source>Balance</source>
-        <translation type="unfinished"></translation>
+        <translation>सन्तुलित</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="65"/>
         <source>Performance</source>
-        <translation type="unfinished"></translation>
+        <translation>कार्य सम्पादन</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="31"/>
         <source>User</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रयोगकर्ता</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="83"/>
         <source>Add user</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रयोगकर्ता थप्ने</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="30"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>पृष्ठभुमि</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="56"/>
         <source>Background type</source>
-        <translation type="unfinished"></translation>
+        <translation>पृष्ठभुमिको प्रकार</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="76"/>
