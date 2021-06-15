@@ -128,7 +128,7 @@
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="107"/>
         <source>Dim the wallpaper in dark theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimma bakgrundsbild i mörkt tema</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="127"/>
@@ -282,7 +282,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="329"/>
         <source>Need to log in again to take effect</source>
-        <translation type="unfinished"></translation>
+        <translation>Du behöver logga in igen för att ändringen ska träda i kraft</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
@@ -467,7 +467,7 @@
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="128"/>
         <source>Currently logged</source>
-        <translation type="unfinished"></translation>
+        <translation>För närvarande inloggad</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="169"/>
@@ -522,7 +522,7 @@
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="65"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="65"/>
         <source>Auto-Join</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisk-anslutning</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="81"/>
