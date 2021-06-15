@@ -7,44 +7,44 @@
         <location filename="../src/qml/User/AddUserDialog.qml" line="72"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="78"/>
         <source>User name</source>
-        <translation type="unfinished"></translation>
+        <translation>Uživatelské jméno</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="85"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="91"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Heslo</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="98"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="104"/>
         <source>Verify password</source>
-        <translation type="unfinished"></translation>
+        <translation>Ověřte heslo</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="111"/>
         <source>Account type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ účtu</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>Běžný</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Administrator</source>
-        <translation type="unfinished"></translation>
+        <translation>Administrátor</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="130"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Zrušit</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="137"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat</translation>
     </message>
 </context>
 <context>
@@ -52,12 +52,12 @@
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="29"/>
         <source>Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth</translation>
     </message>
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="49"/>
         <source>Bluetooth is disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth je vypnuté</translation>
     </message>
 </context>
 <context>
@@ -65,7 +65,7 @@
     <message>
         <location filename="../src/qml/LanguagePage.qml" line="29"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Jazyk</translation>
     </message>
 </context>
 <context>
@@ -73,32 +73,32 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="28"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>O zařízení</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="80"/>
         <source>System Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Verze systému</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="85"/>
         <source>System Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ systému</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="90"/>
         <source>Kernel Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Verze jádra</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="95"/>
         <source>Processor</source>
-        <translation type="unfinished"></translation>
+        <translation>Procesor</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="100"/>
         <source>RAM</source>
-        <translation type="unfinished"></translation>
+        <translation>Operační paměť RAM</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="105"/>
