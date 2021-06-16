@@ -31,7 +31,7 @@ Item {
     property alias text: label.text
     property bool checked: false
 
-    property var iconSize: 104
+    property var iconSize: 106
 
     signal clicked
 
@@ -43,57 +43,70 @@ Item {
     ColumnLayout {
         id: mainLayout
         anchors.fill: parent
-        spacing: FishUI.Units.smallSpacing
 
-        Image {
-            id: icon
+        Rectangle {
+            id: _box
             width: control.iconSize
             height: width
-            sourceSize: Qt.size(icon.width, icon.height)
-            opacity: 1
+            color: "transparent"
+            border.width: 3
+            border.color: control.checked ? FishUI.Theme.highlightColor : "transparent"
 
-            layer.enabled: true
-            layer.effect: OpacityMask {
-                maskSource: Item {
-                    width: icon.width
-                    height: icon.height
-
-                    Rectangle {
-                        anchors.fill: parent
-                        radius: FishUI.Theme.bigRadius
-                    }
-                }
-            }
-
-            Behavior on opacity {
-                NumberAnimation {
-                    duration: 100
+            Behavior on border.color {
+                ColorAnimation {
+                    duration: 125
                     easing.type: Easing.InOutCubic
                 }
             }
 
-            MouseArea {
-                anchors.fill: parent
-                hoverEnabled: true
+            radius: FishUI.Theme.bigRadius + control.iconSpacing
+            visible: true
 
-                onEntered: function() {
-                    icon.opacity = 0.8
+            Image {
+                id: icon
+                anchors.fill: parent
+                anchors.margins: FishUI.Units.smallSpacing
+                sourceSize: Qt.size(icon.width, icon.height)
+                opacity: 1
+
+                layer.enabled: true
+                layer.effect: OpacityMask {
+                    maskSource: Item {
+                        width: icon.width
+                        height: icon.height
+
+                        Rectangle {
+                            anchors.fill: parent
+                            radius: FishUI.Theme.bigRadius
+                        }
+                    }
                 }
-                onExited: function() {
-                    icon.opacity = 1.0
+
+                Behavior on opacity {
+                    NumberAnimation {
+                        duration: 100
+                        easing.type: Easing.InOutCubic
+                    }
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    hoverEnabled: true
+
+                    onEntered: function() {
+                        icon.opacity = 0.8
+                    }
+                    onExited: function() {
+                        icon.opacity = 1.0
+                    }
                 }
             }
         }
 
         Label {
             id: label
+            color: control.checked ? FishUI.Theme.highlightColor : FishUI.Theme.textColor
             visible: label.text
-            Layout.alignment: Qt.AlignHCenter
-        }
-
-        RadioButton {
-            checkable: false
-            checked: control.checked
             Layout.alignment: Qt.AlignHCenter
         }
     }
