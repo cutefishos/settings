@@ -7,7 +7,10 @@
 #include <unicode/unistr.h>
 
 static const QStringList supportList = {"en_US", "en_AU", "en_CA", "en_NZ", "en_GB",
-                                        "es_MX", "ja", "ko", "pl", "pt_BR", "ru", "de", "it", 
+                                        "de_DE", "cs_CZ", "es_ES", "es_MX", "fa_IR",
+                                        "fi_FI", "fr_FR", "id_ID", "it_IT", "ja_JP",
+                                        "nb_NO", "ne_NP", "pl_PL", "pt_BR", "pt_PT",
+                                        "ru_RU", "sv_SE", "tr_TR",
                                         "zh_CN", "zh_HK", "zh_TW"
                                        };
 
