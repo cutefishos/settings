@@ -454,7 +454,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="123"/>
         <source>Battery</source>
-        <translation>Batterie</translation>
+        <translation>Akku</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="138"/>
