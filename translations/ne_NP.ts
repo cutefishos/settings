@@ -374,17 +374,17 @@
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="76"/>
         <source>Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>तस्वीर</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="80"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>रङ</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/Main.qml" line="32"/>
         <source>WLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>wlan</translation>
     </message>
 </context>
 <context>
@@ -392,28 +392,28 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="107"/>
         <source>User</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रयोगकर्ता</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="75"/>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>दृश्य</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="52"/>
         <source>WLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>wlan</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="56"/>
         <location filename="../src/qml/SideBar.qml" line="64"/>
         <source>Network and connection</source>
-        <translation type="unfinished"></translation>
+        <translation>नेटवर्क र कनेक्सन</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="60"/>
         <source>Wired</source>
-        <translation type="unfinished"></translation>
+        <translation>तार जडान</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="79"/>
@@ -421,22 +421,22 @@
         <location filename="../src/qml/SideBar.qml" line="95"/>
         <location filename="../src/qml/SideBar.qml" line="103"/>
         <source>Display and appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रदर्शन</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="83"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>देखावट</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="91"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>पृष्ठभुमि</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="99"/>
         <source>Dock</source>
-        <translation type="unfinished"></translation>
+        <translation>डक</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="111"/>
@@ -444,22 +444,22 @@
         <location filename="../src/qml/SideBar.qml" line="127"/>
         <location filename="../src/qml/SideBar.qml" line="142"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation>सिस्टम</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="115"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>भाषा</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="123"/>
         <source>Battery</source>
-        <translation type="unfinished"></translation>
+        <translation>ब्याट्री</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="138"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>बारेमा</translation>
     </message>
 </context>
 <context>
@@ -467,17 +467,17 @@
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="128"/>
         <source>Currently logged</source>
-        <translation type="unfinished"></translation>
+        <translation>अहिले लगइन भएको</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="169"/>
         <source>Automatic login</source>
-        <translation type="unfinished"></translation>
+        <translation>स्वचालित लगइन</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="188"/>
         <source>Delete this user</source>
-        <translation type="unfinished"></translation>
+        <translation>यो प्रयोगकर्ता हटाउने</translation>
     </message>
 </context>
 <context>
@@ -486,25 +486,25 @@
         <location filename="../src/qml/Network/WifiItem.qml" line="184"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="184"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>गोप्य शब्द</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WifiItem.qml" line="204"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
         <source>Show password</source>
-        <translation type="unfinished"></translation>
+        <translation>गोप्य शब्द देखाउने</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WifiItem.qml" line="213"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="213"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>रद्द</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WifiItem.qml" line="219"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="219"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>जोड्ने</translation>
     </message>
 </context>
 <context>
@@ -513,7 +513,7 @@
         <location filename="../src/qml/Network/WifiView.qml" line="35"/>
         <location filename="../src/qml/WLAN/WifiView.qml" line="35"/>
         <source>WLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>wlan</translation>
     </message>
 </context>
 <context>
@@ -522,61 +522,61 @@
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="65"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="65"/>
         <source>Auto-Join</source>
-        <translation type="unfinished"></translation>
+        <translation>स्वत:जोडिने</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="81"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="81"/>
         <source>Security</source>
-        <translation type="unfinished"></translation>
+        <translation>सुरक्षा</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="93"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="93"/>
         <source>Signal</source>
-        <translation type="unfinished"></translation>
+        <translation>सिग्नल</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="105"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="105"/>
         <source>IPv4 Address</source>
-        <translation type="unfinished"></translation>
+        <translation>IPV4 ठेगाना</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="119"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="119"/>
         <source>IPv6 Address</source>
-        <translation type="unfinished"></translation>
+        <translation>IPv6 ठेगाना</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="133"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="133"/>
         <source>MAC Address</source>
-        <translation type="unfinished"></translation>
+        <translation>MAC ठेगाना</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="147"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="147"/>
         <source>Gateway</source>
-        <translation type="unfinished"></translation>
+        <translation>गेटवे</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="160"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="160"/>
         <source>DNS</source>
-        <translation type="unfinished"></translation>
+        <translation>डिएनएस</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="177"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="177"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>बन्द गर्ने</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="183"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="183"/>
         <source>Forget this network</source>
-        <translation type="unfinished"></translation>
+        <translation>यो नेटवर्क बिर्सने</translation>
     </message>
 </context>
 <context>
@@ -584,7 +584,7 @@
     <message>
         <location filename="../src/qml/main.qml" line="29"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>सेटिङ</translation>
     </message>
 </context>
 </TS>

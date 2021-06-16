@@ -182,7 +182,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="29"/>
         <source>Battery</source>
-        <translation>Batterie</translation>
+        <translation>Akku</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
@@ -237,7 +237,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="192"/>
         <source>No battery found</source>
-        <translation>Keine Batterie gefunden</translation>
+        <translation>Kein Akku gefunden</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="29"/>
