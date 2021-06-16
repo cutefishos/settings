@@ -324,67 +324,67 @@
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
         <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Wired</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Johdotettu</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
         <source>Power</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Virta</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="43"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Tila</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="53"/>
         <source>Power Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Virransäästö</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="59"/>
         <source>Balance</source>
-        <translation type="unfinished"></translation>
+        <translation>Tasapaino</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="65"/>
         <source>Performance</source>
-        <translation type="unfinished"></translation>
+        <translation>Suorituskyky</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="31"/>
         <source>User</source>
-        <translation type="unfinished"></translation>
+        <translation>Käyttäjä</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="83"/>
         <source>Add user</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisää käyttäjä</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="30"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Tausta</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="56"/>
         <source>Background type</source>
-        <translation type="unfinished"></translation>
+        <translation>Taustatyyppi</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="76"/>
         <source>Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuva</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="80"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Väri</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/Main.qml" line="32"/>
         <source>WLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>WLAN</translation>
     </message>
 </context>
 <context>
@@ -392,28 +392,28 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="107"/>
         <source>User</source>
-        <translation type="unfinished"></translation>
+        <translation>Käyttäjä</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="75"/>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Näyttö</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="52"/>
         <source>WLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>WLAN</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="56"/>
         <location filename="../src/qml/SideBar.qml" line="64"/>
         <source>Network and connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Verkko ja yhteys</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="60"/>
         <source>Wired</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Johdotettu</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="79"/>
@@ -421,22 +421,22 @@
         <location filename="../src/qml/SideBar.qml" line="95"/>
         <location filename="../src/qml/SideBar.qml" line="103"/>
         <source>Display and appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Näyttö ja ulkonäkö</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="83"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Ulkonäkö</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="91"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Tausta</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="99"/>
         <source>Dock</source>
-        <translation type="unfinished"></translation>
+        <translation>Telakka</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="111"/>
@@ -444,22 +444,22 @@
         <location filename="../src/qml/SideBar.qml" line="127"/>
         <location filename="../src/qml/SideBar.qml" line="142"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation>Järjestelmä</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="115"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Kieli</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="123"/>
         <source>Battery</source>
-        <translation type="unfinished"></translation>
+        <translation>Akku</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="138"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Tietoja</translation>
     </message>
 </context>
 <context>
@@ -467,17 +467,17 @@
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="128"/>
         <source>Currently logged</source>
-        <translation type="unfinished"></translation>
+        <translation>Tällä hetkellä kirjautuneena</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="169"/>
         <source>Automatic login</source>
-        <translation type="unfinished"></translation>
+        <translation>Automaattinen kirjautuminen</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="188"/>
         <source>Delete this user</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista tämä käyttäjä</translation>
     </message>
 </context>
 <context>
@@ -486,25 +486,25 @@
         <location filename="../src/qml/Network/WifiItem.qml" line="184"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="184"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Salasana</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WifiItem.qml" line="204"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
         <source>Show password</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä salasana</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WifiItem.qml" line="213"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="213"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Peruuta</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WifiItem.qml" line="219"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="219"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Yhdistä</translation>
     </message>
 </context>
 <context>
@@ -513,7 +513,7 @@
         <location filename="../src/qml/Network/WifiView.qml" line="35"/>
         <location filename="../src/qml/WLAN/WifiView.qml" line="35"/>
         <source>WLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>WLAN</translation>
     </message>
 </context>
 <context>
@@ -522,61 +522,61 @@
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="65"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="65"/>
         <source>Auto-Join</source>
-        <translation type="unfinished"></translation>
+        <translation>Automaattinen liittyminen</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="81"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="81"/>
         <source>Security</source>
-        <translation type="unfinished"></translation>
+        <translation>Turvallisuus</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="93"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="93"/>
         <source>Signal</source>
-        <translation type="unfinished"></translation>
+        <translation>Signaali</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="105"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="105"/>
         <source>IPv4 Address</source>
-        <translation type="unfinished"></translation>
+        <translation>IPv4-osoite</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="119"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="119"/>
         <source>IPv6 Address</source>
-        <translation type="unfinished"></translation>
+        <translation>IPv6-osoite</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="133"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="133"/>
         <source>MAC Address</source>
-        <translation type="unfinished"></translation>
+        <translation>MAC-osoite</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="147"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="147"/>
         <source>Gateway</source>
-        <translation type="unfinished"></translation>
+        <translation>Yhdyskäytävä</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="160"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="160"/>
         <source>DNS</source>
-        <translation type="unfinished"></translation>
+        <translation>DNS</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="177"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="177"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Sulje</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="183"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="183"/>
         <source>Forget this network</source>
-        <translation type="unfinished"></translation>
+        <translation>Unohda tämä verkko</translation>
     </message>
 </context>
 <context>
@@ -584,7 +584,7 @@
     <message>
         <location filename="../src/qml/main.qml" line="29"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Asetukset</translation>
     </message>
 </context>
 </TS>
