@@ -38,6 +38,9 @@ FishUI.Window {
 
     property var sideBarColor: FishUI.Theme.darkMode ? "#333333" : "#EBECF2"
 
+    LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+    LayoutMirroring.childrenInherit: true
+
     headerBar: Item {
         Rectangle {
             id: leftArea
