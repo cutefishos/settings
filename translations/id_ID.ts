@@ -242,7 +242,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="29"/>
         <source>Display</source>
-        <translation>Display</translation>
+        <translation>Tampilan</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="66"/>
@@ -282,42 +282,42 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="329"/>
         <source>Need to log in again to take effect</source>
-        <translation type="unfinished"></translation>
+        <translation>Perlu masuk lagi agar berlaku</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
-        <translation type="unfinished"></translation>
+        <translation>Dock</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="46"/>
         <source>Position on screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Posisi di layar</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="56"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Kiri</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="63"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Bawah</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="70"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanan</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="79"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukuran</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/Main.qml" line="32"/>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Jaringan</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/Main.qml" line="144"/>
@@ -329,62 +329,62 @@
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
         <source>Power</source>
-        <translation type="unfinished"></translation>
+        <translation>Daya</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="43"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mode</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="53"/>
         <source>Power Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Hemat Daya</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="59"/>
         <source>Balance</source>
-        <translation type="unfinished"></translation>
+        <translation>Seimbang</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="65"/>
         <source>Performance</source>
-        <translation type="unfinished"></translation>
+        <translation>Performa</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="31"/>
         <source>User</source>
-        <translation type="unfinished"></translation>
+        <translation>Pengguna</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="83"/>
         <source>Add user</source>
-        <translation type="unfinished"></translation>
+        <translation>Tambah pengguna</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="30"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Latar belakang</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="56"/>
         <source>Background type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipe latar belakang</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="76"/>
         <source>Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Gambar</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="80"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Warna</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/Main.qml" line="32"/>
         <source>WLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>WLAN</translation>
     </message>
 </context>
 <context>
@@ -392,23 +392,23 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="107"/>
         <source>User</source>
-        <translation type="unfinished"></translation>
+        <translation>Pengguna</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="75"/>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Tampilan</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="52"/>
         <source>WLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>WLAN</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="56"/>
         <location filename="../src/qml/SideBar.qml" line="64"/>
         <source>Network and connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Jaringan dan koneksi</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="60"/>
@@ -421,22 +421,22 @@
         <location filename="../src/qml/SideBar.qml" line="95"/>
         <location filename="../src/qml/SideBar.qml" line="103"/>
         <source>Display and appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Tampilan dan penampilan</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="83"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Penampilan</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="91"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Latar belakang</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="99"/>
         <source>Dock</source>
-        <translation type="unfinished"></translation>
+        <translation>Dock</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="111"/>
@@ -444,22 +444,22 @@
         <location filename="../src/qml/SideBar.qml" line="127"/>
         <location filename="../src/qml/SideBar.qml" line="142"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation>Sistem</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="115"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Bahasa</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="123"/>
         <source>Battery</source>
-        <translation type="unfinished"></translation>
+        <translation>Baterai</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="138"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Tentang</translation>
     </message>
 </context>
 <context>
@@ -467,17 +467,17 @@
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="128"/>
         <source>Currently logged</source>
-        <translation type="unfinished"></translation>
+        <translation>Saat ini masuk</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="169"/>
         <source>Automatic login</source>
-        <translation type="unfinished"></translation>
+        <translation>Masuk otomatis</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="188"/>
         <source>Delete this user</source>
-        <translation type="unfinished"></translation>
+        <translation>Hapus pengguna ini</translation>
     </message>
 </context>
 <context>
@@ -486,25 +486,25 @@
         <location filename="../src/qml/Network/WifiItem.qml" line="184"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="184"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Kata sandi</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WifiItem.qml" line="204"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
         <source>Show password</source>
-        <translation type="unfinished"></translation>
+        <translation>Tampilkan kata sandi</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WifiItem.qml" line="213"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="213"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Batal</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WifiItem.qml" line="219"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="219"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Hubungkan</translation>
     </message>
 </context>
 <context>
@@ -513,7 +513,7 @@
         <location filename="../src/qml/Network/WifiView.qml" line="35"/>
         <location filename="../src/qml/WLAN/WifiView.qml" line="35"/>
         <source>WLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>WLAN</translation>
     </message>
 </context>
 <context>
@@ -522,37 +522,37 @@
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="65"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="65"/>
         <source>Auto-Join</source>
-        <translation type="unfinished"></translation>
+        <translation>Gabung Otomatis</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="81"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="81"/>
         <source>Security</source>
-        <translation type="unfinished"></translation>
+        <translation>Keamanan</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="93"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="93"/>
         <source>Signal</source>
-        <translation type="unfinished"></translation>
+        <translation>Sinyal</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="105"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="105"/>
         <source>IPv4 Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Alamat IPv4</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="119"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="119"/>
         <source>IPv6 Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Alamat IPv6</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="133"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="133"/>
         <source>MAC Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Alamat MAC</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="147"/>
@@ -564,19 +564,19 @@
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="160"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="160"/>
         <source>DNS</source>
-        <translation type="unfinished"></translation>
+        <translation>DNS</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="177"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="177"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Tutup</translation>
     </message>
     <message>
         <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="183"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="183"/>
         <source>Forget this network</source>
-        <translation type="unfinished"></translation>
+        <translation>Lupakan jaringan ini</translation>
     </message>
 </context>
 <context>
@@ -584,7 +584,7 @@
     <message>
         <location filename="../src/qml/main.qml" line="29"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Pengaturan</translation>
     </message>
 </context>
 </TS>
