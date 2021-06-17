@@ -39,6 +39,7 @@ public:
 
 private:
     qlonglong calculateTotalRam() const;
+    qlonglong calculateTakenRam() const;
 };
 
 #endif // ABOUT_H

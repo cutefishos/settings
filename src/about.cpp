@@ -100,13 +100,19 @@ QString About::userName()
 
 QString About::memorySize()
 {
-    QString ram;
+    QString total;
+    QString taken;
     const qlonglong totalRam = calculateTotalRam();
+    const qlonglong takenRam = calculateTakenRam();
 
     if (totalRam > 0) {
-        ram = formatByteSize(totalRam, 0);
+        total = formatByteSize(totalRam, 0);
+        taken = formatByteSize(takenRam, 0);
     }
-    return ram;
+
+    return QString("%1 / %2")
+            .arg(taken)
+            .arg(total);
 }
 
 QString About::prettyProductName()
@@ -164,4 +170,22 @@ qlonglong About::calculateTotalRam() const
     ret = memory;
 #endif
     return ret;
+}
+
+qlonglong About::calculateTakenRam() const
+{   qlonglong taken = 0;
+#ifdef Q_OS_LINUX
+    struct sysinfo info;
+    if (sysinfo(&info) == 0)
+        taken = qlonglong(info.freeram) * info.mem_unit;
+#elif defined(Q_OS_FREEBSD)
+    size_t len;
+
+    unsigned long memory;
+    len = sizeof(memory);
+    sysctlbyname("hw.usermem", &memory, &len, NULL, 0);
+
+    taken = memory;
+#endif
+    return taken;
 }
