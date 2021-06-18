@@ -104,7 +104,7 @@ Item {
             name: "dock"
             page: "qrc:/qml/Dock/Main.qml"
             iconSource: "dock.svg"
-            iconColor: "#8458FF"
+            iconColor: "#8585FC"
             category: qsTr("Display and appearance")
         }
 
@@ -162,12 +162,6 @@ Item {
             clip: true
             model: listModel
 
-            boundsBehavior: Flickable.StopAtBounds
-
-            FishUI.WheelHandler {
-                target: listView
-            }
-
             spacing: FishUI.Units.smallSpacing
             leftMargin: FishUI.Units.largeSpacing
             rightMargin: FishUI.Units.largeSpacing
@@ -203,6 +197,10 @@ Item {
                 }
             }
 
+            FishUI.WheelHandler {
+                target: listView
+            }
+
             delegate: Item {
                 id: item
                 width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
@@ -222,10 +220,13 @@ Item {
                     }
 
                     radius: FishUI.Theme.mediumRadius
-                    color: mouseArea.containsMouse && !isCurrent ? Qt.rgba(FishUI.Theme.textColor.r,
-                                                                           FishUI.Theme.textColor.g,
-                                                                           FishUI.Theme.textColor.b,
-                                                                   0.05) : "transparent"
+                    color: mouseArea.pressed ? Qt.rgba(FishUI.Theme.textColor.r,
+                                                       FishUI.Theme.textColor.g,
+                                                       FishUI.Theme.textColor.b, FishUI.Theme.darkMode ? 0.05 : 0.1) :
+                           mouseArea.containsMouse || isCurrent ? Qt.rgba(FishUI.Theme.textColor.r,
+                                                                          FishUI.Theme.textColor.g,
+                                                                          FishUI.Theme.textColor.b, FishUI.Theme.darkMode ? 0.1 : 0.05) :
+                                                                  "transparent"
 
                     smooth: true
                 }
@@ -243,6 +244,11 @@ Item {
                         radius: 6
                         color: model.iconColor
 
+                        gradient: Gradient {
+                            GradientStop { position: 0.0; color: Qt.lighter(model.iconColor, 1.15) }
+                            GradientStop { position: 1.0; color: model.iconColor }
+                        }
+
                         Image {
                             id: icon
                             anchors.centerIn: parent
@@ -254,11 +260,10 @@ Item {
                         }
                     }
 
-
                     Label {
                         id: itemTitle
                         text: model.title
-                        color: FishUI.Theme.disabledTextColor
+                        color: FishUI.Theme.darkMode ? FishUI.Theme.textColor : "#363636"
                         font.pointSize: 8
                     }
 

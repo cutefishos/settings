@@ -169,6 +169,22 @@ ItemPage {
             }
 
             RoundedItem {
+                visible: battery.capacity
+
+                Label {
+                    text: qsTr("Health")
+                    color: FishUI.Theme.disabledTextColor
+                }
+
+                ProgressBar {
+                    Layout.fillWidth: true
+//                    minimumValue: 0
+//                    maximumValue: 100
+                    value: battery.capacity
+                }
+            }
+
+            RoundedItem {
                 StandardItem {
                     key: qsTr("Last Charged to") + " " + battery.lastChargedPercent + "%"
                     value: battery.lastChargedTime
