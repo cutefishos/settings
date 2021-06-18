@@ -52,6 +52,7 @@ Item {
             name: "network"
             page: "qrc:/qml/WLAN/Main.qml"
             iconSource: "wlan.svg"
+            iconColor: "#0067FF"
             category: qsTr("Network and connection")
         }
 
@@ -60,6 +61,7 @@ Item {
             name: "wired"
             page: "qrc:/qml/Wired/Main.qml"
             iconSource: "network.svg"
+            iconColor: "#0067FF"
             category: qsTr("Network and connection")
         }
 
@@ -75,6 +77,7 @@ Item {
             name: "display"
             page: "qrc:/qml/Display/Main.qml"
             iconSource: "display.svg"
+            iconColor: "#0087ED"
             category: qsTr("Display and appearance")
         }
 
@@ -83,6 +86,7 @@ Item {
             name: "appearance"
             page: "qrc:/qml/Appearance/Main.qml"
             iconSource: "appearance.svg"
+            iconColor: "#03B4CB"
             category: qsTr("Display and appearance")
         }
 
@@ -91,6 +95,7 @@ Item {
             name: "background"
             page: "qrc:/qml/Wallpaper/Main.qml"
             iconSource: "wallpaper.svg"
+            iconColor: "#34B4A7"
             category: qsTr("Display and appearance")
         }
 
@@ -99,6 +104,7 @@ Item {
             name: "dock"
             page: "qrc:/qml/Dock/Main.qml"
             iconSource: "dock.svg"
+            iconColor: "#8458FF"
             category: qsTr("Display and appearance")
         }
 
@@ -107,6 +113,7 @@ Item {
             name: "accounts"
             page: "qrc:/qml/User/Main.qml"
             iconSource: "accounts.svg"
+            iconColor: "#DA7C43"
             category: qsTr("System")
         }
 
@@ -115,6 +122,7 @@ Item {
             name: "language"
             page: "qrc:/qml/LanguagePage.qml"
             iconSource: "language.svg"
+            iconColor: "#20A7FF"
             category: qsTr("System")
         }
 
@@ -123,6 +131,7 @@ Item {
             name: "battery"
             page: "qrc:/qml/Battery/Main.qml"
             iconSource: "battery.svg"
+            iconColor: "#2EC347"
             category: qsTr("System")
         }
 
@@ -138,6 +147,7 @@ Item {
             name: "about"
             page: "qrc:/qml/About/Main.qml"
             iconSource: "about.svg"
+            iconColor: "#24A7FD"
             category: qsTr("System")
         }
     }
@@ -170,7 +180,9 @@ Item {
             highlightResizeDuration : 0
             highlight: Rectangle {
                 radius: FishUI.Theme.mediumRadius
-                color: FishUI.Theme.highlightColor
+                color: Qt.rgba(FishUI.Theme.textColor.r,
+                               FishUI.Theme.textColor.g,
+                               FishUI.Theme.textColor.b, 0.1)
                 smooth: true
             }
 
@@ -186,6 +198,7 @@ Item {
                     anchors.topMargin: FishUI.Units.largeSpacing
                     anchors.bottomMargin: FishUI.Units.smallSpacing
                     color: FishUI.Theme.disabledTextColor
+                    font.pointSize: 8
                     text: section
                 }
             }
@@ -193,7 +206,7 @@ Item {
             delegate: Item {
                 id: item
                 width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
-                height: FishUI.Units.fontMetrics.height + FishUI.Units.largeSpacing * 1.5
+                height: 35
 
                 property bool isCurrent: listView.currentIndex === index
 
@@ -212,30 +225,41 @@ Item {
                     color: mouseArea.containsMouse && !isCurrent ? Qt.rgba(FishUI.Theme.textColor.r,
                                                                            FishUI.Theme.textColor.g,
                                                                            FishUI.Theme.textColor.b,
-                                                                   0.1) : "transparent"
+                                                                   0.05) : "transparent"
 
                     smooth: true
                 }
 
                 RowLayout {
                     anchors.fill: parent
-                    anchors.leftMargin: FishUI.Units.largeSpacing
-                    spacing: FishUI.Units.smallSpacing * 1.5
+                    anchors.leftMargin: FishUI.Units.smallSpacing
+                    spacing: FishUI.Units.smallSpacing
 
-                    Image {
-                        id: icon
-                        width: 16
-                        height: width
-                        source: FishUI.Theme.darkMode || isCurrent ? "qrc:/images/sidebar/dark/" + model.iconSource
-                                                                   : "qrc:/images/sidebar/light/" + model.iconSource
-                        sourceSize: Qt.size(width, height)
+                    Rectangle {
+                        id: iconRect
+                        width: 24
+                        height: 24
                         Layout.alignment: Qt.AlignVCenter
+                        radius: 6
+                        color: model.iconColor
+
+                        Image {
+                            id: icon
+                            anchors.centerIn: parent
+                            width: 16
+                            height: width
+                            source: "qrc:/images/sidebar/dark/" + model.iconSource
+                            sourceSize: Qt.size(width, height)
+                            Layout.alignment: Qt.AlignVCenter
+                        }
                     }
+
 
                     Label {
                         id: itemTitle
                         text: model.title
-                        color: isCurrent ? FishUI.Theme.highlightedTextColor : FishUI.Theme.textColor
+                        color: FishUI.Theme.disabledTextColor
+                        font.pointSize: 8
                     }
 
                     Item {
