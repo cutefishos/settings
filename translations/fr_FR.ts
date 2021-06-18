@@ -133,7 +133,7 @@
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="127"/>
         <source>Accent color</source>
-        <translation>Couleur d&apos;accent</translation>
+        <translation>Couleur d&apos;accentuation</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="205"/>
@@ -227,7 +227,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="173"/>
         <source>Last Charged to</source>
-        <translation>Dernière imputation à</translation>
+        <translation>Dernière charge</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="179"/>
