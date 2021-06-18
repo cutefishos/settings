@@ -7,44 +7,44 @@
         <location filename="../src/qml/User/AddUserDialog.qml" line="72"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="78"/>
         <source>User name</source>
-        <translation type="unfinished"></translation>
+        <translation>İstifadəçi Adı</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="85"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="91"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Şifrə</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="98"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="104"/>
         <source>Verify password</source>
-        <translation type="unfinished"></translation>
+        <translation>Şifrəni yoxlayın</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="111"/>
         <source>Account type</source>
-        <translation type="unfinished"></translation>
+        <translation>Hesab Növü</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>Standart</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Administrator</source>
-        <translation type="unfinished"></translation>
+        <translation>Administrator</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="130"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Ləğv</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="137"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Əlavə</translation>
     </message>
 </context>
 <context>
@@ -52,7 +52,7 @@
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="29"/>
         <source>Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth</translation>
     </message>
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="49"/>
