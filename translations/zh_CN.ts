@@ -232,22 +232,22 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="175"/>
         <source>Health</source>
-        <translation type="unfinished"></translation>
+        <translation>健康</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="191"/>
         <source>Poor</source>
-        <translation type="unfinished"></translation>
+        <translation>较差</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="220"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>正常</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="249"/>
         <source>Excellent</source>
-        <translation type="unfinished"></translation>
+        <translation>极佳</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="271"/>
