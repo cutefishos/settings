@@ -44,8 +44,7 @@ QStringList CIconTheme::list()
                 continue;
             }
 
-            if (!QFileInfo::exists(itemPath + "/index.desktop") &&
-                    !QFileInfo::exists(itemPath + "/index.theme")) {
+            if (!QFileInfo::exists(itemPath + "/index.theme")) {
                 continue;
             }
 
