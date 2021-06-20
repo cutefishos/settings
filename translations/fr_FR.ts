@@ -76,32 +76,37 @@
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="80"/>
+        <location filename="../src/qml/About/Main.qml" line="68"/>
+        <source>Built on %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/About/Main.qml" line="76"/>
         <source>System Version</source>
         <translation>Version du système</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="85"/>
+        <location filename="../src/qml/About/Main.qml" line="81"/>
         <source>System Type</source>
         <translation>Type de système</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="90"/>
+        <location filename="../src/qml/About/Main.qml" line="86"/>
         <source>Kernel Version</source>
         <translation>Version du noyau</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="95"/>
+        <location filename="../src/qml/About/Main.qml" line="91"/>
         <source>Processor</source>
         <translation>Processeur</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="100"/>
+        <location filename="../src/qml/About/Main.qml" line="96"/>
         <source>RAM</source>
         <translation>Mémoire vive</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="105"/>
+        <location filename="../src/qml/About/Main.qml" line="101"/>
         <source>Internal Storage</source>
         <translation>Stockage interne</translation>
     </message>
@@ -225,17 +230,37 @@
         <translation>W</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="173"/>
+        <location filename="../src/qml/Battery/Main.qml" line="175"/>
+        <source>Health</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Battery/Main.qml" line="191"/>
+        <source>Poor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Battery/Main.qml" line="220"/>
+        <source>Normal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Battery/Main.qml" line="249"/>
+        <source>Excellent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Battery/Main.qml" line="271"/>
         <source>Last Charged to</source>
         <translation>Dernière charge</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="179"/>
+        <location filename="../src/qml/Battery/Main.qml" line="277"/>
         <source>Maximum Capacity</source>
         <translation>Capacité maximale</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="192"/>
+        <location filename="../src/qml/Battery/Main.qml" line="290"/>
         <source>No battery found</source>
         <translation>Aucune batterie trouvée</translation>
     </message>
@@ -245,42 +270,47 @@
         <translation>Affichage</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="66"/>
+        <location filename="../src/qml/Display/Main.qml" line="67"/>
         <source>Brightness</source>
         <translation>Luminosité</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="112"/>
+        <location filename="../src/qml/Display/Main.qml" line="111"/>
         <source>Screen</source>
         <translation>Écran</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="156"/>
+        <location filename="../src/qml/Display/Main.qml" line="151"/>
+        <source>Screen Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Display/Main.qml" line="160"/>
         <source>Resolution</source>
         <translation>Résolution</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="175"/>
+        <location filename="../src/qml/Display/Main.qml" line="179"/>
         <source>Refresh rate</source>
         <translation>Taux de rafraîchissement</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="195"/>
+        <location filename="../src/qml/Display/Main.qml" line="199"/>
         <source>Rotation</source>
         <translation>Rotation</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="230"/>
+        <location filename="../src/qml/Display/Main.qml" line="243"/>
         <source>Enabled</source>
         <translation>Activé</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="261"/>
+        <location filename="../src/qml/Display/Main.qml" line="274"/>
         <source>Scale</source>
         <translation>Échelle</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="329"/>
+        <location filename="../src/qml/Display/Main.qml" line="342"/>
         <source>Need to log in again to take effect</source>
         <translation>Vous devez vous reconnecter pour prendre effet</translation>
     </message>
@@ -315,12 +345,10 @@
         <translation>Taille</translation>
     </message>
     <message>
-        <location filename="../src/qml/Network/Main.qml" line="32"/>
         <source>Network</source>
-        <translation>Réseau</translation>
+        <translation type="vanished">Réseau</translation>
     </message>
     <message>
-        <location filename="../src/qml/Network/Main.qml" line="144"/>
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
         <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Wired</source>
@@ -357,7 +385,7 @@
         <translation>Utilisateur</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/Main.qml" line="83"/>
+        <location filename="../src/qml/User/Main.qml" line="80"/>
         <source>Add user</source>
         <translation>Ajouter un utilisateur</translation>
     </message>
@@ -386,27 +414,33 @@
         <source>WLAN</source>
         <translation>WLAN</translation>
     </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="32"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="71"/>
+        <source>Bluetooth</source>
+        <translation type="unfinished">Bluetooth</translation>
+    </message>
 </context>
 <context>
     <name>SideBar</name>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="107"/>
+        <location filename="../src/qml/SideBar.qml" line="112"/>
         <source>User</source>
         <translation>Utilisateur</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="75"/>
+        <location filename="../src/qml/SideBar.qml" line="76"/>
         <source>Display</source>
         <translation>Affichage</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="52"/>
+        <location filename="../src/qml/SideBar.qml" line="51"/>
         <source>WLAN</source>
         <translation>WLAN</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="56"/>
-        <location filename="../src/qml/SideBar.qml" line="64"/>
+        <location filename="../src/qml/SideBar.qml" line="65"/>
         <source>Network and connection</source>
         <translation>Réseau et connexion</translation>
     </message>
@@ -416,48 +450,48 @@
         <translation>Filaire</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="79"/>
-        <location filename="../src/qml/SideBar.qml" line="87"/>
-        <location filename="../src/qml/SideBar.qml" line="95"/>
-        <location filename="../src/qml/SideBar.qml" line="103"/>
+        <location filename="../src/qml/SideBar.qml" line="81"/>
+        <location filename="../src/qml/SideBar.qml" line="90"/>
+        <location filename="../src/qml/SideBar.qml" line="99"/>
+        <location filename="../src/qml/SideBar.qml" line="108"/>
         <source>Display and appearance</source>
         <translation>Affichage et apparence</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="83"/>
+        <location filename="../src/qml/SideBar.qml" line="85"/>
         <source>Appearance</source>
         <translation>Apparence</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="91"/>
+        <location filename="../src/qml/SideBar.qml" line="94"/>
         <source>Background</source>
         <translation>Arrière-plan</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="99"/>
+        <location filename="../src/qml/SideBar.qml" line="103"/>
         <source>Dock</source>
         <translation>Dock</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="111"/>
-        <location filename="../src/qml/SideBar.qml" line="119"/>
-        <location filename="../src/qml/SideBar.qml" line="127"/>
-        <location filename="../src/qml/SideBar.qml" line="142"/>
+        <location filename="../src/qml/SideBar.qml" line="117"/>
+        <location filename="../src/qml/SideBar.qml" line="126"/>
+        <location filename="../src/qml/SideBar.qml" line="135"/>
+        <location filename="../src/qml/SideBar.qml" line="151"/>
         <source>System</source>
         <translation>Système</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="115"/>
+        <location filename="../src/qml/SideBar.qml" line="121"/>
         <source>Language</source>
         <translation>Langue</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="123"/>
+        <location filename="../src/qml/SideBar.qml" line="130"/>
         <source>Battery</source>
         <translation>Batterie</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="138"/>
+        <location filename="../src/qml/SideBar.qml" line="146"/>
         <source>About</source>
         <translation>À propos</translation>
     </message>
@@ -465,17 +499,17 @@
 <context>
     <name>UserDelegateItem</name>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="128"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="124"/>
         <source>Currently logged</source>
         <translation>Actuellement connecté</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="169"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="165"/>
         <source>Automatic login</source>
         <translation>Connexion automatique</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="188"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="184"/>
         <source>Delete this user</source>
         <translation>Supprimer cet utilisateur</translation>
     </message>
@@ -483,25 +517,21 @@
 <context>
     <name>WifiItem</name>
     <message>
-        <location filename="../src/qml/Network/WifiItem.qml" line="184"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="184"/>
         <source>Password</source>
         <translation>Mot de passe</translation>
     </message>
     <message>
-        <location filename="../src/qml/Network/WifiItem.qml" line="204"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
         <source>Show password</source>
         <translation>Afficher le mot de passe</translation>
     </message>
     <message>
-        <location filename="../src/qml/Network/WifiItem.qml" line="213"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="213"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../src/qml/Network/WifiItem.qml" line="219"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="219"/>
         <source>Connect</source>
         <translation>Brancher</translation>
@@ -510,7 +540,6 @@
 <context>
     <name>WifiView</name>
     <message>
-        <location filename="../src/qml/Network/WifiView.qml" line="35"/>
         <location filename="../src/qml/WLAN/WifiView.qml" line="35"/>
         <source>WLAN</source>
         <translation>WLAN</translation>
@@ -519,61 +548,51 @@
 <context>
     <name>WirelessDetailsDialog</name>
     <message>
-        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="65"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="65"/>
         <source>Auto-Join</source>
         <translation>Connexion automatique</translation>
     </message>
     <message>
-        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="81"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="81"/>
         <source>Security</source>
         <translation>Sécurité</translation>
     </message>
     <message>
-        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="93"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="93"/>
         <source>Signal</source>
         <translation>Signal</translation>
     </message>
     <message>
-        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="105"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="105"/>
         <source>IPv4 Address</source>
         <translation>Adresse IPv4</translation>
     </message>
     <message>
-        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="119"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="119"/>
         <source>IPv6 Address</source>
         <translation>Adresse IPv6</translation>
     </message>
     <message>
-        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="133"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="133"/>
         <source>MAC Address</source>
         <translation>Adresse MAC</translation>
     </message>
     <message>
-        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="147"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="147"/>
         <source>Gateway</source>
         <translation>Passerelle</translation>
     </message>
     <message>
-        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="160"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="160"/>
         <source>DNS</source>
         <translation>DNS</translation>
     </message>
     <message>
-        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="177"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="177"/>
         <source>Close</source>
         <translation>Fermer</translation>
     </message>
     <message>
-        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="183"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="183"/>
         <source>Forget this network</source>
         <translation>Oublier ce réseau</translation>
