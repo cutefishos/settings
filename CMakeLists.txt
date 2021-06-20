@@ -38,6 +38,7 @@ set(SRCS
     src/background.cpp
     src/password.cpp
     src/batteryhistorymodel.cpp
+    src/cicontheme.cpp
 )
 
 set(RESOURCES
