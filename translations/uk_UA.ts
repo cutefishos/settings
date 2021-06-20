@@ -162,25 +162,25 @@
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="260"/>
-        <location filename="../src/qml/Dock/Main.qml" line="90"/>
+        <location filename="../src/qml/Dock/Main.qml" line="91"/>
         <source>Small</source>
         <translation>Малий</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="264"/>
-        <location filename="../src/qml/Dock/Main.qml" line="94"/>
+        <location filename="../src/qml/Dock/Main.qml" line="95"/>
         <source>Medium</source>
         <translation>Середній</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="268"/>
-        <location filename="../src/qml/Dock/Main.qml" line="98"/>
+        <location filename="../src/qml/Dock/Main.qml" line="99"/>
         <source>Large</source>
         <translation>Великий</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="272"/>
-        <location filename="../src/qml/Dock/Main.qml" line="102"/>
+        <location filename="../src/qml/Dock/Main.qml" line="103"/>
         <source>Huge</source>
         <translation>Величезний</translation>
     </message>
@@ -340,9 +340,24 @@
         <translation>Справа</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="79"/>
+        <location filename="../src/qml/Dock/Main.qml" line="80"/>
         <source>Size</source>
         <translation>Розмір</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Dock/Main.qml" line="147"/>
+        <source>Visibility</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Dock/Main.qml" line="155"/>
+        <source>Always show</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Dock/Main.qml" line="159"/>
+        <source>Always hidden</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/Wired/Main.qml" line="32"/>

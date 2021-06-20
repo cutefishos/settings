@@ -74,6 +74,7 @@ ItemPage {
                 }
             }
 
+            // Dock Size
             RoundedItem {
                 Label {
                     text: qsTr("Size")
@@ -137,6 +138,29 @@ ItemPage {
 
                         appearance.setDockIconSize(iconSize)
                     }
+                }
+            }
+
+            // Visibility
+            RoundedItem {
+                Label {
+                    text: qsTr("Visibility")
+                    color: FishUI.Theme.disabledTextColor
+                }
+
+                ComboBox {
+                    Layout.fillWidth: true
+                    model: ListModel {
+                        ListElement {
+                            name: qsTr("Always show")
+                        }
+
+                        ListElement {
+                            name: qsTr("Always hidden")
+                        }
+                    }
+                    currentIndex: appearance.dockVisibility
+                    onCurrentIndexChanged: appearance.setDockVisibility(currentIndex)
                 }
             }
 
