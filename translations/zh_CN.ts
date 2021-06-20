@@ -230,17 +230,37 @@
         <translation>瓦特</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="173"/>
+        <location filename="../src/qml/Battery/Main.qml" line="175"/>
+        <source>Health</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Battery/Main.qml" line="191"/>
+        <source>Poor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Battery/Main.qml" line="220"/>
+        <source>Normal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Battery/Main.qml" line="249"/>
+        <source>Excellent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Battery/Main.qml" line="271"/>
         <source>Last Charged to</source>
         <translation>上一次充电至</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="179"/>
+        <location filename="../src/qml/Battery/Main.qml" line="277"/>
         <source>Maximum Capacity</source>
         <translation>最大容量</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="192"/>
+        <location filename="../src/qml/Battery/Main.qml" line="290"/>
         <source>No battery found</source>
         <translation>找不到电池</translation>
     </message>
@@ -400,41 +420,41 @@
 <context>
     <name>SideBar</name>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="74"/>
+        <location filename="../src/qml/SideBar.qml" line="76"/>
         <source>Display</source>
         <translation>显示</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="55"/>
-        <location filename="../src/qml/SideBar.qml" line="63"/>
+        <location filename="../src/qml/SideBar.qml" line="56"/>
+        <location filename="../src/qml/SideBar.qml" line="65"/>
         <source>Network and connection</source>
         <translation>网络与连接</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="78"/>
-        <location filename="../src/qml/SideBar.qml" line="86"/>
-        <location filename="../src/qml/SideBar.qml" line="94"/>
-        <location filename="../src/qml/SideBar.qml" line="102"/>
+        <location filename="../src/qml/SideBar.qml" line="81"/>
+        <location filename="../src/qml/SideBar.qml" line="90"/>
+        <location filename="../src/qml/SideBar.qml" line="99"/>
+        <location filename="../src/qml/SideBar.qml" line="108"/>
         <source>Display and appearance</source>
         <translation>显示与外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="82"/>
+        <location filename="../src/qml/SideBar.qml" line="85"/>
         <source>Appearance</source>
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="98"/>
+        <location filename="../src/qml/SideBar.qml" line="103"/>
         <source>Dock</source>
         <translation>程序坞</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="106"/>
+        <location filename="../src/qml/SideBar.qml" line="112"/>
         <source>User</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="90"/>
+        <location filename="../src/qml/SideBar.qml" line="94"/>
         <source>Background</source>
         <translation>背景</translation>
     </message>
@@ -444,30 +464,30 @@
         <translation>WLAN</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="59"/>
+        <location filename="../src/qml/SideBar.qml" line="60"/>
         <source>Wired</source>
         <translation>有线网络</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="110"/>
-        <location filename="../src/qml/SideBar.qml" line="118"/>
+        <location filename="../src/qml/SideBar.qml" line="117"/>
         <location filename="../src/qml/SideBar.qml" line="126"/>
-        <location filename="../src/qml/SideBar.qml" line="141"/>
+        <location filename="../src/qml/SideBar.qml" line="135"/>
+        <location filename="../src/qml/SideBar.qml" line="151"/>
         <source>System</source>
         <translation>系统</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="114"/>
+        <location filename="../src/qml/SideBar.qml" line="121"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="122"/>
+        <location filename="../src/qml/SideBar.qml" line="130"/>
         <source>Battery</source>
         <translation>电池</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="137"/>
+        <location filename="../src/qml/SideBar.qml" line="146"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
