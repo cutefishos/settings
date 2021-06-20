@@ -76,37 +76,32 @@
         <translation>O zařízení</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="68"/>
-        <source>Built on %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/About/Main.qml" line="76"/>
+        <location filename="../src/qml/About/Main.qml" line="80"/>
         <source>System Version</source>
         <translation>Verze systému</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="81"/>
+        <location filename="../src/qml/About/Main.qml" line="85"/>
         <source>System Type</source>
         <translation>Typ systému</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="86"/>
+        <location filename="../src/qml/About/Main.qml" line="90"/>
         <source>Kernel Version</source>
         <translation>Verze jádra</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="91"/>
+        <location filename="../src/qml/About/Main.qml" line="95"/>
         <source>Processor</source>
         <translation>Procesor</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="96"/>
+        <location filename="../src/qml/About/Main.qml" line="100"/>
         <source>RAM</source>
         <translation>Operační paměť RAM</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="101"/>
+        <location filename="../src/qml/About/Main.qml" line="105"/>
         <source>Internal Storage</source>
         <translation>Interní úložiště</translation>
     </message>
@@ -230,37 +225,17 @@
         <translation>W</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="175"/>
-        <source>Health</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Battery/Main.qml" line="191"/>
-        <source>Poor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Battery/Main.qml" line="220"/>
-        <source>Normal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Battery/Main.qml" line="249"/>
-        <source>Excellent</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Battery/Main.qml" line="271"/>
+        <location filename="../src/qml/Battery/Main.qml" line="173"/>
         <source>Last Charged to</source>
         <translation>Naposledy nabito na</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="277"/>
+        <location filename="../src/qml/Battery/Main.qml" line="179"/>
         <source>Maximum Capacity</source>
         <translation>Maximální kapacita</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="290"/>
+        <location filename="../src/qml/Battery/Main.qml" line="192"/>
         <source>No battery found</source>
         <translation>Nenalezen žádná baterie</translation>
     </message>
@@ -270,47 +245,42 @@
         <translation>Displej</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="67"/>
+        <location filename="../src/qml/Display/Main.qml" line="66"/>
         <source>Brightness</source>
         <translation>Jas</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="111"/>
+        <location filename="../src/qml/Display/Main.qml" line="112"/>
         <source>Screen</source>
         <translation>Obrazovka</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="151"/>
-        <source>Screen Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Display/Main.qml" line="160"/>
+        <location filename="../src/qml/Display/Main.qml" line="156"/>
         <source>Resolution</source>
         <translation>Rozlišení</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="179"/>
+        <location filename="../src/qml/Display/Main.qml" line="175"/>
         <source>Refresh rate</source>
         <translation>Obnovovací frekvence</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="199"/>
+        <location filename="../src/qml/Display/Main.qml" line="195"/>
         <source>Rotation</source>
         <translation>Rotace</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="243"/>
+        <location filename="../src/qml/Display/Main.qml" line="230"/>
         <source>Enabled</source>
         <translation>Zapnutá</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="274"/>
+        <location filename="../src/qml/Display/Main.qml" line="261"/>
         <source>Scale</source>
         <translation>Velikost uživatelského rozhraní</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="342"/>
+        <location filename="../src/qml/Display/Main.qml" line="329"/>
         <source>Need to log in again to take effect</source>
         <translation>Aby změna proběhla, je nutné se znovu přihlásit</translation>
     </message>
@@ -345,10 +315,12 @@
         <translation>Velikost</translation>
     </message>
     <message>
+        <location filename="../src/qml/Network/Main.qml" line="32"/>
         <source>Network</source>
-        <translation type="vanished">Sítě</translation>
+        <translation>Sítě</translation>
     </message>
     <message>
+        <location filename="../src/qml/Network/Main.qml" line="144"/>
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
         <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Wired</source>
@@ -385,7 +357,7 @@
         <translation>Uživatel</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/Main.qml" line="80"/>
+        <location filename="../src/qml/User/Main.qml" line="83"/>
         <source>Add user</source>
         <translation>Přidat uživatele</translation>
     </message>
@@ -414,33 +386,27 @@
         <source>WLAN</source>
         <translation>Připojení WLAN</translation>
     </message>
-    <message>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="32"/>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="71"/>
-        <source>Bluetooth</source>
-        <translation type="unfinished">Bluetooth</translation>
-    </message>
 </context>
 <context>
     <name>SideBar</name>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="112"/>
+        <location filename="../src/qml/SideBar.qml" line="107"/>
         <source>User</source>
         <translation>Uživatel</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="76"/>
+        <location filename="../src/qml/SideBar.qml" line="75"/>
         <source>Display</source>
         <translation>Displej</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="51"/>
+        <location filename="../src/qml/SideBar.qml" line="52"/>
         <source>WLAN</source>
         <translation>Připojení WLAN</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="56"/>
-        <location filename="../src/qml/SideBar.qml" line="65"/>
+        <location filename="../src/qml/SideBar.qml" line="64"/>
         <source>Network and connection</source>
         <translation>Sítě a připojení</translation>
     </message>
@@ -450,48 +416,48 @@
         <translation>Připojení přes kabel</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="81"/>
-        <location filename="../src/qml/SideBar.qml" line="90"/>
-        <location filename="../src/qml/SideBar.qml" line="99"/>
-        <location filename="../src/qml/SideBar.qml" line="108"/>
+        <location filename="../src/qml/SideBar.qml" line="79"/>
+        <location filename="../src/qml/SideBar.qml" line="87"/>
+        <location filename="../src/qml/SideBar.qml" line="95"/>
+        <location filename="../src/qml/SideBar.qml" line="103"/>
         <source>Display and appearance</source>
         <translation>Displej a vzhled</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="85"/>
+        <location filename="../src/qml/SideBar.qml" line="83"/>
         <source>Appearance</source>
         <translation>Vzhled</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="94"/>
+        <location filename="../src/qml/SideBar.qml" line="91"/>
         <source>Background</source>
         <translation>Pozadí</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="103"/>
+        <location filename="../src/qml/SideBar.qml" line="99"/>
         <source>Dock</source>
         <translation>Dock aplikací</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="117"/>
-        <location filename="../src/qml/SideBar.qml" line="126"/>
-        <location filename="../src/qml/SideBar.qml" line="135"/>
-        <location filename="../src/qml/SideBar.qml" line="151"/>
+        <location filename="../src/qml/SideBar.qml" line="111"/>
+        <location filename="../src/qml/SideBar.qml" line="119"/>
+        <location filename="../src/qml/SideBar.qml" line="127"/>
+        <location filename="../src/qml/SideBar.qml" line="142"/>
         <source>System</source>
         <translation>Systém</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="121"/>
+        <location filename="../src/qml/SideBar.qml" line="115"/>
         <source>Language</source>
         <translation>Jazyk</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="130"/>
+        <location filename="../src/qml/SideBar.qml" line="123"/>
         <source>Battery</source>
         <translation>Baterie</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="146"/>
+        <location filename="../src/qml/SideBar.qml" line="138"/>
         <source>About</source>
         <translation>Informace</translation>
     </message>
@@ -499,17 +465,17 @@
 <context>
     <name>UserDelegateItem</name>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="124"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="128"/>
         <source>Currently logged</source>
         <translation>Právě přihlášený</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="165"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="169"/>
         <source>Automatic login</source>
         <translation>Automatické přihlášení</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="184"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="188"/>
         <source>Delete this user</source>
         <translation>Smazat tohoto uživatele</translation>
     </message>
@@ -517,21 +483,25 @@
 <context>
     <name>WifiItem</name>
     <message>
+        <location filename="../src/qml/Network/WifiItem.qml" line="184"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="184"/>
         <source>Password</source>
         <translation>Heslo</translation>
     </message>
     <message>
+        <location filename="../src/qml/Network/WifiItem.qml" line="204"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
         <source>Show password</source>
         <translation>Zobrazit heslo</translation>
     </message>
     <message>
+        <location filename="../src/qml/Network/WifiItem.qml" line="213"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="213"/>
         <source>Cancel</source>
         <translation>Zrušit</translation>
     </message>
     <message>
+        <location filename="../src/qml/Network/WifiItem.qml" line="219"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="219"/>
         <source>Connect</source>
         <translation>Připojit se</translation>
@@ -540,6 +510,7 @@
 <context>
     <name>WifiView</name>
     <message>
+        <location filename="../src/qml/Network/WifiView.qml" line="35"/>
         <location filename="../src/qml/WLAN/WifiView.qml" line="35"/>
         <source>WLAN</source>
         <translation>Připojení WLAN</translation>
@@ -548,51 +519,61 @@
 <context>
     <name>WirelessDetailsDialog</name>
     <message>
+        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="65"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="65"/>
         <source>Auto-Join</source>
         <translation>Automaticky se připojovat</translation>
     </message>
     <message>
+        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="81"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="81"/>
         <source>Security</source>
         <translation>Zabezpečení</translation>
     </message>
     <message>
+        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="93"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="93"/>
         <source>Signal</source>
         <translation>Signál</translation>
     </message>
     <message>
+        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="105"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="105"/>
         <source>IPv4 Address</source>
         <translation>Adresa IPv4</translation>
     </message>
     <message>
+        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="119"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="119"/>
         <source>IPv6 Address</source>
         <translation>Adresa IPv6</translation>
     </message>
     <message>
+        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="133"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="133"/>
         <source>MAC Address</source>
         <translation>MAC adresa</translation>
     </message>
     <message>
+        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="147"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="147"/>
         <source>Gateway</source>
         <translation>Brána</translation>
     </message>
     <message>
+        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="160"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="160"/>
         <source>DNS</source>
         <translation>DNS</translation>
     </message>
     <message>
+        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="177"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="177"/>
         <source>Close</source>
         <translation>Zavřít</translation>
     </message>
     <message>
+        <location filename="../src/qml/Network/WirelessDetailsDialog.qml" line="183"/>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="183"/>
         <source>Forget this network</source>
         <translation>Zapomenout tuto síť</translation>

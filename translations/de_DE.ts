@@ -230,37 +230,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="175"/>
-        <source>Health</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Battery/Main.qml" line="191"/>
-        <source>Poor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Battery/Main.qml" line="220"/>
-        <source>Normal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Battery/Main.qml" line="249"/>
-        <source>Excellent</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Battery/Main.qml" line="271"/>
+        <location filename="../src/qml/Battery/Main.qml" line="173"/>
         <source>Last Charged to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="277"/>
+        <location filename="../src/qml/Battery/Main.qml" line="179"/>
         <source>Maximum Capacity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="290"/>
+        <location filename="../src/qml/Battery/Main.qml" line="192"/>
         <source>No battery found</source>
         <translation type="unfinished"></translation>
     </message>
@@ -420,12 +400,12 @@
 <context>
     <name>SideBar</name>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="112"/>
+        <location filename="../src/qml/SideBar.qml" line="106"/>
         <source>User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="76"/>
+        <location filename="../src/qml/SideBar.qml" line="74"/>
         <source>Display</source>
         <translation type="unfinished"></translation>
     </message>
@@ -435,59 +415,59 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="56"/>
-        <location filename="../src/qml/SideBar.qml" line="65"/>
+        <location filename="../src/qml/SideBar.qml" line="55"/>
+        <location filename="../src/qml/SideBar.qml" line="63"/>
         <source>Network and connection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="60"/>
+        <location filename="../src/qml/SideBar.qml" line="59"/>
         <source>Wired</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="81"/>
-        <location filename="../src/qml/SideBar.qml" line="90"/>
-        <location filename="../src/qml/SideBar.qml" line="99"/>
-        <location filename="../src/qml/SideBar.qml" line="108"/>
+        <location filename="../src/qml/SideBar.qml" line="78"/>
+        <location filename="../src/qml/SideBar.qml" line="86"/>
+        <location filename="../src/qml/SideBar.qml" line="94"/>
+        <location filename="../src/qml/SideBar.qml" line="102"/>
         <source>Display and appearance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="85"/>
+        <location filename="../src/qml/SideBar.qml" line="82"/>
         <source>Appearance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="94"/>
+        <location filename="../src/qml/SideBar.qml" line="90"/>
         <source>Background</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="103"/>
+        <location filename="../src/qml/SideBar.qml" line="98"/>
         <source>Dock</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="117"/>
+        <location filename="../src/qml/SideBar.qml" line="110"/>
+        <location filename="../src/qml/SideBar.qml" line="118"/>
         <location filename="../src/qml/SideBar.qml" line="126"/>
-        <location filename="../src/qml/SideBar.qml" line="135"/>
-        <location filename="../src/qml/SideBar.qml" line="151"/>
+        <location filename="../src/qml/SideBar.qml" line="141"/>
         <source>System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="121"/>
+        <location filename="../src/qml/SideBar.qml" line="114"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="130"/>
+        <location filename="../src/qml/SideBar.qml" line="122"/>
         <source>Battery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="146"/>
+        <location filename="../src/qml/SideBar.qml" line="137"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
