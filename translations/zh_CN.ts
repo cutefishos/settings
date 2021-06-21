@@ -347,17 +347,17 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="147"/>
         <source>Visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>能见度</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="155"/>
         <source>Always show</source>
-        <translation type="unfinished"></translation>
+        <translation>总是显示</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="159"/>
         <source>Always hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>总是隐藏</translation>
     </message>
     <message>
         <location filename="../src/qml/Wired/Main.qml" line="32"/>

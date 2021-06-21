@@ -352,12 +352,12 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="155"/>
         <source>Always show</source>
-        <translation type="unfinished"></translation>
+        <translation>Selalu tampil</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="159"/>
         <source>Always hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Selalu tersembunyi</translation>
     </message>
     <message>
         <source>Network</source>

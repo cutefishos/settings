@@ -78,7 +78,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="68"/>
         <source>Built on %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Construído em %1</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="76"/>
@@ -232,22 +232,22 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="175"/>
         <source>Health</source>
-        <translation type="unfinished"></translation>
+        <translation>Saúde</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="191"/>
         <source>Poor</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruim</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="220"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>Normal</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="249"/>
         <source>Excellent</source>
-        <translation type="unfinished"></translation>
+        <translation>Excelente</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="271"/>
@@ -282,7 +282,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="151"/>
         <source>Screen Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome de tela</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="160"/>
@@ -347,17 +347,17 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="147"/>
         <source>Visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Visibilidade</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="155"/>
         <source>Always show</source>
-        <translation type="unfinished"></translation>
+        <translation>Sempre exibir</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="159"/>
         <source>Always hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Sempre escondido</translation>
     </message>
     <message>
         <source>Network</source>
@@ -433,7 +433,7 @@
         <location filename="../src/qml/Bluetooth/Main.qml" line="32"/>
         <location filename="../src/qml/Bluetooth/Main.qml" line="71"/>
         <source>Bluetooth</source>
-        <translation type="unfinished">Bluetooth</translation>
+        <translation>Bluetooth</translation>
     </message>
 </context>
 <context>
