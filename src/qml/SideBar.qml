@@ -34,7 +34,8 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: rootWindow.sideBarColor
+        color: FishUI.Theme.darkMode ? "#333333" : "#EBECF2"
+        opacity: rootWindow.compositing ? 0.7 : 1.0
 
         Behavior on color {
             ColorAnimation {
@@ -154,6 +155,16 @@ Item {
 
     ColumnLayout {
         anchors.fill: parent
+        anchors.margins: 0
+        spacing: 0
+
+        Label {
+            text: rootWindow.title
+            leftPadding: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
+            topPadding: FishUI.Units.largeSpacing
+            bottomPadding: 0
+            font.pointSize: 15
+        }
 
         ListView {
             id: listView

@@ -33,53 +33,20 @@ FishUI.Window {
 
     minimumWidth: 900
     minimumHeight: 600
-    headerBarHeight: 50
-    backgroundColor: FishUI.Theme.darkMode ? "#262626" : "#F3F4F9"
 
-    property var sideBarColor: FishUI.Theme.darkMode ? "#333333" : "#EBECF2"
+    background.color: FishUI.Theme.darkMode ? "#262626" : "#F3F4F9"
+    background.opacity: 0.5
+    header.height: 40
+    contentTopMargin: 0
 
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
-    headerBar: Item {
-        Rectangle {
-            id: leftArea
-            anchors.left: parent.left
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            implicitWidth: sideBar.width
-            color: rootWindow.sideBarColor
-
-            Behavior on color {
-                ColorAnimation {
-                    duration: 250
-                    easing.type: Easing.Linear
-                }
-            }
-        }
-
-        RowLayout {
-            anchors.fill: parent
-
-            Label {
-                text: rootWindow.title
-                leftPadding: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
-                font.pointSize: parent.height > 0 ? parent.height / 3 : 1
-                Layout.preferredWidth: sideBar.width
-                Layout.alignment: Qt.AlignBottom
-            }
-
-            Label {
-                text: stackView.currentItem.headerTitle
-                font.pointSize: parent.height > 0 ? parent.height / 3 : 1
-                leftPadding: FishUI.Units.largeSpacing * 2
-                Layout.alignment: Qt.AlignBottom
-            }
-
-            Item {
-                Layout.fillWidth: true
-            }
-        }
+    FishUI.WindowBlur {
+        view: rootWindow
+        geometry: Qt.rect(rootWindow.x, rootWindow.y, rootWindow.width, rootWindow.height)
+        windowRadius: rootWindow.background.radius
+        enabled: true
     }
 
     RowLayout {
