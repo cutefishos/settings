@@ -146,21 +146,22 @@ ItemPage {
                 Label {
                     text: qsTr("Visibility")
                     color: FishUI.Theme.disabledTextColor
+                    bottomPadding: FishUI.Units.smallSpacing
                 }
 
-                ComboBox {
+                TabBar {
                     Layout.fillWidth: true
-                    model: ListModel {
-                        ListElement {
-                            name: qsTr("Always show")
-                        }
-
-                        ListElement {
-                            name: qsTr("Always hidden")
-                        }
-                    }
                     currentIndex: appearance.dockVisibility
                     onCurrentIndexChanged: appearance.setDockVisibility(currentIndex)
+
+                    TabButton {
+                        text: qsTr("Always show")
+                    }
+
+                    TabButton {
+                        text: qsTr("Always hidden")
+                    }
+
                 }
             }
 
