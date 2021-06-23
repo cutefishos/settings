@@ -58,8 +58,8 @@ Item {
         }
 
         ListElement {
-            title: qsTr("Wired")
-            name: "wired"
+            title: qsTr("Ethernet")
+            name: "ethernet"
             page: "qrc:/qml/Wired/Main.qml"
             iconSource: "network.svg"
             iconColor: "#0067FF"

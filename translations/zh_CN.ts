@@ -360,12 +360,6 @@
         <translation>总是隐藏</translation>
     </message>
     <message>
-        <location filename="../src/qml/Wired/Main.qml" line="32"/>
-        <location filename="../src/qml/Wired/Main.qml" line="80"/>
-        <source>Wired</source>
-        <translation>有线网络</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
         <source>Power</source>
         <translation>电源</translation>
@@ -411,12 +405,12 @@
         <translation>背景类型</translation>
     </message>
     <message>
-        <location filename="../src/qml/Wallpaper/Main.qml" line="76"/>
+        <location filename="../src/qml/Wallpaper/Main.qml" line="77"/>
         <source>Picture</source>
         <translation>图片</translation>
     </message>
     <message>
-        <location filename="../src/qml/Wallpaper/Main.qml" line="80"/>
+        <location filename="../src/qml/Wallpaper/Main.qml" line="81"/>
         <source>Color</source>
         <translation>纯色</translation>
     </message>
@@ -431,78 +425,84 @@
         <source>Bluetooth</source>
         <translation>蓝牙</translation>
     </message>
+    <message>
+        <location filename="../src/qml/Wired/Main.qml" line="32"/>
+        <location filename="../src/qml/Wired/Main.qml" line="80"/>
+        <source>Ethernet</source>
+        <translation>以太网</translation>
+    </message>
 </context>
 <context>
     <name>SideBar</name>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="76"/>
+        <location filename="../src/qml/SideBar.qml" line="77"/>
         <source>Display</source>
         <translation>显示</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="56"/>
-        <location filename="../src/qml/SideBar.qml" line="65"/>
+        <location filename="../src/qml/SideBar.qml" line="57"/>
+        <location filename="../src/qml/SideBar.qml" line="66"/>
         <source>Network and connection</source>
         <translation>网络与连接</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="81"/>
-        <location filename="../src/qml/SideBar.qml" line="90"/>
-        <location filename="../src/qml/SideBar.qml" line="99"/>
-        <location filename="../src/qml/SideBar.qml" line="108"/>
+        <location filename="../src/qml/SideBar.qml" line="61"/>
+        <source>Ethernet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="82"/>
+        <location filename="../src/qml/SideBar.qml" line="91"/>
+        <location filename="../src/qml/SideBar.qml" line="100"/>
+        <location filename="../src/qml/SideBar.qml" line="109"/>
         <source>Display and appearance</source>
         <translation>显示与外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="85"/>
+        <location filename="../src/qml/SideBar.qml" line="86"/>
         <source>Appearance</source>
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="103"/>
+        <location filename="../src/qml/SideBar.qml" line="104"/>
         <source>Dock</source>
         <translation>程序坞</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="112"/>
+        <location filename="../src/qml/SideBar.qml" line="113"/>
         <source>User</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="94"/>
+        <location filename="../src/qml/SideBar.qml" line="95"/>
         <source>Background</source>
         <translation>背景</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="51"/>
+        <location filename="../src/qml/SideBar.qml" line="52"/>
         <source>WLAN</source>
         <translation>WLAN</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="60"/>
-        <source>Wired</source>
-        <translation>有线网络</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/SideBar.qml" line="117"/>
-        <location filename="../src/qml/SideBar.qml" line="126"/>
-        <location filename="../src/qml/SideBar.qml" line="135"/>
-        <location filename="../src/qml/SideBar.qml" line="151"/>
+        <location filename="../src/qml/SideBar.qml" line="118"/>
+        <location filename="../src/qml/SideBar.qml" line="127"/>
+        <location filename="../src/qml/SideBar.qml" line="136"/>
+        <location filename="../src/qml/SideBar.qml" line="152"/>
         <source>System</source>
         <translation>系统</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="121"/>
+        <location filename="../src/qml/SideBar.qml" line="122"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="130"/>
+        <location filename="../src/qml/SideBar.qml" line="131"/>
         <source>Battery</source>
         <translation>电池</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="146"/>
+        <location filename="../src/qml/SideBar.qml" line="147"/>
         <source>About</source>
         <translation>关于</translation>
     </message>

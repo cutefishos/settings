@@ -67,7 +67,7 @@ Item {
                                                              FishUI.Theme.highlightColor.b, 1) }
                 GradientStop { position: 1.0; color: Qt.rgba(FishUI.Theme.highlightColor.r,
                                                              FishUI.Theme.highlightColor.g,
-                                                             FishUI.Theme.highlightColor.b, 0.6) }
+                                                             FishUI.Theme.highlightColor.b, 0.3) }
             }
 
             Behavior on width {

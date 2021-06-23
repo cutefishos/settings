@@ -29,7 +29,7 @@ import "../"
 
 ItemPage {
     id: control
-    headerTitle: qsTr("Wired")
+    headerTitle: qsTr("Ethernet")
 
     property var itemHeight: 45
     property var settingsMap: ({})
@@ -77,7 +77,7 @@ ItemPage {
                     spacing: FishUI.Units.largeSpacing
 
                     Label {
-                        text: qsTr("Wired")
+                        text: qsTr("Ethernet")
                         color: FishUI.Theme.disabledTextColor
                         Layout.fillWidth: true
                     }
