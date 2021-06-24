@@ -457,7 +457,7 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="505"/>
         <source>Medium</source>
-        <translation>中等</translation>
+        <translation>适中</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="507"/>
@@ -472,7 +472,7 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="511"/>
         <source>Full</source>
-        <translation>满</translation>
+        <translation>完全</translation>
     </message>
 </context>
 <context>
