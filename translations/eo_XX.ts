@@ -366,7 +366,7 @@
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="162"/>
-        <source>Always hidden</source>
+        <source>Auto hide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
