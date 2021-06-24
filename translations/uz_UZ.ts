@@ -242,22 +242,22 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="175"/>
         <source>Health</source>
-        <translation type="unfinished"></translation>
+        <translation>Salomatlik</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="191"/>
         <source>Poor</source>
-        <translation type="unfinished"></translation>
+        <translation>Kambag&apos;al</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="220"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>Me&apos;yoriy</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="249"/>
         <source>Excellent</source>
-        <translation type="unfinished"></translation>
+        <translation>Zo&apos;r</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="271"/>
@@ -357,17 +357,17 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="147"/>
         <source>Visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Ko&apos;rinish</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="158"/>
         <source>Always show</source>
-        <translation type="unfinished"></translation>
+        <translation>Har doim ko&apos;rsating</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="162"/>
         <source>Always hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Har doim yashiring</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
@@ -439,7 +439,7 @@
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
         <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>Internet</translation>
     </message>
 </context>
 <context>
@@ -496,7 +496,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="61"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>Internet</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="82"/>

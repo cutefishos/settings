@@ -19,7 +19,7 @@
         <location filename="../src/qml/User/AddUserDialog.qml" line="98"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="104"/>
         <source>Verify password</source>
-        <translation>Пацвердзіце пароль</translation>
+        <translation>Пацвердзіць пароль</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="111"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="130"/>
         <source>Cancel</source>
-        <translation>Адмена</translation>
+        <translation>Адмяніць</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="137"/>
@@ -78,7 +78,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="68"/>
         <source>Built on %1</source>
-        <translation>Створана %1</translation>
+        <translation>Пабудавана на %1</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="76"/>
@@ -103,7 +103,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="96"/>
         <source>RAM</source>
-        <translation>Аператыўная памяць</translation>
+        <translation>АЗП</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="101"/>
@@ -133,7 +133,7 @@
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="81"/>
         <source>Dim the wallpaper in dark theme</source>
-        <translation>Прыцьміць шпалеры ў цёмнай тэме</translation>
+        <translation>Зацямніць шпалеры ў цёмнай тэме</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="101"/>
@@ -174,7 +174,7 @@
         <location filename="../src/qml/Dock/Main.qml" line="91"/>
         <location filename="../src/qml/Fonts/Main.qml" line="134"/>
         <source>Small</source>
-        <translation>Малы</translation>
+        <translation>Маленькі</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="95"/>
@@ -227,7 +227,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 7 days</source>
-        <translation>Апошнія 7 дзён</translation>
+        <translation>Апошні тыдзень</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="126"/>
@@ -242,7 +242,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="175"/>
         <source>Health</source>
-        <translation>Здароў&apos;е</translation>
+        <translation>Здароўе</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="191"/>
@@ -262,7 +262,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="271"/>
         <source>Last Charged to</source>
-        <translation>Апошні раз зараджаны на</translation>
+        <translation>Заражана ў апошні раз да</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="277"/>
@@ -277,7 +277,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="29"/>
         <source>Display</source>
-        <translation>Экран</translation>
+        <translation>Дысплей</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="67"/>
@@ -322,17 +322,17 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="342"/>
         <source>Need to log in again to take effect</source>
-        <translation>Неабходны паўторны ўваход каб змены ўступілі ў сілу</translation>
+        <translation>Неабходны паўторны ўваход, каб змены ўступілі ў сілу</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
-        <translation>Док-панэль</translation>
+        <translation>Dock</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="46"/>
         <source>Position on screen</source>
-        <translation>Палажэнне на экране</translation>
+        <translation>Знаходжанне на экране</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="56"/>
@@ -387,7 +387,7 @@
     <message>
         <location filename="../src/qml/Power/Main.qml" line="59"/>
         <source>Balance</source>
-        <translation>Баланс</translation>
+        <translation>Збалансаваны</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="65"/>
@@ -439,7 +439,7 @@
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
         <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ethernet</translation>
     </message>
 </context>
 <context>
@@ -496,7 +496,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="61"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ethernet</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="82"/>
@@ -525,7 +525,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="113"/>
         <source>Dock</source>
-        <translation>Панэль</translation>
+        <translation>Dock</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="127"/>
@@ -566,7 +566,7 @@
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="184"/>
         <source>Delete this user</source>
-        <translation>Выдаліць карыстальніка</translation>
+        <translation>Выдаліць гэтага карыстальніка</translation>
     </message>
 </context>
 <context>
@@ -605,7 +605,7 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="65"/>
         <source>Auto-Join</source>
-        <translation>Падлучацца аўтаматычна</translation>
+        <translation>Аўта-Уваход</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="81"/>
@@ -620,17 +620,17 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="105"/>
         <source>IPv4 Address</source>
-        <translation>IPv4 адрас</translation>
+        <translation>Адрэс IPv4</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="119"/>
         <source>IPv6 Address</source>
-        <translation>IPv6 адрас</translation>
+        <translation>Адрэс IPv6</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="133"/>
         <source>MAC Address</source>
-        <translation>MAC адрас</translation>
+        <translation>MAC-адрэс</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="147"/>
