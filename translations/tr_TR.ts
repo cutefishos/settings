@@ -366,8 +366,8 @@
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="162"/>
-        <source>Auto hide</source>
-        <translation type="unfinished"></translation>
+        <source>Always hidden</source>
+        <translation>Her zaman gizle</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>

@@ -362,12 +362,12 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="158"/>
         <source>Always show</source>
-        <translation>一直显示</translation>
+        <translation>总是显示</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="162"/>
-        <source>Auto hide</source>
-        <translation>自动隐藏</translation>
+        <source>Always hidden</source>
+        <translation>总是隐藏</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
