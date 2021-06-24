@@ -6,6 +6,7 @@
 
 #include "settingsuiadaptor.h"
 #include "fontsmodel.h"
+#include "fonts/fonts.h"
 #include "appearance.h"
 #include "battery.h"
 #include "batteryhistorymodel.h"
@@ -60,6 +61,7 @@ Application::Application(int &argc, char **argv)
     qmlRegisterType<About>(uri, 1, 0, "About");
     qmlRegisterType<Background>(uri, 1, 0, "Background");
     qmlRegisterType<Language>(uri, 1, 0, "Language");
+    qmlRegisterType<Fonts>(uri, 1, 0, "Fonts");
     qmlRegisterSingletonType<Password>(uri, 1, 0, "Password", passwordSingleton);
     qmlRegisterType<QAbstractItemModel>();
 

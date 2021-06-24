@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-set(QT Core Gui Widgets Quick QuickControls2 DBus Xml Concurrent LinguistTools)
+set(QT Core Gui Widgets Quick QuickControls2 X11Extras DBus Xml Concurrent LinguistTools)
 find_package(Qt5 REQUIRED ${QT})
 find_package(FishUI REQUIRED)
 find_package(Freetype REQUIRED)
@@ -39,6 +39,8 @@ set(SRCS
     src/password.cpp
     src/batteryhistorymodel.cpp
     src/cicontheme.cpp
+    src/fonts/kxftconfig.cpp
+    src/fonts/fonts.cpp
 )
 
 set(RESOURCES
@@ -58,6 +60,7 @@ target_link_libraries(${PROJECT_NAME}
         Qt5::QuickControls2
         Qt5::DBus
         Qt5::Xml
+        Qt5::X11Extras
         Qt5::Concurrent
         FishUI
 

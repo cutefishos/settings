@@ -37,17 +37,8 @@ Item {
     Rectangle {
         anchors.fill: parent
         radius: FishUI.Theme.smallRadius
-        color: mouseArea.containsMouse ? Qt.rgba(FishUI.Theme.textColor.r,
-                                                 FishUI.Theme.textColor.g,
-                                                 FishUI.Theme.textColor.b,
-                                                 0.1) : "transparent"
-
-        Behavior on color {
-            ColorAnimation {
-                duration: 125
-                easing.type: Easing.InOutCubic
-            }
-        }
+        color: FishUI.Theme.textColor
+        opacity: mouseArea.pressed ? 0.15 :  mouseArea.containsMouse ? 0.1 : 0.0
     }
 
     MouseArea {
