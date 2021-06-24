@@ -270,7 +270,12 @@
         <translation>Capacidade máxima</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="290"/>
+        <location filename="../src/qml/Battery/Main.qml" line="285"/>
+        <source>Show percentage in status bar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Battery/Main.qml" line="309"/>
         <source>No battery found</source>
         <translation>Nenhuma bateria encontrada</translation>
     </message>
@@ -366,8 +371,8 @@
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="162"/>
-        <source>Always hidden</source>
-        <translation>Sempre escondido</translation>
+        <source>Auto hide</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
