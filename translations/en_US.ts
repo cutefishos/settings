@@ -270,12 +270,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="285"/>
-        <source>Show percentage in status bar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Battery/Main.qml" line="309"/>
+        <location filename="../src/qml/Battery/Main.qml" line="290"/>
         <source>No battery found</source>
         <translation type="unfinished"></translation>
     </message>
