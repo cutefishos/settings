@@ -143,7 +143,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="31"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>字体</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="92"/>
@@ -272,7 +272,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="285"/>
         <source>Show percentage in status bar</source>
-        <translation type="unfinished"></translation>
+        <translation>在状态栏中显示电池百分比</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="309"/>
@@ -372,7 +372,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="162"/>
         <source>Auto hide</source>
-        <translation type="unfinished"></translation>
+        <translation>自动隐藏</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
@@ -510,7 +510,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="95"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>字体</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="113"/>
