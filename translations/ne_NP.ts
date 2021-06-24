@@ -116,71 +116,81 @@
         <translation>दृश्य</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="74"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="48"/>
         <source>Theme</source>
         <translation>थीम</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="85"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="59"/>
         <source>Light</source>
         <translation>उज्यालो</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="92"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="66"/>
         <source>Dark</source>
         <translation>अँध्यारो</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="107"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="81"/>
         <source>Dim the wallpaper in dark theme</source>
         <translation>अँध्यारो थीम मा वालपेपर मधुरो गर्ने</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="127"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="101"/>
         <source>Accent color</source>
         <translation>मन पर्ने रङ</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="205"/>
-        <source>Font</source>
-        <translation>फन्ट</translation>
+        <location filename="../src/qml/Fonts/Main.qml" line="31"/>
+        <source>Fonts</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="218"/>
+        <location filename="../src/qml/Fonts/Main.qml" line="92"/>
         <source>General Font</source>
         <translation>सामान्य फन्ट</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="235"/>
+        <location filename="../src/qml/Fonts/Main.qml" line="109"/>
         <source>Fixed Font</source>
         <translation>निर्धारित फन्ट</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="252"/>
+        <location filename="../src/qml/Fonts/Main.qml" line="126"/>
         <source>Font Size</source>
         <translation>गन्ट आकार</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="260"/>
+        <location filename="../src/qml/Fonts/Main.qml" line="187"/>
+        <source>Hinting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Fonts/Main.qml" line="200"/>
+        <source>Anti-Aliasing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/qml/Dock/Main.qml" line="91"/>
+        <location filename="../src/qml/Fonts/Main.qml" line="134"/>
         <source>Small</source>
         <translation>सानो</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="264"/>
         <location filename="../src/qml/Dock/Main.qml" line="95"/>
+        <location filename="../src/qml/Fonts/Main.qml" line="138"/>
         <source>Medium</source>
         <translation>मध्यम</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="268"/>
         <location filename="../src/qml/Dock/Main.qml" line="99"/>
+        <location filename="../src/qml/Fonts/Main.qml" line="142"/>
         <source>Large</source>
         <translation>ठुलो</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="272"/>
         <location filename="../src/qml/Dock/Main.qml" line="103"/>
+        <location filename="../src/qml/Fonts/Main.qml" line="146"/>
         <source>Huge</source>
         <translation>धेरै ठुलो</translation>
     </message>
@@ -350,12 +360,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="155"/>
+        <location filename="../src/qml/Dock/Main.qml" line="158"/>
         <source>Always show</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="159"/>
+        <location filename="../src/qml/Dock/Main.qml" line="162"/>
         <source>Always hidden</source>
         <translation type="unfinished"></translation>
     </message>
@@ -433,9 +443,37 @@
     </message>
 </context>
 <context>
+    <name>QObject</name>
+    <message>
+        <location filename="../src/fonts/kxftconfig.cpp" line="503"/>
+        <source>Vendor default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/fonts/kxftconfig.cpp" line="505"/>
+        <source>Medium</source>
+        <translation type="unfinished">मध्यम</translation>
+    </message>
+    <message>
+        <location filename="../src/fonts/kxftconfig.cpp" line="507"/>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/fonts/kxftconfig.cpp" line="509"/>
+        <source>Slight</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/fonts/kxftconfig.cpp" line="511"/>
+        <source>Full</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SideBar</name>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="113"/>
+        <location filename="../src/qml/SideBar.qml" line="122"/>
         <source>User</source>
         <translation>प्रयोगकर्ता</translation>
     </message>
@@ -465,6 +503,7 @@
         <location filename="../src/qml/SideBar.qml" line="91"/>
         <location filename="../src/qml/SideBar.qml" line="100"/>
         <location filename="../src/qml/SideBar.qml" line="109"/>
+        <location filename="../src/qml/SideBar.qml" line="118"/>
         <source>Display and appearance</source>
         <translation>प्रदर्शन</translation>
     </message>
@@ -475,34 +514,39 @@
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="95"/>
+        <source>Fonts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="104"/>
         <source>Background</source>
         <translation>पृष्ठभुमि</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="104"/>
+        <location filename="../src/qml/SideBar.qml" line="113"/>
         <source>Dock</source>
         <translation>डक</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="118"/>
         <location filename="../src/qml/SideBar.qml" line="127"/>
         <location filename="../src/qml/SideBar.qml" line="136"/>
-        <location filename="../src/qml/SideBar.qml" line="152"/>
+        <location filename="../src/qml/SideBar.qml" line="145"/>
+        <location filename="../src/qml/SideBar.qml" line="161"/>
         <source>System</source>
         <translation>सिस्टम</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="122"/>
+        <location filename="../src/qml/SideBar.qml" line="131"/>
         <source>Language</source>
         <translation>भाषा</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="131"/>
+        <location filename="../src/qml/SideBar.qml" line="140"/>
         <source>Battery</source>
         <translation>ब्याट्री</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="147"/>
+        <location filename="../src/qml/SideBar.qml" line="156"/>
         <source>About</source>
         <translation>बारेमा</translation>
     </message>
@@ -528,22 +572,22 @@
 <context>
     <name>WifiItem</name>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="184"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="175"/>
         <source>Password</source>
         <translation>गोप्य शब्द</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="195"/>
         <source>Show password</source>
         <translation>गोप्य शब्द देखाउने</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="213"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
         <source>Cancel</source>
         <translation>रद्द</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="219"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="210"/>
         <source>Connect</source>
         <translation>जोड्ने</translation>
     </message>

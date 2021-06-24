@@ -116,71 +116,81 @@
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="74"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="48"/>
         <source>Theme</source>
         <translation>主题</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="85"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="59"/>
         <source>Light</source>
         <translation>浅色模式</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="92"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="66"/>
         <source>Dark</source>
         <translation>深色模式</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="107"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="81"/>
         <source>Dim the wallpaper in dark theme</source>
         <translation>在深色模式下调暗壁纸</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="127"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="101"/>
         <source>Accent color</source>
         <translation>强调色</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="205"/>
-        <source>Font</source>
-        <translation>字体</translation>
+        <location filename="../src/qml/Fonts/Main.qml" line="31"/>
+        <source>Fonts</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="218"/>
+        <location filename="../src/qml/Fonts/Main.qml" line="92"/>
         <source>General Font</source>
         <translation>常规字体</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="235"/>
+        <location filename="../src/qml/Fonts/Main.qml" line="109"/>
         <source>Fixed Font</source>
         <translation>固定字体</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="252"/>
+        <location filename="../src/qml/Fonts/Main.qml" line="126"/>
         <source>Font Size</source>
         <translation>字体大小</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="260"/>
+        <location filename="../src/qml/Fonts/Main.qml" line="187"/>
+        <source>Hinting</source>
+        <translation>微调</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Fonts/Main.qml" line="200"/>
+        <source>Anti-Aliasing</source>
+        <translation>抗锯齿</translation>
+    </message>
+    <message>
         <location filename="../src/qml/Dock/Main.qml" line="91"/>
+        <location filename="../src/qml/Fonts/Main.qml" line="134"/>
         <source>Small</source>
         <translation>小</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="264"/>
         <location filename="../src/qml/Dock/Main.qml" line="95"/>
+        <location filename="../src/qml/Fonts/Main.qml" line="138"/>
         <source>Medium</source>
         <translation>中</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="268"/>
         <location filename="../src/qml/Dock/Main.qml" line="99"/>
+        <location filename="../src/qml/Fonts/Main.qml" line="142"/>
         <source>Large</source>
         <translation>大</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="272"/>
         <location filename="../src/qml/Dock/Main.qml" line="103"/>
+        <location filename="../src/qml/Fonts/Main.qml" line="146"/>
         <source>Huge</source>
         <translation>巨大</translation>
     </message>
@@ -350,12 +360,12 @@
         <translation>能见度</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="155"/>
+        <location filename="../src/qml/Dock/Main.qml" line="158"/>
         <source>Always show</source>
         <translation>总是显示</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="159"/>
+        <location filename="../src/qml/Dock/Main.qml" line="162"/>
         <source>Always hidden</source>
         <translation>总是隐藏</translation>
     </message>
@@ -417,7 +427,7 @@
     <message>
         <location filename="../src/qml/WLAN/Main.qml" line="32"/>
         <source>WLAN</source>
-        <translation>WLAN</translation>
+        <translation>无线网络</translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="32"/>
@@ -429,7 +439,35 @@
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
         <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Ethernet</source>
-        <translation>以太网</translation>
+        <translation>以太网络</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="../src/fonts/kxftconfig.cpp" line="503"/>
+        <source>Vendor default</source>
+        <translation>默认</translation>
+    </message>
+    <message>
+        <location filename="../src/fonts/kxftconfig.cpp" line="505"/>
+        <source>Medium</source>
+        <translation>中等</translation>
+    </message>
+    <message>
+        <location filename="../src/fonts/kxftconfig.cpp" line="507"/>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <location filename="../src/fonts/kxftconfig.cpp" line="509"/>
+        <source>Slight</source>
+        <translation>轻微</translation>
+    </message>
+    <message>
+        <location filename="../src/fonts/kxftconfig.cpp" line="511"/>
+        <source>Full</source>
+        <translation>满</translation>
     </message>
 </context>
 <context>
@@ -448,13 +486,14 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="61"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>以太网络</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="82"/>
         <location filename="../src/qml/SideBar.qml" line="91"/>
         <location filename="../src/qml/SideBar.qml" line="100"/>
         <location filename="../src/qml/SideBar.qml" line="109"/>
+        <location filename="../src/qml/SideBar.qml" line="118"/>
         <source>Display and appearance</source>
         <translation>显示与外观</translation>
     </message>
@@ -464,17 +503,22 @@
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="104"/>
+        <location filename="../src/qml/SideBar.qml" line="95"/>
+        <source>Fonts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="113"/>
         <source>Dock</source>
         <translation>程序坞</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="113"/>
+        <location filename="../src/qml/SideBar.qml" line="122"/>
         <source>User</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="95"/>
+        <location filename="../src/qml/SideBar.qml" line="104"/>
         <source>Background</source>
         <translation>背景</translation>
     </message>
@@ -484,25 +528,25 @@
         <translation>WLAN</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="118"/>
         <location filename="../src/qml/SideBar.qml" line="127"/>
         <location filename="../src/qml/SideBar.qml" line="136"/>
-        <location filename="../src/qml/SideBar.qml" line="152"/>
+        <location filename="../src/qml/SideBar.qml" line="145"/>
+        <location filename="../src/qml/SideBar.qml" line="161"/>
         <source>System</source>
         <translation>系统</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="122"/>
+        <location filename="../src/qml/SideBar.qml" line="131"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="131"/>
+        <location filename="../src/qml/SideBar.qml" line="140"/>
         <source>Battery</source>
         <translation>电池</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="147"/>
+        <location filename="../src/qml/SideBar.qml" line="156"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
@@ -528,22 +572,22 @@
 <context>
     <name>WifiItem</name>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="184"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="175"/>
         <source>Password</source>
         <translation>密码</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="195"/>
         <source>Show password</source>
         <translation>显示密码</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="213"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="219"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="210"/>
         <source>Connect</source>
         <translation>连接</translation>
     </message>
