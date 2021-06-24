@@ -35,6 +35,7 @@ class Battery : public QObject
     Q_PROPERTY(QString statusString READ statusString NOTIFY remainingTimeChanged)
     Q_PROPERTY(bool onBattery READ onBattery NOTIFY onBatteryChanged)
     Q_PROPERTY(QString udi READ udi NOTIFY udiChanged)
+    Q_PROPERTY(bool showPercent READ showPercent CONSTANT)
 
 public:
     explicit Battery(QObject *parent = nullptr);
@@ -51,6 +52,9 @@ public:
     int capacity() const;
     QString statusString() const;
     QString lastChargedTime() const;
+
+    bool showPercent();
+    Q_INVOKABLE void setPercentEnabled(bool value);
 
     QString udi() const;
 

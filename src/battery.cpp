@@ -19,6 +19,7 @@
 
 #include "battery.h"
 #include <QDateTime>
+#include <QSettings>
 #include <QDBusArgument>
 #include <QDBusReply>
 #include <QDebug>
@@ -165,6 +166,17 @@ QString Battery::statusString() const
 QString Battery::lastChargedTime() const
 {
     return m_interface.property("lastChargedTime").toString();
+}
+
+bool Battery::showPercent()
+{
+    QSettings settings(QSettings::UserScope, "cutefishos", "statusbar");
+    return settings.value("BatteryPercentage", true).toBool();
+}
+
+void Battery::setPercentEnabled(bool value)
+{
+    QDBusInterface("org.cutefish.Statusbar", "/Statusbar").call("setBatteryPercentage", value);
 }
 
 QString Battery::udi() const

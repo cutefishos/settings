@@ -270,7 +270,12 @@
         <translation>最大容量</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="290"/>
+        <location filename="../src/qml/Battery/Main.qml" line="285"/>
+        <source>Show percentage in status bar</source>
+        <translation>在状态栏中显示电池百分比</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Battery/Main.qml" line="309"/>
         <source>No battery found</source>
         <translation>找不到电池</translation>
     </message>

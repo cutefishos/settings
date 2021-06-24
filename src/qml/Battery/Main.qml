@@ -279,6 +279,25 @@ ItemPage {
                 }
             }
 
+            RoundedItem {
+                RowLayout {
+                    Label {
+                        text: qsTr("Show percentage in status bar")
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    Switch {
+                        Layout.fillHeight: true
+                        checked: battery.showPercent
+                        onCheckedChanged: battery.setPercentEnabled(checked)
+                        rightPadding: 0
+                    }
+                }
+            }
+
             Item {
                 height: FishUI.Units.largeSpacing
             }
