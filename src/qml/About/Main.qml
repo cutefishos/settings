@@ -65,7 +65,7 @@ ItemPage {
             }
 
             Label {
-                text: qsTr("Built on %1").arg(about.prettyProductName)
+                text: !about.isCutefishOS ? qsTr("Built on %1").arg(about.prettyProductName) : ""
                 Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
                 bottomPadding: FishUI.Units.largeSpacing * 2
                 color: FishUI.Theme.disabledTextColor

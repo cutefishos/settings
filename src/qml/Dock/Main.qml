@@ -159,7 +159,7 @@ ItemPage {
                     }
 
                     TabButton {
-                        text: qsTr("Always hidden")
+                        text: qsTr("Auto hide")
                     }
 
                 }
