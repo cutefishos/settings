@@ -34,7 +34,8 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: rootWindow.sideBarColor
+        color: FishUI.Theme.darkMode ? "#333333" : "#EBECF2"
+        opacity: rootWindow.compositing ? 0.7 : 1.0
 
         Behavior on color {
             ColorAnimation {
@@ -57,8 +58,8 @@ Item {
         }
 
         ListElement {
-            title: qsTr("Wired")
-            name: "wired"
+            title: qsTr("Ethernet")
+            name: "ethernet"
             page: "qrc:/qml/Wired/Main.qml"
             iconSource: "network.svg"
             iconColor: "#0067FF"
@@ -87,6 +88,15 @@ Item {
             page: "qrc:/qml/Appearance/Main.qml"
             iconSource: "appearance.svg"
             iconColor: "#03B4CB"
+            category: qsTr("Display and appearance")
+        }
+
+        ListElement {
+            title: qsTr("Fonts")
+            name: "fonts"
+            page: "qrc:/qml/Fonts/Main.qml"
+            iconSource: "fonts.svg"
+            iconColor: "#FFBF36"
             category: qsTr("Display and appearance")
         }
 
@@ -154,6 +164,17 @@ Item {
 
     ColumnLayout {
         anchors.fill: parent
+        anchors.margins: 0
+        spacing: 0
+
+        Label {
+            text: rootWindow.title
+            Layout.preferredHeight: rootWindow.header.height
+            leftPadding: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
+            topPadding: FishUI.Units.largeSpacing
+            bottomPadding: 0
+            font.pointSize: 15
+        }
 
         ListView {
             id: listView

@@ -28,6 +28,19 @@ Page {
     property string headerTitle
 
     background: Rectangle {
-        color: "transparent"
+        color: rootWindow.background.color
+    }
+
+    header: Item {
+        height: rootWindow.header.height
+
+        Label {
+            anchors.fill: parent
+            leftPadding: FishUI.Units.largeSpacing * 2
+            topPadding: FishUI.Units.largeSpacing
+            bottomPadding: 0
+            font.pointSize: 15
+            text: page.headerTitle
+        }
     }
 }

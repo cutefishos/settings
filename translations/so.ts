@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_Hant">
+<TS version="2.1" language="so">
 <context>
     <name>AddUserDialog</name>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="72"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="78"/>
         <source>User name</source>
-        <translation>使用者名稱</translation>
+        <translation>Naanays</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="85"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="91"/>
         <source>Password</source>
-        <translation>密碼</translation>
+        <translation>Erey sireed</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="98"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="104"/>
         <source>Verify password</source>
-        <translation>確認密碼</translation>
+        <translation>Xaqiiji ereyga sirta</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="111"/>
         <source>Account type</source>
-        <translation>使用者類型</translation>
+        <translation>Nooca Account-ka</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Standard</source>
-        <translation>標準</translation>
+        <translation>Caadi</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Administrator</source>
-        <translation>管理員</translation>
+        <translation>Maamule</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="130"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation>Xir</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="137"/>
         <source>Add</source>
-        <translation>添加</translation>
+        <translation>Ku dar</translation>
     </message>
 </context>
 <context>
@@ -52,12 +52,12 @@
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="29"/>
         <source>Bluetooth</source>
-        <translation>藍芽</translation>
+        <translation>Bluetooth</translation>
     </message>
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="49"/>
         <source>Bluetooth is disabled</source>
-        <translation>藍牙不可用</translation>
+        <translation>Bluetooth wuu xiran yahay</translation>
     </message>
 </context>
 <context>
@@ -65,7 +65,7 @@
     <message>
         <location filename="../src/qml/LanguagePage.qml" line="29"/>
         <source>Language</source>
-        <translation>語言</translation>
+        <translation>Luqadda</translation>
     </message>
 </context>
 <context>
@@ -73,72 +73,72 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="28"/>
         <source>About</source>
-        <translation>關於</translation>
+        <translation>Ku saabsan</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="68"/>
         <source>Built on %1</source>
-        <translation type="unfinished"></translation>
+        <translation>La sameeyey %1</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="76"/>
         <source>System Version</source>
-        <translation>系統版本</translation>
+        <translation>Nuskhadda Nidaamka</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="81"/>
         <source>System Type</source>
-        <translation>系統類型</translation>
+        <translation>Nooca Nidaamka</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="86"/>
         <source>Kernel Version</source>
-        <translation>核心版本</translation>
+        <translation>Nuskhadda Kernel-ka</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="91"/>
         <source>Processor</source>
-        <translation>处理器</translation>
+        <translation>Processor-ka</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="96"/>
         <source>RAM</source>
-        <translation>記憶體</translation>
+        <translation>RAM-ka</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="101"/>
         <source>Internal Storage</source>
-        <translation>內部儲存</translation>
+        <translation>Mugga Gudaha</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="30"/>
         <source>Appearance</source>
-        <translation>外觀</translation>
+        <translation>Muuqaalka</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="48"/>
         <source>Theme</source>
-        <translation>主題</translation>
+        <translation>Nashqad</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="59"/>
         <source>Light</source>
-        <translation>亮色</translation>
+        <translation>Caddaan</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="66"/>
         <source>Dark</source>
-        <translation>暗色</translation>
+        <translation>Madaw</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="81"/>
         <source>Dim the wallpaper in dark theme</source>
-        <translation>處於暗色主題時暗化桌布</translation>
+        <translation>Gaabi iftiinka shaashadda haddii nashqad madaw dooran tahay</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="101"/>
         <source>Accent color</source>
-        <translation>強調色</translation>
+        <translation>Midabka labaad</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="31"/>
@@ -148,17 +148,17 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="92"/>
         <source>General Font</source>
-        <translation>一般字型</translation>
+        <translation>Farta guud</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="109"/>
         <source>Fixed Font</source>
-        <translation>固定字型</translation>
+        <translation>Far cayiman</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="126"/>
         <source>Font Size</source>
-        <translation>字號</translation>
+        <translation>Xajmiga farta</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="187"/>
@@ -174,100 +174,100 @@
         <location filename="../src/qml/Dock/Main.qml" line="91"/>
         <location filename="../src/qml/Fonts/Main.qml" line="134"/>
         <source>Small</source>
-        <translation>小</translation>
+        <translation>Yar</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="95"/>
         <location filename="../src/qml/Fonts/Main.qml" line="138"/>
         <source>Medium</source>
-        <translation>中</translation>
+        <translation>Dhexe</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="99"/>
         <location filename="../src/qml/Fonts/Main.qml" line="142"/>
         <source>Large</source>
-        <translation>大</translation>
+        <translation>Wayn</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="103"/>
         <location filename="../src/qml/Fonts/Main.qml" line="146"/>
         <source>Huge</source>
-        <translation>巨大</translation>
+        <translation>Cimlaaq</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="29"/>
         <source>Battery</source>
-        <translation>電池</translation>
+        <translation>Beetari</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last hour</source>
-        <translation>1 小時內</translation>
+        <translation>Saacaddii hore</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 2 hours</source>
-        <translation>2 小時內</translation>
+        <translation>2 Saacad u danbeeyey</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 12 hours</source>
-        <translation>12 小時內</translation>
+        <translation>12 saac u danbeeyey</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 24 hours</source>
-        <translation>1 天內</translation>
+        <translation>24 saac u danbeeyey</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 48 hours</source>
-        <translation>2 天內</translation>
+        <translation>48 saac u danbeeyey</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 7 days</source>
-        <translation>7 天內</translation>
+        <translation>7 maalin u danbaysay</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="126"/>
         <source>History</source>
-        <translation>歷史記錄</translation>
+        <translation>Taariikh</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="154"/>
         <source>W</source>
-        <translation>瓦</translation>
+        <translation>W</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="175"/>
         <source>Health</source>
-        <translation type="unfinished"></translation>
+        <translation>Caafimaadka</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="191"/>
         <source>Poor</source>
-        <translation type="unfinished"></translation>
+        <translation>Hooseeyaa</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="220"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>Caadi</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="249"/>
         <source>Excellent</source>
-        <translation type="unfinished"></translation>
+        <translation>Wanaagsan</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="271"/>
         <source>Last Charged to</source>
-        <translation>上一次充電於</translation>
+        <translation>Dabayntii u danbaysay wuxuu gaaray</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="277"/>
         <source>Maximum Capacity</source>
-        <translation>容限</translation>
+        <translation>Dabka ugu badan</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="285"/>
@@ -277,97 +277,97 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="309"/>
         <source>No battery found</source>
-        <translation>未找到電池</translation>
+        <translation>Beetari lama helin</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="29"/>
         <source>Display</source>
-        <translation>顯示</translation>
+        <translation>Bandhig</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="67"/>
         <source>Brightness</source>
-        <translation>亮度</translation>
+        <translation>Iftiinka</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="111"/>
         <source>Screen</source>
-        <translation>螢幕</translation>
+        <translation>Shaashad</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="151"/>
         <source>Screen Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Magaca Shaashadda</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="160"/>
         <source>Resolution</source>
-        <translation>解析度</translation>
+        <translation>Masaaxadda</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="179"/>
         <source>Refresh rate</source>
-        <translation>更新率</translation>
+        <translation>Heerka Refresh-ta</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="199"/>
         <source>Rotation</source>
-        <translation>旋轉</translation>
+        <translation>Wareeg</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="243"/>
         <source>Enabled</source>
-        <translation>啓用</translation>
+        <translation>Daaran</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="274"/>
         <source>Scale</source>
-        <translation>比例</translation>
+        <translation>Cabirka</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="342"/>
         <source>Need to log in again to take effect</source>
-        <translation>需重新登入以生效</translation>
+        <translation>Dib u fur si isbedelku u hirgelo</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
-        <translation>Dock</translation>
+        <translation>Afaaf</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="46"/>
         <source>Position on screen</source>
-        <translation>位置</translation>
+        <translation>Goobta shaashadda</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="56"/>
         <source>Left</source>
-        <translation>左部</translation>
+        <translation>Bidix</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="63"/>
         <source>Bottom</source>
-        <translation>底部</translation>
+        <translation>Hoos</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="70"/>
         <source>Right</source>
-        <translation>右部</translation>
+        <translation>Midig</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="80"/>
         <source>Size</source>
-        <translation>大小</translation>
+        <translation>Xajmi</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="147"/>
         <source>Visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Muuqa</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="158"/>
         <source>Always show</source>
-        <translation type="unfinished"></translation>
+        <translation>Markasta muuji</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="162"/>
@@ -377,68 +377,68 @@
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
         <source>Power</source>
-        <translation>電源</translation>
+        <translation>Dabka</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="43"/>
         <source>Mode</source>
-        <translation>模式</translation>
+        <translation>Xaaladda</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="53"/>
         <source>Power Save</source>
-        <translation>節能</translation>
+        <translation>Dab kaydin</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="59"/>
         <source>Balance</source>
-        <translation>均衡</translation>
+        <translation>Dheellitir</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="65"/>
         <source>Performance</source>
-        <translation>性能</translation>
+        <translation>Waxqabadka</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="31"/>
         <source>User</source>
-        <translation>使用者</translation>
+        <translation>Adeegsade</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="80"/>
         <source>Add user</source>
-        <translation>增加使用者</translation>
+        <translation>Kudar Adeegsade</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="30"/>
         <source>Background</source>
-        <translation>背景</translation>
+        <translation>Sawirka gidaarka</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="56"/>
         <source>Background type</source>
-        <translation>背景類型</translation>
+        <translation>Nooca sawirka gidaarka</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="77"/>
         <source>Picture</source>
-        <translation>影像</translation>
+        <translation>Sawir</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="81"/>
         <source>Color</source>
-        <translation>純色</translation>
+        <translation>Midab</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/Main.qml" line="32"/>
         <source>WLAN</source>
-        <translation>無線區域網路</translation>
+        <translation>WLAN</translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="32"/>
         <location filename="../src/qml/Bluetooth/Main.qml" line="71"/>
         <source>Bluetooth</source>
-        <translation type="unfinished">藍芽</translation>
+        <translation>Bulutuuth</translation>
     </message>
     <message>
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
@@ -457,7 +457,7 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="505"/>
         <source>Medium</source>
-        <translation type="unfinished">中</translation>
+        <translation type="unfinished">Dhexe</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="507"/>
@@ -480,23 +480,23 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="122"/>
         <source>User</source>
-        <translation>使用者</translation>
+        <translation>Adeegsade</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="77"/>
         <source>Display</source>
-        <translation>顯示</translation>
+        <translation>Bandhig</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="52"/>
         <source>WLAN</source>
-        <translation>無線區域網路</translation>
+        <translation>WLAN</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="57"/>
         <location filename="../src/qml/SideBar.qml" line="66"/>
         <source>Network and connection</source>
-        <translation>網路與連結</translation>
+        <translation>Shabakadda iyo xiriirka</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="61"/>
@@ -510,12 +510,12 @@
         <location filename="../src/qml/SideBar.qml" line="109"/>
         <location filename="../src/qml/SideBar.qml" line="118"/>
         <source>Display and appearance</source>
-        <translation>外觀與顯示</translation>
+        <translation>Bandhig muuqeedka</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="86"/>
         <source>Appearance</source>
-        <translation>外觀</translation>
+        <translation>Muuqa</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="95"/>
@@ -525,12 +525,12 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="104"/>
         <source>Background</source>
-        <translation>背景</translation>
+        <translation>Sawirka gidaarka</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="113"/>
         <source>Dock</source>
-        <translation>Dock</translation>
+        <translation>Afaaf</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="127"/>
@@ -538,22 +538,22 @@
         <location filename="../src/qml/SideBar.qml" line="145"/>
         <location filename="../src/qml/SideBar.qml" line="161"/>
         <source>System</source>
-        <translation>操作系統</translation>
+        <translation>NIdaam</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="131"/>
         <source>Language</source>
-        <translation>語言</translation>
+        <translation>Luqqad</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="140"/>
         <source>Battery</source>
-        <translation>電池</translation>
+        <translation>Beetari</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="156"/>
         <source>About</source>
-        <translation>關於</translation>
+        <translation>Ku saabsan</translation>
     </message>
 </context>
 <context>
@@ -561,17 +561,17 @@
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="124"/>
         <source>Currently logged</source>
-        <translation>當前登入</translation>
+        <translation>Hadda furan</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="165"/>
         <source>Automatic login</source>
-        <translation>自動登入</translation>
+        <translation>Hore ka fur</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="184"/>
         <source>Delete this user</source>
-        <translation>刪除此使用者</translation>
+        <translation>Tirtir adeegsadahan</translation>
     </message>
 </context>
 <context>
@@ -579,22 +579,22 @@
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="175"/>
         <source>Password</source>
-        <translation>密碼</translation>
+        <translation>Erey sireed</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="195"/>
         <source>Show password</source>
-        <translation>顯示密碼</translation>
+        <translation>Tus erey sireedka</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation>Xir</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="210"/>
         <source>Connect</source>
-        <translation>連結</translation>
+        <translation>Ku xiriir</translation>
     </message>
 </context>
 <context>
@@ -602,7 +602,7 @@
     <message>
         <location filename="../src/qml/WLAN/WifiView.qml" line="35"/>
         <source>WLAN</source>
-        <translation>無線區域網路</translation>
+        <translation>WLAN</translation>
     </message>
 </context>
 <context>
@@ -610,37 +610,37 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="65"/>
         <source>Auto-Join</source>
-        <translation>自動加入網路</translation>
+        <translation>Hore uga biir</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="81"/>
         <source>Security</source>
-        <translation>安全</translation>
+        <translation>Ammaanka</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="93"/>
         <source>Signal</source>
-        <translation>訊號</translation>
+        <translation>Signaal</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="105"/>
         <source>IPv4 Address</source>
-        <translation>IPv4 位址</translation>
+        <translation>Ciwaanka IPv4</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="119"/>
         <source>IPv6 Address</source>
-        <translation>IPv6 位址</translation>
+        <translation>Cinwaanka IPv6</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="133"/>
         <source>MAC Address</source>
-        <translation>MAC 位址</translation>
+        <translation>CInwaanka MAC</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="147"/>
         <source>Gateway</source>
-        <translation>閘道器</translation>
+        <translation>Albaabka (Gateway)</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="160"/>
@@ -650,12 +650,12 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="177"/>
         <source>Close</source>
-        <translation>關閉</translation>
+        <translation>Xir</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="183"/>
         <source>Forget this network</source>
-        <translation>忘記此網路</translation>
+        <translation>HIlmaan shabakaddan</translation>
     </message>
 </context>
 <context>
@@ -663,7 +663,7 @@
     <message>
         <location filename="../src/qml/main.qml" line="29"/>
         <source>Settings</source>
-        <translation>設定</translation>
+        <translation>Tuulka</translation>
     </message>
 </context>
 </TS>

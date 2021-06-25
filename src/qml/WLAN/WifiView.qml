@@ -81,11 +81,11 @@ ColumnLayout {
             sourceModel: connectionModel
         }
 
-        spacing: FishUI.Units.smallSpacing * 1.5
+        spacing: FishUI.Units.largeSpacing
         interactive: false
         visible: count > 0
 
-        property var itemHeight: 45
+        property var itemHeight: 38
 
         delegate: WifiItem {
             width: ListView.view.width

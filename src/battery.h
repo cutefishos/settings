@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2021 CutefishOS Team.
+ *
+ * Author:     Reion Wong <reionwong@gmail.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #ifndef BATTERY_H
 #define BATTERY_H
 
@@ -16,6 +35,7 @@ class Battery : public QObject
     Q_PROPERTY(QString statusString READ statusString NOTIFY remainingTimeChanged)
     Q_PROPERTY(bool onBattery READ onBattery NOTIFY onBatteryChanged)
     Q_PROPERTY(QString udi READ udi NOTIFY udiChanged)
+    Q_PROPERTY(bool showPercent READ showPercent CONSTANT)
 
 public:
     explicit Battery(QObject *parent = nullptr);
@@ -32,6 +52,9 @@ public:
     int capacity() const;
     QString statusString() const;
     QString lastChargedTime() const;
+
+    bool showPercent();
+    Q_INVOKABLE void setPercentEnabled(bool value);
 
     QString udi() const;
 

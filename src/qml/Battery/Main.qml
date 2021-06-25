@@ -174,17 +174,99 @@ ItemPage {
                 Label {
                     text: qsTr("Health")
                     color: FishUI.Theme.disabledTextColor
+                    bottomPadding: FishUI.Units.largeSpacing
                 }
 
-                ProgressBar {
-                    Layout.fillWidth: true
-//                    minimumValue: 0
-//                    maximumValue: 100
-                    value: battery.capacity
-                }
-            }
+                RowLayout {
+                    spacing: FishUI.Units.largeSpacing * 4
 
-            RoundedItem {
+                    // Poor
+                    Item {
+                        height: _poorLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
+                        width: _poorLabel.implicitWidth + FishUI.Units.largeSpacing
+
+                        Label {
+                            id: _poorLabel
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            text: qsTr("Poor")
+                            color: "#FF8738"
+                        }
+
+                        Rectangle {
+                            id: _poorLine
+                            anchors.top: _poorLabel.bottom
+                            anchors.left: parent.left
+                            anchors.right: parent.right
+                            anchors.bottom: parent.bottom
+                            anchors.topMargin: FishUI.Units.smallSpacing
+                            height: 2
+                            radius: 2
+                            color: _poorLabel.color
+                            visible: battery.capacity >= 0 && battery.capacity <= 79
+                        }
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    Item {
+                        height: _normalLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
+                        width: _normalLabel.implicitWidth + FishUI.Units.largeSpacing
+
+                        Label {
+                            id: _normalLabel
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            text: qsTr("Normal")
+                            color: "#3385FF"
+                        }
+
+                        Rectangle {
+                            id: _normalLine
+                            anchors.top: _normalLabel.bottom
+                            anchors.left: parent.left
+                            anchors.right: parent.right
+                            anchors.bottom: parent.bottom
+                            anchors.topMargin: FishUI.Units.smallSpacing
+                            height: 2
+                            radius: 2
+                            color: _normalLabel.color
+                            visible: battery.capacity >= 80 && battery.capacity <= 89
+                        }
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    Item {
+                        height: _excellentLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
+                        width: _excellentLabel.implicitWidth + FishUI.Units.largeSpacing
+
+                        Label {
+                            id: _excellentLabel
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            text: qsTr("Excellent")
+                            color: "#00CD23"
+                        }
+
+                        Rectangle {
+                            id: _excellentLine
+                            anchors.top: _excellentLabel.bottom
+                            anchors.left: parent.left
+                            anchors.right: parent.right
+                            anchors.bottom: parent.bottom
+                            anchors.topMargin: FishUI.Units.smallSpacing
+                            height: 2
+                            radius: 2
+                            color: _excellentLabel.color
+                            visible: battery.capacity >= 90 && battery.capacity <= 100
+                        }
+                    }
+                }
+
+                HorizontalDivider {}
+
                 StandardItem {
                     key: qsTr("Last Charged to") + " " + battery.lastChargedPercent + "%"
                     value: battery.lastChargedTime
@@ -194,6 +276,25 @@ ItemPage {
                 StandardItem {
                     key: qsTr("Maximum Capacity")
                     value: battery.capacity + "%"
+                }
+            }
+
+            RoundedItem {
+                RowLayout {
+                    Label {
+                        text: qsTr("Show percentage in status bar")
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    Switch {
+                        Layout.fillHeight: true
+                        checked: battery.showPercent
+                        onCheckedChanged: battery.setPercentEnabled(checked)
+                        rightPadding: 0
+                    }
                 }
             }
 

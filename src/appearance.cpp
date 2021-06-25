@@ -35,10 +35,12 @@ Appearance::Appearance(QObject *parent)
     , m_dockConfigWacher(new QFileSystemWatcher(this))
     , m_dockIconSize(0)
     , m_dockDirection(0)
+    , m_dockVisibility(0)
     , m_fontPointSize(11)
 {
     m_dockIconSize = m_dockSettings->value("IconSize").toInt();
     m_dockDirection = m_dockSettings->value("Direction").toInt();
+    m_dockVisibility = m_dockSettings->value("Visibility").toInt();
     m_dockRoundedWindow = m_dockSettings->value("RoundedWindow").toBool();
 
     m_dockConfigWacher->addPath(m_dockSettings->fileName());
@@ -105,6 +107,20 @@ void Appearance::setDockDirection(int dockDirection)
 
     m_dockDirection = dockDirection;
     m_dockSettings->setValue("Direction", m_dockDirection);
+}
+
+int Appearance::dockVisibility() const
+{
+    return m_dockVisibility;
+}
+
+void Appearance::setDockVisibility(int visibility)
+{
+    if (m_dockVisibility != visibility) {
+        m_dockVisibility = visibility;
+        m_dockSettings->setValue("Visibility", m_dockVisibility);
+        emit dockVisibilityChanged();
+    }
 }
 
 int Appearance::dockRoundedWindow() const

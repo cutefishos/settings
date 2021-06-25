@@ -74,6 +74,7 @@ ItemPage {
                 }
             }
 
+            // Dock Size
             RoundedItem {
                 Label {
                     text: qsTr("Size")
@@ -105,13 +106,13 @@ ItemPage {
                     currentIndex: {
                         var index = 0
 
-                        if (appearance.dockIconSize <= 54)
+                        if (appearance.dockIconSize <= 45)
                             index = 0
-                        else if (appearance.dockIconSize <= 64)
+                        else if (appearance.dockIconSize <= 54)
                             index = 1
-                        else if (appearance.dockIconSize <= 72)
+                        else if (appearance.dockIconSize <= 63)
                             index = 2
-                        else if (appearance.dockIconSize <= 92)
+                        else if (appearance.dockIconSize <= 72)
                             index = 3
 
                         return index
@@ -122,21 +123,45 @@ ItemPage {
 
                         switch (currentIndex) {
                         case 0:
-                            iconSize = 54
+                            iconSize = 45
                             break;
                         case 1:
-                            iconSize = 64
+                            iconSize = 54
                             break;
                         case 2:
-                            iconSize = 72
+                            iconSize = 63
                             break;
                         case 3:
-                            iconSize = 92
+                            iconSize = 72
                             break;
                         }
 
                         appearance.setDockIconSize(iconSize)
                     }
+                }
+            }
+
+            // Visibility
+            RoundedItem {
+                Label {
+                    text: qsTr("Visibility")
+                    color: FishUI.Theme.disabledTextColor
+                    bottomPadding: FishUI.Units.smallSpacing
+                }
+
+                TabBar {
+                    Layout.fillWidth: true
+                    currentIndex: appearance.dockVisibility
+                    onCurrentIndexChanged: appearance.setDockVisibility(currentIndex)
+
+                    TabButton {
+                        text: qsTr("Always show")
+                    }
+
+                    TabButton {
+                        text: qsTr("Auto hide")
+                    }
+
                 }
             }
 

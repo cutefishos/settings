@@ -54,6 +54,7 @@ ItemPage {
 
                 Label {
                     text: qsTr("Background type")
+                    leftPadding: FishUI.Units.smallSpacing
                 }
 
                 TabBar {
