@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="be">
+<TS version="2.1" language="hu">
 <context>
     <name>AddUserDialog</name>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="72"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="78"/>
         <source>User name</source>
-        <translation>Імя карыстальніка</translation>
+        <translation>Felhasználónév</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="85"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="91"/>
         <source>Password</source>
-        <translation>Пароль</translation>
+        <translation>Jelszó</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="98"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="104"/>
         <source>Verify password</source>
-        <translation>Пацвердзіць пароль</translation>
+        <translation>Jelszó megerősítése</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="111"/>
         <source>Account type</source>
-        <translation>Тып акаўнта</translation>
+        <translation>Fiók típusa</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Standard</source>
-        <translation>Стандартны</translation>
+        <translation>Alapértelmezett</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Administrator</source>
-        <translation>Адміністратар</translation>
+        <translation>Adminisztrátor</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="130"/>
         <source>Cancel</source>
-        <translation>Адмяніць</translation>
+        <translation>Mégse</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="137"/>
         <source>Add</source>
-        <translation>Дадаць</translation>
+        <translation>Hozzáadás</translation>
     </message>
 </context>
 <context>
@@ -57,7 +57,7 @@
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="49"/>
         <source>Bluetooth is disabled</source>
-        <translation>Bluetooth адключаны</translation>
+        <translation>A Bluetooth ki van kapcsolva</translation>
     </message>
 </context>
 <context>
@@ -65,7 +65,7 @@
     <message>
         <location filename="../src/qml/LanguagePage.qml" line="29"/>
         <source>Language</source>
-        <translation>Мова</translation>
+        <translation>Nyelv</translation>
     </message>
 </context>
 <context>
@@ -73,166 +73,166 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="28"/>
         <source>About</source>
-        <translation>Аб сістэме</translation>
+        <translation>Bővebben</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="68"/>
         <source>Built on %1</source>
-        <translation>Пабудавана на %1</translation>
+        <translation>A rendszer alapja: %1</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="76"/>
         <source>System Version</source>
-        <translation>Версія сістэмы</translation>
+        <translation>Rendszer verziója</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="81"/>
         <source>System Type</source>
-        <translation>Тып сістэмы</translation>
+        <translation>Rendszer típusa</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="86"/>
         <source>Kernel Version</source>
-        <translation>Версія ядра</translation>
+        <translation>Kernel verziója</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="91"/>
         <source>Processor</source>
-        <translation>Працэсар</translation>
+        <translation>Processzor</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="96"/>
         <source>RAM</source>
-        <translation>АЗП</translation>
+        <translation>Memória</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="101"/>
         <source>Internal Storage</source>
-        <translation>Унутраная памяць</translation>
+        <translation>Belső tároló</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="30"/>
         <source>Appearance</source>
-        <translation>Знешні выгляд</translation>
+        <translation>Megjelenés</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="48"/>
         <source>Theme</source>
-        <translation>Тэма</translation>
+        <translation>Téma</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="59"/>
         <source>Light</source>
-        <translation>Светлая</translation>
+        <translation>Világos</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="66"/>
         <source>Dark</source>
-        <translation>Цёмная</translation>
+        <translation>Sötét</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="81"/>
         <source>Dim the wallpaper in dark theme</source>
-        <translation>Зацямніць шпалеры ў цёмнай тэме</translation>
+        <translation>Háttér fényerejének csökkentése sötét témánál</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="101"/>
         <source>Accent color</source>
-        <translation>Каляровы акцэнт</translation>
+        <translation>Kiemelő szín</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="31"/>
         <source>Fonts</source>
-        <translation>Шрыфты</translation>
+        <translation>Betűtípusok</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="92"/>
         <source>General Font</source>
-        <translation>Асноўны шрыфт</translation>
+        <translation>Általános betűtípus</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="109"/>
         <source>Fixed Font</source>
-        <translation>Фіксаваны шрыфт</translation>
+        <translation>Fix betűtípus</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="126"/>
         <source>Font Size</source>
-        <translation>Памер шрыфта</translation>
+        <translation>Betűméret</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="187"/>
         <source>Hinting</source>
-        <translation>Падказванне</translation>
+        <translation>Utalás</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
         <source>Anti-Aliasing</source>
-        <translation>Згладжванне</translation>
+        <translation>Anti-aliasing</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="91"/>
         <location filename="../src/qml/Fonts/Main.qml" line="134"/>
         <source>Small</source>
-        <translation>Маленькі</translation>
+        <translation>Kicsi</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="95"/>
         <location filename="../src/qml/Fonts/Main.qml" line="138"/>
         <source>Medium</source>
-        <translation>Сярэдні</translation>
+        <translation>Közepes</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="99"/>
         <location filename="../src/qml/Fonts/Main.qml" line="142"/>
         <source>Large</source>
-        <translation>Вялікі</translation>
+        <translation>Nagy</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="103"/>
         <location filename="../src/qml/Fonts/Main.qml" line="146"/>
         <source>Huge</source>
-        <translation>Велізарны</translation>
+        <translation>Hatalmas</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="29"/>
         <source>Battery</source>
-        <translation>Батарэя</translation>
+        <translation>Akkumulátor</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last hour</source>
-        <translation>Апошняя гадзіна</translation>
+        <translation>Elmúlt óra</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 2 hours</source>
-        <translation>Апошнія 2 гадзіны</translation>
+        <translation>Elmúlt 2 óra</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 12 hours</source>
-        <translation>Апошнія 12 гадзін</translation>
+        <translation>Elmúlt 12 óra</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 24 hours</source>
-        <translation>Апошнія 24 гадзіны</translation>
+        <translation>Elmúlt 24 óra</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 48 hours</source>
-        <translation>Апошнія 48 гадзін</translation>
+        <translation>Elmúlt 48 óra</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 7 days</source>
-        <translation>Апошні тыдзень</translation>
+        <translation>Elmúlt 7 nap</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="126"/>
         <source>History</source>
-        <translation>Гісторыя</translation>
+        <translation>Előzmények</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="154"/>
@@ -242,192 +242,192 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="175"/>
         <source>Health</source>
-        <translation>Здароўе</translation>
+        <translation>Állapot</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="191"/>
         <source>Poor</source>
-        <translation>Дрэнна</translation>
+        <translation>Gyenge</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="220"/>
         <source>Normal</source>
-        <translation>Нармальна</translation>
+        <translation>Normál</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="249"/>
         <source>Excellent</source>
-        <translation>Выдатна</translation>
+        <translation>Kitűnő</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="271"/>
         <source>Last Charged to</source>
-        <translation>Заражана ў апошні раз да</translation>
+        <translation>Utoljára töltve</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="277"/>
         <source>Maximum Capacity</source>
-        <translation>Максімальная ёмістасць</translation>
+        <translation>Maximális kapacitás</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="285"/>
         <source>Show percentage in status bar</source>
-        <translation>Паказаць працэнты ў радку стану</translation>
+        <translation>Akkumulátor százalék megjelenítése az állapot sávon</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="309"/>
         <source>No battery found</source>
-        <translation>Батарэя не знойдзена</translation>
+        <translation>Nem található akkumulátor</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="29"/>
         <source>Display</source>
-        <translation>Дысплей</translation>
+        <translation>Megjelenés</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="67"/>
         <source>Brightness</source>
-        <translation>Яркасць</translation>
+        <translation>Fényerő</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="111"/>
         <source>Screen</source>
-        <translation>Экран</translation>
+        <translation>Kijelző</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="151"/>
         <source>Screen Name</source>
-        <translation>Назва экрана</translation>
+        <translation>Kijelző neve</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="160"/>
         <source>Resolution</source>
-        <translation>Разрозненне</translation>
+        <translation>Felbontás</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="179"/>
         <source>Refresh rate</source>
-        <translation>Частата абнаўлення</translation>
+        <translation>Frissítési arány</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="199"/>
         <source>Rotation</source>
-        <translation>Паварот</translation>
+        <translation>Forgatás</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="243"/>
         <source>Enabled</source>
-        <translation>Уключана</translation>
+        <translation>Engedélyezve</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="274"/>
         <source>Scale</source>
-        <translation>Памер</translation>
+        <translation>Nagyítás</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="342"/>
         <source>Need to log in again to take effect</source>
-        <translation>Неабходны паўторны ўваход, каб змены ўступілі ў сілу</translation>
+        <translation>Újra be kell jelentkezni a beállítás véglegesítéséhez</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
-        <translation>Dock</translation>
+        <translation>Dokk</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="46"/>
         <source>Position on screen</source>
-        <translation>Знаходжанне на экране</translation>
+        <translation>Elhelyezkedés a képernyőn</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="56"/>
         <source>Left</source>
-        <translation>Злева</translation>
+        <translation>Bal</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="63"/>
         <source>Bottom</source>
-        <translation>Унізе</translation>
+        <translation>Alul</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="70"/>
         <source>Right</source>
-        <translation>Справа</translation>
+        <translation>Jobb</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="80"/>
         <source>Size</source>
-        <translation>Памер</translation>
+        <translation>Méret</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="147"/>
         <source>Visibility</source>
-        <translation>Бачнасць</translation>
+        <translation>Láthatóság</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="158"/>
         <source>Always show</source>
-        <translation>Заўсёды паказваць</translation>
+        <translation>Mindig látszik</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="162"/>
         <source>Auto hide</source>
-        <translation>Аўтаматычна хаваць</translation>
+        <translation>Automatikus elrejtés</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
         <source>Power</source>
-        <translation>Сілкаванне</translation>
+        <translation>Energiagazdálkodás</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="43"/>
         <source>Mode</source>
-        <translation>Рэжым</translation>
+        <translation>Mód</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="53"/>
         <source>Power Save</source>
-        <translation>Энергазберажэнне</translation>
+        <translation>Energiatakarékos</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="59"/>
         <source>Balance</source>
-        <translation>Збалансаваны</translation>
+        <translation>Kiegyensúlyozott</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="65"/>
         <source>Performance</source>
-        <translation>Прадукцыйнасць</translation>
+        <translation>Teljesítmény</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="31"/>
         <source>User</source>
-        <translation>Карыстальнік</translation>
+        <translation>Felhasználó</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="80"/>
         <source>Add user</source>
-        <translation>Дадаць карыстальніка</translation>
+        <translation>Felhasználó hozzáadása</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="30"/>
         <source>Background</source>
-        <translation>Фон</translation>
+        <translation>Háttér</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="56"/>
         <source>Background type</source>
-        <translation>Тып фону</translation>
+        <translation>Háttér típusa</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="77"/>
         <source>Picture</source>
-        <translation>Відарыс</translation>
+        <translation>Kép</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="81"/>
         <source>Color</source>
-        <translation>Суцэльны колер</translation>
+        <translation>Szín</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/Main.qml" line="32"/>
@@ -444,7 +444,7 @@
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
         <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Ethernet</source>
-        <translation>Ethernet</translation>
+        <translation>Hálózati csatlakozás</translation>
     </message>
 </context>
 <context>
@@ -452,27 +452,27 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="503"/>
         <source>Vendor default</source>
-        <translation>Вытворца па змаўчанні</translation>
+        <translation>Alapértelmezett forrás</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="505"/>
         <source>Medium</source>
-        <translation>Сярэдні</translation>
+        <translation>Közepes</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="507"/>
         <source>None</source>
-        <translation>None</translation>
+        <translation>Nincs</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="509"/>
         <source>Slight</source>
-        <translation>Нязначны</translation>
+        <translation>Enyhe</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="511"/>
         <source>Full</source>
-        <translation>Поўны</translation>
+        <translation>Tele</translation>
     </message>
 </context>
 <context>
@@ -480,12 +480,12 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="122"/>
         <source>User</source>
-        <translation>Карыстальнік</translation>
+        <translation>Felhasználó</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="77"/>
         <source>Display</source>
-        <translation>Экран</translation>
+        <translation>Megjelenés</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="52"/>
@@ -496,12 +496,12 @@
         <location filename="../src/qml/SideBar.qml" line="57"/>
         <location filename="../src/qml/SideBar.qml" line="66"/>
         <source>Network and connection</source>
-        <translation>Сетка і падключэння</translation>
+        <translation>Hálózat és kapcsolat</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="61"/>
         <source>Ethernet</source>
-        <translation>Ethernet</translation>
+        <translation>Hálózati kapcsolat</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="82"/>
@@ -510,27 +510,27 @@
         <location filename="../src/qml/SideBar.qml" line="109"/>
         <location filename="../src/qml/SideBar.qml" line="118"/>
         <source>Display and appearance</source>
-        <translation>Дысплей і знешні выгляд</translation>
+        <translation>Megjelenés</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="86"/>
         <source>Appearance</source>
-        <translation>Знешні выгляд</translation>
+        <translation>Megjelenés</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="95"/>
         <source>Fonts</source>
-        <translation>Шрыфты</translation>
+        <translation>Betűtípusok</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="104"/>
         <source>Background</source>
-        <translation>Фон</translation>
+        <translation>Háttér</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="113"/>
         <source>Dock</source>
-        <translation>Dock</translation>
+        <translation>Dokk</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="127"/>
@@ -538,22 +538,22 @@
         <location filename="../src/qml/SideBar.qml" line="145"/>
         <location filename="../src/qml/SideBar.qml" line="161"/>
         <source>System</source>
-        <translation>Сістэма</translation>
+        <translation>Rendszer</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="131"/>
         <source>Language</source>
-        <translation>Мова</translation>
+        <translation>Nyelv</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="140"/>
         <source>Battery</source>
-        <translation>Батарэя</translation>
+        <translation>Akkumulátor</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="156"/>
         <source>About</source>
-        <translation>Аб сістэме</translation>
+        <translation>Bővebben</translation>
     </message>
 </context>
 <context>
@@ -561,17 +561,17 @@
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="124"/>
         <source>Currently logged</source>
-        <translation>Зараз у сістэме</translation>
+        <translation>Jelenleg bejelentkezve</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="165"/>
         <source>Automatic login</source>
-        <translation>Аўтаматычны ўваход</translation>
+        <translation>Automatikus bejelentkezés</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="184"/>
         <source>Delete this user</source>
-        <translation>Выдаліць гэтага карыстальніка</translation>
+        <translation>Felhasználó törlése</translation>
     </message>
 </context>
 <context>
@@ -579,22 +579,22 @@
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="175"/>
         <source>Password</source>
-        <translation>Пароль</translation>
+        <translation>Jelszó</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="195"/>
         <source>Show password</source>
-        <translation>Паказаць пароль</translation>
+        <translation>Jelszó megjelenítése</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
         <source>Cancel</source>
-        <translation>Скасаваць</translation>
+        <translation>Mégse</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="210"/>
         <source>Connect</source>
-        <translation>Падлучыцца</translation>
+        <translation>Kapcsolat</translation>
     </message>
 </context>
 <context>
@@ -610,37 +610,37 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="65"/>
         <source>Auto-Join</source>
-        <translation>Аўта-Уваход</translation>
+        <translation>Automatikus csatlakozás</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="81"/>
         <source>Security</source>
-        <translation>Бяспека</translation>
+        <translation>Biztonság</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="93"/>
         <source>Signal</source>
-        <translation>Сігнал</translation>
+        <translation>Jel</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="105"/>
         <source>IPv4 Address</source>
-        <translation>Адрэс IPv4</translation>
+        <translation>IPv4 cím</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="119"/>
         <source>IPv6 Address</source>
-        <translation>Адрэс IPv6</translation>
+        <translation>IPv6 cím</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="133"/>
         <source>MAC Address</source>
-        <translation>MAC-адрэс</translation>
+        <translation>MAC cím</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="147"/>
         <source>Gateway</source>
-        <translation>Шлюз</translation>
+        <translation>Átjáró</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="160"/>
@@ -650,12 +650,12 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="177"/>
         <source>Close</source>
-        <translation>Закрыць</translation>
+        <translation>Bezárás</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="183"/>
         <source>Forget this network</source>
-        <translation>Забыць гэтую сетку</translation>
+        <translation>Hálózat elfelejtése</translation>
     </message>
 </context>
 <context>
@@ -663,7 +663,7 @@
     <message>
         <location filename="../src/qml/main.qml" line="29"/>
         <source>Settings</source>
-        <translation>Налады</translation>
+        <translation>Beállítások</translation>
     </message>
 </context>
 </TS>
