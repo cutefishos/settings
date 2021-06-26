@@ -143,7 +143,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="31"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Fontes</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="92"/>
@@ -163,12 +163,12 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="187"/>
         <source>Hinting</source>
-        <translation type="unfinished"></translation>
+        <translation>Sugestão</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
         <source>Anti-Aliasing</source>
-        <translation type="unfinished"></translation>
+        <translation>Anti-Aliasing</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="91"/>
@@ -272,7 +272,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="285"/>
         <source>Show percentage in status bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar porcentagem na barra de status</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="309"/>
@@ -372,7 +372,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="162"/>
         <source>Auto hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Ocultar automaticamente</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
@@ -444,7 +444,7 @@
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
         <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ethernet</translation>
     </message>
 </context>
 <context>
@@ -452,27 +452,27 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="503"/>
         <source>Vendor default</source>
-        <translation type="unfinished"></translation>
+        <translation>Padrão de fábrica</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="505"/>
         <source>Medium</source>
-        <translation type="unfinished">Médio</translation>
+        <translation>Médio</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="507"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenhum</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="509"/>
         <source>Slight</source>
-        <translation type="unfinished"></translation>
+        <translation>Pouco</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="511"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Cheio</translation>
     </message>
 </context>
 <context>
@@ -501,7 +501,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="61"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ethernet</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="82"/>
@@ -520,7 +520,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="95"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Fontes</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="104"/>

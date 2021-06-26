@@ -143,7 +143,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="31"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Polices</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="92"/>
@@ -163,12 +163,12 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="187"/>
         <source>Hinting</source>
-        <translation type="unfinished"></translation>
+        <translation>Indication</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
         <source>Anti-Aliasing</source>
-        <translation type="unfinished"></translation>
+        <translation>Anti-crénelage</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="91"/>
@@ -272,7 +272,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="285"/>
         <source>Show percentage in status bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher le pourcentage dans la barre d&apos;état</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="309"/>
@@ -372,7 +372,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="162"/>
         <source>Auto hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Masquer automatiquement</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
@@ -452,27 +452,27 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="503"/>
         <source>Vendor default</source>
-        <translation type="unfinished"></translation>
+        <translation>Défaut du vendeur</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="505"/>
         <source>Medium</source>
-        <translation type="unfinished">Moyenne</translation>
+        <translation>Moyen</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="507"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="509"/>
         <source>Slight</source>
-        <translation type="unfinished"></translation>
+        <translation>Léger</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="511"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Plein</translation>
     </message>
 </context>
 <context>
@@ -520,7 +520,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="95"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Polices</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="104"/>
