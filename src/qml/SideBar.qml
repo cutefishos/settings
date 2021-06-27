@@ -67,6 +67,15 @@ Item {
         }
 
 //        ListElement {
+//            title: qsTr("Hotspot")
+//            name: "hotspot"
+//            page: "qrc:/qml/Hotspot/Main.qml"
+//            iconSource: "hotspot.svg"
+//            iconColor: "#0067FF"
+//            category: qsTr("Network and connection")
+//        }
+
+//        ListElement {
 //            title: qsTr("Bluetooth")
 //            name: "bluetooth"
 //            page: "qrc:/qml/BluetoothPage.qml"

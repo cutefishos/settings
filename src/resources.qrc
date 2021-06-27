@@ -105,5 +105,7 @@
         <file>qml/StandardButton.qml</file>
         <file>qml/Fonts/Main.qml</file>
         <file>images/sidebar/dark/fonts.svg</file>
+        <file>qml/Hotspot/Main.qml</file>
+        <file>images/sidebar/dark/hotspot.svg</file>
     </qresource>
 </RCC>
