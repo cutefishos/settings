@@ -116,7 +116,7 @@
         <translation>दृश्य</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="48"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="47"/>
         <source>Theme</source>
         <translation>थीम</translation>
     </message>
@@ -136,7 +136,7 @@
         <translation>अँध्यारो थीम मा वालपेपर मधुरो गर्ने</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="101"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="104"/>
         <source>Accent color</source>
         <translation>मन पर्ने रङ</translation>
     </message>
@@ -171,25 +171,25 @@
         <translation>एन्टि एलिएसिङ्ग</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="91"/>
+        <location filename="../src/qml/Dock/Main.qml" line="95"/>
         <location filename="../src/qml/Fonts/Main.qml" line="134"/>
         <source>Small</source>
         <translation>सानो</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="95"/>
+        <location filename="../src/qml/Dock/Main.qml" line="99"/>
         <location filename="../src/qml/Fonts/Main.qml" line="138"/>
         <source>Medium</source>
         <translation>मध्यम</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="99"/>
+        <location filename="../src/qml/Dock/Main.qml" line="103"/>
         <location filename="../src/qml/Fonts/Main.qml" line="142"/>
         <source>Large</source>
         <translation>ठुलो</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="103"/>
+        <location filename="../src/qml/Dock/Main.qml" line="107"/>
         <location filename="../src/qml/Fonts/Main.qml" line="146"/>
         <source>Huge</source>
         <translation>धेरै ठुलो</translation>
@@ -235,47 +235,47 @@
         <translation>इतिहास</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="154"/>
+        <location filename="../src/qml/Battery/Main.qml" line="159"/>
         <source>W</source>
         <translation>w</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="175"/>
+        <location filename="../src/qml/Battery/Main.qml" line="181"/>
         <source>Health</source>
         <translation>स्वास्थ्य</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="191"/>
+        <location filename="../src/qml/Battery/Main.qml" line="200"/>
         <source>Poor</source>
         <translation>कमजोर</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="220"/>
+        <location filename="../src/qml/Battery/Main.qml" line="229"/>
         <source>Normal</source>
         <translation>साधारण</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="249"/>
+        <location filename="../src/qml/Battery/Main.qml" line="258"/>
         <source>Excellent</source>
         <translation>खुब राम्रो</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="271"/>
+        <location filename="../src/qml/Battery/Main.qml" line="280"/>
         <source>Last Charged to</source>
         <translation>अन्तिम चार्ज भएको</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="277"/>
+        <location filename="../src/qml/Battery/Main.qml" line="286"/>
         <source>Maximum Capacity</source>
         <translation>अधिकतम क्षमता</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="285"/>
+        <location filename="../src/qml/Battery/Main.qml" line="298"/>
         <source>Show percentage in status bar</source>
         <translation>स्टाटस बार मा प्रतिशत देखाउने</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="309"/>
+        <location filename="../src/qml/Battery/Main.qml" line="322"/>
         <source>No battery found</source>
         <translation>ब्याट्री भेटिएन</translation>
     </message>
@@ -285,47 +285,47 @@
         <translation>डिस्प्ले</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="67"/>
+        <location filename="../src/qml/Display/Main.qml" line="63"/>
         <source>Brightness</source>
         <translation>उज्यालो पन</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="111"/>
+        <location filename="../src/qml/Display/Main.qml" line="116"/>
         <source>Screen</source>
         <translation>स्क्रिन</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="151"/>
+        <location filename="../src/qml/Display/Main.qml" line="159"/>
         <source>Screen Name</source>
         <translation>स्क्रिन नाम</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="160"/>
+        <location filename="../src/qml/Display/Main.qml" line="168"/>
         <source>Resolution</source>
         <translation>रिजोल्युसन</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="179"/>
+        <location filename="../src/qml/Display/Main.qml" line="187"/>
         <source>Refresh rate</source>
         <translation>रिफ्रेस दर</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="199"/>
+        <location filename="../src/qml/Display/Main.qml" line="207"/>
         <source>Rotation</source>
         <translation>घुमाइ</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="243"/>
+        <location filename="../src/qml/Display/Main.qml" line="251"/>
         <source>Enabled</source>
         <translation>सुचालित</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="274"/>
+        <location filename="../src/qml/Display/Main.qml" line="285"/>
         <source>Scale</source>
         <translation>नाप</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="342"/>
+        <location filename="../src/qml/Display/Main.qml" line="354"/>
         <source>Need to log in again to take effect</source>
         <translation>प्रभाव लागू गर्न पुन: लगइन गर्नुपर्छ</translation>
     </message>
@@ -335,7 +335,7 @@
         <translation>डक</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="46"/>
+        <location filename="../src/qml/Dock/Main.qml" line="44"/>
         <source>Position on screen</source>
         <translation>स्क्रिनमा स्थिति</translation>
     </message>
@@ -355,22 +355,22 @@
         <translation>दायाँ</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="80"/>
+        <location filename="../src/qml/Dock/Main.qml" line="82"/>
         <source>Size</source>
         <translation>आकार</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="147"/>
-        <source>Visibility</source>
-        <translation>दृश्यता</translation>
+        <location filename="../src/qml/Dock/Main.qml" line="153"/>
+        <source>Display mode</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="158"/>
+        <location filename="../src/qml/Dock/Main.qml" line="166"/>
         <source>Always show</source>
         <translation>सधैं देखाउने</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="162"/>
+        <location filename="../src/qml/Dock/Main.qml" line="170"/>
         <source>Auto hide</source>
         <translation>आफैं लुकाउने</translation>
     </message>
@@ -446,6 +446,62 @@
         <source>Ethernet</source>
         <translation>तार जडान</translation>
     </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="30"/>
+        <source>Application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="42"/>
+        <source>Default application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="52"/>
+        <source>Web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="60"/>
+        <source>File manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="68"/>
+        <source>Email</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="76"/>
+        <source>Terminal emulator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Hotspot/Main.qml" line="32"/>
+        <location filename="../src/qml/Hotspot/Main.qml" line="69"/>
+        <source>Hotspot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Hotspot/Main.qml" line="47"/>
+        <source>Not supported</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Hotspot/Main.qml" line="102"/>
+        <source>SSID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Hotspot/Main.qml" line="113"/>
+        <source>Password</source>
+        <translation type="unfinished">गोप्य शब्द</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Hotspot/Main.qml" line="129"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -478,12 +534,12 @@
 <context>
     <name>SideBar</name>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="122"/>
+        <location filename="../src/qml/SideBar.qml" line="131"/>
         <source>User</source>
         <translation>प्रयोगकर्ता</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="77"/>
+        <location filename="../src/qml/SideBar.qml" line="86"/>
         <source>Display</source>
         <translation>दृश्य</translation>
     </message>
@@ -504,54 +560,54 @@
         <translation>तार जडान</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="82"/>
         <location filename="../src/qml/SideBar.qml" line="91"/>
         <location filename="../src/qml/SideBar.qml" line="100"/>
         <location filename="../src/qml/SideBar.qml" line="109"/>
         <location filename="../src/qml/SideBar.qml" line="118"/>
+        <location filename="../src/qml/SideBar.qml" line="127"/>
         <source>Display and appearance</source>
         <translation>प्रदर्शन</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="86"/>
+        <location filename="../src/qml/SideBar.qml" line="95"/>
         <source>Appearance</source>
         <translation>देखावट</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="95"/>
+        <location filename="../src/qml/SideBar.qml" line="104"/>
         <source>Fonts</source>
         <translation>फन्ठरु</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="104"/>
+        <location filename="../src/qml/SideBar.qml" line="113"/>
         <source>Background</source>
         <translation>पृष्ठभुमि</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="113"/>
+        <location filename="../src/qml/SideBar.qml" line="122"/>
         <source>Dock</source>
         <translation>डक</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="127"/>
         <location filename="../src/qml/SideBar.qml" line="136"/>
-        <location filename="../src/qml/SideBar.qml" line="145"/>
-        <location filename="../src/qml/SideBar.qml" line="161"/>
+        <location filename="../src/qml/SideBar.qml" line="154"/>
+        <location filename="../src/qml/SideBar.qml" line="163"/>
+        <location filename="../src/qml/SideBar.qml" line="179"/>
         <source>System</source>
         <translation>सिस्टम</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="131"/>
+        <location filename="../src/qml/SideBar.qml" line="149"/>
         <source>Language</source>
         <translation>भाषा</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="140"/>
+        <location filename="../src/qml/SideBar.qml" line="158"/>
         <source>Battery</source>
         <translation>ब्याट्री</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="156"/>
+        <location filename="../src/qml/SideBar.qml" line="174"/>
         <source>About</source>
         <translation>बारेमा</translation>
     </message>

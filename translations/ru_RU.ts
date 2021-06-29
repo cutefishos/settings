@@ -116,7 +116,7 @@
         <translation>Внешний вид</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="48"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="47"/>
         <source>Theme</source>
         <translation>Тема</translation>
     </message>
@@ -136,7 +136,7 @@
         <translation>Затемнить обои в темной теме</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="101"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="104"/>
         <source>Accent color</source>
         <translation>Цветовой акцент</translation>
     </message>
@@ -171,25 +171,25 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="91"/>
+        <location filename="../src/qml/Dock/Main.qml" line="95"/>
         <location filename="../src/qml/Fonts/Main.qml" line="134"/>
         <source>Small</source>
         <translation>Маленький</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="95"/>
+        <location filename="../src/qml/Dock/Main.qml" line="99"/>
         <location filename="../src/qml/Fonts/Main.qml" line="138"/>
         <source>Medium</source>
         <translation>Средний</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="99"/>
+        <location filename="../src/qml/Dock/Main.qml" line="103"/>
         <location filename="../src/qml/Fonts/Main.qml" line="142"/>
         <source>Large</source>
         <translation>Большой</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="103"/>
+        <location filename="../src/qml/Dock/Main.qml" line="107"/>
         <location filename="../src/qml/Fonts/Main.qml" line="146"/>
         <source>Huge</source>
         <translation>Огромный</translation>
@@ -235,47 +235,47 @@
         <translation>История</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="154"/>
+        <location filename="../src/qml/Battery/Main.qml" line="159"/>
         <source>W</source>
         <translation>W</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="175"/>
+        <location filename="../src/qml/Battery/Main.qml" line="181"/>
         <source>Health</source>
         <translation>Здоровье</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="191"/>
+        <location filename="../src/qml/Battery/Main.qml" line="200"/>
         <source>Poor</source>
         <translation>Плохое</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="220"/>
+        <location filename="../src/qml/Battery/Main.qml" line="229"/>
         <source>Normal</source>
         <translation>Нормально</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="249"/>
+        <location filename="../src/qml/Battery/Main.qml" line="258"/>
         <source>Excellent</source>
         <translation>Отлично</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="271"/>
+        <location filename="../src/qml/Battery/Main.qml" line="280"/>
         <source>Last Charged to</source>
         <translation>Последний раз заряжен на</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="277"/>
+        <location filename="../src/qml/Battery/Main.qml" line="286"/>
         <source>Maximum Capacity</source>
         <translation>Максимальная ёмкость</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="285"/>
+        <location filename="../src/qml/Battery/Main.qml" line="298"/>
         <source>Show percentage in status bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="309"/>
+        <location filename="../src/qml/Battery/Main.qml" line="322"/>
         <source>No battery found</source>
         <translation>Батарея не найдена</translation>
     </message>
@@ -285,47 +285,47 @@
         <translation>Экран</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="67"/>
+        <location filename="../src/qml/Display/Main.qml" line="63"/>
         <source>Brightness</source>
         <translation>Яркость</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="111"/>
+        <location filename="../src/qml/Display/Main.qml" line="116"/>
         <source>Screen</source>
         <translation>Экран</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="151"/>
+        <location filename="../src/qml/Display/Main.qml" line="159"/>
         <source>Screen Name</source>
         <translation>Ник</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="160"/>
+        <location filename="../src/qml/Display/Main.qml" line="168"/>
         <source>Resolution</source>
         <translation>Расширение</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="179"/>
+        <location filename="../src/qml/Display/Main.qml" line="187"/>
         <source>Refresh rate</source>
         <translation>Частота обновления</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="199"/>
+        <location filename="../src/qml/Display/Main.qml" line="207"/>
         <source>Rotation</source>
         <translation>Поворот</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="243"/>
+        <location filename="../src/qml/Display/Main.qml" line="251"/>
         <source>Enabled</source>
         <translation>Включено</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="274"/>
+        <location filename="../src/qml/Display/Main.qml" line="285"/>
         <source>Scale</source>
         <translation>Размер</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="342"/>
+        <location filename="../src/qml/Display/Main.qml" line="354"/>
         <source>Need to log in again to take effect</source>
         <translation>Необходим повторный вход чтобы изменения вступили в силу</translation>
     </message>
@@ -335,7 +335,7 @@
         <translation>Док-панель</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="46"/>
+        <location filename="../src/qml/Dock/Main.qml" line="44"/>
         <source>Position on screen</source>
         <translation>Положение на экране</translation>
     </message>
@@ -355,22 +355,22 @@
         <translation>Справа</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="80"/>
+        <location filename="../src/qml/Dock/Main.qml" line="82"/>
         <source>Size</source>
         <translation>Размер</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="147"/>
-        <source>Visibility</source>
-        <translation>Видимость</translation>
+        <location filename="../src/qml/Dock/Main.qml" line="153"/>
+        <source>Display mode</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="158"/>
+        <location filename="../src/qml/Dock/Main.qml" line="166"/>
         <source>Always show</source>
         <translation>Всегда показывать</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="162"/>
+        <location filename="../src/qml/Dock/Main.qml" line="170"/>
         <source>Auto hide</source>
         <translation type="unfinished"></translation>
     </message>
@@ -446,6 +446,62 @@
         <source>Ethernet</source>
         <translation>Ethernet</translation>
     </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="30"/>
+        <source>Application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="42"/>
+        <source>Default application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="52"/>
+        <source>Web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="60"/>
+        <source>File manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="68"/>
+        <source>Email</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="76"/>
+        <source>Terminal emulator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Hotspot/Main.qml" line="32"/>
+        <location filename="../src/qml/Hotspot/Main.qml" line="69"/>
+        <source>Hotspot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Hotspot/Main.qml" line="47"/>
+        <source>Not supported</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Hotspot/Main.qml" line="102"/>
+        <source>SSID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Hotspot/Main.qml" line="113"/>
+        <source>Password</source>
+        <translation type="unfinished">Пароль</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Hotspot/Main.qml" line="129"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -478,7 +534,7 @@
 <context>
     <name>SideBar</name>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="77"/>
+        <location filename="../src/qml/SideBar.qml" line="86"/>
         <source>Display</source>
         <translation>Экран</translation>
     </message>
@@ -494,36 +550,36 @@
         <translation>Ethernet</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="82"/>
         <location filename="../src/qml/SideBar.qml" line="91"/>
         <location filename="../src/qml/SideBar.qml" line="100"/>
         <location filename="../src/qml/SideBar.qml" line="109"/>
         <location filename="../src/qml/SideBar.qml" line="118"/>
+        <location filename="../src/qml/SideBar.qml" line="127"/>
         <source>Display and appearance</source>
         <translation>Дисплей и внешний вид</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="86"/>
+        <location filename="../src/qml/SideBar.qml" line="95"/>
         <source>Appearance</source>
         <translation>Внешний вид</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="95"/>
+        <location filename="../src/qml/SideBar.qml" line="104"/>
         <source>Fonts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="113"/>
+        <location filename="../src/qml/SideBar.qml" line="122"/>
         <source>Dock</source>
         <translation>Панель</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="122"/>
+        <location filename="../src/qml/SideBar.qml" line="131"/>
         <source>User</source>
         <translation>Пользователь</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="104"/>
+        <location filename="../src/qml/SideBar.qml" line="113"/>
         <source>Background</source>
         <translation>Фон</translation>
     </message>
@@ -533,25 +589,25 @@
         <translation>WLAN</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="127"/>
         <location filename="../src/qml/SideBar.qml" line="136"/>
-        <location filename="../src/qml/SideBar.qml" line="145"/>
-        <location filename="../src/qml/SideBar.qml" line="161"/>
+        <location filename="../src/qml/SideBar.qml" line="154"/>
+        <location filename="../src/qml/SideBar.qml" line="163"/>
+        <location filename="../src/qml/SideBar.qml" line="179"/>
         <source>System</source>
         <translation>Система</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="131"/>
+        <location filename="../src/qml/SideBar.qml" line="149"/>
         <source>Language</source>
         <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="140"/>
+        <location filename="../src/qml/SideBar.qml" line="158"/>
         <source>Battery</source>
         <translation>Батарея</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="156"/>
+        <location filename="../src/qml/SideBar.qml" line="174"/>
         <source>About</source>
         <translation>О системе</translation>
     </message>

@@ -116,7 +116,7 @@
         <translation>Görünüm</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="48"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="47"/>
         <source>Theme</source>
         <translation>Tema</translation>
     </message>
@@ -136,7 +136,7 @@
         <translation>Duvar kağıdını karanlık temaya göre ayarla</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="101"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="104"/>
         <source>Accent color</source>
         <translation>Vurgu rengi</translation>
     </message>
@@ -171,25 +171,25 @@
         <translation>Kenar Yumuşatma</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="91"/>
+        <location filename="../src/qml/Dock/Main.qml" line="95"/>
         <location filename="../src/qml/Fonts/Main.qml" line="134"/>
         <source>Small</source>
         <translation>Küçük</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="95"/>
+        <location filename="../src/qml/Dock/Main.qml" line="99"/>
         <location filename="../src/qml/Fonts/Main.qml" line="138"/>
         <source>Medium</source>
         <translation>Orta</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="99"/>
+        <location filename="../src/qml/Dock/Main.qml" line="103"/>
         <location filename="../src/qml/Fonts/Main.qml" line="142"/>
         <source>Large</source>
         <translation>Büyük</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="103"/>
+        <location filename="../src/qml/Dock/Main.qml" line="107"/>
         <location filename="../src/qml/Fonts/Main.qml" line="146"/>
         <source>Huge</source>
         <translation>Büyük</translation>
@@ -235,47 +235,47 @@
         <translation>Geçmiş</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="154"/>
+        <location filename="../src/qml/Battery/Main.qml" line="159"/>
         <source>W</source>
         <translation>W</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="175"/>
+        <location filename="../src/qml/Battery/Main.qml" line="181"/>
         <source>Health</source>
         <translation>Sağlık</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="191"/>
+        <location filename="../src/qml/Battery/Main.qml" line="200"/>
         <source>Poor</source>
         <translation>Zayıf</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="220"/>
+        <location filename="../src/qml/Battery/Main.qml" line="229"/>
         <source>Normal</source>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="249"/>
+        <location filename="../src/qml/Battery/Main.qml" line="258"/>
         <source>Excellent</source>
         <translation>Mükemmel</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="271"/>
+        <location filename="../src/qml/Battery/Main.qml" line="280"/>
         <source>Last Charged to</source>
         <translation>En son şarj</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="277"/>
+        <location filename="../src/qml/Battery/Main.qml" line="286"/>
         <source>Maximum Capacity</source>
         <translation>Maksimum Kapasite</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="285"/>
+        <location filename="../src/qml/Battery/Main.qml" line="298"/>
         <source>Show percentage in status bar</source>
         <translation>Durum çubuğunda yüzdeyi göster</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="309"/>
+        <location filename="../src/qml/Battery/Main.qml" line="322"/>
         <source>No battery found</source>
         <translation>Batarya bulunamadı</translation>
     </message>
@@ -285,47 +285,47 @@
         <translation>Ekran</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="67"/>
+        <location filename="../src/qml/Display/Main.qml" line="63"/>
         <source>Brightness</source>
         <translation>Parlaklık</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="111"/>
+        <location filename="../src/qml/Display/Main.qml" line="116"/>
         <source>Screen</source>
         <translation>Ekran</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="151"/>
+        <location filename="../src/qml/Display/Main.qml" line="159"/>
         <source>Screen Name</source>
         <translation>Ekran Adı</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="160"/>
+        <location filename="../src/qml/Display/Main.qml" line="168"/>
         <source>Resolution</source>
         <translation>Çözünürlük</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="179"/>
+        <location filename="../src/qml/Display/Main.qml" line="187"/>
         <source>Refresh rate</source>
         <translation>Yenileme oranı</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="199"/>
+        <location filename="../src/qml/Display/Main.qml" line="207"/>
         <source>Rotation</source>
         <translation>Yön</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="243"/>
+        <location filename="../src/qml/Display/Main.qml" line="251"/>
         <source>Enabled</source>
         <translation>Etkin</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="274"/>
+        <location filename="../src/qml/Display/Main.qml" line="285"/>
         <source>Scale</source>
         <translation>Genişlik</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="342"/>
+        <location filename="../src/qml/Display/Main.qml" line="354"/>
         <source>Need to log in again to take effect</source>
         <translation>Değişikliklerin uygulanması için yeniden başlatmanız gerekir</translation>
     </message>
@@ -335,7 +335,7 @@
         <translation>Rıhtım</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="46"/>
+        <location filename="../src/qml/Dock/Main.qml" line="44"/>
         <source>Position on screen</source>
         <translation>Ekrandaki konumu</translation>
     </message>
@@ -355,22 +355,22 @@
         <translation>Sağ</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="80"/>
+        <location filename="../src/qml/Dock/Main.qml" line="82"/>
         <source>Size</source>
         <translation>Boyut</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="147"/>
-        <source>Visibility</source>
-        <translation>Görünürlük</translation>
+        <location filename="../src/qml/Dock/Main.qml" line="153"/>
+        <source>Display mode</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="158"/>
+        <location filename="../src/qml/Dock/Main.qml" line="166"/>
         <source>Always show</source>
         <translation>Her zaman göster</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="162"/>
+        <location filename="../src/qml/Dock/Main.qml" line="170"/>
         <source>Auto hide</source>
         <translation>Otomatik gizle</translation>
     </message>
@@ -446,6 +446,62 @@
         <source>Ethernet</source>
         <translation>Ethernet</translation>
     </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="30"/>
+        <source>Application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="42"/>
+        <source>Default application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="52"/>
+        <source>Web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="60"/>
+        <source>File manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="68"/>
+        <source>Email</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Application/Main.qml" line="76"/>
+        <source>Terminal emulator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Hotspot/Main.qml" line="32"/>
+        <location filename="../src/qml/Hotspot/Main.qml" line="69"/>
+        <source>Hotspot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Hotspot/Main.qml" line="47"/>
+        <source>Not supported</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Hotspot/Main.qml" line="102"/>
+        <source>SSID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Hotspot/Main.qml" line="113"/>
+        <source>Password</source>
+        <translation type="unfinished">Şifre</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Hotspot/Main.qml" line="129"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -478,12 +534,12 @@
 <context>
     <name>SideBar</name>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="122"/>
+        <location filename="../src/qml/SideBar.qml" line="131"/>
         <source>User</source>
         <translation>Kullanıcı</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="77"/>
+        <location filename="../src/qml/SideBar.qml" line="86"/>
         <source>Display</source>
         <translation>Ekran</translation>
     </message>
@@ -504,54 +560,54 @@
         <translation>Ethernet</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="82"/>
         <location filename="../src/qml/SideBar.qml" line="91"/>
         <location filename="../src/qml/SideBar.qml" line="100"/>
         <location filename="../src/qml/SideBar.qml" line="109"/>
         <location filename="../src/qml/SideBar.qml" line="118"/>
+        <location filename="../src/qml/SideBar.qml" line="127"/>
         <source>Display and appearance</source>
         <translation>Ekran ve görünüm</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="86"/>
+        <location filename="../src/qml/SideBar.qml" line="95"/>
         <source>Appearance</source>
         <translation>Görünüm</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="95"/>
+        <location filename="../src/qml/SideBar.qml" line="104"/>
         <source>Fonts</source>
         <translation>Yazı Tipleri</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="104"/>
+        <location filename="../src/qml/SideBar.qml" line="113"/>
         <source>Background</source>
         <translation>Arkaplan</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="113"/>
+        <location filename="../src/qml/SideBar.qml" line="122"/>
         <source>Dock</source>
         <translation>Rıhtım</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="127"/>
         <location filename="../src/qml/SideBar.qml" line="136"/>
-        <location filename="../src/qml/SideBar.qml" line="145"/>
-        <location filename="../src/qml/SideBar.qml" line="161"/>
+        <location filename="../src/qml/SideBar.qml" line="154"/>
+        <location filename="../src/qml/SideBar.qml" line="163"/>
+        <location filename="../src/qml/SideBar.qml" line="179"/>
         <source>System</source>
         <translation>Sistem</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="131"/>
+        <location filename="../src/qml/SideBar.qml" line="149"/>
         <source>Language</source>
         <translation>Dil</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="140"/>
+        <location filename="../src/qml/SideBar.qml" line="158"/>
         <source>Battery</source>
         <translation>Batarya</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="156"/>
+        <location filename="../src/qml/SideBar.qml" line="174"/>
         <source>About</source>
         <translation>Hakkında</translation>
     </message>
