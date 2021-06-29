@@ -285,8 +285,10 @@ Item {
                             width: 16
                             height: width
                             source: "qrc:/images/sidebar/dark/" + model.iconSource
-                            sourceSize: Qt.size(width, height)
+                            sourceSize: Qt.size(22, 22)
                             Layout.alignment: Qt.AlignVCenter
+                            antialiasing: true
+                            smooth: true
                         }
                     }
 
