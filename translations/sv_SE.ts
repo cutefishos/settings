@@ -78,7 +78,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="68"/>
         <source>Built on %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Byggt på %1</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="76"/>
@@ -143,7 +143,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="31"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Typsnitt</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="92"/>
@@ -168,7 +168,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
         <source>Anti-Aliasing</source>
-        <translation type="unfinished"></translation>
+        <translation>Anti-Aliasing</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="91"/>
@@ -242,22 +242,22 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="175"/>
         <source>Health</source>
-        <translation type="unfinished"></translation>
+        <translation>Hälsa</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="191"/>
         <source>Poor</source>
-        <translation type="unfinished"></translation>
+        <translation>Dålig</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="220"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>Normal</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="249"/>
         <source>Excellent</source>
-        <translation type="unfinished"></translation>
+        <translation>Excellent</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="271"/>
@@ -272,7 +272,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="285"/>
         <source>Show percentage in status bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa procent i statusfältet</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="309"/>
@@ -297,7 +297,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="151"/>
         <source>Screen Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Skärmnamn</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="160"/>
@@ -362,17 +362,17 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="147"/>
         <source>Visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Synlighet</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="158"/>
         <source>Always show</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa alltid</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="162"/>
         <source>Auto hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Dölj automatiskt</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
@@ -438,13 +438,13 @@
         <location filename="../src/qml/Bluetooth/Main.qml" line="32"/>
         <location filename="../src/qml/Bluetooth/Main.qml" line="71"/>
         <source>Bluetooth</source>
-        <translation type="unfinished">Bluetooth</translation>
+        <translation>Bluetooth</translation>
     </message>
     <message>
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
         <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ethernet</translation>
     </message>
 </context>
 <context>
@@ -452,27 +452,27 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="503"/>
         <source>Vendor default</source>
-        <translation type="unfinished"></translation>
+        <translation>Leverantörsstandard</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="505"/>
         <source>Medium</source>
-        <translation type="unfinished">Medium</translation>
+        <translation>Medium</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="507"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="509"/>
         <source>Slight</source>
-        <translation type="unfinished"></translation>
+        <translation>Lätt</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="511"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Hel</translation>
     </message>
 </context>
 <context>
@@ -501,7 +501,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="61"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ethernet</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="82"/>
@@ -520,7 +520,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="95"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Typsnitt</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="104"/>
