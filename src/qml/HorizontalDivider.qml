@@ -32,6 +32,6 @@ Item {
         height: 1
         width: control.width
         color: FishUI.Theme.disabledTextColor
-        opacity: FishUI.Theme.darkMode ? 0.3 : 0.15
+        opacity: FishUI.Theme.darkMode ? 0.3 : 0.1
     }
 }

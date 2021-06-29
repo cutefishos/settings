@@ -57,16 +57,20 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: FishUI.Units.smallSpacing
+
+            Label {
+                text: qsTr("Brightness")
+                color: FishUI.Theme.disabledTextColor
+                leftPadding: FishUI.Units.largeSpacing
+            }
 
             RoundedItem {
                 Layout.fillWidth: true
                 visible: brightness.enabled
 
-                Label {
-                    text: qsTr("Brightness")
-                    color: FishUI.Theme.disabledTextColor
-                    bottomPadding: FishUI.Units.largeSpacing
+                Item {
+                    height: FishUI.Units.smallSpacing / 2
                 }
 
                 RowLayout {
@@ -100,19 +104,23 @@ ItemPage {
                 }
 
                 Item {
-                    height: FishUI.Units.smallSpacing
+                    height: FishUI.Units.smallSpacing / 2
                 }
+            }
+
+            Item {
+                height: FishUI.Units.largeSpacing
+            }
+
+            Label {
+                text: qsTr("Screen")
+                color: FishUI.Theme.disabledTextColor
+                leftPadding: FishUI.Units.largeSpacing
+                visible: _screenView.count > 0
             }
 
             RoundedItem {
                 visible: _screenView.count > 0
-
-                Label {
-                    text: qsTr("Screen")
-                    color: FishUI.Theme.disabledTextColor
-                    bottomPadding: FishUI.Units.smallSpacing
-                    visible: _screenView.count > 0
-                }
 
                 ListView {
                     id: _screenView
@@ -269,13 +277,17 @@ ItemPage {
                 }
             }
 
-            RoundedItem {
-                Label {
-                    text: qsTr("Scale")
-                    color: FishUI.Theme.disabledTextColor
-                    bottomPadding: FishUI.Units.smallSpacing
-                }
+            Item {
+                height: FishUI.Units.largeSpacing
+            }
 
+            Label {
+                text: qsTr("Scale")
+                color: FishUI.Theme.disabledTextColor
+                leftPadding: FishUI.Units.largeSpacing
+            }
+
+            RoundedItem {
                 TabBar {
                     id: dockSizeTabbar
                     Layout.fillWidth: true

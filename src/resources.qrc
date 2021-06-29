@@ -107,5 +107,6 @@
         <file>images/sidebar/dark/fonts.svg</file>
         <file>qml/Hotspot/Main.qml</file>
         <file>images/sidebar/dark/hotspot.svg</file>
+        <file>qml/Application/Main.qml</file>
     </qresource>
 </RCC>

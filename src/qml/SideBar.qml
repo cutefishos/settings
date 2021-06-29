@@ -136,6 +136,15 @@ Item {
             category: qsTr("System")
         }
 
+//        ListElement {
+//            title: qsTr("Application")
+//            name: "application"
+//            page: "qrc:/qml/Application/Main.qml"
+//            iconSource: "accounts.svg"
+//            iconColor: "#DA7C43"
+//            category: qsTr("System")
+//        }
+
         ListElement {
             title: qsTr("Language")
             name: "language"
