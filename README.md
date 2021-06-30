@@ -23,12 +23,6 @@ make
 sudo make install
 ```
 
-## Install
-
-```shell
-sudo make install
-```
-
 ## License
 
 This project has been licensed by GPLv3.
