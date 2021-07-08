@@ -34,7 +34,7 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: FishUI.Theme.darkMode ? "#333333" : "#EBECF2"
+        color: FishUI.Theme.secondBackgroundColor
         opacity: rootWindow.compositing ? 0.7 : 1.0
 
         Behavior on color {

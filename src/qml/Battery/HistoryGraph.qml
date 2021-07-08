@@ -165,7 +165,7 @@ Canvas {
         // Draw the X value texts
         c.textAlign = "center"
         c.lineWidth = 1
-        c.strokeStyle = 'rgba(0, 0, 0, 0.15)'
+        c.strokeStyle = FishUI.Theme.darkMode ? 'rgba(0, 0, 0, 0.35)' : 'rgba(0, 0, 0, 0.15)'
 
         var xDivisions = xDuration / xDivisionWidth * 1000
         var xGridDistance = plotWidth / xDivisions

@@ -34,8 +34,7 @@ FishUI.Window {
     minimumWidth: 900
     minimumHeight: 600
 
-    background.color: FishUI.Theme.darkMode ? "#262626" : "#F3F4F9"
-    background.opacity: 0.5
+    background.opacity: FishUI.Theme.darkMode ? 0.7 : 0.5
     header.height: 40
     contentTopMargin: 0
 

@@ -43,45 +43,47 @@ ItemPage {
             anchors.topMargin: FishUI.Units.smallSpacing
             spacing: FishUI.Units.largeSpacing
 
-            // DesktopPreview {
-            //     Layout.alignment: Qt.AlignHCenter
-            //     width: 500
-            //     height: 300
-            // }
+            RoundedItem {
+                RowLayout {
+                    spacing: FishUI.Units.largeSpacing * 2
 
-            RowLayout {
-                spacing: FishUI.Units.largeSpacing * 2
-
-                Label {
-                    text: qsTr("Background type")
-                    leftPadding: FishUI.Units.smallSpacing
-                }
-
-                TabBar {
-                    Layout.fillWidth: true
-
-                    background: Rectangle {
-                        color: FishUI.Theme.darkMode ? "#4A4A4D" : "#E5E5EB"
-                        radius: FishUI.Theme.mediumRadius
+                    Label {
+                        text: qsTr("Background type")
+                        leftPadding: FishUI.Units.smallSpacing
                     }
 
-                    onCurrentIndexChanged: {
-                        background.backgroundType = currentIndex
-                    }
+                    TabBar {
+                        Layout.fillWidth: true
 
-                    Component.onCompleted: {
-                        currentIndex = background.backgroundType
-                    }
+                        background: Rectangle {
+                            color: FishUI.Theme.darkMode ? "#4A4A4D" : "#E5E5EB"
+                            radius: FishUI.Theme.mediumRadius
+                        }
 
-                    TabButton {
-                        text: qsTr("Picture")
-                    }
+                        onCurrentIndexChanged: {
+                            background.backgroundType = currentIndex
+                        }
 
-                    TabButton {
-                        text: qsTr("Color")
+                        Component.onCompleted: {
+                            currentIndex = background.backgroundType
+                        }
+
+                        TabButton {
+                            text: qsTr("Picture")
+                        }
+
+                        TabButton {
+                            text: qsTr("Color")
+                        }
                     }
                 }
             }
+
+//            DesktopPreview {
+//                Layout.alignment: Qt.AlignHCenter
+//                width: 500
+//                height: 300
+//            }
 
             GridView {
                 id: _view

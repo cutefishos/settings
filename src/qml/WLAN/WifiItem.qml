@@ -159,7 +159,7 @@ Item {
 
         Rectangle {
             anchors.fill: parent
-            color: FishUI.Theme.backgroundColor
+            color: FishUI.Theme.secondBackgroundColor
         }
 
         ColumnLayout {
