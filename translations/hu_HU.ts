@@ -34,12 +34,12 @@
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Administrator</source>
-        <translation>Adminisztrátor</translation>
+        <translation>Rendszergazda</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="130"/>
         <source>Cancel</source>
-        <translation>Mégse</translation>
+        <translation>Mégsem</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="137"/>
@@ -73,7 +73,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="28"/>
         <source>About</source>
-        <translation>Bővebben</translation>
+        <translation>Rólunk</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="68"/>
@@ -153,7 +153,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="109"/>
         <source>Fixed Font</source>
-        <translation>Fix betűtípus</translation>
+        <translation>Rögzített betűtípus</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="126"/>
@@ -237,7 +237,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="159"/>
         <source>W</source>
-        <translation>W</translation>
+        <translation>Hét</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="181"/>
@@ -262,7 +262,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="280"/>
         <source>Last Charged to</source>
-        <translation>Utoljára töltve</translation>
+        <translation>Utoljára feltöltve</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="286"/>
@@ -282,12 +282,12 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="29"/>
         <source>Display</source>
-        <translation>Megjelenés</translation>
+        <translation>Megjelenítő</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="63"/>
         <source>Brightness</source>
-        <translation>Fényerő</translation>
+        <translation>Fényerősség</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="116"/>
@@ -322,7 +322,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="285"/>
         <source>Scale</source>
-        <translation>Nagyítás</translation>
+        <translation>Méretezés</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="354"/>
@@ -362,7 +362,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="153"/>
         <source>Display mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Képernyő mód</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="166"/>
@@ -432,7 +432,7 @@
     <message>
         <location filename="../src/qml/WLAN/Main.qml" line="32"/>
         <source>WLAN</source>
-        <translation>WLAN</translation>
+        <translation>Vezeték nélküli hálózat</translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="32"/>
@@ -444,63 +444,63 @@
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
         <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Ethernet</source>
-        <translation>Hálózati csatlakozás</translation>
+        <translation>Vezetékes hálózat</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="30"/>
         <source>Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Alkalmazás</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="42"/>
         <source>Default application</source>
-        <translation type="unfinished"></translation>
+        <translation>Alapértelmezett alkalmazás</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="52"/>
         <source>Web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Böngésző</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="60"/>
         <source>File manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Fájlkezelő</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="68"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>Levelező</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="76"/>
         <source>Terminal emulator</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminál emulátor</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="32"/>
         <location filename="../src/qml/Hotspot/Main.qml" line="69"/>
         <source>Hotspot</source>
-        <translation type="unfinished"></translation>
+        <translation>Hotspot</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="47"/>
         <source>Not supported</source>
-        <translation type="unfinished"></translation>
+        <translation>Nem támogatott</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="102"/>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="113"/>
         <source>Password</source>
-        <translation type="unfinished">Jelszó</translation>
+        <translation>Jelszó</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="129"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Mentés</translation>
     </message>
 </context>
 <context>
@@ -528,7 +528,7 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="511"/>
         <source>Full</source>
-        <translation>Tele</translation>
+        <translation>Tejes</translation>
     </message>
 </context>
 <context>
@@ -546,7 +546,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="52"/>
         <source>WLAN</source>
-        <translation>WLAN</translation>
+        <translation>Vezeték nélküli hálózat</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="57"/>
@@ -557,7 +557,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="61"/>
         <source>Ethernet</source>
-        <translation>Hálózati kapcsolat</translation>
+        <translation>Vezetékes hálózat</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="91"/>
@@ -645,7 +645,7 @@
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
         <source>Cancel</source>
-        <translation>Mégse</translation>
+        <translation>Mégsem</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="210"/>

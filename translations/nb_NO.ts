@@ -78,7 +78,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="68"/>
         <source>Built on %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bygd på %1</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="76"/>
@@ -143,7 +143,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="31"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Skrifter</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="92"/>
@@ -163,12 +163,12 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="187"/>
         <source>Hinting</source>
-        <translation type="unfinished"></translation>
+        <translation>Hinting</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
         <source>Anti-Aliasing</source>
-        <translation type="unfinished"></translation>
+        <translation>Kantutjevning</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="95"/>
@@ -242,22 +242,22 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="181"/>
         <source>Health</source>
-        <translation type="unfinished"></translation>
+        <translation>Helse</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="200"/>
         <source>Poor</source>
-        <translation type="unfinished"></translation>
+        <translation>Dårlig</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="229"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>Normal</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="258"/>
         <source>Excellent</source>
-        <translation type="unfinished"></translation>
+        <translation>Utmerket</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="280"/>
@@ -272,7 +272,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="298"/>
         <source>Show percentage in status bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Vis prosent i statusfelt</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="322"/>
@@ -297,7 +297,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="159"/>
         <source>Screen Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Skjermnavn</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="168"/>
@@ -362,17 +362,17 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="153"/>
         <source>Display mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Visningsmodus</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="166"/>
         <source>Always show</source>
-        <translation type="unfinished"></translation>
+        <translation>Alltid vis</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="170"/>
         <source>Auto hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto-skjul</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
@@ -444,53 +444,53 @@
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
         <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ethernet</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="30"/>
         <source>Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Program</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="42"/>
         <source>Default application</source>
-        <translation type="unfinished"></translation>
+        <translation>Forvalgt program</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="52"/>
         <source>Web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Nettleser</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="60"/>
         <source>File manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Filbehandler</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="68"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">E-post</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="76"/>
         <source>Terminal emulator</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminalemulator</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="32"/>
         <location filename="../src/qml/Hotspot/Main.qml" line="69"/>
         <source>Hotspot</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tilgangsdeling</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="47"/>
         <source>Not supported</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikke støttet</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="102"/>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="113"/>
@@ -500,7 +500,7 @@
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="129"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Lagre</translation>
     </message>
 </context>
 <context>
@@ -508,7 +508,7 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="503"/>
         <source>Vendor default</source>
-        <translation type="unfinished"></translation>
+        <translation>Leverandørforvalg</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="505"/>
@@ -518,17 +518,17 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="507"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="509"/>
         <source>Slight</source>
-        <translation type="unfinished"></translation>
+        <translation>Lett</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="511"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Full</translation>
     </message>
 </context>
 <context>
@@ -557,7 +557,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="61"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ethernet</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="91"/>
@@ -576,7 +576,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="104"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Skrifter</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="113"/>

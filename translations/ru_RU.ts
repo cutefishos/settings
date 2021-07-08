@@ -143,7 +143,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="31"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Шрифты</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="92"/>
@@ -163,12 +163,12 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="187"/>
         <source>Hinting</source>
-        <translation type="unfinished"></translation>
+        <translation>Хинтинг</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
         <source>Anti-Aliasing</source>
-        <translation type="unfinished"></translation>
+        <translation>Сглаживание</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="95"/>
@@ -272,7 +272,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="298"/>
         <source>Show percentage in status bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать процент заряда на верхней панели</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="322"/>
@@ -297,7 +297,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="159"/>
         <source>Screen Name</source>
-        <translation>Ник</translation>
+        <translation>Название экрана</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="168"/>
@@ -362,7 +362,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="153"/>
         <source>Display mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Режим отображения</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="166"/>
@@ -372,7 +372,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="170"/>
         <source>Auto hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Скрывать автоматически</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
@@ -449,58 +449,58 @@
     <message>
         <location filename="../src/qml/Application/Main.qml" line="30"/>
         <source>Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Приложение</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="42"/>
         <source>Default application</source>
-        <translation type="unfinished"></translation>
+        <translation>Приложение по умолчанию</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="52"/>
         <source>Web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Веб-браузер</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="60"/>
         <source>File manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Файловый менеджер</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="68"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>Электронная почта</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="76"/>
         <source>Terminal emulator</source>
-        <translation type="unfinished"></translation>
+        <translation>Эмулятор терминала</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="32"/>
         <location filename="../src/qml/Hotspot/Main.qml" line="69"/>
         <source>Hotspot</source>
-        <translation type="unfinished"></translation>
+        <translation>Точка доступа</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="47"/>
         <source>Not supported</source>
-        <translation type="unfinished"></translation>
+        <translation>Не поддерживается</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="102"/>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="113"/>
         <source>Password</source>
-        <translation type="unfinished">Пароль</translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="129"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Сохранить</translation>
     </message>
 </context>
 <context>
@@ -508,27 +508,27 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="503"/>
         <source>Vendor default</source>
-        <translation type="unfinished"></translation>
+        <translation>По умолчанию</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="505"/>
         <source>Medium</source>
-        <translation type="unfinished">Средний</translation>
+        <translation>Средний</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="507"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Нет</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="509"/>
         <source>Slight</source>
-        <translation type="unfinished"></translation>
+        <translation>Небольшой</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="511"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Полный</translation>
     </message>
 </context>
 <context>
@@ -566,7 +566,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="104"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Шрифты</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="122"/>

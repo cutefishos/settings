@@ -168,7 +168,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
         <source>Anti-Aliasing</source>
-        <translation type="unfinished"></translation>
+        <translation>Anti-Aliasing</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="95"/>
@@ -272,7 +272,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="298"/>
         <source>Show percentage in status bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Tampilkan persentase di status bar</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="322"/>
@@ -362,7 +362,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="153"/>
         <source>Display mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mode Tampilan</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="166"/>
@@ -372,7 +372,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="170"/>
         <source>Auto hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Sembunyikan Otomatis</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
@@ -449,7 +449,7 @@
     <message>
         <location filename="../src/qml/Application/Main.qml" line="30"/>
         <source>Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplikasi</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="42"/>
@@ -464,12 +464,12 @@
     <message>
         <location filename="../src/qml/Application/Main.qml" line="60"/>
         <source>File manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Pengelola Berkas</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="68"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>Email</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="76"/>
@@ -485,12 +485,12 @@
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="47"/>
         <source>Not supported</source>
-        <translation type="unfinished"></translation>
+        <translation>Tidak didukung</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="102"/>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="113"/>
@@ -500,7 +500,7 @@
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="129"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Simpan</translation>
     </message>
 </context>
 <context>
@@ -557,7 +557,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="61"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ethernet</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="91"/>

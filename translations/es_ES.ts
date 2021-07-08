@@ -277,7 +277,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="322"/>
         <source>No battery found</source>
-        <translation>No se ha encontrado ninguna batería</translation>
+        <translation>Ninguna batería encontrada</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="29"/>
@@ -541,7 +541,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="86"/>
         <source>Display</source>
-        <translation>Mostrar</translation>
+        <translation>Interfaz</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="52"/>

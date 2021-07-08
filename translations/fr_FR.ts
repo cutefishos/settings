@@ -362,7 +362,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="153"/>
         <source>Display mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mode d&apos;affichage</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="166"/>
@@ -449,58 +449,58 @@
     <message>
         <location filename="../src/qml/Application/Main.qml" line="30"/>
         <source>Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Application</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="42"/>
         <source>Default application</source>
-        <translation type="unfinished"></translation>
+        <translation>Application par défaut</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="52"/>
         <source>Web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Navigateur Web</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="60"/>
         <source>File manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Gestionnaire de fichiers</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="68"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>Courriel</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="76"/>
         <source>Terminal emulator</source>
-        <translation type="unfinished"></translation>
+        <translation>Émulateur de terminal</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="32"/>
         <location filename="../src/qml/Hotspot/Main.qml" line="69"/>
         <source>Hotspot</source>
-        <translation type="unfinished"></translation>
+        <translation>Point d&apos;accès</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="47"/>
         <source>Not supported</source>
-        <translation type="unfinished"></translation>
+        <translation>Non pris en charge</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="102"/>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="113"/>
         <source>Password</source>
-        <translation type="unfinished">Mot de passe</translation>
+        <translation>Mot de passe</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="129"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer</translation>
     </message>
 </context>
 <context>
