@@ -168,7 +168,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
         <source>Anti-Aliasing</source>
-        <translation>Anti-Aliasing</translation>
+        <translation>Koristi Anti-Aliasing</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="95"/>
@@ -272,235 +272,235 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="298"/>
         <source>Show percentage in status bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Prikaži procenat na statusnoj traci</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="322"/>
         <source>No battery found</source>
-        <translation type="unfinished"></translation>
+        <translation>Baterija nije pronađena</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="29"/>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekran</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="63"/>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>Svjetlina</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="116"/>
         <source>Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekran</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="159"/>
         <source>Screen Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ime ekrana</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="168"/>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Rezolucija</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="187"/>
         <source>Refresh rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Brzina osvježavanja</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="207"/>
         <source>Rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Rotacija</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="251"/>
         <source>Enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Omogućeno</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="285"/>
         <source>Scale</source>
-        <translation type="unfinished"></translation>
+        <translation>Skala</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="354"/>
         <source>Need to log in again to take effect</source>
-        <translation type="unfinished"></translation>
+        <translation>Trebate se ponovo prijaviti da bi promjene imale efekta</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
-        <translation type="unfinished"></translation>
+        <translation>Dok</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="44"/>
         <source>Position on screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozicija na ekranu</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="56"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Lijevo</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="63"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Dno</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="70"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation>Desno</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="82"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Veličina</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="153"/>
         <source>Display mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Način prikaza</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="166"/>
         <source>Always show</source>
-        <translation type="unfinished"></translation>
+        <translation>Uvijek pokaži</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="170"/>
         <source>Auto hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatski sakrij</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
         <source>Power</source>
-        <translation type="unfinished"></translation>
+        <translation>Snaga</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="43"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Način rada</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="53"/>
         <source>Power Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Ušteda energije</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="59"/>
         <source>Balance</source>
-        <translation type="unfinished"></translation>
+        <translation>Balansirano</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="65"/>
         <source>Performance</source>
-        <translation type="unfinished"></translation>
+        <translation>Performanse</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="31"/>
         <source>User</source>
-        <translation type="unfinished"></translation>
+        <translation>Korisnik</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="80"/>
         <source>Add user</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj korisnika</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="30"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozadina</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="56"/>
         <source>Background type</source>
-        <translation type="unfinished"></translation>
+        <translation>Vrsta pozadine</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="77"/>
         <source>Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Slika</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="81"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Boja</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/Main.qml" line="32"/>
         <source>WLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>WLAN</translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="32"/>
         <location filename="../src/qml/Bluetooth/Main.qml" line="71"/>
         <source>Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth</translation>
     </message>
     <message>
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
         <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ethernet</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="30"/>
         <source>Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplikacija</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="42"/>
         <source>Default application</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadana aplikacija</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="52"/>
         <source>Web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Web preglednik</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="60"/>
         <source>File manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravitelj fajlova</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="68"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>E-pošta</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="76"/>
         <source>Terminal emulator</source>
-        <translation type="unfinished"></translation>
+        <translation>Emulator terminala</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="32"/>
         <location filename="../src/qml/Hotspot/Main.qml" line="69"/>
         <source>Hotspot</source>
-        <translation type="unfinished"></translation>
+        <translation>Pristupna tačka</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="47"/>
         <source>Not supported</source>
-        <translation type="unfinished"></translation>
+        <translation>Nije podržano</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="102"/>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="113"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Lozinka</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="129"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Spremi</translation>
     </message>
 </context>
 <context>
@@ -508,27 +508,27 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="503"/>
         <source>Vendor default</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadana vrijednost dobavljača</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="505"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Srednje</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="507"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Nijedno</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="509"/>
         <source>Slight</source>
-        <translation type="unfinished"></translation>
+        <translation>Blago</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="511"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Puno</translation>
     </message>
 </context>
 <context>
@@ -536,28 +536,28 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="131"/>
         <source>User</source>
-        <translation type="unfinished"></translation>
+        <translation>Korisnik</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="86"/>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekran</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="52"/>
         <source>WLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>WLAN</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="57"/>
         <location filename="../src/qml/SideBar.qml" line="66"/>
         <source>Network and connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Mreža i veza</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="61"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ethernet</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="91"/>
@@ -566,27 +566,27 @@
         <location filename="../src/qml/SideBar.qml" line="118"/>
         <location filename="../src/qml/SideBar.qml" line="127"/>
         <source>Display and appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Prikaz i izgled</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="95"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Izgled</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="104"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Fontovi</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="113"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozadina</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="122"/>
         <source>Dock</source>
-        <translation type="unfinished"></translation>
+        <translation>Dok</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="136"/>
@@ -594,22 +594,22 @@
         <location filename="../src/qml/SideBar.qml" line="163"/>
         <location filename="../src/qml/SideBar.qml" line="179"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation>Sistem</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="149"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Jezik</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="158"/>
         <source>Battery</source>
-        <translation type="unfinished"></translation>
+        <translation>Baterija</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="174"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>O sistemu</translation>
     </message>
 </context>
 <context>
@@ -617,17 +617,17 @@
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="124"/>
         <source>Currently logged</source>
-        <translation type="unfinished"></translation>
+        <translation>Trenutno prijavljen</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="165"/>
         <source>Automatic login</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatska prijava</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="184"/>
         <source>Delete this user</source>
-        <translation type="unfinished"></translation>
+        <translation>Izbriši ovog korisnika</translation>
     </message>
 </context>
 <context>
@@ -635,22 +635,22 @@
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="175"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Lozinka</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="195"/>
         <source>Show password</source>
-        <translation type="unfinished"></translation>
+        <translation>Prikaži lozinku</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Otkaži</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="210"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Poveži</translation>
     </message>
 </context>
 <context>
@@ -658,7 +658,7 @@
     <message>
         <location filename="../src/qml/WLAN/WifiView.qml" line="35"/>
         <source>WLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>WLAN</translation>
     </message>
 </context>
 <context>
@@ -666,52 +666,52 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="65"/>
         <source>Auto-Join</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatsko spajanje</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="81"/>
         <source>Security</source>
-        <translation type="unfinished"></translation>
+        <translation>Sigurnost</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="93"/>
         <source>Signal</source>
-        <translation type="unfinished"></translation>
+        <translation>Jačina signala</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="105"/>
         <source>IPv4 Address</source>
-        <translation type="unfinished"></translation>
+        <translation>IPv4 adresa</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="119"/>
         <source>IPv6 Address</source>
-        <translation type="unfinished"></translation>
+        <translation>IPv6 adresa</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="133"/>
         <source>MAC Address</source>
-        <translation type="unfinished"></translation>
+        <translation>MAC adresa</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="147"/>
         <source>Gateway</source>
-        <translation type="unfinished"></translation>
+        <translation>Pristupnik</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="160"/>
         <source>DNS</source>
-        <translation type="unfinished"></translation>
+        <translation>DNS</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="177"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Zatvori</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="183"/>
         <source>Forget this network</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaboravi ovu mrežu</translation>
     </message>
 </context>
 <context>
@@ -719,7 +719,7 @@
     <message>
         <location filename="../src/qml/main.qml" line="29"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Postavke</translation>
     </message>
 </context>
 </TS>
