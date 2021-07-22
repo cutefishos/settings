@@ -63,6 +63,7 @@ ItemPage {
                 text: qsTr("Brightness")
                 color: FishUI.Theme.disabledTextColor
                 leftPadding: FishUI.Units.largeSpacing
+                visible: brightness.enabled
             }
 
             RoundedItem {
@@ -127,10 +128,10 @@ ItemPage {
                     Layout.fillWidth: true
                     model: screen.outputModel
                     orientation: ListView.Horizontal
-                    interactive: false
+                    interactive: true
                     clip: true
 
-                    Layout.preferredHeight: currentItem ? currentItem.layout.implicitHeight : 0
+                    Layout.preferredHeight: currentItem ? currentItem.layout.implicitHeight + FishUI.Units.largeSpacing : 0
 
                     Behavior on Layout.preferredHeight {
                         NumberAnimation {
