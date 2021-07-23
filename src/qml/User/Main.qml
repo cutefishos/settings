@@ -51,29 +51,49 @@ ItemPage {
             anchors.fill: parent
             spacing: FishUI.Units.largeSpacing * 2
 
-            RoundedItem {
-                visible: _userView.count > 0
+            ListView {
+                id: _userView
+                model: userModel
+                Layout.fillWidth: true
+                spacing: FishUI.Units.largeSpacing * 2
+                interactive: false
 
-                ListView {
-                    id: _userView
-                    model: userModel
-                    Layout.fillWidth: true
-                    spacing: FishUI.Units.largeSpacing * 2
-                    interactive: false
-
-                    Layout.preferredHeight: {
-                        var totalHeight = 0
-                        for (var i = 0; i < _userView.visibleChildren.length; ++i) {
-                            totalHeight += _userView.visibleChildren[i].height
-                        }
-                        return totalHeight
+                Layout.preferredHeight: {
+                    var totalHeight = 0
+                    for (var i = 0; i < _userView.visibleChildren.length; ++i) {
+                        totalHeight += _userView.visibleChildren[i].height
                     }
+                    return totalHeight
+                }
 
-                    delegate: UserDelegateItem {
-                        width: _userView.width
-                    }
+                delegate: UserDelegateItem {
+                    width: _userView.width
                 }
             }
+
+//            RoundedItem {
+//                visible: _userView.count > 0
+
+//                ListView {
+//                    id: _userView
+//                    model: userModel
+//                    Layout.fillWidth: true
+//                    spacing: FishUI.Units.largeSpacing * 2
+//                    interactive: false
+
+//                    Layout.preferredHeight: {
+//                        var totalHeight = 0
+//                        for (var i = 0; i < _userView.visibleChildren.length; ++i) {
+//                            totalHeight += _userView.visibleChildren[i].height
+//                        }
+//                        return totalHeight
+//                    }
+
+//                    delegate: UserDelegateItem {
+//                        width: _userView.width
+//                    }
+//                }
+//            }
 
             StandardButton {
                 id: _addUserButton

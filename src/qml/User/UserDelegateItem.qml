@@ -29,10 +29,10 @@ import FishUI 1.0 as FishUI
 
 import "../"
 
-Item {
+RoundedItem {
     id: control
 
-    height: mainLayout.implicitHeight
+    height: mainLayout.implicitHeight + FishUI.Units.largeSpacing * 2
 
     UserAccount {
         id: currentUser
@@ -52,7 +52,7 @@ Item {
 
     ColumnLayout {
         id: mainLayout
-        anchors.fill: parent
+        // anchors.fill: parent
         spacing: 0
 
         RowLayout {
@@ -76,8 +76,8 @@ Item {
 
                     Image {
                         id: _userImage
-                        width: 32
-                        height: 32
+                        width: 48
+                        height: 48
                         sourceSize: Qt.size(width, height)
                         source: iconFileName ? "file:///" + iconFileName : "image://icontheme/default-user"
                         visible: status === Image.Ready
@@ -105,6 +105,7 @@ Item {
 
                     Label {
                         Layout.alignment: Qt.AlignVCenter
+                        font.pixelSize: 15
                         text: "<b>%1</b>".arg(userName)
                         leftPadding: FishUI.Units.largeSpacing
                     }
@@ -178,6 +179,11 @@ Item {
                         automaticLoginSwitch.checked = currentUser.automaticLogin
                     }
                 }
+            }
+
+            Button {
+                text:"修改密码"
+                Layout.fillWidth: true
             }
 
             Button {
