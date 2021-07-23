@@ -63,7 +63,7 @@ RoundedItem {
                 id: _topItem
 
                 Layout.fillWidth: true
-                height: _topLayout.implicitHeight
+                height: _topLayout.implicitHeight + FishUI.Units.largeSpacing
 
                 MouseArea {
                     anchors.fill: parent
@@ -73,6 +73,8 @@ RoundedItem {
                 RowLayout {
                     id: _topLayout
                     anchors.fill: parent
+                    anchors.topMargin: FishUI.Units.smallSpacing
+                    anchors.bottomMargin: FishUI.Units.smallSpacing
 
                     Image {
                         id: _userImage
@@ -142,7 +144,7 @@ RoundedItem {
                             height: 22
                             sourceSize: Qt.size(width, height)
                             source: FishUI.Theme.darkMode ? additionalSettings.shown ? "qrc:/images/dark/up.svg" : "qrc:/images/dark/down.svg"
-                                                        : additionalSettings.shown ? "qrc:/images/light/up.svg" : "qrc:/images/light/down.svg"
+                                                          : additionalSettings.shown ? "qrc:/images/light/up.svg" : "qrc:/images/light/down.svg"
                         }
                     }
                 }
@@ -181,12 +183,7 @@ RoundedItem {
                 }
             }
 
-            Button {
-                text:"修改密码"
-                Layout.fillWidth: true
-            }
-
-            Button {
+            StandardButton {
                 text: qsTr("Delete this user")
                 enabled: model.userId !== loggedUser.userId
                 onClicked: accountsManager.deleteUser(userId, true)
