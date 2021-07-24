@@ -37,7 +37,7 @@ Brightness::Brightness(QObject *parent)
 
 void Brightness::setValue(int value)
 {
-    m_iface.asyncCall("setValue", QVariant(value));
+    m_iface.asyncCall("setValue", QVariant::fromValue(value));
 }
 
 int Brightness::value() const
