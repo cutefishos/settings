@@ -39,7 +39,7 @@ int PowerManager::mode() const
 void PowerManager::setMode(int mode)
 {
     if (m_mode != mode) {
-        m_iface.call("setMode", mode);
+        m_iface.asyncCall("setMode", mode);
         m_mode = mode;
         emit modeChanged();
     }
