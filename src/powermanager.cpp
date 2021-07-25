@@ -18,6 +18,7 @@
  */
 
 #include "powermanager.h"
+#include <QDBusPendingCall>
 
 PowerManager::PowerManager(QObject *parent)
     : QObject(parent)
