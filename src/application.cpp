@@ -15,6 +15,7 @@
 #include "background.h"
 #include "language.h"
 #include "password.h"
+#include "powermanager.h"
 
 static QObject *passwordSingleton(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
@@ -62,6 +63,7 @@ Application::Application(int &argc, char **argv)
     qmlRegisterType<Background>(uri, 1, 0, "Background");
     qmlRegisterType<Language>(uri, 1, 0, "Language");
     qmlRegisterType<Fonts>(uri, 1, 0, "Fonts");
+    qmlRegisterType<PowerManager>(uri, 1, 0, "PowerManager");
     qmlRegisterSingletonType<Password>(uri, 1, 0, "Password", passwordSingleton);
     qmlRegisterType<QAbstractItemModel>();
 

@@ -22,12 +22,17 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.0
 
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 import "../"
 
 ItemPage {
     id: control
     headerTitle: qsTr("Power")
+
+    PowerManager {
+        id: power
+    }
 
     Scrollable {
         anchors.fill: parent
@@ -51,19 +56,21 @@ ItemPage {
                     IconCheckBox {
                         source: "qrc:/images/powersave.svg"
                         text: qsTr("Power Save")
-                        checked: false
+                        checked: power.mode === 0
+                        onClicked: power.mode = 0
                     }
 
-                    IconCheckBox {
-                        source: "qrc:/images/balance.svg"
-                        text: qsTr("Balance")
-                        checked: false
-                    }
+//                    IconCheckBox {
+//                        source: "qrc:/images/balance.svg"
+//                        text: qsTr("Balance")
+//                        checked: false
+//                    }
 
                     IconCheckBox {
                         source: "qrc:/images/performance.svg"
                         text: qsTr("Performance")
-                        checked: true
+                        checked: power.mode === 1
+                        onClicked: power.mode = 1
                     }
                 }
             }

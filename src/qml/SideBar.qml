@@ -164,12 +164,14 @@ Item {
             category: qsTr("System")
         }
 
-//        ListElement {
-//            title: qsTr("Power")
-//            name: "power"
-//            page: "qrc:/qml/Power/Main.qml"
-//            iconSource: "power.svg"
-//        }
+        ListElement {
+            title: qsTr("Power")
+            name: "power"
+            page: "qrc:/qml/Power/Main.qml"
+            iconColor: "#FE8433"
+            iconSource: "power.svg"
+            category: qsTr("System")
+        }
 
         ListElement {
             title: qsTr("About")

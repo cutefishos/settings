@@ -41,6 +41,7 @@ set(SRCS
     src/cicontheme.cpp
     src/fonts/kxftconfig.cpp
     src/fonts/fonts.cpp
+    src/powermanager.cpp
 )
 
 set(RESOURCES
