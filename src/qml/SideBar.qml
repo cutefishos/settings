@@ -208,6 +208,7 @@ Item {
             leftMargin: FishUI.Units.largeSpacing
             rightMargin: FishUI.Units.largeSpacing
             topMargin: 0
+            bottomMargin: FishUI.Units.largeSpacing
 
             ScrollBar.vertical: ScrollBar {}
 

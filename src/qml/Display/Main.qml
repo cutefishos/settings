@@ -158,11 +158,13 @@ ItemPage {
 
                                 Label {
                                     text: qsTr("Screen Name")
+                                    visible: _screenView.count > 1
                                 }
 
                                 Label {
                                     text: element.display
                                     color: FishUI.Theme.disabledTextColor
+                                    visible: _screenView.count > 1
                                 }
 
                                 Label {
