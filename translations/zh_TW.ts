@@ -143,7 +143,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="31"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>字體</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="92"/>
@@ -242,7 +242,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="181"/>
         <source>Health</source>
-        <translation type="unfinished"></translation>
+        <translation>健康</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="200"/>
@@ -297,7 +297,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="159"/>
         <source>Screen Name</source>
-        <translation type="unfinished"></translation>
+        <translation>螢幕名稱</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="168"/>
@@ -362,17 +362,17 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="153"/>
         <source>Display mode</source>
-        <translation type="unfinished"></translation>
+        <translation>顯示模式</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="166"/>
         <source>Always show</source>
-        <translation type="unfinished"></translation>
+        <translation>永遠顯示</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="170"/>
         <source>Auto hide</source>
-        <translation type="unfinished"></translation>
+        <translation>自動隱藏</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
@@ -438,38 +438,38 @@
         <location filename="../src/qml/Bluetooth/Main.qml" line="32"/>
         <location filename="../src/qml/Bluetooth/Main.qml" line="71"/>
         <source>Bluetooth</source>
-        <translation type="unfinished">藍芽</translation>
+        <translation>藍芽</translation>
     </message>
     <message>
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
         <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">乙太網路</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="30"/>
         <source>Application</source>
-        <translation type="unfinished"></translation>
+        <translation>應用程式</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="42"/>
         <source>Default application</source>
-        <translation type="unfinished"></translation>
+        <translation>預設應用程式</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="52"/>
         <source>Web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>網路瀏覽器</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="60"/>
         <source>File manager</source>
-        <translation type="unfinished"></translation>
+        <translation>檔案管理器</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="68"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>郵件</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="76"/>
@@ -480,27 +480,27 @@
         <location filename="../src/qml/Hotspot/Main.qml" line="32"/>
         <location filename="../src/qml/Hotspot/Main.qml" line="69"/>
         <source>Hotspot</source>
-        <translation type="unfinished"></translation>
+        <translation>行動熱點</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="47"/>
         <source>Not supported</source>
-        <translation type="unfinished"></translation>
+        <translation>不支援</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="102"/>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>名稱</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="113"/>
         <source>Password</source>
-        <translation type="unfinished">密碼</translation>
+        <translation>密碼</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="129"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>儲存</translation>
     </message>
 </context>
 <context>
@@ -518,7 +518,7 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="507"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>無</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="509"/>
@@ -586,7 +586,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="122"/>
         <source>Dock</source>
-        <translation>Dock</translation>
+        <translation type="unfinished">Dock</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="136"/>
