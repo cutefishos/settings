@@ -128,7 +128,7 @@ ItemPage {
                     Layout.fillWidth: true
                     model: screen.outputModel
                     orientation: ListView.Horizontal
-                    interactive: true
+                    interactive: false
                     clip: true
 
                     Layout.preferredHeight: currentItem ? currentItem.layout.implicitHeight + FishUI.Units.largeSpacing : 0
