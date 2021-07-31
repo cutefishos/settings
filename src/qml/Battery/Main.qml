@@ -194,24 +194,19 @@ ItemPage {
                         height: _poorLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
                         width: _poorLabel.implicitWidth + FishUI.Units.largeSpacing
 
-                        Label {
-                            id: _poorLabel
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            text: qsTr("Poor")
+                        Rectangle {
+                            id: _poorRect
+                            anchors.fill: parent
                             color: "#FF8738"
+                            radius: FishUI.Theme.mediumRadius
+                            visible: battery.capacity >= 0 && battery.capacity <= 79
                         }
 
-                        Rectangle {
-                            id: _poorLine
-                            anchors.top: _poorLabel.bottom
-                            anchors.left: parent.left
-                            anchors.right: parent.right
-                            anchors.bottom: parent.bottom
-                            anchors.topMargin: FishUI.Units.smallSpacing
-                            height: 2
-                            radius: 2
-                            color: _poorLabel.color
-                            visible: battery.capacity >= 0 && battery.capacity <= 79
+                        Label {
+                            id: _poorLabel
+                            anchors.centerIn: parent
+                            text: qsTr("Poor")
+                            color: _poorRect.visible ? "#FFFFFF" : "#FF8738"
                         }
                     }
 
@@ -223,24 +218,19 @@ ItemPage {
                         height: _normalLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
                         width: _normalLabel.implicitWidth + FishUI.Units.largeSpacing
 
-                        Label {
-                            id: _normalLabel
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            text: qsTr("Normal")
+                        Rectangle {
+                            id: _normalRect
+                            anchors.fill: parent
                             color: "#3385FF"
+                            radius: FishUI.Theme.mediumRadius
+                            visible: battery.capacity >= 80 && battery.capacity <= 89
                         }
 
-                        Rectangle {
-                            id: _normalLine
-                            anchors.top: _normalLabel.bottom
-                            anchors.left: parent.left
-                            anchors.right: parent.right
-                            anchors.bottom: parent.bottom
-                            anchors.topMargin: FishUI.Units.smallSpacing
-                            height: 2
-                            radius: 2
-                            color: _normalLabel.color
-                            visible: battery.capacity >= 80 && battery.capacity <= 89
+                        Label {
+                            id: _normalLabel
+                            anchors.centerIn: parent
+                            text: qsTr("Normal")
+                            color: _normalRect.visible ? "#FFFFFF" : "#3385FF"
                         }
                     }
 
@@ -252,24 +242,19 @@ ItemPage {
                         height: _excellentLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
                         width: _excellentLabel.implicitWidth + FishUI.Units.largeSpacing
 
-                        Label {
-                            id: _excellentLabel
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            text: qsTr("Excellent")
+                        Rectangle {
+                            id: _excellentRect
+                            anchors.fill: parent
                             color: "#00CD23"
+                            radius: FishUI.Theme.mediumRadius
+                            visible: battery.capacity >= 90 && battery.capacity <= 100
                         }
 
-                        Rectangle {
-                            id: _excellentLine
-                            anchors.top: _excellentLabel.bottom
-                            anchors.left: parent.left
-                            anchors.right: parent.right
-                            anchors.bottom: parent.bottom
-                            anchors.topMargin: FishUI.Units.smallSpacing
-                            height: 2
-                            radius: 2
-                            color: _excellentLabel.color
-                            visible: battery.capacity >= 90 && battery.capacity <= 100
+                        Label {
+                            id: _excellentLabel
+                            anchors.centerIn: parent
+                            text: qsTr("Excellent")
+                            color: _excellentRect.visible ? "#FFFFFF" : "#00CD23"
                         }
                     }
                 }
