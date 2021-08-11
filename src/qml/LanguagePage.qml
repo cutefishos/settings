@@ -110,6 +110,7 @@ ItemPage {
                         sourceSize: Qt.size(width, height)
                         source: "qrc:/images/dark/checked.svg"
                         visible: isSelected
+                        smooth: false
                     }
                 }
             }

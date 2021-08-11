@@ -35,6 +35,7 @@ Item {
         id: image
         anchors.fill: parent
         sourceSize: Qt.size(control.width, control.height)
+        smooth: false
     }
 
     MouseArea {

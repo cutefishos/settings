@@ -68,6 +68,7 @@ Item {
                 anchors.margins: FishUI.Units.smallSpacing
                 sourceSize: Qt.size(icon.width, icon.height)
                 opacity: 1
+                smooth: false
 
                 layer.enabled: true
                 layer.effect: OpacityMask {

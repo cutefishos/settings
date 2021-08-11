@@ -74,6 +74,7 @@ Item {
             height: width
             sourceSize: Qt.size(width, height)
             source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark/" : "light/") + model.connectionIcon + ".svg"
+            smooth: false
         }
 
         Label {
@@ -117,6 +118,7 @@ Item {
             sourceSize: Qt.size(width, height)
             source: FishUI.Theme.darkMode ? "qrc:/images/dark/locked.svg" : "qrc:/images/light/locked.svg"
             visible: (model.securityType === -1 | model.securityType === 0) ? false : true
+            smooth: false
         }
 
         IconButton {

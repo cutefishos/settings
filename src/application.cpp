@@ -17,6 +17,8 @@
 #include "password.h"
 #include "powermanager.h"
 
+#include "cursor/cursorthememodel.h"
+
 static QObject *passwordSingleton(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
     Q_UNUSED(engine);
@@ -59,6 +61,7 @@ Application::Application(int &argc, char **argv)
     qmlRegisterType<Brightness>(uri, 1, 0, "Brightness");
     qmlRegisterType<Battery>(uri, 1, 0, "Battery");
     qmlRegisterType<BatteryHistoryModel>(uri, 1, 0, "BatteryHistoryModel");
+    qmlRegisterType<CursorThemeModel>(uri, 1, 0, "CursorThemeModel");
     qmlRegisterType<About>(uri, 1, 0, "About");
     qmlRegisterType<Background>(uri, 1, 0, "Background");
     qmlRegisterType<Language>(uri, 1, 0, "Language");

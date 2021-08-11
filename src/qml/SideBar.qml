@@ -102,6 +102,15 @@ Item {
         }
 
         ListElement {
+            title: qsTr("Mouse")
+            name: "cursor"
+            page: "qrc:/qml/Cursor/Main.qml"
+            iconSource: "cursor.svg"
+            iconColor: "#0D9BF1"
+            category: qsTr("Display and appearance")
+        }
+
+        ListElement {
             title: qsTr("Fonts")
             name: "fonts"
             page: "qrc:/qml/Fonts/Main.qml"
@@ -298,10 +307,10 @@ Item {
                             width: 16
                             height: width
                             source: "qrc:/images/sidebar/dark/" + model.iconSource
-                            sourceSize: Qt.size(22, 22)
+                            sourceSize: Qt.size(width, height)
                             Layout.alignment: Qt.AlignVCenter
                             antialiasing: true
-                            smooth: true
+                            smooth: false
                         }
                     }
 

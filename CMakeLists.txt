@@ -13,7 +13,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_CURRENT
 
 set(QT Core Gui Widgets Quick QuickControls2 X11Extras DBus Xml Concurrent LinguistTools)
 find_package(Qt5 REQUIRED ${QT})
-# find_package(FishUI REQUIRED)
+find_package(X11 REQUIRED)
 find_package(Freetype REQUIRED)
 find_package(PkgConfig REQUIRED)
 find_package(Libcrypt REQUIRED)
@@ -42,6 +42,8 @@ set(SRCS
     src/fonts/kxftconfig.cpp
     src/fonts/fonts.cpp
     src/powermanager.cpp
+    src/cursor/cursorthememodel.cpp
+    src/cursor/cursortheme.cpp
 )
 
 set(RESOURCES
@@ -72,6 +74,11 @@ target_link_libraries(${PROJECT_NAME}
         ${FREETYPE_LIBRARIES}
         ${ICU_LDFLAGS}
         Libcrypt::Libcrypt
+
+        ${X11_LIBRARIES}
+        X11::X11
+        X11::Xi
+        X11::Xcursor
 )
 
 file(GLOB TS_FILES translations/*.ts)
