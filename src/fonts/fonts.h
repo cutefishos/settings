@@ -22,6 +22,7 @@
 
 #include <QObject>
 #include <QStandardItemModel>
+#include <QSettings>
 #include "kxftconfig.h"
 
 class Fonts : public QObject
@@ -53,6 +54,7 @@ signals:
     void hintingCurrentIndexChanged();
 
 private:
+    QSettings m_settings;
     bool m_antiAliasing;
     QStandardItemModel *m_hintingModel;
     KXftConfig::Hint::Style m_hinting;

@@ -18,9 +18,11 @@
  */
 
 #include "fonts.h"
+#include <QDBusInterface>
 
 Fonts::Fonts(QObject *parent)
     : QObject(parent)
+    , m_settings("cutefishos", "theme")
     , m_antiAliasing(false)
     , m_hintingModel(new QStandardItemModel(this))
 {    
@@ -96,4 +98,15 @@ void Fonts::save()
     xft.setAntiAliasing(aaState);
     xft.setHintStyle(m_hinting);
     xft.apply();
+
+    m_settings.setValue("XftAntialias", m_antiAliasing);
+    m_settings.setValue("XftHintStyle", KXftConfig::toStr(m_hinting));
+    m_settings.sync();
+
+    QDBusInterface interface("org.cutefish.Settings",
+                             "/Theme",
+                             "org.cutefish.Theme",
+                             QDBusConnection::sessionBus());
+    if (interface.isValid())
+        interface.asyncCall("applyXResources");
 }
