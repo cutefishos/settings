@@ -117,6 +117,7 @@
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="47"/>
+        <location filename="../src/qml/Cursor/Main.qml" line="47"/>
         <source>Theme</source>
         <translation type="unfinished"></translation>
     </message>
@@ -245,37 +246,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="200"/>
+        <location filename="../src/qml/Battery/Main.qml" line="209"/>
         <source>Poor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="229"/>
+        <location filename="../src/qml/Battery/Main.qml" line="234"/>
         <source>Normal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="258"/>
+        <location filename="../src/qml/Battery/Main.qml" line="259"/>
         <source>Excellent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="280"/>
+        <location filename="../src/qml/Battery/Main.qml" line="268"/>
         <source>Last Charged to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="286"/>
+        <location filename="../src/qml/Battery/Main.qml" line="274"/>
         <source>Maximum Capacity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="298"/>
+        <location filename="../src/qml/Battery/Main.qml" line="286"/>
         <source>Show percentage in status bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="322"/>
+        <location filename="../src/qml/Battery/Main.qml" line="310"/>
         <source>No battery found</source>
         <translation type="unfinished"></translation>
     </message>
@@ -300,32 +301,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="169"/>
+        <location filename="../src/qml/Display/Main.qml" line="171"/>
         <source>Resolution</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="188"/>
+        <location filename="../src/qml/Display/Main.qml" line="190"/>
         <source>Refresh rate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="208"/>
+        <location filename="../src/qml/Display/Main.qml" line="210"/>
         <source>Rotation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="252"/>
+        <location filename="../src/qml/Display/Main.qml" line="254"/>
         <source>Enabled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="286"/>
+        <location filename="../src/qml/Display/Main.qml" line="288"/>
         <source>Scale</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="355"/>
+        <location filename="../src/qml/Display/Main.qml" line="357"/>
         <source>Need to log in again to take effect</source>
         <translation type="unfinished"></translation>
     </message>
@@ -380,7 +381,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="48"/>
+        <location filename="../src/qml/Power/Main.qml" line="47"/>
         <source>Mode</source>
         <translation type="unfinished"></translation>
     </message>
@@ -497,6 +498,11 @@
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../src/qml/Cursor/Main.qml" line="31"/>
+        <source>Mouse</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -529,7 +535,7 @@
 <context>
     <name>SideBar</name>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="132"/>
+        <location filename="../src/qml/SideBar.qml" line="141"/>
         <source>User</source>
         <translation type="unfinished"></translation>
     </message>
@@ -560,6 +566,7 @@
         <location filename="../src/qml/SideBar.qml" line="110"/>
         <location filename="../src/qml/SideBar.qml" line="119"/>
         <location filename="../src/qml/SideBar.qml" line="128"/>
+        <location filename="../src/qml/SideBar.qml" line="137"/>
         <source>Display and appearance</source>
         <translation type="unfinished"></translation>
     </message>
@@ -570,45 +577,50 @@
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="105"/>
-        <source>Fonts</source>
+        <source>Mouse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="114"/>
-        <source>Background</source>
+        <source>Fonts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="123"/>
+        <source>Background</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="132"/>
         <source>Dock</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="137"/>
-        <location filename="../src/qml/SideBar.qml" line="155"/>
+        <location filename="../src/qml/SideBar.qml" line="146"/>
         <location filename="../src/qml/SideBar.qml" line="164"/>
         <location filename="../src/qml/SideBar.qml" line="173"/>
         <location filename="../src/qml/SideBar.qml" line="182"/>
+        <location filename="../src/qml/SideBar.qml" line="191"/>
         <source>System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="150"/>
+        <location filename="../src/qml/SideBar.qml" line="159"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="159"/>
+        <location filename="../src/qml/SideBar.qml" line="168"/>
         <source>Battery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="168"/>
+        <location filename="../src/qml/SideBar.qml" line="177"/>
         <source>Power</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="177"/>
+        <location filename="../src/qml/SideBar.qml" line="186"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
@@ -616,17 +628,17 @@
 <context>
     <name>UserDelegateItem</name>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="127"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="130"/>
         <source>Currently logged</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="168"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="171"/>
         <source>Automatic login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="187"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="190"/>
         <source>Delete this user</source>
         <translation type="unfinished"></translation>
     </message>
@@ -634,22 +646,22 @@
 <context>
     <name>WifiItem</name>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="175"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="177"/>
         <source>Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="195"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="197"/>
         <source>Show password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="206"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="210"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="212"/>
         <source>Connect</source>
         <translation type="unfinished"></translation>
     </message>
