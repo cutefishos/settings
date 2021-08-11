@@ -93,7 +93,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="86"/>
         <source>Kernel Version</source>
-        <translation>Kernelversion</translation>
+        <translation>Kernel-Version</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="91"/>
@@ -153,7 +153,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="109"/>
         <source>Fixed Font</source>
-        <translation>Feste Schriftart</translation>
+        <translation>Nichtproportionale Schriftart</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="126"/>
@@ -168,7 +168,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
         <source>Anti-Aliasing</source>
-        <translation>Anti-Aliasing</translation>
+        <translation>Kantenglättung</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="95"/>
@@ -262,7 +262,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="280"/>
         <source>Last Charged to</source>
-        <translation>Zuletzt aufgeladen</translation>
+        <translation>Zuletzt aufgeladen auf</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="286"/>
@@ -372,7 +372,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="170"/>
         <source>Auto hide</source>
-        <translation>Automatischen Verstecken</translation>
+        <translation>Automatisches Ausblenden</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
@@ -464,7 +464,7 @@
     <message>
         <location filename="../src/qml/Application/Main.qml" line="60"/>
         <source>File manager</source>
-        <translation>Dateiverwaltungsprogramm</translation>
+        <translation>Dateiverwaltung</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="68"/>
@@ -508,7 +508,7 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="503"/>
         <source>Vendor default</source>
-        <translation>Hersteller Standart</translation>
+        <translation>Standardeinstellung des Anbieters</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="505"/>

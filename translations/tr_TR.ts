@@ -192,7 +192,7 @@
         <location filename="../src/qml/Dock/Main.qml" line="107"/>
         <location filename="../src/qml/Fonts/Main.qml" line="146"/>
         <source>Huge</source>
-        <translation>Büyük</translation>
+        <translation>Daha Büyük</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="29"/>
@@ -528,7 +528,7 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="511"/>
         <source>Full</source>
-        <translation>Dolu</translation>
+        <translation>Komple</translation>
     </message>
 </context>
 <context>

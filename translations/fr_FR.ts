@@ -168,7 +168,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
         <source>Anti-Aliasing</source>
-        <translation>Anti-crénelage</translation>
+        <translation>Anticrénelage</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="95"/>
