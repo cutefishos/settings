@@ -104,9 +104,9 @@ ItemPage {
 //                        rightPadding: 0
 //                    }
                 }
-            }
 
-            RoundedItem {
+                HorizontalDivider {}
+
                 RowLayout {
                     spacing: FishUI.Units.largeSpacing * 2
 
