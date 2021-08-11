@@ -55,8 +55,12 @@ public:
     QPixmap createIcon() const;
     QPixmap createIcon(int size) const;
 
+    qulonglong loadCursor(const QString &name, int size) const;
+
     QString findAlternative(const QString &name) const;
     QImage autoCropImage(const QImage &image) const;
+
+    static bool haveXfixes();
 
 private:
     QString m_dirName;

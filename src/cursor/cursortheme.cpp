@@ -28,6 +28,7 @@
 
 #include <X11/Xlib.h>
 #include <X11/Xcursor/Xcursor.h>
+#include <X11/extensions/Xfixes.h>
 
 QHash<QString, QString> CursorTheme::m_alternatives;
 
@@ -123,7 +124,7 @@ int CursorTheme::defaultCursorSize() const
 XcursorImage *CursorTheme::xcLoadImage(const QString &image, int size) const
 {
     QByteArray cursorName = QFile::encodeName(image);
-    QByteArray themeName  = QFile::encodeName(name());
+    QByteArray themeName  = QFile::encodeName(id());
 
     return XcursorLibraryLoadImage(cursorName, themeName, size);
 }
@@ -131,7 +132,7 @@ XcursorImage *CursorTheme::xcLoadImage(const QString &image, int size) const
 XcursorImages *CursorTheme::xcLoadImages(const QString &image, int size) const
 {
     QByteArray cursorName = QFile::encodeName(image);
-    QByteArray themeName  = QFile::encodeName(name());
+    QByteArray themeName  = QFile::encodeName(id());
 
     return XcursorLibraryLoadImages(cursorName, themeName, size);
 }
@@ -179,6 +180,30 @@ QPixmap CursorTheme::createIcon(int size) const
     }
 
     return pixmap;
+}
+
+qulonglong CursorTheme::loadCursor(const QString &name, int size) const
+{
+    if (!QX11Info::isPlatformX11()) {
+        return None;
+    }
+    if (size <= 0)
+        size = defaultCursorSize();
+
+    // Load the cursor images
+    XcursorImages *images = xcLoadImages(name, size);
+
+    if (!images)
+        images = xcLoadImages(findAlternative(name), size);
+
+    if (!images)
+        return None;
+
+    // Create the cursor
+    Cursor handle = XcursorImagesLoadCursor(QX11Info::display(), images);
+    XcursorImagesDestroy(images);
+
+    return handle;
 }
 
 QString CursorTheme::findAlternative(const QString &name) const
@@ -235,4 +260,21 @@ QImage CursorTheme::autoCropImage(const QImage &image) const
 
     // Normalize the rectangle
     return image.copy(r.normalized());
+}
+
+bool CursorTheme::haveXfixes()
+{
+    bool result = false;
+
+    if (!QX11Info::isPlatformX11()) {
+        return result;
+    }
+    int event_base, error_base;
+    if (XFixesQueryExtension(QX11Info::display(), &event_base, &error_base)) {
+        int major, minor;
+        XFixesQueryVersion(QX11Info::display(), &major, &minor);
+        result = (major >= 2);
+    }
+
+    return result;
 }
