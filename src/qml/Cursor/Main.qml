@@ -34,6 +34,14 @@ ItemPage {
         id: cursorModel
     }
 
+    Mouse {
+        id: mouse
+    }
+
+    function syncValues() {
+        accelerationSlider.init()
+    }
+
     Scrollable {
         anchors.fill: parent
         contentHeight: layout.implicitHeight
@@ -41,94 +49,179 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.smallSpacing
+            spacing: FishUI.Units.largeSpacing * 2
 
-            Label {
-                text: qsTr("Theme")
-                color: FishUI.Theme.disabledTextColor
-                leftPadding: FishUI.Units.largeSpacing
-                visible: _view.count > 0
+            RoundedItem {
+                GridLayout {
+                    columns: 2
+                    columnSpacing: FishUI.Units.largeSpacing * 1.5
+                    rowSpacing: FishUI.Units.largeSpacing * 2
+
+                    Label {
+                        text: qsTr("Left hand")
+                        Layout.fillWidth: true
+                    }
+
+                    Switch {
+                        Layout.fillHeight: true
+                        Layout.alignment: Qt.AlignRight
+                        checked: mouse.leftHanded
+                        rightPadding: 0
+                        onCheckedChanged: mouse.leftHanded = checked
+                    }
+
+                    Label {
+                        text: qsTr("Natural scrolling")
+                    }
+
+                    Switch {
+                        Layout.fillHeight: true
+                        Layout.alignment: Qt.AlignRight
+                        checked: mouse.naturalScroll
+                        onCheckedChanged: mouse.naturalScroll = checked
+                        rightPadding: 0
+                    }
+
+//                    Label {
+//                        text: qsTr("Mouse acceleration")
+//                    }
+
+//                    Switch {
+//                        Layout.fillHeight: true
+//                        Layout.alignment: Qt.AlignRight
+//                        checked: mouse.acceleration
+//                        onCheckableChanged: mouse.acceleration = checked
+//                        rightPadding: 0
+//                    }
+
+//                    Label {
+//                        text: qsTr("Disable touchpad when mouse is connected")
+//                    }
+
+//                    Switch {
+//                        Layout.fillHeight: true
+//                        Layout.alignment: Qt.AlignRight
+//                        rightPadding: 0
+//                    }
+                }
             }
 
-            GridView {
-                id: _view
-                Layout.fillWidth: true
-                implicitHeight: Math.ceil(_view.count / rowCount) * cellHeight + FishUI.Units.largeSpacing
-                model: cursorModel
-                interactive: false
-                visible: _view.count > 0
+            RoundedItem {
+                RowLayout {
+                    spacing: FishUI.Units.largeSpacing * 2
 
-                cellHeight: itemHeight
-                cellWidth: calcExtraSpacing(itemWidth, _view.width) + itemWidth
-
-                currentIndex: cursorModel.themeIndex(cursorModel.currentTheme)
-
-                property int rowCount: _view.width / itemWidth
-                property int itemWidth: 250
-                property int itemHeight: 170
-
-                function calcExtraSpacing(cellSize, containerSize) {
-                    var availableColumns = Math.floor(containerSize / cellSize)
-                    var extraSpacing = 0
-                    if (availableColumns > 0) {
-                        var allColumnSize = availableColumns * cellSize
-                        var extraSpace = Math.max(containerSize - allColumnSize, 0)
-                        extraSpacing = extraSpace / availableColumns
+                    Label {
+                        text: qsTr("Speed")
                     }
-                    return Math.floor(extraSpacing)
+
+                    Slider {
+                        id: accelerationSlider
+                        Layout.fillWidth: true
+                        rightPadding: FishUI.Units.largeSpacing
+                        from: 1
+                        to: 11
+                        stepSize: 1
+
+                        function init() {
+                            accelerationSlider.value = 6 + mouse.pointerAcceleration / 0.2
+                        }
+
+                        Component.onCompleted: init()
+
+                        onPressedChanged: {
+                            mouse.pointerAcceleration = Math.round(((value - 6) * 0.2) * 10) / 10
+                        }
+                    }
+                }
+            }
+
+            RoundedItem {
+                Label {
+                    text: qsTr("Theme")
+                    color: FishUI.Theme.disabledTextColor
+                    visible: _view.count > 0
                 }
 
-                delegate: Item {
-                    width: GridView.view.cellWidth
-                    height: GridView.view.cellHeight
-                    scale: _mouseArea.pressed ? 0.95 : 1.0
+                GridView {
+                    id: _view
+                    Layout.fillWidth: true
+                    implicitHeight: Math.ceil(_view.count / rowCount) * cellHeight + FishUI.Units.largeSpacing
+                    model: cursorModel
+                    interactive: false
+                    visible: _view.count > 0
 
-                    property bool isCurrent: _view.currentIndex === index
+                    cellHeight: itemHeight
+                    cellWidth: calcExtraSpacing(itemWidth, _view.width) + itemWidth
 
-                    Behavior on scale {
-                        NumberAnimation {
-                            duration: 100
+                    currentIndex: cursorModel.themeIndex(cursorModel.currentTheme)
+
+                    property int rowCount: _view.width / itemWidth
+                    property int itemWidth: 250
+                    property int itemHeight: 170
+
+                    function calcExtraSpacing(cellSize, containerSize) {
+                        var availableColumns = Math.floor(containerSize / cellSize)
+                        var extraSpacing = 0
+                        if (availableColumns > 0) {
+                            var allColumnSize = availableColumns * cellSize
+                            var extraSpace = Math.max(containerSize - allColumnSize, 0)
+                            extraSpacing = extraSpace / availableColumns
                         }
+                        return Math.floor(extraSpacing)
                     }
 
-                    MouseArea {
-                        id: _mouseArea
-                        anchors.fill: parent
-                        anchors.margins: FishUI.Units.largeSpacing
-                        onClicked: {
-                            _view.currentIndex = index
-                            cursorModel.currentTheme = model.id
-                            console.log(model.id)
-                        }
-                    }
+                    delegate: Item {
+                        width: GridView.view.cellWidth
+                        height: GridView.view.cellHeight
+                        scale: _mouseArea.pressed ? 0.95 : 1.0
 
-                    Rectangle {
-                        anchors.fill: parent
-                        anchors.margins: FishUI.Units.largeSpacing
-                        color: FishUI.Theme.secondBackgroundColor
-                        radius: FishUI.Theme.mediumRadius
-                        z: -1
+                        property bool isCurrent: _view.currentIndex === index
 
-                        border.width: isCurrent ? 3 : 0
-                        border.color: FishUI.Theme.highlightColor
-                    }
-
-                    ColumnLayout {
-                        anchors.fill: parent
-                        anchors.margins: FishUI.Units.largeSpacing
-
-                        FishUI.IconItem {
-                            width: 24
-                            height: 24
-                            source: model.image
-                            smooth: true
-                            Layout.alignment: Qt.AlignHCenter
+                        Behavior on scale {
+                            NumberAnimation {
+                                duration: 100
+                            }
                         }
 
-                        Label {
-                            text: model.name
-                            Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
-                            bottomPadding: FishUI.Units.largeSpacing
+                        MouseArea {
+                            id: _mouseArea
+                            anchors.fill: parent
+                            anchors.margins: FishUI.Units.largeSpacing
+                            onClicked: {
+                                _view.currentIndex = index
+                                cursorModel.currentTheme = model.id
+                                console.log(model.id)
+                            }
+                        }
+
+                        Rectangle {
+                            anchors.fill: parent
+                            anchors.margins: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
+                            color: FishUI.Theme.darkMode ? "" : "#FAFAFA"
+                            radius: FishUI.Theme.mediumRadius
+                            z: -1
+
+                            border.width: isCurrent ? 3 : 0
+                            border.color: FishUI.Theme.highlightColor
+                        }
+
+                        ColumnLayout {
+                            anchors.fill: parent
+                            anchors.margins: FishUI.Units.largeSpacing
+
+                            FishUI.IconItem {
+                                width: 24
+                                height: 24
+                                source: model.image
+                                smooth: true
+                                Layout.alignment: Qt.AlignHCenter
+                            }
+
+                            Label {
+                                text: model.name
+                                Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
+                                bottomPadding: FishUI.Units.largeSpacing
+                            }
                         }
                     }
                 }

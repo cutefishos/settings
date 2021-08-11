@@ -41,15 +41,14 @@ ItemPage {
             id: layout
             anchors.fill: parent
             // anchors.bottomMargin: FishUI.Units.largeSpacing
-            spacing: FishUI.Units.smallSpacing
-
-            Label {
-                text: qsTr("Theme")
-                color: FishUI.Theme.disabledTextColor
-                leftPadding: FishUI.Units.largeSpacing
-            }
+            spacing: FishUI.Units.largeSpacing * 2
 
             RoundedItem {
+                Label {
+                    text: qsTr("Theme")
+                    color: FishUI.Theme.disabledTextColor
+                }
+
                 // Light Mode and Dark Mode
                 RowLayout {
                     spacing: FishUI.Units.largeSpacing * 2
@@ -67,10 +66,6 @@ ItemPage {
                         checked: FishUI.Theme.darkMode
                         onClicked: appearance.switchDarkMode(true)
                     }
-                }
-
-                Item {
-                    height: FishUI.Units.largeSpacing
                 }
 
                 RowLayout {
@@ -96,17 +91,12 @@ ItemPage {
                 }
             }
 
-            Item {
-                height: FishUI.Units.largeSpacing
-            }
-
-            Label {
-                text: qsTr("Accent color")
-                color: FishUI.Theme.disabledTextColor
-                leftPadding: FishUI.Units.largeSpacing
-            }
-
             RoundedItem {
+                Label {
+                    text: qsTr("Accent color")
+                    color: FishUI.Theme.disabledTextColor
+                }
+
                 GridView {
                     id: accentColorView
                     height: itemSize

@@ -38,15 +38,14 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.smallSpacing
-
-            Label {
-                text: qsTr("Position on screen")
-                color: FishUI.Theme.disabledTextColor
-                leftPadding: FishUI.Units.largeSpacing
-            }
+            spacing: FishUI.Units.largeSpacing * 2
 
             RoundedItem {
+                Label {
+                    text: qsTr("Position on screen")
+                    color: FishUI.Theme.disabledTextColor
+                }
+
                 // Dock
                 RowLayout {
                     spacing: FishUI.Units.largeSpacing * 2
@@ -74,18 +73,13 @@ ItemPage {
                 }
             }
 
-            Item {
-                height: FishUI.Units.largeSpacing
-            }
-
-            Label {
-                text: qsTr("Size")
-                color: FishUI.Theme.disabledTextColor
-                leftPadding: FishUI.Units.largeSpacing
-            }
-
             // Dock Size
             RoundedItem {
+                Label {
+                    text: qsTr("Size")
+                    color: FishUI.Theme.disabledTextColor
+                }
+
                 TabBar {
                     id: dockSizeTabbar
                     Layout.fillWidth: true
@@ -145,18 +139,13 @@ ItemPage {
                 }
             }
 
-            Item {
-                height: FishUI.Units.largeSpacing
-            }
-
-            Label {
-                text: qsTr("Display mode")
-                color: FishUI.Theme.disabledTextColor
-                leftPadding: FishUI.Units.largeSpacing
-            }
-
             // Visibility
             RoundedItem {
+                Label {
+                    text: qsTr("Display mode")
+                    color: FishUI.Theme.disabledTextColor
+                }
+
                 TabBar {
                     Layout.fillWidth: true
                     currentIndex: appearance.dockVisibility

@@ -41,15 +41,14 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.smallSpacing
-
-            Label {
-                text: qsTr("Mode")
-                color: FishUI.Theme.disabledTextColor
-                leftPadding: FishUI.Units.largeSpacing
-            }
+            spacing: FishUI.Units.largeSpacing * 2
 
             RoundedItem {
+                Label {
+                    text: qsTr("Mode")
+                    color: FishUI.Theme.disabledTextColor
+                }
+
                 RowLayout {
                     spacing: FishUI.Units.largeSpacing * 2
 

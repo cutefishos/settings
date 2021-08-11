@@ -57,18 +57,17 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.smallSpacing
-
-            Label {
-                text: qsTr("Brightness")
-                color: FishUI.Theme.disabledTextColor
-                leftPadding: FishUI.Units.largeSpacing
-                visible: brightness.enabled
-            }
+            spacing: FishUI.Units.largeSpacing * 2
 
             RoundedItem {
                 Layout.fillWidth: true
                 visible: brightness.enabled
+
+                Label {
+                    text: qsTr("Brightness")
+                    color: FishUI.Theme.disabledTextColor
+                    visible: brightness.enabled
+                }
 
                 Item {
                     height: FishUI.Units.smallSpacing / 2
@@ -109,19 +108,14 @@ ItemPage {
                 }
             }
 
-            Item {
-                height: FishUI.Units.largeSpacing
-            }
-
-            Label {
-                text: qsTr("Screen")
-                color: FishUI.Theme.disabledTextColor
-                leftPadding: FishUI.Units.largeSpacing
-                visible: _screenView.count > 0
-            }
-
             RoundedItem {
                 visible: _screenView.count > 0
+
+                Label {
+                    text: qsTr("Screen")
+                    color: FishUI.Theme.disabledTextColor
+                    visible: _screenView.count > 0
+                }
 
                 ListView {
                     id: _screenView
@@ -280,17 +274,12 @@ ItemPage {
                 }
             }
 
-            Item {
-                height: FishUI.Units.largeSpacing
-            }
-
-            Label {
-                text: qsTr("Scale")
-                color: FishUI.Theme.disabledTextColor
-                leftPadding: FishUI.Units.largeSpacing
-            }
-
             RoundedItem {
+                Label {
+                    text: qsTr("Scale")
+                    color: FishUI.Theme.disabledTextColor
+                }
+
                 TabBar {
                     id: dockSizeTabbar
                     Layout.fillWidth: true

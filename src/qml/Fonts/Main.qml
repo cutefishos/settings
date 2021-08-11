@@ -86,7 +86,7 @@ ItemPage {
                     columns: 2
 
                     columnSpacing: FishUI.Units.largeSpacing * 1.5
-                    rowSpacing: FishUI.Units.largeSpacing
+                    rowSpacing: FishUI.Units.largeSpacing * 2
 
                     Label {
                         text: qsTr("General Font")

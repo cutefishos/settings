@@ -64,7 +64,7 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.smallSpacing
+            spacing: FishUI.Units.largeSpacing * 2
 
             // Battery Info
             BatteryItem {
@@ -118,19 +118,14 @@ ItemPage {
                 }
             }
 
-            Item {
-                height: FishUI.Units.largeSpacing
-            }
-
-            Label {
-                text: qsTr("History")
-                color: FishUI.Theme.disabledTextColor
-                leftPadding: FishUI.Units.largeSpacing
-            }
-
             RoundedItem {
                 visible: history.count > 2
                 spacing: 0
+
+                Label {
+                    text: qsTr("History")
+                    color: FishUI.Theme.disabledTextColor
+                }
 
                 HistoryGraph {
                     Layout.fillWidth: true
@@ -173,18 +168,13 @@ ItemPage {
                 }
             }
 
-            Item {
-                height: FishUI.Units.largeSpacing
-            }
-
-            Label {
-                text: qsTr("Health")
-                color: FishUI.Theme.disabledTextColor
-                leftPadding: FishUI.Units.largeSpacing
-            }
-
             RoundedItem {
                 visible: battery.capacity
+
+                Label {
+                    text: qsTr("Health")
+                    color: FishUI.Theme.disabledTextColor
+                }
 
                 RowLayout {
                     spacing: FishUI.Units.largeSpacing * 4
@@ -274,10 +264,6 @@ ItemPage {
                     key: qsTr("Maximum Capacity")
                     value: battery.capacity + "%"
                 }
-            }
-
-            Item {
-                height: FishUI.Units.largeSpacing
             }
 
             RoundedItem {

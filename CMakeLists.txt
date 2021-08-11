@@ -23,6 +23,7 @@ find_package(KF5ModemManagerQt REQUIRED)
 
 pkg_search_module(FontConfig REQUIRED fontconfig IMPORTED_TARGET)
 pkg_search_module(ICU REQUIRED icu-i18n)
+pkg_check_modules(XORGLIBINPUT xorg-libinput IMPORTED_TARGET)
 
 include_directories(${ICU_INCLUDE_DIRS})
 
@@ -44,6 +45,9 @@ set(SRCS
     src/powermanager.cpp
     src/cursor/cursorthememodel.cpp
     src/cursor/cursortheme.cpp
+    src/cursor/mouse.cpp
+    src/cursor/inputdummydevice.cpp
+    src/cursor/libinputsettings.cpp
 )
 
 set(RESOURCES
@@ -79,6 +83,8 @@ target_link_libraries(${PROJECT_NAME}
         X11::X11
         X11::Xi
         X11::Xcursor
+
+        PkgConfig::XORGLIBINPUT
 )
 
 file(GLOB TS_FILES translations/*.ts)

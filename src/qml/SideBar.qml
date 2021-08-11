@@ -102,15 +102,6 @@ Item {
         }
 
         ListElement {
-            title: qsTr("Mouse")
-            name: "cursor"
-            page: "qrc:/qml/Cursor/Main.qml"
-            iconSource: "cursor.svg"
-            iconColor: "#0D9BF1"
-            category: qsTr("Display and appearance")
-        }
-
-        ListElement {
             title: qsTr("Fonts")
             name: "fonts"
             page: "qrc:/qml/Fonts/Main.qml"
@@ -143,6 +134,15 @@ Item {
             page: "qrc:/qml/User/Main.qml"
             iconSource: "accounts.svg"
             iconColor: "#DA7C43"
+            category: qsTr("System")
+        }
+
+        ListElement {
+            title: qsTr("Mouse")
+            name: "cursor"
+            page: "qrc:/qml/Cursor/Main.qml"
+            iconSource: "cursor.svg"
+            iconColor: "#0D9BF1"
             category: qsTr("System")
         }
 
