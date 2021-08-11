@@ -116,28 +116,28 @@
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="47"/>
-        <location filename="../src/qml/Cursor/Main.qml" line="47"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="48"/>
+        <location filename="../src/qml/Cursor/Main.qml" line="140"/>
         <source>Theme</source>
         <translation>主题</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="59"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="58"/>
         <source>Light</source>
         <translation>浅色模式</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="66"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="65"/>
         <source>Dark</source>
         <translation>深色模式</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="81"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="76"/>
         <source>Dim the wallpaper in dark theme</source>
         <translation>在深色模式下调暗壁纸</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="104"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="96"/>
         <source>Accent color</source>
         <translation>强调色</translation>
     </message>
@@ -172,25 +172,25 @@
         <translation>抗锯齿</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="95"/>
+        <location filename="../src/qml/Dock/Main.qml" line="89"/>
         <location filename="../src/qml/Fonts/Main.qml" line="134"/>
         <source>Small</source>
         <translation>小</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="99"/>
+        <location filename="../src/qml/Dock/Main.qml" line="93"/>
         <location filename="../src/qml/Fonts/Main.qml" line="138"/>
         <source>Medium</source>
         <translation>中</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="103"/>
+        <location filename="../src/qml/Dock/Main.qml" line="97"/>
         <location filename="../src/qml/Fonts/Main.qml" line="142"/>
         <source>Large</source>
         <translation>大</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="107"/>
+        <location filename="../src/qml/Dock/Main.qml" line="101"/>
         <location filename="../src/qml/Fonts/Main.qml" line="146"/>
         <source>Huge</source>
         <translation>巨大</translation>
@@ -236,47 +236,47 @@
         <translation>历史</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="159"/>
+        <location filename="../src/qml/Battery/Main.qml" line="154"/>
         <source>W</source>
         <translation>瓦特</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="181"/>
+        <location filename="../src/qml/Battery/Main.qml" line="175"/>
         <source>Health</source>
         <translation>健康</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="209"/>
+        <location filename="../src/qml/Battery/Main.qml" line="199"/>
         <source>Poor</source>
         <translation>较差</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="234"/>
+        <location filename="../src/qml/Battery/Main.qml" line="224"/>
         <source>Normal</source>
         <translation>正常</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="259"/>
+        <location filename="../src/qml/Battery/Main.qml" line="249"/>
         <source>Excellent</source>
         <translation>极佳</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="268"/>
+        <location filename="../src/qml/Battery/Main.qml" line="258"/>
         <source>Last Charged to</source>
         <translation>上一次充电至</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="274"/>
+        <location filename="../src/qml/Battery/Main.qml" line="264"/>
         <source>Maximum Capacity</source>
         <translation>最大容量</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="286"/>
+        <location filename="../src/qml/Battery/Main.qml" line="272"/>
         <source>Show percentage in status bar</source>
         <translation>在状态栏中显示电池百分比</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="310"/>
+        <location filename="../src/qml/Battery/Main.qml" line="296"/>
         <source>No battery found</source>
         <translation>找不到电池</translation>
     </message>
@@ -286,47 +286,47 @@
         <translation>显示</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="63"/>
+        <location filename="../src/qml/Display/Main.qml" line="67"/>
         <source>Brightness</source>
         <translation>亮度</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="117"/>
+        <location filename="../src/qml/Display/Main.qml" line="115"/>
         <source>Screen</source>
         <translation>屏幕</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="160"/>
+        <location filename="../src/qml/Display/Main.qml" line="154"/>
         <source>Screen Name</source>
         <translation>屏幕名称</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="171"/>
+        <location filename="../src/qml/Display/Main.qml" line="165"/>
         <source>Resolution</source>
         <translation>分辨率</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="190"/>
+        <location filename="../src/qml/Display/Main.qml" line="184"/>
         <source>Refresh rate</source>
         <translation>刷新率</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="210"/>
+        <location filename="../src/qml/Display/Main.qml" line="204"/>
         <source>Rotation</source>
         <translation>方向</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="254"/>
+        <location filename="../src/qml/Display/Main.qml" line="248"/>
         <source>Enabled</source>
         <translation>已开启</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="288"/>
+        <location filename="../src/qml/Display/Main.qml" line="279"/>
         <source>Scale</source>
         <translation>缩放</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="357"/>
+        <location filename="../src/qml/Display/Main.qml" line="346"/>
         <source>Need to log in again to take effect</source>
         <translation>需要重新登录才能生效</translation>
     </message>
@@ -336,42 +336,42 @@
         <translation>程序坞</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="44"/>
+        <location filename="../src/qml/Dock/Main.qml" line="45"/>
         <source>Position on screen</source>
         <translation>屏幕上的位置</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="56"/>
+        <location filename="../src/qml/Dock/Main.qml" line="55"/>
         <source>Left</source>
         <translation>左侧</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="63"/>
+        <location filename="../src/qml/Dock/Main.qml" line="62"/>
         <source>Bottom</source>
         <translation>底部</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="70"/>
+        <location filename="../src/qml/Dock/Main.qml" line="69"/>
         <source>Right</source>
         <translation>右侧</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="82"/>
+        <location filename="../src/qml/Dock/Main.qml" line="79"/>
         <source>Size</source>
         <translation>尺寸</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="153"/>
+        <location filename="../src/qml/Dock/Main.qml" line="145"/>
         <source>Display mode</source>
         <translation>显示模式</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="166"/>
+        <location filename="../src/qml/Dock/Main.qml" line="155"/>
         <source>Always show</source>
         <translation>总是显示</translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="170"/>
+        <location filename="../src/qml/Dock/Main.qml" line="159"/>
         <source>Auto hide</source>
         <translation>自动隐藏</translation>
     </message>
@@ -381,12 +381,12 @@
         <translation>电源</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="47"/>
+        <location filename="../src/qml/Power/Main.qml" line="48"/>
         <source>Mode</source>
         <translation>模式</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="58"/>
+        <location filename="../src/qml/Power/Main.qml" line="57"/>
         <source>Power Save</source>
         <translation>省电模式</translation>
     </message>
@@ -395,7 +395,7 @@
         <translation type="vanished">均衡</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="71"/>
+        <location filename="../src/qml/Power/Main.qml" line="70"/>
         <source>Performance</source>
         <translation>性能模式</translation>
     </message>
@@ -507,6 +507,25 @@
         <source>Mouse</source>
         <translation>鼠标</translation>
     </message>
+    <message>
+        <location filename="../src/qml/Cursor/Main.qml" line="61"/>
+        <source>Left hand</source>
+        <translation>左手模式</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Cursor/Main.qml" line="74"/>
+        <source>Natural scrolling</source>
+        <translation>自然滚动</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Cursor/Main.qml" line="114"/>
+        <source>Pointer speed</source>
+        <translation>指针速度</translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation type="vanished">鼠标速度</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -560,7 +579,6 @@
         <location filename="../src/qml/SideBar.qml" line="110"/>
         <location filename="../src/qml/SideBar.qml" line="119"/>
         <location filename="../src/qml/SideBar.qml" line="128"/>
-        <location filename="../src/qml/SideBar.qml" line="137"/>
         <source>Display and appearance</source>
         <translation>显示与外观</translation>
     </message>
@@ -570,27 +588,27 @@
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="105"/>
+        <location filename="../src/qml/SideBar.qml" line="141"/>
         <source>Mouse</source>
         <translation>鼠标</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="114"/>
+        <location filename="../src/qml/SideBar.qml" line="105"/>
         <source>Fonts</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="132"/>
+        <location filename="../src/qml/SideBar.qml" line="123"/>
         <source>Dock</source>
         <translation>程序坞</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="141"/>
+        <location filename="../src/qml/SideBar.qml" line="132"/>
         <source>User</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="123"/>
+        <location filename="../src/qml/SideBar.qml" line="114"/>
         <source>Background</source>
         <translation>背景</translation>
     </message>
@@ -600,6 +618,7 @@
         <translation>无线网络</translation>
     </message>
     <message>
+        <location filename="../src/qml/SideBar.qml" line="137"/>
         <location filename="../src/qml/SideBar.qml" line="146"/>
         <location filename="../src/qml/SideBar.qml" line="164"/>
         <location filename="../src/qml/SideBar.qml" line="173"/>

@@ -111,7 +111,7 @@ ItemPage {
                     spacing: FishUI.Units.largeSpacing * 2
 
                     Label {
-                        text: qsTr("Speed")
+                        text: qsTr("Pointer speed")
                     }
 
                     Slider {
