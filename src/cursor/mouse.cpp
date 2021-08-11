@@ -21,59 +21,58 @@
 
 Mouse::Mouse(QObject *parent)
     : QObject(parent)
-    , m_inputDummydevice(new X11LibinputDummyDevice(this, QX11Info::display()))
+    , m_interface("org.cutefish.Settings",
+                  "/Mouse",
+                  "org.cutefish.Mouse",
+                  QDBusConnection::sessionBus())
 {
-    connect(m_inputDummydevice, &X11LibinputDummyDevice::leftHandedChanged, this, &Mouse::leftHandedChanged);
-    connect(m_inputDummydevice, &X11LibinputDummyDevice::pointerAccelerationProfileChanged, this, &Mouse::accelerationChanged);
-    connect(m_inputDummydevice, &X11LibinputDummyDevice::naturalScrollChanged, this, &Mouse::naturalScrollChanged);
-    connect(m_inputDummydevice, &X11LibinputDummyDevice::pointerAccelerationChanged, this, &Mouse::pointerAccelerationChanged);
+    if (m_interface.isValid()) {
+        connect(&m_interface, SIGNAL(leftHandedChanged()), this, SIGNAL(leftHandedChanged()));
+        connect(&m_interface, SIGNAL(naturalScrollChanged()), this, SIGNAL(naturalScrollChanged()));
+        connect(&m_interface, SIGNAL(pointerAccelerationChanged()), this, SIGNAL(pointerAccelerationChanged()));
+    }
 }
 
 Mouse::~Mouse()
 {
-    delete m_inputDummydevice;
 }
 
 bool Mouse::leftHanded() const
 {
-    return m_inputDummydevice->isLeftHanded();
+    return m_interface.property("leftHanded").toBool();
 }
 
 void Mouse::setLeftHanded(bool enabled)
 {
-    m_inputDummydevice->setLeftHanded(enabled);
-    m_inputDummydevice->applyConfig();
+    m_interface.asyncCall("setLeftHanded", enabled);
 }
 
 bool Mouse::acceleration() const
 {
-    return m_inputDummydevice->pointerAccelerationProfileFlat();
+    return m_interface.property("acceleration").toBool();
 }
 
 void Mouse::setAcceleration(bool enabled)
 {
-    m_inputDummydevice->setPointerAccelerationProfileFlat(enabled);
-    m_inputDummydevice->applyConfig();
+    m_interface.asyncCall("setPointerAccelerationProfileFlat", enabled);
 }
 
 bool Mouse::naturalScroll() const
 {
-    return m_inputDummydevice->isNaturalScroll();
+    return m_interface.property("naturalScroll").toBool();
 }
 
 void Mouse::setNaturalScroll(bool enabled)
 {
-    m_inputDummydevice->setNaturalScroll(enabled);
-    m_inputDummydevice->applyConfig();
+    m_interface.asyncCall("setNaturalScroll", enabled);
 }
 
 qreal Mouse::pointerAcceleration() const
 {
-    return m_inputDummydevice->pointerAcceleration();
+    return m_interface.property("pointerAcceleration").toReal();
 }
 
 void Mouse::setPointerAcceleration(qreal value)
 {
-    m_inputDummydevice->setPointerAcceleration(value);
-    m_inputDummydevice->applyConfig();
+    m_interface.asyncCall("setPointerAcceleration", value);
 }

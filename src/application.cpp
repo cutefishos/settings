@@ -19,7 +19,6 @@
 
 #include "cursor/cursorthememodel.h"
 #include "cursor/mouse.h"
-#include "cursor/inputdummydevice.h"
 
 static QObject *passwordSingleton(QQmlEngine *engine, QJSEngine *scriptEngine)
 {

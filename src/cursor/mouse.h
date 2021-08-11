@@ -21,7 +21,7 @@
 #define MOUSE_H
 
 #include <QObject>
-#include "inputdummydevice.h"
+#include <QDBusInterface>
 
 class Mouse : public QObject
 {
@@ -54,7 +54,7 @@ signals:
     void pointerAccelerationChanged();
 
 private:
-    X11LibinputDummyDevice *m_inputDummydevice;
+    QDBusInterface m_interface;
 };
 
 #endif // MOUSE_H
