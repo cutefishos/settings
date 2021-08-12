@@ -139,10 +139,10 @@ Item {
 
         ListElement {
             title: qsTr("Mouse")
-            name: "cursor"
+            name: "mouse"
             page: "qrc:/qml/Cursor/Main.qml"
             iconSource: "cursor.svg"
-            iconColor: "#0D9BF1"
+            iconColor: "#3385FF"
             category: qsTr("System")
         }
 
@@ -154,6 +154,15 @@ Item {
 //            iconColor: "#DA7C43"
 //            category: qsTr("System")
 //        }
+
+        ListElement {
+            title: qsTr("Date & Time")
+            name: "datetime"
+            page: "qrc:/qml/DateTime/Main.qml"
+            iconSource: "datetime.svg"
+            iconColor: "#418CFF"
+            category: qsTr("System")
+        }
 
         ListElement {
             title: qsTr("Language")
@@ -309,7 +318,7 @@ Item {
                             source: "qrc:/images/sidebar/dark/" + model.iconSource
                             sourceSize: Qt.size(width, height)
                             Layout.alignment: Qt.AlignVCenter
-                            antialiasing: true
+                            antialiasing: false
                             smooth: false
                         }
                     }

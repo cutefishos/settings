@@ -110,5 +110,10 @@
         <file>qml/Application/Main.qml</file>
         <file>qml/Cursor/Main.qml</file>
         <file>images/sidebar/dark/cursor.svg</file>
+        <file>qml/DateTime/Main.qml</file>
+        <file>qml/DateTime/TimeZoneDialog.qml</file>
+        <file>images/light/world.svg</file>
+        <file>images/dark/world.svg</file>
+        <file>images/sidebar/dark/datetime.svg</file>
     </qresource>
 </RCC>

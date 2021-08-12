@@ -68,6 +68,8 @@ ItemPage {
                     }
                 }
 
+                HorizontalDivider {}
+
                 RowLayout {
                     spacing: FishUI.Units.largeSpacing
 

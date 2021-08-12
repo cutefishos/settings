@@ -20,6 +20,8 @@
 #include "cursor/cursorthememodel.h"
 #include "cursor/mouse.h"
 
+#include "datetime/timezonemap.h"
+
 static QObject *passwordSingleton(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
     Q_UNUSED(engine);
@@ -69,6 +71,7 @@ Application::Application(int &argc, char **argv)
     qmlRegisterType<Fonts>(uri, 1, 0, "Fonts");
     qmlRegisterType<PowerManager>(uri, 1, 0, "PowerManager");
     qmlRegisterType<Mouse>(uri, 1, 0, "Mouse");
+    qmlRegisterType<TimeZoneMap>(uri, 1, 0, "TimeZoneMap");
     qmlRegisterSingletonType<Password>(uri, 1, 0, "Password", passwordSingleton);
     qmlRegisterType<QAbstractItemModel>();
 

@@ -38,8 +38,8 @@ Rectangle {
     ColumnLayout {
         id: _mainLayout
         anchors.fill: parent
-        anchors.leftMargin: FishUI.Units.largeSpacing
-        anchors.rightMargin: FishUI.Units.largeSpacing
+        anchors.leftMargin: FishUI.Units.largeSpacing * 1.5
+        anchors.rightMargin: FishUI.Units.largeSpacing * 1.5
         anchors.topMargin: FishUI.Units.largeSpacing
         anchors.bottomMargin: FishUI.Units.largeSpacing
         spacing: FishUI.Units.largeSpacing

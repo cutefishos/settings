@@ -35,10 +35,10 @@ Page {
         height: rootWindow.header.height
 
         Label {
-            anchors.horizontalCenter: parent.horizontalCenter
+//            anchors.horizontalCenter: parent.horizontalCenter
 
-//            anchors.fill: parent
-//            leftPadding: FishUI.Units.largeSpacing * 2
+            anchors.fill: parent
+            leftPadding: FishUI.Units.largeSpacing * 3
             topPadding: FishUI.Units.largeSpacing
             bottomPadding: 0
             font.pointSize: 12

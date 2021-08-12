@@ -150,14 +150,17 @@ ItemPage {
                     interactive: false
                     visible: _view.count > 0
 
+                    leftMargin: 0
+                    rightMargin: 0
+
                     cellHeight: itemHeight
                     cellWidth: calcExtraSpacing(itemWidth, _view.width) + itemWidth
 
                     currentIndex: cursorModel.themeIndex(cursorModel.currentTheme)
 
                     property int rowCount: _view.width / itemWidth
-                    property int itemWidth: 250
-                    property int itemHeight: 170
+                    property int itemWidth: 150
+                    property int itemHeight: 150
 
                     function calcExtraSpacing(cellSize, containerSize) {
                         var availableColumns = Math.floor(containerSize / cellSize)
@@ -186,7 +189,7 @@ ItemPage {
                         MouseArea {
                             id: _mouseArea
                             anchors.fill: parent
-                            anchors.margins: FishUI.Units.largeSpacing
+                            anchors.margins: FishUI.Units.smallSpacing
                             onClicked: {
                                 _view.currentIndex = index
                                 cursorModel.currentTheme = model.id
@@ -196,8 +199,8 @@ ItemPage {
 
                         Rectangle {
                             anchors.fill: parent
-                            anchors.margins: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
-                            color: FishUI.Theme.darkMode ? "" : "#FAFAFA"
+                            anchors.margins: FishUI.Units.smallSpacing
+                            color: FishUI.Theme.darkMode ? "#3C3C3C" : "#FAFAFA"
                             radius: FishUI.Theme.mediumRadius
                             z: -1
 
@@ -207,7 +210,15 @@ ItemPage {
 
                         ColumnLayout {
                             anchors.fill: parent
-                            anchors.margins: FishUI.Units.largeSpacing
+                            anchors.margins: FishUI.Units.smallSpacing
+
+                            Item {
+                                Layout.fillHeight: true
+                            }
+
+                            Item {
+                                height: FishUI.Units.largeSpacing
+                            }
 
                             FishUI.IconItem {
                                 width: 24
@@ -217,10 +228,18 @@ ItemPage {
                                 Layout.alignment: Qt.AlignHCenter
                             }
 
+                            Item {
+                                Layout.fillHeight: true
+                            }
+
                             Label {
                                 text: model.name
                                 Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
                                 bottomPadding: FishUI.Units.largeSpacing
+                            }
+
+                            Item {
+                                Layout.fillHeight: true
                             }
                         }
                     }

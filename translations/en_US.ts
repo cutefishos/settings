@@ -132,12 +132,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="76"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="78"/>
         <source>Dim the wallpaper in dark theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="96"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="98"/>
         <source>Accent color</source>
         <translation type="unfinished"></translation>
     </message>
@@ -518,6 +518,16 @@
         <source>Pointer speed</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../src/qml/DateTime/Main.qml" line="28"/>
+        <source>Date &amp; Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DateTime/Main.qml" line="57"/>
+        <source>Time Zone</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -616,27 +626,41 @@
         <location filename="../src/qml/SideBar.qml" line="173"/>
         <location filename="../src/qml/SideBar.qml" line="182"/>
         <location filename="../src/qml/SideBar.qml" line="191"/>
+        <location filename="../src/qml/SideBar.qml" line="200"/>
         <source>System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="159"/>
-        <source>Language</source>
+        <source>Date &amp; Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="168"/>
-        <source>Battery</source>
+        <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="177"/>
-        <source>Power</source>
+        <source>Battery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="186"/>
+        <source>Power</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="195"/>
         <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TimeZoneDialog</name>
+    <message>
+        <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="171"/>
+        <source>Set</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

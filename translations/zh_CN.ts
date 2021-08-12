@@ -132,12 +132,12 @@
         <translation>深色模式</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="76"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="78"/>
         <source>Dim the wallpaper in dark theme</source>
         <translation>在深色模式下调暗壁纸</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="96"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="98"/>
         <source>Accent color</source>
         <translation>强调色</translation>
     </message>
@@ -391,10 +391,6 @@
         <translation>省电模式</translation>
     </message>
     <message>
-        <source>Balance</source>
-        <translation type="vanished">均衡</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Power/Main.qml" line="70"/>
         <source>Performance</source>
         <translation>性能模式</translation>
@@ -523,8 +519,14 @@
         <translation>指针速度</translation>
     </message>
     <message>
-        <source>Speed</source>
-        <translation type="vanished">鼠标速度</translation>
+        <location filename="../src/qml/DateTime/Main.qml" line="28"/>
+        <source>Date &amp; Time</source>
+        <translation>日期和时间</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DateTime/Main.qml" line="57"/>
+        <source>Time Zone</source>
+        <translation>时区</translation>
     </message>
 </context>
 <context>
@@ -624,28 +626,42 @@
         <location filename="../src/qml/SideBar.qml" line="173"/>
         <location filename="../src/qml/SideBar.qml" line="182"/>
         <location filename="../src/qml/SideBar.qml" line="191"/>
+        <location filename="../src/qml/SideBar.qml" line="200"/>
         <source>System</source>
         <translation>系统</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="159"/>
+        <source>Date &amp; Time</source>
+        <translation>日期和时间</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="168"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="168"/>
+        <location filename="../src/qml/SideBar.qml" line="177"/>
         <source>Battery</source>
         <translation>电池</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="177"/>
+        <location filename="../src/qml/SideBar.qml" line="186"/>
         <source>Power</source>
         <translation>电源</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="186"/>
+        <location filename="../src/qml/SideBar.qml" line="195"/>
         <source>About</source>
         <translation>关于</translation>
+    </message>
+</context>
+<context>
+    <name>TimeZoneDialog</name>
+    <message>
+        <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="171"/>
+        <source>Set</source>
+        <translation>设置</translation>
     </message>
 </context>
 <context>
