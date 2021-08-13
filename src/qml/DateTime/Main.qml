@@ -35,6 +35,10 @@ ItemPage {
         id: timeZoneMap
     }
 
+    Time {
+        id: time
+    }
+
     Scrollable {
         anchors.fill: parent
         contentHeight: layout.implicitHeight
@@ -42,6 +46,27 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
+            spacing: FishUI.Units.largeSpacing
+
+            RoundedItem {
+                RowLayout {
+                    Label {
+                        text: qsTr("Auto Sync")
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    Switch {
+                        Layout.fillHeight: true
+                        rightPadding: 0
+                        rightInset: 0
+                        Component.onCompleted: checked = time.useNtp
+                        onCheckedChanged: time.useNtp = checked
+                    }
+                }
+            }
 
             StandardButton {
                 Layout.fillWidth: true
@@ -50,8 +75,8 @@ ItemPage {
 
                 RowLayout {
                     anchors.fill: parent
-                    anchors.leftMargin: FishUI.Units.largeSpacing
-                    anchors.rightMargin: FishUI.Units.largeSpacing
+                    anchors.leftMargin: FishUI.Units.largeSpacing * 1.5
+                    anchors.rightMargin: FishUI.Units.largeSpacing * 1.5
 
                     Label {
                         text: qsTr("Time Zone")

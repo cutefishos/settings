@@ -524,7 +524,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DateTime/Main.qml" line="57"/>
+        <location filename="../src/qml/DateTime/Main.qml" line="54"/>
+        <source>Auto Sync</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DateTime/Main.qml" line="82"/>
         <source>Time Zone</source>
         <translation type="unfinished"></translation>
     </message>

@@ -120,11 +120,21 @@ void TimeZoneMap::clicked(int x, int y, int width, int height)
 
 void TimeZoneMap::setTimeZone(QString value)
 {
-    OrgFreedesktopTimedate1Interface timedateIface(QStringLiteral("org.freedesktop.timedate1"),
+    if (value.isEmpty())
+        return;
+
+    OrgFreedesktopTimedate1Interface iface(QStringLiteral("org.freedesktop.timedate1"),
                                                    QStringLiteral("/org/freedesktop/timedate1"),
                                                    QDBusConnection::systemBus());
 
-    timedateIface.SetTimezone(value, true);
+    auto reply = iface.SetTimezone(value, true);
+    reply.waitForFinished();
+
+    if (reply.isError()) {
+        qWarning() << "Failed to set timezone" << reply.error().message();
+        return;
+    }
+
     m_currentTimeZone = QTimeZone(value.toLatin1()).id();
     emit currentTimeZoneChanged();
 }

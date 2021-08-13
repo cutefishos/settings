@@ -524,7 +524,12 @@
         <translation>日期和时间</translation>
     </message>
     <message>
-        <location filename="../src/qml/DateTime/Main.qml" line="57"/>
+        <location filename="../src/qml/DateTime/Main.qml" line="54"/>
+        <source>Auto Sync</source>
+        <translation>自动同步</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DateTime/Main.qml" line="82"/>
         <source>Time Zone</source>
         <translation>时区</translation>
     </message>

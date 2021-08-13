@@ -45,6 +45,7 @@ set(SRCS
     src/cursor/cursorthememodel.cpp
     src/cursor/cursortheme.cpp
     src/cursor/mouse.cpp
+    src/datetime/time.cpp
     src/datetime/timezonedata.h
     src/datetime/timezonemap.cpp
     src/datetime/timedated_interface.cpp
