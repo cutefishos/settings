@@ -25,6 +25,7 @@
 #include <QTimeZone>
 
 #include <math.h>
+#include <locale.h>
 
 // gnome-control-center: cc-timezone-map.c
 static double radians(double degrees) {
@@ -141,12 +142,21 @@ void TimeZoneMap::setTimeZone(QString value)
 
 QString TimeZoneMap::currentTimeZone() const
 {
-    return m_currentTimeZone;
+    return localeTimeZoneName(m_currentTimeZone);
 }
 
 QStringList TimeZoneMap::availableList()
 {
     return m_currentList;
+}
+
+QString TimeZoneMap::localeTimeZoneName(const QString &timeZone) const
+{
+    const QString locale = QLocale::system().name();
+    setlocale(LC_ALL, QString(locale + ".UTF-8").toStdString().c_str());
+    int index = timeZone.lastIndexOf('/');
+    setlocale(LC_ALL, "en_US.UTF-8");
+    return (index > -1) ? timeZone.mid(index + 1) : timeZone;
 }
 
 void TimeZoneMap::initDatas()
@@ -165,14 +175,14 @@ void TimeZoneMap::initDatas()
         if (parts.size() < 3)
             continue;
 
-        const QString coordinates = parts.at(1);
-        int index = coordinates.indexOf('+', 3);
+        const QString coordinate = parts.at(1);
+        int index = coordinate.indexOf('+', 3);
         if (index == -1) {
-            index = coordinates.indexOf('-', 3);
+            index = coordinate.indexOf('-', 3);
         }
 
-        const double latitude = convert_pos(coordinates.left(index), 2);
-        const double longitude = convert_pos(coordinates.mid(index), 3);
+        const double latitude = convert_pos(coordinate.left(index), 2);
+        const double longitude = convert_pos(coordinate.mid(index), 3);
 
         TimeZoneItem *item = new TimeZoneItem;
         item->country = parts.at(0);

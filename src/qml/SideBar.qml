@@ -210,6 +210,7 @@ Item {
             text: rootWindow.title
             Layout.preferredHeight: rootWindow.header.height
             leftPadding: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
+            rightPadding: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
             topPadding: FishUI.Units.largeSpacing
             bottomPadding: 0
             font.pointSize: 15
@@ -247,9 +248,10 @@ Item {
                 height: FishUI.Units.fontMetrics.height + FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
 
                 Text {
-                    anchors.fill: parent
-                    anchors.leftMargin: FishUI.Units.smallSpacing
-                    anchors.rightMargin: FishUI.Units.largeSpacing
+                    anchors.left: parent.left
+                    anchors.top: parent.top
+                    anchors.leftMargin: Qt.application.layoutDirection === Qt.RightToLeft ? 0 : FishUI.Units.smallSpacing
+                    anchors.rightMargin: FishUI.Units.smallSpacing
                     anchors.topMargin: FishUI.Units.largeSpacing
                     anchors.bottomMargin: FishUI.Units.smallSpacing
                     color: FishUI.Theme.disabledTextColor

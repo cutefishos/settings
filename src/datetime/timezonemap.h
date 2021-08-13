@@ -45,6 +45,8 @@ public:
     QString currentTimeZone() const;
     QStringList availableList();
 
+    Q_INVOKABLE QString localeTimeZoneName(const QString &timeZone) const;
+
 signals:
     void availableListChanged();
     void currentTimeZoneChanged();

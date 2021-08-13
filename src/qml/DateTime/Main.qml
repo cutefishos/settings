@@ -71,7 +71,8 @@ ItemPage {
             StandardButton {
                 Layout.fillWidth: true
                 text: ""
-                onClicked: timeZoneDialog.visibility = "Maximized"
+                // onClicked: timeZoneDialog.visibility = "Maximized"
+                onClicked: timeZoneDialog.show()
 
                 RowLayout {
                     anchors.fill: parent

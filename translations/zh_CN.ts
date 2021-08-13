@@ -534,7 +534,7 @@
         <translation>自动同步</translation>
     </message>
     <message>
-        <location filename="../src/qml/DateTime/Main.qml" line="82"/>
+        <location filename="../src/qml/DateTime/Main.qml" line="83"/>
         <source>Time Zone</source>
         <translation>时区</translation>
     </message>
@@ -669,7 +669,12 @@
 <context>
     <name>TimeZoneDialog</name>
     <message>
-        <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="171"/>
+        <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="147"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="152"/>
         <source>Set</source>
         <translation>设置</translation>
     </message>

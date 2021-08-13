@@ -35,10 +35,9 @@ Page {
         height: rootWindow.header.height
 
         Label {
-//            anchors.horizontalCenter: parent.horizontalCenter
-
-            anchors.fill: parent
+            anchors.left: parent.left
             leftPadding: FishUI.Units.largeSpacing * 3
+            rightPadding: Qt.application.layoutDirection === Qt.RightToLeft ? FishUI.Units.largeSpacing * 3 : 0
             topPadding: FishUI.Units.largeSpacing
             bottomPadding: 0
             font.pointSize: 12

@@ -37,13 +37,23 @@ FishUI.Window {
     onHeightChanged: control.reset()
 
     function reset() {
-        _popupItem.opacity = 0
         dot.visible = false
+        popupItem.visible = false
     }
 
     onVisibleChanged: {
         if (!visible)
             control.reset()
+    }
+
+    Connections {
+        target: timeZoneMap
+
+        function onAvailableListChanged() {
+            popupText.text = timeZoneMap.availableList[0]
+            popupText.text = timeZoneMap.localeTimeZoneName(timeZoneMap.availableList[0])
+            popupItem.visible = true
+        }
     }
 
     FishUI.WindowBlur {
@@ -53,126 +63,103 @@ FishUI.Window {
         enabled: true
     }
 
-    MouseArea {
+    ColumnLayout {
         anchors.fill: parent
-        acceptedButtons: Qt.LeftButton | Qt.RightButton
-        onPressed: {
-            if (_popupItem.opacity === 1) {
-                control.reset()
-                return
+        anchors.margins: FishUI.Units.largeSpacing
+
+        Image {
+            id: _worldMap
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            source: FishUI.Theme.darkMode ? "qrc:/images/dark/world.svg" : "qrc:/images/light/world.svg"
+            sourceSize: Qt.size(width, height)
+            fillMode: Image.PreserveAspectFit
+
+            Rectangle {
+                id: dot
+                width: 20
+                height: 20
+                radius: height / 2
+                color: FishUI.Theme.highlightColor
+                z: 99
+                visible: false
+                border.width: 5
+                border.color: Qt.rgba(FishUI.Theme.highlightColor.r,
+                                      FishUI.Theme.highlightColor.g,
+                                      FishUI.Theme.highlightColor.b, 0.5)
+
+                function show(x, y) {
+                    dot.x = x - dot.width / 2
+                    dot.y = y - dot.height / 2
+                    dot.visible = true
+                }
             }
 
-            timeZoneMap.clicked(mouse.x, mouse.y, control.width, control.height)
-            _popupItem.x = mouse.x
-            _popupItem.y = mouse.y
-            _popupItem.opacity = 1
-            dot.show(mouse.x, mouse.y)
-        }
-    }
+            Item {
+                id: popupItem
+                visible: popupText.text !== ""
+                width: popupText.implicitWidth + FishUI.Units.largeSpacing
+                height: popupText.implicitHeight + FishUI.Units.largeSpacing
 
-    Image {
-        anchors.fill: parent
-        source: FishUI.Theme.darkMode ? "qrc:/images/dark/world.svg" : "qrc:/images/light/world.svg"
-        sourceSize: Qt.size(width, height)
-        fillMode: Image.PreserveAspectFit
-    }
-
-    Rectangle {
-        id: dot
-        width: 20
-        height: 20
-        radius: height / 2
-        color: FishUI.Theme.highlightColor
-        z: 99
-        visible: false
-        border.width: 5
-        border.color: Qt.rgba(FishUI.Theme.highlightColor.r,
-                              FishUI.Theme.highlightColor.g,
-                              FishUI.Theme.highlightColor.b, 0.5)
-
-        function show(x, y) {
-            dot.x = x - dot.width / 2
-            dot.y = y - dot.height / 2
-            dot.visible = true
-        }
-    }
-
-    Item {
-        id: _popupItem
-        width: 200
-        height: _popupLayout.implicitHeight + FishUI.Units.largeSpacing
-        z: 100
-
-        opacity: _view.count > 0 ? 1.0 : 0.0
-
-        Behavior on opacity {
-            NumberAnimation { duration: 200 }
-        }
-
-        Rectangle {
-            anchors.fill: parent
-            color: FishUI.Theme.secondBackgroundColor
-            radius: FishUI.Theme.mediumRadius
-            border.width: 1
-            border.color: Qt.rgba(FishUI.Theme.textColor.r,
-                                  FishUI.Theme.textColor.g,
-                                  FishUI.Theme.textColor.b, 0.2)
-        }
-
-        ColumnLayout {
-            id: _popupLayout
-            anchors.fill: parent
-            anchors.margins: FishUI.Units.smallSpacing
-
-            ListView {
-                id: _view
-                clip: true
-                Layout.fillWidth: true
-                Layout.preferredHeight: itemSize * _view.count
-                model: timeZoneMap.availableList
-
-                property int itemSize: 30
-
-                delegate: Item {
-                    id: _item
-                    width: ListView.view.width
-                    height: _view.itemSize
-
-                    Rectangle {
-                        anchors.fill: parent
-                        radius: FishUI.Theme.mediumRadius
-                        color: FishUI.Theme.highlightColor
-                        visible: index === _view.currentIndex
-                        opacity: 0.8
-                    }
-
-                    MouseArea {
-                        anchors.fill: parent
-                        anchors.margins: 2
-                        onClicked: _view.currentIndex = index
-                    }
-
-                    RowLayout {
-                        anchors.fill: parent
-
-                        Label {
-                            Layout.alignment: Qt.AlignCenter
-                            elide: Label.ElideRight
-                            text: modelData
-                            color: index === _view.currentIndex ? FishUI.Theme.highlightedTextColor : FishUI.Theme.textColor
-                        }
-                    }
+                Rectangle {
+                    anchors.fill: parent
+                    radius: FishUI.Theme.smallRadius
+                    color: FishUI.Theme.highlightColor
                 }
+
+                Label {
+                    id: popupText
+                    anchors.centerIn: parent
+                    text: timeZoneMap.availableList[0] ? timeZoneMap.availableList[0] : ""
+                    color: FishUI.Theme.highlightedTextColor
+                }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+
+                onPressed: {
+                    timeZoneMap.clicked(mouse.x, mouse.y, _worldMap.width, _worldMap.height)
+                    dot.show(mouse.x, mouse.y)
+
+                    popupItem.x = mouse.x + FishUI.Units.smallSpacing * 1.5
+                    popupItem.y = mouse.y + FishUI.Units.smallSpacing * 1.5
+
+                    if (popupItem.x + popupItem.width >= _worldMap.width)
+                        popupItem.x = _worldMap.width - popupItem.width - 2
+
+                    if (popupItem.y + popupItem.height >= _worldMap.height)
+                        popupItem.y = _worldMap.height - popupItem.height - 2
+
+                    popupItem.visible = true
+                }
+            }
+        }
+
+        RowLayout {
+            spacing: FishUI.Units.largeSpacing
+
+            Item {
+                Layout.fillWidth: true
             }
 
             Button {
-                Layout.preferredHeight: _view.itemSize
-                Layout.fillWidth: true
+                text: qsTr("Cancel")
+                onClicked: control.close()
+            }
+
+            Button {
                 text: qsTr("Set")
+                flat: true
+                enabled: popupText.text
                 onClicked: {
-                    _popupItem.opacity = 0
-                    timeZoneMap.setTimeZone(timeZoneMap.availableList[_view.currentIndex])
+                    timeZoneMap.setTimeZone(timeZoneMap.availableList[0])
+                    control.close()
                 }
+            }
+
+            Item {
+                Layout.fillWidth: true
             }
         }
     }
