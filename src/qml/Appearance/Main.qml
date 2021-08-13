@@ -91,6 +91,25 @@ ItemPage {
                         rightPadding: 0
                     }
                 }
+
+                RowLayout {
+                    Label {
+                        text: qsTr("System effects")
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    Switch {
+                        checked: appearance.systemEffects
+                        Layout.fillHeight: true
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                        onCheckedChanged: appearance.systemEffects = checked
+                        rightPadding: 0
+                    }
+                }
             }
 
             RoundedItem {

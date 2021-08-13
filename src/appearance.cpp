@@ -25,6 +25,9 @@
 #include <QDBusServiceWatcher>
 #include <QDBusPendingCall>
 
+#include <QStandardPaths>
+#include <QDebug>
+
 Appearance::Appearance(QObject *parent)
     : QObject(parent)
     , m_interface("org.cutefish.Settings",
@@ -32,16 +35,22 @@ Appearance::Appearance(QObject *parent)
                   "org.cutefish.Theme",
                   QDBusConnection::sessionBus())
     , m_dockSettings(new QSettings(QSettings::UserScope, "cutefishos", "dock"))
+    , m_kwinSettings(new QSettings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/kwinrc",
+                                   QSettings::IniFormat))
     , m_dockConfigWacher(new QFileSystemWatcher(this))
     , m_dockIconSize(0)
     , m_dockDirection(0)
     , m_dockVisibility(0)
     , m_fontPointSize(11)
+    , m_systemEffects(false)
 {
+    m_kwinSettings->beginGroup("Compositing");
+
     m_dockIconSize = m_dockSettings->value("IconSize").toInt();
     m_dockDirection = m_dockSettings->value("Direction").toInt();
     m_dockVisibility = m_dockSettings->value("Visibility").toInt();
     m_dockRoundedWindow = m_dockSettings->value("RoundedWindow").toBool();
+    m_systemEffects = !m_kwinSettings->value("OpenGLIsUnsafe", false).toBool();
 
     m_dockConfigWacher->addPath(m_dockSettings->fileName());
     connect(m_dockConfigWacher, &QFileSystemWatcher::fileChanged, this, [=] {
@@ -207,5 +216,21 @@ void Appearance::setDevicePixelRatio(double value)
                          QDBusConnection::sessionBus(), this);
     if (iface.isValid()) {
         iface.call("setDevicePixelRatio", value);
+    }
+}
+
+bool Appearance::systemEffects() const
+{
+    return m_systemEffects;
+}
+
+void Appearance::setSystemEffects(bool systemEffects)
+{
+    if (m_systemEffects != systemEffects) {
+        m_systemEffects = systemEffects;
+        m_kwinSettings->setValue("OpenGLIsUnsafe", !systemEffects);
+        m_kwinSettings->sync();
+        QDBusInterface("org.kde.KWin", "/KWin").call("reconfigure");
+        emit systemEffectsChanged();
     }
 }

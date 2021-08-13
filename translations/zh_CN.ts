@@ -137,7 +137,12 @@
         <translation>在深色模式下调暗壁纸</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="98"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="97"/>
+        <source>System effects</source>
+        <translation>系统特效</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Appearance/Main.qml" line="117"/>
         <source>Accent color</source>
         <translation>强调色</translation>
     </message>

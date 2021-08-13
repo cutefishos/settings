@@ -137,7 +137,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="98"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="97"/>
+        <source>System effects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Appearance/Main.qml" line="117"/>
         <source>Accent color</source>
         <translation type="unfinished"></translation>
     </message>
