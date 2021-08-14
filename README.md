@@ -18,7 +18,7 @@ sudo apt install cmake debhelper extra-cmake-modules libicu-devlibcrypt-dev libf
 ```shell
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
 make
 sudo make install
 ```
