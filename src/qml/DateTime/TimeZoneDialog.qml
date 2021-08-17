@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
+import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
@@ -28,9 +28,11 @@ FishUI.Window {
     title: "Hello World"
     width: 900
     height: 600
+    minimumWidth: 800
+    minimumHeight: 500
     visible: false
 
-    background.opacity: 0.5
+    background.opacity: control.compositing ? 0.5 : 1.0
     contentTopMargin: 0
 
     onWidthChanged: control.reset()
@@ -61,6 +63,17 @@ FishUI.Window {
         geometry: Qt.rect(control.x, control.y, control.width, control.height)
         windowRadius: control.background.radius
         enabled: true
+    }
+
+    Item {
+        z: -1
+        anchors.fill: parent
+
+        DragHandler {
+            acceptedDevices: PointerDevice.GenericPointer
+            grabPermissions: PointerHandler.CanTakeOverFromItems | PointerHandler.CanTakeOverFromHandlersOfDifferentType | PointerHandler.ApprovesTakeOverByAnything
+            onActiveChanged: if (active) control.helper.startSystemMove(control)
+        }
     }
 
     ColumnLayout {
@@ -118,7 +131,7 @@ FishUI.Window {
             MouseArea {
                 anchors.fill: parent
 
-                onPressed: {
+                onClicked: {
                     timeZoneMap.clicked(mouse.x, mouse.y, _worldMap.width, _worldMap.height)
                     dot.show(mouse.x, mouse.y)
 

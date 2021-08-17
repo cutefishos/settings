@@ -41,7 +41,7 @@ ItemPage {
             id: layout
             anchors.fill: parent
             // anchors.bottomMargin: FishUI.Units.largeSpacing
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: FishUI.Units.largeSpacing
 
             RoundedItem {
                 Label {
@@ -76,6 +76,7 @@ ItemPage {
                     Label {
                         id: dimsTipsLabel
                         text: qsTr("Dim the wallpaper in dark theme")
+                        bottomPadding: FishUI.Units.smallSpacing
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
                     }
 
