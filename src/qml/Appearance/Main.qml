@@ -41,7 +41,7 @@ ItemPage {
             id: layout
             anchors.fill: parent
             // anchors.bottomMargin: FishUI.Units.largeSpacing
-            spacing: FishUI.Units.largeSpacing
+            spacing: FishUI.Units.largeSpacing * 2
 
             RoundedItem {
                 Label {

@@ -171,7 +171,7 @@ QString Battery::lastChargedTime() const
 bool Battery::showPercent()
 {
     QSettings settings(QSettings::UserScope, "cutefishos", "statusbar");
-    return settings.value("BatteryPercentage", true).toBool();
+    return settings.value("BatteryPercentage", false).toBool();
 }
 
 void Battery::setPercentEnabled(bool value)
