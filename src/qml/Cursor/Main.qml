@@ -159,8 +159,8 @@ ItemPage {
                     currentIndex: cursorModel.themeIndex(cursorModel.currentTheme)
 
                     property int rowCount: _view.width / itemWidth
-                    property int itemWidth: 150
-                    property int itemHeight: 150
+                    property int itemWidth: 128
+                    property int itemHeight: 128
 
                     function calcExtraSpacing(cellSize, containerSize) {
                         var availableColumns = Math.floor(containerSize / cellSize)

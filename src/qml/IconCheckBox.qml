@@ -31,7 +31,7 @@ Item {
     property alias text: label.text
     property bool checked: false
 
-    property var iconSize: 106
+    property var iconSize: 96
 
     signal clicked
 
