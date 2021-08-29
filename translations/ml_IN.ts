@@ -7,44 +7,44 @@
         <location filename="../src/qml/User/AddUserDialog.qml" line="72"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="78"/>
         <source>User name</source>
-        <translation type="unfinished"></translation>
+        <translation>യൂസർ നെയിം</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="85"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="91"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>പാസ്സ് വേഡ്</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="98"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="104"/>
         <source>Verify password</source>
-        <translation type="unfinished"></translation>
+        <translation>വെരിഫൈ പാസ്സ് വേഡ്</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="111"/>
         <source>Account type</source>
-        <translation type="unfinished"></translation>
+        <translation>അക്കൗണ്ട് ടൈപ്പ്</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>സ്റ്റാൻഡേർഡ്</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Administrator</source>
-        <translation type="unfinished"></translation>
+        <translation>ഉടമ</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="130"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>ക്യാൻസൽ</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="137"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>കൂട്ടി ചേർക്കുക</translation>
     </message>
 </context>
 <context>
@@ -52,12 +52,12 @@
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="29"/>
         <source>Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation>ബ്ലൂടത്ത്</translation>
     </message>
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="49"/>
         <source>Bluetooth is disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>ബ്ലൂടൂത്ത് ഓഫ് ആണ്</translation>
     </message>
 </context>
 <context>
@@ -65,7 +65,7 @@
     <message>
         <location filename="../src/qml/LanguagePage.qml" line="29"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>ഭാഷ</translation>
     </message>
 </context>
 <context>
@@ -73,73 +73,73 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="28"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>എബൗട്</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="68"/>
         <source>Built on %1</source>
-        <translation type="unfinished"></translation>
+        <translation>1 % ഉണ്ടാക്കി</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="76"/>
         <source>System Version</source>
-        <translation type="unfinished"></translation>
+        <translation>system വേർഷൻ</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="81"/>
         <source>System Type</source>
-        <translation type="unfinished"></translation>
+        <translation>സിസ്റ്റം ടൈപ്പ്</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="86"/>
         <source>Kernel Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Kernel വേർഷൻ</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="91"/>
         <source>Processor</source>
-        <translation type="unfinished"></translation>
+        <translation>പ്രൊസസ്സർ</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="96"/>
         <source>RAM</source>
-        <translation type="unfinished"></translation>
+        <translation>Ram</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="101"/>
         <source>Internal Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>ഇൻ്റേണൽ സ്റ്റോറേജ്</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="30"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>വേഷം</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="48"/>
         <location filename="../src/qml/Cursor/Main.qml" line="140"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>തീം</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="58"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>ലഘു</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="65"/>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>ഇരുണ്ട</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="78"/>
         <source>Dim the wallpaper in dark theme</source>
-        <translation type="unfinished"></translation>
+        <translation>ഇരുണ്ട wallpaper ഇല് ഇരുണ്ട തീം</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="97"/>
         <source>System effects</source>
-        <translation type="unfinished"></translation>
+        <translation>System എഫക്</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="117"/>
@@ -149,7 +149,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="31"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>ഫോണ്ട്</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="92"/>
@@ -186,7 +186,7 @@
         <location filename="../src/qml/Dock/Main.qml" line="93"/>
         <location filename="../src/qml/Fonts/Main.qml" line="138"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>മീഡിയം</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="97"/>
@@ -238,7 +238,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="126"/>
         <source>History</source>
-        <translation type="unfinished"></translation>
+        <translation>ചരിത്രം</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="154"/>

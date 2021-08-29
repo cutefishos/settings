@@ -78,7 +78,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="68"/>
         <source>Built on %1</source>
-        <translation>Построен на %1</translation>
+        <translation type="unfinished">Построен на %1</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="76"/>
@@ -197,7 +197,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="29"/>
         <source>Battery</source>
-        <translation>Батарея</translation>
+        <translation>Аккумулятор</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
@@ -247,7 +247,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="200"/>
         <source>Poor</source>
-        <translation>Плохое</translation>
+        <translation>Плохо</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="229"/>
@@ -277,7 +277,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="322"/>
         <source>No battery found</source>
-        <translation>Батарея не найдена</translation>
+        <translation>Аккумулятор не найден</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="29"/>
@@ -302,7 +302,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="168"/>
         <source>Resolution</source>
-        <translation>Расширение</translation>
+        <translation>Разрешение</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="187"/>
@@ -327,12 +327,12 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="354"/>
         <source>Need to log in again to take effect</source>
-        <translation>Необходим повторный вход чтобы изменения вступили в силу</translation>
+        <translation>Необходим повторный вход, чтобы изменения вступили в силу</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
-        <translation>Док-панель</translation>
+        <translation>Панель</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="44"/>
@@ -604,7 +604,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="158"/>
         <source>Battery</source>
-        <translation>Батарея</translation>
+        <translation>Аккумулятор</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="174"/>
@@ -681,17 +681,17 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="105"/>
         <source>IPv4 Address</source>
-        <translation>IPv4 адрес</translation>
+        <translation>IPv4-адрес</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="119"/>
         <source>IPv6 Address</source>
-        <translation>IPv6 адрес</translation>
+        <translation>IPv6-адрес</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="133"/>
         <source>MAC Address</source>
-        <translation>MAC адрес</translation>
+        <translation>MAC-адрес</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="147"/>

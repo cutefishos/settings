@@ -7,44 +7,44 @@
         <location filename="../src/qml/User/AddUserDialog.qml" line="72"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="78"/>
         <source>User name</source>
-        <translation type="unfinished"></translation>
+        <translation>اسم المستخدم</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="85"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="91"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>كلمة المرور</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="98"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="104"/>
         <source>Verify password</source>
-        <translation type="unfinished"></translation>
+        <translation>التحقق من كلمة المرور</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="111"/>
         <source>Account type</source>
-        <translation type="unfinished"></translation>
+        <translation>نوع الحساب</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>اساسي</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Administrator</source>
-        <translation type="unfinished"></translation>
+        <translation>مدير</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="130"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>الغاء</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="137"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>اضافة</translation>
     </message>
 </context>
 <context>
@@ -52,12 +52,12 @@
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="29"/>
         <source>Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation>البلوتوث</translation>
     </message>
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="49"/>
         <source>Bluetooth is disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>البلوتوث متوقف</translation>
     </message>
 </context>
 <context>
@@ -65,7 +65,7 @@
     <message>
         <location filename="../src/qml/LanguagePage.qml" line="29"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>اللغة</translation>
     </message>
 </context>
 <context>
@@ -73,98 +73,98 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="28"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>عن المشروع</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="68"/>
         <source>Built on %1</source>
-        <translation type="unfinished"></translation>
+        <translation>مبني على 1%</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="76"/>
         <source>System Version</source>
-        <translation type="unfinished"></translation>
+        <translation>إصدار النظام</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="81"/>
         <source>System Type</source>
-        <translation type="unfinished"></translation>
+        <translation>نوع النظام</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="86"/>
         <source>Kernel Version</source>
-        <translation type="unfinished"></translation>
+        <translation>إصدار النواة</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="91"/>
         <source>Processor</source>
-        <translation type="unfinished"></translation>
+        <translation>وحدة المعالجة</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="96"/>
         <source>RAM</source>
-        <translation type="unfinished"></translation>
+        <translation>الذاكرة</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="101"/>
         <source>Internal Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>مساحة التخزين</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="30"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>الشكل</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="48"/>
         <location filename="../src/qml/Cursor/Main.qml" line="140"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>المظهر</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="58"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>فاتح</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="65"/>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>داكن</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="78"/>
         <source>Dim the wallpaper in dark theme</source>
-        <translation type="unfinished"></translation>
+        <translation>تعتيم خلفية الشاشة في المظهر الداكن</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="98"/>
         <source>Accent color</source>
-        <translation type="unfinished"></translation>
+        <translation>اللون الثانوي</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="31"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>الخطوط</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="92"/>
         <source>General Font</source>
-        <translation type="unfinished"></translation>
+        <translation>الخط العام</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="109"/>
         <source>Fixed Font</source>
-        <translation type="unfinished"></translation>
+        <translation>الخط الثابت</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="126"/>
         <source>Font Size</source>
-        <translation type="unfinished"></translation>
+        <translation>حجم الخط</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="187"/>
         <source>Hinting</source>
-        <translation type="unfinished"></translation>
+        <translation>التلميح</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
