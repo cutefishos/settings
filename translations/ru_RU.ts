@@ -332,7 +332,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
-        <translation>Панель</translation>
+        <translation>Док</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="44"/>
@@ -571,7 +571,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="122"/>
         <source>Dock</source>
-        <translation>Панель</translation>
+        <translation>Док</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="131"/>
