@@ -19,6 +19,7 @@
 
 #include "fonts.h"
 #include <QDBusInterface>
+#include <QDBusPendingCall>
 
 Fonts::Fonts(QObject *parent)
     : QObject(parent)

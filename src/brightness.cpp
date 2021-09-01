@@ -18,6 +18,7 @@
  */
 
 #include "brightness.h"
+#include <QDBusPendingCall>
 
 Brightness::Brightness(QObject *parent)
     : QObject(parent)

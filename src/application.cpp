@@ -1,5 +1,6 @@
 #include "application.h"
 #include <QCommandLineParser>
+#include <QDBusPendingCall>
 #include <QTranslator>
 #include <QLocale>
 #include <QIcon>

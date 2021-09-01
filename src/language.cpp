@@ -22,6 +22,8 @@
 #include <QDebug>
 #include <QDir>
 
+#include <QDBusPendingCall>
+
 #include <unicode/locid.h>
 #include <unicode/unistr.h>
 
