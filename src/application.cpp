@@ -75,7 +75,12 @@ Application::Application(int &argc, char **argv)
     qmlRegisterType<Time>(uri, 1, 0, "Time");
     qmlRegisterType<TimeZoneMap>(uri, 1, 0, "TimeZoneMap");
     qmlRegisterSingletonType<Password>(uri, 1, 0, "Password", passwordSingleton);
+
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
     qmlRegisterType<QAbstractItemModel>();
+#else
+    qmlRegisterAnonymousType<QAbstractItemModel>(uri, 1);
+#endif
 
     // Translations
     QLocale locale;

@@ -44,7 +44,7 @@ FishUI.Window {
     FishUI.WindowBlur {
         view: rootWindow
         geometry: Qt.rect(rootWindow.x, rootWindow.y, rootWindow.width, rootWindow.height)
-        windowRadius: rootWindow.background.radius
+        windowRadius: rootWindow.windowRadius
         enabled: true
     }
 

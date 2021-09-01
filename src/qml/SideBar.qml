@@ -164,6 +164,15 @@ Item {
             category: qsTr("System")
         }
 
+//        ListElement {
+//            title: qsTr("Default Apps")
+//            name: "datetime"
+//            page: "qrc:/qml/DateTime/Main.qml"
+//            iconSource: "datetime.svg"
+//            iconColor: "#418CFF"
+//            category: qsTr("System")
+//        }
+
         ListElement {
             title: qsTr("Language")
             name: "language"
