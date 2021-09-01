@@ -18,6 +18,7 @@
  */
 
 #include "mouse.h"
+#include <QDBusPendingCall>
 
 Mouse::Mouse(QObject *parent)
     : QObject(parent)

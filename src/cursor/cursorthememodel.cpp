@@ -21,6 +21,7 @@
 #include "cursortheme.h"
 #include <QDBusConnection>
 #include <QDBusInterface>
+#include <QDBusPendingCall>
 #include <QFileInfo>
 #include <QDebug>
 #include <QDir>
