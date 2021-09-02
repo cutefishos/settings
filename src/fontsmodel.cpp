@@ -88,6 +88,9 @@ void FontsModel::run()
         FT_Done_FreeType(library);
     }
 
+    std::sort(m_fixedFonts.begin(), m_fixedFonts.end());
+    std::sort(m_generalFonts.begin(), m_generalFonts.end());
+
     emit loadFinished();
 }
 
