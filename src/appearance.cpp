@@ -37,7 +37,6 @@ Appearance::Appearance(QObject *parent)
     , m_dockSettings(new QSettings(QSettings::UserScope, "cutefishos", "dock"))
     , m_kwinSettings(new QSettings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/kwinrc",
                                    QSettings::IniFormat))
-    , m_dockConfigWacher(new QFileSystemWatcher(this))
     , m_dockIconSize(0)
     , m_dockDirection(0)
     , m_dockVisibility(0)
@@ -51,19 +50,6 @@ Appearance::Appearance(QObject *parent)
     m_dockVisibility = m_dockSettings->value("Visibility").toInt();
     m_dockRoundedWindow = m_dockSettings->value("RoundedWindow").toBool();
     m_systemEffects = !m_kwinSettings->value("OpenGLIsUnsafe", false).toBool();
-
-    m_dockConfigWacher->addPath(m_dockSettings->fileName());
-    connect(m_dockConfigWacher, &QFileSystemWatcher::fileChanged, this, [=] {
-        m_dockSettings->sync();
-        m_dockIconSize = m_dockSettings->value("IconSize").toInt();
-        m_dockDirection = m_dockSettings->value("Direction").toInt();
-        m_dockConfigWacher->addPath(m_dockSettings->fileName());
-        m_dockRoundedWindow = m_dockSettings->value("RoundedWindow").toBool();
-
-        emit dockIconSizeChanged();
-        emit dockDirectionChanged();
-        emit dockRoundedWindowChanged();
-    });
 
     // Init
     if (m_interface.isValid()) {
@@ -97,11 +83,18 @@ int Appearance::dockIconSize() const
 
 void Appearance::setDockIconSize(int dockIconSize)
 {
-    if (m_dockIconSize == dockIconSize)
-        return;
+    if (m_dockIconSize != dockIconSize) {
+        QDBusInterface iface("org.cutefish.Dock",
+                             "/Dock",
+                             "org.cutefish.Dock",
+                             QDBusConnection::sessionBus());
+        if (iface.isValid()) {
+            iface.asyncCall("setIconSize", dockIconSize);
+        }
 
-    m_dockIconSize = dockIconSize;
-    m_dockSettings->setValue("IconSize", m_dockIconSize);
+        m_dockIconSize = dockIconSize;
+        emit dockIconSizeChanged();
+    }
 }
 
 int Appearance::dockDirection() const
@@ -111,11 +104,18 @@ int Appearance::dockDirection() const
 
 void Appearance::setDockDirection(int dockDirection)
 {
-    if (m_dockDirection == dockDirection)
-        return;
+    if (m_dockDirection != dockDirection) {
+        QDBusInterface iface("org.cutefish.Dock",
+                             "/Dock",
+                             "org.cutefish.Dock",
+                             QDBusConnection::sessionBus());
+        if (iface.isValid()) {
+            iface.asyncCall("setDirection", dockDirection);
+        }
 
-    m_dockDirection = dockDirection;
-    m_dockSettings->setValue("Direction", m_dockDirection);
+        m_dockDirection = dockDirection;
+        emit dockDirectionChanged();
+    }
 }
 
 int Appearance::dockVisibility() const
@@ -127,7 +127,15 @@ void Appearance::setDockVisibility(int visibility)
 {
     if (m_dockVisibility != visibility) {
         m_dockVisibility = visibility;
-        m_dockSettings->setValue("Visibility", m_dockVisibility);
+
+        QDBusInterface iface("org.cutefish.Dock",
+                             "/Dock",
+                             "org.cutefish.Dock",
+                             QDBusConnection::sessionBus());
+        if (iface.isValid()) {
+            iface.asyncCall("setVisibility", visibility);
+        }
+
         emit dockVisibilityChanged();
     }
 }

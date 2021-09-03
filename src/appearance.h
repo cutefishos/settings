@@ -22,7 +22,6 @@
 
 #include <QObject>
 #include <QSettings>
-#include <QFileSystemWatcher>
 #include <QDBusInterface>
 
 class Appearance : public QObject
@@ -85,7 +84,6 @@ private:
     QDBusInterface m_interface;
     QSettings *m_dockSettings;
     QSettings *m_kwinSettings;
-    QFileSystemWatcher *m_dockConfigWacher;
     bool m_dockRoundedWindow;
 
     int m_dockIconSize;
