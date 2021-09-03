@@ -89,7 +89,7 @@ void Appearance::setDockIconSize(int dockIconSize)
                              "org.cutefish.Dock",
                              QDBusConnection::sessionBus());
         if (iface.isValid()) {
-            iface.asyncCall("setIconSize", dockIconSize);
+            iface.call("setIconSize", dockIconSize);
         }
 
         m_dockIconSize = dockIconSize;
@@ -110,7 +110,7 @@ void Appearance::setDockDirection(int dockDirection)
                              "org.cutefish.Dock",
                              QDBusConnection::sessionBus());
         if (iface.isValid()) {
-            iface.asyncCall("setDirection", dockDirection);
+            iface.call("setDirection", dockDirection);
         }
 
         m_dockDirection = dockDirection;
@@ -133,7 +133,7 @@ void Appearance::setDockVisibility(int visibility)
                              "org.cutefish.Dock",
                              QDBusConnection::sessionBus());
         if (iface.isValid()) {
-            iface.asyncCall("setVisibility", visibility);
+            iface.call("setVisibility", visibility);
         }
 
         emit dockVisibilityChanged();
