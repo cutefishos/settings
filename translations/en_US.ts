@@ -137,12 +137,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="97"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="98"/>
         <source>System effects</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="117"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="118"/>
         <source>Accent color</source>
         <translation type="unfinished"></translation>
     </message>
@@ -377,7 +377,12 @@
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="159"/>
-        <source>Auto hide</source>
+        <source>Always hide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Dock/Main.qml" line="163"/>
+        <source>Smart hide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -633,10 +638,10 @@
         <location filename="../src/qml/SideBar.qml" line="137"/>
         <location filename="../src/qml/SideBar.qml" line="146"/>
         <location filename="../src/qml/SideBar.qml" line="164"/>
-        <location filename="../src/qml/SideBar.qml" line="173"/>
         <location filename="../src/qml/SideBar.qml" line="182"/>
         <location filename="../src/qml/SideBar.qml" line="191"/>
         <location filename="../src/qml/SideBar.qml" line="200"/>
+        <location filename="../src/qml/SideBar.qml" line="209"/>
         <source>System</source>
         <translation type="unfinished"></translation>
     </message>
@@ -646,22 +651,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="168"/>
+        <location filename="../src/qml/SideBar.qml" line="177"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="177"/>
+        <location filename="../src/qml/SideBar.qml" line="186"/>
         <source>Battery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="186"/>
+        <location filename="../src/qml/SideBar.qml" line="195"/>
         <source>Power</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="195"/>
+        <location filename="../src/qml/SideBar.qml" line="204"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
@@ -669,12 +674,12 @@
 <context>
     <name>TimeZoneDialog</name>
     <message>
-        <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="147"/>
+        <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="160"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="152"/>
+        <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="165"/>
         <source>Set</source>
         <translation type="unfinished"></translation>
     </message>

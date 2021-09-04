@@ -156,9 +156,12 @@ ItemPage {
                     }
 
                     TabButton {
-                        text: qsTr("Auto hide")
+                        text: qsTr("Always hide")
                     }
 
+                    TabButton {
+                        text: qsTr("Smart hide")
+                    }
                 }
             }
 

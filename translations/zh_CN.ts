@@ -137,12 +137,12 @@
         <translation>在深色模式下调暗壁纸</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="97"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="98"/>
         <source>System effects</source>
         <translation>系统特效</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="117"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="118"/>
         <source>Accent color</source>
         <translation>强调色</translation>
     </message>
@@ -377,8 +377,17 @@
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="159"/>
+        <source>Always hide</source>
+        <translation>总是隐藏</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Dock/Main.qml" line="163"/>
+        <source>Smart hide</source>
+        <translation>智能隐藏</translation>
+    </message>
+    <message>
         <source>Auto hide</source>
-        <translation>自动隐藏</translation>
+        <translation type="vanished">自动隐藏</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="31"/>
@@ -633,10 +642,10 @@
         <location filename="../src/qml/SideBar.qml" line="137"/>
         <location filename="../src/qml/SideBar.qml" line="146"/>
         <location filename="../src/qml/SideBar.qml" line="164"/>
-        <location filename="../src/qml/SideBar.qml" line="173"/>
         <location filename="../src/qml/SideBar.qml" line="182"/>
         <location filename="../src/qml/SideBar.qml" line="191"/>
         <location filename="../src/qml/SideBar.qml" line="200"/>
+        <location filename="../src/qml/SideBar.qml" line="209"/>
         <source>System</source>
         <translation>系统</translation>
     </message>
@@ -646,22 +655,22 @@
         <translation>日期和时间</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="168"/>
+        <location filename="../src/qml/SideBar.qml" line="177"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="177"/>
+        <location filename="../src/qml/SideBar.qml" line="186"/>
         <source>Battery</source>
         <translation>电池</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="186"/>
+        <location filename="../src/qml/SideBar.qml" line="195"/>
         <source>Power</source>
         <translation>电源</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="195"/>
+        <location filename="../src/qml/SideBar.qml" line="204"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
@@ -669,12 +678,12 @@
 <context>
     <name>TimeZoneDialog</name>
     <message>
-        <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="147"/>
+        <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="160"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="152"/>
+        <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="165"/>
         <source>Set</source>
         <translation>设置</translation>
     </message>
