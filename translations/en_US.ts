@@ -142,7 +142,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="118"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="121"/>
+        <source>Minimize animation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Appearance/Main.qml" line="130"/>
+        <source>Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Appearance/Main.qml" line="134"/>
+        <source>Magic Lamp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Appearance/Main.qml" line="142"/>
         <source>Accent color</source>
         <translation type="unfinished"></translation>
     </message>
@@ -444,7 +459,7 @@
         <location filename="../src/qml/Bluetooth/Main.qml" line="32"/>
         <location filename="../src/qml/Bluetooth/Main.qml" line="71"/>
         <source>Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bluetooth</translation>
     </message>
     <message>
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
@@ -501,7 +516,7 @@
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="113"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Password</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="129"/>
@@ -612,7 +627,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="96"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Appearance</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="141"/>
@@ -653,7 +668,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="177"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Language</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="186"/>
@@ -668,7 +683,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="204"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">About</translation>
     </message>
 </context>
 <context>
@@ -676,7 +691,7 @@
     <message>
         <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="160"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cancel</translation>
     </message>
     <message>
         <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="165"/>
@@ -707,7 +722,7 @@
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="177"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Password</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="197"/>
@@ -717,7 +732,7 @@
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="206"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cancel</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="212"/>

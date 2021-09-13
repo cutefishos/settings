@@ -114,6 +114,30 @@ ItemPage {
             }
 
             RoundedItem {
+                RowLayout {
+                    spacing: FishUI.Units.largeSpacing * 2
+
+                    Label {
+                        text: qsTr("Minimize animation")
+                    }
+
+                    TabBar {
+                        Layout.fillWidth: true
+                        currentIndex: appearance.minimiumAnimation
+                        onCurrentIndexChanged: appearance.minimiumAnimation = currentIndex
+
+                        TabButton {
+                            text: qsTr("Default")
+                        }
+
+                        TabButton {
+                            text: qsTr("Magic Lamp")
+                        }
+                    }
+                }
+            }
+
+            RoundedItem {
                 Label {
                     text: qsTr("Accent color")
                     color: FishUI.Theme.disabledTextColor

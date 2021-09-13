@@ -142,7 +142,22 @@
         <translation>系统特效</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="118"/>
+        <location filename="../src/qml/Appearance/Main.qml" line="121"/>
+        <source>Minimize animation</source>
+        <translation>最小化动画</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Appearance/Main.qml" line="130"/>
+        <source>Default</source>
+        <translation>默认</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Appearance/Main.qml" line="134"/>
+        <source>Magic Lamp</source>
+        <translation>神灯</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Appearance/Main.qml" line="142"/>
         <source>Accent color</source>
         <translation>强调色</translation>
     </message>

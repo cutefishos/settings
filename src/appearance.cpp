@@ -43,13 +43,16 @@ Appearance::Appearance(QObject *parent)
     , m_fontPointSize(11)
     , m_systemEffects(false)
 {
-    m_kwinSettings->beginGroup("Compositing");
-
     m_dockIconSize = m_dockSettings->value("IconSize").toInt();
     m_dockDirection = m_dockSettings->value("Direction").toInt();
     m_dockVisibility = m_dockSettings->value("Visibility").toInt();
     m_dockRoundedWindow = m_dockSettings->value("RoundedWindow").toBool();
+    m_kwinSettings->beginGroup("Compositing");
     m_systemEffects = !m_kwinSettings->value("OpenGLIsUnsafe", false).toBool();
+    m_kwinSettings->endGroup();
+    m_kwinSettings->beginGroup("Plugins");
+    m_minimiumAnimation = m_kwinSettings->value("magiclampEnabled").toBool() ? 1 : 0;
+    m_kwinSettings->endGroup();
 
     // Init
     if (m_interface.isValid()) {
@@ -236,9 +239,30 @@ void Appearance::setSystemEffects(bool systemEffects)
 {
     if (m_systemEffects != systemEffects) {
         m_systemEffects = systemEffects;
+        m_kwinSettings->beginGroup("Compositing");
         m_kwinSettings->setValue("OpenGLIsUnsafe", !systemEffects);
+        m_kwinSettings->endGroup();
         m_kwinSettings->sync();
         QDBusInterface("org.kde.KWin", "/KWin").call("reconfigure");
         emit systemEffectsChanged();
+    }
+}
+
+int Appearance::minimiumAnimation() const
+{
+    return m_minimiumAnimation;
+}
+
+void Appearance::setMinimiumAnimation(int minimiumAnimation)
+{
+    if (m_minimiumAnimation != minimiumAnimation) {
+        m_minimiumAnimation = minimiumAnimation;
+        m_kwinSettings->beginGroup("Plugins");
+        m_kwinSettings->setValue("magiclampEnabled", m_minimiumAnimation == 1);
+        m_kwinSettings->setValue("cutefish_squashEnabled", m_minimiumAnimation == 0);
+        m_kwinSettings->endGroup();
+        m_kwinSettings->sync();
+        QDBusInterface("org.kde.KWin", "/KWin").call("reconfigure");
+        emit minimiumAnimationChanged();
     }
 }
