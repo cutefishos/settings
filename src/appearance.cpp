@@ -30,9 +30,9 @@
 
 Appearance::Appearance(QObject *parent)
     : QObject(parent)
-    , m_interface("org.cutefish.Settings",
+    , m_interface("com.cutefish.Settings",
                   "/Theme",
-                  "org.cutefish.Theme",
+                  "com.cutefish.Theme",
                   QDBusConnection::sessionBus())
     , m_dockSettings(new QSettings(QSettings::UserScope, "cutefishos", "dock"))
     , m_kwinSettings(new QSettings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/kwinrc",
@@ -87,9 +87,9 @@ int Appearance::dockIconSize() const
 void Appearance::setDockIconSize(int dockIconSize)
 {
     if (m_dockIconSize != dockIconSize) {
-        QDBusInterface iface("org.cutefish.Dock",
+        QDBusInterface iface("com.cutefish.Dock",
                              "/Dock",
-                             "org.cutefish.Dock",
+                             "com.cutefish.Dock",
                              QDBusConnection::sessionBus());
         if (iface.isValid()) {
             iface.call("setIconSize", dockIconSize);
@@ -108,9 +108,9 @@ int Appearance::dockDirection() const
 void Appearance::setDockDirection(int dockDirection)
 {
     if (m_dockDirection != dockDirection) {
-        QDBusInterface iface("org.cutefish.Dock",
+        QDBusInterface iface("com.cutefish.Dock",
                              "/Dock",
-                             "org.cutefish.Dock",
+                             "com.cutefish.Dock",
                              QDBusConnection::sessionBus());
         if (iface.isValid()) {
             iface.call("setDirection", dockDirection);
@@ -131,9 +131,9 @@ void Appearance::setDockVisibility(int visibility)
     if (m_dockVisibility != visibility) {
         m_dockVisibility = visibility;
 
-        QDBusInterface iface("org.cutefish.Dock",
+        QDBusInterface iface("com.cutefish.Dock",
                              "/Dock",
-                             "org.cutefish.Dock",
+                             "com.cutefish.Dock",
                              QDBusConnection::sessionBus());
         if (iface.isValid()) {
             iface.call("setVisibility", visibility);
@@ -162,9 +162,9 @@ void Appearance::setGenericFontFamily(const QString &name)
     if (name.isEmpty())
         return;
 
-    QDBusInterface iface("org.cutefish.Settings",
+    QDBusInterface iface("com.cutefish.Settings",
                          "/Theme",
-                         "org.cutefish.Theme",
+                         "com.cutefish.Theme",
                          QDBusConnection::sessionBus(), this);
     if (iface.isValid()) {
         iface.call("setSystemFont", name);
@@ -176,9 +176,9 @@ void Appearance::setFixedFontFamily(const QString &name)
     if (name.isEmpty())
         return;
 
-    QDBusInterface iface("org.cutefish.Settings",
+    QDBusInterface iface("com.cutefish.Settings",
                          "/Theme",
-                         "org.cutefish.Theme",
+                         "com.cutefish.Theme",
                          QDBusConnection::sessionBus(), this);
     if (iface.isValid()) {
         iface.call("setSystemFixedFont", name);
@@ -194,9 +194,9 @@ void Appearance::setFontPointSize(int fontPointSize)
 {
     m_fontPointSize = fontPointSize;
 
-    QDBusInterface iface("org.cutefish.Settings",
+    QDBusInterface iface("com.cutefish.Settings",
                          "/Theme",
-                         "org.cutefish.Theme",
+                         "com.cutefish.Theme",
                          QDBusConnection::sessionBus(), this);
     if (iface.isValid()) {
         iface.call("setSystemFontPointSize", m_fontPointSize * 1.0);
@@ -205,9 +205,9 @@ void Appearance::setFontPointSize(int fontPointSize)
 
 void Appearance::setAccentColor(int accentColor)
 {
-    QDBusInterface iface("org.cutefish.Settings",
+    QDBusInterface iface("com.cutefish.Settings",
                          "/Theme",
-                         "org.cutefish.Theme",
+                         "com.cutefish.Theme",
                          QDBusConnection::sessionBus(), this);
     if (iface.isValid()) {
         iface.call("setAccentColor", accentColor);
@@ -221,9 +221,9 @@ double Appearance::devicePixelRatio() const
 
 void Appearance::setDevicePixelRatio(double value)
 {
-    QDBusInterface iface("org.cutefish.Settings",
+    QDBusInterface iface("com.cutefish.Settings",
                          "/Theme",
-                         "org.cutefish.Theme",
+                         "com.cutefish.Theme",
                          QDBusConnection::sessionBus(), this);
     if (iface.isValid()) {
         iface.call("setDevicePixelRatio", value);

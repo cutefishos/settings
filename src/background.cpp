@@ -15,9 +15,9 @@ static QVariantList getBackgroundPaths()
 
 Background::Background(QObject *parent)
     : QObject(parent)
-    , m_interface("org.cutefish.Settings",
+    , m_interface("com.cutefish.Settings",
                   "/Theme",
-                  "org.cutefish.Theme",
+                  "com.cutefish.Theme",
                   QDBusConnection::sessionBus(), this)
 {
     if (m_interface.isValid()) {

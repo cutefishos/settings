@@ -98,9 +98,9 @@ void CursorThemeModel::setCurrentTheme(const QString &theme)
         m_currentTheme = theme;
         emit currentThemeChanged();
 
-        QDBusInterface interface("org.cutefish.Settings",
+        QDBusInterface interface("com.cutefish.Settings",
                                  "/Theme",
-                                 "org.cutefish.Theme",
+                                 "com.cutefish.Theme",
                                  QDBusConnection::sessionBus());
         if (interface.isValid())
             interface.asyncCall("setCursorTheme", m_currentTheme);

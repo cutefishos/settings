@@ -104,9 +104,9 @@ void Fonts::save()
     m_settings.setValue("XftHintStyle", KXftConfig::toStr(m_hinting));
     m_settings.sync();
 
-    QDBusInterface interface("org.cutefish.Settings",
+    QDBusInterface interface("com.cutefish.Settings",
                              "/Theme",
-                             "org.cutefish.Theme",
+                             "com.cutefish.Theme",
                              QDBusConnection::sessionBus());
     if (interface.isValid())
         interface.asyncCall("applyXResources");

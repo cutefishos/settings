@@ -56,7 +56,7 @@ set(RESOURCES
 )
 
 qt5_add_dbus_adaptor(DBUS_SOURCES
-                     src/org.cutefish.SettingsUI.xml
+                     src/com.cutefish.SettingsUI.xml
                      src/application.h Application)
 set_source_files_properties(${DBUS_SOURCES} PROPERTIES SKIP_AUTOGEN ON)
 

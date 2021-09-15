@@ -22,8 +22,8 @@
 
 PowerManager::PowerManager(QObject *parent)
     : QObject(parent)
-    , m_iface("org.cutefish.PowerManager",
-              "/CPUManagement", "org.cutefish.CPUManagement",
+    , m_iface("com.cutefish.PowerManager",
+              "/CPUManagement", "com.cutefish.CPUManagement",
               QDBusConnection::sessionBus())
     , m_mode(-1)
 {

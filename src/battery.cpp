@@ -24,9 +24,9 @@
 #include <QDBusReply>
 #include <QDebug>
 
-static const QString s_sServer = "org.cutefish.Settings";
+static const QString s_sServer = "com.cutefish.Settings";
 static const QString s_sPath = "/PrimaryBattery";
-static const QString s_sInterface = "org.cutefish.PrimaryBattery";
+static const QString s_sInterface = "com.cutefish.PrimaryBattery";
 
 //DBus Battery Info Structure
 struct BatteryInfo {
@@ -55,9 +55,9 @@ Battery::Battery(QObject *parent)
                         "/org/freedesktop/UPower",
                         "org.freedesktop.UPower",
                         QDBusConnection::systemBus())
-    , m_interface("org.cutefish.Settings",
+    , m_interface("com.cutefish.Settings",
                   "/PrimaryBattery",
-                  "org.cutefish.PrimaryBattery",
+                  "com.cutefish.PrimaryBattery",
                   QDBusConnection::sessionBus())
     , m_available(false)
     , m_onBattery(false)
@@ -176,7 +176,7 @@ bool Battery::showPercent()
 
 void Battery::setPercentEnabled(bool value)
 {
-    QDBusInterface("org.cutefish.Statusbar", "/Statusbar").call("setBatteryPercentage", value);
+    QDBusInterface("com.cutefish.Statusbar", "/Statusbar").call("setBatteryPercentage", value);
 }
 
 QString Battery::udi() const

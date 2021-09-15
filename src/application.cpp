@@ -49,8 +49,8 @@ Application::Application(int &argc, char **argv)
 
     const QString module = parser.value(moduleOption);
 
-    if (!QDBusConnection::sessionBus().registerService("org.cutefish.SettingsUI")) {
-        QDBusInterface iface("org.cutefish.SettingsUI", "/SettingsUI", "org.cutefish.SettingsUI", QDBusConnection::sessionBus());
+    if (!QDBusConnection::sessionBus().registerService("com.cutefish.SettingsUI")) {
+        QDBusInterface iface("com.cutefish.SettingsUI", "/SettingsUI", "com.cutefish.SettingsUI", QDBusConnection::sessionBus());
         if (iface.isValid())
             iface.call("switchToPage", module);
         return;

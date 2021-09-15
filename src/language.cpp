@@ -42,9 +42,9 @@ static const QMap<QString, QString> s_displayName = {{"zh_CN", "简体中文"},
 
 Language::Language(QObject *parent)
     : QObject(parent)
-    , m_interface("org.cutefish.Settings",
+    , m_interface("com.cutefish.Settings",
                   "/Language",
-                  "org.cutefish.Language",
+                  "com.cutefish.Language",
                   QDBusConnection::sessionBus())
     , m_currentLanguage(-1)
 {
