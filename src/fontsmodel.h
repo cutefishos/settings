@@ -47,6 +47,7 @@ signals:
 private:
     QStringList m_generalFonts;
     QStringList m_fixedFonts;
+    QString m_lanCode;
 };
 
 #endif // FONTSMODEL_H

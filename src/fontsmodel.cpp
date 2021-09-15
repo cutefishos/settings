@@ -18,6 +18,8 @@
  */
 
 #include "fontsmodel.h"
+
+#include <QLocale>
 #include <QFontDatabase>
 #include <QFontInfo>
 #include <QTimer>
@@ -30,63 +32,104 @@
 #include <fontconfig/fontconfig.h>
 #include <ft2build.h>
 
+static QString getFcString(FcPattern *pat, const char *val, int index)
+{
+    QString rv;
+    FcChar8 *fcStr;
+
+    if (FcPatternGetString(pat, val, index, &fcStr) == FcResultMatch)
+        rv = QString::fromUtf8((char *)fcStr);
+
+    return rv;
+}
+
+static QString getFcLangString(FcPattern *pat, const char *val, const char *valLang)
+{
+    QString rv;
+    int langIndex=-1;
+
+    for (int i = 0; true; ++i) {
+        QString lang = getFcString(pat, valLang, i);
+
+        if (lang.isEmpty())
+            break;
+        else if (QString::fromLatin1("en") == lang)
+            return getFcString(pat, val, i);
+        else if (QString::fromLatin1("xx") != lang && -1 == langIndex)
+            langIndex=i;
+    }
+
+    return getFcString(pat, val, langIndex > 0 ? langIndex : 0);
+}
+
 FontsModel::FontsModel(QObject *parent)
     : QThread(parent)
 {
+    m_lanCode = QLocale::system().name().replace('_', "-");
+
     QThread::start();
     QThread::setPriority(QThread::HighestPriority);
 }
 
 void FontsModel::run()
 {
-    QString dirPath = "/usr/share/fonts";
-    QDir dir(dirPath);
-
-    if (!dir.exists()) {
-        return;
-    }
-
     m_generalFonts.clear();
     m_fixedFonts.clear();
 
-    QStringList nameFilters;
-    nameFilters << QLatin1String("*.ttf")
-                << QLatin1String("*.ttc")
-                << QLatin1String("*.pfa")
-                << QLatin1String("*.pfb")
-                << QLatin1String("*.otf");
+    FcPattern *pat = FcPatternCreate();
+    if (!pat)
+        return;
 
-    QDirIterator it(dirPath, nameFilters, QDir::Files, QDirIterator::Subdirectories);
-    while (it.hasNext()) {
-        QString filePath = it.next();
+    FcObjectSet *objSet = FcObjectSetBuild(
+                FC_FAMILY,
+                FC_FAMILYLANG,
+                FC_CHARSET,
+                FC_STYLE,
+                FC_LANG,
+                FC_SPACING,
+                NULL);
 
-        // Init
-        FT_Library library = nullptr;
-        FT_Init_FreeType(&library);
-
-        FT_Face face = nullptr;
-        FT_Error error = FT_New_Face(library, filePath.toUtf8().constData(), 0, &face);
-
-        if (error != FT_Err_Ok) {
-            FT_Done_Face(face);
-            FT_Done_FreeType(library);
-            continue;
-        }
-
-        QString family = QString::fromLatin1(face->family_name);
-        bool fixedPitch = (face->face_flags & FT_FACE_FLAG_FIXED_WIDTH);
-
-        if (fixedPitch) {
-            if (!m_fixedFonts.contains(family))
-                m_fixedFonts.append(family);
-        } else {
-            if (!m_generalFonts.contains(family))
-                m_generalFonts.append(family);
-        }
-
-        FT_Done_Face(face);
-        FT_Done_FreeType(library);
+    if (!objSet) {
+        FcPatternDestroy(pat);
+        return;
     }
+
+    FcFontSet *fs = FcFontList(0, pat, objSet);
+    FcObjectSetDestroy(objSet);
+    FcPatternDestroy(pat);
+
+    if (!fs) {
+         return;
+    }
+
+    for (int i = 0; i < fs->nfont; ++i) {
+         char *charset = (char*)FcPatternFormat(fs->fonts[i], (FcChar8*)"%{charset}");
+
+         if (charset == NULL || strlen(charset) == 0) {
+             free(charset);
+             continue;
+         }
+         free(charset);
+
+         QString family = getFcLangString(fs->fonts[i], FC_FAMILY, FC_FAMILYLANG);
+         QString language = (char*)FcPatternFormat(fs->fonts[i], (FcChar8*)"%{lang}");
+
+         int spacing = FC_PROPORTIONAL;
+         if (FcPatternGetInteger(fs->fonts[i], FC_SPACING, 0, &spacing) != FcResultMatch)
+             spacing = FC_PROPORTIONAL;
+         bool fixedPitch = spacing >= FC_MONO;
+
+         if (family.isEmpty())
+             continue;
+
+         if (fixedPitch && !m_fixedFonts.contains(family)) {
+             m_fixedFonts.append(family);
+         } else {
+             if (!m_generalFonts.contains(family) && language.contains(m_lanCode, Qt::CaseInsensitive))
+                 m_generalFonts.append(family);
+         }
+    }
+    FcFontSetDestroy(fs);
 
     std::sort(m_fixedFonts.begin(), m_fixedFonts.end());
     std::sort(m_generalFonts.begin(), m_generalFonts.end());
