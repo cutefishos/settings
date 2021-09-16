@@ -27,6 +27,8 @@ pkg_search_module(ICU REQUIRED icu-i18n)
 include_directories(${ICU_INCLUDE_DIRS})
 
 set(SRCS
+    src/cscreenmanager.cpp
+    src/cscreenoutput.cpp
     src/application.cpp
     src/main.cpp
     src/appearance.cpp
