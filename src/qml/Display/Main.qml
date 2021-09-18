@@ -92,6 +92,12 @@ ItemPage {
                         to: 100
                         stepSize: 1
                         onMoved: brightnessTimer.start()
+
+                        ToolTip {
+                            parent: brightnessSlider.handle
+                            visible: brightnessSlider.pressed
+                            text: brightnessSlider.value.toFixed(0)
+                        }
                     }
 
                     Image {
