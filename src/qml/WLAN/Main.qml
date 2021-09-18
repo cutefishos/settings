@@ -71,6 +71,7 @@ ItemPage {
     Scrollable {
         anchors.fill: parent
         contentHeight: mainLayout.implicitHeight
+        visible: enabledConnections.wirelessHwEnabled
 
         ColumnLayout {
             id: mainLayout

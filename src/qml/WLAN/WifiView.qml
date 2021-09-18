@@ -40,7 +40,9 @@ ColumnLayout {
             id: wlanBusyIndicator
             width: wirelessSwitch.height
             height: width
-            visible: enabledConnections.wirelessEnabled && wirelessView.count === 0
+            visible: enabledConnections.wirelessHwEnabled &&
+                     enabledConnections.wirelessEnabled &&
+                     wirelessView.count === 0
             running: wlanBusyIndicator.visible
         }
 

@@ -22,6 +22,8 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.0
 import FishUI 1.0 as FishUI
+import Cutefish.Settings 1.0
+import Cutefish.NetworkManagement 1.0 as NM
 
 Item {
     implicitWidth: 230
@@ -51,7 +53,7 @@ Item {
 
         ListElement {
             title: qsTr("WLAN")
-            name: "network"
+            name: "wlan"
             page: "qrc:/qml/WLAN/Main.qml"
             iconSource: "wlan.svg"
             iconColor: "#0067FF"
@@ -346,6 +348,33 @@ Item {
                     }
                 }
             }
+        }
+    }
+
+    function removeItem(name) {
+        for (var i = 0; i < listModel.count; ++i) {
+            if (name === listModel.get(i).name) {
+                listModel.remove(i)
+                break
+            }
+        }
+    }
+
+    Battery {
+        id: _battery
+
+        Component.onCompleted: {
+            if (!_battery.available)
+                removeItem("battery")
+        }
+    }
+
+    NM.EnabledConnections {
+        id: nmEnabledConnections
+
+        Component.onCompleted: {
+            if (!nmEnabledConnections.wirelessHwEnabled)
+                removeItem("wlan")
         }
     }
 }
