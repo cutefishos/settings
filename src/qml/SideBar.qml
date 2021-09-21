@@ -249,7 +249,7 @@ Item {
                 radius: FishUI.Theme.mediumRadius
                 color: Qt.rgba(FishUI.Theme.textColor.r,
                                FishUI.Theme.textColor.g,
-                               FishUI.Theme.textColor.b, 0.1)
+                               FishUI.Theme.textColor.b, 0.05)
                 smooth: true
             }
 

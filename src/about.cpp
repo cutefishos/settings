@@ -22,6 +22,7 @@
 #include <QFile>
 #include <QStorageInfo>
 #include <QRegularExpression>
+#include <QSettings>
 
 #ifdef Q_OS_LINUX
 #include <sys/sysinfo.h>
@@ -79,7 +80,17 @@ About::About(QObject *parent)
 
 bool About::isCutefishOS()
 {
-    return QFile::exists("/etc/cutefishos");
+    if (!QFile::exists("/etc/cutefishos"))
+        return false;
+
+    QSettings settings("/etc/cutefishos", QSettings::IniFormat);
+    return settings.value("CutefishOS", false).toBool();
+}
+
+QString About::version()
+{
+    QSettings settings("/etc/cutefish", QSettings::IniFormat);
+    return settings.value("Version").toString();
 }
 
 QString About::osName()

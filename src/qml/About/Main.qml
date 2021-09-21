@@ -67,14 +67,17 @@ ItemPage {
             Label {
                 text: !about.isCutefishOS ? qsTr("Built on %1").arg(about.prettyProductName) : ""
                 Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
-                bottomPadding: FishUI.Units.largeSpacing * 2
                 color: FishUI.Theme.disabledTextColor
+            }
+
+            Item {
+                height: FishUI.Units.largeSpacing
             }
 
             RoundedItem {
                 StandardItem {
                     key: qsTr("System Version")
-                    value: "0.5"
+                    value: about.version
                 }
 
                 StandardItem {
