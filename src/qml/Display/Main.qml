@@ -77,16 +77,18 @@ ItemPage {
                     spacing: FishUI.Units.largeSpacing
 
                     Image {
-                        width: brightnessSlider.height
+                        width: 16
                         height: width
                         sourceSize.width: width
                         sourceSize.height: height
+                        Layout.alignment: Qt.AlignVCenter
                         source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/display-brightness-low-symbolic.svg"
                     }
 
                     Slider {
                         id: brightnessSlider
                         Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignVCenter
                         value: brightness.value
                         from: 0
                         to: 100
@@ -101,10 +103,11 @@ ItemPage {
                     }
 
                     Image {
-                        width: brightnessSlider.height
+                        width: 16
                         height: width
                         sourceSize.width: width
                         sourceSize.height: height
+                        Layout.alignment: Qt.AlignVCenter
                         source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/display-brightness-symbolic.svg"
                     }
                 }
