@@ -148,39 +148,39 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="92"/>
         <source>General Font</source>
-        <translation>Fonte Geral</translation>
+        <translation>Geral</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="109"/>
         <source>Fixed Font</source>
-        <translation>Fonte Fixa</translation>
+        <translation>Fixa</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="126"/>
         <source>Font Size</source>
-        <translation>Tamanho da Fonte</translation>
+        <translation>Tamanho</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="187"/>
         <source>Hinting</source>
-        <translation>Hinting</translation>
+        <translation>Alisamento</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
         <source>Anti-Aliasing</source>
-        <translation>Anti-Aliasing</translation>
+        <translation>Suavização</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="95"/>
         <location filename="../src/qml/Fonts/Main.qml" line="134"/>
         <source>Small</source>
-        <translation>Pequeno</translation>
+        <translation>Pequena</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="99"/>
         <location filename="../src/qml/Fonts/Main.qml" line="138"/>
         <source>Medium</source>
-        <translation>Médio</translation>
+        <translation>Média</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="103"/>
@@ -282,7 +282,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="29"/>
         <source>Display</source>
-        <translation>Monitor</translation>
+        <translation>Ecrã</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="63"/>
@@ -297,7 +297,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="159"/>
         <source>Screen Name</source>
-        <translation>Nome do Ecrã</translation>
+        <translation>Nome do ecrã</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="168"/>
@@ -332,7 +332,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
-        <translation>Dock</translation>
+        <translation>Doca</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="44"/>
@@ -342,17 +342,17 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="56"/>
         <source>Left</source>
-        <translation>À Esquerda</translation>
+        <translation>Esquerda</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="63"/>
         <source>Bottom</source>
-        <translation>Abaixo</translation>
+        <translation>Baixo</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="70"/>
         <source>Right</source>
-        <translation>À Direita</translation>
+        <translation>Direita</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="82"/>
@@ -372,7 +372,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="170"/>
         <source>Auto hide</source>
-        <translation>Esconder automaticamente</translation>
+        <translation>Ocultar automaticamente</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
@@ -392,7 +392,7 @@
     <message>
         <location filename="../src/qml/Power/Main.qml" line="59"/>
         <source>Balance</source>
-        <translation>Equilíbrio</translation>
+        <translation>Equilibrado</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="65"/>
@@ -412,12 +412,12 @@
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="30"/>
         <source>Background</source>
-        <translation>Plano de fundo</translation>
+        <translation>Fundo</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="56"/>
         <source>Background type</source>
-        <translation>Tipo de plano de fundo</translation>
+        <translation>Tipo de fundo</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="77"/>
@@ -454,7 +454,7 @@
     <message>
         <location filename="../src/qml/Application/Main.qml" line="42"/>
         <source>Default application</source>
-        <translation>Aplicação padrão</translation>
+        <translation>Aplicação predefinida</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="52"/>
@@ -523,7 +523,7 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="509"/>
         <source>Slight</source>
-        <translation>Pouco</translation>
+        <translation>Ligeiro</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="511"/>
@@ -541,7 +541,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="86"/>
         <source>Display</source>
-        <translation>Monitor</translation>
+        <translation>Ecrã</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="52"/>
@@ -586,7 +586,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="122"/>
         <source>Dock</source>
-        <translation>Dock</translation>
+        <translation>Doca</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="136"/>
@@ -627,7 +627,7 @@
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="184"/>
         <source>Delete this user</source>
-        <translation>Apagar este utilizador</translation>
+        <translation>Eliminar este utilizador</translation>
     </message>
 </context>
 <context>
@@ -650,7 +650,7 @@
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="210"/>
         <source>Connect</source>
-        <translation>Conectar</translation>
+        <translation>Ligar</translation>
     </message>
 </context>
 <context>
