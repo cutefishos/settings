@@ -39,7 +39,7 @@
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="130"/>
         <source>Cancel</source>
-        <translation>Zrušit</translation>
+        <translation>Storno</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="137"/>
@@ -103,7 +103,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="96"/>
         <source>RAM</source>
-        <translation>Operační paměť RAM</translation>
+        <translation>Operační paměť</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="101"/>
@@ -153,7 +153,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="109"/>
         <source>Fixed Font</source>
-        <translation type="unfinished">Fixovaný styl písma</translation>
+        <translation>Písmo s pevnou šířkou</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="126"/>
@@ -163,18 +163,18 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="187"/>
         <source>Hinting</source>
-        <translation type="unfinished"></translation>
+        <translation>Zarovnání s rastrem obrazovky</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
         <source>Anti-Aliasing</source>
-        <translation></translation>
+        <translation>Vyhlazování hran</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="95"/>
         <location filename="../src/qml/Fonts/Main.qml" line="134"/>
         <source>Small</source>
-        <translation>Malý</translation>
+        <translation>Malé</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="99"/>
@@ -186,48 +186,48 @@
         <location filename="../src/qml/Dock/Main.qml" line="103"/>
         <location filename="../src/qml/Fonts/Main.qml" line="142"/>
         <source>Large</source>
-        <translation>Velký</translation>
+        <translation>Velké</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="107"/>
         <location filename="../src/qml/Fonts/Main.qml" line="146"/>
         <source>Huge</source>
-        <translation>Obrovský</translation>
+        <translation>Obrovské</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="29"/>
         <source>Battery</source>
-        <translation>Baterie</translation>
+        <translation>Akumulátor</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last hour</source>
-        <translation>Poslední hodina</translation>
+        <translation>Uplynulá hodina</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 2 hours</source>
-        <translation>Poslední 2 hodiny</translation>
+        <translation>Uplynulých 2 hodiny</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 12 hours</source>
-        <translation>Posledních 12 hodin</translation>
+        <translation>Uplynulých 12 hodin</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 24 hours</source>
-        <translation>Posledních 24 hodin</translation>
+        <translation>Uplynulých 24 hodin</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 48 hours</source>
-        <translation>Posledních 48 hodin</translation>
+        <translation>Uplynulých 48 hodin</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 7 days</source>
-        <translation>Posledních 7 dní</translation>
+        <translation>Uplynulých 7 dní</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="126"/>
@@ -277,7 +277,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="322"/>
         <source>No battery found</source>
-        <translation>Nenalezena žádná baterie</translation>
+        <translation>Nenalezen žádný akumulátor</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="29"/>
@@ -297,7 +297,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="159"/>
         <source>Screen Name</source>
-        <translation>Jméno obrazovky</translation>
+        <translation>Název obrazovky</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="168"/>
@@ -312,7 +312,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="207"/>
         <source>Rotation</source>
-        <translation>Rotace</translation>
+        <translation>Otočení</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="251"/>
@@ -322,17 +322,17 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="285"/>
         <source>Scale</source>
-        <translation>Velikost uživatelského rozhraní</translation>
+        <translation>Měřítko</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="354"/>
         <source>Need to log in again to take effect</source>
-        <translation>Aby změna proběhla, je nutné se znovu přihlásit</translation>
+        <translation>Aby se změna projevila, je nutné se znovu přihlásit</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
-        <translation>Dock aplikací</translation>
+        <translation>Panel</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="44"/>
@@ -362,7 +362,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="153"/>
         <source>Display mode</source>
-        <translation>Zobrazovací mód</translation>
+        <translation>Režim zobrazení</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="166"/>
@@ -372,7 +372,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="170"/>
         <source>Auto hide</source>
-        <translation>Automaticky skrýt</translation>
+        <translation>Automaticky skrývat</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="30"/>
@@ -444,7 +444,7 @@
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
         <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Ethernet</source>
-        <translation type="unfinished">Ethernet</translation>
+        <translation>Ethernet</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="30"/>
@@ -474,7 +474,7 @@
     <message>
         <location filename="../src/qml/Application/Main.qml" line="76"/>
         <source>Terminal emulator</source>
-        <translation>Terminálový emulátor</translation>
+        <translation>Emulátor terminálu</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="32"/>
@@ -485,7 +485,7 @@
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="47"/>
         <source>Not supported</source>
-        <translation>Není podporován</translation>
+        <translation>Není podporováno</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="102"/>
@@ -586,7 +586,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="122"/>
         <source>Dock</source>
-        <translation>Dock aplikací</translation>
+        <translation>Panel</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="136"/>
@@ -604,7 +604,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="158"/>
         <source>Battery</source>
-        <translation>Baterie</translation>
+        <translation>Akumulátor</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="174"/>
@@ -645,7 +645,7 @@
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
         <source>Cancel</source>
-        <translation>Zrušit</translation>
+        <translation>Storno</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="210"/>

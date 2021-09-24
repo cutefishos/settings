@@ -19,7 +19,7 @@
         <location filename="../src/qml/User/AddUserDialog.qml" line="98"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="104"/>
         <source>Verify password</source>
-        <translation>Overiť heslo</translation>
+        <translation>Overte heslo</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="111"/>
@@ -29,12 +29,12 @@
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Standard</source>
-        <translation>Štandardný</translation>
+        <translation>Bežný</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Administrator</source>
-        <translation>Administrátor</translation>
+        <translation>Správcovský</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="130"/>
@@ -93,7 +93,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="86"/>
         <source>Kernel Version</source>
-        <translation>Verzia jadra</translation>
+        <translation>Verzia jadra Linux</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="91"/>
@@ -307,12 +307,12 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="187"/>
         <source>Refresh rate</source>
-        <translation>Rýchlosť obnovovania</translation>
+        <translation>Obnovovacia frekvencia</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="207"/>
         <source>Rotation</source>
-        <translation>Rotácia</translation>
+        <translation>Otočenie</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="251"/>
@@ -332,7 +332,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
-        <translation>Dock</translation>
+        <translation>Panel dock</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="44"/>
@@ -586,7 +586,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="122"/>
         <source>Dock</source>
-        <translation>Dock</translation>
+        <translation>Panel dock</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="136"/>
@@ -609,7 +609,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="174"/>
         <source>About</source>
-        <translation>Informácie</translation>
+        <translation>Podrobnosti</translation>
     </message>
 </context>
 <context>
@@ -681,12 +681,12 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="105"/>
         <source>IPv4 Address</source>
-        <translation>Adresa IPv4</translation>
+        <translation>IPv4 adresa</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="119"/>
         <source>IPv6 Address</source>
-        <translation>Adresa IPv6</translation>
+        <translation>IPv6 adresa</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="133"/>
@@ -696,7 +696,7 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="147"/>
         <source>Gateway</source>
-        <translation>Brána</translation>
+        <translation>Sieťová brána</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="160"/>

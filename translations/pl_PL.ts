@@ -153,7 +153,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="109"/>
         <source>Fixed Font</source>
-        <translation type="unfinished">Czcionka o stałej szerokości znaków</translation>
+        <translation>Czcionka o stałej szerokości znaków</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="126"/>
