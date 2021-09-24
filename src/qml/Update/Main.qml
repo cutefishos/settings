@@ -17,18 +17,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "application.h"
-#include <QDebug>
-#include <QIcon>
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.12
+import QtGraphicalEffects 1.0
 
-int main(int argc, char *argv[])
-{
-    QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
+import FishUI 1.0 as FishUI
+import "../"
 
-    Application app(argc, argv);
+ItemPage {
+    // headerTitle: qsTr("Update")
 
-    app.setWindowIcon(QIcon::fromTheme("cutefish-settings"));
+    Scrollable {
+        anchors.fill: parent
+        contentHeight: layout.implicitHeight
 
-    return 0;
+        ColumnLayout {
+            id: layout
+            anchors.fill: parent
+            spacing: FishUI.Units.largeSpacing * 2
+        }
+    }
 }

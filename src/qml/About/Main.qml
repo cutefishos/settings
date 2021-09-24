@@ -105,6 +105,18 @@ ItemPage {
                     value: about.internalStorage
                 }
             }
+
+            Item {
+                height: FishUI.Units.smallSpacing
+            }
+
+//            StandardButton {
+//                Layout.fillWidth: true
+//                text: qsTr("System Update")
+//                onClicked: {
+//                    rootWindow.stackView.push(Qt.resolvedUrl("qrc:/qml/Update/Main.qml"))
+//                }
+//            }
         }
     }
 }

@@ -222,9 +222,9 @@ Item {
             Layout.preferredHeight: rootWindow.header.height
             leftPadding: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
             rightPadding: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
-            topPadding: FishUI.Units.largeSpacing
+            topPadding: FishUI.Units.smallSpacing
             bottomPadding: 0
-            font.pointSize: 15
+            font.pointSize: 13
         }
 
         ListView {

@@ -30,6 +30,8 @@ Button {
     property color pressedColor: FishUI.Theme.darkMode ? Qt.lighter(backgroundColor, 1.1)
                                                        : Qt.darker(backgroundColor, 1.2)
 
+    scale: 1
+
     background: Rectangle {
         radius: FishUI.Theme.mediumRadius
         color: control.pressed ? control.pressedColor : control.hovered ? control.hoveredColor : control.backgroundColor

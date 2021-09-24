@@ -34,6 +34,8 @@ FishUI.Window {
     minimumWidth: 900
     minimumHeight: 600
 
+    property alias stackView: _stackView
+
     background.opacity: FishUI.Theme.darkMode ? 0.7 : 0.5
     header.height: 40
     contentTopMargin: 0
@@ -62,7 +64,7 @@ FishUI.Window {
         }
 
         StackView {
-            id: stackView
+            id: _stackView
             Layout.fillWidth: true
             Layout.fillHeight: true
             initialItem: Qt.resolvedUrl(sideBar.model.get(0).page)
@@ -74,7 +76,8 @@ FishUI.Window {
     }
 
     function switchPageFromIndex(index) {
-        stackView.push(Qt.resolvedUrl(sideBar.model.get(index).page))
+        _stackView.pop()
+        _stackView.push(Qt.resolvedUrl(sideBar.model.get(index).page))
     }
 
     function switchPageFromName(pageName) {
