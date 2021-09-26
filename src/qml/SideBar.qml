@@ -148,6 +148,15 @@ Item {
             category: qsTr("System")
         }
 
+        ListElement {
+            title: qsTr("Touchpad")
+            name: "touchpad"
+            page: "qrc:/qml/Touchpad/Main.qml"
+            iconSource: "touchpad.svg"
+            iconColor: "#999999"
+            category: qsTr("System")
+        }
+
 //        ListElement {
 //            title: qsTr("Application")
 //            name: "application"
@@ -375,6 +384,15 @@ Item {
         Component.onCompleted: {
             if (!nmEnabledConnections.wirelessHwEnabled)
                 removeItem("wlan")
+        }
+    }
+
+    Touchpad {
+        id: _touchPad
+
+        Component.onCompleted: {
+            if (!_touchPad.available)
+                removeItem("touchpad")
         }
     }
 }

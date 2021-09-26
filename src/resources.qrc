@@ -116,5 +116,7 @@
         <file>images/dark/world.svg</file>
         <file>images/sidebar/dark/datetime.svg</file>
         <file>qml/Update/Main.qml</file>
+        <file>qml/Touchpad/Main.qml</file>
+        <file>images/sidebar/dark/touchpad.svg</file>
     </qresource>
 </RCC>

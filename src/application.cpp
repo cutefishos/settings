@@ -17,6 +17,7 @@
 #include "language.h"
 #include "password.h"
 #include "powermanager.h"
+#include "touchpad.h"
 
 #include "cursor/cursorthememodel.h"
 #include "cursor/mouse.h"
@@ -75,6 +76,8 @@ Application::Application(int &argc, char **argv)
     qmlRegisterType<Mouse>(uri, 1, 0, "Mouse");
     qmlRegisterType<Time>(uri, 1, 0, "Time");
     qmlRegisterType<TimeZoneMap>(uri, 1, 0, "TimeZoneMap");
+    qmlRegisterType<Touchpad>(uri, 1, 0, "Touchpad");
+
     qmlRegisterSingletonType<Password>(uri, 1, 0, "Password", passwordSingleton);
 
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)

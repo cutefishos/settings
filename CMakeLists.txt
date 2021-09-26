@@ -51,6 +51,7 @@ set(SRCS
     src/datetime/timezonedata.h
     src/datetime/timezonemap.cpp
     src/datetime/timedated_interface.cpp
+    src/touchpad.cpp
 )
 
 set(RESOURCES
