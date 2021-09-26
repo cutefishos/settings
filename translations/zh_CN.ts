@@ -81,32 +81,32 @@
         <translation>构建在 %1 上</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="76"/>
+        <location filename="../src/qml/About/Main.qml" line="79"/>
         <source>System Version</source>
         <translation>系统版本</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="81"/>
+        <location filename="../src/qml/About/Main.qml" line="84"/>
         <source>System Type</source>
         <translation>系统类型</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="86"/>
+        <location filename="../src/qml/About/Main.qml" line="89"/>
         <source>Kernel Version</source>
         <translation>内核版本</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="91"/>
+        <location filename="../src/qml/About/Main.qml" line="94"/>
         <source>Processor</source>
         <translation>处理器</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="96"/>
+        <location filename="../src/qml/About/Main.qml" line="99"/>
         <source>RAM</source>
         <translation>内存大小</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="101"/>
+        <location filename="../src/qml/About/Main.qml" line="104"/>
         <source>Internal Storage</source>
         <translation>内部存储</translation>
     </message>
@@ -311,44 +311,43 @@
         <translation>亮度</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="115"/>
+        <location filename="../src/qml/Display/Main.qml" line="124"/>
         <source>Screen</source>
         <translation>屏幕</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="154"/>
+        <location filename="../src/qml/Display/Main.qml" line="163"/>
         <source>Screen Name</source>
         <translation>屏幕名称</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="165"/>
+        <location filename="../src/qml/Display/Main.qml" line="174"/>
         <source>Resolution</source>
         <translation>分辨率</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="184"/>
+        <location filename="../src/qml/Display/Main.qml" line="193"/>
         <source>Refresh rate</source>
         <translation>刷新率</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="204"/>
+        <location filename="../src/qml/Display/Main.qml" line="213"/>
         <source>Rotation</source>
         <translation>方向</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="248"/>
+        <location filename="../src/qml/Display/Main.qml" line="257"/>
         <source>Enabled</source>
         <translation>已开启</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="279"/>
+        <location filename="../src/qml/Display/Main.qml" line="288"/>
         <source>Scale</source>
         <translation>缩放</translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="346"/>
         <source>Need to log in again to take effect</source>
-        <translation>需要重新登录才能生效</translation>
+        <translation type="vanished">需要重新登录才能生效</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
@@ -562,6 +561,26 @@
         <source>Time Zone</source>
         <translation>时区</translation>
     </message>
+    <message>
+        <location filename="../src/qml/Touchpad/Main.qml" line="28"/>
+        <source>Touchpad</source>
+        <translation>触摸版</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Touchpad/Main.qml" line="52"/>
+        <source>Enable</source>
+        <translation>启用</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Touchpad/Main.qml" line="70"/>
+        <source>Tap to click</source>
+        <translation>轻触点击</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Touchpad/Main.qml" line="87"/>
+        <source>Pointer acceleration</source>
+        <translation>指针速度</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -594,98 +613,104 @@
 <context>
     <name>SideBar</name>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="87"/>
+        <location filename="../src/qml/SideBar.qml" line="89"/>
         <source>Display</source>
         <translation>显示</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="58"/>
-        <location filename="../src/qml/SideBar.qml" line="67"/>
+        <location filename="../src/qml/SideBar.qml" line="60"/>
+        <location filename="../src/qml/SideBar.qml" line="69"/>
         <source>Network and connection</source>
         <translation>网络与连接</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="62"/>
+        <location filename="../src/qml/SideBar.qml" line="64"/>
         <source>Ethernet</source>
         <translation>以太网络</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="92"/>
-        <location filename="../src/qml/SideBar.qml" line="101"/>
-        <location filename="../src/qml/SideBar.qml" line="110"/>
-        <location filename="../src/qml/SideBar.qml" line="119"/>
-        <location filename="../src/qml/SideBar.qml" line="128"/>
+        <location filename="../src/qml/SideBar.qml" line="94"/>
+        <location filename="../src/qml/SideBar.qml" line="103"/>
+        <location filename="../src/qml/SideBar.qml" line="112"/>
+        <location filename="../src/qml/SideBar.qml" line="121"/>
+        <location filename="../src/qml/SideBar.qml" line="130"/>
         <source>Display and appearance</source>
         <translation>显示与外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="96"/>
+        <location filename="../src/qml/SideBar.qml" line="98"/>
         <source>Appearance</source>
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="141"/>
+        <location filename="../src/qml/SideBar.qml" line="143"/>
         <source>Mouse</source>
         <translation>鼠标</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="105"/>
+        <location filename="../src/qml/SideBar.qml" line="107"/>
         <source>Fonts</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="123"/>
+        <location filename="../src/qml/SideBar.qml" line="125"/>
         <source>Dock</source>
         <translation>程序坞</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="132"/>
+        <location filename="../src/qml/SideBar.qml" line="134"/>
         <source>User</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="114"/>
+        <location filename="../src/qml/SideBar.qml" line="116"/>
         <source>Background</source>
         <translation>背景</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="53"/>
+        <location filename="../src/qml/SideBar.qml" line="55"/>
         <source>WLAN</source>
         <translation>无线网络</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="137"/>
-        <location filename="../src/qml/SideBar.qml" line="146"/>
-        <location filename="../src/qml/SideBar.qml" line="164"/>
-        <location filename="../src/qml/SideBar.qml" line="182"/>
-        <location filename="../src/qml/SideBar.qml" line="191"/>
-        <location filename="../src/qml/SideBar.qml" line="200"/>
-        <location filename="../src/qml/SideBar.qml" line="209"/>
+        <location filename="../src/qml/SideBar.qml" line="139"/>
+        <location filename="../src/qml/SideBar.qml" line="148"/>
+        <location filename="../src/qml/SideBar.qml" line="157"/>
+        <location filename="../src/qml/SideBar.qml" line="175"/>
+        <location filename="../src/qml/SideBar.qml" line="193"/>
+        <location filename="../src/qml/SideBar.qml" line="202"/>
+        <location filename="../src/qml/SideBar.qml" line="211"/>
+        <location filename="../src/qml/SideBar.qml" line="220"/>
         <source>System</source>
         <translation>系统</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="159"/>
+        <location filename="../src/qml/SideBar.qml" line="152"/>
+        <source>Touchpad</source>
+        <translation>触摸版</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="170"/>
         <source>Date &amp; Time</source>
         <translation>日期和时间</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="177"/>
+        <location filename="../src/qml/SideBar.qml" line="188"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="186"/>
+        <location filename="../src/qml/SideBar.qml" line="197"/>
         <source>Battery</source>
         <translation>电池</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="195"/>
+        <location filename="../src/qml/SideBar.qml" line="206"/>
         <source>Power</source>
         <translation>电源</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="204"/>
+        <location filename="../src/qml/SideBar.qml" line="215"/>
         <source>About</source>
         <translation>关于</translation>
     </message>

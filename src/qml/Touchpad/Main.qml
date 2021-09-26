@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2021 CutefishOS Team.
  *
- * Author:     revenmartin <revenmartin@gmail.com>
+ * Author:     Reion Wong <reion@cutefishos.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
