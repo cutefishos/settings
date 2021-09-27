@@ -25,12 +25,12 @@ import FishUI 1.0 as FishUI
 
 FishUI.Window {
     id: control
-    title: "Hello World"
     width: 900
     height: 600
     minimumWidth: 800
     minimumHeight: 500
     visible: false
+    flags: Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
 
     background.opacity: control.compositing ? 0.5 : 1.0
     contentTopMargin: 0
