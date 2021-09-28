@@ -36,16 +36,6 @@ ColumnLayout {
             color: FishUI.Theme.disabledTextColor
         }
 
-        FishUI.BusyIndicator {
-            id: wlanBusyIndicator
-            width: wirelessSwitch.height
-            height: width
-            visible: enabledConnections.wirelessHwEnabled &&
-                     enabledConnections.wirelessEnabled &&
-                     wirelessView.count === 0
-            running: wlanBusyIndicator.visible
-        }
-
         Item {
             Layout.fillWidth: true
         }
