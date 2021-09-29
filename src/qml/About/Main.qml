@@ -55,13 +55,23 @@ ItemPage {
                 height: FishUI.Units.smallSpacing
             }
 
-            Label {
-                Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
-                text: about.isCutefishOS ? "<b>CutefishOS</b>" : "<b>Cutefish</b>"
-                font.pointSize: 22
-                color: "#3385FF"
-                leftPadding: FishUI.Units.largeSpacing * 2
-                rightPadding: FishUI.Units.largeSpacing * 2
+//            Label {
+//                Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
+//                text: about.isCutefishOS ? "<b>CutefishOS</b>" : "<b>Cutefish</b>"
+//                font.pointSize: 22
+//                color: "#3385FF"
+//                leftPadding: FishUI.Units.largeSpacing * 2
+//                rightPadding: FishUI.Units.largeSpacing * 2
+//            }
+
+            Image {
+                Layout.preferredWidth: 167
+                Layout.preferredHeight: 26
+                sourceSize: Qt.size(500, 76)
+                source: "qrc:/images/logo.png"
+                Layout.alignment: Qt.AlignHCenter
+                visible: about.isCutefishOS
+                asynchronous: true
             }
 
             Label {
