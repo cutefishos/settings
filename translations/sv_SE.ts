@@ -52,12 +52,12 @@
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="29"/>
         <source>Bluetooth</source>
-        <translation>Bluetooth</translation>
+        <translation>Blåtand</translation>
     </message>
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="49"/>
         <source>Bluetooth is disabled</source>
-        <translation>Bluetooth är inaktiverat</translation>
+        <translation>Blåtand är inaktiverat</translation>
     </message>
 </context>
 <context>
@@ -93,7 +93,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="86"/>
         <source>Kernel Version</source>
-        <translation>Kärnversion</translation>
+        <translation>Kärn-version</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="91"/>
@@ -108,7 +108,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="101"/>
         <source>Internal Storage</source>
-        <translation>Intern lagring</translation>
+        <translation>Intern lagringsplats</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="30"/>
@@ -257,7 +257,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="258"/>
         <source>Excellent</source>
-        <translation>Excellent</translation>
+        <translation>Utmärkt</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="280"/>
@@ -312,7 +312,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="207"/>
         <source>Rotation</source>
-        <translation>Rotation</translation>
+        <translation>Rotering</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="251"/>
@@ -332,7 +332,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
-        <translation>Dock</translation>
+        <translation>Docka</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="44"/>
@@ -586,7 +586,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="122"/>
         <source>Dock</source>
-        <translation>Dock</translation>
+        <translation>Docka</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="136"/>
