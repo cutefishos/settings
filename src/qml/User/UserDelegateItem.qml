@@ -75,6 +75,7 @@ RoundedItem {
                     anchors.fill: parent
                     anchors.topMargin: FishUI.Units.smallSpacing
                     anchors.bottomMargin: FishUI.Units.smallSpacing
+                    spacing: 0
 
                     Image {
                         id: _userImage
@@ -113,6 +114,10 @@ RoundedItem {
                         font.pixelSize: 15
                         text: "<b>%1</b>".arg(userName)
                         leftPadding: FishUI.Units.largeSpacing
+                    }
+
+                    Item {
+                        width: FishUI.Units.largeSpacing
                     }
 
                     Label {

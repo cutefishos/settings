@@ -189,7 +189,7 @@ ItemPage {
                         MouseArea {
                             id: _mouseArea
                             anchors.fill: parent
-                            anchors.margins: FishUI.Units.smallSpacing
+                            anchors.margins: FishUI.Units.smallSpacing * 1.5
                             onClicked: {
                                 _view.currentIndex = index
                                 cursorModel.currentTheme = model.id
@@ -199,7 +199,7 @@ ItemPage {
 
                         Rectangle {
                             anchors.fill: parent
-                            anchors.margins: FishUI.Units.smallSpacing
+                            anchors.margins: FishUI.Units.smallSpacing * 1.5
                             color: FishUI.Theme.darkMode ? "#3C3C3C" : "#FAFAFA"
                             radius: FishUI.Theme.mediumRadius
                             z: -1
@@ -210,7 +210,7 @@ ItemPage {
 
                         ColumnLayout {
                             anchors.fill: parent
-                            anchors.margins: FishUI.Units.smallSpacing
+                            anchors.margins: FishUI.Units.smallSpacing * 1.5
 
                             Item {
                                 Layout.fillHeight: true
@@ -221,8 +221,8 @@ ItemPage {
                             }
 
                             FishUI.IconItem {
-                                width: 24
-                                height: 24
+                                width: 22
+                                height: 22
                                 source: model.image
                                 smooth: true
                                 Layout.alignment: Qt.AlignHCenter
