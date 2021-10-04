@@ -125,7 +125,9 @@ void FontsModel::run()
          if (fixedPitch && !m_fixedFonts.contains(family)) {
              m_fixedFonts.append(family);
          } else {
-             if (!m_generalFonts.contains(family) && language.contains(m_lanCode, Qt::CaseInsensitive))
+             if (!m_generalFonts.contains(family)
+                     && (language.contains(m_lanCode, Qt::CaseInsensitive) ||
+                         language.contains(m_lanCode.split('-').first(), Qt::CaseInsensitive)))
                  m_generalFonts.append(family);
          }
     }

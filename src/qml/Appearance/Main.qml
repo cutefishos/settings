@@ -161,6 +161,7 @@ ItemPage {
                         model.append({"accentColor": String(FishUI.Theme.purpleColor)})
                         model.append({"accentColor": String(FishUI.Theme.pinkColor)})
                         model.append({"accentColor": String(FishUI.Theme.orangeColor)})
+                        model.append({"accentColor": String(FishUI.Theme.greyColor)})
                     }
 
                     delegate: Item {
