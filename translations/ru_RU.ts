@@ -78,7 +78,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="68"/>
         <source>Built on %1</source>
-        <translation type="unfinished">Построен на %1</translation>
+        <translation>Построен на %1</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="76"/>
@@ -542,7 +542,7 @@
         <location filename="../src/qml/SideBar.qml" line="57"/>
         <location filename="../src/qml/SideBar.qml" line="66"/>
         <source>Network and connection</source>
-        <translation>Сеть и подключения</translation>
+        <translation>Сеть и подключение</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="61"/>
