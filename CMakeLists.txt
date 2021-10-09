@@ -17,6 +17,7 @@ find_package(X11 REQUIRED)
 find_package(Freetype REQUIRED)
 find_package(PkgConfig REQUIRED)
 find_package(Libcrypt REQUIRED)
+# find_package(QApt REQUIRED)
 
 find_package(KF5NetworkManagerQt REQUIRED)
 find_package(KF5ModemManagerQt REQUIRED)
@@ -52,6 +53,7 @@ set(SRCS
     src/datetime/timezonemap.cpp
     src/datetime/timedated_interface.cpp
     src/touchpad.cpp
+#    src/update/updatemodel.cpp
 )
 
 set(RESOURCES
@@ -89,6 +91,8 @@ target_link_libraries(${PROJECT_NAME}
         X11::X11
         X11::Xi
         X11::Xcursor
+
+        QApt
 )
 
 file(GLOB TS_FILES translations/*.ts)

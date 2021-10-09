@@ -1,99 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="64"
-   height="64"
-   viewBox="0 0 16.933333 16.933334"
-   version="1.1"
-   id="svg8"
-   inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
-   sodipodi:docname="dark_mode.svg">
-  <defs
-     id="defs2" />
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="11.2"
-     inkscape:cx="34.874929"
-     inkscape:cy="33.857529"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
-     inkscape:document-rotation="0"
-     showgrid="false"
-     units="px"
-     inkscape:window-width="2160"
-     inkscape:window-height="1229"
-     inkscape:window-x="0"
-     inkscape:window-y="42"
-     inkscape:window-maximized="1" />
-  <metadata
-     id="metadata5">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1">
-    <rect
-       style="opacity:1;fill:#262626;fill-opacity:1;stroke-width:0.264583"
-       id="background"
-       width="16.933334"
-       height="16.933332"
-       x="-5.0862633e-07"
-       y="4.4504802e-07" />
-    <circle
-       style="opacity:0.7;fill:#aaaaaa;fill-opacity:1;stroke-width:0.240117"
-       id="path857"
-       cx="3.7906375"
-       cy="5.7458472"
-       r="1.984375" />
-    <rect
-       style="opacity:0.7;fill:#aaaaaa;fill-opacity:1;stroke-width:0.264583"
-       id="rect859"
-       width="6.0211306"
-       height="1.4291965"
-       x="6.9835868"
-       y="3.9491892"
-       ry="0.71459824" />
-    <rect
-       style="opacity:0.7;fill:#aaaaaa;fill-opacity:1;stroke-width:0.308278"
-       id="rect859-3"
-       width="8.1736097"
-       height="1.4292792"
-       x="6.946589"
-       y="6.1089554"
-       ry="0.7146396" />
-    <circle
-       style="opacity:0.7;fill:#aaaaaa;fill-opacity:1;stroke-width:0.240117"
-       id="path857-6"
-       cx="3.7906854"
-       cy="11.89663"
-       r="1.984375" />
-    <rect
-       style="opacity:0.7;fill:#aaaaaa;fill-opacity:1;stroke-width:0.308279"
-       id="rect859-3-7"
-       width="8.1736097"
-       height="1.4292793"
-       x="6.9466352"
-       y="11.125928"
-       ry="0.71463966" />
-  </g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" version="1.1" viewBox="0 0 16.933 16.933" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <rect id="background" x="-5.0863e-7" y="4.4505e-7" width="16.933" height="16.933" fill="#262626" stroke-width=".26458"/>
+ <g fill="#aaa">
+  <circle cx="3.7906" cy="5.7458" r="1.9844" opacity=".8" stroke-width=".24012"/>
+  <rect x="6.9836" y="3.9492" width="6.0211" height="1.4292" ry=".7146" opacity=".7" stroke-width=".26458"/>
+  <rect x="6.9466" y="6.109" width="8.1736" height="1.4293" ry=".71464" opacity=".5" stroke-width=".30828"/>
+  <circle cx="3.7907" cy="11.897" r="1.9844" opacity=".8" stroke-width=".24012"/>
+  <rect x="6.984" y="12.238" width="6.0211" height="1.4292" ry=".7146" opacity=".5" stroke-width=".26458"/>
+  <rect x="6.984" y="10.079" width="8.1736" height="1.4293" ry=".71464" opacity=".7" stroke-width=".30828"/>
+ </g>
 </svg>
