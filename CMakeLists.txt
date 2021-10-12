@@ -92,7 +92,7 @@ target_link_libraries(${PROJECT_NAME}
         X11::Xi
         X11::Xcursor
 
-        QApt
+        # QApt
 )
 
 file(GLOB TS_FILES translations/*.ts)
