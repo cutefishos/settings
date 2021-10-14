@@ -54,8 +54,8 @@ Item {
 
             Behavior on border.color {
                 ColorAnimation {
-                    duration: 125
-                    easing.type: Easing.InOutCubic
+                    duration: 200
+                    easing.type: Easing.OutSine
                 }
             }
 
@@ -85,8 +85,8 @@ Item {
 
                 Behavior on opacity {
                     NumberAnimation {
-                        duration: 100
-                        easing.type: Easing.InOutCubic
+                        duration: 200
+                        easing.type: Easing.OutSine
                     }
                 }
 
@@ -114,7 +114,8 @@ Item {
 
     Behavior on scale {
         NumberAnimation {
-            duration: 100
+            duration: 200
+            easing.type: Easing.OutSine
         }
     }
 

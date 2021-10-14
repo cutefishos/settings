@@ -104,7 +104,8 @@ ItemPage {
 
                         Behavior on scale {
                             NumberAnimation {
-                                duration: 100
+                                duration: 200
+                                easing.type: Easing.OutSine
                             }
                         }
 

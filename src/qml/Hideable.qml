@@ -29,8 +29,8 @@ Item {
 
     Behavior on implicitHeight {
         NumberAnimation {
-            duration: 125
-            easing.type: Easing.InOutCubic
+            duration: 200
+            easing.type: Easing.OutSine
         }
     }
 
