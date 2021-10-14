@@ -106,7 +106,7 @@ ItemPage {
 
                         if (appearance.dockIconSize <= 45)
                             index = 0
-                        else if (appearance.dockIconSize <= 54)
+                        else if (appearance.dockIconSize <= 53)
                             index = 1
                         else if (appearance.dockIconSize <= 63)
                             index = 2
@@ -124,7 +124,7 @@ ItemPage {
                             iconSize = 45
                             break;
                         case 1:
-                            iconSize = 54
+                            iconSize = 53
                             break;
                         case 2:
                             iconSize = 63

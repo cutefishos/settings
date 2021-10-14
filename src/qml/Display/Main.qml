@@ -138,7 +138,7 @@ ItemPage {
 
                     Behavior on Layout.preferredHeight {
                         NumberAnimation {
-                            duration: 200
+                            duration: 300
                             easing.type: Easing.OutSine
                         }
                     }
