@@ -228,6 +228,7 @@ Item {
 
         Label {
             text: rootWindow.title
+            color: rootWindow.active ? FishUI.Theme.textColor : FishUI.Theme.disabledTextColor
             Layout.preferredHeight: rootWindow.header.height
             leftPadding: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
             rightPadding: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing

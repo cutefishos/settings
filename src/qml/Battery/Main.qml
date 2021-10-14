@@ -51,7 +51,7 @@ ItemPage {
         id: battery
 
         Component.onCompleted: {
-            battery.refresh()
+            // battery.refresh()
             batteryBackground.value = battery.chargePercent
         }
     }

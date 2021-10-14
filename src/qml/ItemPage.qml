@@ -42,6 +42,7 @@ Page {
             bottomPadding: 0
             font.pointSize: 12
             text: page.headerTitle
+            color: rootWindow.active ? FishUI.Theme.textColor : FishUI.Theme.disabledTextColor
         }
     }
 }
