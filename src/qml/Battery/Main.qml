@@ -32,6 +32,21 @@ ItemPage {
     readonly property var timespanComboChoices: [qsTr("Last hour"),qsTr("Last 2 hours"),qsTr("Last 12 hours"),qsTr("Last 24 hours"),qsTr("Last 48 hours"), qsTr("Last 7 days")]
     readonly property var timespanComboDurations: [3600, 7200, 43200, 86400, 172800, 604800]
 
+    readonly property int chargePercent: battery.chargePercent
+
+    onChargePercentChanged: {
+        valueAnimation.restart()
+    }
+
+    NumberAnimation {
+        id: valueAnimation
+        target: percentLabel
+        property: "value"
+        from: percentLabel.value
+        to: batteryPage.chargePercent
+        duration: 500
+    }
+
     Battery {
         id: battery
 
@@ -83,8 +98,10 @@ ItemPage {
 
                     RowLayout {
                         Label {
+                            property int value: 0
+
                             id: percentLabel
-                            text: battery.chargePercent
+                            text: value
                             color: "white"
                             font.pointSize: 40
                             font.weight: Font.DemiBold

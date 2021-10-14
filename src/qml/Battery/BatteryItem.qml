@@ -36,7 +36,7 @@ Item {
         anchors.fill: parent
         color: Qt.rgba(FishUI.Theme.highlightColor.r,
                        FishUI.Theme.highlightColor.g,
-                       FishUI.Theme.highlightColor.b, 0.5)
+                       FishUI.Theme.highlightColor.b, 0.4)
         radius: control.radius
 
         layer.enabled: true
@@ -73,7 +73,7 @@ Item {
             Behavior on width {
                 SmoothedAnimation {
                     velocity: 1000
-                    easing.type: Easing.InOutCubic
+                    easing.type: Easing.OutSine
                 }
             }
 
