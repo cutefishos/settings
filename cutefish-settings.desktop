@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Settings
 Name[zh_CN]=设置
-Exec=cutefish-settings
+Exec=/usr/bin/cutefish-settings
 Icon=preferences-system
 Terminal=false
 Type=Application
