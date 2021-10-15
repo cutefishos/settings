@@ -103,7 +103,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="96"/>
         <source>RAM</source>
-        <translation>Direktzugriffsspeicher</translation>
+        <translation>Arbeitsspeicher</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="101"/>
