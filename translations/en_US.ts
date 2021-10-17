@@ -76,37 +76,37 @@
         <translation>About</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="68"/>
+        <location filename="../src/qml/About/Main.qml" line="78"/>
         <source>Built on %1</source>
         <translation>Built on %1</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="79"/>
+        <location filename="../src/qml/About/Main.qml" line="89"/>
         <source>System Version</source>
         <translation>System Version</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="84"/>
+        <location filename="../src/qml/About/Main.qml" line="94"/>
         <source>System Type</source>
         <translation>System Type</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="89"/>
+        <location filename="../src/qml/About/Main.qml" line="99"/>
         <source>Kernel Version</source>
         <translation>Kernel Version</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="94"/>
+        <location filename="../src/qml/About/Main.qml" line="104"/>
         <source>Processor</source>
         <translation>Processor</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="99"/>
+        <location filename="../src/qml/About/Main.qml" line="109"/>
         <source>RAM</source>
         <translation>RAM</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="104"/>
+        <location filename="../src/qml/About/Main.qml" line="114"/>
         <source>Internal Storage</source>
         <translation>Internal Storage</translation>
     </message>
@@ -192,25 +192,25 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="89"/>
+        <location filename="../src/qml/Dock/Main.qml" line="114"/>
         <location filename="../src/qml/Fonts/Main.qml" line="134"/>
         <source>Small</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="93"/>
+        <location filename="../src/qml/Dock/Main.qml" line="118"/>
         <location filename="../src/qml/Fonts/Main.qml" line="138"/>
         <source>Medium</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="97"/>
+        <location filename="../src/qml/Dock/Main.qml" line="122"/>
         <location filename="../src/qml/Fonts/Main.qml" line="142"/>
         <source>Large</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="101"/>
+        <location filename="../src/qml/Dock/Main.qml" line="126"/>
         <location filename="../src/qml/Fonts/Main.qml" line="146"/>
         <source>Huge</source>
         <translation type="unfinished"></translation>
@@ -251,52 +251,52 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="126"/>
+        <location filename="../src/qml/Battery/Main.qml" line="143"/>
         <source>History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="154"/>
+        <location filename="../src/qml/Battery/Main.qml" line="171"/>
         <source>W</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="175"/>
+        <location filename="../src/qml/Battery/Main.qml" line="192"/>
         <source>Health</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="199"/>
+        <location filename="../src/qml/Battery/Main.qml" line="216"/>
         <source>Poor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="224"/>
+        <location filename="../src/qml/Battery/Main.qml" line="241"/>
         <source>Normal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="249"/>
+        <location filename="../src/qml/Battery/Main.qml" line="266"/>
         <source>Excellent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="258"/>
+        <location filename="../src/qml/Battery/Main.qml" line="275"/>
         <source>Last Charged to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="264"/>
+        <location filename="../src/qml/Battery/Main.qml" line="281"/>
         <source>Maximum Capacity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="272"/>
+        <location filename="../src/qml/Battery/Main.qml" line="289"/>
         <source>Show percentage in status bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="296"/>
+        <location filename="../src/qml/Battery/Main.qml" line="313"/>
         <source>No battery found</source>
         <translation type="unfinished"></translation>
     </message>
@@ -316,32 +316,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="163"/>
+        <location filename="../src/qml/Display/Main.qml" line="164"/>
         <source>Screen Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="174"/>
+        <location filename="../src/qml/Display/Main.qml" line="175"/>
         <source>Resolution</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="193"/>
+        <location filename="../src/qml/Display/Main.qml" line="194"/>
         <source>Refresh rate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="213"/>
+        <location filename="../src/qml/Display/Main.qml" line="214"/>
         <source>Rotation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="257"/>
+        <location filename="../src/qml/Display/Main.qml" line="258"/>
         <source>Enabled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Display/Main.qml" line="288"/>
+        <location filename="../src/qml/Display/Main.qml" line="289"/>
         <source>Scale</source>
         <translation type="unfinished"></translation>
     </message>
@@ -352,46 +352,61 @@
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="45"/>
+        <source>Style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Dock/Main.qml" line="54"/>
+        <source>Round</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Dock/Main.qml" line="61"/>
+        <source>Straight</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Dock/Main.qml" line="71"/>
         <source>Position on screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="55"/>
+        <location filename="../src/qml/Dock/Main.qml" line="80"/>
         <source>Left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="62"/>
+        <location filename="../src/qml/Dock/Main.qml" line="87"/>
         <source>Bottom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="69"/>
+        <location filename="../src/qml/Dock/Main.qml" line="94"/>
         <source>Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="79"/>
+        <location filename="../src/qml/Dock/Main.qml" line="104"/>
         <source>Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="145"/>
+        <location filename="../src/qml/Dock/Main.qml" line="170"/>
         <source>Display mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="155"/>
+        <location filename="../src/qml/Dock/Main.qml" line="180"/>
         <source>Always show</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="159"/>
+        <location filename="../src/qml/Dock/Main.qml" line="184"/>
         <source>Always hide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="163"/>
+        <location filename="../src/qml/Dock/Main.qml" line="188"/>
         <source>Smart hide</source>
         <translation type="unfinished"></translation>
     </message>
@@ -710,12 +725,12 @@
 <context>
     <name>TimeZoneDialog</name>
     <message>
-        <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="160"/>
+        <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="161"/>
         <source>Cancel</source>
         <translation type="unfinished">Cancel</translation>
     </message>
     <message>
-        <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="165"/>
+        <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="166"/>
         <source>Set</source>
         <translation type="unfinished"></translation>
     </message>
@@ -723,17 +738,17 @@
 <context>
     <name>UserDelegateItem</name>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="130"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="135"/>
         <source>Currently logged</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="171"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="176"/>
         <source>Automatic login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="190"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="195"/>
         <source>Delete this user</source>
         <translation type="unfinished"></translation>
     </message>

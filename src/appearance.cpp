@@ -47,6 +47,8 @@ Appearance::Appearance(QObject *parent)
     m_dockDirection = m_dockSettings->value("Direction").toInt();
     m_dockVisibility = m_dockSettings->value("Visibility").toInt();
     m_dockRoundedWindow = m_dockSettings->value("RoundedWindow").toBool();
+    m_dockStyle = m_dockSettings->value("Style").toInt();
+
     m_kwinSettings->beginGroup("Compositing");
     m_systemEffects = !m_kwinSettings->value("OpenGLIsUnsafe", false).toBool();
     m_kwinSettings->endGroup();
@@ -155,6 +157,28 @@ void Appearance::setDockRoundedWindow(bool enable)
 
     m_dockRoundedWindow = enable;
     m_dockSettings->setValue("RoundedWindow", m_dockRoundedWindow);
+}
+
+int Appearance::dockStyle() const
+{
+    return m_dockStyle;
+}
+
+void Appearance::setDockStyle(int style)
+{
+    if (m_dockStyle != style) {
+        m_dockStyle = style;
+
+        QDBusInterface iface("com.cutefish.Dock",
+                             "/Dock",
+                             "com.cutefish.Dock",
+                             QDBusConnection::sessionBus());
+        if (iface.isValid()) {
+            iface.call("setStyle", style);
+        }
+
+        emit dockStyleChanged();
+    }
 }
 
 void Appearance::setGenericFontFamily(const QString &name)

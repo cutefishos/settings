@@ -62,6 +62,7 @@ Item {
             opacity: 1
 
             gradient: Gradient {
+                orientation: Gradient.Horizontal
                 GradientStop { position: 0.0; color: Qt.rgba(FishUI.Theme.highlightColor.r,
                                                              FishUI.Theme.highlightColor.g,
                                                              FishUI.Theme.highlightColor.b, 1) }

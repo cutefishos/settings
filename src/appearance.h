@@ -30,6 +30,7 @@ class Appearance : public QObject
     Q_PROPERTY(int dockIconSize READ dockIconSize WRITE setDockIconSize NOTIFY dockIconSizeChanged)
     Q_PROPERTY(int dockDirection READ dockDirection WRITE setDockDirection NOTIFY dockDirectionChanged)
     Q_PROPERTY(int dockVisibility READ dockVisibility WRITE setDockVisibility NOTIFY dockVisibilityChanged)
+    Q_PROPERTY(int dockStyle READ dockStyle WRITE setDockStyle NOTIFY dockStyleChanged)
     Q_PROPERTY(int fontPointSize READ fontPointSize WRITE setFontPointSize NOTIFY fontPointSizeChanged)
     Q_PROPERTY(bool dimsWallpaper READ dimsWallpaper WRITE setDimsWallpaper NOTIFY dimsWallpaperChanged)
     Q_PROPERTY(double devicePixelRatio READ devicePixelRatio WRITE setDevicePixelRatio NOTIFY devicePixelRatioChanged)
@@ -57,6 +58,9 @@ public:
     int dockRoundedWindow() const;
     Q_INVOKABLE void setDockRoundedWindow(bool enable);
 
+    int dockStyle() const;
+    Q_INVOKABLE void setDockStyle(int style);
+
     Q_INVOKABLE void setGenericFontFamily(const QString &name);
     Q_INVOKABLE void setFixedFontFamily(const QString &name);
 
@@ -78,6 +82,7 @@ signals:
     void dockIconSizeChanged();
     void dockDirectionChanged();
     void dockVisibilityChanged();
+    void dockStyleChanged();
     void fontPointSizeChanged();
     void dimsWallpaperChanged();
     void devicePixelRatioChanged();
@@ -94,6 +99,7 @@ private:
     int m_dockIconSize;
     int m_dockDirection;
     int m_dockVisibility;
+    int m_dockStyle;
     int m_fontPointSize;
 
     bool m_systemEffects;

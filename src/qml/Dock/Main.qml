@@ -42,11 +42,36 @@ ItemPage {
 
             RoundedItem {
                 Label {
+                    text: qsTr("Style")
+                    color: FishUI.Theme.disabledTextColor
+                }
+
+                RowLayout {
+                    spacing: FishUI.Units.largeSpacing * 2
+
+                    IconCheckBox {
+                        source: "qrc:/images/dock_bottom.svg"
+                        text: qsTr("Round")
+                        checked: appearance.dockStyle === 0
+                        onClicked: appearance.setDockStyle(0)
+                    }
+
+                    IconCheckBox {
+                        source: "qrc:/images/dock_straight.svg"
+                        text: qsTr("Straight")
+                        checked: appearance.dockStyle === 1
+                        onClicked: appearance.setDockStyle(1)
+                    }
+                }
+            }
+
+            // position
+            RoundedItem {
+                Label {
                     text: qsTr("Position on screen")
                     color: FishUI.Theme.disabledTextColor
                 }
 
-                // Dock
                 RowLayout {
                     spacing: FishUI.Units.largeSpacing * 2
 

@@ -119,5 +119,6 @@
         <file>qml/Touchpad/Main.qml</file>
         <file>images/sidebar/dark/touchpad.svg</file>
         <file>images/logo.png</file>
+        <file>images/dock_straight.svg</file>
     </qresource>
 </RCC>

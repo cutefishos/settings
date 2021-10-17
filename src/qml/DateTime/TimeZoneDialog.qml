@@ -32,6 +32,7 @@ FishUI.Window {
     visible: false
     flags: Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
 
+    background.color: FishUI.Theme.secondBackgroundColor
     background.opacity: control.compositing ? 0.5 : 1.0
     contentTopMargin: 0
 
