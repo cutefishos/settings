@@ -80,7 +80,6 @@
         <file>images/dark/checked.svg</file>
         <file>qml/About/Main.qml</file>
         <file>qml/User/Main.qml</file>
-        <file>qml/User/AddUserDialog.qml</file>
         <file>qml/Appearance/Main.qml</file>
         <file>qml/Display/Main.qml</file>
         <file>qml/Battery/Main.qml</file>

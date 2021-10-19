@@ -2,52 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN">
 <context>
-    <name>AddUserDialog</name>
-    <message>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="137"/>
-        <source>Add</source>
-        <translation>添加</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="130"/>
-        <source>Cancel</source>
-        <translation>取消</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="72"/>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="78"/>
-        <source>User name</source>
-        <translation>用户名</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="85"/>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="91"/>
-        <source>Password</source>
-        <translation>密码</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="98"/>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="104"/>
-        <source>Verify password</source>
-        <translation>验证密码</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="111"/>
-        <source>Account type</source>
-        <translation>类型</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
-        <source>Standard</source>
-        <translation>标准</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
-        <source>Administrator</source>
-        <translation>管理员</translation>
-    </message>
-</context>
-<context>
     <name>BluetoothPage</name>
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="29"/>
@@ -346,10 +300,6 @@
         <translation>缩放</translation>
     </message>
     <message>
-        <source>Need to log in again to take effect</source>
-        <translation type="vanished">需要重新登录才能生效</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
         <translation>程序坞</translation>
@@ -415,10 +365,6 @@
         <translation>智能隐藏</translation>
     </message>
     <message>
-        <source>Auto hide</source>
-        <translation type="vanished">自动隐藏</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Power/Main.qml" line="31"/>
         <source>Power</source>
         <translation>电源</translation>
@@ -445,6 +391,48 @@
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="100"/>
+        <source>Add new user</source>
+        <translation>添加新用户</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/Main.qml" line="109"/>
+        <location filename="../src/qml/User/Main.qml" line="115"/>
+        <source>User name</source>
+        <translation>用户名</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/Main.qml" line="135"/>
+        <location filename="../src/qml/User/Main.qml" line="141"/>
+        <source>Verify password</source>
+        <translation>验证密码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/Main.qml" line="148"/>
+        <source>Account type</source>
+        <translation>类型</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/Main.qml" line="154"/>
+        <source>Standard</source>
+        <translation>标准</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/Main.qml" line="154"/>
+        <source>Administrator</source>
+        <translation>管理员</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/Main.qml" line="167"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/Main.qml" line="177"/>
+        <source>Add</source>
+        <translation>添加</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/Main.qml" line="196"/>
         <source>Add user</source>
         <translation>添加用户</translation>
     </message>
@@ -533,6 +521,8 @@
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="113"/>
+        <location filename="../src/qml/User/Main.qml" line="122"/>
+        <location filename="../src/qml/User/Main.qml" line="128"/>
         <source>Password</source>
         <translation>密码</translation>
     </message>
@@ -746,29 +736,34 @@
 <context>
     <name>UserDelegateItem</name>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="135"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="134"/>
         <source>Currently logged</source>
         <translation>当前登录</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="176"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="169"/>
         <source>Account type</source>
-        <translation type="unfinished">类型</translation>
+        <translation>类型</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="180"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="173"/>
         <source>Standard</source>
-        <translation type="unfinished">标准</translation>
+        <translation>标准</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="181"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="174"/>
         <source>Administrator</source>
-        <translation type="unfinished">管理员</translation>
+        <translation>管理员</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="185"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="178"/>
         <source>Automatic login</source>
         <translation>自动登陆</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="197"/>
+        <source>Change password</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="204"/>

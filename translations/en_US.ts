@@ -2,52 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
-    <name>AddUserDialog</name>
-    <message>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="72"/>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="78"/>
-        <source>User name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="85"/>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="91"/>
-        <source>Password</source>
-        <translation>Password</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="98"/>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="104"/>
-        <source>Verify password</source>
-        <translation>Verify password</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="111"/>
-        <source>Account type</source>
-        <translation>Account type</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
-        <source>Standard</source>
-        <translation>Standard</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
-        <source>Administrator</source>
-        <translation>Administrator</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="130"/>
-        <source>Cancel</source>
-        <translation>Cancel</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/User/AddUserDialog.qml" line="137"/>
-        <source>Add</source>
-        <translation>Add</translation>
-    </message>
-</context>
-<context>
     <name>BluetoothPage</name>
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="29"/>
@@ -437,6 +391,48 @@
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="100"/>
+        <source>Add new user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/Main.qml" line="109"/>
+        <location filename="../src/qml/User/Main.qml" line="115"/>
+        <source>User name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/Main.qml" line="135"/>
+        <location filename="../src/qml/User/Main.qml" line="141"/>
+        <source>Verify password</source>
+        <translation type="unfinished">Verify password</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/Main.qml" line="148"/>
+        <source>Account type</source>
+        <translation type="unfinished">Account type</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/Main.qml" line="154"/>
+        <source>Standard</source>
+        <translation type="unfinished">Standard</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/Main.qml" line="154"/>
+        <source>Administrator</source>
+        <translation type="unfinished">Administrator</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/Main.qml" line="167"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/Main.qml" line="177"/>
+        <source>Add</source>
+        <translation type="unfinished">Add</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/Main.qml" line="196"/>
         <source>Add user</source>
         <translation type="unfinished"></translation>
     </message>
@@ -525,6 +521,8 @@
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="113"/>
+        <location filename="../src/qml/User/Main.qml" line="122"/>
+        <location filename="../src/qml/User/Main.qml" line="128"/>
         <source>Password</source>
         <translation type="unfinished">Password</translation>
     </message>
@@ -738,28 +736,33 @@
 <context>
     <name>UserDelegateItem</name>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="135"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="134"/>
         <source>Currently logged</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="176"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="169"/>
         <source>Account type</source>
         <translation type="unfinished">Account type</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="180"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="173"/>
         <source>Standard</source>
         <translation type="unfinished">Standard</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="181"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="174"/>
         <source>Administrator</source>
         <translation type="unfinished">Administrator</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="185"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="178"/>
         <source>Automatic login</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="197"/>
+        <source>Change password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

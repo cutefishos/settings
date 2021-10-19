@@ -40,9 +40,17 @@ ItemPage {
 
     AccountsManager {
         id: accountsManager
+
+        onUserAdded: {
+            if (account.userName === userNameField.text) {
+                account.passwordMode = UserAccount.RegularPasswordMode;
+                account.setPassword(Password.cryptPassword(passwordField.text));
+            }
+        }
     }
 
     Scrollable {
+        id: _scrollable
         anchors.fill: parent
         contentHeight: layout.implicitHeight
 
@@ -71,41 +79,132 @@ ItemPage {
                 }
             }
 
-//            RoundedItem {
-//                visible: _userView.count > 0
+            // Add new user.
+            RoundedItem {
+                id: newUserItem
 
-//                ListView {
-//                    id: _userView
-//                    model: userModel
-//                    Layout.fillWidth: true
-//                    spacing: FishUI.Units.largeSpacing * 2
-//                    interactive: false
+                visible: false
 
-//                    Layout.preferredHeight: {
-//                        var totalHeight = 0
-//                        for (var i = 0; i < _userView.visibleChildren.length; ++i) {
-//                            totalHeight += _userView.visibleChildren[i].height
-//                        }
-//                        return totalHeight
-//                    }
+                function clear() {
+                    userNameField.clear()
+                    passwordField.clear()
+                    verifyPasswordField.clear()
+                    accountTypeCombo.currentIndex = 0
+                }
 
-//                    delegate: UserDelegateItem {
-//                        width: _userView.width
-//                    }
-//                }
-//            }
+                ColumnLayout {
+                    id: _mainLayout
+                    spacing: FishUI.Units.largeSpacing * 1.5
+
+                    Label {
+                        text: qsTr("Add new user")
+                    }
+
+                    GridLayout {
+                        columns: 2
+                        columnSpacing: FishUI.Units.largeSpacing * 2
+                        rowSpacing: FishUI.Units.smallSpacing * 2
+
+                        Label {
+                            text: qsTr("User name")
+                            Layout.alignment: Qt.AlignRight
+                        }
+
+                        TextField {
+                            id: userNameField
+                            placeholderText: qsTr("User name")
+                            Layout.fillWidth: true
+                            Layout.alignment: Qt.AlignRight
+                            selectByMouse: true
+                        }
+
+                        Label {
+                            text: qsTr("Password")
+                            Layout.alignment: Qt.AlignRight
+                        }
+
+                        TextField {
+                            id: passwordField
+                            placeholderText: qsTr("Password")
+                            echoMode: TextField.Password
+                            Layout.fillWidth: true
+                            selectByMouse: true
+                        }
+
+                        Label {
+                            text: qsTr("Verify password")
+                            Layout.alignment: Qt.AlignRight
+                        }
+
+                        TextField {
+                            id: verifyPasswordField
+                            placeholderText: qsTr("Verify password")
+                            echoMode: TextField.Password
+                            Layout.fillWidth: true
+                            selectByMouse: true
+                        }
+
+                        Label {
+                            text: qsTr("Account type")
+                            Layout.alignment: Qt.AlignRight
+                        }
+
+                        ComboBox {
+                            id: accountTypeCombo
+                            model: [qsTr("Standard"), qsTr("Administrator")]
+                            Layout.fillWidth: true
+                            topInset: 0
+                            bottomInset: 0
+                        }
+                    }
+
+                    RowLayout {
+                        id: footerLayout
+                        spacing: FishUI.Units.largeSpacing
+
+                        Button {
+                            id: cancelButton
+                            text: qsTr("Cancel")
+                            onClicked: {
+                                newUserItem.visible = false
+                                newUserItem.clear()
+                            }
+                            Layout.fillWidth: true
+                        }
+
+                        Button {
+                            id: addButton
+                            text: qsTr("Add")
+                            enabled: userNameField.text != "" &&
+                                     passwordField.text != "" &&
+                                     passwordField.text == verifyPasswordField.text
+                            Layout.fillWidth: true
+                            flat: true
+                            onClicked: {
+                                if (accountsManager.createUser(userNameField.text, "", accountTypeCombo.currentIndex)) {
+                                    newUserItem.visible = false
+                                    newUserItem.clear()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
             StandardButton {
                 id: _addUserButton
                 text: qsTr("Add user")
                 Layout.fillWidth: true
                 onClicked: {
-                    var component = Qt.createComponent("AddUserDialog.qml")
-                    if (component.status === Component.Ready) {
-                        var dialog = component.createObject(rootWindow)
-                        dialog.open()
-                    }
+                    newUserItem.visible = true
+                    userNameField.forceActiveFocus()
+                    _scrollable.contentY = Math.max(newUserItem.y,
+                                                    _scrollable.contentHeight)
                 }
+            }
+
+            Item {
+                height: FishUI.Units.largeSpacing
             }
         }
     }
