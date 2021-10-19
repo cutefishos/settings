@@ -43,8 +43,8 @@ ItemPage {
 
         onUserAdded: {
             if (account.userName === userNameField.text) {
-                account.passwordMode = UserAccount.RegularPasswordMode;
-                account.setPassword(Password.cryptPassword(passwordField.text));
+                account.passwordMode = UserAccount.RegularPasswordMode
+                account.setPassword(Password.cryptPassword(passwordField.text))
             }
         }
     }
@@ -195,6 +195,7 @@ ItemPage {
                 id: _addUserButton
                 text: qsTr("Add user")
                 Layout.fillWidth: true
+                visible: !newUserItem.visible
                 onClicked: {
                     newUserItem.visible = true
                     userNameField.forceActiveFocus()

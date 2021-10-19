@@ -761,12 +761,31 @@
         <translation>自动登陆</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="197"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="204"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="253"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="272"/>
         <source>Change password</source>
-        <translation></translation>
+        <translation>更改密码</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="204"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="215"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="221"/>
+        <source>Password</source>
+        <translation>密码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="228"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="234"/>
+        <source>Verify password</source>
+        <translation>验证密码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="247"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="280"/>
         <source>Delete this user</source>
         <translation>删除该用户</translation>
     </message>

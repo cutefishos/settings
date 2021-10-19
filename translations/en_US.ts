@@ -761,12 +761,31 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="197"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="204"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="253"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="272"/>
         <source>Change password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="204"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="215"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="221"/>
+        <source>Password</source>
+        <translation type="unfinished">Password</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="228"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="234"/>
+        <source>Verify password</source>
+        <translation type="unfinished">Verify password</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="247"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="280"/>
         <source>Delete this user</source>
         <translation type="unfinished"></translation>
     </message>
