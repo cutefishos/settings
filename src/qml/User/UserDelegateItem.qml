@@ -52,7 +52,6 @@ RoundedItem {
 
     ColumnLayout {
         id: mainLayout
-        // anchors.fill: parent
         spacing: 0
 
         RowLayout {
@@ -137,23 +136,16 @@ RoundedItem {
                         visible: currentUser.userId === loggedUser.userId
                     }
 
-                    Button {
-                        Layout.alignment: Qt.AlignVCenter
+                    Item {
+                        width: FishUI.Units.smallSpacing
+                    }
 
+                    FishUI.RoundImageButton {
+                        iconMargins: FishUI.Units.smallSpacing
+                        source: FishUI.Theme.darkMode ? additionalSettings.shown ? "qrc:/images/dark/up.svg" : "qrc:/images/dark/down.svg"
+                                                      : additionalSettings.shown ? "qrc:/images/light/up.svg" : "qrc:/images/light/down.svg"
                         onClicked: additionalSettings.toggle()
-
-                        implicitWidth: height
-
-                        background: Item {}
-
-                        Image {
-                            anchors.centerIn: parent
-                            width: 22
-                            height: 22
-                            sourceSize: Qt.size(width, height)
-                            source: FishUI.Theme.darkMode ? additionalSettings.shown ? "qrc:/images/dark/up.svg" : "qrc:/images/dark/down.svg"
-                                                          : additionalSettings.shown ? "qrc:/images/light/up.svg" : "qrc:/images/light/down.svg"
-                        }
+                        Layout.alignment: Qt.AlignVCenter
                     }
                 }
             }
@@ -161,6 +153,7 @@ RoundedItem {
 
         Hideable {
             id: additionalSettings
+            spacing: FishUI.Units.largeSpacing
 
             Item {
                 height: FishUI.Units.largeSpacing
@@ -169,8 +162,17 @@ RoundedItem {
             GridLayout {
                 Layout.fillWidth: true
                 Layout.bottomMargin: FishUI.Units.smallSpacing
-                rowSpacing: FishUI.Units.largeSpacing
+                rowSpacing: FishUI.Units.largeSpacing * 2
                 columns: 2
+
+                Label {
+                    text: qsTr("Account type")
+                }
+
+                Label {
+                    text: currentUser.accountType === 0 ? qsTr("Standard")
+                                                        : qsTr("Administrator")
+                }
 
                 Label {
                     text: qsTr("Automatic login")
@@ -189,6 +191,13 @@ RoundedItem {
                         automaticLoginSwitch.checked = currentUser.automaticLogin
                     }
                 }
+            }
+
+            StandardButton {
+                text: qsTr("Change password")
+                // onClicked: accountsManager.deleteUser(userId, true)
+                backgroundColor: FishUI.Theme.darkMode ? "#363636" : FishUI.Theme.backgroundColor
+                Layout.fillWidth: true
             }
 
             StandardButton {

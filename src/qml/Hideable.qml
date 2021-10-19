@@ -23,9 +23,13 @@ import QtGraphicalEffects 1.0
 
 Item {
     id: _root
-    implicitHeight: shown ? _content.implicitHeight : 0
-    clip: true
+    implicitHeight: shown ? _contentLayout.implicitHeight : 0
     Layout.fillWidth: true
+    clip: true
+
+    default property alias content: _contentLayout.data
+    property bool shown: false
+    property alias spacing: _contentLayout.spacing
 
     Behavior on implicitHeight {
         NumberAnimation {
@@ -34,8 +38,10 @@ Item {
         }
     }
 
-    property bool shown: false
-    default property alias content: _content.data
+    ColumnLayout {
+        id: _contentLayout
+        anchors.fill: parent
+    }
 
     function show() {
         shown = true
@@ -47,10 +53,5 @@ Item {
 
     function toggle() {
         shown = !shown
-    }
-
-    ColumnLayout {
-        id: _content
-        anchors.fill: parent
     }
 }

@@ -744,11 +744,26 @@
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="176"/>
+        <source>Account type</source>
+        <translation type="unfinished">Account type</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="180"/>
+        <source>Standard</source>
+        <translation type="unfinished">Standard</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="181"/>
+        <source>Administrator</source>
+        <translation type="unfinished">Administrator</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="185"/>
         <source>Automatic login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="195"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="204"/>
         <source>Delete this user</source>
         <translation type="unfinished"></translation>
     </message>

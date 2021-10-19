@@ -752,11 +752,26 @@
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="176"/>
+        <source>Account type</source>
+        <translation type="unfinished">类型</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="180"/>
+        <source>Standard</source>
+        <translation type="unfinished">标准</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="181"/>
+        <source>Administrator</source>
+        <translation type="unfinished">管理员</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="185"/>
         <source>Automatic login</source>
         <translation>自动登陆</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="195"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="204"/>
         <source>Delete this user</source>
         <translation>删除该用户</translation>
     </message>
