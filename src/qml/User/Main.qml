@@ -45,6 +45,7 @@ ItemPage {
             if (account.userName === userNameField.text) {
                 account.passwordMode = UserAccount.RegularPasswordMode
                 account.setPassword(Password.cryptPassword(passwordField.text))
+                newUserItem.clear()
             }
         }
     }
@@ -183,7 +184,6 @@ ItemPage {
                             onClicked: {
                                 if (accountsManager.createUser(userNameField.text, "", accountTypeCombo.currentIndex)) {
                                     newUserItem.visible = false
-                                    newUserItem.clear()
                                 }
                             }
                         }
