@@ -73,7 +73,7 @@ ColumnLayout {
             sourceModel: connectionModel
         }
 
-        spacing: FishUI.Units.largeSpacing
+        spacing: 0
         interactive: false
         visible: count > 0
 
@@ -81,7 +81,13 @@ ColumnLayout {
 
         delegate: WifiItem {
             width: ListView.view.width
-            height: ListView.view.itemHeight
+            // height: ListView.view.itemHeight
+        }
+
+        function hideAllItems() {
+            for (var i = 0; i < wirelessView.count; ++i) {
+                wirelessView.itemAtIndex(i).hideAdditional()
+            }
         }
     }
 }

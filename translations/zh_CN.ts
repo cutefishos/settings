@@ -390,44 +390,44 @@
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/Main.qml" line="100"/>
+        <location filename="../src/qml/User/Main.qml" line="101"/>
         <source>Add new user</source>
         <translation>添加新用户</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/Main.qml" line="109"/>
-        <location filename="../src/qml/User/Main.qml" line="115"/>
+        <location filename="../src/qml/User/Main.qml" line="110"/>
+        <location filename="../src/qml/User/Main.qml" line="116"/>
         <source>User name</source>
         <translation>用户名</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/Main.qml" line="135"/>
-        <location filename="../src/qml/User/Main.qml" line="141"/>
+        <location filename="../src/qml/User/Main.qml" line="136"/>
+        <location filename="../src/qml/User/Main.qml" line="142"/>
         <source>Verify password</source>
         <translation>验证密码</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/Main.qml" line="148"/>
+        <location filename="../src/qml/User/Main.qml" line="149"/>
         <source>Account type</source>
         <translation>类型</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/Main.qml" line="154"/>
+        <location filename="../src/qml/User/Main.qml" line="155"/>
         <source>Standard</source>
         <translation>标准</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/Main.qml" line="154"/>
+        <location filename="../src/qml/User/Main.qml" line="155"/>
         <source>Administrator</source>
         <translation>管理员</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/Main.qml" line="167"/>
+        <location filename="../src/qml/User/Main.qml" line="168"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../src/qml/User/Main.qml" line="177"/>
+        <location filename="../src/qml/User/Main.qml" line="178"/>
         <source>Add</source>
         <translation>添加</translation>
     </message>
@@ -521,8 +521,8 @@
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="113"/>
-        <location filename="../src/qml/User/Main.qml" line="122"/>
-        <location filename="../src/qml/User/Main.qml" line="128"/>
+        <location filename="../src/qml/User/Main.qml" line="123"/>
+        <location filename="../src/qml/User/Main.qml" line="129"/>
         <source>Password</source>
         <translation>密码</translation>
     </message>
@@ -793,24 +793,30 @@
 <context>
     <name>WifiItem</name>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="177"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="183"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="191"/>
         <source>Password</source>
         <translation>密码</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="197"/>
         <source>Show password</source>
-        <translation>显示密码</translation>
+        <translation type="vanished">显示密码</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="206"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="205"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="212"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="210"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="222"/>
         <source>Connect</source>
         <translation>连接</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="236"/>
+        <source>Disconnect</source>
+        <translation>断开连接</translation>
     </message>
 </context>
 <context>
