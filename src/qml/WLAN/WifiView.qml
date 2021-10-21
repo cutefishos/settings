@@ -65,7 +65,15 @@ ColumnLayout {
     ListView {
         id: wirelessView
         Layout.fillWidth: true
-        Layout.preferredHeight: itemHeight * count + ((count - 1) * spacing)
+
+        Layout.preferredHeight: {
+            var totalHeight = 0
+            for (var i = 0; i < wirelessView.visibleChildren.length; ++i) {
+                totalHeight += wirelessView.visibleChildren[i].height
+            }
+            return totalHeight
+        }
+
         clip: true
 
         model: NM.AppletProxyModel {
@@ -76,8 +84,6 @@ ColumnLayout {
         spacing: 0
         interactive: false
         visible: count > 0
-
-        property var itemHeight: 38
 
         delegate: WifiItem {
             width: ListView.view.width
