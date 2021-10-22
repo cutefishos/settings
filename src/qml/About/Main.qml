@@ -55,14 +55,15 @@ ItemPage {
                 height: FishUI.Units.smallSpacing
             }
 
-//            Label {
-//                Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
-//                text: about.isCutefishOS ? "<b>CutefishOS</b>" : "<b>Cutefish</b>"
-//                font.pointSize: 22
-//                color: "#3385FF"
-//                leftPadding: FishUI.Units.largeSpacing * 2
-//                rightPadding: FishUI.Units.largeSpacing * 2
-//            }
+            Label {
+                Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
+                text: "<b>Cutefish</b>"
+                visible: !about.isCutefishOS
+                font.pointSize: 22
+                color: "#3385FF"
+                leftPadding: FishUI.Units.largeSpacing * 2
+                rightPadding: FishUI.Units.largeSpacing * 2
+            }
 
             Image {
                 Layout.preferredWidth: 167
@@ -75,13 +76,14 @@ ItemPage {
             }
 
             Label {
-                text: !about.isCutefishOS ? qsTr("Built on %1").arg(about.prettyProductName) : ""
+                text: qsTr("Built on %1").arg(about.prettyProductName)
+                visible: !about.isCutefishOS
                 Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
                 color: FishUI.Theme.disabledTextColor
             }
 
             Item {
-                height: FishUI.Units.largeSpacing
+                height: FishUI.Units.largeSpacing * 2
             }
 
             RoundedItem {

@@ -40,7 +40,7 @@ Item {
         id: _itemLayout
         anchors.fill: parent
         anchors.leftMargin: 0
-        anchors.rightMargin: FishUI.Units.smallSpacing
+        anchors.rightMargin: 0
         anchors.topMargin: FishUI.Units.smallSpacing
         anchors.bottomMargin: FishUI.Units.smallSpacing
         spacing: 0
@@ -89,6 +89,8 @@ Item {
             RowLayout {
                 id: _topItem
                 anchors.fill: parent
+                anchors.leftMargin: FishUI.Units.smallSpacing
+                anchors.rightMargin: FishUI.Units.smallSpacing
                 spacing: FishUI.Units.largeSpacing
 
                 Image {
