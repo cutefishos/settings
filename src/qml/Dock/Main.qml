@@ -51,14 +51,14 @@ ItemPage {
 
                     IconCheckBox {
                         source: "qrc:/images/dock_bottom.svg"
-                        text: qsTr("Round")
+                        text: qsTr("Center")
                         checked: appearance.dockStyle === 0
                         onClicked: appearance.setDockStyle(0)
                     }
 
                     IconCheckBox {
                         source: "qrc:/images/dock_straight.svg"
-                        text: qsTr("Straight")
+                        text: qsTr("Full")
                         checked: appearance.dockStyle === 1
                         onClicked: appearance.setDockStyle(1)
                     }

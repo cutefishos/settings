@@ -30,37 +30,37 @@
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="78"/>
+        <location filename="../src/qml/About/Main.qml" line="79"/>
         <source>Built on %1</source>
         <translation>构建在 %1 上</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="89"/>
+        <location filename="../src/qml/About/Main.qml" line="91"/>
         <source>System Version</source>
         <translation>系统版本</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="94"/>
+        <location filename="../src/qml/About/Main.qml" line="96"/>
         <source>System Type</source>
         <translation>系统类型</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="99"/>
+        <location filename="../src/qml/About/Main.qml" line="101"/>
         <source>Kernel Version</source>
         <translation>内核版本</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="104"/>
+        <location filename="../src/qml/About/Main.qml" line="106"/>
         <source>Processor</source>
         <translation>处理器</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="109"/>
+        <location filename="../src/qml/About/Main.qml" line="111"/>
         <source>RAM</source>
         <translation>内存大小</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="114"/>
+        <location filename="../src/qml/About/Main.qml" line="116"/>
         <source>Internal Storage</source>
         <translation>内部存储</translation>
     </message>
@@ -311,13 +311,13 @@
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="54"/>
-        <source>Round</source>
-        <translation>圆角</translation>
+        <source>Center</source>
+        <translation>居中</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="61"/>
-        <source>Straight</source>
-        <translation>直角</translation>
+        <source>Full</source>
+        <translation>铺满</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="71"/>
@@ -793,28 +793,24 @@
 <context>
     <name>WifiItem</name>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="183"/>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="191"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="185"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="193"/>
         <source>Password</source>
         <translation>密码</translation>
     </message>
     <message>
-        <source>Show password</source>
-        <translation type="vanished">显示密码</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="205"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="207"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="210"/>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="222"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="212"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="224"/>
         <source>Connect</source>
         <translation>连接</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="236"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="238"/>
         <source>Disconnect</source>
         <translation>断开连接</translation>
     </message>

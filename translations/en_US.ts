@@ -30,37 +30,37 @@
         <translation>About</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="78"/>
+        <location filename="../src/qml/About/Main.qml" line="79"/>
         <source>Built on %1</source>
         <translation>Built on %1</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="89"/>
+        <location filename="../src/qml/About/Main.qml" line="91"/>
         <source>System Version</source>
         <translation>System Version</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="94"/>
+        <location filename="../src/qml/About/Main.qml" line="96"/>
         <source>System Type</source>
         <translation>System Type</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="99"/>
+        <location filename="../src/qml/About/Main.qml" line="101"/>
         <source>Kernel Version</source>
         <translation>Kernel Version</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="104"/>
+        <location filename="../src/qml/About/Main.qml" line="106"/>
         <source>Processor</source>
         <translation>Processor</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="109"/>
+        <location filename="../src/qml/About/Main.qml" line="111"/>
         <source>RAM</source>
         <translation>RAM</translation>
     </message>
     <message>
-        <location filename="../src/qml/About/Main.qml" line="114"/>
+        <location filename="../src/qml/About/Main.qml" line="116"/>
         <source>Internal Storage</source>
         <translation>Internal Storage</translation>
     </message>
@@ -311,12 +311,12 @@
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="54"/>
-        <source>Round</source>
+        <source>Center</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="61"/>
-        <source>Straight</source>
+        <source>Full</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -793,24 +793,24 @@
 <context>
     <name>WifiItem</name>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="183"/>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="191"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="185"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="193"/>
         <source>Password</source>
         <translation type="unfinished">Password</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="205"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="207"/>
         <source>Cancel</source>
         <translation type="unfinished">Cancel</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="210"/>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="222"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="212"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="224"/>
         <source>Connect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="236"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="238"/>
         <source>Disconnect</source>
         <translation type="unfinished"></translation>
     </message>
