@@ -104,8 +104,8 @@ install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 install(FILES
     cutefish-settings.desktop
-    DESTINATION /usr/share/applications/
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/usr/share/applications/
     COMPONENT Runtime
 )
 
-install(FILES ${QM_FILES} DESTINATION /usr/share/${PROJECT_NAME}/translations)
+install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_PREFIX}/usr/share/${PROJECT_NAME}/translations)
