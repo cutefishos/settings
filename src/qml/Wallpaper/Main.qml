@@ -257,6 +257,7 @@ ItemPage {
                 model.append({"bgColor": "#EE72EB"})
                 model.append({"bgColor": "#F0905A"})
                 model.append({"bgColor": "#595959"})
+                model.append({"bgColor": "#000000"})
             }
 
             delegate: Rectangle {
