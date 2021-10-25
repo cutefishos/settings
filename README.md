@@ -2,6 +2,8 @@
 
 The System Settings application for Cutefish Desktop.
 
+![screenshot](screenshots/Screenshot_20211025_150819.png)
+
 ## Dependencies
 Arch/Manjaro Dependencies:
 ```shell
