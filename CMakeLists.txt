@@ -17,6 +17,7 @@ find_package(X11 REQUIRED)
 find_package(Freetype REQUIRED)
 find_package(PkgConfig REQUIRED)
 find_package(Libcrypt REQUIRED)
+find_package(KF5BluezQt REQUIRED)
 # find_package(QApt REQUIRED)
 
 find_package(KF5NetworkManagerQt REQUIRED)
@@ -53,6 +54,8 @@ set(SRCS
     src/datetime/timezonemap.cpp
     src/datetime/timedated_interface.cpp
     src/touchpad.cpp
+    src/bluetooth/bluetoothmanager.cpp
+    src/bluetooth/bluetoothagent.cpp
 #    src/update/updatemodel.cpp
 )
 
@@ -81,6 +84,7 @@ target_link_libraries(${PROJECT_NAME}
 
         KF5::NetworkManagerQt
         KF5::ModemManagerQt
+        KF5::BluezQt
 
         PkgConfig::FontConfig
         ${FREETYPE_LIBRARIES}

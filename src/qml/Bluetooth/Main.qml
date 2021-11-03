@@ -22,22 +22,35 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
-//import org.kde.bluezqt 1.0 as BluezQt
-//import org.kde.plasma.private.bluetooth 1.0
-
 import Cutefish.Bluez 1.0 as Bluez
 import "../"
 
 ItemPage {
     headerTitle: qsTr("Bluetooth")
 
+    property bool bluetoothDisConnected: Bluez.Manager.bluetoothBlocked
+
+    onBluetoothDisConnectedChanged: {
+        bluetoothSwitch.checked = !bluetoothDisConnected
+    }
+
     function setBluetoothEnabled(enabled) {
         Bluez.Manager.bluetoothBlocked = !enabled
 
         for (var i = 0; i < Bluez.Manager.adapters.length; ++i) {
-            var adapter = Bluez.Manager.adapters[i];
-            adapter.powered = enabled;
+            var adapter = Bluez.Manager.adapters[i]
+            console.log(adapter + ", " + enabled)
+            adapter.powered = enabled
         }
+    }
+
+    Bluez.DevicesProxyModel {
+        id: devicesModel
+        sourceModel: Bluez.DevicesModel { }
+    }
+
+    BluetoothManager {
+        id: bluetoothMgr
     }
 
 //    Label {
@@ -80,23 +93,24 @@ ItemPage {
                         id: bluetoothSwitch
                         Layout.fillHeight: true
                         rightPadding: 0
+                        checked: !Bluez.Manager.bluetoothBlocked
                         onCheckedChanged: setBluetoothEnabled(checked)
-                        Component.onCompleted: bluetoothSwitch.checked = Bluez.Manager.operational
                     }
                 }
 
                 ListView {
+                    visible: count > 0
+
                     property var itemHeight: 50
+
+                    onCountChanged: {
+                        console.log(count)
+                    }
 
                     Layout.fillWidth: true
                     Layout.preferredHeight: itemHeight * count + ((count - 1) * spacing)
 
-                    Bluez.DevicesProxyModel {
-                        id: devicesModel
-                        sourceModel: Bluez.DevicesModel { }
-                    }
-
-                    model: Bluez.Manager.bluetoothOperational ? devicesModel : []
+                    model: devicesModel //Bluez.Manager.bluetoothOperational ? devicesModel : []
 
                     delegate: Item {
                         width: ListView.view.itemHeight

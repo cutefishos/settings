@@ -78,12 +78,14 @@ Item {
 //            category: qsTr("Network and connection")
 //        }
 
-//        ListElement {
-//            title: qsTr("Bluetooth")
-//            name: "bluetooth"
-//            page: "qrc:/qml/BluetoothPage.qml"
-//            iconSource: "bluetooth.svg"
-//        }
+        ListElement {
+            title: qsTr("Bluetooth")
+            name: "bluetooth"
+            page: "qrc:/qml/Bluetooth/Main.qml"
+            iconSource: "bluetooth.svg"
+            iconColor: "#0067FF"
+            category: qsTr("Network and connection")
+        }
 
         ListElement {
             title: qsTr("Display")

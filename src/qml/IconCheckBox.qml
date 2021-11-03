@@ -52,13 +52,6 @@ Item {
             border.width: 3
             border.color: control.checked ? FishUI.Theme.highlightColor : "transparent"
 
-            Behavior on border.color {
-                ColorAnimation {
-                    duration: 200
-                    easing.type: Easing.OutSine
-                }
-            }
-
             radius: FishUI.Theme.bigRadius + control.iconSpacing
             visible: true
 

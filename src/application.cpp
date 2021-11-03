@@ -25,6 +25,8 @@
 #include "datetime/time.h"
 #include "datetime/timezonemap.h"
 
+#include "bluetooth/bluetoothmanager.h"
+
 static QObject *passwordSingleton(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
     Q_UNUSED(engine);
@@ -77,6 +79,7 @@ Application::Application(int &argc, char **argv)
     qmlRegisterType<Time>(uri, 1, 0, "Time");
     qmlRegisterType<TimeZoneMap>(uri, 1, 0, "TimeZoneMap");
     qmlRegisterType<Touchpad>(uri, 1, 0, "Touchpad");
+    qmlRegisterType<BluetoothManager>(uri, 1, 0, "BluetoothManager");
 
     qmlRegisterSingletonType<Password>(uri, 1, 0, "Password", passwordSingleton);
 
