@@ -462,8 +462,8 @@
         <translation>无线网络</translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="32"/>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="71"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="29"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="84"/>
         <source>Bluetooth</source>
         <translation>蓝牙</translation>
     </message>
@@ -618,13 +618,14 @@
 <context>
     <name>SideBar</name>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="89"/>
+        <location filename="../src/qml/SideBar.qml" line="91"/>
         <source>Display</source>
         <translation>显示</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="60"/>
         <location filename="../src/qml/SideBar.qml" line="69"/>
+        <location filename="../src/qml/SideBar.qml" line="87"/>
         <source>Network and connection</source>
         <translation>网络与连接</translation>
     </message>
@@ -634,41 +635,41 @@
         <translation>以太网络</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="94"/>
-        <location filename="../src/qml/SideBar.qml" line="103"/>
-        <location filename="../src/qml/SideBar.qml" line="112"/>
-        <location filename="../src/qml/SideBar.qml" line="121"/>
-        <location filename="../src/qml/SideBar.qml" line="130"/>
+        <location filename="../src/qml/SideBar.qml" line="96"/>
+        <location filename="../src/qml/SideBar.qml" line="105"/>
+        <location filename="../src/qml/SideBar.qml" line="114"/>
+        <location filename="../src/qml/SideBar.qml" line="123"/>
+        <location filename="../src/qml/SideBar.qml" line="132"/>
         <source>Display and appearance</source>
         <translation>显示与外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="98"/>
+        <location filename="../src/qml/SideBar.qml" line="100"/>
         <source>Appearance</source>
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="143"/>
+        <location filename="../src/qml/SideBar.qml" line="145"/>
         <source>Mouse</source>
         <translation>鼠标</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="107"/>
+        <location filename="../src/qml/SideBar.qml" line="109"/>
         <source>Fonts</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="125"/>
+        <location filename="../src/qml/SideBar.qml" line="127"/>
         <source>Dock</source>
         <translation>程序坞</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="134"/>
+        <location filename="../src/qml/SideBar.qml" line="136"/>
         <source>User</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="116"/>
+        <location filename="../src/qml/SideBar.qml" line="118"/>
         <source>Background</source>
         <translation>背景</translation>
     </message>
@@ -678,44 +679,49 @@
         <translation>无线网络</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="139"/>
-        <location filename="../src/qml/SideBar.qml" line="148"/>
-        <location filename="../src/qml/SideBar.qml" line="157"/>
-        <location filename="../src/qml/SideBar.qml" line="175"/>
-        <location filename="../src/qml/SideBar.qml" line="193"/>
-        <location filename="../src/qml/SideBar.qml" line="202"/>
-        <location filename="../src/qml/SideBar.qml" line="211"/>
-        <location filename="../src/qml/SideBar.qml" line="220"/>
+        <location filename="../src/qml/SideBar.qml" line="82"/>
+        <source>Bluetooth</source>
+        <translation type="unfinished">蓝牙</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="141"/>
+        <location filename="../src/qml/SideBar.qml" line="150"/>
+        <location filename="../src/qml/SideBar.qml" line="159"/>
+        <location filename="../src/qml/SideBar.qml" line="177"/>
+        <location filename="../src/qml/SideBar.qml" line="195"/>
+        <location filename="../src/qml/SideBar.qml" line="204"/>
+        <location filename="../src/qml/SideBar.qml" line="213"/>
+        <location filename="../src/qml/SideBar.qml" line="222"/>
         <source>System</source>
         <translation>系统</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="152"/>
+        <location filename="../src/qml/SideBar.qml" line="154"/>
         <source>Touchpad</source>
         <translation>触摸版</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="170"/>
+        <location filename="../src/qml/SideBar.qml" line="172"/>
         <source>Date &amp; Time</source>
         <translation>日期和时间</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="188"/>
+        <location filename="../src/qml/SideBar.qml" line="190"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="197"/>
+        <location filename="../src/qml/SideBar.qml" line="199"/>
         <source>Battery</source>
         <translation>电池</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="206"/>
+        <location filename="../src/qml/SideBar.qml" line="208"/>
         <source>Power</source>
         <translation>电源</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="215"/>
+        <location filename="../src/qml/SideBar.qml" line="217"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
