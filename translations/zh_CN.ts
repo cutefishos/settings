@@ -381,8 +381,14 @@
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="70"/>
+        <location filename="../src/qml/Power/Main.qml" line="83"/>
         <source>Performance</source>
         <translation>性能模式</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Power/Main.qml" line="84"/>
+        <source>CPU and GPU frequencies will be increased, while power consumption and heat generation will be increased.</source>
+        <translation>CPU和GPU频率将提升，同时耗电和发热将增加。</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="31"/>
@@ -462,10 +468,20 @@
         <translation>无线网络</translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="29"/>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="84"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="30"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="89"/>
         <source>Bluetooth</source>
         <translation>蓝牙</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="122"/>
+        <source>Connected devices</source>
+        <translation>已连接设备</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="123"/>
+        <source>Available devices</source>
+        <translation>可用设备</translation>
     </message>
     <message>
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
@@ -681,7 +697,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="82"/>
         <source>Bluetooth</source>
-        <translation type="unfinished">蓝牙</translation>
+        <translation>蓝牙</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="141"/>

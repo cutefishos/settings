@@ -41,7 +41,7 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: FishUI.Units.largeSpacing
 
             RoundedItem {
                 Label {
@@ -72,6 +72,16 @@ ItemPage {
                         onClicked: power.mode = 1
                     }
                 }
+            }
+
+            Label {
+                color: FishUI.Theme.disabledTextColor
+                leftPadding: FishUI.Units.largeSpacing * 2
+                rightPadding: FishUI.Units.largeSpacing
+                Layout.fillWidth: true
+                wrapMode: Text.WordWrap
+                text: "<b>%1:</b> %2".arg(qsTr("Performance"))
+                                     .arg(qsTr("CPU and GPU frequencies will be increased, while power consumption and heat generation will be increased."))
             }
         }
     }

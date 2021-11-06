@@ -381,7 +381,13 @@
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="70"/>
+        <location filename="../src/qml/Power/Main.qml" line="83"/>
         <source>Performance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Power/Main.qml" line="84"/>
+        <source>CPU and GPU frequencies will be increased, while power consumption and heat generation will be increased.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -462,10 +468,20 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="29"/>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="84"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="30"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="89"/>
         <source>Bluetooth</source>
         <translation type="unfinished">Bluetooth</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="122"/>
+        <source>Connected devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="123"/>
+        <source>Available devices</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/Wired/Main.qml" line="32"/>

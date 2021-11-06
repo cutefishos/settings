@@ -26,6 +26,7 @@ import Cutefish.Bluez 1.0 as Bluez
 import "../"
 
 ItemPage {
+    id: control
     headerTitle: qsTr("Bluetooth")
 
     property bool bluetoothDisConnected: Bluez.Manager.bluetoothBlocked
@@ -45,8 +46,12 @@ ItemPage {
     }
 
     Bluez.DevicesProxyModel {
+        id: devicesProxyModel
+        sourceModel: devicesModel
+    }
+
+    Bluez.DevicesModel {
         id: devicesModel
-        sourceModel: Bluez.DevicesModel { }
     }
 
     BluetoothManager {
@@ -110,7 +115,13 @@ ItemPage {
                     Layout.fillWidth: true
                     Layout.preferredHeight: itemHeight * count + ((count - 1) * spacing)
 
-                    model: devicesModel //Bluez.Manager.bluetoothOperational ? devicesModel : []
+                    model: devicesProxyModel //Bluez.Manager.bluetoothOperational ? devicesModel : []
+
+                    section.property: "Section"
+                    section.delegate: Label {
+                        text: section == "Connected" ? qsTr("Connected devices")
+                                                     : qsTr("Available devices")
+                    }
 
                     delegate: Item {
                         width: ListView.view.itemHeight
@@ -120,7 +131,7 @@ ItemPage {
                             anchors.fill: parent
 
                             Label {
-                                text: model.DeviceFullName
+                                text: model.Device
                             }
                         }
                     }
