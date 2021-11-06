@@ -49,6 +49,8 @@ ItemPage {
             spacing: FishUI.Units.largeSpacing
 
             RoundedItem {
+                spacing: FishUI.Units.largeSpacing * 1.5
+
                 RowLayout {
                     Label {
                         text: qsTr("Auto Sync")
@@ -62,8 +64,26 @@ ItemPage {
                         Layout.fillHeight: true
                         rightPadding: 0
                         rightInset: 0
-                        Component.onCompleted: checked = time.useNtp
+                        checked: time.useNtp
                         onCheckedChanged: time.useNtp = checked
+                    }
+                }
+
+                RowLayout {
+                    Label {
+                        text: qsTr("24-Hour Time")
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    Switch {
+                        Layout.fillHeight: true
+                        rightPadding: 0
+                        rightInset: 0
+                        checked: time.twentyFour
+                        onCheckedChanged: time.twentyFour = checked
                     }
                 }
             }

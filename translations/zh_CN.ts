@@ -573,12 +573,17 @@
         <translation>日期和时间</translation>
     </message>
     <message>
-        <location filename="../src/qml/DateTime/Main.qml" line="54"/>
+        <location filename="../src/qml/DateTime/Main.qml" line="56"/>
         <source>Auto Sync</source>
         <translation>自动同步</translation>
     </message>
     <message>
-        <location filename="../src/qml/DateTime/Main.qml" line="83"/>
+        <location filename="../src/qml/DateTime/Main.qml" line="74"/>
+        <source>24-Hour Time</source>
+        <translation>24小时制</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DateTime/Main.qml" line="103"/>
         <source>Time Zone</source>
         <translation>时区</translation>
     </message>

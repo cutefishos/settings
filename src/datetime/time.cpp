@@ -21,10 +21,17 @@
 #include "timedated_interface.h"
 
 #include <QDateTime>
+#include <QSettings>
+
+#define FORMAT24H "HH:mm:ss"
+#define FORMAT12H "h:mm:ss ap"
 
 Time::Time(QObject *parent)
     : QObject(parent)
+    , m_settings("cutefishos", "locale")
 {
+    m_twentyFour = m_settings.value("twentyFour", false).toBool();
+
     OrgFreedesktopTimedate1Interface iface(QStringLiteral("org.freedesktop.timedate1"),
                                            QStringLiteral("/org/freedesktop/timedate1"),
                                            QDBusConnection::systemBus());
@@ -86,5 +93,22 @@ void Time::setCurrentDate(const QDate &currentDate)
     if (m_currentDate != currentDate) {
         m_currentDate = currentDate;
         emit currentDateChanged();
+    }
+}
+
+bool Time::twentyFour() const
+{
+    return m_twentyFour;
+}
+
+void Time::setTwentyFour(bool t)
+{
+    if (m_twentyFour != t) {
+        m_twentyFour = t;
+        m_settings.setValue("twentyFour", m_twentyFour);
+
+        QDBusInterface("com.cutefish.Statusbar", "/Statusbar").call("setTwentyFourTime", m_twentyFour);
+
+        emit twentyFourChanged();
     }
 }

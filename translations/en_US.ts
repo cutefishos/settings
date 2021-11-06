@@ -573,12 +573,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DateTime/Main.qml" line="54"/>
+        <location filename="../src/qml/DateTime/Main.qml" line="56"/>
         <source>Auto Sync</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DateTime/Main.qml" line="83"/>
+        <location filename="../src/qml/DateTime/Main.qml" line="74"/>
+        <source>24-Hour Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DateTime/Main.qml" line="103"/>
         <source>Time Zone</source>
         <translation type="unfinished"></translation>
     </message>
