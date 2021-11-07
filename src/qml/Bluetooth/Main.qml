@@ -40,7 +40,6 @@ ItemPage {
 
         for (var i = 0; i < Bluez.Manager.adapters.length; ++i) {
             var adapter = Bluez.Manager.adapters[i]
-            console.log(adapter + ", " + enabled)
             adapter.powered = enabled
         }
     }
@@ -56,6 +55,15 @@ ItemPage {
 
     BluetoothManager {
         id: bluetoothMgr
+
+        onShowPairDialog: {
+            _pairDialog.title = name
+            _pairDialog.visible = true
+        }
+    }
+
+    PairDialog {
+        id: _pairDialog
     }
 
 //    Label {
@@ -104,38 +112,75 @@ ItemPage {
                 }
 
                 ListView {
+                    id: _listView
                     visible: count > 0
-
-                    property var itemHeight: 50
-
-                    onCountChanged: {
-                        console.log(count)
-                    }
+                    interactive: false
+                    spacing: FishUI.Units.largeSpacing
 
                     Layout.fillWidth: true
-                    Layout.preferredHeight: itemHeight * count + ((count - 1) * spacing)
+
+                    Layout.preferredHeight: {
+                        var totalHeight = 0
+                        for (var i = 0; i < _listView.visibleChildren.length; ++i) {
+                            totalHeight += _listView.visibleChildren[i].height
+                        }
+                        return totalHeight
+                    }
 
                     model: devicesProxyModel //Bluez.Manager.bluetoothOperational ? devicesModel : []
 
                     section.property: "Section"
                     section.delegate: Label {
+                        color: FishUI.Theme.disabledTextColor
+                        topPadding: FishUI.Units.largeSpacing
+                        bottomPadding: FishUI.Units.largeSpacing
                         text: section == "Connected" ? qsTr("Connected devices")
                                                      : qsTr("Available devices")
                     }
 
                     delegate: Item {
-                        width: ListView.view.itemHeight
-                        height: 50
+                        width: ListView.view.width
+                        height: _itemLayout.implicitHeight + FishUI.Units.largeSpacing * 1.5
+
+                        Rectangle {
+                            anchors.fill: parent
+                            radius: FishUI.Theme.smallRadius
+                            color: FishUI.Theme.textColor
+                            opacity: mouseArea.pressed ? 0.15 :  mouseArea.containsMouse ? 0.1 : 0.0
+                        }
+
+                        MouseArea {
+                            id: mouseArea
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            acceptedButtons: Qt.LeftButton
+                            onClicked: {
+                                if (model.Connected && model.Paired){
+                                    return
+                                }
+
+                                if (model.Paired) {
+                                    bluetoothMgr.connectToDevice(model.Address)
+                                } else {
+                                    bluetoothMgr.requestParingConnection(model.Address)
+                                }
+                            }
+                        }
 
                         ColumnLayout {
+                            id: _itemLayout
                             anchors.fill: parent
 
                             Label {
-                                text: model.Device
+                                text: model.DeviceFullName
                             }
                         }
                     }
                 }
+            }
+
+            Item {
+                height: FishUI.Units.largeSpacing * 2
             }
         }
     }

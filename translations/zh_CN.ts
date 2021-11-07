@@ -468,17 +468,17 @@
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="30"/>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="89"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="97"/>
         <source>Bluetooth</source>
         <translation>蓝牙</translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="122"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="137"/>
         <source>Connected devices</source>
         <translation>已连接设备</translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="123"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="138"/>
         <source>Available devices</source>
         <translation>可用设备</translation>
     </message>
@@ -605,6 +605,24 @@
         <location filename="../src/qml/Touchpad/Main.qml" line="87"/>
         <source>Pointer acceleration</source>
         <translation>指针速度</translation>
+    </message>
+</context>
+<context>
+    <name>PairDialog</name>
+    <message>
+        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="35"/>
+        <source>Bluetooth Pairing Request</source>
+        <translation>蓝牙配对请求</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="42"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="51"/>
+        <source>OK</source>
+        <translation>确认</translation>
     </message>
 </context>
 <context>

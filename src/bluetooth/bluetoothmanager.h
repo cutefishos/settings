@@ -14,15 +14,24 @@ public:
     ~BluetoothManager();
 
     Q_INVOKABLE void setName(const QString &name);
+    Q_INVOKABLE void connectToDevice(const QString address);
+    Q_INVOKABLE void requestParingConnection(const QString address);
+    Q_INVOKABLE void confirmMatchButton(const bool match);
+
+signals:
+    void showPairDialog(const QString name, const QString pin);
 
 private slots:
     void onInitJobResult(BluezQt::InitManagerJob *job);
     void operationalChanged(bool operational);
+    void confirmationRequested(const QString &passkey, const BluezQt::Request<> &req);
 
 private:
     BluezQt::Manager *m_manager;
     BluetoothAgent *m_agent;
     BluezQt::AdapterPtr m_adapter;
+    BluezQt::DevicePtr m_device;
+    BluezQt::Request<> m_req;
     QString m_name;
 };
 

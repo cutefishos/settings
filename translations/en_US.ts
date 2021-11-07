@@ -468,17 +468,17 @@
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="30"/>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="89"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="97"/>
         <source>Bluetooth</source>
         <translation type="unfinished">Bluetooth</translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="122"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="137"/>
         <source>Connected devices</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="123"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="138"/>
         <source>Available devices</source>
         <translation type="unfinished"></translation>
     </message>
@@ -604,6 +604,24 @@
     <message>
         <location filename="../src/qml/Touchpad/Main.qml" line="87"/>
         <source>Pointer acceleration</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PairDialog</name>
+    <message>
+        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="35"/>
+        <source>Bluetooth Pairing Request</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="42"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="51"/>
+        <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
