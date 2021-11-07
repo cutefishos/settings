@@ -23,9 +23,6 @@
 #include <QDateTime>
 #include <QSettings>
 
-#define FORMAT24H "HH:mm:ss"
-#define FORMAT12H "h:mm:ss ap"
-
 Time::Time(QObject *parent)
     : QObject(parent)
     , m_settings("cutefishos", "locale")

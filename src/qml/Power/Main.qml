@@ -80,8 +80,7 @@ ItemPage {
                 rightPadding: FishUI.Units.largeSpacing
                 Layout.fillWidth: true
                 wrapMode: Text.WordWrap
-                text: "<b>%1:</b> %2".arg(qsTr("Performance"))
-                                     .arg(qsTr("CPU and GPU frequencies will be increased, while power consumption and heat generation will be increased."))
+                text: qsTr("Performance mode: CPU and GPU frequencies will be increased, while power consumption and heat generation will be increased.")
             }
         }
     }

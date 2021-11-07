@@ -381,13 +381,12 @@
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="70"/>
-        <location filename="../src/qml/Power/Main.qml" line="83"/>
         <source>Performance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="84"/>
-        <source>CPU and GPU frequencies will be increased, while power consumption and heat generation will be increased.</source>
+        <location filename="../src/qml/Power/Main.qml" line="83"/>
+        <source>Performance mode: CPU and GPU frequencies will be increased, while power consumption and heat generation will be increased.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

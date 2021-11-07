@@ -381,14 +381,13 @@
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="70"/>
-        <location filename="../src/qml/Power/Main.qml" line="83"/>
         <source>Performance</source>
         <translation>性能模式</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="84"/>
-        <source>CPU and GPU frequencies will be increased, while power consumption and heat generation will be increased.</source>
-        <translation>CPU和GPU频率将提升，同时耗电和发热将增加。</translation>
+        <location filename="../src/qml/Power/Main.qml" line="83"/>
+        <source>Performance mode: CPU and GPU frequencies will be increased, while power consumption and heat generation will be increased.</source>
+        <translation>性能模式: CPU和GPU频率将提升，同时耗电和发热将增加。</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="31"/>
