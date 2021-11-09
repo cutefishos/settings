@@ -66,19 +66,6 @@ ItemPage {
         id: _pairDialog
     }
 
-//    Label {
-//        id: noBluetoothMessage
-//        anchors.centerIn: parent
-//        visible: BluezQt.Manager.rfkill.state === BluezQt.Rfkill.Unknown
-//        text: qsTr("No Bluetooth adapters found")
-//    }
-
-//    Label {
-//        anchors.centerIn: parent
-//        text: qsTr("Bluetooth is disabled")
-//        visible: Bluez.Manager.operational && !Bluez.Manager.bluetoothOperational // && !noBluetoothMessage.visible
-//    }
-
     Scrollable {
         anchors.fill: parent
         contentHeight: layout.implicitHeight
@@ -167,12 +154,23 @@ ItemPage {
                             }
                         }
 
-                        ColumnLayout {
+                        RowLayout {
                             id: _itemLayout
                             anchors.fill: parent
+                            spacing: FishUI.Units.largeSpacing
+
+                            Image {
+                                width: 16
+                                height: 16
+                                sourceSize: Qt.size(16, 16)
+                                source: FishUI.Theme.darkMode ? "qrc:/images/sidebar/dark/bluetooth.svg"
+                                                              : "qrc:/images/sidebar/light/bluetooth.svg"
+                                Layout.alignment: Qt.AlignVCenter
+                            }
 
                             Label {
                                 text: model.DeviceFullName
+                                Layout.fillWidth: true
                             }
                         }
                     }
