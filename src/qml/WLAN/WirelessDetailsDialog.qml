@@ -171,7 +171,7 @@ Dialog {
 
         RowLayout {
             id: footerLayout
-            spacing: FishUI.Theme.hugeRadius / 2
+            spacing: FishUI.Units.largeSpacing
 
             Button {
                 text: qsTr("Close")

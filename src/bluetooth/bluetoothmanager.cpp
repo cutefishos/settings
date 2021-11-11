@@ -4,6 +4,7 @@
 #include <BluezQt/InitManagerJob>
 #include <BluezQt/Adapter>
 #include <BluezQt/Device>
+#include <BluezQt/MediaPlayer>
 
 BluetoothManager::BluetoothManager(QObject *parent)
     : QObject(parent)
@@ -70,6 +71,35 @@ void BluetoothManager::confirmMatchButton(const bool match)
         m_req.accept();
     } else{
         m_req.reject();
+    }
+}
+
+void BluetoothManager::deviceDisconnect(const QString address)
+{
+    stopMediaPlayer(address);
+    BluezQt::AdapterPtr adaptor = m_manager->usableAdapter();
+    BluezQt::DevicePtr device = adaptor->deviceForAddress(address);
+    BluezQt::PendingCall *pairCall = device->disconnectFromDevice();
+    //    connect(pairCall, &BluezQt::PendingCall::finished, this, &Bluetooth::disconnectFromDeviceFinished);
+}
+
+void BluetoothManager::deviceRemoved(const QString address)
+{
+    stopMediaPlayer(address);
+    BluezQt::AdapterPtr adaptor = m_manager->usableAdapter();
+    BluezQt::DevicePtr device = adaptor->deviceForAddress(address);
+    BluezQt::PendingCall *removeCall = adaptor->removeDevice(device);
+    //    connect(removeCall, &BluezQt::PendingCall::finished, this, &Bluetooth::removeDeviceFinished);
+}
+
+void BluetoothManager::stopMediaPlayer(const QString address)
+{
+    BluezQt::AdapterPtr adaptor = m_manager->usableAdapter();
+    BluezQt::DevicePtr device = adaptor->deviceForAddress(address);
+    BluezQt::MediaPlayerPtr mediaPlayer = device->mediaPlayer();
+
+    if (mediaPlayer){
+        mediaPlayer->stop();
     }
 }
 

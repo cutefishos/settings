@@ -56,6 +56,10 @@ set(SRCS
     src/touchpad.cpp
     src/bluetooth/bluetoothmanager.cpp
     src/bluetooth/bluetoothagent.cpp
+    src/vpn/vpn.cpp
+    src/vpn/nm-l2tp-service.h
+    src/vpn/nm-openvpn-service.h
+    src/vpn/nm-pptp-service.h
 #    src/update/updatemodel.cpp
 )
 

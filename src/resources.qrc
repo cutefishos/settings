@@ -120,5 +120,6 @@
         <file>images/logo.png</file>
         <file>images/dock_straight.svg</file>
         <file>qml/Bluetooth/PairDialog.qml</file>
+        <file>qml/VPN/Main.qml</file>
     </qresource>
 </RCC>

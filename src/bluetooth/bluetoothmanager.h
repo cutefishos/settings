@@ -17,6 +17,9 @@ public:
     Q_INVOKABLE void connectToDevice(const QString address);
     Q_INVOKABLE void requestParingConnection(const QString address);
     Q_INVOKABLE void confirmMatchButton(const bool match);
+    Q_INVOKABLE void deviceDisconnect(const QString address);
+    Q_INVOKABLE void deviceRemoved(const QString address);
+    Q_INVOKABLE void stopMediaPlayer(const QString address);
 
 signals:
     void showPairDialog(const QString name, const QString pin);

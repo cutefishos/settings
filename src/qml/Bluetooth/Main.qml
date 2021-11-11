@@ -102,7 +102,7 @@ ItemPage {
                     id: _listView
                     visible: count > 0
                     interactive: false
-                    spacing: FishUI.Units.largeSpacing
+                    spacing: 0
 
                     Layout.fillWidth: true
 
@@ -127,50 +127,108 @@ ItemPage {
 
                     delegate: Item {
                         width: ListView.view.width
-                        height: _itemLayout.implicitHeight + FishUI.Units.largeSpacing * 1.5
+                        height: _itemLayout.implicitHeight + FishUI.Units.largeSpacing
 
-                        Rectangle {
-                            anchors.fill: parent
-                            radius: FishUI.Theme.smallRadius
-                            color: FishUI.Theme.textColor
-                            opacity: mouseArea.pressed ? 0.15 :  mouseArea.containsMouse ? 0.1 : 0.0
-                        }
+                        property bool paired: model.Connected && model.Paired
 
-                        MouseArea {
-                            id: mouseArea
-                            anchors.fill: parent
-                            hoverEnabled: true
-                            acceptedButtons: Qt.LeftButton
-                            onClicked: {
-                                if (model.Connected && model.Paired){
-                                    return
-                                }
-
-                                if (model.Paired) {
-                                    bluetoothMgr.connectToDevice(model.Address)
-                                } else {
-                                    bluetoothMgr.requestParingConnection(model.Address)
-                                }
+                        onPairedChanged: {
+                            if (!paired) {
+                                additionalSettings.hide()
                             }
                         }
 
-                        RowLayout {
+                        ColumnLayout {
                             id: _itemLayout
                             anchors.fill: parent
-                            spacing: FishUI.Units.largeSpacing
+                            anchors.leftMargin: 0
+                            anchors.rightMargin: 0
+                            anchors.topMargin: FishUI.Units.smallSpacing
+                            anchors.bottomMargin: FishUI.Units.smallSpacing
+                            spacing: 0
 
-                            Image {
-                                width: 16
-                                height: 16
-                                sourceSize: Qt.size(16, 16)
-                                source: FishUI.Theme.darkMode ? "qrc:/images/sidebar/dark/bluetooth.svg"
-                                                              : "qrc:/images/sidebar/light/bluetooth.svg"
-                                Layout.alignment: Qt.AlignVCenter
+                            Item {
+                                Layout.fillWidth: true
+                                height: _contentLayout.implicitHeight + FishUI.Units.largeSpacing
+
+                                Rectangle {
+                                    anchors.fill: parent
+                                    radius: FishUI.Theme.smallRadius
+                                    color: FishUI.Theme.textColor
+                                    opacity: mouseArea.pressed ? 0.15 :  mouseArea.containsMouse ? 0.1 : 0.0
+                                }
+
+                                MouseArea {
+                                    id: mouseArea
+                                    anchors.fill: parent
+                                    hoverEnabled: true
+                                    acceptedButtons: Qt.LeftButton
+
+                                    onClicked: {
+                                        if (model.Connected && model.Paired){
+                                            additionalSettings.toggle()
+                                            return
+                                        }
+
+                                        if (model.Paired) {
+                                            bluetoothMgr.connectToDevice(model.Address)
+                                        } else {
+                                            bluetoothMgr.requestParingConnection(model.Address)
+                                        }
+                                    }
+                                }
+
+                                RowLayout {
+                                    id: _contentLayout
+                                    anchors.fill: parent
+
+                                    Image {
+                                        width: 16
+                                        height: 16
+                                        sourceSize: Qt.size(16, 16)
+                                        source: FishUI.Theme.darkMode ? "qrc:/images/sidebar/dark/bluetooth.svg"
+                                                                      : "qrc:/images/sidebar/light/bluetooth.svg"
+                                        Layout.alignment: Qt.AlignVCenter
+                                    }
+
+                                    Label {
+                                        text: model.DeviceFullName
+                                        Layout.fillWidth: true
+                                        Layout.alignment: Qt.AlignVCenter
+                                    }
+                                }
                             }
 
-                            Label {
-                                text: model.DeviceFullName
-                                Layout.fillWidth: true
+                            Hideable {
+                                id: additionalSettings
+                                spacing: 0
+
+                                ColumnLayout {
+                                    Item {
+                                        height: FishUI.Units.largeSpacing
+                                    }
+
+                                    RowLayout {
+                                        spacing: FishUI.Units.largeSpacing
+                                        Layout.leftMargin: FishUI.Units.smallSpacing
+
+                                        Button {
+                                            text: qsTr("Disconnect")
+                                            onClicked: {
+                                                bluetoothMgr.deviceDisconnect(model.Address)
+                                                additionalSettings.hide()
+                                            }
+                                        }
+
+                                        Button {
+                                            text: qsTr("Forget This Device")
+                                            flat: true
+                                            onClicked: {
+                                                bluetoothMgr.deviceRemoved(model.Address)
+                                                additionalSettings.hide()
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
