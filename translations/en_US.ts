@@ -468,27 +468,52 @@
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="30"/>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="84"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="93"/>
         <source>Bluetooth</source>
         <translation type="unfinished">Bluetooth</translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="124"/>
-        <source>Connected devices</source>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="66"/>
+        <source>Pairing unsuccessful</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="125"/>
-        <source>Available devices</source>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="70"/>
+        <source>Connecting Unsuccessful</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="215"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="134"/>
+        <source>My devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="135"/>
+        <source>Other devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="206"/>
+        <source>Connected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="206"/>
+        <source>Not Connected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="225"/>
+        <source>Connect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="237"/>
         <source>Disconnect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="223"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="246"/>
         <source>Forget This Device</source>
         <translation type="unfinished"></translation>
     </message>
@@ -628,54 +653,54 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="65"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="69"/>
         <source>No Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="70"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="78"/>
         <source>Detect proxy configuration automatically</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="75"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="87"/>
         <source>Use proxy auto configuration URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="80"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="96"/>
         <source>Use manually specified proxy configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="100"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="124"/>
         <source>Select file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="114"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="138"/>
         <source>HTTP Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="124"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="165"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="186"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="153"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="207"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="241"/>
         <source>Port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="139"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="174"/>
         <source>Also use this proxy for FTP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="154"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="190"/>
         <source>FTP Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="177"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="225"/>
         <source>SOCKS Proxy</source>
         <translation type="unfinished"></translation>
     </message>
@@ -683,17 +708,17 @@
 <context>
     <name>PairDialog</name>
     <message>
-        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="35"/>
+        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="52"/>
         <source>Bluetooth Pairing Request</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="42"/>
+        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="69"/>
         <source>Cancel</source>
         <translation type="unfinished">Cancel</translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="51"/>
+        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="78"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>

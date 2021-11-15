@@ -468,27 +468,52 @@
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="30"/>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="84"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="93"/>
         <source>Bluetooth</source>
         <translation>蓝牙</translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="124"/>
-        <source>Connected devices</source>
-        <translation>已连接设备</translation>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="66"/>
+        <source>Pairing unsuccessful</source>
+        <translation>配对不成功</translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="125"/>
-        <source>Available devices</source>
-        <translation>可用设备</translation>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="70"/>
+        <source>Connecting Unsuccessful</source>
+        <translation>连接不成功</translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="215"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="134"/>
+        <source>My devices</source>
+        <translation>我的设备</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="135"/>
+        <source>Other devices</source>
+        <translation>其他设备</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="206"/>
+        <source>Connected</source>
+        <translation>已连接</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="206"/>
+        <source>Not Connected</source>
+        <translation>未连接</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="225"/>
+        <source>Connect</source>
+        <translation>连接</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="237"/>
         <source>Disconnect</source>
         <translation>断开连接</translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/Main.qml" line="223"/>
+        <location filename="../src/qml/Bluetooth/Main.qml" line="246"/>
         <source>Forget This Device</source>
         <translation>忽略此设备</translation>
     </message>
@@ -628,54 +653,54 @@
         <translation>代理</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="65"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="69"/>
         <source>No Proxy</source>
         <translation>不使用代理</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="70"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="78"/>
         <source>Detect proxy configuration automatically</source>
         <translation>自动检测代理配置</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="75"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="87"/>
         <source>Use proxy auto configuration URL</source>
         <translation>使用代理自动配置 URL</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="80"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="96"/>
         <source>Use manually specified proxy configuration</source>
         <translation>使用手动配置的代理服务器</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="100"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="124"/>
         <source>Select file</source>
         <translation>选择文件</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="114"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="138"/>
         <source>HTTP Proxy</source>
         <translation>HTTP 代理</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="124"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="165"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="186"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="153"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="207"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="241"/>
         <source>Port</source>
         <translation>端口</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="139"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="174"/>
         <source>Also use this proxy for FTP</source>
         <translation>将此代理用于 FTP</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="154"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="190"/>
         <source>FTP Proxy</source>
         <translation>FTP 代理</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="177"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="225"/>
         <source>SOCKS Proxy</source>
         <translation>SOCKS 代理</translation>
     </message>
@@ -683,17 +708,17 @@
 <context>
     <name>PairDialog</name>
     <message>
-        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="35"/>
+        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="52"/>
         <source>Bluetooth Pairing Request</source>
         <translation>蓝牙配对请求</translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="42"/>
+        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="69"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="51"/>
+        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="78"/>
         <source>OK</source>
         <translation>确认</translation>
     </message>
@@ -799,10 +824,6 @@
         <location filename="../src/qml/SideBar.qml" line="82"/>
         <source>Bluetooth</source>
         <translation>蓝牙</translation>
-    </message>
-    <message>
-        <source>VPN</source>
-        <translation type="vanished">VPN</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="159"/>

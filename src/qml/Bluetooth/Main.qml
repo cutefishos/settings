@@ -53,12 +53,21 @@ ItemPage {
         id: devicesModel
     }
 
-    BluetoothManager {
+    Bluez.BluetoothManager {
         id: bluetoothMgr
 
         onShowPairDialog: {
             _pairDialog.title = name
+            _pairDialog.pin = pin
             _pairDialog.visible = true
+        }
+
+        onPairFailed: {
+            rootWindow.showPassiveNotification(qsTr("Pairing unsuccessful"), 3000)
+        }
+
+        onConnectFailed: {
+            rootWindow.showPassiveNotification(qsTr("Connecting Unsuccessful"), 3000)
         }
     }
 
@@ -114,15 +123,16 @@ ItemPage {
                         return totalHeight
                     }
 
-                    model: devicesProxyModel //Bluez.Manager.bluetoothOperational ? devicesModel : []
+                    model: Bluez.Manager.bluetoothOperational ? devicesProxyModel : []
 
                     section.property: "Section"
+                    section.criteria: ViewSection.FullString
                     section.delegate: Label {
                         color: FishUI.Theme.disabledTextColor
                         topPadding: FishUI.Units.largeSpacing
                         bottomPadding: FishUI.Units.largeSpacing
-                        text: section == "Connected" ? qsTr("Connected devices")
-                                                     : qsTr("Available devices")
+                        text: section == "My devices" ? qsTr("My devices")
+                                                     : qsTr("Other devices")
                     }
 
                     delegate: Item {
@@ -130,12 +140,6 @@ ItemPage {
                         height: _itemLayout.implicitHeight + FishUI.Units.largeSpacing
 
                         property bool paired: model.Connected && model.Paired
-
-                        onPairedChanged: {
-                            if (!paired) {
-                                additionalSettings.hide()
-                            }
-                        }
 
                         ColumnLayout {
                             id: _itemLayout
@@ -164,7 +168,7 @@ ItemPage {
                                     acceptedButtons: Qt.LeftButton
 
                                     onClicked: {
-                                        if (model.Connected && model.Paired){
+                                        if (model.Connected || model.Paired){
                                             additionalSettings.toggle()
                                             return
                                         }
@@ -180,6 +184,7 @@ ItemPage {
                                 RowLayout {
                                     id: _contentLayout
                                     anchors.fill: parent
+                                    anchors.rightMargin: FishUI.Units.smallSpacing
 
                                     Image {
                                         width: 16
@@ -194,6 +199,11 @@ ItemPage {
                                         text: model.DeviceFullName
                                         Layout.fillWidth: true
                                         Layout.alignment: Qt.AlignVCenter
+                                    }
+
+                                    Label {
+                                        visible: model.Paired
+                                        text: model.Connected ? qsTr("Connected") : qsTr("Not Connected")
                                     }
                                 }
                             }
@@ -212,7 +222,20 @@ ItemPage {
                                         Layout.leftMargin: FishUI.Units.smallSpacing
 
                                         Button {
+                                            text: qsTr("Connect")
+                                            visible: !model.Connected
+                                            onClicked: {
+                                                if (model.Paired) {
+                                                    bluetoothMgr.connectToDevice(model.Address)
+                                                } else {
+                                                    bluetoothMgr.requestParingConnection(model.Address)
+                                                }
+                                            }
+                                        }
+
+                                        Button {
                                             text: qsTr("Disconnect")
+                                            visible: model.Connected
                                             onClicked: {
                                                 bluetoothMgr.deviceDisconnect(model.Address)
                                                 additionalSettings.hide()
@@ -229,6 +252,8 @@ ItemPage {
                                         }
                                     }
                                 }
+
+                                HorizontalDivider {}
                             }
                         }
                     }
