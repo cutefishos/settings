@@ -622,6 +622,63 @@
         <source>VPN</source>
         <translation>VPN</translation>
     </message>
+    <message>
+        <location filename="../src/qml/Proxy/Main.qml" line="31"/>
+        <source>Proxy</source>
+        <translation>代理</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Proxy/Main.qml" line="65"/>
+        <source>No Proxy</source>
+        <translation>不使用代理</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Proxy/Main.qml" line="70"/>
+        <source>Detect proxy configuration automatically</source>
+        <translation>自动检测代理配置</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Proxy/Main.qml" line="75"/>
+        <source>Use proxy auto configuration URL</source>
+        <translation>使用代理自动配置 URL</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Proxy/Main.qml" line="80"/>
+        <source>Use manually specified proxy configuration</source>
+        <translation>使用手动配置的代理服务器</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Proxy/Main.qml" line="100"/>
+        <source>Select file</source>
+        <translation>选择文件</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Proxy/Main.qml" line="114"/>
+        <source>HTTP Proxy</source>
+        <translation>HTTP 代理</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Proxy/Main.qml" line="124"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="165"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="186"/>
+        <source>Port</source>
+        <translation>端口</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Proxy/Main.qml" line="139"/>
+        <source>Also use this proxy for FTP</source>
+        <translation>将此代理用于 FTP</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Proxy/Main.qml" line="154"/>
+        <source>FTP Proxy</source>
+        <translation>FTP 代理</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Proxy/Main.qml" line="177"/>
+        <source>SOCKS Proxy</source>
+        <translation>SOCKS 代理</translation>
+    </message>
 </context>
 <context>
     <name>PairDialog</name>
@@ -672,7 +729,7 @@
 <context>
     <name>SideBar</name>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="100"/>
+        <location filename="../src/qml/SideBar.qml" line="109"/>
         <source>Display</source>
         <translation>显示</translation>
     </message>
@@ -680,7 +737,7 @@
         <location filename="../src/qml/SideBar.qml" line="60"/>
         <location filename="../src/qml/SideBar.qml" line="69"/>
         <location filename="../src/qml/SideBar.qml" line="87"/>
-        <location filename="../src/qml/SideBar.qml" line="96"/>
+        <location filename="../src/qml/SideBar.qml" line="105"/>
         <source>Network and connection</source>
         <translation>网络与连接</translation>
     </message>
@@ -690,41 +747,46 @@
         <translation>以太网络</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="105"/>
+        <location filename="../src/qml/SideBar.qml" line="100"/>
+        <source>Proxy</source>
+        <translation>代理</translation>
+    </message>
+    <message>
         <location filename="../src/qml/SideBar.qml" line="114"/>
         <location filename="../src/qml/SideBar.qml" line="123"/>
         <location filename="../src/qml/SideBar.qml" line="132"/>
         <location filename="../src/qml/SideBar.qml" line="141"/>
+        <location filename="../src/qml/SideBar.qml" line="150"/>
         <source>Display and appearance</source>
         <translation>显示与外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="109"/>
+        <location filename="../src/qml/SideBar.qml" line="118"/>
         <source>Appearance</source>
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="154"/>
+        <location filename="../src/qml/SideBar.qml" line="163"/>
         <source>Mouse</source>
         <translation>鼠标</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="118"/>
+        <location filename="../src/qml/SideBar.qml" line="127"/>
         <source>Fonts</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="136"/>
+        <location filename="../src/qml/SideBar.qml" line="145"/>
         <source>Dock</source>
         <translation>程序坞</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="145"/>
+        <location filename="../src/qml/SideBar.qml" line="154"/>
         <source>User</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="127"/>
+        <location filename="../src/qml/SideBar.qml" line="136"/>
         <source>Background</source>
         <translation>背景</translation>
     </message>
@@ -739,49 +801,48 @@
         <translation>蓝牙</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="91"/>
         <source>VPN</source>
-        <translation>VPN</translation>
+        <translation type="vanished">VPN</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="150"/>
         <location filename="../src/qml/SideBar.qml" line="159"/>
         <location filename="../src/qml/SideBar.qml" line="168"/>
-        <location filename="../src/qml/SideBar.qml" line="186"/>
-        <location filename="../src/qml/SideBar.qml" line="204"/>
+        <location filename="../src/qml/SideBar.qml" line="177"/>
+        <location filename="../src/qml/SideBar.qml" line="195"/>
         <location filename="../src/qml/SideBar.qml" line="213"/>
         <location filename="../src/qml/SideBar.qml" line="222"/>
         <location filename="../src/qml/SideBar.qml" line="231"/>
+        <location filename="../src/qml/SideBar.qml" line="240"/>
         <source>System</source>
         <translation>系统</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="163"/>
+        <location filename="../src/qml/SideBar.qml" line="172"/>
         <source>Touchpad</source>
         <translation>触摸版</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="181"/>
+        <location filename="../src/qml/SideBar.qml" line="190"/>
         <source>Date &amp; Time</source>
         <translation>日期和时间</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="199"/>
+        <location filename="../src/qml/SideBar.qml" line="208"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="208"/>
+        <location filename="../src/qml/SideBar.qml" line="217"/>
         <source>Battery</source>
         <translation>电池</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="217"/>
+        <location filename="../src/qml/SideBar.qml" line="226"/>
         <source>Power</source>
         <translation>电源</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="226"/>
+        <location filename="../src/qml/SideBar.qml" line="235"/>
         <source>About</source>
         <translation>关于</translation>
     </message>

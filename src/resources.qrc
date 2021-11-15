@@ -121,5 +121,7 @@
         <file>images/dock_straight.svg</file>
         <file>qml/Bluetooth/PairDialog.qml</file>
         <file>qml/VPN/Main.qml</file>
+        <file>qml/Proxy/Main.qml</file>
+        <file>images/sidebar/dark/proxy.svg</file>
     </qresource>
 </RCC>

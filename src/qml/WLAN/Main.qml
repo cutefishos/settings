@@ -58,7 +58,9 @@ ItemPage {
         id: configuration
     }
 
-    Component.onCompleted: handler.requestScan()
+    Component.onCompleted: {
+        handler.requestScan()
+    }
 
     Timer {
         id: scanTimer

@@ -65,13 +65,16 @@ ColumnLayout {
     ListView {
         id: wirelessView
         Layout.fillWidth: true
-
         Layout.preferredHeight: {
             var totalHeight = 0
             for (var i = 0; i < wirelessView.visibleChildren.length; ++i) {
                 totalHeight += wirelessView.visibleChildren[i].height
             }
             return totalHeight
+        }
+
+        Component.onCompleted: {
+            wirelessView.contentY = 0
         }
 
         clip: true
