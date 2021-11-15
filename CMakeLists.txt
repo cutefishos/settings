@@ -60,6 +60,7 @@ set(SRCS
     src/vpn/nm-l2tp-service.h
     src/vpn/nm-openvpn-service.h
     src/vpn/nm-pptp-service.h
+    src/networkproxy.cpp
 #    src/update/updatemodel.cpp
 )
 

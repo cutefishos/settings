@@ -35,7 +35,11 @@ ItemPage {
         property: "text"
         value: httpProxyField.text
         when: forFtpCheckBox.checked
-        restoreMode: Binding.RestoreNone
+        restoreMode: Binding.RestoreValue
+    }
+
+    NetworkProxy {
+        id: networkProxy
     }
 
     Binding {
@@ -61,23 +65,38 @@ ItemPage {
 
                 RadioButton {
                     id: noProxyRadioButton
-                    checked: true
+                    checked: networkProxy.flag === 0
                     text: qsTr("No Proxy")
+                    onClicked: {
+                        networkProxy.flag = 0
+                    }
                 }
 
                 RadioButton {
                     id: autoDiscoverProxyRadioButton
+                    checked: networkProxy.flag === 1
                     text: qsTr("Detect proxy configuration automatically")
+                    onClicked: {
+                        networkProxy.flag = 1
+                    }
                 }
 
                 RadioButton {
                     id: autoScriptProxyRadioButton
+                    checked: networkProxy.flag === 2
                     text: qsTr("Use proxy auto configuration URL")
+                    onClicked: {
+                        networkProxy.flag = 2
+                    }
                 }
 
                 RadioButton {
                     id: manualProxyRadioButton
+                    checked: networkProxy.flag === 3
                     text: qsTr("Use manually specified proxy configuration")
+                    onClicked: {
+                        networkProxy.flag = 3
+                    }
                 }
             }
 
@@ -93,7 +112,12 @@ ItemPage {
                     TextField {
                         id: autoScriptField
                         Layout.fillWidth: true
+                        text: networkProxy.scriptProxy
                         height: 40
+
+                        onEditingFinished: {
+                            networkProxy.scriptProxy = autoScriptField.text
+                        }
                     }
 
                     Button {
@@ -118,6 +142,11 @@ ItemPage {
                         id: httpProxyField
                         Layout.fillWidth: true
                         height: 40
+                        text: networkProxy.httpProxy
+
+                        onEditingFinished: {
+                            networkProxy.httpProxy = httpProxyField.text
+                        }
                     }
 
                     Label {
@@ -128,6 +157,12 @@ ItemPage {
                         id: httpProxyPortField
                         height: 40
                         Layout.preferredWidth: 80
+
+                        text: networkProxy.httpProxyPort
+
+                        onEditingFinished: {
+                            networkProxy.httpProxyPort = httpProxyPortField.text
+                        }
                     }
 
                     Item {
@@ -138,7 +173,8 @@ ItemPage {
                         id: forFtpCheckBox
                         text: qsTr("Also use this proxy for FTP")
                         Layout.fillWidth: true
-                        checked: true
+                        checked: networkProxy.useSameProxy
+                        onClicked: networkProxy.useSameProxy = forFtpCheckBox.checked
                     }
 
                     Item {
@@ -159,6 +195,12 @@ ItemPage {
                         Layout.fillWidth: true
                         height: 40
                         enabled: !forFtpCheckBox.checked
+
+                        text: networkProxy.ftpProxy
+
+                        onEditingFinished: {
+                            networkProxy.ftpProxy = ftpProxyTextField.text
+                        }
                     }
 
                     Label {
@@ -170,6 +212,12 @@ ItemPage {
                         height: 40
                         Layout.preferredWidth: 80
                         enabled: !forFtpCheckBox.checked
+
+                        text: networkProxy.ftpProxyPort
+
+                        onEditingFinished: {
+                            networkProxy.ftpProxyPort = ftpProxyPortField.text
+                        }
                     }
 
                     // SOCKS
@@ -178,8 +226,15 @@ ItemPage {
                     }
 
                     TextField {
+                        id: socksProxyField
                         Layout.fillWidth: true
                         height: 40
+
+                        text: networkProxy.socksProxy
+
+                        onEditingFinished: {
+                            networkProxy.socksProxy = socksProxyField.text
+                        }
                     }
 
                     Label {
@@ -187,8 +242,15 @@ ItemPage {
                     }
 
                     TextField {
+                        id: socksProxyPortField
                         height: 40
                         Layout.preferredWidth: 80
+
+                        text: networkProxy.socksProxyPort
+
+                        onEditingFinished: {
+                            networkProxy.socksProxyPort = socksProxyPortField.text
+                        }
                     }
                 }
             }
@@ -203,6 +265,7 @@ ItemPage {
         id: fileDialog
         onAccepted: {
             autoScriptField.text = fileDialog.fileUrl.toString().replace("file://", "")
+            networkProxy.scriptProxy = autoScriptField.text
         }
     }
 }

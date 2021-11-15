@@ -18,6 +18,7 @@
 #include "password.h"
 #include "powermanager.h"
 #include "touchpad.h"
+#include "networkproxy.h"
 
 #include "cursor/cursorthememodel.h"
 #include "cursor/mouse.h"
@@ -80,6 +81,7 @@ Application::Application(int &argc, char **argv)
     qmlRegisterType<TimeZoneMap>(uri, 1, 0, "TimeZoneMap");
     qmlRegisterType<Touchpad>(uri, 1, 0, "Touchpad");
     qmlRegisterType<BluetoothManager>(uri, 1, 0, "BluetoothManager");
+    qmlRegisterType<NetworkProxy>(uri, 1, 0, "NetworkProxy");
 
     qmlRegisterSingletonType<Password>(uri, 1, 0, "Password", passwordSingleton);
 
