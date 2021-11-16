@@ -390,6 +390,76 @@
         <translation>性能模式: CPU和GPU频率将提升，同时耗电和发热将增加。</translation>
     </message>
     <message>
+        <location filename="../src/qml/Power/Main.qml" line="90"/>
+        <source>Plugged In</source>
+        <translation>使用电源</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Power/Main.qml" line="98"/>
+        <location filename="../src/qml/Power/Main.qml" line="143"/>
+        <source>Turn off screen</source>
+        <translation>关闭屏幕</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Power/Main.qml" line="104"/>
+        <location filename="../src/qml/Power/Main.qml" line="120"/>
+        <location filename="../src/qml/Power/Main.qml" line="149"/>
+        <location filename="../src/qml/Power/Main.qml" line="165"/>
+        <source>2 Minutes</source>
+        <translation>2分钟</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Power/Main.qml" line="105"/>
+        <location filename="../src/qml/Power/Main.qml" line="121"/>
+        <location filename="../src/qml/Power/Main.qml" line="150"/>
+        <location filename="../src/qml/Power/Main.qml" line="166"/>
+        <source>5 Minutes</source>
+        <translation>5分钟</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Power/Main.qml" line="106"/>
+        <location filename="../src/qml/Power/Main.qml" line="122"/>
+        <location filename="../src/qml/Power/Main.qml" line="151"/>
+        <location filename="../src/qml/Power/Main.qml" line="167"/>
+        <source>10 Minutes</source>
+        <translation>10分钟</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Power/Main.qml" line="107"/>
+        <location filename="../src/qml/Power/Main.qml" line="123"/>
+        <location filename="../src/qml/Power/Main.qml" line="152"/>
+        <location filename="../src/qml/Power/Main.qml" line="168"/>
+        <source>15 Minutes</source>
+        <translation>15分钟</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Power/Main.qml" line="108"/>
+        <location filename="../src/qml/Power/Main.qml" line="124"/>
+        <location filename="../src/qml/Power/Main.qml" line="153"/>
+        <location filename="../src/qml/Power/Main.qml" line="169"/>
+        <source>30 Minutes</source>
+        <translation>30分钟</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Power/Main.qml" line="109"/>
+        <location filename="../src/qml/Power/Main.qml" line="125"/>
+        <location filename="../src/qml/Power/Main.qml" line="154"/>
+        <location filename="../src/qml/Power/Main.qml" line="170"/>
+        <source>Never</source>
+        <translation>永不</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Power/Main.qml" line="114"/>
+        <location filename="../src/qml/Power/Main.qml" line="159"/>
+        <source>Hibernate</source>
+        <translation>休眠</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Power/Main.qml" line="135"/>
+        <source>On Battery</source>
+        <translation>使用电池</translation>
+    </message>
+    <message>
         <location filename="../src/qml/User/Main.qml" line="31"/>
         <source>User</source>
         <translation>用户</translation>

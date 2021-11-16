@@ -34,6 +34,10 @@ ItemPage {
         id: power
     }
 
+    Battery {
+        id: battery
+    }
+
     Scrollable {
         anchors.fill: parent
         contentHeight: layout.implicitHeight
@@ -81,6 +85,101 @@ ItemPage {
                 Layout.fillWidth: true
                 wrapMode: Text.WordWrap
                 text: qsTr("Performance mode: CPU and GPU frequencies will be increased, while power consumption and heat generation will be increased.")
+            }
+
+            RoundedItem {
+                Layout.topMargin: FishUI.Units.largeSpacing
+
+                Label {
+                    text: qsTr("Plugged In")
+                    color: FishUI.Theme.disabledTextColor
+                }
+
+                GridLayout {
+                    columns: 2
+
+                    Label {
+                        text: qsTr("Turn off screen")
+                        Layout.fillWidth: true
+                    }
+
+                    ComboBox {
+                        model: ListModel {
+                            ListElement { text: qsTr("2 Minutes") }
+                            ListElement { text: qsTr("5 Minutes") }
+                            ListElement { text: qsTr("10 Minutes") }
+                            ListElement { text: qsTr("15 Minutes") }
+                            ListElement { text: qsTr("30 Minutes") }
+                            ListElement { text: qsTr("Never") }
+                        }
+                    }
+
+                    Label {
+                        text: qsTr("Hibernate")
+                        Layout.fillWidth: true
+                    }
+
+                    ComboBox {
+                        model: ListModel {
+                            ListElement { text: qsTr("2 Minutes") }
+                            ListElement { text: qsTr("5 Minutes") }
+                            ListElement { text: qsTr("10 Minutes") }
+                            ListElement { text: qsTr("15 Minutes") }
+                            ListElement { text: qsTr("30 Minutes") }
+                            ListElement { text: qsTr("Never") }
+                        }
+                    }
+                }
+            }
+
+            RoundedItem {
+                visible: battery.available
+                Layout.topMargin: FishUI.Units.largeSpacing
+
+                Label {
+                    text: qsTr("On Battery")
+                    color: FishUI.Theme.disabledTextColor
+                }
+
+                GridLayout {
+                    columns: 2
+
+                    Label {
+                        text: qsTr("Turn off screen")
+                        Layout.fillWidth: true
+                    }
+
+                    ComboBox {
+                        model: ListModel {
+                            ListElement { text: qsTr("2 Minutes") }
+                            ListElement { text: qsTr("5 Minutes") }
+                            ListElement { text: qsTr("10 Minutes") }
+                            ListElement { text: qsTr("15 Minutes") }
+                            ListElement { text: qsTr("30 Minutes") }
+                            ListElement { text: qsTr("Never") }
+                        }
+                    }
+
+                    Label {
+                        text: qsTr("Hibernate")
+                        Layout.fillWidth: true
+                    }
+
+                    ComboBox {
+                        model: ListModel {
+                            ListElement { text: qsTr("2 Minutes") }
+                            ListElement { text: qsTr("5 Minutes") }
+                            ListElement { text: qsTr("10 Minutes") }
+                            ListElement { text: qsTr("15 Minutes") }
+                            ListElement { text: qsTr("30 Minutes") }
+                            ListElement { text: qsTr("Never") }
+                        }
+                    }
+                }
+            }
+
+            Item {
+                height: FishUI.Units.largeSpacing * 2
             }
         }
     }
