@@ -50,7 +50,7 @@ ItemPage {
             return 3
         case 30 * 60:
             return 4
-        case 10000000:
+        case 10000:
             return 5
         }
     }
@@ -149,7 +149,7 @@ ItemPage {
                                 power.idleTime = 30 * 60
                                 break
                             case 5:
-                                power.idleTime = 10000000
+                                power.idleTime = 10000
                                 break
                             }
                         }
