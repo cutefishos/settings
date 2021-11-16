@@ -50,7 +50,7 @@ ItemPage {
             return 3
         case 30 * 60:
             return 4
-        case -1:
+        case 10000000:
             return 5
         }
     }
@@ -109,6 +109,8 @@ ItemPage {
 
                 GridLayout {
                     columns: 2
+                    rowSpacing: FishUI.Units.largeSpacing
+                    Layout.bottomMargin: FishUI.Units.largeSpacing
 
                     Label {
                         text: qsTr("Turn off screen")
@@ -147,53 +149,20 @@ ItemPage {
                                 power.idleTime = 30 * 60
                                 break
                             case 5:
-                                power.idleTime = -1
+                                power.idleTime = 10000000
                                 break
                             }
                         }
                     }
 
                     Label {
-                        text: qsTr("Hibernate")
+                        text: qsTr("Hibernate after screen is turned off")
                         Layout.fillWidth: true
                     }
 
-                    ComboBox {
-                        model: ListModel {
-                            ListElement { text: qsTr("2 Minutes") }
-                            ListElement { text: qsTr("5 Minutes") }
-                            ListElement { text: qsTr("10 Minutes") }
-                            ListElement { text: qsTr("15 Minutes") }
-                            ListElement { text: qsTr("30 Minutes") }
-                            ListElement { text: qsTr("Never") }
-                        }
-
-                        Component.onCompleted: {
-                            currentIndex = timeoutToIndex(power.hibernateTime)
-                        }
-
-                        onActivated: {
-                            switch (currentIndex) {
-                            case 0:
-                                power.hibernateTime = 2 * 60
-                                break
-                            case 1:
-                                power.hibernateTime = 5 * 60
-                                break
-                            case 2:
-                                power.hibernateTime = 10 * 60
-                                break
-                            case 3:
-                                power.hibernateTime = 15 * 60
-                                break
-                            case 4:
-                                power.hibernateTime = 30 * 60
-                                break
-                            case 5:
-                                power.hibernateTime = -1
-                                break
-                            }
-                        }
+                    Switch {
+                        Layout.fillHeight: true
+                        Layout.alignment: Qt.AlignRight
                     }
                 }
             }
