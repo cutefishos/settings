@@ -64,6 +64,14 @@ void PowerManager::setIdleTime(int idleTime)
         m_idleTime = idleTime;
         QSettings settings(QSettings::UserScope, "cutefishos", "power");
         settings.setValue("CloseScreenTimeout", idleTime);
+
+        QDBusInterface iface("com.cutefish.PowerManager",
+                             "/PowerManager", "com.cutefish.PowerManager",
+                             QDBusConnection::sessionBus());
+        if (iface.isValid()) {
+            iface.asyncCall("setDimDisplayTimeout", idleTime);
+        }
+
         emit idleTimeChanged();
     }
 }

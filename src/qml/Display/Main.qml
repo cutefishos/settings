@@ -90,7 +90,7 @@ ItemPage {
                         Layout.fillWidth: true
                         Layout.alignment: Qt.AlignVCenter
                         value: brightness.value
-                        from: 0
+                        from: 1
                         to: 100
                         stepSize: 1
                         onMoved: brightnessTimer.start()
