@@ -27,6 +27,8 @@ class PowerManager : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int mode READ mode WRITE setMode NOTIFY modeChanged)
+    Q_PROPERTY(int idleTime READ idleTime WRITE setIdleTime NOTIFY idleTimeChanged)
+    Q_PROPERTY(int hibernateTime READ hibernateTime WRITE setHibernateTime NOTIFY hibernateTimeChanged)
 
 public:
     explicit PowerManager(QObject *parent = nullptr);
@@ -34,12 +36,22 @@ public:
     int mode() const;
     void setMode(int mode);
 
+    int idleTime();
+    void setIdleTime(int idleTime);
+
+    int hibernateTime();
+    void setHibernateTime(int timeout);
+
 signals:
     void modeChanged();
+    void idleTimeChanged();
+    void hibernateTimeChanged();
 
 private:
     QDBusInterface m_iface;
     int m_mode;
+    int m_idleTime;
+    int m_hibernateTime;
 };
 
 #endif // POWERMANAGER_H

@@ -18,7 +18,10 @@
  */
 
 #include "powermanager.h"
+
+#include <QSettings>
 #include <QDBusPendingCall>
+#include <QDebug>
 
 PowerManager::PowerManager(QObject *parent)
     : QObject(parent)
@@ -30,6 +33,10 @@ PowerManager::PowerManager(QObject *parent)
     if (m_iface.isValid()) {
         m_mode = m_iface.property("mode").toInt();
     }
+
+    QSettings settings(QSettings::UserScope, "cutefishos", "power");
+    m_idleTime = settings.value("CloseScreenTimeout", 600).toInt();
+    m_hibernateTime = settings.value("HibernateTimeout", 600).toInt();
 }
 
 int PowerManager::mode() const
@@ -43,5 +50,35 @@ void PowerManager::setMode(int mode)
         m_iface.asyncCall("setMode", mode);
         m_mode = mode;
         emit modeChanged();
+    }
+}
+
+int PowerManager::idleTime()
+{
+    return m_idleTime;
+}
+
+void PowerManager::setIdleTime(int idleTime)
+{
+    if (m_idleTime != idleTime) {
+        m_idleTime = idleTime;
+        QSettings settings(QSettings::UserScope, "cutefishos", "power");
+        settings.setValue("CloseScreenTimeout", idleTime);
+        emit idleTimeChanged();
+    }
+}
+
+int PowerManager::hibernateTime()
+{
+    return m_hibernateTime;
+}
+
+void PowerManager::setHibernateTime(int timeout)
+{
+    if (m_hibernateTime != timeout) {
+        m_hibernateTime = timeout;
+        QSettings settings(QSettings::UserScope, "cutefishos", "power");
+        settings.setValue("HibernateTimeout", timeout);
+        emit hibernateTimeChanged();
     }
 }

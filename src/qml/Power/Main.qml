@@ -38,6 +38,23 @@ ItemPage {
         id: battery
     }
 
+    function timeoutToIndex(timeout) {
+        switch (timeout) {
+        case 2 * 60:
+            return 0
+        case 5 * 60:
+            return 1
+        case 10 * 60:
+            return 2
+        case 15 * 60:
+            return 3
+        case 30 * 60:
+            return 4
+        case -1:
+            return 5
+        }
+    }
+
     Scrollable {
         anchors.fill: parent
         contentHeight: layout.implicitHeight
@@ -90,11 +107,6 @@ ItemPage {
             RoundedItem {
                 Layout.topMargin: FishUI.Units.largeSpacing
 
-                Label {
-                    text: qsTr("Plugged In")
-                    color: FishUI.Theme.disabledTextColor
-                }
-
                 GridLayout {
                     columns: 2
 
@@ -112,51 +124,32 @@ ItemPage {
                             ListElement { text: qsTr("30 Minutes") }
                             ListElement { text: qsTr("Never") }
                         }
-                    }
 
-                    Label {
-                        text: qsTr("Hibernate")
-                        Layout.fillWidth: true
-                    }
-
-                    ComboBox {
-                        model: ListModel {
-                            ListElement { text: qsTr("2 Minutes") }
-                            ListElement { text: qsTr("5 Minutes") }
-                            ListElement { text: qsTr("10 Minutes") }
-                            ListElement { text: qsTr("15 Minutes") }
-                            ListElement { text: qsTr("30 Minutes") }
-                            ListElement { text: qsTr("Never") }
+                        Component.onCompleted: {
+                            currentIndex = timeoutToIndex(power.idleTime)
                         }
-                    }
-                }
-            }
 
-            RoundedItem {
-                visible: battery.available
-                Layout.topMargin: FishUI.Units.largeSpacing
-
-                Label {
-                    text: qsTr("On Battery")
-                    color: FishUI.Theme.disabledTextColor
-                }
-
-                GridLayout {
-                    columns: 2
-
-                    Label {
-                        text: qsTr("Turn off screen")
-                        Layout.fillWidth: true
-                    }
-
-                    ComboBox {
-                        model: ListModel {
-                            ListElement { text: qsTr("2 Minutes") }
-                            ListElement { text: qsTr("5 Minutes") }
-                            ListElement { text: qsTr("10 Minutes") }
-                            ListElement { text: qsTr("15 Minutes") }
-                            ListElement { text: qsTr("30 Minutes") }
-                            ListElement { text: qsTr("Never") }
+                        onActivated: {
+                            switch (currentIndex) {
+                            case 0:
+                                power.idleTime = 2 * 60
+                                break
+                            case 1:
+                                power.idleTime = 5 * 60
+                                break
+                            case 2:
+                                power.idleTime = 10 * 60
+                                break
+                            case 3:
+                                power.idleTime = 15 * 60
+                                break
+                            case 4:
+                                power.idleTime = 30 * 60
+                                break
+                            case 5:
+                                power.idleTime = -1
+                                break
+                            }
                         }
                     }
 
@@ -173,6 +166,33 @@ ItemPage {
                             ListElement { text: qsTr("15 Minutes") }
                             ListElement { text: qsTr("30 Minutes") }
                             ListElement { text: qsTr("Never") }
+                        }
+
+                        Component.onCompleted: {
+                            currentIndex = timeoutToIndex(power.hibernateTime)
+                        }
+
+                        onActivated: {
+                            switch (currentIndex) {
+                            case 0:
+                                power.hibernateTime = 2 * 60
+                                break
+                            case 1:
+                                power.hibernateTime = 5 * 60
+                                break
+                            case 2:
+                                power.hibernateTime = 10 * 60
+                                break
+                            case 3:
+                                power.hibernateTime = 15 * 60
+                                break
+                            case 4:
+                                power.hibernateTime = 30 * 60
+                                break
+                            case 5:
+                                power.hibernateTime = -1
+                                break
+                            }
                         }
                     }
                 }
