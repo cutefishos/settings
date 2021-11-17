@@ -390,44 +390,49 @@
         <translation>性能模式: CPU和GPU频率将提升，同时耗电和发热将增加。</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="113"/>
+        <location filename="../src/qml/Power/Main.qml" line="116"/>
         <source>Turn off screen</source>
         <translation>关闭屏幕</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="119"/>
+        <location filename="../src/qml/Power/Main.qml" line="122"/>
         <source>2 Minutes</source>
         <translation>2分钟</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="120"/>
+        <location filename="../src/qml/Power/Main.qml" line="123"/>
         <source>5 Minutes</source>
         <translation>5分钟</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="121"/>
+        <location filename="../src/qml/Power/Main.qml" line="124"/>
         <source>10 Minutes</source>
         <translation>10分钟</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="122"/>
+        <location filename="../src/qml/Power/Main.qml" line="125"/>
         <source>15 Minutes</source>
         <translation>15分钟</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="123"/>
+        <location filename="../src/qml/Power/Main.qml" line="126"/>
         <source>30 Minutes</source>
         <translation>30分钟</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="124"/>
+        <location filename="../src/qml/Power/Main.qml" line="127"/>
         <source>Never</source>
         <translation>永不</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="156"/>
+        <location filename="../src/qml/Power/Main.qml" line="159"/>
         <source>Hibernate after screen is turned off</source>
         <translation>关闭屏幕后休眠</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Power/Main.qml" line="171"/>
+        <source>Lock screen after screen is turned off</source>
+        <translation>关闭屏幕后锁屏</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="31"/>

@@ -390,43 +390,48 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="113"/>
+        <location filename="../src/qml/Power/Main.qml" line="116"/>
         <source>Turn off screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="119"/>
+        <location filename="../src/qml/Power/Main.qml" line="122"/>
         <source>2 Minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="120"/>
+        <location filename="../src/qml/Power/Main.qml" line="123"/>
         <source>5 Minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="121"/>
+        <location filename="../src/qml/Power/Main.qml" line="124"/>
         <source>10 Minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="122"/>
+        <location filename="../src/qml/Power/Main.qml" line="125"/>
         <source>15 Minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="123"/>
+        <location filename="../src/qml/Power/Main.qml" line="126"/>
         <source>30 Minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="124"/>
+        <location filename="../src/qml/Power/Main.qml" line="127"/>
         <source>Never</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="156"/>
+        <location filename="../src/qml/Power/Main.qml" line="159"/>
         <source>Hibernate after screen is turned off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Power/Main.qml" line="171"/>
+        <source>Lock screen after screen is turned off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

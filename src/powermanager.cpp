@@ -37,6 +37,9 @@ PowerManager::PowerManager(QObject *parent)
     QSettings settings(QSettings::UserScope, "cutefishos", "power");
     m_idleTime = settings.value("CloseScreenTimeout", 600).toInt();
     m_hibernateTime = settings.value("HibernateTimeout", 600).toInt();
+
+    m_sleepWhenClosedScreen = settings.value("SleepWhenClosedScreen", false).toBool();
+    m_lockWhenClosedScreen = settings.value("LockWhenClosedScreen", true).toBool();
 }
 
 int PowerManager::mode() const
@@ -62,8 +65,6 @@ void PowerManager::setIdleTime(int idleTime)
 {
     if (m_idleTime != idleTime) {
         m_idleTime = idleTime;
-        QSettings settings(QSettings::UserScope, "cutefishos", "power");
-        settings.setValue("CloseScreenTimeout", idleTime);
 
         QDBusInterface iface("com.cutefish.PowerManager",
                              "/PowerManager", "com.cutefish.PowerManager",
@@ -85,8 +86,42 @@ void PowerManager::setHibernateTime(int timeout)
 {
     if (m_hibernateTime != timeout) {
         m_hibernateTime = timeout;
-        QSettings settings(QSettings::UserScope, "cutefishos", "power");
-        settings.setValue("HibernateTimeout", timeout);
         emit hibernateTimeChanged();
+    }
+}
+
+bool PowerManager::sleepWhenClosedScreen() const
+{
+    return m_sleepWhenClosedScreen;
+}
+
+void PowerManager::setSleepWhenClosedScreen(bool sleepWhenClosedScreen)
+{
+    m_sleepWhenClosedScreen = sleepWhenClosedScreen;
+    emit sleepWhenClosedScreenChanged();
+
+    QDBusInterface iface("com.cutefish.PowerManager",
+                         "/PowerManager", "com.cutefish.PowerManager",
+                         QDBusConnection::sessionBus());
+    if (iface.isValid()) {
+        iface.asyncCall("setSleepWhenClosedScreen", sleepWhenClosedScreen);
+    }
+}
+
+bool PowerManager::lockWhenClosedScreen() const
+{
+    return m_lockWhenClosedScreen;
+}
+
+void PowerManager::setLockWhenClosedScreen(bool lockWhenClosedScreen)
+{
+    m_lockWhenClosedScreen = lockWhenClosedScreen;
+    emit lockWhenClosedScreenChanged();
+
+    QDBusInterface iface("com.cutefish.PowerManager",
+                         "/PowerManager", "com.cutefish.PowerManager",
+                         QDBusConnection::sessionBus());
+    if (iface.isValid()) {
+        iface.asyncCall("setLockWhenClosedScreen", lockWhenClosedScreen);
     }
 }

@@ -109,7 +109,7 @@ ItemPage {
 
                 GridLayout {
                     columns: 2
-                    rowSpacing: FishUI.Units.largeSpacing
+                    rowSpacing: FishUI.Units.largeSpacing * 2
                     Layout.bottomMargin: FishUI.Units.largeSpacing
 
                     Label {
@@ -163,6 +163,20 @@ ItemPage {
                     Switch {
                         Layout.fillHeight: true
                         Layout.alignment: Qt.AlignRight
+                        checked: power.sleepWhenClosedScreen
+                        onClicked: power.sleepWhenClosedScreen = checked
+                    }
+
+                    Label {
+                        text: qsTr("Lock screen after screen is turned off")
+                        Layout.fillWidth: true
+                    }
+
+                    Switch {
+                        Layout.fillHeight: true
+                        Layout.alignment: Qt.AlignRight
+                        checked: power.lockWhenClosedScreen
+                        onClicked: power.lockWhenClosedScreen = checked
                     }
                 }
             }

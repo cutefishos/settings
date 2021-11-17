@@ -29,6 +29,8 @@ class PowerManager : public QObject
     Q_PROPERTY(int mode READ mode WRITE setMode NOTIFY modeChanged)
     Q_PROPERTY(int idleTime READ idleTime WRITE setIdleTime NOTIFY idleTimeChanged)
     Q_PROPERTY(int hibernateTime READ hibernateTime WRITE setHibernateTime NOTIFY hibernateTimeChanged)
+    Q_PROPERTY(bool sleepWhenClosedScreen READ sleepWhenClosedScreen WRITE setSleepWhenClosedScreen NOTIFY sleepWhenClosedScreenChanged)
+    Q_PROPERTY(bool lockWhenClosedScreen READ lockWhenClosedScreen WRITE setLockWhenClosedScreen NOTIFY lockWhenClosedScreenChanged)
 
 public:
     explicit PowerManager(QObject *parent = nullptr);
@@ -42,16 +44,26 @@ public:
     int hibernateTime();
     void setHibernateTime(int timeout);
 
+    bool sleepWhenClosedScreen() const;
+    void setSleepWhenClosedScreen(bool sleepWhenClosedScreen);
+
+    bool lockWhenClosedScreen() const;
+    void setLockWhenClosedScreen(bool lockWhenClosedScreen);
+
 signals:
     void modeChanged();
     void idleTimeChanged();
     void hibernateTimeChanged();
+    void sleepWhenClosedScreenChanged();
+    void lockWhenClosedScreenChanged();
 
 private:
     QDBusInterface m_iface;
     int m_mode;
     int m_idleTime;
     int m_hibernateTime;
+    bool m_sleepWhenClosedScreen;
+    bool m_lockWhenClosedScreen;
 };
 
 #endif // POWERMANAGER_H
