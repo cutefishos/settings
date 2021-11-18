@@ -47,6 +47,9 @@ public:
     QString socksProxyPort() const;
     void setSocksProxyPort(const QString &port);
 
+    Q_INVOKABLE void updateProxy();
+    Q_INVOKABLE void delayUpdateProxy();
+
 signals:
     void flagChanged();
     void useSameProxyChanged();

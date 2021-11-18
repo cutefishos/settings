@@ -1,4 +1,7 @@
 #include "networkproxy.h"
+#include <QDBusInterface>
+#include <QDBusPendingCall>
+#include <QTimer>
 
 NetworkProxy::NetworkProxy(QObject *parent)
     : QObject(parent)
@@ -25,6 +28,7 @@ void NetworkProxy::setFlag(int flag)
     if (m_flag != flag) {
         m_flag = flag;
         m_settings.setValue("ProxyFlag", flag);
+        delayUpdateProxy();
         emit flagChanged();
     }
 }
@@ -39,6 +43,7 @@ void NetworkProxy::setUseSameProxy(bool enabled)
     if (m_useSameProxy != enabled) {
         m_useSameProxy = enabled;
         m_settings.setValue("UseSameProxy", enabled);
+        delayUpdateProxy();
         emit useSameProxyChanged();
     }
 }
@@ -53,6 +58,7 @@ void NetworkProxy::setScriptProxy(const QString &path)
     if (m_scriptProxy != path) {
         m_scriptProxy = path;
         m_settings.setValue("ProxyScriptProxy", path);
+        delayUpdateProxy();
         emit scriptProxyChanged();
     }
 }
@@ -67,6 +73,7 @@ void NetworkProxy::setHttpProxy(const QString &path)
     if (m_httpProxy != path) {
         m_httpProxy = path;
         m_settings.setValue("HttpProxy", path);
+        delayUpdateProxy();
         emit httpProxyChanged();
     }
 }
@@ -81,6 +88,7 @@ void NetworkProxy::setFtpProxy(const QString &path)
     if (m_ftpProxy != path) {
         m_ftpProxy = path;
         m_settings.setValue("FtpProxy", path);
+        delayUpdateProxy();
         emit ftpProxyChanged();
     }
 }
@@ -95,6 +103,7 @@ void NetworkProxy::setSocksProxy(const QString &path)
     if (m_socksProxy != path) {
         m_socksProxy = path;
         m_settings.setValue("SocksProxy", path);
+        delayUpdateProxy();
         emit socksProxyChanged();
     }
 }
@@ -109,6 +118,7 @@ void NetworkProxy::setHttpProxyPort(const QString &port)
     if (m_httpProxyPort != port) {
         m_httpProxyPort = port;
         m_settings.setValue("HttpProxyPort", port);
+        delayUpdateProxy();
         emit httpProxyPortChanged();
     }
 }
@@ -123,6 +133,7 @@ void NetworkProxy::setFtpProxyPort(const QString &port)
     if (m_ftpProxyPort != port) {
         m_ftpProxyPort = port;
         m_settings.setValue("FtpProxyPort", port);
+        delayUpdateProxy();
         emit ftpProxyPortChanged();
     }
 }
@@ -137,6 +148,21 @@ void NetworkProxy::setSocksProxyPort(const QString &port)
     if (m_socksProxyPort != port) {
         m_socksProxyPort = port;
         m_settings.setValue("SocksProxyPort", port);
+        delayUpdateProxy();
         emit socksProxyPortChanged();
     }
+}
+
+void NetworkProxy::updateProxy()
+{
+    QDBusInterface iface("com.cutefish.Session", "/Session", "com.cutefish.Session");
+
+    if (iface.isValid()) {
+        iface.asyncCall("updateNetworkProxy");
+    }
+}
+
+void NetworkProxy::delayUpdateProxy()
+{
+    QTimer::singleShot(50, this, &NetworkProxy::updateProxy);
 }

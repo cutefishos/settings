@@ -704,48 +704,43 @@
     </message>
     <message>
         <location filename="../src/qml/Proxy/Main.qml" line="78"/>
-        <source>Detect proxy configuration automatically</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="87"/>
         <source>Use proxy auto configuration URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="96"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="87"/>
         <source>Use manually specified proxy configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="124"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="115"/>
         <source>Select file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="138"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="129"/>
         <source>HTTP Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="153"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="207"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="241"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="144"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="198"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="232"/>
         <source>Port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="174"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="165"/>
         <source>Also use this proxy for FTP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="190"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="181"/>
         <source>FTP Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="225"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="216"/>
         <source>SOCKS Proxy</source>
         <translation type="unfinished"></translation>
     </message>

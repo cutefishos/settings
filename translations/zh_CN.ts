@@ -704,48 +704,43 @@
     </message>
     <message>
         <location filename="../src/qml/Proxy/Main.qml" line="78"/>
-        <source>Detect proxy configuration automatically</source>
-        <translation>自动检测代理配置</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="87"/>
         <source>Use proxy auto configuration URL</source>
         <translation>使用代理自动配置 URL</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="96"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="87"/>
         <source>Use manually specified proxy configuration</source>
         <translation>使用手动配置的代理服务器</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="124"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="115"/>
         <source>Select file</source>
         <translation>选择文件</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="138"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="129"/>
         <source>HTTP Proxy</source>
         <translation>HTTP 代理</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="153"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="207"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="241"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="144"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="198"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="232"/>
         <source>Port</source>
         <translation>端口</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="174"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="165"/>
         <source>Also use this proxy for FTP</source>
         <translation>将此代理用于 FTP</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="190"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="181"/>
         <source>FTP Proxy</source>
         <translation>FTP 代理</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="225"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="216"/>
         <source>SOCKS Proxy</source>
         <translation>SOCKS 代理</translation>
     </message>

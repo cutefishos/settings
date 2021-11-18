@@ -73,36 +73,27 @@ ItemPage {
                 }
 
                 RadioButton {
-                    id: autoDiscoverProxyRadioButton
+                    id: autoScriptProxyRadioButton
                     checked: networkProxy.flag === 1
-                    text: qsTr("Detect proxy configuration automatically")
+                    text: qsTr("Use proxy auto configuration URL")
                     onClicked: {
                         networkProxy.flag = 1
                     }
                 }
 
                 RadioButton {
-                    id: autoScriptProxyRadioButton
-                    checked: networkProxy.flag === 2
-                    text: qsTr("Use proxy auto configuration URL")
-                    onClicked: {
-                        networkProxy.flag = 2
-                    }
-                }
-
-                RadioButton {
                     id: manualProxyRadioButton
-                    checked: networkProxy.flag === 3
+                    checked: networkProxy.flag === 2
                     text: qsTr("Use manually specified proxy configuration")
                     onClicked: {
-                        networkProxy.flag = 3
+                        networkProxy.flag = 2
                     }
                 }
             }
 
             RoundedItem {
                 id: proxyItem
-                visible: !noProxyRadioButton.checked && !autoDiscoverProxyRadioButton.checked
+                visible: !noProxyRadioButton.checked
 
                 RowLayout {
                     id: autoScriptProxyLayout
@@ -143,6 +134,9 @@ ItemPage {
                         Layout.fillWidth: true
                         height: 40
                         text: networkProxy.httpProxy
+                        validator: RegExpValidator {
+                            regExp: /(?=(\b|\D))(((\d{1,2})|(1\d{1,2})|(2[0-4]\d)|(25[0-5]))\.){3}((\d{1,2})|(1\d{1,2})|(2[0-4]\d)|(25[0-5]))(?=(\b|\D))/
+                        }
 
                         onEditingFinished: {
                             networkProxy.httpProxy = httpProxyField.text
@@ -160,6 +154,8 @@ ItemPage {
 
                         text: networkProxy.httpProxyPort
 
+                        validator: IntValidator { bottom: 0; top: 999999}
+
                         onEditingFinished: {
                             networkProxy.httpProxyPort = httpProxyPortField.text
                         }
@@ -174,7 +170,9 @@ ItemPage {
                         text: qsTr("Also use this proxy for FTP")
                         Layout.fillWidth: true
                         checked: networkProxy.useSameProxy
-                        onClicked: networkProxy.useSameProxy = forFtpCheckBox.checked
+                        onClicked: {
+                            networkProxy.useSameProxy = forFtpCheckBox.checked
+                        }
                     }
 
                     Item {
@@ -195,9 +193,10 @@ ItemPage {
                         Layout.fillWidth: true
                         height: 40
                         enabled: !forFtpCheckBox.checked
-
                         text: networkProxy.ftpProxy
-
+                        validator: RegExpValidator {
+                            regExp: /(?=(\b|\D))(((\d{1,2})|(1\d{1,2})|(2[0-4]\d)|(25[0-5]))\.){3}((\d{1,2})|(1\d{1,2})|(2[0-4]\d)|(25[0-5]))(?=(\b|\D))/
+                        }
                         onEditingFinished: {
                             networkProxy.ftpProxy = ftpProxyTextField.text
                         }
@@ -214,6 +213,7 @@ ItemPage {
                         enabled: !forFtpCheckBox.checked
 
                         text: networkProxy.ftpProxyPort
+                        validator: IntValidator { bottom: 0; top: 999999}
 
                         onEditingFinished: {
                             networkProxy.ftpProxyPort = ftpProxyPortField.text
@@ -230,6 +230,9 @@ ItemPage {
                         Layout.fillWidth: true
                         height: 40
 
+                        validator: RegExpValidator {
+                            regExp: /(?=(\b|\D))(((\d{1,2})|(1\d{1,2})|(2[0-4]\d)|(25[0-5]))\.){3}((\d{1,2})|(1\d{1,2})|(2[0-4]\d)|(25[0-5]))(?=(\b|\D))/
+                        }
                         text: networkProxy.socksProxy
 
                         onEditingFinished: {
@@ -247,6 +250,7 @@ ItemPage {
                         Layout.preferredWidth: 80
 
                         text: networkProxy.socksProxyPort
+                        validator: IntValidator { bottom: 0; top: 999999}
 
                         onEditingFinished: {
                             networkProxy.socksProxyPort = socksProxyPortField.text
