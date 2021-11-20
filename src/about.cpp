@@ -161,6 +161,9 @@ QString About::cpuInfo()
         QStringList modelLine = buffer.split('\n').filter(QRegularExpression("^model name"));
         QStringList lines = buffer.split('\n');
 
+        if (modelLine.isEmpty())
+            return "Unknown";
+
         int count = lines.filter(QRegularExpression("^processor")).count();
 
         QString result;
