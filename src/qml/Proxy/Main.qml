@@ -76,6 +76,7 @@ ItemPage {
                     id: autoScriptProxyRadioButton
                     checked: networkProxy.flag === 1
                     text: qsTr("Use proxy auto configuration URL")
+                    visible: false
                     onClicked: {
                         networkProxy.flag = 1
                     }
