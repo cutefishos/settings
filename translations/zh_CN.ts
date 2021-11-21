@@ -708,41 +708,46 @@
         <translation>使用代理自动配置 URL</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="87"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="88"/>
         <source>Use manually specified proxy configuration</source>
         <translation>使用手动配置的代理服务器</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="115"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="116"/>
         <source>Select file</source>
         <translation>选择文件</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="129"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="130"/>
         <source>HTTP Proxy</source>
         <translation>HTTP 代理</translation>
     </message>
     <message>
         <location filename="../src/qml/Proxy/Main.qml" line="144"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="198"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="232"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="200"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="234"/>
         <source>Port</source>
         <translation>端口</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="165"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="167"/>
         <source>Also use this proxy for FTP</source>
         <translation>将此代理用于 FTP</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="181"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="185"/>
         <source>FTP Proxy</source>
         <translation>FTP 代理</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="216"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="219"/>
         <source>SOCKS Proxy</source>
         <translation>SOCKS 代理</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Sound/Main.qml" line="29"/>
+        <source>Sound</source>
+        <translation>声音</translation>
     </message>
 </context>
 <context>
@@ -831,7 +836,7 @@
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="163"/>
+        <location filename="../src/qml/SideBar.qml" line="172"/>
         <source>Mouse</source>
         <translation>鼠标</translation>
     </message>
@@ -869,41 +874,47 @@
         <location filename="../src/qml/SideBar.qml" line="159"/>
         <location filename="../src/qml/SideBar.qml" line="168"/>
         <location filename="../src/qml/SideBar.qml" line="177"/>
-        <location filename="../src/qml/SideBar.qml" line="195"/>
-        <location filename="../src/qml/SideBar.qml" line="213"/>
+        <location filename="../src/qml/SideBar.qml" line="186"/>
+        <location filename="../src/qml/SideBar.qml" line="204"/>
         <location filename="../src/qml/SideBar.qml" line="222"/>
         <location filename="../src/qml/SideBar.qml" line="231"/>
         <location filename="../src/qml/SideBar.qml" line="240"/>
+        <location filename="../src/qml/SideBar.qml" line="249"/>
         <source>System</source>
         <translation>系统</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="172"/>
+        <location filename="../src/qml/SideBar.qml" line="163"/>
+        <source>Sound</source>
+        <translation>声音</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="181"/>
         <source>Touchpad</source>
         <translation>触摸版</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="190"/>
+        <location filename="../src/qml/SideBar.qml" line="199"/>
         <source>Date &amp; Time</source>
         <translation>日期和时间</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="208"/>
+        <location filename="../src/qml/SideBar.qml" line="217"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="217"/>
+        <location filename="../src/qml/SideBar.qml" line="226"/>
         <source>Battery</source>
         <translation>电池</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="226"/>
+        <location filename="../src/qml/SideBar.qml" line="235"/>
         <source>Power</source>
         <translation>电源</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="235"/>
+        <location filename="../src/qml/SideBar.qml" line="244"/>
         <source>About</source>
         <translation>关于</translation>
     </message>

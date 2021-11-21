@@ -135,10 +135,6 @@ ItemPage {
                         Layout.fillWidth: true
                         height: 40
                         text: networkProxy.httpProxy
-                        validator: RegExpValidator {
-                            regExp: /(?=(\b|\D))(((\d{1,2})|(1\d{1,2})|(2[0-4]\d)|(25[0-5]))\.){3}((\d{1,2})|(1\d{1,2})|(2[0-4]\d)|(25[0-5]))(?=(\b|\D))/
-                        }
-
                         onEditingFinished: {
                             networkProxy.httpProxy = httpProxyField.text
                         }
@@ -195,9 +191,6 @@ ItemPage {
                         height: 40
                         enabled: !forFtpCheckBox.checked
                         text: networkProxy.ftpProxy
-                        validator: RegExpValidator {
-                            regExp: /(?=(\b|\D))(((\d{1,2})|(1\d{1,2})|(2[0-4]\d)|(25[0-5]))\.){3}((\d{1,2})|(1\d{1,2})|(2[0-4]\d)|(25[0-5]))(?=(\b|\D))/
-                        }
                         onEditingFinished: {
                             networkProxy.ftpProxy = ftpProxyTextField.text
                         }
@@ -230,10 +223,6 @@ ItemPage {
                         id: socksProxyField
                         Layout.fillWidth: true
                         height: 40
-
-                        validator: RegExpValidator {
-                            regExp: /(?=(\b|\D))(((\d{1,2})|(1\d{1,2})|(2[0-4]\d)|(25[0-5]))\.){3}((\d{1,2})|(1\d{1,2})|(2[0-4]\d)|(25[0-5]))(?=(\b|\D))/
-                        }
                         text: networkProxy.socksProxy
 
                         onEditingFinished: {

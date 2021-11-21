@@ -160,6 +160,15 @@ Item {
         }
 
         ListElement {
+            title: qsTr("Sound")
+            name: "sound"
+            page: "qrc:/qml/Sound/Main.qml"
+            iconSource: "sound.svg"
+            iconColor: "#F16884"
+            category: qsTr("System")
+        }
+
+        ListElement {
             title: qsTr("Mouse")
             name: "mouse"
             page: "qrc:/qml/Cursor/Main.qml"
