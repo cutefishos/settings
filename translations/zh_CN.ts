@@ -814,7 +814,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="64"/>
         <source>Ethernet</source>
-        <translation>以太网络</translation>
+        <translation>有线网络</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="100"/>

@@ -42,7 +42,7 @@ ItemPage {
     function microphoneIcon(value) {
         if (value <= 25)
             return "audio-input-microphone-low-symbolic"
-        else if (value <= 50)
+        else if (value <= 70)
             return "audio-input-microphone-medium-symbolic"
         else
             return "audio-input-microphone-high-symbolic"
@@ -137,7 +137,7 @@ ItemPage {
                                 Layout.fillWidth: true
                                 value: Volume
                                 from: PulseAudio.MinimalVolume
-                                to: PulseAudio.MaximalVolume
+                                to: PulseAudio.NormalVolume
                                 enabled: VolumeWritable
                                 visible: HasVolume
 
@@ -211,7 +211,7 @@ ItemPage {
                                 Layout.fillWidth: true
                                 value: Volume
                                 from: PulseAudio.MinimalVolume
-                                to: PulseAudio.MaximalVolume
+                                to: PulseAudio.NormalVolume
                                 enabled: VolumeWritable
                                 visible: HasVolume
 
