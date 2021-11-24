@@ -749,6 +749,11 @@
         <source>Sound</source>
         <translation>声音</translation>
     </message>
+    <message>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="28"/>
+        <source>Default Application</source>
+        <translation>默认应用程序</translation>
+    </message>
 </context>
 <context>
     <name>PairDialog</name>
@@ -876,6 +881,7 @@
         <location filename="../src/qml/SideBar.qml" line="177"/>
         <location filename="../src/qml/SideBar.qml" line="186"/>
         <location filename="../src/qml/SideBar.qml" line="204"/>
+        <location filename="../src/qml/SideBar.qml" line="213"/>
         <location filename="../src/qml/SideBar.qml" line="222"/>
         <location filename="../src/qml/SideBar.qml" line="231"/>
         <location filename="../src/qml/SideBar.qml" line="240"/>
@@ -897,6 +903,11 @@
         <location filename="../src/qml/SideBar.qml" line="199"/>
         <source>Date &amp; Time</source>
         <translation>日期和时间</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="208"/>
+        <source>Default Application</source>
+        <translation>默认应用程序</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="217"/>
