@@ -39,6 +39,7 @@ set(SRCS
     src/language.cpp
     src/about.cpp
     src/background.cpp
+    src/notifications.cpp
     src/password.cpp
     src/batteryhistorymodel.cpp
     src/cicontheme.cpp

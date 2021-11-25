@@ -160,6 +160,15 @@ Item {
         }
 
         ListElement {
+            title: qsTr("Notifications")
+            name: "notifications"
+            page: "qrc:/qml/Notification/Main.qml"
+            iconSource: "notifications.svg"
+            iconColor: "#F16884"
+            category: qsTr("System")
+        }
+
+        ListElement {
             title: qsTr("Sound")
             name: "sound"
             page: "qrc:/qml/Sound/Main.qml"

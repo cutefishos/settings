@@ -46,7 +46,7 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing
+            spacing: FishUI.Units.largeSpacing * 2
 
             RoundedItem {
                 spacing: FishUI.Units.largeSpacing * 1.5

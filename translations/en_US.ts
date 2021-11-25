@@ -774,6 +774,16 @@
         <source>Terminal</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../src/qml/Notification/Main.qml" line="28"/>
+        <source>Notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Notification/Main.qml" line="45"/>
+        <source>Do Not Disturb</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PairDialog</name>
@@ -871,12 +881,12 @@
         <translation type="unfinished">Appearance</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="172"/>
+        <location filename="../src/qml/SideBar.qml" line="181"/>
         <source>Mouse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="208"/>
+        <location filename="../src/qml/SideBar.qml" line="217"/>
         <source>Default Applications</source>
         <translation type="unfinished"></translation>
     </message>
@@ -905,47 +915,53 @@
         <location filename="../src/qml/SideBar.qml" line="168"/>
         <location filename="../src/qml/SideBar.qml" line="177"/>
         <location filename="../src/qml/SideBar.qml" line="186"/>
-        <location filename="../src/qml/SideBar.qml" line="204"/>
+        <location filename="../src/qml/SideBar.qml" line="195"/>
         <location filename="../src/qml/SideBar.qml" line="213"/>
         <location filename="../src/qml/SideBar.qml" line="222"/>
         <location filename="../src/qml/SideBar.qml" line="231"/>
         <location filename="../src/qml/SideBar.qml" line="240"/>
         <location filename="../src/qml/SideBar.qml" line="249"/>
+        <location filename="../src/qml/SideBar.qml" line="258"/>
         <source>System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="163"/>
+        <source>Notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="172"/>
         <source>Sound</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="181"/>
+        <location filename="../src/qml/SideBar.qml" line="190"/>
         <source>Touchpad</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="199"/>
+        <location filename="../src/qml/SideBar.qml" line="208"/>
         <source>Date &amp; Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="217"/>
+        <location filename="../src/qml/SideBar.qml" line="226"/>
         <source>Language</source>
         <translation type="unfinished">Language</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="226"/>
+        <location filename="../src/qml/SideBar.qml" line="235"/>
         <source>Battery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="235"/>
+        <location filename="../src/qml/SideBar.qml" line="244"/>
         <source>Power</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="244"/>
+        <location filename="../src/qml/SideBar.qml" line="253"/>
         <source>About</source>
         <translation type="unfinished">About</translation>
     </message>
