@@ -754,6 +754,26 @@
         <source>Default Applications</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="48"/>
+        <source>Web Browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="56"/>
+        <source>File Manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="64"/>
+        <source>Email Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="72"/>
+        <source>Terminal</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PairDialog</name>

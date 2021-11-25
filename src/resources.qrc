@@ -140,5 +140,6 @@
         <file>images/dark/audio-input-microphone-low-symbolic.svg</file>
         <file>images/dark/audio-input-microphone-medium-symbolic.svg</file>
         <file>qml/DefaultApp/Main.qml</file>
+        <file>images/sidebar/dark/defaultapps.svg</file>
     </qresource>
 </RCC>

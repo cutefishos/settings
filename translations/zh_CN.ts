@@ -754,6 +754,26 @@
         <source>Default Applications</source>
         <translation>默认应用</translation>
     </message>
+    <message>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="48"/>
+        <source>Web Browser</source>
+        <translation>网络浏览器</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="56"/>
+        <source>File Manager</source>
+        <translation>文件管理器</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="64"/>
+        <source>Email Client</source>
+        <translation>邮件客户端</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="72"/>
+        <source>Terminal</source>
+        <translation>终端</translation>
+    </message>
 </context>
 <context>
     <name>PairDialog</name>

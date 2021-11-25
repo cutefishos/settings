@@ -38,6 +38,45 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
+
+            RoundedItem {
+                GridLayout {
+                    columns: 2
+                    columnSpacing: FishUI.Units.largeSpacing * 2
+
+                    Label {
+                        text: qsTr("Web Browser")
+                    }
+
+                    ComboBox {
+                        Layout.fillWidth: true
+                    }
+
+                    Label {
+                        text: qsTr("File Manager")
+                    }
+
+                    ComboBox {
+                        Layout.fillWidth: true
+                    }
+
+                    Label {
+                        text: qsTr("Email Client")
+                    }
+
+                    ComboBox {
+                        Layout.fillWidth: true
+                    }
+
+                    Label {
+                        text: qsTr("Terminal")
+                    }
+
+                    ComboBox {
+                        Layout.fillWidth: true
+                    }
+                }
+            }
         }
     }
 }
