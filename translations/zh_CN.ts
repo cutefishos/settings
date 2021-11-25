@@ -751,8 +751,8 @@
     </message>
     <message>
         <location filename="../src/qml/DefaultApp/Main.qml" line="28"/>
-        <source>Default Application</source>
-        <translation>默认应用程序</translation>
+        <source>Default Applications</source>
+        <translation>默认应用</translation>
     </message>
 </context>
 <context>
@@ -906,8 +906,8 @@
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="208"/>
-        <source>Default Application</source>
-        <translation>默认应用程序</translation>
+        <source>Default Applications</source>
+        <translation>默认应用</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="217"/>

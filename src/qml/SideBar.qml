@@ -205,10 +205,10 @@ Item {
         }
 
         ListElement {
-            title: qsTr("Default Application")
+            title: qsTr("Default Applications")
             name: "datetime"
             page: "qrc:/qml/DefaultApp/Main.qml"
-            iconSource: "defaultapp.svg"
+            iconSource: "defaultapps.svg"
             iconColor: "#418CFF"
             category: qsTr("System")
         }

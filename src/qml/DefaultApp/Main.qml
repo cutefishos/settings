@@ -25,7 +25,7 @@ import Cutefish.Settings 1.0
 import "../"
 
 ItemPage {
-    headerTitle: qsTr("Default Application")
+    headerTitle: qsTr("Default Applications")
 
     About {
         id: about

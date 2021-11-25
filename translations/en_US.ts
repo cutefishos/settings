@@ -751,7 +751,7 @@
     </message>
     <message>
         <location filename="../src/qml/DefaultApp/Main.qml" line="28"/>
-        <source>Default Application</source>
+        <source>Default Applications</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -856,6 +856,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/qml/SideBar.qml" line="208"/>
+        <source>Default Applications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/qml/SideBar.qml" line="127"/>
         <source>Fonts</source>
         <translation type="unfinished"></translation>
@@ -902,11 +907,6 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="199"/>
         <source>Date &amp; Time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/SideBar.qml" line="208"/>
-        <source>Default Application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
