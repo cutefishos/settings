@@ -82,7 +82,7 @@ int Language::currentLanguage() const
 void Language::setCurrentLanguage(int index)
 {
     if (index >= 0 && index < m_languageCodes.length()) {
-        m_interface.call("setLanguage", m_languageCodes[index]);
+        m_interface.asyncCall("setLanguage", m_languageCodes[index]);
         qDebug() << "set language: " << m_languageCodes[index];
         m_currentLanguage = index;
         emit currentLanguageChanged();
