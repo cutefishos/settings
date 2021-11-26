@@ -118,6 +118,8 @@ ItemPage {
                     }
 
                     ComboBox {
+                        Layout.preferredWidth: 160
+
                         model: ListModel {
                             ListElement { text: qsTr("2 Minutes") }
                             ListElement { text: qsTr("5 Minutes") }
