@@ -529,6 +529,21 @@ const char *KXftConfig::toStr(Hint::Style s)
     }
 }
 
+KXftConfig::Hint::Style KXftConfig::toHintStyle(const QString &str)
+{
+    if (str == "hintmedium") {
+        return Hint::Medium;
+    } else if (str == "hintnone") {
+        return Hint::None;
+    } else if (str == "hintslight") {
+        return Hint::Slight;
+    } else if (str == "hintfull") {
+        return Hint::Full;
+    }
+
+    return Hint::NotSet;
+}
+
 bool KXftConfig::parseConfigFile(const QString &filename)
 {
     bool ok = false;

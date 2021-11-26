@@ -26,25 +26,15 @@ Fonts::Fonts(QObject *parent)
     , m_settings("cutefishos", "theme")
     , m_antiAliasing(false)
     , m_hintingModel(new QStandardItemModel(this))
-{    
-    KXftConfig xft;
-    const auto aaState = xft.getAntiAliasing();
-    m_antiAliasing = (aaState != KXftConfig::AntiAliasing::Disabled);
+{
+    m_antiAliasing = m_settings.value("XftAntialias", true).toBool();
+    m_hinting = KXftConfig::toHintStyle(m_settings.value("XftHintStyle", "hintslight").toString());
 
     // Hinting options
     for (KXftConfig::Hint::Style s : {KXftConfig::Hint::None, KXftConfig::Hint::Slight, KXftConfig::Hint::Medium, KXftConfig::Hint::Full}) {
         auto item = new QStandardItem(KXftConfig::description(s));
         m_hintingModel->appendRow(item);
     }
-
-    // hinting
-    KXftConfig::Hint::Style hStyle = KXftConfig::Hint::NotSet;
-    xft.getHintStyle(hStyle);
-    // if it is not set, we set it to slight hinting
-    if (hStyle == KXftConfig::Hint::NotSet) {
-        hStyle = KXftConfig::Hint::Slight;
-    }
-    m_hinting = hStyle;
 }
 
 bool Fonts::antiAliasing() const
@@ -91,14 +81,14 @@ QStandardItemModel *Fonts::hintingModel()
 
 void Fonts::save()
 {
-    KXftConfig xft;
-    KXftConfig::AntiAliasing::State aaState = KXftConfig::AntiAliasing::NotSet;
-    if (xft.antiAliasingHasLocalConfig()) {
-        aaState = m_antiAliasing ? KXftConfig::AntiAliasing::Enabled : KXftConfig::AntiAliasing::Disabled;
-    }
-    xft.setAntiAliasing(aaState);
-    xft.setHintStyle(m_hinting);
-    xft.apply();
+//    KXftConfig xft;
+//    KXftConfig::AntiAliasing::State aaState = KXftConfig::AntiAliasing::NotSet;
+//    if (xft.antiAliasingHasLocalConfig()) {
+//        aaState = m_antiAliasing ? KXftConfig::AntiAliasing::Enabled : KXftConfig::AntiAliasing::Disabled;
+//    }
+//    xft.setAntiAliasing(aaState);
+//    xft.setHintStyle(m_hinting);
+//    xft.apply();
 
     m_settings.setValue("XftAntialias", m_antiAliasing);
     m_settings.setValue("XftHintStyle", KXftConfig::toStr(m_hinting));

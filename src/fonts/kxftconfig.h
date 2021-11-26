@@ -207,6 +207,9 @@ public:
     static const char *toStr(SubPixel::Type t);
     static QString description(Hint::Style s);
     static const char *toStr(Hint::Style s);
+
+    static Hint::Style toHintStyle(const QString &str);
+
     bool aliasingEnabled();
 
 private:
