@@ -64,6 +64,9 @@ Item {
                 acceptedButtons: Qt.LeftButton
 
                 onClicked: {
+                    if (busyIndicator.visible)
+                        return
+
                     additionalSettings.toggle()
 
 //                    if (model.uuid || !predictableWirelessPassword) {
