@@ -121,7 +121,7 @@ ItemPage {
                         // Preload image
                         Image {
                             anchors.centerIn: parent
-                            width: 48
+                            width: 32
                             height: width
                             sourceSize: Qt.size(width, height)
                             source: FishUI.Theme.darkMode ? "qrc:/images/dark/picture.svg"

@@ -27,6 +27,20 @@ ColumnLayout {
     id: _contentLayout
     spacing: FishUI.Units.largeSpacing
 
+    ConnectDialog {
+        id: connectDialog
+
+        onConnect: {
+            handler.addAndActivateConnection(connectDialog.devicePath,
+                                             connectDialog.specificPath,
+                                             password)
+
+            console.log(connectDialog.devicePath + ", "
+                        + connectDialog.specificPath + ", " +
+                        password)
+        }
+    }
+
     RowLayout {
         spacing: FishUI.Units.smallSpacing * 1.5
 

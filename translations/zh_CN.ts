@@ -15,6 +15,34 @@
     </message>
 </context>
 <context>
+    <name>ConnectDialog</name>
+    <message>
+        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="60"/>
+        <source>Enter Password</source>
+        <translation>输入密码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="72"/>
+        <source>Enter the password for %1</source>
+        <translation>输入 %1 密码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="82"/>
+        <source>Password</source>
+        <translation>密码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="107"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="113"/>
+        <source>Connect</source>
+        <translation>连接</translation>
+    </message>
+</context>
+<context>
     <name>LanguagePage</name>
     <message>
         <location filename="../src/qml/LanguagePage.qml" line="29"/>
@@ -395,42 +423,42 @@
         <translation>关闭屏幕</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="122"/>
+        <location filename="../src/qml/Power/Main.qml" line="124"/>
         <source>2 Minutes</source>
         <translation>2分钟</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="123"/>
+        <location filename="../src/qml/Power/Main.qml" line="125"/>
         <source>5 Minutes</source>
         <translation>5分钟</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="124"/>
+        <location filename="../src/qml/Power/Main.qml" line="126"/>
         <source>10 Minutes</source>
         <translation>10分钟</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="125"/>
+        <location filename="../src/qml/Power/Main.qml" line="127"/>
         <source>15 Minutes</source>
         <translation>15分钟</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="126"/>
+        <location filename="../src/qml/Power/Main.qml" line="128"/>
         <source>30 Minutes</source>
         <translation>30分钟</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="127"/>
+        <location filename="../src/qml/Power/Main.qml" line="129"/>
         <source>Never</source>
         <translation>永不</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="159"/>
+        <location filename="../src/qml/Power/Main.qml" line="161"/>
         <source>Hibernate after screen is turned off</source>
         <translation>关闭屏幕后休眠</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="171"/>
+        <location filename="../src/qml/Power/Main.qml" line="173"/>
         <source>Lock screen after screen is turned off</source>
         <translation>关闭屏幕后锁屏</translation>
     </message>
@@ -1039,24 +1067,24 @@
 <context>
     <name>WifiItem</name>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="185"/>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="193"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="196"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
         <source>Password</source>
         <translation>密码</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="207"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="218"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="212"/>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="224"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="223"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="235"/>
         <source>Connect</source>
         <translation>连接</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="238"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="249"/>
         <source>Disconnect</source>
         <translation>断开连接</translation>
     </message>
@@ -1064,7 +1092,7 @@
 <context>
     <name>WifiView</name>
     <message>
-        <location filename="../src/qml/WLAN/WifiView.qml" line="35"/>
+        <location filename="../src/qml/WLAN/WifiView.qml" line="49"/>
         <source>WLAN</source>
         <translation>无线网络</translation>
     </message>
