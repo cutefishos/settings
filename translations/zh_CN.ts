@@ -669,7 +669,7 @@
     <message>
         <location filename="../src/qml/Touchpad/Main.qml" line="28"/>
         <source>Touchpad</source>
-        <translation>触摸版</translation>
+        <translation>触摸板</translation>
     </message>
     <message>
         <location filename="../src/qml/Touchpad/Main.qml" line="52"/>
@@ -1004,7 +1004,7 @@
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="178"/>
         <source>Automatic login</source>
-        <translation>自动登陆</translation>
+        <translation>自动登录</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="204"/>
