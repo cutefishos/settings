@@ -80,6 +80,13 @@ ItemPage {
             id: layout
             anchors.fill: parent
 
+            Label {
+                text: qsTr("Output Devices")
+                leftPadding: FishUI.Units.largeSpacing
+                bottomPadding: FishUI.Units.smallSpacing
+                color: FishUI.Theme.disabledTextColor
+            }
+
             // Playback Devices
             ListView {
                 id: sinks
@@ -161,6 +168,13 @@ ItemPage {
                 height: FishUI.Units.largeSpacing * 2
             }
 
+            Label {
+                text: qsTr("Input Devices")
+                leftPadding: FishUI.Units.largeSpacing
+                bottomPadding: FishUI.Units.smallSpacing
+                color: FishUI.Theme.disabledTextColor
+            }
+
             // Recording Devices
             ListView {
                 id: sinkInputView
@@ -229,6 +243,10 @@ ItemPage {
                         }
                     }
                 }
+            }
+
+            Item {
+                height: FishUI.Units.largeSpacing * 2
             }
         }
     }

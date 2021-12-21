@@ -778,6 +778,16 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/qml/Sound/Main.qml" line="84"/>
+        <source>Output Devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Sound/Main.qml" line="172"/>
+        <source>Input Devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/qml/DefaultApp/Main.qml" line="28"/>
         <source>Default Applications</source>
         <translation type="unfinished"></translation>

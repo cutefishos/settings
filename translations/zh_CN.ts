@@ -778,6 +778,16 @@
         <translation>声音</translation>
     </message>
     <message>
+        <location filename="../src/qml/Sound/Main.qml" line="84"/>
+        <source>Output Devices</source>
+        <translation>输出设备</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Sound/Main.qml" line="172"/>
+        <source>Input Devices</source>
+        <translation>输入设备</translation>
+    </message>
+    <message>
         <location filename="../src/qml/DefaultApp/Main.qml" line="28"/>
         <source>Default Applications</source>
         <translation>默认应用</translation>
