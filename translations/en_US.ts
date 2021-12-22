@@ -93,6 +93,11 @@
         <translation>Internal Storage</translation>
     </message>
     <message>
+        <location filename="../src/qml/About/Main.qml" line="128"/>
+        <source>System Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/qml/Appearance/Main.qml" line="30"/>
         <source>Appearance</source>
         <translation>Appearance</translation>
@@ -783,7 +788,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Sound/Main.qml" line="172"/>
+        <location filename="../src/qml/Sound/Main.qml" line="173"/>
         <source>Input Devices</source>
         <translation type="unfinished"></translation>
     </message>

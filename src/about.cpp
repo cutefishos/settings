@@ -23,6 +23,7 @@
 #include <QStorageInfo>
 #include <QRegularExpression>
 #include <QSettings>
+#include <QProcess>
 
 #ifdef Q_OS_LINUX
 #include <sys/sysinfo.h>
@@ -176,6 +177,11 @@ QString About::cpuInfo()
     }
 
     return QString();
+}
+
+void About::openUpdator()
+{
+    QProcess::startDetached("cutefish-updator", QStringList());
 }
 
 qlonglong About::calculateTotalRam() const

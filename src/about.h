@@ -59,6 +59,8 @@ public:
     QString internalStorage();
     QString cpuInfo();
 
+    Q_INVOKABLE void openUpdator();
+
 private:
     qlonglong calculateTotalRam() const;
 };

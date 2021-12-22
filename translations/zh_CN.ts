@@ -93,6 +93,11 @@
         <translation>内部存储</translation>
     </message>
     <message>
+        <location filename="../src/qml/About/Main.qml" line="128"/>
+        <source>System Update</source>
+        <translation>系统更新</translation>
+    </message>
+    <message>
         <location filename="../src/qml/Appearance/Main.qml" line="30"/>
         <source>Appearance</source>
         <translation>外观</translation>
@@ -783,7 +788,7 @@
         <translation>输出设备</translation>
     </message>
     <message>
-        <location filename="../src/qml/Sound/Main.qml" line="172"/>
+        <location filename="../src/qml/Sound/Main.qml" line="173"/>
         <source>Input Devices</source>
         <translation>输入设备</translation>
     </message>
