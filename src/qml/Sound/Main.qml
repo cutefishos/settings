@@ -85,6 +85,7 @@ ItemPage {
                 leftPadding: FishUI.Units.largeSpacing
                 bottomPadding: FishUI.Units.smallSpacing
                 color: FishUI.Theme.disabledTextColor
+                visible: sinks.count >= 1
             }
 
             // Playback Devices
@@ -173,6 +174,7 @@ ItemPage {
                 leftPadding: FishUI.Units.largeSpacing
                 bottomPadding: FishUI.Units.smallSpacing
                 color: FishUI.Theme.disabledTextColor
+                visible: sinkInputView.count >= 1
             }
 
             // Recording Devices
