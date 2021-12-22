@@ -34,7 +34,7 @@ void CScreenOutput::setName(QString name)
 
 QString CScreenOutput::hash() const
 {
-
+    return QString();
 }
 
 CScreenOutput::Rotation CScreenOutput::rotation() const
