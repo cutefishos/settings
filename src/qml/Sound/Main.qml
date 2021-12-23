@@ -145,7 +145,7 @@ ItemPage {
                                 Layout.fillWidth: true
                                 value: Volume
                                 from: PulseAudio.MinimalVolume
-                                to: PulseAudio.NormalVolume
+                                to: PulseAudio.MaximalVolume
                                 enabled: VolumeWritable
                                 visible: HasVolume
 
@@ -227,7 +227,7 @@ ItemPage {
                                 Layout.fillWidth: true
                                 value: Volume
                                 from: PulseAudio.MinimalVolume
-                                to: PulseAudio.NormalVolume
+                                to: PulseAudio.MaximalVolume
                                 enabled: VolumeWritable
                                 visible: HasVolume
 
