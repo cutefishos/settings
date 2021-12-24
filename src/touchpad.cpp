@@ -59,6 +59,17 @@ void Touchpad::setTapToClick(bool enabled)
     emit tapToClickChanged();
 }
 
+bool Touchpad::naturalScroll() const
+{
+    return m_iface.property("naturalScroll").toBool();
+}
+
+void Touchpad::setNaturalScroll(bool naturalScroll)
+{
+    m_iface.asyncCall("setNaturalScroll", naturalScroll);
+    emit naturalScrollChanged();
+}
+
 qreal Touchpad::pointerAcceleration() const
 {
     if (!m_iface.isValid())

@@ -57,6 +57,7 @@ ItemPage {
                         id: _enableSwitch
                         Layout.fillHeight: true
                         Layout.alignment: Qt.AlignRight
+                        rightPadding: 0
 
                         Component.onCompleted: {
                             checked = touchpad.enabled
@@ -76,9 +77,28 @@ ItemPage {
                         Layout.fillHeight: true
                         onCheckedChanged: touchpad.tapToClick = checked
                         Layout.alignment: Qt.AlignRight
+                        rightPadding: 0
 
                         Component.onCompleted: {
                             checked = touchpad.tapToClick
+                        }
+                    }
+
+                    Label {
+                        visible: _enableSwitch.checked
+                        text: qsTr("Natural scrolling")
+                        Layout.fillWidth: true
+                    }
+
+                    Switch {
+                        visible: _enableSwitch.checked
+                        Layout.fillHeight: true
+                        Layout.alignment: Qt.AlignRight
+                        onCheckedChanged: touchpad.naturalScroll = checked
+                        rightPadding: 0
+
+                        Component.onCompleted: {
+                            checked = touchpad.naturalScroll
                         }
                     }
 

@@ -30,6 +30,7 @@ class Touchpad : public QObject
     Q_PROPERTY(bool available READ available CONSTANT)
     Q_PROPERTY(bool enabled READ enabled WRITE setEnabled NOTIFY enabledChanged)
     Q_PROPERTY(bool tapToClick READ tapToClick WRITE setTapToClick NOTIFY tapToClickChanged)
+    Q_PROPERTY(bool naturalScroll READ naturalScroll WRITE setNaturalScroll NOTIFY naturalScrollChanged)
     Q_PROPERTY(qreal pointerAcceleration READ pointerAcceleration WRITE setPointerAcceleration NOTIFY pointerAccelerationChanged)
 
 public:
@@ -42,6 +43,9 @@ public:
     bool tapToClick() const;
     void setTapToClick(bool enabled);
 
+    bool naturalScroll() const;
+    void setNaturalScroll(bool naturalScroll);
+
     qreal pointerAcceleration() const;
     void setPointerAcceleration(qreal value);
 
@@ -49,6 +53,7 @@ signals:
     void enabledChanged();
     void tapToClickChanged();
     void pointerAccelerationChanged();
+    void naturalScrollChanged();
 
 private:
     QDBusInterface m_iface;

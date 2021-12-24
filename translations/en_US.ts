@@ -677,6 +677,7 @@
     </message>
     <message>
         <location filename="../src/qml/Cursor/Main.qml" line="74"/>
+        <location filename="../src/qml/Touchpad/Main.qml" line="89"/>
         <source>Natural scrolling</source>
         <translation type="unfinished"></translation>
     </message>
@@ -716,12 +717,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Touchpad/Main.qml" line="70"/>
+        <location filename="../src/qml/Touchpad/Main.qml" line="71"/>
         <source>Tap to click</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Touchpad/Main.qml" line="87"/>
+        <location filename="../src/qml/Touchpad/Main.qml" line="106"/>
         <source>Pointer acceleration</source>
         <translation type="unfinished"></translation>
     </message>
@@ -837,44 +838,44 @@
 <context>
     <name>NewNetworkDialog</name>
     <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="73"/>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="74"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="78"/>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="79"/>
         <source>Network Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="84"/>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="85"/>
         <source>Security</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="91"/>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="92"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="96"/>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="97"/>
         <source>UserName</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="102"/>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="110"/>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="116"/>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="103"/>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="111"/>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="117"/>
         <source>Password</source>
         <translation type="unfinished">Password</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="127"/>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="128"/>
         <source>Cancel</source>
         <translation type="unfinished">Cancel</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="136"/>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="137"/>
         <source>Join</source>
         <translation type="unfinished"></translation>
     </message>
