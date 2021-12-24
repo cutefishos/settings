@@ -96,6 +96,10 @@ ItemPage {
                 id: proxyItem
                 visible: !noProxyRadioButton.checked
 
+                property bool needSave: false
+
+                Component.onCompleted: needSave = false
+
                 RowLayout {
                     id: autoScriptProxyLayout
                     spacing: FishUI.Units.largeSpacing
@@ -107,8 +111,8 @@ ItemPage {
                         text: networkProxy.scriptProxy
                         height: 40
 
-                        onEditingFinished: {
-                            networkProxy.scriptProxy = autoScriptField.text
+                        onTextChanged: {
+                            proxyItem.needSave = true
                         }
                     }
 
@@ -135,8 +139,8 @@ ItemPage {
                         Layout.fillWidth: true
                         height: 40
                         text: networkProxy.httpProxy
-                        onEditingFinished: {
-                            networkProxy.httpProxy = httpProxyField.text
+                        onTextChanged: {
+                            proxyItem.needSave = true
                         }
                     }
 
@@ -153,8 +157,8 @@ ItemPage {
 
                         validator: IntValidator { bottom: 0; top: 999999}
 
-                        onEditingFinished: {
-                            networkProxy.httpProxyPort = httpProxyPortField.text
+                        onTextChanged: {
+                            proxyItem.needSave = true
                         }
                     }
 
@@ -168,7 +172,7 @@ ItemPage {
                         Layout.fillWidth: true
                         checked: networkProxy.useSameProxy
                         onClicked: {
-                            networkProxy.useSameProxy = forFtpCheckBox.checked
+                            proxyItem.needSave = true
                         }
                     }
 
@@ -191,8 +195,8 @@ ItemPage {
                         height: 40
                         enabled: !forFtpCheckBox.checked
                         text: networkProxy.ftpProxy
-                        onEditingFinished: {
-                            networkProxy.ftpProxy = ftpProxyTextField.text
+                        onTextChanged: {
+                            proxyItem.needSave = true
                         }
                     }
 
@@ -209,8 +213,8 @@ ItemPage {
                         text: networkProxy.ftpProxyPort
                         validator: IntValidator { bottom: 0; top: 999999}
 
-                        onEditingFinished: {
-                            networkProxy.ftpProxyPort = ftpProxyPortField.text
+                        onTextChanged: {
+                            proxyItem.needSave = true
                         }
                     }
 
@@ -225,8 +229,8 @@ ItemPage {
                         height: 40
                         text: networkProxy.socksProxy
 
-                        onEditingFinished: {
-                            networkProxy.socksProxy = socksProxyField.text
+                        onTextChanged: {
+                            proxyItem.needSave = true
                         }
                     }
 
@@ -242,7 +246,35 @@ ItemPage {
                         text: networkProxy.socksProxyPort
                         validator: IntValidator { bottom: 0; top: 999999}
 
-                        onEditingFinished: {
+                        onTextChanged: {
+                            proxyItem.needSave = true
+                        }
+                    }
+                }
+
+                HorizontalDivider {
+                    visible: proxyItem.needSave
+                }
+
+                RowLayout {
+                    visible: proxyItem.needSave
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    Button {
+                        text: qsTr("Save")
+
+                        onClicked: {
+                            proxyItem.needSave = false
+                            networkProxy.scriptProxy = autoScriptField.text
+                            networkProxy.httpProxy = httpProxyField.text
+                            networkProxy.httpProxyPort = httpProxyPortField.text
+                            networkProxy.useSameProxy = forFtpCheckBox.checked
+                            networkProxy.ftpProxy = ftpProxyTextField.text
+                            networkProxy.ftpProxyPort = ftpProxyPortField.text
+                            networkProxy.socksProxy = socksProxyField.text
                             networkProxy.socksProxyPort = socksProxyPortField.text
                         }
                     }
