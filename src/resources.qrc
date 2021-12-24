@@ -144,5 +144,6 @@
         <file>qml/Notification/Main.qml</file>
         <file>images/sidebar/dark/notifications.svg</file>
         <file>qml/WLAN/ConnectDialog.qml</file>
+        <file>qml/WLAN/NewNetworkDialog.qml</file>
     </qresource>
 </RCC>

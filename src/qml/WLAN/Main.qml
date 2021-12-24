@@ -58,6 +58,14 @@ ItemPage {
         id: configuration
     }
 
+    NewNetworkDialog {
+        id: newNetworkDialog
+
+        onConnect: {
+            wifiSettings.addOtherConnection(ssid, username, pwd, type)
+        }
+    }
+
     Component.onCompleted: {
         handler.requestScan()
     }
@@ -86,6 +94,12 @@ ItemPage {
                     Layout.fillWidth: true
                     visible: enabledConnections.wirelessHwEnabled
                 }
+            }
+
+            StandardButton {
+                Layout.fillWidth: true
+                text: qsTr("Add other...")
+                onClicked: newNetworkDialog.show()
             }
 
             // Hotspot

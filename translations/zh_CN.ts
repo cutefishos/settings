@@ -545,6 +545,11 @@
         <translation>无线网络</translation>
     </message>
     <message>
+        <location filename="../src/qml/WLAN/Main.qml" line="101"/>
+        <source>Add other...</source>
+        <translation>添加其他网络...</translation>
+    </message>
+    <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="30"/>
         <location filename="../src/qml/Bluetooth/Main.qml" line="93"/>
         <source>Bluetooth</source>
@@ -656,6 +661,7 @@
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="129"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="267"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
@@ -746,34 +752,34 @@
         <translation>使用手动配置的代理服务器</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="116"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="120"/>
         <source>Select file</source>
         <translation>选择文件</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="130"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="134"/>
         <source>HTTP Proxy</source>
         <translation>HTTP 代理</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="144"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="200"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="234"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="148"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="204"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="238"/>
         <source>Port</source>
         <translation>端口</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="167"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="171"/>
         <source>Also use this proxy for FTP</source>
         <translation>将此代理用于 FTP</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="185"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="189"/>
         <source>FTP Proxy</source>
         <translation>FTP 代理</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="219"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="223"/>
         <source>SOCKS Proxy</source>
         <translation>SOCKS 代理</translation>
     </message>
@@ -826,6 +832,51 @@
         <location filename="../src/qml/Notification/Main.qml" line="45"/>
         <source>Do Not Disturb</source>
         <translation>勿扰模式</translation>
+    </message>
+</context>
+<context>
+    <name>NewNetworkDialog</name>
+    <message>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="73"/>
+        <source>Name</source>
+        <translation>名称</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="78"/>
+        <source>Network Name</source>
+        <translation>网络名称</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="84"/>
+        <source>Security</source>
+        <translation>安全性</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="91"/>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="96"/>
+        <source>UserName</source>
+        <translation>用户名</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="102"/>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="110"/>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="116"/>
+        <source>Password</source>
+        <translation>密码</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="127"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="136"/>
+        <source>Join</source>
+        <translation>添加</translation>
     </message>
 </context>
 <context>
@@ -1107,7 +1158,7 @@
 <context>
     <name>WifiView</name>
     <message>
-        <location filename="../src/qml/WLAN/WifiView.qml" line="49"/>
+        <location filename="../src/qml/WLAN/WifiView.qml" line="51"/>
         <source>WLAN</source>
         <translation>无线网络</translation>
     </message>
