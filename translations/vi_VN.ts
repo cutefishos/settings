@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="vi">
 <context>
     <name>BluetoothPage</name>
     <message>
@@ -11,35 +11,7 @@
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="49"/>
         <source>Bluetooth is disabled</source>
-        <translation>Bluetooth is disabled</translation>
-    </message>
-</context>
-<context>
-    <name>ConnectDialog</name>
-    <message>
-        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="60"/>
-        <source>Enter Password</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="72"/>
-        <source>Enter the password for %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="82"/>
-        <source>Password</source>
-        <translation type="unfinished">Password</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="107"/>
-        <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="113"/>
-        <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth đã bị tắt</translation>
     </message>
 </context>
 <context>
@@ -47,7 +19,7 @@
     <message>
         <location filename="../src/qml/LanguagePage.qml" line="29"/>
         <source>Language</source>
-        <translation>Language</translation>
+        <translation>Ngôn ngữ</translation>
     </message>
 </context>
 <context>
@@ -55,682 +27,670 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="28"/>
         <source>About</source>
-        <translation>About</translation>
+        <translation>Thông tin</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="79"/>
         <source>Built on %1</source>
-        <translation>Built on %1</translation>
+        <translation>Được tạo trên %1</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="91"/>
         <source>System Version</source>
-        <translation>System Version</translation>
+        <translation>Phiên bản hệ thống</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="96"/>
         <source>System Type</source>
-        <translation>System Type</translation>
+        <translation>Kiểu hệ thống</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="101"/>
         <source>Kernel Version</source>
-        <translation>Kernel Version</translation>
+        <translation>Phiên bản kernel</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="106"/>
         <source>Processor</source>
-        <translation>Processor</translation>
+        <translation>Vi xử lí</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="111"/>
         <source>RAM</source>
-        <translation>RAM</translation>
+        <translation>Bộ nhớ RAM</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="116"/>
         <source>Internal Storage</source>
-        <translation>Internal Storage</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/About/Main.qml" line="128"/>
-        <source>System Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Bộ nhớ trong</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="30"/>
         <source>Appearance</source>
-        <translation>Appearance</translation>
+        <translation>Diện mạo</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="48"/>
         <location filename="../src/qml/Cursor/Main.qml" line="140"/>
         <source>Theme</source>
-        <translation>Theme</translation>
+        <translation>Chủ đề</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="58"/>
         <source>Light</source>
-        <translation>Light</translation>
+        <translation>Sáng</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="65"/>
         <source>Dark</source>
-        <translation>Dark</translation>
+        <translation>Tối</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="78"/>
         <source>Dim the wallpaper in dark theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Làm mờ hình nền khi ở chế độ tối</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="98"/>
         <source>System effects</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiệu ứng hệ thống</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="121"/>
         <source>Minimize animation</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiệu ứng thu nhỏ</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="130"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Mặc định</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="134"/>
         <source>Magic Lamp</source>
-        <translation type="unfinished"></translation>
+        <translation>Chiếc đèn thần kì</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="142"/>
         <source>Accent color</source>
-        <translation type="unfinished"></translation>
+        <translation>Màu chủ đạo</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="31"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Các phông chữ</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="92"/>
         <source>General Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Phông chữ chính</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="109"/>
         <source>Fixed Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Phông chữ cố định</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="126"/>
         <source>Font Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Cỡ chữ</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="187"/>
         <source>Hinting</source>
-        <translation type="unfinished"></translation>
+        <translation>Gợi ý</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
         <source>Anti-Aliasing</source>
-        <translation type="unfinished"></translation>
+        <translation>Khử răng cưa</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="114"/>
         <location filename="../src/qml/Fonts/Main.qml" line="134"/>
         <source>Small</source>
-        <translation type="unfinished"></translation>
+        <translation>Bé</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="118"/>
         <location filename="../src/qml/Fonts/Main.qml" line="138"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Trung bình</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="122"/>
         <location filename="../src/qml/Fonts/Main.qml" line="142"/>
         <source>Large</source>
-        <translation type="unfinished"></translation>
+        <translation>Lớn</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="126"/>
         <location filename="../src/qml/Fonts/Main.qml" line="146"/>
         <source>Huge</source>
-        <translation type="unfinished"></translation>
+        <translation>Lớn nhất</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="29"/>
         <source>Battery</source>
-        <translation type="unfinished"></translation>
+        <translation>Pin</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last hour</source>
-        <translation type="unfinished"></translation>
+        <translation>Một tiếng trước</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 2 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>Hai tiếng trước</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 12 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>12 tiếng trước</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 24 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>24 giờ trước</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 48 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>48 giờ trước</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 7 days</source>
-        <translation type="unfinished"></translation>
+        <translation>7 ngày trước</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="143"/>
         <source>History</source>
-        <translation type="unfinished"></translation>
+        <translation>Lịch sử</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="171"/>
         <source>W</source>
-        <translation type="unfinished"></translation>
+        <translation>Oát</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="192"/>
         <source>Health</source>
-        <translation type="unfinished"></translation>
+        <translation>Tình trạng</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="216"/>
         <source>Poor</source>
-        <translation type="unfinished"></translation>
+        <translation>Kém</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="241"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>BÌnh thường</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="266"/>
         <source>Excellent</source>
-        <translation type="unfinished"></translation>
+        <translation>Tốt</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="275"/>
         <source>Last Charged to</source>
-        <translation type="unfinished"></translation>
+        <translation>Lần cuối sạc vào</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="281"/>
         <source>Maximum Capacity</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiệu năng pin tối đa</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="289"/>
         <source>Show percentage in status bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiển thị phần trăm pin ở thanh trạng thái</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="313"/>
         <source>No battery found</source>
-        <translation type="unfinished"></translation>
+        <translation>Không thấy pin</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="29"/>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Màn hình</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="67"/>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>Độ sáng</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="124"/>
         <source>Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Màn hình</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="164"/>
         <source>Screen Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Tên màn hình</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="175"/>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Độ phân giải</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="194"/>
         <source>Refresh rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Tốc độ làm tươi</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="214"/>
         <source>Rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Chièu xoay</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="258"/>
         <source>Enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Đã bật</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="289"/>
         <source>Scale</source>
-        <translation type="unfinished"></translation>
+        <translation>Căn chỉnh</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
-        <translation type="unfinished"></translation>
+        <translation>Thanh Dock</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="45"/>
         <source>Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Kiểu dáng</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="54"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation>Giữa</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="61"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Đầy đủ</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="71"/>
         <source>Position on screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Vị trí trên màn hình</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="80"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Trái</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="87"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Dưới</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="94"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation>Phải</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="104"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Kích thước</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="170"/>
         <source>Display mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Chế độ hiển thị</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="180"/>
         <source>Always show</source>
-        <translation type="unfinished"></translation>
+        <translation>Luôn hiện</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="184"/>
         <source>Always hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Luôn ẩn</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="188"/>
         <source>Smart hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Ẩn hiện thông minh</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="31"/>
         <source>Power</source>
-        <translation type="unfinished"></translation>
+        <translation>Nguồn điện</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="69"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Chế độ</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="78"/>
         <source>Power Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiết kiệm pin</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="91"/>
         <source>Performance</source>
-        <translation type="unfinished"></translation>
+        <translation>HIệu suất</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="104"/>
         <source>Performance mode: CPU and GPU frequencies will be increased, while power consumption and heat generation will be increased.</source>
-        <translation type="unfinished"></translation>
+        <translation>Chế độ ưu tiên hiệu năng: Nhiệt độ CPU và GPU sẽ tăng lên trong khi lưu lượng điện năng và nhiệt độ tăng lên.</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="116"/>
         <source>Turn off screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Tắt màn hình</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Power/Main.qml" line="122"/>
+        <source>2 Minutes</source>
+        <translation>2 phút</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Power/Main.qml" line="123"/>
+        <source>5 Minutes</source>
+        <translation>5 phút</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="124"/>
-        <source>2 Minutes</source>
-        <translation type="unfinished"></translation>
+        <source>10 Minutes</source>
+        <translation>10 phút</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="125"/>
-        <source>5 Minutes</source>
-        <translation type="unfinished"></translation>
+        <source>15 Minutes</source>
+        <translation>15 phút</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="126"/>
-        <source>10 Minutes</source>
-        <translation type="unfinished"></translation>
+        <source>30 Minutes</source>
+        <translation>30 phút</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="127"/>
-        <source>15 Minutes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Power/Main.qml" line="128"/>
-        <source>30 Minutes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Power/Main.qml" line="129"/>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Không bao giờ</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="161"/>
+        <location filename="../src/qml/Power/Main.qml" line="159"/>
         <source>Hibernate after screen is turned off</source>
-        <translation type="unfinished"></translation>
+        <translation>Ngủ đông sau khi tắt màn hình</translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="173"/>
+        <location filename="../src/qml/Power/Main.qml" line="171"/>
         <source>Lock screen after screen is turned off</source>
-        <translation type="unfinished"></translation>
+        <translation>Khóa màn hình sau khí tắt màn hình</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="31"/>
         <source>User</source>
-        <translation type="unfinished"></translation>
+        <translation>Người dùng</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="101"/>
         <source>Add new user</source>
-        <translation type="unfinished"></translation>
+        <translation>Thêm một người dùng mới</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="110"/>
         <location filename="../src/qml/User/Main.qml" line="116"/>
         <source>User name</source>
-        <translation type="unfinished"></translation>
+        <translation>Tên người dùng</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="136"/>
         <location filename="../src/qml/User/Main.qml" line="142"/>
         <source>Verify password</source>
-        <translation type="unfinished">Verify password</translation>
+        <translation>Xác minh mật khẩu</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="149"/>
         <source>Account type</source>
-        <translation type="unfinished">Account type</translation>
+        <translation>Loại tài khoản</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="155"/>
         <source>Standard</source>
-        <translation type="unfinished">Standard</translation>
+        <translation>Tiêu chuẩn</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="155"/>
         <source>Administrator</source>
-        <translation type="unfinished">Administrator</translation>
+        <translation>Quản trị</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="168"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation>Hủy</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="178"/>
         <source>Add</source>
-        <translation type="unfinished">Add</translation>
+        <translation>Thêm</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="196"/>
         <source>Add user</source>
-        <translation type="unfinished"></translation>
+        <translation>Thêm người dùng</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="30"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Hình nền</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="50"/>
         <source>Background type</source>
-        <translation type="unfinished"></translation>
+        <translation>Loại hình nền</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="66"/>
         <source>Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Ảnh</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="70"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Màu</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/Main.qml" line="32"/>
         <source>WLAN</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/Main.qml" line="101"/>
-        <source>Add other...</source>
-        <translation type="unfinished"></translation>
+        <translation>Mạng không dây</translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="30"/>
         <location filename="../src/qml/Bluetooth/Main.qml" line="93"/>
         <source>Bluetooth</source>
-        <translation type="unfinished">Bluetooth</translation>
+        <translation>Bluetooth</translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="66"/>
         <source>Pairing unsuccessful</source>
-        <translation type="unfinished"></translation>
+        <translation>Đã ghép đôi thành công</translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="70"/>
         <source>Connecting Unsuccessful</source>
-        <translation type="unfinished"></translation>
+        <translation>Kết nối thành công</translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="134"/>
         <source>My devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Thiết bị của tôi</translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="135"/>
         <source>Other devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Các thiết bị khác</translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="206"/>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Đã kết nối</translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="206"/>
         <source>Not Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Chưa kết nối</translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="225"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Kết nối</translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="237"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Ngắt kết nối</translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="246"/>
         <source>Forget This Device</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;Quên&quot; thiết bị này</translation>
     </message>
     <message>
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
         <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>Mạng có dây</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="30"/>
         <source>Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Ứng dụng</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="42"/>
         <source>Default application</source>
-        <translation type="unfinished"></translation>
+        <translation>Ứng dụng mặc định</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="52"/>
         <source>Web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Trình duyệt Web</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="60"/>
         <source>File manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Trình quản lý tập tin</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="68"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>Thư điện tử</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="76"/>
         <source>Terminal emulator</source>
-        <translation type="unfinished"></translation>
+        <translation>Trình giả lập dòng lệnh</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="32"/>
         <location filename="../src/qml/Hotspot/Main.qml" line="69"/>
         <source>Hotspot</source>
-        <translation type="unfinished"></translation>
+        <translation>Chia sẻ mạng</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="47"/>
         <source>Not supported</source>
-        <translation type="unfinished"></translation>
+        <translation>Không được hỗ trợ</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="102"/>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="113"/>
         <location filename="../src/qml/User/Main.qml" line="123"/>
         <location filename="../src/qml/User/Main.qml" line="129"/>
         <source>Password</source>
-        <translation type="unfinished">Password</translation>
+        <translation>Mật khẩu</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="129"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="267"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Lưu</translation>
     </message>
     <message>
         <location filename="../src/qml/Cursor/Main.qml" line="31"/>
         <source>Mouse</source>
-        <translation type="unfinished"></translation>
+        <translation>Chuột</translation>
     </message>
     <message>
         <location filename="../src/qml/Cursor/Main.qml" line="61"/>
         <source>Left hand</source>
-        <translation type="unfinished"></translation>
+        <translation>Tay trái</translation>
     </message>
     <message>
         <location filename="../src/qml/Cursor/Main.qml" line="74"/>
-        <location filename="../src/qml/Touchpad/Main.qml" line="89"/>
         <source>Natural scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuộn ngược chiều</translation>
     </message>
     <message>
         <location filename="../src/qml/Cursor/Main.qml" line="114"/>
         <source>Pointer speed</source>
-        <translation type="unfinished"></translation>
+        <translation>Tốc độ trỏ chuột</translation>
     </message>
     <message>
         <location filename="../src/qml/DateTime/Main.qml" line="28"/>
         <source>Date &amp; Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Ngày và giờ</translation>
     </message>
     <message>
         <location filename="../src/qml/DateTime/Main.qml" line="56"/>
         <source>Auto Sync</source>
-        <translation type="unfinished"></translation>
+        <translation>Tự động đồng bộ</translation>
     </message>
     <message>
         <location filename="../src/qml/DateTime/Main.qml" line="74"/>
         <source>24-Hour Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Thời gian loại 24-giờ</translation>
     </message>
     <message>
         <location filename="../src/qml/DateTime/Main.qml" line="103"/>
         <source>Time Zone</source>
-        <translation type="unfinished"></translation>
+        <translation>Múi giờ</translation>
     </message>
     <message>
         <location filename="../src/qml/Touchpad/Main.qml" line="28"/>
         <source>Touchpad</source>
-        <translation type="unfinished"></translation>
+        <translation>Bàn di chuột</translation>
     </message>
     <message>
         <location filename="../src/qml/Touchpad/Main.qml" line="52"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Kích hoạt</translation>
     </message>
     <message>
-        <location filename="../src/qml/Touchpad/Main.qml" line="71"/>
+        <location filename="../src/qml/Touchpad/Main.qml" line="70"/>
         <source>Tap to click</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Chạm để click</translation>
     </message>
     <message>
-        <location filename="../src/qml/Touchpad/Main.qml" line="106"/>
+        <location filename="../src/qml/Touchpad/Main.qml" line="87"/>
         <source>Pointer acceleration</source>
-        <translation type="unfinished"></translation>
+        <translation>Gia tốc con trỏ chuột</translation>
     </message>
     <message>
         <location filename="../src/qml/VPN/Main.qml" line="28"/>
         <location filename="../src/qml/VPN/Main.qml" line="54"/>
         <source>VPN</source>
-        <translation type="unfinished"></translation>
+        <translation>Mạng riêng ảo (VPN)</translation>
     </message>
     <message>
         <location filename="../src/qml/Proxy/Main.qml" line="31"/>
@@ -740,7 +700,7 @@
     <message>
         <location filename="../src/qml/Proxy/Main.qml" line="69"/>
         <source>No Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Không có Proxy</translation>
     </message>
     <message>
         <location filename="../src/qml/Proxy/Main.qml" line="78"/>
@@ -750,134 +710,49 @@
     <message>
         <location filename="../src/qml/Proxy/Main.qml" line="88"/>
         <source>Use manually specified proxy configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Dùng điều chỉnh proxy đã có sẵn</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="120"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="116"/>
         <source>Select file</source>
-        <translation type="unfinished"></translation>
+        <translation>Chọn tập tin</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="134"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="130"/>
         <source>HTTP Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="148"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="204"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="238"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="144"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="200"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="234"/>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Cổng</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="171"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="167"/>
         <source>Also use this proxy for FTP</source>
-        <translation type="unfinished"></translation>
+        <translation>Đồng thời sử dụng proxy cho FTP</translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="189"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="185"/>
         <source>FTP Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="223"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="219"/>
         <source>SOCKS Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/Sound/Main.qml" line="29"/>
         <source>Sound</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Sound/Main.qml" line="84"/>
-        <source>Output Devices</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Sound/Main.qml" line="173"/>
-        <source>Input Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Âm thanh</translation>
     </message>
     <message>
         <location filename="../src/qml/DefaultApp/Main.qml" line="28"/>
-        <source>Default Applications</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="48"/>
-        <source>Web Browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="56"/>
-        <source>File Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="64"/>
-        <source>Email Client</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="72"/>
-        <source>Terminal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Notification/Main.qml" line="28"/>
-        <source>Notifications</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Notification/Main.qml" line="45"/>
-        <source>Do Not Disturb</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>NewNetworkDialog</name>
-    <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="74"/>
-        <source>Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="79"/>
-        <source>Network Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="85"/>
-        <source>Security</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="92"/>
-        <source>None</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="97"/>
-        <source>UserName</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="103"/>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="111"/>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="117"/>
-        <source>Password</source>
-        <translation type="unfinished">Password</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="128"/>
-        <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="137"/>
-        <source>Join</source>
-        <translation type="unfinished"></translation>
+        <source>Default Application</source>
+        <translation>Ứng dụng mặc định</translation>
     </message>
 </context>
 <context>
@@ -885,17 +760,17 @@
     <message>
         <location filename="../src/qml/Bluetooth/PairDialog.qml" line="52"/>
         <source>Bluetooth Pairing Request</source>
-        <translation type="unfinished"></translation>
+        <translation>Yêu cầu ghép nối Bluetooth</translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/PairDialog.qml" line="69"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation>Hủy</translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/PairDialog.qml" line="78"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>OK</translation>
     </message>
 </context>
 <context>
@@ -903,17 +778,17 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="503"/>
         <source>Vendor default</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mặc định của nhà sản xuất</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="505"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Trung bình</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="507"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Không</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="509"/>
@@ -931,17 +806,17 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="154"/>
         <source>User</source>
-        <translation type="unfinished"></translation>
+        <translation>Người dùng</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="109"/>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Màn hình</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="55"/>
         <source>WLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>Mạng không dây</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="60"/>
@@ -949,12 +824,12 @@
         <location filename="../src/qml/SideBar.qml" line="87"/>
         <location filename="../src/qml/SideBar.qml" line="105"/>
         <source>Network and connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Mạng và kết nối</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="64"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>Mạng có dây</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="100"/>
@@ -968,97 +843,91 @@
         <location filename="../src/qml/SideBar.qml" line="141"/>
         <location filename="../src/qml/SideBar.qml" line="150"/>
         <source>Display and appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Màn hình và giao diện</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="118"/>
         <source>Appearance</source>
-        <translation type="unfinished">Appearance</translation>
+        <translation>Giao diện</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="181"/>
+        <location filename="../src/qml/SideBar.qml" line="172"/>
         <source>Mouse</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/SideBar.qml" line="217"/>
-        <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Chuột</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="127"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Phông chữ</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="82"/>
         <source>Bluetooth</source>
-        <translation type="unfinished">Bluetooth</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="136"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>HÌnh nền</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="145"/>
         <source>Dock</source>
-        <translation type="unfinished"></translation>
+        <translation>Thanh Dock</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="159"/>
         <location filename="../src/qml/SideBar.qml" line="168"/>
         <location filename="../src/qml/SideBar.qml" line="177"/>
         <location filename="../src/qml/SideBar.qml" line="186"/>
-        <location filename="../src/qml/SideBar.qml" line="195"/>
+        <location filename="../src/qml/SideBar.qml" line="204"/>
         <location filename="../src/qml/SideBar.qml" line="213"/>
         <location filename="../src/qml/SideBar.qml" line="222"/>
         <location filename="../src/qml/SideBar.qml" line="231"/>
         <location filename="../src/qml/SideBar.qml" line="240"/>
         <location filename="../src/qml/SideBar.qml" line="249"/>
-        <location filename="../src/qml/SideBar.qml" line="258"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation>Hệ thống</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="163"/>
-        <source>Notifications</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/SideBar.qml" line="172"/>
         <source>Sound</source>
-        <translation type="unfinished"></translation>
+        <translation>Âm thanh</translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="190"/>
+        <location filename="../src/qml/SideBar.qml" line="181"/>
         <source>Touchpad</source>
-        <translation type="unfinished"></translation>
+        <translation>Bàn di chuột</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="199"/>
+        <source>Date &amp; Time</source>
+        <translation>Ngày và giờ</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="208"/>
-        <source>Date &amp; Time</source>
-        <translation type="unfinished"></translation>
+        <source>Default Application</source>
+        <translation>Ứng dụng mặc định</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="217"/>
+        <source>Language</source>
+        <translation>Ngôn ngữ</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="226"/>
-        <source>Language</source>
-        <translation type="unfinished">Language</translation>
+        <source>Battery</source>
+        <translation>Pin</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="235"/>
-        <source>Battery</source>
-        <translation type="unfinished"></translation>
+        <source>Power</source>
+        <translation>Nguồn điện</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="244"/>
-        <source>Power</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/SideBar.qml" line="253"/>
         <source>About</source>
-        <translation type="unfinished">About</translation>
+        <translation>Thông tin</translation>
     </message>
 </context>
 <context>
@@ -1066,12 +935,12 @@
     <message>
         <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="161"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation>Hủy</translation>
     </message>
     <message>
         <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="166"/>
         <source>Set</source>
-        <translation type="unfinished"></translation>
+        <translation>Đặt</translation>
     </message>
 </context>
 <context>
@@ -1084,84 +953,84 @@
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="169"/>
         <source>Account type</source>
-        <translation type="unfinished">Account type</translation>
+        <translation>Loại tài khoản</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="173"/>
         <source>Standard</source>
-        <translation type="unfinished">Standard</translation>
+        <translation>Tiêu chuẩn</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="174"/>
         <source>Administrator</source>
-        <translation type="unfinished">Administrator</translation>
+        <translation>Quản trị</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="178"/>
         <source>Automatic login</source>
-        <translation type="unfinished"></translation>
+        <translation>Tự động đăng nhập</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="204"/>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="253"/>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="272"/>
         <source>Change password</source>
-        <translation type="unfinished"></translation>
+        <translation>Đổi mật khẩu</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="215"/>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="221"/>
         <source>Password</source>
-        <translation type="unfinished">Password</translation>
+        <translation>Mật khẩu</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="228"/>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="234"/>
         <source>Verify password</source>
-        <translation type="unfinished">Verify password</translation>
+        <translation>Xác minh mật khẩu</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="247"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation>Hủy</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="280"/>
         <source>Delete this user</source>
-        <translation type="unfinished"></translation>
+        <translation>Xóa tài khoản người dùng này</translation>
     </message>
 </context>
 <context>
     <name>WifiItem</name>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="196"/>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="185"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="193"/>
         <source>Password</source>
-        <translation type="unfinished">Password</translation>
+        <translation>Mật khẩu</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="218"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="207"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation>Hủy</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="223"/>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="235"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="212"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="224"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Kết nối</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="249"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="238"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Ngát kết nối</translation>
     </message>
 </context>
 <context>
     <name>WifiView</name>
     <message>
-        <location filename="../src/qml/WLAN/WifiView.qml" line="51"/>
+        <location filename="../src/qml/WLAN/WifiView.qml" line="35"/>
         <source>WLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>Mạng không dây</translation>
     </message>
 </context>
 <context>
@@ -1169,32 +1038,32 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="65"/>
         <source>Auto-Join</source>
-        <translation type="unfinished"></translation>
+        <translation>Tự động kết nối</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="81"/>
         <source>Security</source>
-        <translation type="unfinished"></translation>
+        <translation>Bảo mật</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="93"/>
         <source>Signal</source>
-        <translation type="unfinished"></translation>
+        <translation>Tín hiệu</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="105"/>
         <source>IPv4 Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Địa chỉ IPv4</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="119"/>
         <source>IPv6 Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Địa chỉ IPv6</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="133"/>
         <source>MAC Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Địa chỉ MAC</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="147"/>
@@ -1209,12 +1078,12 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="177"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Đóng</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="183"/>
         <source>Forget this network</source>
-        <translation type="unfinished"></translation>
+        <translation>Quên mạng này</translation>
     </message>
 </context>
 <context>
@@ -1222,7 +1091,7 @@
     <message>
         <location filename="../src/qml/main.qml" line="29"/>
         <source>Settings</source>
-        <translation>Settings</translation>
+        <translation>Cài đặt</translation>
     </message>
 </context>
 </TS>

@@ -52,12 +52,12 @@
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="29"/>
         <source>Bluetooth</source>
-        <translation type="unfinished">Bluetooth</translation>
+        <translation>Bluetooth</translation>
     </message>
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="49"/>
         <source>Bluetooth is disabled</source>
-        <translation type="unfinished">Bluetooth לא פעיל</translation>
+        <translation>Bluetooth לא פעיל</translation>
     </message>
 </context>
 <context>
@@ -78,7 +78,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="68"/>
         <source>Built on %1</source>
-        <translation>נבנה על %1</translation>
+        <translation>נבנה על</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="76"/>
@@ -113,7 +113,7 @@
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="30"/>
         <source>Appearance</source>
-        <translation>מראֶה</translation>
+        <translation>מראה</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="48"/>
@@ -139,12 +139,12 @@
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="98"/>
         <source>System effects</source>
-        <translation type="unfinished">אפקטים של המערכת</translation>
+        <translation>אפקטים של המערכת</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="118"/>
         <source>Accent color</source>
-        <translation type="unfinished">צבע כללי</translation>
+        <translation>צבע כללי</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="31"/>
@@ -159,7 +159,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="109"/>
         <source>Fixed Font</source>
-        <translation type="unfinished">פונט קבוע</translation>
+        <translation>פונט קבוע</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="126"/>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="187"/>
         <source>Hinting</source>
-        <translation type="unfinished">שיפור איכות פונטים</translation>
+        <translation>שיפור איכות פונטים</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
@@ -338,7 +338,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
-        <translation>Dock</translation>
+        <translation>סרגל כלים</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="45"/>
@@ -388,7 +388,7 @@
     <message>
         <location filename="../src/qml/Power/Main.qml" line="31"/>
         <source>Power</source>
-        <translation type="unfinished">צריכת חשמל</translation>
+        <translation>צריכת חשמל</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="48"/>
@@ -413,7 +413,7 @@
     <message>
         <location filename="../src/qml/User/Main.qml" line="100"/>
         <source>Add user</source>
-        <translation type="unfinished"></translation>
+        <translation>הוסף משתמש</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="30"/>
@@ -444,7 +444,7 @@
         <location filename="../src/qml/Bluetooth/Main.qml" line="32"/>
         <location filename="../src/qml/Bluetooth/Main.qml" line="71"/>
         <source>Bluetooth</source>
-        <translation type="unfinished">Bluetooth</translation>
+        <translation>Bluetooth</translation>
     </message>
     <message>
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
@@ -549,7 +549,7 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="503"/>
         <source>Vendor default</source>
-        <translation type="unfinished">ברירת מחדל של הספק</translation>
+        <translation>ברירת מחדל של הספק</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="505"/>
@@ -681,7 +681,7 @@
     <message>
         <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="165"/>
         <source>Set</source>
-        <translation type="unfinished">קבע</translation>
+        <translation>קבע</translation>
     </message>
 </context>
 <context>
@@ -722,7 +722,7 @@
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="212"/>
         <source>Connect</source>
-        <translation type="unfinished">קשר</translation>
+        <translation>התחבר</translation>
     </message>
 </context>
 <context>
@@ -783,7 +783,7 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="183"/>
         <source>Forget this network</source>
-        <translation type="unfinished">שכח את הרשת הזאת</translation>
+        <translation>שכח את הרשת הזאת</translation>
     </message>
 </context>
 <context>

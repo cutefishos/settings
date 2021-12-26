@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="mg">
 <context>
     <name>BluetoothPage</name>
     <message>
@@ -11,35 +11,7 @@
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="49"/>
         <source>Bluetooth is disabled</source>
-        <translation>Bluetooth is disabled</translation>
-    </message>
-</context>
-<context>
-    <name>ConnectDialog</name>
-    <message>
-        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="60"/>
-        <source>Enter Password</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="72"/>
-        <source>Enter the password for %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="82"/>
-        <source>Password</source>
-        <translation type="unfinished">Password</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="107"/>
-        <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="113"/>
-        <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Mijanona ny Bluetooth</translation>
     </message>
 </context>
 <context>
@@ -47,7 +19,7 @@
     <message>
         <location filename="../src/qml/LanguagePage.qml" line="29"/>
         <source>Language</source>
-        <translation>Language</translation>
+        <translation>Fiteny</translation>
     </message>
 </context>
 <context>
@@ -55,262 +27,257 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="28"/>
         <source>About</source>
-        <translation>About</translation>
+        <translation>Mahakasika</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="79"/>
         <source>Built on %1</source>
-        <translation>Built on %1</translation>
+        <translation>Namboarina tamin&apos;ny %1</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="91"/>
         <source>System Version</source>
-        <translation>System Version</translation>
+        <translation>Systeme Laharana faha-</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="96"/>
         <source>System Type</source>
-        <translation>System Type</translation>
+        <translation>Karazan&apos;ny systeme</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="101"/>
         <source>Kernel Version</source>
-        <translation>Kernel Version</translation>
+        <translation>Noyau faha-</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="106"/>
         <source>Processor</source>
-        <translation>Processor</translation>
+        <translation>Processeur</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="111"/>
         <source>RAM</source>
-        <translation>RAM</translation>
+        <translation>Ram</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="116"/>
         <source>Internal Storage</source>
-        <translation>Internal Storage</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/About/Main.qml" line="128"/>
-        <source>System Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Haben&apos;ny disque</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="30"/>
         <source>Appearance</source>
-        <translation>Appearance</translation>
+        <translation>Endrika ivelany</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="48"/>
         <location filename="../src/qml/Cursor/Main.qml" line="140"/>
         <source>Theme</source>
-        <translation>Theme</translation>
+        <translation>Lohahevitra</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="58"/>
         <source>Light</source>
-        <translation>Light</translation>
+        <translation>Hazavana</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="65"/>
         <source>Dark</source>
-        <translation>Dark</translation>
+        <translation>Maizina</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="78"/>
         <source>Dim the wallpaper in dark theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Hampifanarahana amin&apos;ny loha-hevitra Maizina ny fond d&apos;ecran</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="98"/>
         <source>System effects</source>
-        <translation type="unfinished"></translation>
+        <translation>Fijejojejoana</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="121"/>
         <source>Minimize animation</source>
-        <translation type="unfinished"></translation>
+        <translation>Atao somary kelikely ny fihetsiketsehana</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="130"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Par defaut</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="134"/>
         <source>Magic Lamp</source>
-        <translation type="unfinished"></translation>
+        <translation>Jiro majika</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="142"/>
         <source>Accent color</source>
-        <translation type="unfinished"></translation>
+        <translation>loko</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="31"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Tarehin-tsoratra</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="92"/>
         <source>General Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Tarehin-tsoratra ammin&apos;ny ankapobeny</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="109"/>
         <source>Fixed Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Tarehin-tsoratra mifitsaka</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="126"/>
         <source>Font Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Haben&apos;ny tarehin-tsoratra</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="187"/>
         <source>Hinting</source>
-        <translation type="unfinished"></translation>
+        <translation>allusion</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
         <source>Anti-Aliasing</source>
-        <translation type="unfinished"></translation>
+        <translation>Fanesorana pixel</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="114"/>
         <location filename="../src/qml/Fonts/Main.qml" line="134"/>
         <source>Small</source>
-        <translation type="unfinished"></translation>
+        <translation>Kely</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="118"/>
         <location filename="../src/qml/Fonts/Main.qml" line="138"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Antoniny</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="122"/>
         <location filename="../src/qml/Fonts/Main.qml" line="142"/>
         <source>Large</source>
-        <translation type="unfinished"></translation>
+        <translation>Lehibe</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="126"/>
         <location filename="../src/qml/Fonts/Main.qml" line="146"/>
         <source>Huge</source>
-        <translation type="unfinished"></translation>
+        <translation>Goavana</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="29"/>
         <source>Battery</source>
-        <translation type="unfinished"></translation>
+        <translation>Vatoaratra</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last hour</source>
-        <translation type="unfinished"></translation>
+        <translation>Ora farany</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 2 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>Ora 2 farany</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 12 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>Ora 12 farany</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 24 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>24 ora farany</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 48 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>48 ora farany</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
         <source>Last 7 days</source>
-        <translation type="unfinished"></translation>
+        <translation>7 andro farany</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="143"/>
         <source>History</source>
-        <translation type="unfinished"></translation>
+        <translation>Diary</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="171"/>
         <source>W</source>
-        <translation type="unfinished"></translation>
+        <translation>W</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="192"/>
         <source>Health</source>
-        <translation type="unfinished"></translation>
+        <translation>Fahatsarana</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="216"/>
         <source>Poor</source>
-        <translation type="unfinished"></translation>
+        <translation>Mahantra</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="241"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>Ao tsara</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="266"/>
         <source>Excellent</source>
-        <translation type="unfinished"></translation>
+        <translation>Tena tsara</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="275"/>
         <source>Last Charged to</source>
-        <translation type="unfinished"></translation>
+        <translation>No-charger-na farany tamin&apos;ny</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="281"/>
         <source>Maximum Capacity</source>
-        <translation type="unfinished"></translation>
+        <translation>Fatra faran&apos;ny zakany</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="289"/>
         <source>Show percentage in status bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Aseho ny salan&apos;isan&apos;ny vatoaratra</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="313"/>
         <source>No battery found</source>
-        <translation type="unfinished"></translation>
+        <translation>Tsy mety mahita vatoaratra</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="29"/>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Aseho</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="67"/>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>Hazavana</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="124"/>
         <source>Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ecran</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="164"/>
         <source>Screen Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Anaran&apos;ilay ecran</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="175"/>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Refin&apos;ny ecran</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="194"/>
@@ -320,7 +287,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="214"/>
         <source>Rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Fanodinana</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="258"/>
@@ -428,42 +395,42 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="124"/>
+        <location filename="../src/qml/Power/Main.qml" line="122"/>
         <source>2 Minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="125"/>
+        <location filename="../src/qml/Power/Main.qml" line="123"/>
         <source>5 Minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="126"/>
+        <location filename="../src/qml/Power/Main.qml" line="124"/>
         <source>10 Minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="127"/>
+        <location filename="../src/qml/Power/Main.qml" line="125"/>
         <source>15 Minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="128"/>
+        <location filename="../src/qml/Power/Main.qml" line="126"/>
         <source>30 Minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="129"/>
+        <location filename="../src/qml/Power/Main.qml" line="127"/>
         <source>Never</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="161"/>
+        <location filename="../src/qml/Power/Main.qml" line="159"/>
         <source>Hibernate after screen is turned off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="173"/>
+        <location filename="../src/qml/Power/Main.qml" line="171"/>
         <source>Lock screen after screen is turned off</source>
         <translation type="unfinished"></translation>
     </message>
@@ -487,32 +454,32 @@
         <location filename="../src/qml/User/Main.qml" line="136"/>
         <location filename="../src/qml/User/Main.qml" line="142"/>
         <source>Verify password</source>
-        <translation type="unfinished">Verify password</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="149"/>
         <source>Account type</source>
-        <translation type="unfinished">Account type</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="155"/>
         <source>Standard</source>
-        <translation type="unfinished">Standard</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="155"/>
         <source>Administrator</source>
-        <translation type="unfinished">Administrator</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="168"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="178"/>
         <source>Add</source>
-        <translation type="unfinished">Add</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="196"/>
@@ -545,15 +512,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/Main.qml" line="101"/>
-        <source>Add other...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="30"/>
         <location filename="../src/qml/Bluetooth/Main.qml" line="93"/>
         <source>Bluetooth</source>
-        <translation type="unfinished">Bluetooth</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="66"/>
@@ -657,11 +619,10 @@
         <location filename="../src/qml/User/Main.qml" line="123"/>
         <location filename="../src/qml/User/Main.qml" line="129"/>
         <source>Password</source>
-        <translation type="unfinished">Password</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="129"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="267"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
@@ -677,7 +638,6 @@
     </message>
     <message>
         <location filename="../src/qml/Cursor/Main.qml" line="74"/>
-        <location filename="../src/qml/Touchpad/Main.qml" line="89"/>
         <source>Natural scrolling</source>
         <translation type="unfinished"></translation>
     </message>
@@ -717,12 +677,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Touchpad/Main.qml" line="71"/>
+        <location filename="../src/qml/Touchpad/Main.qml" line="70"/>
         <source>Tap to click</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Touchpad/Main.qml" line="106"/>
+        <location filename="../src/qml/Touchpad/Main.qml" line="87"/>
         <source>Pointer acceleration</source>
         <translation type="unfinished"></translation>
     </message>
@@ -744,139 +704,49 @@
     </message>
     <message>
         <location filename="../src/qml/Proxy/Main.qml" line="78"/>
+        <source>Detect proxy configuration automatically</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/Proxy/Main.qml" line="87"/>
         <source>Use proxy auto configuration URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="88"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="96"/>
         <source>Use manually specified proxy configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="120"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="124"/>
         <source>Select file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="134"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="138"/>
         <source>HTTP Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="148"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="204"/>
-        <location filename="../src/qml/Proxy/Main.qml" line="238"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="153"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="207"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="241"/>
         <source>Port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="171"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="174"/>
         <source>Also use this proxy for FTP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="189"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="190"/>
         <source>FTP Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Proxy/Main.qml" line="223"/>
+        <location filename="../src/qml/Proxy/Main.qml" line="225"/>
         <source>SOCKS Proxy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Sound/Main.qml" line="29"/>
-        <source>Sound</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Sound/Main.qml" line="84"/>
-        <source>Output Devices</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Sound/Main.qml" line="173"/>
-        <source>Input Devices</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="28"/>
-        <source>Default Applications</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="48"/>
-        <source>Web Browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="56"/>
-        <source>File Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="64"/>
-        <source>Email Client</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="72"/>
-        <source>Terminal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Notification/Main.qml" line="28"/>
-        <source>Notifications</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Notification/Main.qml" line="45"/>
-        <source>Do Not Disturb</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>NewNetworkDialog</name>
-    <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="74"/>
-        <source>Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="79"/>
-        <source>Network Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="85"/>
-        <source>Security</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="92"/>
-        <source>None</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="97"/>
-        <source>UserName</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="103"/>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="111"/>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="117"/>
-        <source>Password</source>
-        <translation type="unfinished">Password</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="128"/>
-        <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/WLAN/NewNetworkDialog.qml" line="137"/>
-        <source>Join</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -890,7 +760,7 @@
     <message>
         <location filename="../src/qml/Bluetooth/PairDialog.qml" line="69"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/PairDialog.qml" line="78"/>
@@ -973,16 +843,11 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="118"/>
         <source>Appearance</source>
-        <translation type="unfinished">Appearance</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/SideBar.qml" line="181"/>
-        <source>Mouse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="217"/>
-        <source>Default Applications</source>
+        <location filename="../src/qml/SideBar.qml" line="163"/>
+        <source>Mouse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -993,7 +858,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="82"/>
         <source>Bluetooth</source>
-        <translation type="unfinished">Bluetooth</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="136"/>
@@ -1009,56 +874,43 @@
         <location filename="../src/qml/SideBar.qml" line="159"/>
         <location filename="../src/qml/SideBar.qml" line="168"/>
         <location filename="../src/qml/SideBar.qml" line="177"/>
-        <location filename="../src/qml/SideBar.qml" line="186"/>
         <location filename="../src/qml/SideBar.qml" line="195"/>
         <location filename="../src/qml/SideBar.qml" line="213"/>
         <location filename="../src/qml/SideBar.qml" line="222"/>
         <location filename="../src/qml/SideBar.qml" line="231"/>
         <location filename="../src/qml/SideBar.qml" line="240"/>
-        <location filename="../src/qml/SideBar.qml" line="249"/>
-        <location filename="../src/qml/SideBar.qml" line="258"/>
         <source>System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="163"/>
-        <source>Notifications</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/qml/SideBar.qml" line="172"/>
-        <source>Sound</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/qml/SideBar.qml" line="190"/>
         <source>Touchpad</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="208"/>
+        <location filename="../src/qml/SideBar.qml" line="190"/>
         <source>Date &amp; Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="226"/>
+        <location filename="../src/qml/SideBar.qml" line="208"/>
         <source>Language</source>
-        <translation type="unfinished">Language</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="235"/>
+        <location filename="../src/qml/SideBar.qml" line="217"/>
         <source>Battery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="244"/>
+        <location filename="../src/qml/SideBar.qml" line="226"/>
         <source>Power</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="253"/>
+        <location filename="../src/qml/SideBar.qml" line="235"/>
         <source>About</source>
-        <translation type="unfinished">About</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1066,7 +918,7 @@
     <message>
         <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="161"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="166"/>
@@ -1084,17 +936,17 @@
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="169"/>
         <source>Account type</source>
-        <translation type="unfinished">Account type</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="173"/>
         <source>Standard</source>
-        <translation type="unfinished">Standard</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="174"/>
         <source>Administrator</source>
-        <translation type="unfinished">Administrator</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="178"/>
@@ -1112,18 +964,18 @@
         <location filename="../src/qml/User/UserDelegateItem.qml" line="215"/>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="221"/>
         <source>Password</source>
-        <translation type="unfinished">Password</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="228"/>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="234"/>
         <source>Verify password</source>
-        <translation type="unfinished">Verify password</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="247"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="280"/>
@@ -1134,24 +986,24 @@
 <context>
     <name>WifiItem</name>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="196"/>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="185"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="193"/>
         <source>Password</source>
-        <translation type="unfinished">Password</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="218"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="207"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="223"/>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="235"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="212"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="224"/>
         <source>Connect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="249"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="238"/>
         <source>Disconnect</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1159,7 +1011,7 @@
 <context>
     <name>WifiView</name>
     <message>
-        <location filename="../src/qml/WLAN/WifiView.qml" line="51"/>
+        <location filename="../src/qml/WLAN/WifiView.qml" line="35"/>
         <source>WLAN</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1222,7 +1074,7 @@
     <message>
         <location filename="../src/qml/main.qml" line="29"/>
         <source>Settings</source>
-        <translation>Settings</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

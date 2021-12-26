@@ -164,7 +164,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="126"/>
         <source>Font Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Šrifto dydis</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="187"/>
@@ -180,30 +180,30 @@
         <location filename="../src/qml/Dock/Main.qml" line="89"/>
         <location filename="../src/qml/Fonts/Main.qml" line="134"/>
         <source>Small</source>
-        <translation type="unfinished"></translation>
+        <translation>Mažas</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="93"/>
         <location filename="../src/qml/Fonts/Main.qml" line="138"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Vidutinis</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="97"/>
         <location filename="../src/qml/Fonts/Main.qml" line="142"/>
         <source>Large</source>
-        <translation type="unfinished"></translation>
+        <translation>Didelis</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="101"/>
         <location filename="../src/qml/Fonts/Main.qml" line="146"/>
         <source>Huge</source>
-        <translation type="unfinished"></translation>
+        <translation>Milžiniškas</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="29"/>
         <source>Battery</source>
-        <translation type="unfinished"></translation>
+        <translation>Akumuliatorius</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="32"/>
@@ -238,7 +238,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="126"/>
         <source>History</source>
-        <translation type="unfinished"></translation>
+        <translation>Istorija</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="154"/>
@@ -273,12 +273,12 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="264"/>
         <source>Maximum Capacity</source>
-        <translation type="unfinished"></translation>
+        <translation>Didžiausia talpa</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="272"/>
         <source>Show percentage in status bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti būsenos juostoje procentinę dalį</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="296"/>
@@ -308,17 +308,17 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="165"/>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Raiška</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="184"/>
         <source>Refresh rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Atnaujinimo dažnis</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="204"/>
         <source>Rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasukimas</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="248"/>
@@ -363,7 +363,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="79"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Dydis</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="145"/>
@@ -373,12 +373,12 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="155"/>
         <source>Always show</source>
-        <translation type="unfinished"></translation>
+        <translation>Visada rodyti</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="159"/>
         <source>Auto hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatiškai slėpti</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="31"/>
@@ -388,7 +388,7 @@
     <message>
         <location filename="../src/qml/Power/Main.qml" line="48"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Veiksena</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="57"/>
@@ -398,37 +398,37 @@
     <message>
         <location filename="../src/qml/Power/Main.qml" line="70"/>
         <source>Performance</source>
-        <translation type="unfinished"></translation>
+        <translation>Našumas</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="31"/>
         <source>User</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudotojas</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="100"/>
         <source>Add user</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridėti naudotoją</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="30"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonas</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="50"/>
         <source>Background type</source>
-        <translation type="unfinished"></translation>
+        <translation>Fono tipas</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="66"/>
         <source>Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Paveikslas</translation>
     </message>
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="70"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Spalva</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/Main.qml" line="32"/>
@@ -439,7 +439,7 @@
         <location filename="../src/qml/Bluetooth/Main.qml" line="32"/>
         <location filename="../src/qml/Bluetooth/Main.qml" line="71"/>
         <source>Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth</translation>
     </message>
     <message>
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
@@ -450,22 +450,22 @@
     <message>
         <location filename="../src/qml/Application/Main.qml" line="30"/>
         <source>Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Programa</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="42"/>
         <source>Default application</source>
-        <translation type="unfinished"></translation>
+        <translation>Numatytoji programa</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="52"/>
         <source>Web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Saityno naršyklė</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="60"/>
         <source>File manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Failų tvarkytuvė</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="68"/>
@@ -475,7 +475,7 @@
     <message>
         <location filename="../src/qml/Application/Main.qml" line="76"/>
         <source>Terminal emulator</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminalo emuliatorius</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="32"/>
@@ -491,22 +491,22 @@
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="102"/>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="113"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Slaptažodis</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="129"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Įrašyti</translation>
     </message>
     <message>
         <location filename="../src/qml/Cursor/Main.qml" line="31"/>
         <source>Mouse</source>
-        <translation type="unfinished"></translation>
+        <translation>Pelė</translation>
     </message>
     <message>
         <location filename="../src/qml/Cursor/Main.qml" line="61"/>
@@ -521,12 +521,12 @@
     <message>
         <location filename="../src/qml/Cursor/Main.qml" line="114"/>
         <source>Pointer speed</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyklės greitis</translation>
     </message>
     <message>
         <location filename="../src/qml/DateTime/Main.qml" line="28"/>
         <source>Date &amp; Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Data ir laikas</translation>
     </message>
     <message>
         <location filename="../src/qml/DateTime/Main.qml" line="54"/>
@@ -536,7 +536,7 @@
     <message>
         <location filename="../src/qml/DateTime/Main.qml" line="83"/>
         <source>Time Zone</source>
-        <translation type="unfinished"></translation>
+        <translation>Laiko juosta</translation>
     </message>
 </context>
 <context>
@@ -554,7 +554,7 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="507"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Nėra</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="509"/>
@@ -572,7 +572,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="132"/>
         <source>User</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudotojas</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="87"/>
@@ -588,7 +588,7 @@
         <location filename="../src/qml/SideBar.qml" line="58"/>
         <location filename="../src/qml/SideBar.qml" line="67"/>
         <source>Network and connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Tinklas ir ryšys</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="62"/>
@@ -607,22 +607,22 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="96"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvaizda</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="141"/>
         <source>Mouse</source>
-        <translation type="unfinished"></translation>
+        <translation>Pelė</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="105"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Šriftai</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="114"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonas</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="123"/>
@@ -638,22 +638,22 @@
         <location filename="../src/qml/SideBar.qml" line="191"/>
         <location filename="../src/qml/SideBar.qml" line="200"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation>Sistema</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="159"/>
         <source>Date &amp; Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Data ir laikas</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="168"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalba</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="177"/>
         <source>Battery</source>
-        <translation type="unfinished"></translation>
+        <translation>Akumuliatorius</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="186"/>
@@ -663,7 +663,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="195"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Apie</translation>
     </message>
 </context>
 <context>
@@ -671,12 +671,12 @@
     <message>
         <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="147"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Atsisakyti</translation>
     </message>
     <message>
         <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="152"/>
         <source>Set</source>
-        <translation type="unfinished"></translation>
+        <translation>Nustatyti</translation>
     </message>
 </context>
 <context>
@@ -689,12 +689,12 @@
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="171"/>
         <source>Automatic login</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatinis prisijungimas</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="190"/>
         <source>Delete this user</source>
-        <translation type="unfinished"></translation>
+        <translation>Ištrinti šį naudotoją</translation>
     </message>
 </context>
 <context>
@@ -702,17 +702,17 @@
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="177"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Slaptažodis</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="197"/>
         <source>Show password</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti slaptažodį</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="206"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Atsisakyti</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="212"/>
@@ -738,7 +738,7 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="81"/>
         <source>Security</source>
-        <translation type="unfinished"></translation>
+        <translation>Saugumas</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="93"/>
@@ -748,37 +748,37 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="105"/>
         <source>IPv4 Address</source>
-        <translation type="unfinished"></translation>
+        <translation>IPv4 adresas</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="119"/>
         <source>IPv6 Address</source>
-        <translation type="unfinished"></translation>
+        <translation>IPv6 adresas</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="133"/>
         <source>MAC Address</source>
-        <translation type="unfinished"></translation>
+        <translation>MAC adresas</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="147"/>
         <source>Gateway</source>
-        <translation type="unfinished"></translation>
+        <translation>Tinklų sietuvas</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="160"/>
         <source>DNS</source>
-        <translation type="unfinished"></translation>
+        <translation>DNS</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="177"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Užverti</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="183"/>
         <source>Forget this network</source>
-        <translation type="unfinished"></translation>
+        <translation>Pamiršti šį tinklą</translation>
     </message>
 </context>
 <context>
@@ -786,7 +786,7 @@
     <message>
         <location filename="../src/qml/main.qml" line="29"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuostatos</translation>
     </message>
 </context>
 </TS>
