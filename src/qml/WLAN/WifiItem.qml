@@ -67,14 +67,22 @@ Item {
                     if (busyIndicator.visible)
                         return
 
-                    if ((!model.uuid || predictableWirelessPassword)) {
+                    if (model.uuid || !predictableWirelessPassword) {
+                        if (connectionState === NM.Enums.Deactivated) {
+                            if (!predictableWirelessPassword && !model.uuid) {
+                                handler.addAndActivateConnection(model.devicePath, model.specificPath)
+                            } else {
+                                handler.activateConnection(model.connectionPath, model.devicePath, model.specificPath)
+                            }
+                        } else {
+                            additionalSettings.toggle()
+                        }
+                    } else if (predictableWirelessPassword) {
                         connectDialog.name = model.itemUniqueName
                         connectDialog.securityType = model.securityType
                         connectDialog.devicePath = model.devicePath
                         connectDialog.specificPath = model.specificPath
                         connectDialog.show()
-                    } else {
-                        additionalSettings.toggle()
                     }
 
 //                    if (model.uuid || !predictableWirelessPassword) {
