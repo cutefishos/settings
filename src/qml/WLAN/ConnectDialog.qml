@@ -38,6 +38,7 @@ FishUI.Window {
 
     visible: false
     minimizeButtonVisible: false
+    modality: Qt.WindowModal
 
     background.color: FishUI.Theme.secondBackgroundColor
     flags: Qt.Dialog | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
@@ -50,8 +51,10 @@ FishUI.Window {
     property var securityType: ""
 
     onVisibleChanged: {
-        if (visible)
+        if (visible) {
+            passwordField.clear()
             passwordField.forceActiveFocus()
+        }
     }
 
     headerItem: Item {
