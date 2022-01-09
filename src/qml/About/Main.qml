@@ -125,7 +125,7 @@ ItemPage {
             StandardButton {
                 Layout.fillWidth: true
                 visible: about.isCutefishOS
-                text: qsTr("System Update")
+                text: qsTr("Software Update")
                 onClicked: {
                     about.openUpdator()
                 }

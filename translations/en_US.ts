@@ -17,27 +17,27 @@
 <context>
     <name>ConnectDialog</name>
     <message>
-        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="60"/>
+        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="63"/>
         <source>Enter Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="72"/>
+        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="75"/>
         <source>Enter the password for %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="82"/>
+        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="85"/>
         <source>Password</source>
         <translation type="unfinished">Password</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="107"/>
+        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="110"/>
         <source>Cancel</source>
         <translation type="unfinished">Cancel</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="113"/>
+        <location filename="../src/qml/WLAN/ConnectDialog.qml" line="116"/>
         <source>Connect</source>
         <translation type="unfinished"></translation>
     </message>
@@ -94,7 +94,7 @@
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="128"/>
-        <source>System Update</source>
+        <source>Software Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -722,7 +722,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Touchpad/Main.qml" line="106"/>
+        <location filename="../src/qml/Touchpad/Main.qml" line="107"/>
         <source>Pointer acceleration</source>
         <translation type="unfinished"></translation>
     </message>
@@ -981,11 +981,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/SideBar.qml" line="217"/>
-        <source>Default Applications</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/qml/SideBar.qml" line="127"/>
         <source>Fonts</source>
         <translation type="unfinished"></translation>
@@ -1012,7 +1007,6 @@
         <location filename="../src/qml/SideBar.qml" line="186"/>
         <location filename="../src/qml/SideBar.qml" line="195"/>
         <location filename="../src/qml/SideBar.qml" line="213"/>
-        <location filename="../src/qml/SideBar.qml" line="222"/>
         <location filename="../src/qml/SideBar.qml" line="231"/>
         <location filename="../src/qml/SideBar.qml" line="240"/>
         <location filename="../src/qml/SideBar.qml" line="249"/>
@@ -1134,24 +1128,24 @@
 <context>
     <name>WifiItem</name>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="196"/>
         <location filename="../src/qml/WLAN/WifiItem.qml" line="204"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="212"/>
         <source>Password</source>
         <translation type="unfinished">Password</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="218"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="226"/>
         <source>Cancel</source>
         <translation type="unfinished">Cancel</translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="223"/>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="235"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="231"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="243"/>
         <source>Connect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="249"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="257"/>
         <source>Disconnect</source>
         <translation type="unfinished"></translation>
     </message>
