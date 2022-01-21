@@ -194,6 +194,7 @@ ItemPage {
                 }
 
                 RowLayout {
+                    Layout.topMargin: FishUI.Units.largeSpacing
                     spacing: FishUI.Units.largeSpacing * 4
 
                     // Poor
