@@ -20,6 +20,7 @@
 #include "touchpad.h"
 #include "networkproxy.h"
 #include "notifications.h"
+#include "defaultapplications.h"
 
 #include "cursor/cursorthememodel.h"
 #include "cursor/mouse.h"
@@ -81,6 +82,7 @@ Application::Application(int &argc, char **argv)
     qmlRegisterType<Touchpad>(uri, 1, 0, "Touchpad");
     qmlRegisterType<NetworkProxy>(uri, 1, 0, "NetworkProxy");
     qmlRegisterType<Notifications>(uri, 1, 0, "Notifications");
+    qmlRegisterType<DefaultApplications>(uri, 1, 0, "DefaultApplications");
 
     qmlRegisterSingletonType<Password>(uri, 1, 0, "Password", passwordSingleton);
 

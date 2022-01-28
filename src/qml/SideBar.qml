@@ -213,14 +213,14 @@ Item {
             category: qsTr("System")
         }
 
-//        ListElement {
-//            title: qsTr("Default Applications")
-//            name: "datetime"
-//            page: "qrc:/qml/DefaultApp/Main.qml"
-//            iconSource: "defaultapps.svg"
-//            iconColor: "#418CFF"
-//            category: qsTr("System")
-//        }
+        ListElement {
+            title: qsTr("Default Applications")
+            name: "datetime"
+            page: "qrc:/qml/DefaultApp/Main.qml"
+            iconSource: "defaultapps.svg"
+            iconColor: "#418CFF"
+            category: qsTr("System")
+        }
 
         ListElement {
             title: qsTr("Language")

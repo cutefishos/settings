@@ -253,37 +253,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="216"/>
+        <location filename="../src/qml/Battery/Main.qml" line="217"/>
         <source>Poor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="241"/>
+        <location filename="../src/qml/Battery/Main.qml" line="242"/>
         <source>Normal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="266"/>
+        <location filename="../src/qml/Battery/Main.qml" line="267"/>
         <source>Excellent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="275"/>
+        <location filename="../src/qml/Battery/Main.qml" line="276"/>
         <source>Last Charged to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="281"/>
+        <location filename="../src/qml/Battery/Main.qml" line="282"/>
         <source>Maximum Capacity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="289"/>
+        <location filename="../src/qml/Battery/Main.qml" line="290"/>
         <source>Show percentage in status bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="313"/>
+        <location filename="../src/qml/Battery/Main.qml" line="314"/>
         <source>No battery found</source>
         <translation type="unfinished"></translation>
     </message>
@@ -800,27 +800,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="28"/>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="29"/>
         <source>Default Applications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="48"/>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="49"/>
         <source>Web Browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="56"/>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="62"/>
         <source>File Manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="64"/>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="75"/>
         <source>Email Client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="72"/>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="88"/>
         <source>Terminal</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1007,6 +1007,7 @@
         <location filename="../src/qml/SideBar.qml" line="186"/>
         <location filename="../src/qml/SideBar.qml" line="195"/>
         <location filename="../src/qml/SideBar.qml" line="213"/>
+        <location filename="../src/qml/SideBar.qml" line="222"/>
         <location filename="../src/qml/SideBar.qml" line="231"/>
         <location filename="../src/qml/SideBar.qml" line="240"/>
         <location filename="../src/qml/SideBar.qml" line="249"/>
@@ -1032,6 +1033,11 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="208"/>
         <source>Date &amp; Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="217"/>
+        <source>Default Applications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

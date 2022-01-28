@@ -253,37 +253,37 @@
         <translation>健康</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="216"/>
+        <location filename="../src/qml/Battery/Main.qml" line="217"/>
         <source>Poor</source>
         <translation>较差</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="241"/>
+        <location filename="../src/qml/Battery/Main.qml" line="242"/>
         <source>Normal</source>
         <translation>正常</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="266"/>
+        <location filename="../src/qml/Battery/Main.qml" line="267"/>
         <source>Excellent</source>
         <translation>极佳</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="275"/>
+        <location filename="../src/qml/Battery/Main.qml" line="276"/>
         <source>Last Charged to</source>
         <translation>上一次充电至</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="281"/>
+        <location filename="../src/qml/Battery/Main.qml" line="282"/>
         <source>Maximum Capacity</source>
         <translation>最大容量</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="289"/>
+        <location filename="../src/qml/Battery/Main.qml" line="290"/>
         <source>Show percentage in status bar</source>
         <translation>在状态栏中显示电池百分比</translation>
     </message>
     <message>
-        <location filename="../src/qml/Battery/Main.qml" line="313"/>
+        <location filename="../src/qml/Battery/Main.qml" line="314"/>
         <source>No battery found</source>
         <translation>找不到电池</translation>
     </message>
@@ -800,27 +800,27 @@
         <translation>输入设备</translation>
     </message>
     <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="28"/>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="29"/>
         <source>Default Applications</source>
         <translation>默认应用</translation>
     </message>
     <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="48"/>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="49"/>
         <source>Web Browser</source>
         <translation>网络浏览器</translation>
     </message>
     <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="56"/>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="62"/>
         <source>File Manager</source>
         <translation>文件管理器</translation>
     </message>
     <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="64"/>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="75"/>
         <source>Email Client</source>
         <translation>邮件客户端</translation>
     </message>
     <message>
-        <location filename="../src/qml/DefaultApp/Main.qml" line="72"/>
+        <location filename="../src/qml/DefaultApp/Main.qml" line="88"/>
         <source>Terminal</source>
         <translation>终端</translation>
     </message>
@@ -1007,6 +1007,7 @@
         <location filename="../src/qml/SideBar.qml" line="186"/>
         <location filename="../src/qml/SideBar.qml" line="195"/>
         <location filename="../src/qml/SideBar.qml" line="213"/>
+        <location filename="../src/qml/SideBar.qml" line="222"/>
         <location filename="../src/qml/SideBar.qml" line="231"/>
         <location filename="../src/qml/SideBar.qml" line="240"/>
         <location filename="../src/qml/SideBar.qml" line="249"/>
@@ -1033,6 +1034,11 @@
         <location filename="../src/qml/SideBar.qml" line="208"/>
         <source>Date &amp; Time</source>
         <translation>日期和时间</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="217"/>
+        <source>Default Applications</source>
+        <translation>默认应用</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="226"/>

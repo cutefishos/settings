@@ -21,6 +21,7 @@ find_package(Libcrypt REQUIRED)
 
 find_package(KF5NetworkManagerQt REQUIRED)
 find_package(KF5ModemManagerQt REQUIRED)
+find_package(KF5Config)
 
 pkg_search_module(FontConfig REQUIRED fontconfig IMPORTED_TARGET)
 pkg_search_module(ICU REQUIRED icu-i18n)
@@ -59,6 +60,8 @@ set(SRCS
     src/vpn/nm-openvpn-service.h
     src/vpn/nm-pptp-service.h
     src/networkproxy.cpp
+    src/defaultapplications.cpp
+    src/desktopproperties.cpp
 #    src/update/updatemodel.cpp
 )
 
@@ -87,6 +90,7 @@ target_link_libraries(${PROJECT_NAME}
 
         KF5::NetworkManagerQt
         KF5::ModemManagerQt
+        KF5::ConfigCore
 
         PkgConfig::FontConfig
         ${FREETYPE_LIBRARIES}
