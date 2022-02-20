@@ -18,15 +18,19 @@
  */
 
 #include "notifications.h"
-#include <QSettings>
-#include <QDBusInterface>
-#include <QDBusPendingCall>
 
 Notifications::Notifications(QObject *parent)
     : QObject(parent)
+    , m_iface("com.cutefish.Notification",
+              "/Notification",
+              "com.cutefish.Notification", QDBusConnection::sessionBus())
 {
-    QSettings settings(QSettings::UserScope, "cutefishos", "notification");
-    m_doNotDisturb = settings.value("DoNotDisturb", false).toBool();
+    m_doNotDisturb = m_iface.property("doNotDisturb").toBool();
+
+    QDBusConnection::sessionBus().connect("com.cutefish.Notification",
+                                          "/Notification",
+                                          "com.cutefish.Notification",
+                                          "doNotDisturbChanged", this, SLOT(onDBusDoNotDisturbChanged()));
 }
 
 bool Notifications::doNotDisturb() const
@@ -46,5 +50,11 @@ void Notifications::setDoNotDisturb(bool enabled)
         iface.asyncCall("setDoNotDisturb", enabled);
     }
 
+    emit doNotDisturbChanged();
+}
+
+void Notifications::onDBusDoNotDisturbChanged()
+{
+    m_doNotDisturb = m_iface.property("doNotDisturb").toBool();
     emit doNotDisturbChanged();
 }
