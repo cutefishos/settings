@@ -143,7 +143,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="31"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Fontit</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="92"/>
@@ -163,12 +163,12 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="187"/>
         <source>Hinting</source>
-        <translation type="unfinished"></translation>
+        <translation>Vihje</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
         <source>Anti-Aliasing</source>
-        <translation type="unfinished"></translation>
+        <translation>Anti-Aliasointi</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="95"/>
@@ -242,22 +242,22 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="181"/>
         <source>Health</source>
-        <translation type="unfinished"></translation>
+        <translation>Terveys</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="200"/>
         <source>Poor</source>
-        <translation type="unfinished"></translation>
+        <translation>Huono</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="229"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>Normaali</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="258"/>
         <source>Excellent</source>
-        <translation type="unfinished"></translation>
+        <translation>Erinomainen</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="280"/>

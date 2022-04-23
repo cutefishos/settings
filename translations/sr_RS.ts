@@ -139,27 +139,27 @@
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="98"/>
         <source>System effects</source>
-        <translation type="unfinished"></translation>
+        <translation>Sistemski efekti</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="121"/>
         <source>Minimize animation</source>
-        <translation type="unfinished"></translation>
+        <translation>Minimiziraj animaciju</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="130"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Standardni</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="134"/>
         <source>Magic Lamp</source>
-        <translation type="unfinished"></translation>
+        <translation>Magicna Lampa</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="142"/>
         <source>Accent color</source>
-        <translation type="unfinished">Boja naglaska</translation>
+        <translation>Boja naglaska</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="31"/>
@@ -343,7 +343,7 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="279"/>
         <source>Scale</source>
-        <translation type="unfinished"></translation>
+        <translation>Opseg</translation>
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="346"/>
@@ -536,7 +536,7 @@
     <message>
         <location filename="../src/qml/Cursor/Main.qml" line="74"/>
         <source>Natural scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Prirodno pomjeranje</translation>
     </message>
     <message>
         <location filename="../src/qml/Cursor/Main.qml" line="114"/>
@@ -564,7 +564,7 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="503"/>
         <source>Vendor default</source>
-        <translation type="unfinished"></translation>
+        <translation>Podrazumijevani dobavljac</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="505"/>
@@ -696,7 +696,7 @@
     <message>
         <location filename="../src/qml/DateTime/TimeZoneDialog.qml" line="165"/>
         <source>Set</source>
-        <translation type="unfinished"></translation>
+        <translation>Postavi</translation>
     </message>
 </context>
 <context>
@@ -783,7 +783,7 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="147"/>
         <source>Gateway</source>
-        <translation type="unfinished"></translation>
+        <translation>Gateway</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="160"/>

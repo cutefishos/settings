@@ -78,7 +78,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="68"/>
         <source>Built on %1</source>
-        <translation type="unfinished"></translation>
+        <translation>構建在 %1 上</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="76"/>
@@ -98,7 +98,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="91"/>
         <source>Processor</source>
-        <translation>处理器</translation>
+        <translation>處理器</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="96"/>
@@ -247,17 +247,17 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="200"/>
         <source>Poor</source>
-        <translation type="unfinished"></translation>
+        <translation>低效</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="229"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>普通</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="258"/>
         <source>Excellent</source>
-        <translation type="unfinished"></translation>
+        <translation>高效</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="280"/>
@@ -267,12 +267,12 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="286"/>
         <source>Maximum Capacity</source>
-        <translation>容限</translation>
+        <translation>最大容量</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="298"/>
         <source>Show percentage in status bar</source>
-        <translation type="unfinished"></translation>
+        <translation>在狀態欄中顯示百分比</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="322"/>
@@ -332,7 +332,7 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
-        <translation>Dock</translation>
+        <translation>工作列</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="44"/>
@@ -427,7 +427,7 @@
     <message>
         <location filename="../src/qml/Wallpaper/Main.qml" line="81"/>
         <source>Color</source>
-        <translation>純色</translation>
+        <translation>顏色</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/Main.qml" line="32"/>
@@ -444,7 +444,7 @@
         <location filename="../src/qml/Wired/Main.qml" line="32"/>
         <location filename="../src/qml/Wired/Main.qml" line="80"/>
         <source>Ethernet</source>
-        <translation type="unfinished">乙太網路</translation>
+        <translation>乙太網路</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="30"/>
@@ -474,7 +474,7 @@
     <message>
         <location filename="../src/qml/Application/Main.qml" line="76"/>
         <source>Terminal emulator</source>
-        <translation type="unfinished"></translation>
+        <translation>終端機</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="32"/>
@@ -508,12 +508,12 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="503"/>
         <source>Vendor default</source>
-        <translation type="unfinished"></translation>
+        <translation>預設</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="505"/>
         <source>Medium</source>
-        <translation type="unfinished">中</translation>
+        <translation>中</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="507"/>
@@ -523,12 +523,12 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="509"/>
         <source>Slight</source>
-        <translation type="unfinished"></translation>
+        <translation>輕微</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="511"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>完全</translation>
     </message>
 </context>
 <context>
@@ -557,7 +557,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="61"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>乙太網路</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="91"/>
@@ -576,7 +576,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="104"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>字體</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="113"/>
@@ -586,7 +586,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="122"/>
         <source>Dock</source>
-        <translation type="unfinished">Dock</translation>
+        <translation>工作列</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="136"/>

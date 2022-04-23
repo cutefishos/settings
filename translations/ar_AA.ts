@@ -7,7 +7,7 @@
         <location filename="../src/qml/User/AddUserDialog.qml" line="72"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="78"/>
         <source>User name</source>
-        <translation>اسم المستخدم</translation>
+        <translation>إسم المستخدم</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="85"/>
@@ -34,17 +34,17 @@
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Administrator</source>
-        <translation>مدير</translation>
+        <translation>المدير</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="130"/>
         <source>Cancel</source>
-        <translation>الغاء</translation>
+        <translation>إلغاء</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="137"/>
         <source>Add</source>
-        <translation>اضافة</translation>
+        <translation>اضف</translation>
     </message>
 </context>
 <context>
@@ -52,12 +52,12 @@
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="29"/>
         <source>Bluetooth</source>
-        <translation>البلوتوث</translation>
+        <translation>بلوتوث</translation>
     </message>
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="49"/>
         <source>Bluetooth is disabled</source>
-        <translation>البلوتوث متوقف</translation>
+        <translation>البلوتوث معطّل</translation>
     </message>
 </context>
 <context>
@@ -73,7 +73,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="28"/>
         <source>About</source>
-        <translation>حول النظام</translation>
+        <translation>حول</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="68"/>
@@ -83,7 +83,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="76"/>
         <source>System Version</source>
-        <translation>إصدار النظام</translation>
+        <translation>اصدار النظام</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="81"/>
@@ -98,12 +98,12 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="91"/>
         <source>Processor</source>
-        <translation>وحدة المعالجة</translation>
+        <translation>المعالج</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="96"/>
         <source>RAM</source>
-        <translation>الذاكرة</translation>
+        <translation>الذاكرة العشوائية</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="101"/>
@@ -119,7 +119,7 @@
         <location filename="../src/qml/Appearance/Main.qml" line="48"/>
         <location filename="../src/qml/Cursor/Main.qml" line="140"/>
         <source>Theme</source>
-        <translation>المظهر</translation>
+        <translation>السمة</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="58"/>
@@ -134,7 +134,7 @@
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="78"/>
         <source>Dim the wallpaper in dark theme</source>
-        <translation>تعتيم خلفية الشاشة في المظهر الداكن</translation>
+        <translation>تعتيم خلفية الشاشة في السمة الداكنة</translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="98"/>
@@ -154,7 +154,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="109"/>
         <source>Fixed Font</source>
-        <translation>الخط الثابت</translation>
+        <translation>خط ثابت</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="126"/>
@@ -164,7 +164,7 @@
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="187"/>
         <source>Hinting</source>
-        <translation>التلميح</translation>
+        <translation>تلميح</translation>
     </message>
     <message>
         <location filename="../src/qml/Fonts/Main.qml" line="200"/>
@@ -233,7 +233,7 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="126"/>
         <source>History</source>
-        <translation>المحفوظات</translation>
+        <translation>السجل</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="154"/>
@@ -253,17 +253,17 @@
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="224"/>
         <source>Normal</source>
-        <translation>عادية</translation>
+        <translation>عادي</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="249"/>
         <source>Excellent</source>
-        <translation>ممتازة</translation>
+        <translation>ممتاز</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="258"/>
         <source>Last Charged to</source>
-        <translation>آخر شحنة حتى</translation>
+        <translation>آخر شحنة لـ</translation>
     </message>
     <message>
         <location filename="../src/qml/Battery/Main.qml" line="264"/>
@@ -328,12 +328,12 @@
     <message>
         <location filename="../src/qml/Display/Main.qml" line="346"/>
         <source>Need to log in again to take effect</source>
-        <translation>يجب تسجيل الدخول من جديد لتطبيق التغييرات</translation>
+        <translation>يجب تسجيل الدخول مجددأً لتطبيق التغييرات</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="28"/>
         <source>Dock</source>
-        <translation>شريط المهام</translation>
+        <translation>الشريط السفلي</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="45"/>
@@ -343,17 +343,17 @@
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="55"/>
         <source>Left</source>
-        <translation>يسار الشاشة</translation>
+        <translation>يسار</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="62"/>
         <source>Bottom</source>
-        <translation>أسفل الشاشة</translation>
+        <translation>أسفل</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="69"/>
         <source>Right</source>
-        <translation>يمين الشاشة</translation>
+        <translation>يمين</translation>
     </message>
     <message>
         <location filename="../src/qml/Dock/Main.qml" line="79"/>
@@ -383,7 +383,7 @@
     <message>
         <location filename="../src/qml/Power/Main.qml" line="48"/>
         <source>Mode</source>
-        <translation>وضع الطاقة</translation>
+        <translation>الوضح</translation>
     </message>
     <message>
         <location filename="../src/qml/Power/Main.qml" line="57"/>
@@ -393,7 +393,7 @@
     <message>
         <location filename="../src/qml/Power/Main.qml" line="70"/>
         <source>Performance</source>
-        <translation>أداء مرتفع</translation>
+        <translation>ألاداء</translation>
     </message>
     <message>
         <location filename="../src/qml/User/Main.qml" line="31"/>
@@ -428,7 +428,7 @@
     <message>
         <location filename="../src/qml/WLAN/Main.qml" line="32"/>
         <source>WLAN</source>
-        <translation>الإنترنت</translation>
+        <translation>WLAN</translation>
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="32"/>
@@ -460,7 +460,7 @@
     <message>
         <location filename="../src/qml/Application/Main.qml" line="60"/>
         <source>File manager</source>
-        <translation>مستعرض الملفات</translation>
+        <translation>مدير الملفات</translation>
     </message>
     <message>
         <location filename="../src/qml/Application/Main.qml" line="68"/>
@@ -470,13 +470,13 @@
     <message>
         <location filename="../src/qml/Application/Main.qml" line="76"/>
         <source>Terminal emulator</source>
-        <translation>الطرفية</translation>
+        <translation>محاكي الطرفية</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="32"/>
         <location filename="../src/qml/Hotspot/Main.qml" line="69"/>
         <source>Hotspot</source>
-        <translation>نقاط التوصيل</translation>
+        <translation>نقطة وصل</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="47"/>
@@ -486,7 +486,7 @@
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="102"/>
         <source>SSID</source>
-        <translation>مُعرّف الشبكة</translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <location filename="../src/qml/Hotspot/Main.qml" line="113"/>
@@ -501,12 +501,12 @@
     <message>
         <location filename="../src/qml/Cursor/Main.qml" line="31"/>
         <source>Mouse</source>
-        <translation>الفأرة</translation>
+        <translation>المأوس</translation>
     </message>
     <message>
         <location filename="../src/qml/Cursor/Main.qml" line="61"/>
         <source>Left hand</source>
-        <translation>مستخدم أعسر</translation>
+        <translation>يد يسرى</translation>
     </message>
     <message>
         <location filename="../src/qml/Cursor/Main.qml" line="74"/>
@@ -539,7 +539,7 @@
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="503"/>
         <source>Vendor default</source>
-        <translation>الافتراضي</translation>
+        <translation>البائع الافتراضي</translation>
     </message>
     <message>
         <location filename="../src/fonts/kxftconfig.cpp" line="505"/>
@@ -577,13 +577,13 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="53"/>
         <source>WLAN</source>
-        <translation>الإنترنت</translation>
+        <translation>WLAN</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="58"/>
         <location filename="../src/qml/SideBar.qml" line="67"/>
         <source>Network and connection</source>
-        <translation>الشبكات</translation>
+        <translation>الشبكات والاتصال</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="62"/>
@@ -607,7 +607,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="141"/>
         <source>Mouse</source>
-        <translation>الفأرة</translation>
+        <translation>المأوس</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="105"/>
@@ -622,7 +622,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="123"/>
         <source>Dock</source>
-        <translation>شريط المهام</translation>
+        <translation>الشريط السفلي</translation>
     </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="137"/>
@@ -658,7 +658,7 @@
     <message>
         <location filename="../src/qml/SideBar.qml" line="195"/>
         <source>About</source>
-        <translation>حول النظام</translation>
+        <translation>حول</translation>
     </message>
 </context>
 <context>
@@ -674,7 +674,7 @@
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="130"/>
         <source>Currently logged</source>
-        <translation>متصل حاليا</translation>
+        <translation>مسجل دخول</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="171"/>
@@ -715,7 +715,7 @@
     <message>
         <location filename="../src/qml/WLAN/WifiView.qml" line="35"/>
         <source>WLAN</source>
-        <translation>الإنترنت</translation>
+        <translation>WLAN</translation>
     </message>
 </context>
 <context>
@@ -758,7 +758,7 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="160"/>
         <source>DNS</source>
-        <translation>مزود أسماء النطاقات</translation>
+        <translation>DNS</translation>
     </message>
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="177"/>
@@ -768,7 +768,7 @@
     <message>
         <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="183"/>
         <source>Forget this network</source>
-        <translation>نسيان الشبكة</translation>
+        <translation>إلغاء حفظ الشبكة</translation>
     </message>
 </context>
 <context>

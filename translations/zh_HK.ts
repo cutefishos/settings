@@ -7,44 +7,44 @@
         <location filename="../src/qml/User/AddUserDialog.qml" line="72"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="78"/>
         <source>User name</source>
-        <translation type="unfinished"></translation>
+        <translation>使用者名稱</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="85"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="91"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>密碼</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="98"/>
         <location filename="../src/qml/User/AddUserDialog.qml" line="104"/>
         <source>Verify password</source>
-        <translation type="unfinished"></translation>
+        <translation>確認密碼</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="111"/>
         <source>Account type</source>
-        <translation type="unfinished"></translation>
+        <translation>帳號類型</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>標準</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="117"/>
         <source>Administrator</source>
-        <translation type="unfinished"></translation>
+        <translation>管理員</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="130"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="137"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新增</translation>
     </message>
 </context>
 <context>
@@ -52,12 +52,12 @@
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="29"/>
         <source>Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation>藍芽</translation>
     </message>
     <message>
         <location filename="../src/qml/BluetoothPage.qml" line="49"/>
         <source>Bluetooth is disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>藍芽已關閉</translation>
     </message>
 </context>
 <context>
@@ -65,7 +65,7 @@
     <message>
         <location filename="../src/qml/LanguagePage.qml" line="29"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>語言</translation>
     </message>
 </context>
 <context>
@@ -73,7 +73,7 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="28"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>關於</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="68"/>
@@ -83,12 +83,12 @@
     <message>
         <location filename="../src/qml/About/Main.qml" line="76"/>
         <source>System Version</source>
-        <translation type="unfinished"></translation>
+        <translation>系統版本</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="81"/>
         <source>System Type</source>
-        <translation type="unfinished"></translation>
+        <translation>系統類型</translation>
     </message>
     <message>
         <location filename="../src/qml/About/Main.qml" line="86"/>
