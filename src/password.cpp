@@ -11,8 +11,8 @@ Password::Password(QObject *parent)
 
 QString Password::cryptPassword(const QString &password) const
 {
-    QByteArray alpha = "0123456789ABCDEFGHIJKLMNOPQRSTUVXYZ"
-                       "abcdefghijklmnopqrstuvxyz./";
+    QByteArray alpha = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                       "abcdefghijklmnopqrstuvwxyz./";
     QByteArray salt("$6$");
     int len = alpha.count();
     for (int i = 0; i < 16; i++)
