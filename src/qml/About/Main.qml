@@ -57,7 +57,7 @@ ItemPage {
 
             Label {
                 Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
-                text: "<b>Cutefish</b>"
+                text: "<b>Openfish</b>"
                 visible: !about.isCutefishOS
                 font.pointSize: 22
                 color: "#3385FF"
