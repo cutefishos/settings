@@ -64,10 +64,21 @@ ItemPage {
                         Layout.fillHeight: true
                         rightPadding: 0
                         rightInset: 0
+                        checkable: time.canNTP
                         checked: time.useNtp
                         onCheckedChanged: time.useNtp = checked
                     }
                 }
+
+                Label {
+                    text: qsTr("Unable to use Auto Sync. Please ensure your NTP service is installed.")
+                    color: FishUI.Theme.disabledTextColor
+                    visible: !time.canNTP
+                }
+            }
+
+            RoundedItem {
+                spacing: FishUI.Units.largeSpacing * 1.5
 
                 RowLayout {
                     Label {

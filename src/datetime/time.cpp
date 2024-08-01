@@ -32,12 +32,19 @@ Time::Time(QObject *parent)
     OrgFreedesktopTimedate1Interface iface(QStringLiteral("org.freedesktop.timedate1"),
                                            QStringLiteral("/org/freedesktop/timedate1"),
                                            QDBusConnection::systemBus());
+
+    m_canNTP = iface.canNTP();
     m_useNtp = iface.nTP();
 }
 
 bool Time::useNtp() const
 {
     return m_useNtp;
+}
+
+bool Time::canNTP() const
+{
+    return m_canNTP;
 }
 
 void Time::setUseNtp(bool enabled)
