@@ -84,8 +84,8 @@ FishUI.Window {
             selectByMouse: true
             placeholderText: qsTr("Password")
 
-            validator: RegExpValidator {
-                regExp: {
+            validator: RegularExpressionValidator {
+                regularExpression: {
                     if (control.securityType === NM.Enums.StaticWep)
                         return /^(?:[\x20-\x7F]{5}|[0-9a-fA-F]{10}|[\x20-\x7F]{13}|[0-9a-fA-F]{26}){1}$/;
                     return /^(?:[\x20-\x7F]{8,64}){1}$/;
