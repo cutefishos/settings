@@ -40,31 +40,6 @@ ItemPage {
             anchors.fill: parent
             spacing: FishUI.Units.largeSpacing * 2
 
-            RoundedItem {
-                Label {
-                    text: qsTr("Style")
-                    color: FishUI.Theme.disabledTextColor
-                }
-
-                RowLayout {
-                    spacing: FishUI.Units.largeSpacing * 2
-
-                    IconCheckBox {
-                        source: "qrc:/images/dock_bottom.svg"
-                        text: qsTr("Center")
-                        checked: appearance.dockStyle === 0
-                        onClicked: appearance.setDockStyle(0)
-                    }
-
-                    IconCheckBox {
-                        source: "qrc:/images/dock_straight.svg"
-                        text: qsTr("Full")
-                        checked: appearance.dockStyle === 1
-                        onClicked: appearance.setDockStyle(1)
-                    }
-                }
-            }
-
             // position
             RoundedItem {
                 Label {
