@@ -18,6 +18,7 @@
 */
 
 #include "kxftconfig.h"
+#include "x11utils.h"
 
 #include <ctype.h>
 #include <math.h>
@@ -33,7 +34,6 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QStandardPaths>
-#include <QX11Info>
 
 #include <fontconfig/fontconfig.h>
 
@@ -41,12 +41,12 @@ using namespace std;
 
 static int point2Pixel(double point)
 {
-    return (int)(((point * QX11Info::appDpiY()) / 72.0) + 0.5);
+    return (int)(((point * Cutefish::X11::dpiY()) / 72.0) + 0.5);
 }
 
 static int pixel2Point(double pixel)
 {
-    return (int)(((pixel * 72.0) / (double)QX11Info::appDpiY()) + 0.5);
+    return (int)(((pixel * 72.0) / (double)Cutefish::X11::dpiY()) + 0.5);
 }
 
 static bool equal(double d1, double d2)

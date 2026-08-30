@@ -4,7 +4,7 @@ set(PROJECT_NAME cutefish-settings)
 project(${PROJECT_NAME})
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-include_directories("${CMAKE_CURRENT_SOURCE_DIR}/compat")
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src")
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
