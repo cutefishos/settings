@@ -4,6 +4,7 @@ set(PROJECT_NAME cutefish-settings)
 project(${PROJECT_NAME})
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/compat")
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -11,17 +12,17 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-set(QT Core Gui Widgets Quick QuickControls2 X11Extras DBus Xml Concurrent LinguistTools)
-find_package(Qt5 REQUIRED ${QT})
+set(QT Core Gui Widgets Quick QuickControls2 DBus Xml Concurrent LinguistTools)
+find_package(Qt6 REQUIRED ${QT})
 find_package(X11 REQUIRED)
 find_package(Freetype REQUIRED)
 find_package(PkgConfig REQUIRED)
 find_package(Libcrypt REQUIRED)
 # find_package(QApt REQUIRED)
 
-find_package(KF5NetworkManagerQt REQUIRED)
-find_package(KF5ModemManagerQt REQUIRED)
-find_package(KF5Config)
+find_package(KF6NetworkManagerQt REQUIRED)
+find_package(KF6ModemManagerQt REQUIRED)
+find_package(KF6Config)
 
 pkg_search_module(FontConfig REQUIRED fontconfig IMPORTED_TARGET)
 pkg_search_module(ICU REQUIRED icu-i18n)
@@ -69,28 +70,25 @@ set(RESOURCES
     src/resources.qrc
 )
 
-qt5_add_dbus_adaptor(DBUS_SOURCES
+qt6_add_dbus_adaptor(DBUS_SOURCES
                      src/com.cutefish.SettingsUI.xml
                      src/application.h Application)
 set_source_files_properties(${DBUS_SOURCES} PROPERTIES SKIP_AUTOGEN ON)
 
-# qt5_add_dbus_interface(DBUS_SOURCES src/datetime/org.freedesktop.timedate1.xml timedated_interface)
-
 add_executable(${PROJECT_NAME} ${DBUS_SOURCES} ${SRCS} ${RESOURCES})
 target_link_libraries(${PROJECT_NAME}
-        Qt5::Core
-        Qt5::Widgets
-        Qt5::Quick
-        Qt5::QuickControls2
-        Qt5::DBus
-        Qt5::Xml
-        Qt5::X11Extras
-        Qt5::Concurrent
+        Qt6::Core
+        Qt6::Widgets
+        Qt6::Quick
+        Qt6::QuickControls2
+        Qt6::DBus
+        Qt6::Xml
+        Qt6::Concurrent
         # FishUI
 
-        KF5::NetworkManagerQt
-        KF5::ModemManagerQt
-        KF5::ConfigCore
+        KF6::NetworkManagerQt
+        KF6::ModemManagerQt
+        KF6::ConfigCore
 
         PkgConfig::FontConfig
         ${FREETYPE_LIBRARIES}
@@ -106,7 +104,7 @@ target_link_libraries(${PROJECT_NAME}
 )
 
 file(GLOB TS_FILES translations/*.ts)
-qt5_add_translation(QM_FILES ${TS_FILES})
+qt6_add_translation(QM_FILES ${TS_FILES})
 add_custom_target(translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
 add_dependencies(${PROJECT_NAME} translations)
 
