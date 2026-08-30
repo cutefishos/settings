@@ -21,7 +21,7 @@ import QtQuick 2.12
 import QtQml 2.15
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Dialogs 1.2
+import QtQuick.Dialogs
 
 import FishUI 1.0 as FishUI
 import Cutefish.Settings 1.0
@@ -290,7 +290,7 @@ ItemPage {
     FileDialog {
         id: fileDialog
         onAccepted: {
-            autoScriptField.text = fileDialog.fileUrl.toString().replace("file://", "")
+            autoScriptField.text = decodeURIComponent(fileDialog.selectedFile.toString().replace("file://", ""))
             networkProxy.scriptProxy = autoScriptField.text
         }
     }

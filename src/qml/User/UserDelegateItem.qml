@@ -20,7 +20,8 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Dialogs 1.2
+import QtCore
+import QtQuick.Dialogs
 import Qt5Compat.GraphicalEffects
 
 import Cutefish.Settings 1.0
@@ -41,11 +42,11 @@ RoundedItem {
 
     FileDialog {
         id: fileDialog
-        folder: shortcuts.pictures
+        currentFolder: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
         nameFilters: ["Image files (*.jpg *.png)", "All files (*)"]
         onAccepted: {
-            currentUser.iconFileName = fileDialog.fileUrl.toString().replace("file://", "")
-            _userImage.source = fileDialog.fileUrl
+            currentUser.iconFileName = decodeURIComponent(fileDialog.selectedFile.toString().replace("file://", ""))
+            _userImage.source = fileDialog.selectedFile
             _userImage.update()
         }
     }

@@ -212,7 +212,7 @@ ItemPage {
 
                 Loader {
                     Layout.fillWidth: true
-                    height: item.height
+                    height: item ? item.height : 0
                     visible: background.backgroundType === 1
                     sourceComponent: colorView
                 }
