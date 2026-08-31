@@ -28,10 +28,6 @@ import "../"
 ItemPage {
     headerTitle: qsTr("Display")
 
-    Appearance {
-        id: appearance
-    }
-
     Brightness {
         id: brightness
     }
@@ -316,16 +312,18 @@ ItemPage {
 
                     currentIndex: {
                         var index = 0
+                        var output = _screenView.currentItem ? _screenView.currentItem.element : null
+                        var scale = output ? output.scale : 1.0
 
-                        if (appearance.devicePixelRatio <= 1.0)
+                        if (scale <= 1.0)
                             index = 0
-                        else if (appearance.devicePixelRatio <= 1.25)
+                        else if (scale <= 1.25)
                             index = 1
-                        else if (appearance.devicePixelRatio <= 1.50)
+                        else if (scale <= 1.50)
                             index = 2
-                        else if (appearance.devicePixelRatio <= 1.75)
+                        else if (scale <= 1.75)
                             index = 3
-                        else if (appearance.devicePixelRatio <= 2.0)
+                        else if (scale <= 2.0)
                             index = 4
 
                         return index
@@ -352,8 +350,10 @@ ItemPage {
                             break;
                         }
 
-                        if (appearance.devicePixelRatio !== value) {
-                            appearance.setDevicePixelRatio(value)
+                        var output = _screenView.currentItem ? _screenView.currentItem.element : null
+                        if (output && output.scale !== value) {
+                            output.scale = value
+                            screen.save()
                         }
                     }
                 }
