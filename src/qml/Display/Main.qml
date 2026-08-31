@@ -128,6 +128,7 @@ ItemPage {
                     model: screen.outputModel
                     orientation: ListView.Horizontal
                     interactive: false
+                    currentIndex: 0
                     clip: true
 
                     Layout.preferredHeight: currentItem ? currentItem.layout.implicitHeight + FishUI.Units.largeSpacing : 0
