@@ -58,6 +58,7 @@ Appearance::Appearance(QObject *parent)
         m_fontPointSize = m_interface.property("systemFontPointSize").toInt();
 
         connect(&m_interface, SIGNAL(darkModeDimsWallpaerChanged()), this, SIGNAL(dimsWallpaperChanged()));
+        connect(&m_interface, SIGNAL(blurEnabledChanged()), this, SIGNAL(blurEnabledChanged()));
     }
 }
 
@@ -76,6 +77,16 @@ bool Appearance::dimsWallpaper() const
 void Appearance::setDimsWallpaper(bool value)
 {
     m_interface.call("setDarkModeDimsWallpaer", value);
+}
+
+bool Appearance::blurEnabled() const
+{
+    return m_interface.property("blurEnabled").toBool();
+}
+
+void Appearance::setBlurEnabled(bool value)
+{
+    m_interface.call("setBlurEnabled", value);
 }
 
 int Appearance::dockIconSize() const

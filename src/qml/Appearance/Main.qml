@@ -96,6 +96,31 @@ ItemPage {
                         rightPadding: 0
                     }
                 }
+
+                HorizontalDivider {}
+
+                RowLayout {
+                    spacing: FishUI.Units.largeSpacing
+
+                    Label {
+                        id: blurLabel
+                        text: qsTr("Enable blur")
+                        bottomPadding: FishUI.Units.smallSpacing
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    Switch {
+                        checked: appearance.blurEnabled
+                        height: blurLabel.height
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                        onClicked: appearance.setBlurEnabled(checked)
+                        rightPadding: 0
+                    }
+                }
             }
 
             RoundedItem {

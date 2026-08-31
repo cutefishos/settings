@@ -36,7 +36,7 @@ FishUI.Window {
 
     property alias stackView: _stackView
 
-    background.opacity: FishUI.Theme.darkMode ? 0.7 : 0.5
+    background.opacity: FishUI.Theme.blurEnabled ? (FishUI.Theme.darkMode ? 0.7 : 0.5) : 1
     header.height: 40
     contentTopMargin: 0
 
@@ -46,7 +46,7 @@ FishUI.Window {
     FishUI.WindowBlur {
         view: rootWindow
         windowRadius: rootWindow.windowRadius
-        enabled: true
+        enabled: FishUI.Theme.blurEnabled
     }
 
     RowLayout {

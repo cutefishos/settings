@@ -32,6 +32,7 @@ class Appearance : public QObject
     Q_PROPERTY(int dockVisibility READ dockVisibility WRITE setDockVisibility NOTIFY dockVisibilityChanged)
     Q_PROPERTY(int fontPointSize READ fontPointSize WRITE setFontPointSize NOTIFY fontPointSizeChanged)
     Q_PROPERTY(bool dimsWallpaper READ dimsWallpaper WRITE setDimsWallpaper NOTIFY dimsWallpaperChanged)
+    Q_PROPERTY(bool blurEnabled READ blurEnabled WRITE setBlurEnabled NOTIFY blurEnabledChanged)
     Q_PROPERTY(double devicePixelRatio READ devicePixelRatio WRITE setDevicePixelRatio NOTIFY devicePixelRatioChanged)
     Q_PROPERTY(bool dockRoundedWindow READ dockRoundedWindow WRITE setDockRoundedWindow NOTIFY dockRoundedWindowChanged)
     Q_PROPERTY(int minimiumAnimation READ minimiumAnimation WRITE setMinimiumAnimation NOTIFY minimiumAnimationChanged)
@@ -43,6 +44,9 @@ public:
 
     bool dimsWallpaper() const;
     Q_INVOKABLE void setDimsWallpaper(bool value);
+
+    bool blurEnabled() const;
+    Q_INVOKABLE void setBlurEnabled(bool value);
 
     int dockIconSize() const;
     Q_INVOKABLE void setDockIconSize(int dockIconSize);
@@ -76,6 +80,7 @@ signals:
     void dockVisibilityChanged();
     void fontPointSizeChanged();
     void dimsWallpaperChanged();
+    void blurEnabledChanged();
     void devicePixelRatioChanged();
     void dockRoundedWindowChanged();
     void minimiumAnimationChanged();
