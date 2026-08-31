@@ -20,8 +20,63 @@
 #include "powermanager.h"
 
 #include <QSettings>
-#include <QDBusPendingCall>
-#include <QDebug>
+
+namespace
+{
+constexpr auto s_powerGroup = "Power";
+
+int normalizedTimeout(int timeout)
+{
+    return timeout < 0 ? -1 : qMax(1, timeout);
+}
+
+int readTimeout(QSettings &settings, const QString &key, const QString &legacyKey, int fallback)
+{
+    settings.beginGroup(QLatin1String(s_powerGroup));
+    const bool hasValue = settings.contains(key);
+    const int value = hasValue ? settings.value(key).toInt() : fallback;
+    settings.endGroup();
+
+    if (hasValue)
+        return normalizedTimeout(value);
+
+    if (!legacyKey.isEmpty() && settings.contains(legacyKey))
+        return normalizedTimeout(settings.value(legacyKey).toInt());
+
+    return fallback;
+}
+
+bool readBool(QSettings &settings, const QString &key, bool fallback)
+{
+    settings.beginGroup(QLatin1String(s_powerGroup));
+    const bool hasValue = settings.contains(key);
+    const bool value = hasValue ? settings.value(key).toBool() : fallback;
+    settings.endGroup();
+
+    if (hasValue)
+        return value;
+
+    return settings.value(key, fallback).toBool();
+}
+
+void writePowerSetting(const QString &key, const QVariant &value)
+{
+    QSettings settings(QSettings::UserScope, "cutefishos", "power");
+    settings.beginGroup(QLatin1String(s_powerGroup));
+    settings.setValue(key, value);
+    settings.endGroup();
+    settings.sync();
+}
+
+void callPowerManager(const QString &method, const QVariant &value)
+{
+    QDBusInterface iface("com.cutefish.PowerManager",
+                         "/PowerManager", "com.cutefish.PowerManager",
+                         QDBusConnection::sessionBus());
+    if (iface.isValid())
+        iface.asyncCall(method, value);
+}
+}
 
 PowerManager::PowerManager(QObject *parent)
     : QObject(parent)
@@ -35,11 +90,15 @@ PowerManager::PowerManager(QObject *parent)
     }
 
     QSettings settings(QSettings::UserScope, "cutefishos", "power");
-    m_idleTime = settings.value("CloseScreenTimeout", 600).toInt();
+    m_batteryScreenOff = readTimeout(settings, QStringLiteral("BatteryScreenOff"),
+                                     QStringLiteral("CloseScreenTimeout"), 300);
+    m_acScreenOff = readTimeout(settings, QStringLiteral("ACScreenOff"),
+                                QStringLiteral("CloseScreenTimeout"), 1200);
+    m_idleTime = m_acScreenOff;
     m_hibernateTime = settings.value("HibernateTimeout", 600).toInt();
 
-    m_sleepWhenClosedScreen = settings.value("SleepWhenClosedScreen", false).toBool();
-    m_lockWhenClosedScreen = settings.value("LockWhenClosedScreen", true).toBool();
+    m_sleepWhenClosedScreen = readBool(settings, QStringLiteral("SleepWhenClosedScreen"), false);
+    m_lockWhenClosedScreen = readBool(settings, QStringLiteral("LockWhenClosedScreen"), true);
 }
 
 int PowerManager::mode() const
@@ -56,6 +115,42 @@ void PowerManager::setMode(int mode)
     }
 }
 
+int PowerManager::batteryScreenOff() const
+{
+    return m_batteryScreenOff;
+}
+
+void PowerManager::setBatteryScreenOff(int timeout)
+{
+    timeout = normalizedTimeout(timeout);
+    if (m_batteryScreenOff == timeout)
+        return;
+
+    m_batteryScreenOff = timeout;
+    writePowerSetting(QStringLiteral("BatteryScreenOff"), timeout);
+    callPowerManager(QStringLiteral("setBatteryScreenOff"), timeout);
+    emit batteryScreenOffChanged();
+}
+
+int PowerManager::acScreenOff() const
+{
+    return m_acScreenOff;
+}
+
+void PowerManager::setACScreenOff(int timeout)
+{
+    timeout = normalizedTimeout(timeout);
+    if (m_acScreenOff == timeout)
+        return;
+
+    m_acScreenOff = timeout;
+    m_idleTime = timeout;
+    writePowerSetting(QStringLiteral("ACScreenOff"), timeout);
+    callPowerManager(QStringLiteral("setACScreenOff"), timeout);
+    emit acScreenOffChanged();
+    emit idleTimeChanged();
+}
+
 int PowerManager::idleTime()
 {
     return m_idleTime;
@@ -63,18 +158,8 @@ int PowerManager::idleTime()
 
 void PowerManager::setIdleTime(int idleTime)
 {
-    if (m_idleTime != idleTime) {
-        m_idleTime = idleTime;
-
-        QDBusInterface iface("com.cutefish.PowerManager",
-                             "/PowerManager", "com.cutefish.PowerManager",
-                             QDBusConnection::sessionBus());
-        if (iface.isValid()) {
-            iface.asyncCall("setDimDisplayTimeout", idleTime);
-        }
-
-        emit idleTimeChanged();
-    }
+    setBatteryScreenOff(idleTime);
+    setACScreenOff(idleTime);
 }
 
 int PowerManager::hibernateTime()
@@ -97,15 +182,13 @@ bool PowerManager::sleepWhenClosedScreen() const
 
 void PowerManager::setSleepWhenClosedScreen(bool sleepWhenClosedScreen)
 {
+    if (m_sleepWhenClosedScreen == sleepWhenClosedScreen)
+        return;
+
     m_sleepWhenClosedScreen = sleepWhenClosedScreen;
     emit sleepWhenClosedScreenChanged();
-
-    QDBusInterface iface("com.cutefish.PowerManager",
-                         "/PowerManager", "com.cutefish.PowerManager",
-                         QDBusConnection::sessionBus());
-    if (iface.isValid()) {
-        iface.asyncCall("setSleepWhenClosedScreen", sleepWhenClosedScreen);
-    }
+    writePowerSetting(QStringLiteral("SleepWhenClosedScreen"), sleepWhenClosedScreen);
+    callPowerManager(QStringLiteral("setSleepWhenClosedScreen"), sleepWhenClosedScreen);
 }
 
 bool PowerManager::lockWhenClosedScreen() const
@@ -115,13 +198,11 @@ bool PowerManager::lockWhenClosedScreen() const
 
 void PowerManager::setLockWhenClosedScreen(bool lockWhenClosedScreen)
 {
+    if (m_lockWhenClosedScreen == lockWhenClosedScreen)
+        return;
+
     m_lockWhenClosedScreen = lockWhenClosedScreen;
     emit lockWhenClosedScreenChanged();
-
-    QDBusInterface iface("com.cutefish.PowerManager",
-                         "/PowerManager", "com.cutefish.PowerManager",
-                         QDBusConnection::sessionBus());
-    if (iface.isValid()) {
-        iface.asyncCall("setLockWhenClosedScreen", lockWhenClosedScreen);
-    }
+    writePowerSetting(QStringLiteral("LockWhenClosedScreen"), lockWhenClosedScreen);
+    callPowerManager(QStringLiteral("setLockWhenClosedScreen"), lockWhenClosedScreen);
 }

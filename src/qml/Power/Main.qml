@@ -38,21 +38,11 @@ ItemPage {
         id: battery
     }
 
+    property var timeoutValues: [60, 120, 300, 600, 900, 1200, 1800, -1]
+
     function timeoutToIndex(timeout) {
-        switch (timeout) {
-        case 2 * 60:
-            return 0
-        case 5 * 60:
-            return 1
-        case 10 * 60:
-            return 2
-        case 15 * 60:
-            return 3
-        case 30 * 60:
-            return 4
-        case -1:
-            return 5
-        }
+        var index = timeoutValues.indexOf(timeout)
+        return index >= 0 ? index : timeoutValues.indexOf(300)
     }
 
     Scrollable {
@@ -113,52 +103,38 @@ ItemPage {
                     Layout.bottomMargin: FishUI.Units.largeSpacing
 
                     Label {
-                        text: qsTr("Turn off screen")
+                        visible: battery.available
+                        text: qsTr("Turn off screen on battery")
+                        Layout.fillWidth: true
+                    }
+
+                    ComboBox {
+                        visible: battery.available
+                        Layout.preferredWidth: 160
+
+                        model: [qsTr("1 Minute"), qsTr("2 Minutes"), qsTr("5 Minutes"),
+                                qsTr("10 Minutes"), qsTr("15 Minutes"), qsTr("20 Minutes"),
+                                qsTr("30 Minutes"), qsTr("Never")]
+                        currentIndex: timeoutToIndex(power.batteryScreenOff)
+                        onActivated: power.batteryScreenOff = timeoutValues[currentIndex]
+                    }
+
+                    Label {
+                        text: qsTr("Turn off screen on AC power")
                         Layout.fillWidth: true
                     }
 
                     ComboBox {
                         Layout.preferredWidth: 160
-
-                        model: ListModel {
-                            ListElement { text: qsTr("2 Minutes") }
-                            ListElement { text: qsTr("5 Minutes") }
-                            ListElement { text: qsTr("10 Minutes") }
-                            ListElement { text: qsTr("15 Minutes") }
-                            ListElement { text: qsTr("30 Minutes") }
-                            ListElement { text: qsTr("Never") }
-                        }
-
-                        Component.onCompleted: {
-                            currentIndex = timeoutToIndex(power.idleTime)
-                        }
-
-                        onActivated: {
-                            switch (currentIndex) {
-                            case 0:
-                                power.idleTime = 2 * 60
-                                break
-                            case 1:
-                                power.idleTime = 5 * 60
-                                break
-                            case 2:
-                                power.idleTime = 10 * 60
-                                break
-                            case 3:
-                                power.idleTime = 15 * 60
-                                break
-                            case 4:
-                                power.idleTime = 30 * 60
-                                break
-                            case 5:
-                                power.idleTime = -1
-                                break
-                            }
-                        }
+                        model: [qsTr("1 Minute"), qsTr("2 Minutes"), qsTr("5 Minutes"),
+                                qsTr("10 Minutes"), qsTr("15 Minutes"), qsTr("20 Minutes"),
+                                qsTr("30 Minutes"), qsTr("Never")]
+                        currentIndex: timeoutToIndex(power.acScreenOff)
+                        onActivated: power.acScreenOff = timeoutValues[currentIndex]
                     }
 
                     Label {
-                        text: qsTr("Hibernate after screen is turned off")
+                        text: qsTr("Suspend after screen is turned off")
                         Layout.fillWidth: true
                     }
 

@@ -27,6 +27,8 @@ class PowerManager : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int mode READ mode WRITE setMode NOTIFY modeChanged)
+    Q_PROPERTY(int batteryScreenOff READ batteryScreenOff WRITE setBatteryScreenOff NOTIFY batteryScreenOffChanged)
+    Q_PROPERTY(int acScreenOff READ acScreenOff WRITE setACScreenOff NOTIFY acScreenOffChanged)
     Q_PROPERTY(int idleTime READ idleTime WRITE setIdleTime NOTIFY idleTimeChanged)
     Q_PROPERTY(int hibernateTime READ hibernateTime WRITE setHibernateTime NOTIFY hibernateTimeChanged)
     Q_PROPERTY(bool sleepWhenClosedScreen READ sleepWhenClosedScreen WRITE setSleepWhenClosedScreen NOTIFY sleepWhenClosedScreenChanged)
@@ -37,6 +39,12 @@ public:
 
     int mode() const;
     void setMode(int mode);
+
+    int batteryScreenOff() const;
+    void setBatteryScreenOff(int timeout);
+
+    int acScreenOff() const;
+    void setACScreenOff(int timeout);
 
     int idleTime();
     void setIdleTime(int idleTime);
@@ -52,6 +60,8 @@ public:
 
 signals:
     void modeChanged();
+    void batteryScreenOffChanged();
+    void acScreenOffChanged();
     void idleTimeChanged();
     void hibernateTimeChanged();
     void sleepWhenClosedScreenChanged();
@@ -60,6 +70,8 @@ signals:
 private:
     QDBusInterface m_iface;
     int m_mode;
+    int m_batteryScreenOff;
+    int m_acScreenOff;
     int m_idleTime;
     int m_hibernateTime;
     bool m_sleepWhenClosedScreen;
