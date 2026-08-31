@@ -26,11 +26,13 @@ import FishUI 1.0 as FishUI
 Item {
     id: control
 
-    property var iconSpacing: FishUI.Units.smallSpacing * 0.8
+    property var iconSpacing: FishUI.Units.smallSpacing
     property alias source: icon.source
     property alias text: label.text
     property bool checked: false
 
+    property var iconWidth: iconSize
+    property var iconHeight: iconSize
     property var iconSize: 96
 
     signal clicked
@@ -46,19 +48,19 @@ Item {
 
         Rectangle {
             id: _box
-            width: control.iconSize
-            height: width
+            width: control.iconWidth
+            height: control.iconHeight
             color: "transparent"
             border.width: 3
             border.color: control.checked ? FishUI.Theme.highlightColor : "transparent"
 
-            radius: FishUI.Theme.bigRadius + control.iconSpacing
+            radius: FishUI.Theme.bigRadius + control.iconSpacing / 2
             visible: true
 
             Image {
                 id: icon
                 anchors.fill: parent
-                anchors.margins: FishUI.Units.smallSpacing
+                anchors.margins: control.iconSpacing
                 sourceSize: Qt.size(icon.width, icon.height)
                 opacity: 1
                 smooth: false

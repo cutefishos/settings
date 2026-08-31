@@ -45,7 +45,7 @@ ItemPage {
 
             RoundedItem {
                 Label {
-                    text: qsTr("Theme")
+                    text: qsTr("Appearance")
                     color: FishUI.Theme.disabledTextColor
                 }
 
@@ -56,6 +56,8 @@ ItemPage {
                     IconCheckBox {
                         source: "qrc:/images/light_mode.svg"
                         text: qsTr("Light")
+                        iconWidth: 120
+                        iconHeight: iconWidth * 68 / 100
                         checked: !FishUI.Theme.darkMode
                         onClicked: appearance.switchDarkMode(false)
                     }
@@ -63,6 +65,8 @@ ItemPage {
                     IconCheckBox {
                         source: "qrc:/images/dark_mode.svg"
                         text: qsTr("Dark")
+                        iconWidth: 120
+                        iconHeight: iconWidth * 68 / 100
                         checked: FishUI.Theme.darkMode
                         onClicked: appearance.switchDarkMode(true)
                     }
