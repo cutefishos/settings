@@ -104,13 +104,13 @@ ItemPage {
                     currentIndex: {
                         var index = 0
 
-                        if (appearance.dockIconSize <= 45)
+                        if (appearance.dockIconSize <= 40)
                             index = 0
-                        else if (appearance.dockIconSize <= 53)
+                        else if (appearance.dockIconSize <= 54)
                             index = 1
-                        else if (appearance.dockIconSize <= 63)
+                        else if (appearance.dockIconSize <= 68)
                             index = 2
-                        else if (appearance.dockIconSize <= 72)
+                        else
                             index = 3
 
                         return index
@@ -120,17 +120,19 @@ ItemPage {
                         var iconSize = 0
 
                         switch (currentIndex) {
+                        // The value is the icon size itself; the dock derives
+                        // its paddings from it (54 is the design baseline).
                         case 0:
-                            iconSize = 45
+                            iconSize = 40
                             break;
                         case 1:
-                            iconSize = 53
+                            iconSize = 54
                             break;
                         case 2:
-                            iconSize = 63
+                            iconSize = 68
                             break;
                         case 3:
-                            iconSize = 72
+                            iconSize = 82
                             break;
                         }
 
