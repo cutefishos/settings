@@ -38,7 +38,6 @@ Depends: qml6-module-qtquick-controls,
          bluedevil,
          fishui,
          libcutefish,
-         kscreen,
          ${misc:Depends},
          ${shlibs:Depends}
 Description: CutefishOS Settings
