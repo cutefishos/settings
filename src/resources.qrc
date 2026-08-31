@@ -144,6 +144,5 @@
         <file>images/sidebar/dark/notifications.svg</file>
         <file>qml/WLAN/ConnectDialog.qml</file>
         <file>qml/WLAN/NewNetworkDialog.qml</file>
-        <file>qml/DefaultApp/AppComboBox.qml</file>
     </qresource>
 </RCC>

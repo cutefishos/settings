@@ -26,9 +26,10 @@
 #include <QDir>
 #include <QDebug>
 
-#include <KConfig>
-#include <KConfigGroup>
-#include <KSharedConfig>
+static QString firstDesktopEntry(const QString &value)
+{
+    return value.split(QLatin1Char(';'), Qt::SkipEmptyParts).value(0).trimmed();
+}
 
 DefaultApplications::DefaultApplications(QObject *parent)
     : QObject(parent)
@@ -75,15 +76,15 @@ void DefaultApplications::loadApps()
         }
     }
 
-    // Load xdg config.
+    // XDG values are semicolon-separated lists and may end with a semicolon.
     QSettings mimeApps(mimeAppsListFilePath(), QSettings::IniFormat);
     mimeApps.beginGroup("Default Applications");
 
     QSettings settings("cutefishos", "defaultApps");
 
-    QString defaultBrowser = mimeApps.value("x-scheme-handler/http").toString();
-    QString defaultFM = mimeApps.value("inode/directory").toString();
-    QString defaultEMail = mimeApps.value("x-scheme-handler/mailto").toString();
+    const QString defaultBrowser = firstDesktopEntry(mimeApps.value("x-scheme-handler/http").toString());
+    const QString defaultFM = firstDesktopEntry(mimeApps.value("inode/directory").toString());
+    const QString defaultEMail = firstDesktopEntry(mimeApps.value("x-scheme-handler/mailto").toString());
     QString defaultTerminal = settings.value("terminal").toString();
 
     // Init indexes.
@@ -242,11 +243,9 @@ void DefaultApplications::setDefaultTerminal(int index)
 
 void DefaultApplications::setDefaultApp(const QString &mimeType, const QString &path)
 {
-    KSharedConfig::Ptr profile = KSharedConfig::openConfig(QStringLiteral("mimeapps.list"),
-                                                           KConfig::NoGlobals,
-                                                           QStandardPaths::GenericConfigLocation);
-    KConfigGroup defaultApp(profile, "Default Applications");
-    defaultApp.writeXdgListEntry(mimeType, {path});
+    QSettings mimeApps(mimeAppsListFilePath(), QSettings::IniFormat);
+    mimeApps.beginGroup("Default Applications");
+    mimeApps.setValue(mimeType, path + QLatin1Char(';'));
 }
 
 QString DefaultApplications::mimeAppsListFilePath() const

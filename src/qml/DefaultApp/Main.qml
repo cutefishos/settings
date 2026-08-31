@@ -50,12 +50,14 @@ ItemPage {
                         enabled: browserComboBox.count !== 0
                     }
 
-                    AppComboBox {
+                    FishUI.ComboBox {
                         id: browserComboBox
                         Layout.fillWidth: true
                         textRole: "name"
                         model: defaultApps.browserList
-                        currentIndex: defaultApps.browserIndex
+                        currentIndex: defaultApps.browserIndex >= 0
+                                      ? defaultApps.browserIndex
+                                      : (defaultApps.browserList.length > 0 ? 0 : -1)
                         enabled: count !== 0
                         onActivated: {
                             defaultApps.setDefaultBrowser(browserComboBox.currentIndex)
@@ -67,12 +69,14 @@ ItemPage {
                         enabled: fileManagerComboBox.count !== 0
                     }
 
-                    AppComboBox {
+                    FishUI.ComboBox {
                         id: fileManagerComboBox
                         Layout.fillWidth: true
                         textRole: "name"
                         model: defaultApps.fileManagerList
-                        currentIndex: defaultApps.fileManagerIndex
+                        currentIndex: defaultApps.fileManagerIndex >= 0
+                                      ? defaultApps.fileManagerIndex
+                                      : (defaultApps.fileManagerList.length > 0 ? 0 : -1)
                         enabled: count !== 0
                         onActivated: {
                             defaultApps.setDefaultFileManager(fileManagerComboBox.currentIndex)
@@ -84,12 +88,14 @@ ItemPage {
                         enabled: emailComboBox.count !== 0
                     }
 
-                    AppComboBox {
+                    FishUI.ComboBox {
                         id: emailComboBox
                         Layout.fillWidth: true
                         textRole: "name"
                         model: defaultApps.emailList
-                        currentIndex: defaultApps.emailIndex
+                        currentIndex: defaultApps.emailIndex >= 0
+                                      ? defaultApps.emailIndex
+                                      : (defaultApps.emailList.length > 0 ? 0 : -1)
                         enabled: count !== 0
                         onActivated: {
                             defaultApps.setDefaultEMail(emailComboBox.currentIndex)
@@ -101,12 +107,14 @@ ItemPage {
                         enabled: terminalComboBox.count !== 0
                     }
 
-                    AppComboBox {
+                    FishUI.ComboBox {
                         id: terminalComboBox
                         Layout.fillWidth: true
                         textRole: "name"
                         model: defaultApps.terminalList
-                        currentIndex: defaultApps.terminalIndex
+                        currentIndex: defaultApps.terminalIndex >= 0
+                                      ? defaultApps.terminalIndex
+                                      : (defaultApps.terminalList.length > 0 ? 0 : -1)
                         enabled: count !== 0
                         onActivated: {
                             defaultApps.setDefaultTerminal(terminalComboBox.currentIndex)
