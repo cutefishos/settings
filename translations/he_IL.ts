@@ -137,11 +137,6 @@
         <translation>עמעם את רקע שולחן העבודה בעיצוב כהה</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="98"/>
-        <source>System effects</source>
-        <translation>אפקטים של המערכת</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Appearance/Main.qml" line="118"/>
         <source>Accent color</source>
         <translation>צבע כללי</translation>

@@ -137,11 +137,6 @@
         <translation>întunecă imaginea de fundal în tema întunecată</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="97"/>
-        <source>System effects</source>
-        <translation>Efecte de sistem</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Appearance/Main.qml" line="117"/>
         <source>Accent color</source>
         <translation>Culoare de accent</translation>

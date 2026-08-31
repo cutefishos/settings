@@ -91,11 +91,6 @@
         <translation>Làm mờ hình nền khi ở chế độ tối</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="98"/>
-        <source>System effects</source>
-        <translation>Hiệu ứng hệ thống</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Appearance/Main.qml" line="121"/>
         <source>Minimize animation</source>
         <translation>Hiệu ứng thu nhỏ</translation>

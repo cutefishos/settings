@@ -137,11 +137,6 @@
         <translation>ഇരുണ്ട wallpaper ഇല് ഇരുണ്ട തീം</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="97"/>
-        <source>System effects</source>
-        <translation>System എഫക്</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Appearance/Main.qml" line="117"/>
         <source>Accent color</source>
         <translation type="unfinished"></translation>

@@ -124,11 +124,6 @@
         <translation>গাঢ় থিমে ওয়ালপেপার ম্লান করুন</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="98"/>
-        <source>System effects</source>
-        <translation>সিস্টেমের প্রভাব</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Appearance/Main.qml" line="121"/>
         <source>Minimize animation</source>
         <translation>মিনিমাইজের এ্যানিমেশন</translation>

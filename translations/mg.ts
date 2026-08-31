@@ -91,11 +91,6 @@
         <translation>Hampifanarahana amin&apos;ny loha-hevitra Maizina ny fond d&apos;ecran</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="98"/>
-        <source>System effects</source>
-        <translation>Fijejojejoana</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Appearance/Main.qml" line="121"/>
         <source>Minimize animation</source>
         <translation>Atao somary kelikely ny fihetsiketsehana</translation>

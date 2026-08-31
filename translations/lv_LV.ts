@@ -137,11 +137,6 @@
         <translation>Aptumšot fonu tumšajā motīvā</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="98"/>
-        <source>System effects</source>
-        <translation>Sistēmas efekti</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Appearance/Main.qml" line="118"/>
         <source>Accent color</source>
         <translation>Akcenta krāsa</translation>

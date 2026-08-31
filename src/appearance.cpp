@@ -41,7 +41,6 @@ Appearance::Appearance(QObject *parent)
     , m_dockDirection(0)
     , m_dockVisibility(0)
     , m_fontPointSize(11)
-    , m_systemEffects(false)
 {
     m_dockIconSize = m_dockSettings->value("IconSize").toInt();
     m_dockDirection = m_dockSettings->value("Direction").toInt();
@@ -50,9 +49,6 @@ Appearance::Appearance(QObject *parent)
     // Dock only supports the centered style. Migrate old Full style settings.
     m_dockSettings->setValue("Style", 0);
 
-    m_kwinSettings->beginGroup("Compositing");
-    m_systemEffects = !m_kwinSettings->value("OpenGLIsUnsafe", false).toBool();
-    m_kwinSettings->endGroup();
     m_kwinSettings->beginGroup("Plugins");
     m_minimiumAnimation = m_kwinSettings->value("magiclampEnabled").toBool() ? 1 : 0;
     m_kwinSettings->endGroup();
@@ -230,24 +226,6 @@ void Appearance::setDevicePixelRatio(double value)
                          QDBusConnection::sessionBus(), this);
     if (iface.isValid()) {
         iface.call("setDevicePixelRatio", value);
-    }
-}
-
-bool Appearance::systemEffects() const
-{
-    return m_systemEffects;
-}
-
-void Appearance::setSystemEffects(bool systemEffects)
-{
-    if (m_systemEffects != systemEffects) {
-        m_systemEffects = systemEffects;
-        m_kwinSettings->beginGroup("Compositing");
-        m_kwinSettings->setValue("OpenGLIsUnsafe", !systemEffects);
-        m_kwinSettings->endGroup();
-        m_kwinSettings->sync();
-        QDBusInterface("org.kde.KWin", "/KWin").call("reconfigure");
-        emit systemEffectsChanged();
     }
 }
 

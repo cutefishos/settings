@@ -137,11 +137,6 @@
         <translation type="unfinished">Punguza mwangaza wa kikaratasi wakati wa Mwanda cha giza</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="97"/>
-        <source>System effects</source>
-        <translation>Athari la mufumo</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Appearance/Main.qml" line="117"/>
         <source>Accent color</source>
         <translation type="unfinished">Rangi la vipengele</translation>

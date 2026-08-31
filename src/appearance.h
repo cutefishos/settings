@@ -34,7 +34,6 @@ class Appearance : public QObject
     Q_PROPERTY(bool dimsWallpaper READ dimsWallpaper WRITE setDimsWallpaper NOTIFY dimsWallpaperChanged)
     Q_PROPERTY(double devicePixelRatio READ devicePixelRatio WRITE setDevicePixelRatio NOTIFY devicePixelRatioChanged)
     Q_PROPERTY(bool dockRoundedWindow READ dockRoundedWindow WRITE setDockRoundedWindow NOTIFY dockRoundedWindowChanged)
-    Q_PROPERTY(bool systemEffects READ systemEffects WRITE setSystemEffects NOTIFY systemEffectsChanged)
     Q_PROPERTY(int minimiumAnimation READ minimiumAnimation WRITE setMinimiumAnimation NOTIFY minimiumAnimationChanged)
 
 public:
@@ -68,9 +67,6 @@ public:
     double devicePixelRatio() const;
     Q_INVOKABLE void setDevicePixelRatio(double value);
 
-    bool systemEffects() const;
-    void setSystemEffects(bool systemEffects);
-
     int minimiumAnimation() const;
     void setMinimiumAnimation(int minimiumAnimation);
 
@@ -82,7 +78,6 @@ signals:
     void dimsWallpaperChanged();
     void devicePixelRatioChanged();
     void dockRoundedWindowChanged();
-    void systemEffectsChanged();
     void minimiumAnimationChanged();
 
 private:
@@ -96,7 +91,6 @@ private:
     int m_dockVisibility;
     int m_fontPointSize;
 
-    bool m_systemEffects;
     int m_minimiumAnimation;
 };
 

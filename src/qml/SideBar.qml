@@ -38,7 +38,7 @@ Item {
         anchors.fill: parent
         color: FishUI.Theme.darkMode ? Qt.lighter(FishUI.Theme.backgroundColor, 1.5)
                                      : Qt.darker(FishUI.Theme.backgroundColor, 1.05)
-        opacity: rootWindow.compositing ? 0.7 : 1.0
+        opacity: 0.7
 
         Behavior on color {
             ColorAnimation {

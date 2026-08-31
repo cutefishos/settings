@@ -124,11 +124,6 @@
         <translation>Zamrači pozadinu u Tamnoj temi</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="98"/>
-        <source>System effects</source>
-        <translation>Sistemski efekti</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Appearance/Main.qml" line="121"/>
         <source>Minimize animation</source>
         <translation>Smanji animacije</translation>
