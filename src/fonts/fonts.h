@@ -23,7 +23,6 @@
 #include <QObject>
 #include <QStandardItemModel>
 #include <QSettings>
-#include "kxftconfig.h"
 
 class Fonts : public QObject
 {
@@ -33,6 +32,14 @@ class Fonts : public QObject
     Q_PROPERTY(int hintingCurrentIndex READ hintingCurrentIndex WRITE setHintingCurrentIndex NOTIFY hintingCurrentIndexChanged)
 
 public:
+    enum class Hinting {
+        None,
+        Slight,
+        Medium,
+        Full,
+    };
+    Q_ENUM(Hinting)
+
     explicit Fonts(QObject *parent = nullptr);
 
     bool antiAliasing() const;
@@ -41,8 +48,8 @@ public:
     int hintingCurrentIndex() const;
     void setHintingCurrentIndex(int index);
 
-    KXftConfig::Hint::Style hinting() const;
-    void setHinting(KXftConfig::Hint::Style hinting);
+    Hinting hinting() const;
+    void setHinting(Hinting hinting);
 
     QStandardItemModel *hintingModel();
 
@@ -57,7 +64,7 @@ private:
     QSettings m_settings;
     bool m_antiAliasing;
     QStandardItemModel *m_hintingModel;
-    KXftConfig::Hint::Style m_hinting;
+    Hinting m_hinting;
 };
 
 #endif

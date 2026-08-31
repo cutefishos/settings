@@ -14,7 +14,6 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_CURRENT
 
 set(QT Core Gui Widgets Quick QuickControls2 DBus Xml Concurrent LinguistTools)
 find_package(Qt6 REQUIRED ${QT})
-find_package(X11 REQUIRED)
 find_package(Freetype REQUIRED)
 find_package(PkgConfig REQUIRED)
 find_package(Libcrypt REQUIRED)
@@ -45,7 +44,6 @@ set(SRCS
     src/password.cpp
     src/batteryhistorymodel.cpp
     src/cicontheme.cpp
-    src/fonts/kxftconfig.cpp
     src/fonts/fonts.cpp
     src/powermanager.cpp
     src/cursor/cursorthememodel.cpp
@@ -94,11 +92,6 @@ target_link_libraries(${PROJECT_NAME}
         ${FREETYPE_LIBRARIES}
         ${ICU_LDFLAGS}
         Libcrypt::Libcrypt
-
-        ${X11_LIBRARIES}
-        X11::X11
-        X11::Xi
-        X11::Xcursor
 
         # QApt
 )

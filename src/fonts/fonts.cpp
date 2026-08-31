@@ -21,18 +21,47 @@
 #include <QDBusInterface>
 #include <QDBusPendingCall>
 
+namespace
+{
+Fonts::Hinting hintingFromString(const QString &value)
+{
+    if (value == QLatin1String("hintmedium"))
+        return Fonts::Hinting::Medium;
+    if (value == QLatin1String("hintfull"))
+        return Fonts::Hinting::Full;
+    if (value == QLatin1String("hintslight"))
+        return Fonts::Hinting::Slight;
+    return Fonts::Hinting::None;
+}
+
+QString hintingToString(Fonts::Hinting hinting)
+{
+    switch (hinting) {
+    case Fonts::Hinting::Slight:
+        return QStringLiteral("hintslight");
+    case Fonts::Hinting::Medium:
+        return QStringLiteral("hintmedium");
+    case Fonts::Hinting::Full:
+        return QStringLiteral("hintfull");
+    case Fonts::Hinting::None:
+        return QStringLiteral("hintnone");
+    }
+    return QStringLiteral("hintnone");
+}
+}
+
 Fonts::Fonts(QObject *parent)
     : QObject(parent)
     , m_settings("cutefishos", "theme")
     , m_antiAliasing(false)
     , m_hintingModel(new QStandardItemModel(this))
 {
-    m_antiAliasing = m_settings.value("XftAntialias", true).toBool();
-    m_hinting = KXftConfig::toHintStyle(m_settings.value("XftHintStyle", "hintslight").toString());
+    m_antiAliasing = m_settings.value("FontAntialias", true).toBool();
+    m_hinting = hintingFromString(m_settings.value("FontHintStyle", "hintslight").toString());
 
-    // Hinting options
-    for (KXftConfig::Hint::Style s : {KXftConfig::Hint::None, KXftConfig::Hint::Slight, KXftConfig::Hint::Medium, KXftConfig::Hint::Full}) {
-        auto item = new QStandardItem(KXftConfig::description(s));
+    const QStringList descriptions = {tr("None"), tr("Slight"), tr("Medium"), tr("Full")};
+    for (const QString &description : descriptions) {
+        auto item = new QStandardItem(description);
         m_hintingModel->appendRow(item);
     }
 }
@@ -47,30 +76,33 @@ void Fonts::setAntiAliasing(bool antiAliasing)
     if (m_antiAliasing != antiAliasing) {
         m_antiAliasing = antiAliasing;
         save();
+        emit antiAliasingChanged();
     }
 }
 
 int Fonts::hintingCurrentIndex() const
 {
-    return hinting() - KXftConfig::Hint::None;
+    return static_cast<int>(hinting());
 }
 
 void Fonts::setHintingCurrentIndex(int index)
 {
-    setHinting(static_cast<KXftConfig::Hint::Style>(KXftConfig::Hint::None + index));
+    index = qBound(0, index, 3);
+    setHinting(static_cast<Hinting>(index));
 }
 
-KXftConfig::Hint::Style Fonts::hinting() const
+Fonts::Hinting Fonts::hinting() const
 {
     return m_hinting;
 }
 
-void Fonts::setHinting(KXftConfig::Hint::Style hinting)
+void Fonts::setHinting(Hinting hinting)
 {
     if (m_hinting != hinting) {
         m_hinting = hinting;
         save();
         emit hintingChanged();
+        emit hintingCurrentIndexChanged();
     }
 }
 
@@ -81,17 +113,8 @@ QStandardItemModel *Fonts::hintingModel()
 
 void Fonts::save()
 {
-//    KXftConfig xft;
-//    KXftConfig::AntiAliasing::State aaState = KXftConfig::AntiAliasing::NotSet;
-//    if (xft.antiAliasingHasLocalConfig()) {
-//        aaState = m_antiAliasing ? KXftConfig::AntiAliasing::Enabled : KXftConfig::AntiAliasing::Disabled;
-//    }
-//    xft.setAntiAliasing(aaState);
-//    xft.setHintStyle(m_hinting);
-//    xft.apply();
-
-    m_settings.setValue("XftAntialias", m_antiAliasing);
-    m_settings.setValue("XftHintStyle", KXftConfig::toStr(m_hinting));
+    m_settings.setValue("FontAntialias", m_antiAliasing);
+    m_settings.setValue("FontHintStyle", hintingToString(m_hinting));
     m_settings.sync();
 
     QDBusInterface interface("com.cutefish.Settings",
@@ -99,5 +122,5 @@ void Fonts::save()
                              "com.cutefish.Theme",
                              QDBusConnection::sessionBus());
     if (interface.isValid())
-        interface.asyncCall("applyXResources");
+        interface.asyncCall("applyFontSettings");
 }
