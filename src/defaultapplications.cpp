@@ -18,12 +18,12 @@
  */
 
 #include "defaultapplications.h"
-#include "desktopproperties.h"
+#include "applicationregistry.h"
+#include "desktopentry.h"
 
+#include <QFileInfo>
 #include <QSettings>
 #include <QStandardPaths>
-#include <QDirIterator>
-#include <QDir>
 #include <QDebug>
 
 static QString firstDesktopEntry(const QString &value)
@@ -34,44 +34,46 @@ static QString firstDesktopEntry(const QString &value)
 DefaultApplications::DefaultApplications(QObject *parent)
     : QObject(parent)
 {
-    loadApps();
+    ApplicationRegistry *registry = ApplicationRegistry::instance();
+    connect(registry, &ApplicationRegistry::applicationsChanged,
+            this, &DefaultApplications::loadApps);
+    if (!registry->loading())
+        loadApps();
 }
 
 void DefaultApplications::loadApps()
 {
-    QDirIterator it("/usr/share/applications", { "*.desktop" },
-                    QDir::NoFilter, QDirIterator::Subdirectories);
+    m_browserList.clear();
+    m_fileManagerList.clear();
+    m_emailList.clear();
+    m_terminalList.clear();
+    m_browserIndex = -1;
+    m_fileManagerIndex = -1;
+    m_emailIndex = -1;
+    m_terminalIndex = -1;
 
-    // Load apps
-    while (it.hasNext()) {
-        const auto fileName = it.next();
-        if (!QFile::exists(fileName))
+    for (DesktopEntry *entry : ApplicationRegistry::instance()->entries()) {
+        if (entry->hidden())
             continue;
 
-        DesktopProperties desktop(fileName, "Desktop Entry");
-        QString name = desktop.value(QString("Name[%1]").arg(QLocale::system().name())).toString();
-
-        if (name.isEmpty())
-            name = desktop.value("Name").toString();
-
         AppItem item;
-        item.path = fileName;
-        item.name = name;
-        item.icon = desktop.value("Icon").toString();
-        item.mimeType = desktop.value("MimeType").toString();
-        item.categories = desktop.value("Categories").toString();
-        item.fileName = QFileInfo(fileName).fileName();
+        item.path = entry->path();
+        item.name = entry->name();
+        item.icon = entry->icon();
+        item.mimeType = entry->mimeTypes().join(QLatin1Char(';'));
+        item.categories = entry->categories().join(QLatin1Char(';'));
+        item.fileName = QFileInfo(entry->path()).fileName();
 
-        if (item.categories.contains("FileManager")
-                && item.mimeType.contains("inode/directory")) {
+        if (entry->categories().contains(QStringLiteral("FileManager"))
+                && entry->mimeTypes().contains(QStringLiteral("inode/directory"))) {
             m_fileManagerList.append(item);
-        } else if (item.categories.contains("WebBrowser")
-                   && item.mimeType.contains("x-scheme-handler/http")) {
+        } else if (entry->categories().contains(QStringLiteral("WebBrowser"))
+                   && entry->mimeTypes().contains(QStringLiteral("x-scheme-handler/http"))) {
             m_browserList.append(item);
-        } else if (item.categories.contains("Email")
-                   && item.mimeType.contains("x-scheme-handler/mailto")) {
+        } else if (entry->categories().contains(QStringLiteral("Email"))
+                   && entry->mimeTypes().contains(QStringLiteral("x-scheme-handler/mailto"))) {
             m_emailList.append(item);
-        } else if (item.categories.contains("TerminalEmulator")) {
+        } else if (entry->categories().contains(QStringLiteral("TerminalEmulator"))) {
             m_terminalList.append(item);
         }
     }
@@ -115,6 +117,8 @@ void DefaultApplications::loadApps()
             break;
         }
     }
+
+    emit loadFinished();
 }
 
 QVariantList DefaultApplications::browserList()
@@ -199,7 +203,7 @@ int DefaultApplications::terminalIndex()
 
 void DefaultApplications::setDefaultBrowser(int index)
 {
-    if (!m_browserList.isEmpty() && m_browserList.size() < index)
+    if (index < 0 || index >= m_browserList.size())
         return;
 
     const QString desktop = m_browserList.at(index).fileName;
@@ -210,7 +214,7 @@ void DefaultApplications::setDefaultBrowser(int index)
 
 void DefaultApplications::setDefaultFileManager(int index)
 {
-    if (!m_fileManagerList.isEmpty() && m_fileManagerList.size() < index)
+    if (index < 0 || index >= m_fileManagerList.size())
         return;
 
     const QString desktop = m_fileManagerList.at(index).fileName;
@@ -220,7 +224,7 @@ void DefaultApplications::setDefaultFileManager(int index)
 
 void DefaultApplications::setDefaultEMail(int index)
 {
-    if (!m_emailList.isEmpty() && m_emailList.size() < index)
+    if (index < 0 || index >= m_emailList.size())
         return;
 
     const QString desktop = m_emailList.at(index).fileName;
@@ -230,7 +234,7 @@ void DefaultApplications::setDefaultEMail(int index)
 
 void DefaultApplications::setDefaultTerminal(int index)
 {
-    if (!m_terminalList.isEmpty() && m_terminalList.size() < index)
+    if (index < 0 || index >= m_terminalList.size())
         return;
 
     const QString desktop = m_terminalList.at(index).fileName;

@@ -21,6 +21,7 @@
 #include "networkproxy.h"
 #include "notifications.h"
 #include "defaultapplications.h"
+#include "applicationregistry.h"
 
 #include "cursor/cursorthememodel.h"
 #include "cursor/mouse.h"
@@ -64,6 +65,7 @@ Application::Application(int &argc, char **argv)
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/SettingsUI"), this);
 
     // QML
+    registerApplicationsQmlTypes();
     const char *uri = "Cutefish.Settings";
     qmlRegisterType<Appearance>(uri, 1, 0, "Appearance");
     qmlRegisterType<FontsModel>(uri, 1, 0, "FontsModel");
