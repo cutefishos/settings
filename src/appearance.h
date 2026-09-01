@@ -35,7 +35,6 @@ class Appearance : public QObject
     Q_PROPERTY(bool blurEnabled READ blurEnabled WRITE setBlurEnabled NOTIFY blurEnabledChanged)
     Q_PROPERTY(double devicePixelRatio READ devicePixelRatio WRITE setDevicePixelRatio NOTIFY devicePixelRatioChanged)
     Q_PROPERTY(bool dockRoundedWindow READ dockRoundedWindow WRITE setDockRoundedWindow NOTIFY dockRoundedWindowChanged)
-    Q_PROPERTY(int minimiumAnimation READ minimiumAnimation WRITE setMinimiumAnimation NOTIFY minimiumAnimationChanged)
 
 public:
     explicit Appearance(QObject *parent = nullptr);
@@ -71,9 +70,6 @@ public:
     double devicePixelRatio() const;
     Q_INVOKABLE void setDevicePixelRatio(double value);
 
-    int minimiumAnimation() const;
-    void setMinimiumAnimation(int minimiumAnimation);
-
 signals:
     void dockIconSizeChanged();
     void dockDirectionChanged();
@@ -83,20 +79,16 @@ signals:
     void blurEnabledChanged();
     void devicePixelRatioChanged();
     void dockRoundedWindowChanged();
-    void minimiumAnimationChanged();
 
 private:
     QDBusInterface m_interface;
     QSettings *m_dockSettings;
-    QSettings *m_kwinSettings;
     bool m_dockRoundedWindow;
 
     int m_dockIconSize;
     int m_dockDirection;
     int m_dockVisibility;
     int m_fontPointSize;
-
-    int m_minimiumAnimation;
 };
 
 #endif // APPEARANCE_H

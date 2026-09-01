@@ -124,21 +124,6 @@
         <translation>Verduister de bureaubladachtergrond van het donkere thema</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="121"/>
-        <source>Minimize animation</source>
-        <translation>Minimaliseeranimatie</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="130"/>
-        <source>Default</source>
-        <translation>Standaard</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="134"/>
-        <source>Magic Lamp</source>
-        <translation>Magische lamp</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Appearance/Main.qml" line="142"/>
         <source>Accent color</source>
         <translation>Accentkleur</translation>

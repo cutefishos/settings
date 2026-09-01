@@ -21,11 +21,7 @@
 
 #include <QDBusConnection>
 #include <QDBusInterface>
-#include <QDBusReply>
-#include <QDBusServiceWatcher>
-#include <QDBusPendingCall>
 
-#include <QStandardPaths>
 #include <QDebug>
 
 Appearance::Appearance(QObject *parent)
@@ -35,8 +31,6 @@ Appearance::Appearance(QObject *parent)
                   "com.cutefish.Theme",
                   QDBusConnection::sessionBus())
     , m_dockSettings(new QSettings(QSettings::UserScope, "cutefishos", "dock"))
-    , m_kwinSettings(new QSettings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/kwinrc",
-                                   QSettings::IniFormat))
     , m_dockIconSize(0)
     , m_dockDirection(0)
     , m_dockVisibility(0)
@@ -48,10 +42,6 @@ Appearance::Appearance(QObject *parent)
     m_dockRoundedWindow = m_dockSettings->value("RoundedWindow").toBool();
     // Dock only supports the centered style. Migrate old Full style settings.
     m_dockSettings->setValue("Style", 0);
-
-    m_kwinSettings->beginGroup("Plugins");
-    m_minimiumAnimation = m_kwinSettings->value("magiclampEnabled").toBool() ? 1 : 0;
-    m_kwinSettings->endGroup();
 
     // Init
     if (m_interface.isValid()) {
@@ -237,24 +227,5 @@ void Appearance::setDevicePixelRatio(double value)
                          QDBusConnection::sessionBus(), this);
     if (iface.isValid()) {
         iface.call("setDevicePixelRatio", value);
-    }
-}
-
-int Appearance::minimiumAnimation() const
-{
-    return m_minimiumAnimation;
-}
-
-void Appearance::setMinimiumAnimation(int minimiumAnimation)
-{
-    if (m_minimiumAnimation != minimiumAnimation) {
-        m_minimiumAnimation = minimiumAnimation;
-        m_kwinSettings->beginGroup("Plugins");
-        m_kwinSettings->setValue("magiclampEnabled", m_minimiumAnimation == 1);
-        m_kwinSettings->setValue("cutefish_squashEnabled", m_minimiumAnimation == 0);
-        m_kwinSettings->endGroup();
-        m_kwinSettings->sync();
-        QDBusInterface("org.kde.KWin", "/KWin").call("reconfigure");
-        emit minimiumAnimationChanged();
     }
 }

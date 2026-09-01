@@ -91,21 +91,6 @@
         <translation>Hampifanarahana amin&apos;ny loha-hevitra Maizina ny fond d&apos;ecran</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="121"/>
-        <source>Minimize animation</source>
-        <translation>Atao somary kelikely ny fihetsiketsehana</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="130"/>
-        <source>Default</source>
-        <translation>Par defaut</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="134"/>
-        <source>Magic Lamp</source>
-        <translation>Jiro majika</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Appearance/Main.qml" line="142"/>
         <source>Accent color</source>
         <translation>loko</translation>

@@ -137,21 +137,6 @@
         <translation>Zatamni pozadinu u tamnom režimu</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="121"/>
-        <source>Minimize animation</source>
-        <translation>Minimiziraj animaciju</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="130"/>
-        <source>Default</source>
-        <translation>Standardni</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="134"/>
-        <source>Magic Lamp</source>
-        <translation>Magicna Lampa</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Appearance/Main.qml" line="142"/>
         <source>Accent color</source>
         <translation>Boja naglaska</translation>

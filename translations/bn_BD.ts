@@ -124,21 +124,6 @@
         <translation>গাঢ় থিমে ওয়ালপেপার ম্লান করুন</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="121"/>
-        <source>Minimize animation</source>
-        <translation>মিনিমাইজের এ্যানিমেশন</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="130"/>
-        <source>Default</source>
-        <translation>ডিফল্ট</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="134"/>
-        <source>Magic Lamp</source>
-        <translation>ম্যাজিক ল্যাম্প</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Appearance/Main.qml" line="142"/>
         <source>Accent color</source>
         <translation>অ্যাকসেন্ট রঙ</translation>

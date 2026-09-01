@@ -91,21 +91,6 @@
         <translation>Làm mờ hình nền khi ở chế độ tối</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="121"/>
-        <source>Minimize animation</source>
-        <translation>Hiệu ứng thu nhỏ</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="130"/>
-        <source>Default</source>
-        <translation>Mặc định</translation>
-    </message>
-    <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="134"/>
-        <source>Magic Lamp</source>
-        <translation>Chiếc đèn thần kì</translation>
-    </message>
-    <message>
         <location filename="../src/qml/Appearance/Main.qml" line="142"/>
         <source>Accent color</source>
         <translation>Màu chủ đạo</translation>
