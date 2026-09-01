@@ -70,12 +70,6 @@ ItemPage {
                         onClicked: power.mode = 0
                     }
 
-//                    IconCheckBox {
-//                        source: "qrc:/images/balance.svg"
-//                        text: qsTr("Balance")
-//                        checked: false
-//                    }
-
                     IconCheckBox {
                         source: "qrc:/images/performance.svg"
                         text: qsTr("Performance")
@@ -104,7 +98,7 @@ ItemPage {
 
                     Label {
                         visible: battery.available
-                        text: qsTr("Turn off screen on battery")
+                        text: qsTr("Turn off display when inactive on battery")
                         Layout.fillWidth: true
                     }
 
@@ -120,7 +114,7 @@ ItemPage {
                     }
 
                     Label {
-                        text: qsTr("Turn off screen on AC power")
+                        text: qsTr("Turn off display when inactive on power adapter")
                         Layout.fillWidth: true
                     }
 
@@ -133,29 +127,6 @@ ItemPage {
                         onActivated: power.acScreenOff = timeoutValues[currentIndex]
                     }
 
-                    Label {
-                        text: qsTr("Suspend after screen is turned off")
-                        Layout.fillWidth: true
-                    }
-
-                    Switch {
-                        Layout.fillHeight: true
-                        Layout.alignment: Qt.AlignRight
-                        checked: power.sleepWhenClosedScreen
-                        onClicked: power.sleepWhenClosedScreen = checked
-                    }
-
-                    Label {
-                        text: qsTr("Lock screen after screen is turned off")
-                        Layout.fillWidth: true
-                    }
-
-                    Switch {
-                        Layout.fillHeight: true
-                        Layout.alignment: Qt.AlignRight
-                        checked: power.lockWhenClosedScreen
-                        onClicked: power.lockWhenClosedScreen = checked
-                    }
                 }
             }
 
