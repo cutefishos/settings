@@ -22,8 +22,6 @@ jobs:
         repository: reionwong/libcutefish
         ref: main
         path: libcutefish
-        token: ${{ secrets.CUTEFISH_TOKEN }}
-        persist-credentials: false
     - name: Update repository
       run: apt-get update -y
     - name: Install the basic dev packages
@@ -49,8 +47,6 @@ jobs:
         repository: reionwong/libcutefish
         ref: main
         path: libcutefish
-        token: ${{ secrets.CUTEFISH_TOKEN }}
-        persist-credentials: false
     - name: Update repository
       run: sudo apt-get update -y
     - name: Install the basic dev packages
