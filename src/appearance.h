@@ -33,7 +33,6 @@ class Appearance : public QObject
     Q_PROPERTY(int fontPointSize READ fontPointSize WRITE setFontPointSize NOTIFY fontPointSizeChanged)
     Q_PROPERTY(bool dimsWallpaper READ dimsWallpaper WRITE setDimsWallpaper NOTIFY dimsWallpaperChanged)
     Q_PROPERTY(bool blurEnabled READ blurEnabled WRITE setBlurEnabled NOTIFY blurEnabledChanged)
-    Q_PROPERTY(double devicePixelRatio READ devicePixelRatio WRITE setDevicePixelRatio NOTIFY devicePixelRatioChanged)
     Q_PROPERTY(bool dockRoundedWindow READ dockRoundedWindow WRITE setDockRoundedWindow NOTIFY dockRoundedWindowChanged)
 
 public:
@@ -67,8 +66,6 @@ public:
 
     Q_INVOKABLE void setAccentColor(int accentColor);
 
-    double devicePixelRatio() const;
-    Q_INVOKABLE void setDevicePixelRatio(double value);
 
 signals:
     void dockIconSizeChanged();
@@ -77,7 +74,6 @@ signals:
     void fontPointSizeChanged();
     void dimsWallpaperChanged();
     void blurEnabledChanged();
-    void devicePixelRatioChanged();
     void dockRoundedWindowChanged();
 
 private:
