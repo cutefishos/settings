@@ -282,7 +282,7 @@ Item {
             clip: true
             model: listModel
 
-            spacing: FishUI.Units.smallSpacing
+            spacing: FishUI.Units.smallSpacing / 2
             leftMargin: FishUI.Units.largeSpacing
             rightMargin: FishUI.Units.largeSpacing
             topMargin: 0

@@ -11,49 +11,42 @@ jobs:
     name: Debian
     runs-on: ubuntu-latest
     container: docker.io/library/debian:sid
-    steps:
-    - name: Checkout settings
-      uses: actions/checkout@v4
-      with:
-        path: settings
-    - name: Checkout libcutefish
-      uses: actions/checkout@v4
-      with:
-        repository: reionwong/libcutefish
-        ref: main
-        path: libcutefish
-    - name: Update repository
-      run: apt-get update -y
-    - name: Install the basic dev packages
-      run: apt-get install -y equivs curl git devscripts lintian build-essential automake autotools-dev cmake g++
-    - name: Install build dependencies
-      working-directory: settings
-      run: mk-build-deps -i -t "apt-get --yes" -r
-    - name: Build Package
-      working-directory: settings
-      run: dpkg-buildpackage -b -uc -us -j$(nproc)
 
-  ubuntu:
-    name: Ubuntu
-    runs-on: ubuntu-26.04
     steps:
-    - name: Checkout settings
-      uses: actions/checkout@v4
-      with:
-        path: settings
-    - name: Checkout libcutefish
-      uses: actions/checkout@v4
-      with:
-        repository: reionwong/libcutefish
-        ref: main
-        path: libcutefish
-    - name: Update repository
-      run: sudo apt-get update -y
-    - name: Install the basic dev packages
-      run: sudo apt-get install -y equivs curl git devscripts lintian build-essential automake autotools-dev cmake g++
-    - name: Install build dependencies
-      working-directory: settings
-      run: sudo mk-build-deps -i -t "apt-get --yes" -r
-    - name: Build Package
-      working-directory: settings
-      run: dpkg-buildpackage -b -uc -us -j$(nproc)
+      - name: Prepare checkout
+        run: |
+          apt-get update
+          apt-get install -y git ca-certificates
+
+      - name: Checkout settings
+        uses: actions/checkout@v4
+        with:
+          path: settings
+
+      - name: Checkout libcutefish
+        uses: actions/checkout@v4
+        with:
+          repository: cutefishos/libcutefish
+          ref: main
+          path: libcutefish
+
+      - name: Install the basic dev packages
+        run: |
+          apt-get install -y \
+            equivs \
+            curl \
+            devscripts \
+            lintian \
+            build-essential \
+            automake \
+            autotools-dev \
+            cmake \
+            g++
+
+      - name: Install build dependencies
+        working-directory: settings
+        run: mk-build-deps -i -t "apt-get --yes" -r
+
+      - name: Build Package
+        working-directory: settings
+        run: dpkg-buildpackage -b -uc -us -j$(nproc)
