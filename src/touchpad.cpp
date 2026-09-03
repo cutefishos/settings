@@ -21,9 +21,9 @@
 
 Touchpad::Touchpad(QObject *parent)
     : QObject(parent)
-    , m_iface("com.cutefish.Settings",
-              "/Touchpad",
-              "com.cutefish.Touchpad",
+    , m_iface("com.cutefish.Services",
+              "/com/cutefish/Services/Input/Touchpad",
+              "com.cutefish.Services.Input.Touchpad",
               QDBusConnection::sessionBus(), this)
 {
 

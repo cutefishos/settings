@@ -22,9 +22,9 @@
 
 Mouse::Mouse(QObject *parent)
     : QObject(parent)
-    , m_interface("com.cutefish.Settings",
-                  "/Mouse",
-                  "com.cutefish.Mouse",
+    , m_interface("com.cutefish.Services",
+                  "/com/cutefish/Services/Input/Mouse",
+                  "com.cutefish.Services.Input.Mouse",
                   QDBusConnection::sessionBus())
 {
     if (m_interface.isValid()) {

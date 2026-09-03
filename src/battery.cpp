@@ -24,9 +24,9 @@
 #include <QDBusReply>
 #include <QDebug>
 
-static const QString s_sServer = "com.cutefish.Settings";
-static const QString s_sPath = "/PrimaryBattery";
-static const QString s_sInterface = "com.cutefish.PrimaryBattery";
+static const QString s_sServer = "com.cutefish.Services";
+static const QString s_sPath = "/com/cutefish/Services/Battery";
+static const QString s_sInterface = "com.cutefish.Services.Battery";
 
 //DBus Battery Info Structure
 struct BatteryInfo {
@@ -55,9 +55,9 @@ Battery::Battery(QObject *parent)
                         "/org/freedesktop/UPower",
                         "org.freedesktop.UPower",
                         QDBusConnection::systemBus())
-    , m_interface("com.cutefish.Settings",
-                  "/PrimaryBattery",
-                  "com.cutefish.PrimaryBattery",
+    , m_interface("com.cutefish.Services",
+                  "/com/cutefish/Services/Battery",
+                  "com.cutefish.Services.Battery",
                   QDBusConnection::sessionBus())
     , m_available(false)
     , m_onBattery(false)

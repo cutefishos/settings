@@ -26,9 +26,9 @@
 
 Appearance::Appearance(QObject *parent)
     : QObject(parent)
-    , m_interface("com.cutefish.Settings",
-                  "/Theme",
-                  "com.cutefish.Theme",
+    , m_interface("com.cutefish.Services",
+                  "/com/cutefish/Services/Appearance",
+                  "com.cutefish.Services.Appearance",
                   QDBusConnection::sessionBus())
     , m_dockSettings(new QSettings(QSettings::UserScope, "cutefishos", "dock"))
     , m_dockIconSize(0)
@@ -162,9 +162,9 @@ void Appearance::setGenericFontFamily(const QString &name)
     if (name.isEmpty())
         return;
 
-    QDBusInterface iface("com.cutefish.Settings",
-                         "/Theme",
-                         "com.cutefish.Theme",
+    QDBusInterface iface("com.cutefish.Services",
+                         "/com/cutefish/Services/Appearance",
+                         "com.cutefish.Services.Appearance",
                          QDBusConnection::sessionBus(), this);
     if (iface.isValid()) {
         iface.call("setSystemFont", name);
@@ -176,9 +176,9 @@ void Appearance::setFixedFontFamily(const QString &name)
     if (name.isEmpty())
         return;
 
-    QDBusInterface iface("com.cutefish.Settings",
-                         "/Theme",
-                         "com.cutefish.Theme",
+    QDBusInterface iface("com.cutefish.Services",
+                         "/com/cutefish/Services/Appearance",
+                         "com.cutefish.Services.Appearance",
                          QDBusConnection::sessionBus(), this);
     if (iface.isValid()) {
         iface.call("setSystemFixedFont", name);
@@ -194,9 +194,9 @@ void Appearance::setFontPointSize(int fontPointSize)
 {
     m_fontPointSize = fontPointSize;
 
-    QDBusInterface iface("com.cutefish.Settings",
-                         "/Theme",
-                         "com.cutefish.Theme",
+    QDBusInterface iface("com.cutefish.Services",
+                         "/com/cutefish/Services/Appearance",
+                         "com.cutefish.Services.Appearance",
                          QDBusConnection::sessionBus(), this);
     if (iface.isValid()) {
         iface.call("setSystemFontPointSize", m_fontPointSize * 1.0);
@@ -205,9 +205,9 @@ void Appearance::setFontPointSize(int fontPointSize)
 
 void Appearance::setAccentColor(int accentColor)
 {
-    QDBusInterface iface("com.cutefish.Settings",
-                         "/Theme",
-                         "com.cutefish.Theme",
+    QDBusInterface iface("com.cutefish.Services",
+                         "/com/cutefish/Services/Appearance",
+                         "com.cutefish.Services.Appearance",
                          QDBusConnection::sessionBus(), this);
     if (iface.isValid()) {
         iface.call("setAccentColor", accentColor);

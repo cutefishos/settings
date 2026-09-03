@@ -58,8 +58,8 @@ void writePowerSetting(const QString &key, const QVariant &value)
 
 void callPowerManager(const QString &method, const QVariant &value)
 {
-    QDBusInterface iface("com.cutefish.PowerManager",
-                         "/PowerManager", "com.cutefish.PowerManager",
+    QDBusInterface iface("com.cutefish.Services",
+                         "/com/cutefish/Services/Power", "com.cutefish.Services.Power",
                          QDBusConnection::sessionBus());
     if (iface.isValid())
         iface.asyncCall(method, value);
@@ -69,8 +69,8 @@ void callPowerManager(const QString &method, const QVariant &value)
 
 PowerManager::PowerManager(QObject *parent)
     : QObject(parent)
-    , m_iface("com.cutefish.PowerManager",
-              "/CPUManagement", "com.cutefish.CPUManagement",
+    , m_iface("com.cutefish.Services",
+              "/com/cutefish/Services/Power", "com.cutefish.Services.Power",
               QDBusConnection::sessionBus())
     , m_mode(-1)
 {

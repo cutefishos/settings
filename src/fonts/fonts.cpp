@@ -117,9 +117,9 @@ void Fonts::save()
     m_settings.setValue("FontHintStyle", hintingToString(m_hinting));
     m_settings.sync();
 
-    QDBusInterface interface("com.cutefish.Settings",
-                             "/Theme",
-                             "com.cutefish.Theme",
+    QDBusInterface interface("com.cutefish.Services",
+                             "/com/cutefish/Services/Appearance",
+                             "com.cutefish.Services.Appearance",
                              QDBusConnection::sessionBus());
     if (interface.isValid())
         interface.asyncCall("applyFontSettings");
