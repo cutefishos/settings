@@ -128,7 +128,7 @@ ItemPage {
 
                         Component.onCompleted: init()
 
-                        onPressedChanged: {
+                        onValueChanged: {
                             mouse.pointerAcceleration = Math.round(((value - 6) * 0.2) * 10) / 10
                         }
                     }
