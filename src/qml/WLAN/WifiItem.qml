@@ -24,7 +24,7 @@ import Qt5Compat.GraphicalEffects
 import QtQuick.Window 2.3
 
 import FishUI 1.0 as FishUI
-import Cutefish.NetworkManagement 1.0 as NM
+import Cutefish.Network 1.0 as NM
 import "../"
 
 Item {

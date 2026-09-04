@@ -23,8 +23,8 @@ find_package(KF6NetworkManagerQt REQUIRED)
 find_package(KF6ModemManagerQt REQUIRED)
 find_package(KF6Config)
 
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../libcutefish/applications
-                 ${CMAKE_CURRENT_BINARY_DIR}/cutefishapplications-build)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/applications
+                 ${CMAKE_CURRENT_BINARY_DIR}/cutefish-framework-applications-build)
 
 pkg_search_module(FontConfig REQUIRED fontconfig IMPORTED_TARGET)
 pkg_search_module(ICU REQUIRED icu-i18n)
@@ -75,7 +75,7 @@ set_source_files_properties(${DBUS_SOURCES} PROPERTIES SKIP_AUTOGEN ON)
 
 add_executable(${PROJECT_NAME} ${DBUS_SOURCES} ${SRCS} ${RESOURCES})
 target_link_libraries(${PROJECT_NAME}
-        cutefishapplications
+        Cutefish::Applications
         Qt6::Core
         Qt6::Widgets
         Qt6::Quick

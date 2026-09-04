@@ -28,7 +28,7 @@ jobs:
         with:
           repository: cutefishos/cutefish-framework
           ref: main
-          path: libcutefish
+          path: cutefish-framework
 
       - name: Install the basic dev packages
         run: |

@@ -22,38 +22,38 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
-import Cutefish.Bluez 1.0 as Bluez
+import Cutefish.Bluetooth 1.0 as Bluetooth
 import "../"
 
 ItemPage {
     id: control
     headerTitle: qsTr("Bluetooth")
 
-    property bool bluetoothDisConnected: Bluez.Manager.bluetoothBlocked
+    property bool bluetoothDisConnected: Bluetooth.Manager.bluetoothBlocked
 
     onBluetoothDisConnectedChanged: {
         bluetoothSwitch.checked = !bluetoothDisConnected
     }
 
     function setBluetoothEnabled(enabled) {
-        Bluez.Manager.bluetoothBlocked = !enabled
+        Bluetooth.Manager.bluetoothBlocked = !enabled
 
-        for (var i = 0; i < Bluez.Manager.adapters.length; ++i) {
-            var adapter = Bluez.Manager.adapters[i]
+        for (var i = 0; i < Bluetooth.Manager.adapters.length; ++i) {
+            var adapter = Bluetooth.Manager.adapters[i]
             adapter.powered = enabled
         }
     }
 
-    Bluez.DevicesProxyModel {
+    Bluetooth.DevicesProxyModel {
         id: devicesProxyModel
         sourceModel: devicesModel
     }
 
-    Bluez.DevicesModel {
+    Bluetooth.DevicesModel {
         id: devicesModel
     }
 
-    Bluez.BluetoothManager {
+    Bluetooth.BluetoothManager {
         id: bluetoothMgr
 
         onShowPairDialog: {
@@ -102,7 +102,7 @@ ItemPage {
                         id: bluetoothSwitch
                         Layout.fillHeight: true
                         rightPadding: 0
-                        checked: !Bluez.Manager.bluetoothBlocked
+                        checked: !Bluetooth.Manager.bluetoothBlocked
                         onCheckedChanged: setBluetoothEnabled(checked)
                     }
                 }
@@ -123,7 +123,7 @@ ItemPage {
                         return totalHeight
                     }
 
-                    model: Bluez.Manager.bluetoothOperational ? devicesProxyModel : []
+                    model: Bluetooth.Manager.bluetoothOperational ? devicesProxyModel : []
 
                     section.property: "Section"
                     section.criteria: ViewSection.FullString

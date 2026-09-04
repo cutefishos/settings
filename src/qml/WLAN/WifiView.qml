@@ -23,7 +23,7 @@ import QtQuick.Layouts 1.12
 import "../"
 
 import FishUI 1.0 as FishUI
-import Cutefish.NetworkManagement 1.0 as NM
+import Cutefish.Network 1.0 as NM
 
 ColumnLayout {
     id: _contentLayout
