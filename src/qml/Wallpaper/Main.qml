@@ -52,7 +52,7 @@ ItemPage {
                         leftPadding: FishUI.Units.smallSpacing
                     }
 
-                    TabBar {
+                    FishUI.SegmentedControl {
                         Layout.fillWidth: true
 
                         onCurrentIndexChanged: {

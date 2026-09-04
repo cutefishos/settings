@@ -80,7 +80,7 @@ ItemPage {
                     color: FishUI.Theme.disabledTextColor
                 }
 
-                TabBar {
+                FishUI.SegmentedControl {
                     id: dockSizeTabbar
                     Layout.fillWidth: true
                     bottomPadding: FishUI.Units.smallSpacing
@@ -148,7 +148,7 @@ ItemPage {
                     color: FishUI.Theme.disabledTextColor
                 }
 
-                TabBar {
+                FishUI.SegmentedControl {
                     Layout.fillWidth: true
                     currentIndex: dockSettings.dockVisibility
                     onCurrentIndexChanged: dockSettings.setDockVisibility(currentIndex)

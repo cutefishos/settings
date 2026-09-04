@@ -287,7 +287,7 @@ ItemPage {
                     color: FishUI.Theme.disabledTextColor
                 }
 
-                TabBar {
+                FishUI.SegmentedControl {
                     id: dockSizeTabbar
                     Layout.fillWidth: true
 

@@ -128,7 +128,7 @@ ItemPage {
                         bottomPadding: FishUI.Units.smallSpacing
                     }
 
-                    TabBar {
+                    FishUI.SegmentedControl {
                         Layout.fillWidth: true
 
                         TabButton {
