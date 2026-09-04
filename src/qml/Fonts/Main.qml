@@ -23,6 +23,7 @@ import QtQuick.Layouts 1.3
 import Qt5Compat.GraphicalEffects
 
 import Cutefish.Settings 1.0
+import Cutefish.Appearance 1.0 as FrameworkAppearance
 import FishUI 1.0 as FishUI
 import "../"
 
@@ -30,7 +31,7 @@ ItemPage {
     id: control
     headerTitle: qsTr("Fonts")
 
-    Appearance {
+    FrameworkAppearance.Appearance {
         id: appearance
     }
 
@@ -102,7 +103,7 @@ ItemPage {
                         bottomInset: 0
                         leftPadding: FishUI.Units.largeSpacing
                         rightPadding: FishUI.Units.largeSpacing
-                        onActivated: appearance.setGenericFontFamily(currentText)
+                        onActivated: appearance.setFontFamily(currentText)
                     }
 
                     Label {

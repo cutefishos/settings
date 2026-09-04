@@ -8,12 +8,11 @@
 #include "settingsuiadaptor.h"
 #include "fontsmodel.h"
 #include "fonts/fonts.h"
-#include "appearance.h"
+#include "docksettings.h"
 #include "battery.h"
 #include "batteryhistorymodel.h"
 #include "brightness.h"
 #include "about.h"
-#include "background.h"
 #include "language.h"
 #include "password.h"
 #include "powermanager.h"
@@ -67,14 +66,13 @@ Application::Application(int &argc, char **argv)
     // QML
     registerApplicationsQmlTypes();
     const char *uri = "Cutefish.Settings";
-    qmlRegisterType<Appearance>(uri, 1, 0, "Appearance");
+    qmlRegisterType<DockSettings>(uri, 1, 0, "DockSettings");
     qmlRegisterType<FontsModel>(uri, 1, 0, "FontsModel");
     qmlRegisterType<Brightness>(uri, 1, 0, "Brightness");
     qmlRegisterType<Battery>(uri, 1, 0, "Battery");
     qmlRegisterType<BatteryHistoryModel>(uri, 1, 0, "BatteryHistoryModel");
     qmlRegisterType<CursorThemeModel>(uri, 1, 0, "CursorThemeModel");
     qmlRegisterType<About>(uri, 1, 0, "About");
-    qmlRegisterType<Background>(uri, 1, 0, "Background");
     qmlRegisterType<Language>(uri, 1, 0, "Language");
     qmlRegisterType<Fonts>(uri, 1, 0, "Fonts");
     qmlRegisterType<PowerManager>(uri, 1, 0, "PowerManager");

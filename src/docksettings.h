@@ -17,34 +17,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef APPEARANCE_H
-#define APPEARANCE_H
+#ifndef DOCKSETTINGS_H
+#define DOCKSETTINGS_H
 
 #include <QObject>
 #include <QSettings>
-#include <QDBusInterface>
 
-class Appearance : public QObject
+class DockSettings : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int dockIconSize READ dockIconSize WRITE setDockIconSize NOTIFY dockIconSizeChanged)
     Q_PROPERTY(int dockDirection READ dockDirection WRITE setDockDirection NOTIFY dockDirectionChanged)
     Q_PROPERTY(int dockVisibility READ dockVisibility WRITE setDockVisibility NOTIFY dockVisibilityChanged)
-    Q_PROPERTY(int fontPointSize READ fontPointSize WRITE setFontPointSize NOTIFY fontPointSizeChanged)
-    Q_PROPERTY(bool dimsWallpaper READ dimsWallpaper WRITE setDimsWallpaper NOTIFY dimsWallpaperChanged)
-    Q_PROPERTY(bool blurEnabled READ blurEnabled WRITE setBlurEnabled NOTIFY blurEnabledChanged)
     Q_PROPERTY(bool dockRoundedWindow READ dockRoundedWindow WRITE setDockRoundedWindow NOTIFY dockRoundedWindowChanged)
 
 public:
-    explicit Appearance(QObject *parent = nullptr);
-
-    Q_INVOKABLE void switchDarkMode(bool darkMode);
-
-    bool dimsWallpaper() const;
-    Q_INVOKABLE void setDimsWallpaper(bool value);
-
-    bool blurEnabled() const;
-    Q_INVOKABLE void setBlurEnabled(bool value);
+    explicit DockSettings(QObject *parent = nullptr);
 
     int dockIconSize() const;
     Q_INVOKABLE void setDockIconSize(int dockIconSize);
@@ -58,33 +46,20 @@ public:
     int dockRoundedWindow() const;
     Q_INVOKABLE void setDockRoundedWindow(bool enable);
 
-    Q_INVOKABLE void setGenericFontFamily(const QString &name);
-    Q_INVOKABLE void setFixedFontFamily(const QString &name);
-
-    int fontPointSize() const;
-    Q_INVOKABLE void setFontPointSize(int fontPointSize);
-
-    Q_INVOKABLE void setAccentColor(int accentColor);
-
 
 signals:
     void dockIconSizeChanged();
     void dockDirectionChanged();
     void dockVisibilityChanged();
-    void fontPointSizeChanged();
-    void dimsWallpaperChanged();
-    void blurEnabledChanged();
     void dockRoundedWindowChanged();
 
 private:
-    QDBusInterface m_interface;
     QSettings *m_dockSettings;
     bool m_dockRoundedWindow;
 
     int m_dockIconSize;
     int m_dockDirection;
     int m_dockVisibility;
-    int m_fontPointSize;
 };
 
-#endif // APPEARANCE_H
+#endif // DOCKSETTINGS_H

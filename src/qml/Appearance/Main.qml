@@ -23,13 +23,14 @@ import QtQuick.Layouts 1.3
 import Qt5Compat.GraphicalEffects
 
 import Cutefish.Settings 1.0
+import Cutefish.Appearance 1.0 as FrameworkAppearance
 import FishUI 1.0 as FishUI
 import "../"
 
 ItemPage {
     headerTitle: qsTr("Appearance")
 
-    Appearance {
+    FrameworkAppearance.Appearance {
         id: appearance
     }
 

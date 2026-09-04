@@ -27,6 +27,8 @@ find_package(KF6Config)
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/applications
                  ${CMAKE_CURRENT_BINARY_DIR}/cutefish-framework-applications-build)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/appearance
+                 ${CMAKE_CURRENT_BINARY_DIR}/cutefish-framework-appearance-build)
 
 pkg_search_module(FontConfig REQUIRED fontconfig IMPORTED_TARGET)
 pkg_search_module(ICU REQUIRED icu-i18n)
@@ -36,13 +38,12 @@ include_directories(${ICU_INCLUDE_DIRS})
 set(SRCS
     src/application.cpp
     src/main.cpp
-    src/appearance.cpp
+    src/docksettings.cpp
     src/battery.cpp
     src/brightness.cpp
     src/fontsmodel.cpp
     src/language.cpp
     src/about.cpp
-    src/background.cpp
     src/notifications.cpp
     src/password.cpp
     src/batteryhistorymodel.cpp
@@ -78,6 +79,7 @@ set_source_files_properties(${DBUS_SOURCES} PROPERTIES SKIP_AUTOGEN ON)
 add_executable(${PROJECT_NAME} ${DBUS_SOURCES} ${SRCS} ${RESOURCES})
 target_link_libraries(${PROJECT_NAME}
         Cutefish::Applications
+        Cutefish::Appearance
         Qt6::Core
         Qt6::Widgets
         Qt6::Quick

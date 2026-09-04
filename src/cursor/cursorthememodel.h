@@ -23,6 +23,8 @@
 #include <QAbstractListModel>
 #include <QSettings>
 
+#include <appearance.h>
+
 class QDir;
 class CursorTheme;
 class CursorThemeModel : public QAbstractListModel
@@ -60,6 +62,7 @@ private:
     void processDir(const QDir &dir);
 
 private:
+    Appearance m_appearance;
     QList<CursorTheme *> m_list;
     QString m_defaultTheme;
     QString m_currentTheme;

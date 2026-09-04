@@ -27,8 +27,8 @@ import "../"
 ItemPage {
     headerTitle: qsTr("Dock")
 
-    Appearance {
-        id: appearance
+    DockSettings {
+        id: dockSettings
     }
 
     Scrollable {
@@ -53,22 +53,22 @@ ItemPage {
                     IconCheckBox {
                         source: "qrc:/images/dock_left.svg"
                         text: qsTr("Left")
-                        checked: appearance.dockDirection === 0
-                        onClicked: appearance.setDockDirection(0)
+                        checked: dockSettings.dockDirection === 0
+                        onClicked: dockSettings.setDockDirection(0)
                     }
 
                     IconCheckBox {
                         source: "qrc:/images/dock_bottom.svg"
                         text: qsTr("Bottom")
-                        checked: appearance.dockDirection === 1
-                        onClicked: appearance.setDockDirection(1)
+                        checked: dockSettings.dockDirection === 1
+                        onClicked: dockSettings.setDockDirection(1)
                     }
 
                     IconCheckBox {
                         source: "qrc:/images/dock_right.svg"
                         text: qsTr("Right")
-                        checked: appearance.dockDirection === 2
-                        onClicked: appearance.setDockDirection(2)
+                        checked: dockSettings.dockDirection === 2
+                        onClicked: dockSettings.setDockDirection(2)
                     }
                 }
             }
@@ -104,11 +104,11 @@ ItemPage {
                     currentIndex: {
                         var index = 0
 
-                        if (appearance.dockIconSize <= 40)
+                        if (dockSettings.dockIconSize <= 40)
                             index = 0
-                        else if (appearance.dockIconSize <= 54)
+                        else if (dockSettings.dockIconSize <= 54)
                             index = 1
-                        else if (appearance.dockIconSize <= 68)
+                        else if (dockSettings.dockIconSize <= 68)
                             index = 2
                         else
                             index = 3
@@ -136,7 +136,7 @@ ItemPage {
                             break;
                         }
 
-                        appearance.setDockIconSize(iconSize)
+                        dockSettings.setDockIconSize(iconSize)
                     }
                 }
             }
@@ -150,8 +150,8 @@ ItemPage {
 
                 TabBar {
                     Layout.fillWidth: true
-                    currentIndex: appearance.dockVisibility
-                    onCurrentIndexChanged: appearance.setDockVisibility(currentIndex)
+                    currentIndex: dockSettings.dockVisibility
+                    onCurrentIndexChanged: dockSettings.setDockVisibility(currentIndex)
 
                     TabButton {
                         text: qsTr("Always show")

@@ -24,6 +24,8 @@
 #include <QStandardItemModel>
 #include <QSettings>
 
+#include <appearance.h>
+
 class Fonts : public QObject
 {
     Q_OBJECT
@@ -61,6 +63,7 @@ signals:
     void hintingCurrentIndexChanged();
 
 private:
+    Appearance m_appearance;
     QSettings m_settings;
     bool m_antiAliasing;
     QStandardItemModel *m_hintingModel;

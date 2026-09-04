@@ -31,7 +31,7 @@ Item {
 
         Image {
             id: image
-            source: "file://" + background.currentBackgroundPath
+            source: "file://" + background.path
         }
     }
 
@@ -39,7 +39,7 @@ Item {
         id: colorItem
 
         Rectangle {
-            color: background.backgroundColor
+            color: background.color
         }
     }
 
@@ -48,7 +48,7 @@ Item {
         anchors.fill: parent
 
         sourceComponent: {
-            if (background.backgroundType === 0)
+            if (background.type === 0)
                 return wallpaperItem
 
             return colorItem

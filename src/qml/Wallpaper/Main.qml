@@ -22,6 +22,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import Qt5Compat.GraphicalEffects
 import Cutefish.Settings 1.0
+import Cutefish.Appearance 1.0 as FrameworkAppearance
 import FishUI 1.0 as FishUI
 
 import "../"
@@ -29,7 +30,7 @@ import "../"
 ItemPage {
     headerTitle: qsTr("Background")
 
-    Background {
+    FrameworkAppearance.Wallpaper {
         id: background
     }
 
@@ -55,11 +56,11 @@ ItemPage {
                         Layout.fillWidth: true
 
                         onCurrentIndexChanged: {
-                            background.backgroundType = currentIndex
+                            background.type = currentIndex
                         }
 
                         Component.onCompleted: {
-                            currentIndex = background.backgroundType
+                            currentIndex = background.type
                         }
 
                         TabButton {
@@ -80,7 +81,7 @@ ItemPage {
                     Layout.fillWidth: true
                     implicitHeight: Math.ceil(_view.count / rowCount) * cellHeight + FishUI.Units.largeSpacing
 
-                    visible: background.backgroundType === 0
+                    visible: background.type === 0
 
                     clip: true
                     model: background.backgrounds
@@ -96,7 +97,7 @@ ItemPage {
                     delegate: Item {
                         id: item
 
-                        property bool isSelected: modelData === background.currentBackgroundPath
+                        property bool isSelected: modelData === background.path
 
                         width: GridView.view.cellWidth
                         height: GridView.view.cellHeight
@@ -178,7 +179,7 @@ ItemPage {
                                 hoverEnabled: true
 
                                 onClicked: {
-                                    background.setBackground(modelData)
+                                    background.path = modelData
                                 }
 
                                 onEntered: function() {
@@ -206,14 +207,14 @@ ItemPage {
                 }
 
                 Item {
-                    visible: background.backgroundType === 1
+                    visible: background.type === 1
                     height: FishUI.Units.smallSpacing
                 }
 
                 Loader {
                     Layout.fillWidth: true
                     height: item ? item.height : 0
-                    visible: background.backgroundType === 1
+                    visible: background.type === 1
                     sourceComponent: colorView
                 }
             }
@@ -261,7 +262,7 @@ ItemPage {
             }
 
             delegate: Rectangle {
-                property bool checked: Qt.colorEqual(background.backgroundColor, bgColor)
+                property bool checked: Qt.colorEqual(background.color, bgColor)
                 property color currentColor: bgColor
 
                 width: _colorView.itemSize + FishUI.Units.largeSpacing
@@ -280,7 +281,7 @@ ItemPage {
                     id: _mouseArea
                     anchors.fill: parent
                     hoverEnabled: true
-                    onClicked: background.backgroundColor = bgColor
+                    onClicked: background.color = bgColor
                 }
 
                 Rectangle {
