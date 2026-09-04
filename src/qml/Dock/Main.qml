@@ -83,7 +83,6 @@ ItemPage {
                 FishUI.SegmentedControl {
                     id: dockSizeTabbar
                     Layout.fillWidth: true
-                    bottomPadding: FishUI.Units.smallSpacing
 
                     TabButton {
                         text: qsTr("Small")
