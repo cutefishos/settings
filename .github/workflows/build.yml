@@ -23,10 +23,10 @@ jobs:
         with:
           path: settings
 
-      - name: Checkout libcutefish
+      - name: Checkout Cutefish Framework
         uses: actions/checkout@v4
         with:
-          repository: cutefishos/libcutefish
+          repository: cutefishos/cutefish-framework
           ref: main
           path: libcutefish
 
