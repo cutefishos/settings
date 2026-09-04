@@ -1,7 +1,9 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.16)
 
-set(PROJECT_NAME cutefish-settings)
-project(${PROJECT_NAME})
+project(cutefish-settings
+    VERSION 1.0.0
+    LANGUAGES CXX
+)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src")
