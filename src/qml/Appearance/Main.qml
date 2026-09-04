@@ -98,7 +98,9 @@ ItemPage {
                     }
                 }
 
-                HorizontalDivider {}
+                HorizontalDivider {
+                    height: FishUI.Units.largeSpacing
+                }
 
                 RowLayout {
                     spacing: FishUI.Units.largeSpacing
