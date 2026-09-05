@@ -124,15 +124,6 @@ Item {
         }
 
         ListElement {
-            title: qsTr("Fonts")
-            name: "fonts"
-            page: "qrc:/qml/Fonts/Main.qml"
-            iconSource: "fonts.svg"
-            iconColor: "#FFBF36"
-            category: qsTr("Display and appearance")
-        }
-
-        ListElement {
             title: qsTr("Background")
             name: "background"
             page: "qrc:/qml/Wallpaper/Main.qml"
