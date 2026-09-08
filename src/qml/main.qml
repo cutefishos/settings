@@ -36,18 +36,13 @@ FishUI.Window {
 
     property alias stackView: _stackView
 
-    background.opacity: FishUI.Theme.blurEnabled ? (FishUI.Theme.darkMode ? 0.7 : 0.5) : 1
+    background.color: FishUI.Theme.backgroundColor
+    background.opacity: blurEnabled && blurAvailable ? (FishUI.Theme.darkMode ? 0.7 : 0.5) : 1
     header.height: 40
     contentTopMargin: 0
 
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
-
-    FishUI.WindowBlur {
-        view: rootWindow
-        windowRadius: rootWindow.windowRadius
-        enabled: FishUI.Theme.blurEnabled
-    }
 
     RowLayout {
         anchors.fill: parent

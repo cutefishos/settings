@@ -33,7 +33,7 @@ FishUI.Window {
     flags: Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
 
     background.color: FishUI.Theme.secondBackgroundColor
-    background.opacity: FishUI.Theme.blurEnabled ? 0.5 : 1
+    background.opacity: blurEnabled && blurAvailable ? 0.5 : 1
     contentTopMargin: 0
 
     onWidthChanged: control.reset()
@@ -57,12 +57,6 @@ FishUI.Window {
             popupText.text = timeZoneMap.localeTimeZoneName(timeZoneMap.availableList[0])
             popupItem.visible = true
         }
-    }
-
-    FishUI.WindowBlur {
-        view: control
-        windowRadius: control.background.radius
-        enabled: FishUI.Theme.blurEnabled
     }
 
     Item {
