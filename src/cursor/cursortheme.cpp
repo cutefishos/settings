@@ -11,6 +11,7 @@
 
 #include <QIcon>
 #include <QSettings>
+#include <X11/Xcursor/Xcursor.h>
 
 CursorTheme::CursorTheme(const QDir &dir, QObject *parent)
     : QObject(parent)
@@ -19,9 +20,12 @@ CursorTheme::CursorTheme(const QDir &dir, QObject *parent)
     , m_sample(QStringLiteral("left_ptr"))
     , m_hidden(false)
 {
-    QSettings config(m_path + QStringLiteral("/index.theme"), QSettings::IniFormat);
+    QSettings config(m_path
+                             + (dir.exists("index.theme") ? QStringLiteral("/index.theme")
+                                                          : QStringLiteral("/cursor.theme")),
+                     QSettings::IniFormat);
     config.beginGroup(QStringLiteral("Icon Theme"));
-    m_name = config.value(QStringLiteral("Name")).toString();
+    m_name = config.value(QStringLiteral("Name"), m_dirName).toString();
     m_sample = config.value(QStringLiteral("Example"), m_sample).toString();
     m_hidden = config.value(QStringLiteral("Hidden"), false).toBool();
     m_inherits = config.value(QStringLiteral("Inherits")).toString();
@@ -50,9 +54,19 @@ QString CursorTheme::inherits() const
 QPixmap CursorTheme::pixmap() const
 {
     if (m_pixmap.isNull()) {
-        const QIcon icon = QIcon::fromTheme(m_sample,
-                                             QIcon::fromTheme(QStringLiteral("input-mouse")));
-        m_pixmap = icon.pixmap(36, 36);
+        XcursorImages *images = XcursorLibraryLoadImages(m_sample.toUtf8().constData(),
+                                                         m_dirName.toUtf8().constData(), 36);
+        if (!images)
+            images = XcursorLibraryLoadImages("left_ptr", m_dirName.toUtf8().constData(), 36);
+        if (images) {
+            if (images->nimage > 0) {
+                const auto *frame = images->images[0];
+                QImage image(reinterpret_cast<const uchar *>(frame->pixels), frame->width,
+                             frame->height, frame->width * 4, QImage::Format_ARGB32_Premultiplied);
+                m_pixmap = QPixmap::fromImage(image.copy());
+            }
+            XcursorImagesDestroy(images);
+        }
     }
 
     return m_pixmap;

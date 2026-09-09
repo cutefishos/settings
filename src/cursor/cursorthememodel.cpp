@@ -19,9 +19,15 @@
 
 #include "cursorthememodel.h"
 #include "cursortheme.h"
-#include <QFileInfo>
+#include <QDBusConnection>
+#include <QDBusMessage>
+#include <QDBusPendingCallWatcher>
+#include <QDBusPendingReply>
+#include <QDBusServiceWatcher>
 #include <QDebug>
 #include <QDir>
+#include <QFileInfo>
+#include <QStandardPaths>
 
 CursorThemeModel::CursorThemeModel(QObject *parent)
     : QAbstractListModel(parent)
@@ -30,6 +36,14 @@ CursorThemeModel::CursorThemeModel(QObject *parent)
     initThemes();
 
     m_currentTheme = m_settings.value("CursorTheme", "default").toString();
+    auto bus = QDBusConnection::sessionBus();
+    for (const auto *signal : {"cursorThemeChanged", "cursorSizeChanged"})
+        bus.connect("com.cutefish.Services", "/com/cutefish/Services/Appearance",
+                    "com.cutefish.Services.Appearance", QLatin1String(signal), this,
+                    SLOT(reload()));
+    auto *watcher = new QDBusServiceWatcher("com.cutefish.Services", bus,
+                                            QDBusServiceWatcher::WatchForOwnerChange, this);
+    connect(watcher, &QDBusServiceWatcher::serviceOwnerChanged, this, &CursorThemeModel::reload);
 }
 
 CursorThemeModel::~CursorThemeModel()
@@ -87,12 +101,44 @@ QString CursorThemeModel::currentTheme() const
 
 void CursorThemeModel::setCurrentTheme(const QString &theme)
 {
-    if (m_currentTheme != theme) {
-        m_currentTheme = theme;
-        emit currentThemeChanged();
+    if (m_currentTheme != theme && themeIndex(theme) >= 0)
+        apply(QStringLiteral("setCursorTheme"), theme);
+}
 
-        m_appearance.setCursorTheme(m_currentTheme);
-    }
+int CursorThemeModel::cursorSize() const
+{
+    return qBound(16, m_settings.value("CursorSize", 24).toInt(), 64);
+}
+
+void CursorThemeModel::setCursorSize(int size)
+{
+    apply(QStringLiteral("setCursorSize"), qBound(16, size, 64));
+}
+
+void CursorThemeModel::reload()
+{
+    m_settings.sync();
+    m_currentTheme = m_settings.value("CursorTheme", "default").toString();
+    emit currentThemeChanged();
+    emit cursorSizeChanged();
+}
+
+void CursorThemeModel::apply(const QString &method, const QVariant &value)
+{
+    auto message = QDBusMessage::createMethodCall("com.cutefish.Services",
+                                                  "/com/cutefish/Services/Appearance",
+                                                  "com.cutefish.Services.Appearance", method);
+    message << value;
+    auto *watcher =
+            new QDBusPendingCallWatcher(QDBusConnection::sessionBus().asyncCall(message), this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this,
+            [this](QDBusPendingCallWatcher *call) {
+                const QDBusPendingReply<> reply = *call;
+                if (reply.isError())
+                    qWarning() << "Cannot apply cursor theme:" << reply.error().message();
+                reload();
+                call->deleteLater();
+            });
 }
 
 int CursorThemeModel::themeIndex(const QString &theme)
@@ -132,9 +178,18 @@ void CursorThemeModel::initThemes()
 QStringList CursorThemeModel::paths()
 {
     QStringList list;
-    list << QDir::home().path() + ".icons";
-    list << "/usr/share/icons";
+    list = qEnvironmentVariable("XCURSOR_PATH").split(':', Qt::SkipEmptyParts);
+    if (!list.isEmpty()) {
+        for (auto &path : list)
+            if (path.startsWith("~/"))
+                path.replace(0, 1, QDir::homePath());
+        return list;
+    }
+    list << QDir::homePath() + "/.icons";
+    for (const auto &path : QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation))
+        list << path + "/icons";
     list << "/usr/share/pixmaps";
+    list.removeDuplicates();
     return list;
 }
 
@@ -152,7 +207,10 @@ void CursorThemeModel::processDir(const QDir &dir)
             return;
         }
 
-        if (!dir.exists("cursors") || QDir(dir.path() + "/cursor").entryList(QDir::Files | QDir::NoDotAndDotDot).isEmpty()) {
+        if (!dir.exists("cursors")
+            || QDir(dir.path() + "/cursors")
+                       .entryList(QDir::Files | QDir::NoDotAndDotDot)
+                       .isEmpty()) {
             if (dir.exists("index.theme")) {
                 CursorTheme theme(dir);
                 m_defaultTheme = theme.inherits();
@@ -171,7 +229,7 @@ void CursorThemeModel::processDir(const QDir &dir)
 
     for (int i = 0; i < m_list.size(); ++i) {
         CursorTheme *t = m_list.at(i);
-        if (t->name() == theme->name()) {
+        if (t->id() == theme->id()) {
             delete theme;
             return;
         }

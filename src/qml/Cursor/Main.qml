@@ -135,6 +135,19 @@ ItemPage {
                     visible: _view.count > 0
                 }
 
+                RowLayout {
+                    Label { text: qsTr("Cursor size") }
+                    Slider {
+                        Layout.fillWidth: true
+                        from: 16
+                        to: 64
+                        stepSize: 8
+                        value: cursorModel.cursorSize
+                        onMoved: cursorModel.cursorSize = value
+                    }
+                    Label { text: cursorModel.cursorSize }
+                }
+
                 GridView {
                     id: _view
                     Layout.fillWidth: true
@@ -151,7 +164,7 @@ ItemPage {
 
                     currentIndex: cursorModel.themeIndex(cursorModel.currentTheme)
 
-                    property int rowCount: _view.width / itemWidth
+                    property int rowCount: Math.max(1, Math.floor(_view.width / itemWidth))
                     property int itemWidth: 128
                     property int itemHeight: 128
 
@@ -185,9 +198,7 @@ ItemPage {
                             anchors.fill: parent
                             anchors.margins: FishUI.Units.smallSpacing * 1.5
                             onClicked: {
-                                _view.currentIndex = index
                                 cursorModel.currentTheme = model.id
-                                console.log(model.id)
                             }
                         }
 

@@ -18,6 +18,7 @@ set(QT Core Gui Widgets Quick QuickControls2 DBus Xml Concurrent LinguistTools)
 find_package(Qt6 REQUIRED ${QT})
 find_package(Freetype REQUIRED)
 find_package(PkgConfig REQUIRED)
+pkg_check_modules(Xcursor REQUIRED IMPORTED_TARGET xcursor)
 find_package(Libcrypt REQUIRED)
 # find_package(QApt REQUIRED)
 
@@ -78,6 +79,7 @@ set_source_files_properties(${DBUS_SOURCES} PROPERTIES SKIP_AUTOGEN ON)
 
 add_executable(${PROJECT_NAME} ${DBUS_SOURCES} ${SRCS} ${RESOURCES})
 target_link_libraries(${PROJECT_NAME}
+        PkgConfig::Xcursor
         Cutefish::Applications
         Cutefish::Appearance
         Qt6::Core

@@ -10,8 +10,8 @@
 #ifndef CURSORTHEME_H
 #define CURSORTHEME_H
 
-#include <QObject>
 #include <QDir>
+#include <QObject>
 #include <QPixmap>
 
 class CursorTheme : public QObject
