@@ -44,13 +44,19 @@ FishUI.Window {
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
-    RowLayout {
+    Item {
         anchors.fill: parent
-        spacing: 0
 
         SideBar {
             id: sideBar
-            Layout.fillHeight: true
+            anchors.left: parent.left
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            // Keep the sidebar edge and the content clip on the same physical pixel.
+            readonly property real pixelRatio: FishUI.Dpi.ratio
+            width: rootWindow.LayoutMirroring.enabled
+                   ? parent.width - Math.round((parent.width - implicitWidth) * pixelRatio) / pixelRatio
+                   : Math.round(implicitWidth * pixelRatio) / pixelRatio
 
             onCurrentIndexChanged: {
                 switchPageFromIndex(currentIndex)
@@ -59,8 +65,10 @@ FishUI.Window {
 
         StackView {
             id: _stackView
-            Layout.fillWidth: true
-            Layout.fillHeight: true
+            anchors.left: sideBar.right
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
             initialItem: Qt.resolvedUrl(sideBar.model.get(0).page)
             clip: true
 
