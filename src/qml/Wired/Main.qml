@@ -70,7 +70,6 @@ ItemPage {
 
             // Wired connection
             RoundedItem {
-                visible: enabledConnections.wwanHwEnabled
                 spacing: FishUI.Units.largeSpacing
 
                 RowLayout {
@@ -82,28 +81,13 @@ ItemPage {
                         Layout.fillWidth: true
                     }
 
-                    Switch {
-                        Layout.fillHeight: true
-                        rightPadding: 0
-                        checked: enabledConnections.wwanEnabled
-                        onCheckedChanged: {
-                            if (checked) {
-                                if (!enabledConnections.wwanEnabled) {
-                                    handler.enableWwan(checked)
-                                }
-                            } else {
-                                if (enabledConnections.wwanEnabled) {
-                                    handler.enableWwan(checked)
-                                }
-                            }
-                        }
-                    }
+
                 }
 
                 ListView {
                     id: wiredView
 
-                    visible: enabledConnections.wwanEnabled && wiredView.count > 0
+                    visible: wiredView.count > 0
 
                     Layout.fillWidth: true
                     Layout.preferredHeight: wiredView.count * control.itemHeight

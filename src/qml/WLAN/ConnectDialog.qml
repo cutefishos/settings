@@ -26,6 +26,12 @@ import Cutefish.Network 1.0 as NM
 FishUI.Window {
     id: control
 
+    windowRadius: 16
+    windowButtonsTopMargin: 8
+    windowButtonsRightMargin: 8
+    header.height: 44
+    contentTopMargin: 0
+
     width: contentWidth
     height: contentHeight
     minimumWidth: contentWidth
@@ -33,9 +39,10 @@ FishUI.Window {
     maximumWidth: contentWidth
     maximumHeight: contentHeight
 
-    property int contentWidth: _mainLayout.implicitWidth + header.height + FishUI.Units.largeSpacing * 2
-    property int contentHeight: _mainLayout.implicitHeight + header.height + FishUI.Units.largeSpacing * 2
+    property int contentWidth: 400
+    property int contentHeight: _mainLayout.implicitHeight + 32
 
+    title: "Enter Password"
     visible: false
     minimizeButtonVisible: false
     modality: Qt.WindowModal
@@ -57,21 +64,27 @@ FishUI.Window {
         }
     }
 
-    headerItem: Item {
-        Label {
-            anchors.centerIn: parent
-            text: qsTr("Enter Password")
-        }
-    }
-
     ColumnLayout {
         id: _mainLayout
         anchors.fill: parent
-        anchors.margins: FishUI.Units.largeSpacing
-        anchors.topMargin: 0
-        spacing: FishUI.Units.largeSpacing
+        anchors.margins: 16
+        spacing: 16
 
         Label {
+            Layout.fillWidth: true
+            Layout.rightMargin: 32
+            text: control.title
+            textFormat: Text.PlainText
+            font.pixelSize: 14
+            font.weight: Font.DemiBold
+            color: FishUI.Theme.textColor
+            wrapMode: Text.Wrap
+        }
+
+        Label {
+            Layout.fillWidth: true
+            textFormat: Text.PlainText
+            font.pixelSize: 14
             text: qsTr("Enter the password for %1").arg(control.name)
             color: FishUI.Theme.disabledTextColor
             wrapMode: Text.WordWrap
@@ -104,18 +117,17 @@ FishUI.Window {
         }
 
         RowLayout {
-            spacing: FishUI.Units.largeSpacing
+            spacing: 8
+            Layout.alignment: Qt.AlignRight
 
-            Button {
+            FishUI.ConfirmDialogButton {
                 text: qsTr("Cancel")
-                Layout.fillWidth: true
                 onClicked: control.visible = false
             }
 
-            Button {
+            FishUI.ConfirmDialogButton {
                 text: qsTr("Connect")
-                flat: true
-                Layout.fillWidth: true
+                primary: true
                 enabled: passwordField.acceptableInput
                 onClicked: control.emitSignal()
             }

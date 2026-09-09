@@ -9,11 +9,18 @@ import "../"
 FishUI.Window {
     id: control
 
+    windowRadius: 16
+    windowButtonsTopMargin: 8
+    windowButtonsRightMargin: 8
+    minimizeButtonVisible: false
+    header.height: 44
+    contentTopMargin: 0
+
     width: contentWidth
     height: contentHeight
 
-    property int contentWidth: mainLayout.implicitWidth + FishUI.Units.largeSpacing * 2 + control.header.height
-    property int contentHeight: mainLayout.implicitHeight + FishUI.Units.largeSpacing * 2 + control.header.height
+    property int contentWidth: 360
+    property int contentHeight: mainLayout.implicitHeight + 32
 
     minimumWidth: contentWidth
     minimumHeight: contentHeight
@@ -28,13 +35,6 @@ FishUI.Window {
     property var pin: ""
 
     background.color: FishUI.Theme.secondBackgroundColor
-    headerItem: Item {
-        Label {
-            anchors.fill: parent
-            anchors.leftMargin: FishUI.Units.largeSpacing
-            text: control.title
-        }
-    }
 
     DragHandler {
         target: null
@@ -46,38 +46,54 @@ FishUI.Window {
     ColumnLayout {
         id: mainLayout
         anchors.fill: parent
-        anchors.margins: FishUI.Units.largeSpacing
+        anchors.margins: 16
+        spacing: 16
 
         Label {
-            text: qsTr("Bluetooth Pairing Request")
-            Layout.alignment: Qt.AlignHCenter
+            Layout.fillWidth: true
+            Layout.rightMargin: 32
+            text: "Bluetooth Pairing Request"
+            textFormat: Text.PlainText
+            font.pixelSize: 14
+            font.weight: Font.DemiBold
+            color: FishUI.Theme.textColor
+            wrapMode: Text.Wrap
         }
 
         Label {
-            text: "<b>%1</b>".arg(control.pin)
-            visible: control.pin !== ""
-            font.pointSize: 16
+            Layout.fillWidth: true
+            text: control.title.trim()
+            textFormat: Text.PlainText
+            font.pixelSize: 14
+            color: FishUI.Theme.disabledTextColor
+            wrapMode: Text.Wrap
+            visible: text.length > 0
+        }
 
+        Label {
+            text: control.pin
+            textFormat: Text.PlainText
+            visible: control.pin !== ""
+            font.pixelSize: 24
+            font.weight: Font.DemiBold
             Layout.alignment: Qt.AlignHCenter
-            Layout.bottomMargin: FishUI.Units.largeSpacing
         }
 
         RowLayout {
-            spacing: FishUI.Units.largeSpacing
+            spacing: 8
+            Layout.alignment: Qt.AlignRight
 
-            Button {
+            FishUI.ConfirmDialogButton {
                 text: qsTr("Cancel")
-                Layout.fillWidth: true
                 onClicked: {
                     control.visible = false
                     bluetoothMgr.confirmMatchButton(false)
                 }
             }
 
-            Button {
+            FishUI.ConfirmDialogButton {
                 text: qsTr("OK")
-                Layout.fillWidth: true
-                flat: true
+                primary: true
                 onClicked: {
                     control.visible = false
                     bluetoothMgr.confirmMatchButton(true)

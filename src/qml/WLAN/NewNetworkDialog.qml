@@ -28,6 +28,12 @@ import Cutefish.Network 1.0 as NM
 FishUI.Window {
     id: control
 
+    windowRadius: 16
+    windowButtonsTopMargin: 8
+    windowButtonsRightMargin: 8
+    header.height: 44
+    contentTopMargin: 0
+
     width: contentWidth
     height: contentHeight
     minimumWidth: contentWidth
@@ -36,9 +42,10 @@ FishUI.Window {
     maximumHeight: contentHeight
     modality: Qt.WindowModal
 
-    property int contentWidth: _mainLayout.implicitWidth + header.height + FishUI.Units.largeSpacing * 2
-    property int contentHeight: _mainLayout.implicitHeight + header.height + FishUI.Units.largeSpacing * 2
+    property int contentWidth: 400
+    property int contentHeight: _mainLayout.implicitHeight + 32
 
+    title: "Join Network"
     visible: false
     minimizeButtonVisible: false
 
@@ -61,14 +68,25 @@ FishUI.Window {
     ColumnLayout {
         id: _mainLayout
         anchors.fill: parent
-        anchors.margins: FishUI.Units.largeSpacing
-        anchors.topMargin: 0
-        spacing: FishUI.Units.largeSpacing
+        anchors.margins: 16
+        spacing: 16
+
+        Label {
+            Layout.fillWidth: true
+            Layout.rightMargin: 32
+            text: control.title
+            textFormat: Text.PlainText
+            font.pixelSize: 14
+            font.weight: Font.DemiBold
+            color: FishUI.Theme.textColor
+            wrapMode: Text.Wrap
+        }
 
         GridLayout {
+            Layout.fillWidth: true
             columns: 2
-            columnSpacing: FishUI.Units.largeSpacing * 2
-            rowSpacing: FishUI.Units.largeSpacing
+            columnSpacing: 16
+            rowSpacing: 16
 
             Label {
                 text: qsTr("Name")
@@ -122,20 +140,19 @@ FishUI.Window {
         }
 
         RowLayout {
-            spacing: FishUI.Units.largeSpacing
+            spacing: 8
+            Layout.alignment: Qt.AlignRight
 
-            Button {
+            FishUI.ConfirmDialogButton {
                 text: qsTr("Cancel")
-                Layout.fillWidth: true
                 onClicked: control.close()
             }
 
-            Button {
+            FishUI.ConfirmDialogButton {
                 enabled: _nameTextField.text != ""
                          & (_passwordTextField.text.length > 7 | securitybox.currentIndex === 0)
-                flat: true
+                primary: true
                 text: qsTr("Join")
-                Layout.fillWidth: true
                 onClicked: {
                     var security_type = securitybox.currentText
 

@@ -25,6 +25,13 @@ import FishUI 1.0 as FishUI
 
 FishUI.Window {
     id: control
+
+    windowRadius: 16
+    windowButtonsTopMargin: 8
+    windowButtonsRightMargin: 8
+    minimizeButtonVisible: false
+    header.height: 44
+    title: "Time Zone"
     width: 900
     height: 600
     minimumWidth: 800
@@ -72,7 +79,19 @@ FishUI.Window {
 
     ColumnLayout {
         anchors.fill: parent
-        anchors.margins: FishUI.Units.largeSpacing
+        anchors.margins: 16
+        spacing: 16
+
+        Label {
+            Layout.fillWidth: true
+            Layout.rightMargin: 32
+            text: control.title
+            textFormat: Text.PlainText
+            font.pixelSize: 14
+            font.weight: Font.DemiBold
+            color: FishUI.Theme.textColor
+            wrapMode: Text.Wrap
+        }
 
         Image {
             id: _worldMap
@@ -144,20 +163,17 @@ FishUI.Window {
         }
 
         RowLayout {
-            spacing: FishUI.Units.largeSpacing
+            Layout.alignment: Qt.AlignRight
+            spacing: 8
 
-            Item {
-                Layout.fillWidth: true
-            }
-
-            Button {
+            FishUI.ConfirmDialogButton {
                 text: qsTr("Cancel")
                 onClicked: control.close()
             }
 
-            Button {
+            FishUI.ConfirmDialogButton {
                 text: qsTr("Set")
-                flat: true
+                primary: true
                 enabled: popupText.text
                 onClicked: {
                     timeZoneMap.setTimeZone(timeZoneMap.availableList[0])
@@ -165,9 +181,6 @@ FishUI.Window {
                 }
             }
 
-            Item {
-                Layout.fillWidth: true
-            }
         }
     }
 }

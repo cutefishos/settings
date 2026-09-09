@@ -28,12 +28,28 @@ Dialog {
     id: control
     title: model.itemUniqueName
 
-    // width: Math.max(detailsLayout.implicitWidth, footer.implicitWidth)
-
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
-    height: detailsLayout.childrenRect.height + footerLayout.childrenRect.height + FishUI.Units.largeSpacing * 1.5
+    width: 400
+    padding: 16
+    spacing: 16
     modal: true
+
+    background: Rectangle {
+        radius: 16
+        color: FishUI.Theme.secondBackgroundColor
+    }
+
+    header: Label {
+        text: control.title
+        textFormat: Text.PlainText
+        padding: 16
+        bottomPadding: 0
+        font.pixelSize: 14
+        font.weight: Font.DemiBold
+        color: FishUI.Theme.textColor
+        wrapMode: Text.Wrap
+    }
 
     signal forgetBtnClicked()
 
@@ -50,15 +66,16 @@ Dialog {
         }
     }
 
-    ColumnLayout {
+    contentItem: ColumnLayout {
         id: detailsLayout
-        spacing: FishUI.Units.largeSpacing * 1.5
+        spacing: 16
 
         GridLayout {
+            Layout.fillWidth: true
             id: gridLayout
             columns: 2
-            columnSpacing: FishUI.Units.largeSpacing
-            rowSpacing: FishUI.Units.smallSpacing
+            columnSpacing: 16
+            rowSpacing: 8
 
             Label {
                 id: autoJoinLabel
@@ -115,7 +132,6 @@ Dialog {
             }
 
             Label {
-                font.bold: true
                 text: qsTr("IPv6 Address")
                 color: FishUI.Theme.disabledTextColor
                 Layout.alignment: Qt.AlignRight
@@ -129,7 +145,6 @@ Dialog {
             }
 
             Label {
-                font.bold: true
                 text: qsTr("MAC Address")
                 color: FishUI.Theme.disabledTextColor
                 Layout.alignment: Qt.AlignRight
@@ -143,7 +158,6 @@ Dialog {
             }
 
             Label {
-                font.bold: true
                 text: qsTr("Gateway")
                 color: FishUI.Theme.disabledTextColor
                 Layout.alignment: Qt.AlignRight
@@ -156,7 +170,6 @@ Dialog {
             }
 
             Label {
-                font.bold: true
                 text: qsTr("DNS")
                 color: FishUI.Theme.disabledTextColor
                 Layout.alignment: Qt.AlignRight
@@ -171,18 +184,18 @@ Dialog {
 
         RowLayout {
             id: footerLayout
-            spacing: FishUI.Units.largeSpacing
+            spacing: 8
+            Layout.alignment: Qt.AlignRight
 
-            Button {
+            FishUI.ConfirmDialogButton {
                 text: qsTr("Close")
-                Layout.fillWidth: true
                 onClicked: control.reject()
             }
 
-            Button {
+            FishUI.ConfirmDialogButton {
                 text: qsTr("Forget this network")
-                Layout.fillWidth: true
-                flat: true
+                primary: true
+                destructive: true
                 onClicked: {
                     handler.removeConnection(model.connectionPath)
                     control.reject()
