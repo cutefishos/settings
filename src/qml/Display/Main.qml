@@ -151,8 +151,10 @@ ItemPage {
                         ColumnLayout {
                             id: _mainLayout
                             anchors.fill: parent
+                            enabled: screen.available && !screen.busy
 
                             GridLayout {
+                                Layout.fillWidth: true
                                 columns: 2
                                 columnSpacing: FishUI.Units.largeSpacing * 1.5
                                 rowSpacing: FishUI.Units.largeSpacing * 1.5
@@ -183,7 +185,6 @@ ItemPage {
                                                       element.resolutionIndex : -1
                                     onActivated: {
                                         element.resolutionIndex = currentIndex
-                                        screen.save()
                                     }
                                 }
 
@@ -203,7 +204,6 @@ ItemPage {
                                                       element.refreshRateIndex : 0
                                     onActivated: {
                                         element.refreshRateIndex = currentIndex
-                                        screen.save()
                                     }
                                 }
 
@@ -262,8 +262,31 @@ ItemPage {
                                     visible: _screenView.count > 1
                                     onClicked: {
                                         element.enabled = checked
-                                        screen.save()
                                     }
+                                }
+
+                                Label { text: qsTr("Primary"); visible: _screenView.count > 1 }
+                                CheckBox {
+                                    checked: element.primary
+                                    visible: _screenView.count > 1
+                                    enabled: element.enabled
+                                    onClicked: if (checked) element.primary = true
+                                }
+
+                                Label { text: qsTr("Position"); visible: _screenView.count > 1 }
+                                RowLayout {
+                                    visible: _screenView.count > 1
+                                    SpinBox { from: -32768; to: 32768; value: element.position.x; onValueModified: element.position = Qt.point(value, element.position.y) }
+                                    SpinBox { from: -32768; to: 32768; value: element.position.y; onValueModified: element.position = Qt.point(element.position.x, value) }
+                                }
+
+                                Label { text: qsTr("Mode"); visible: _screenView.count > 1 && (element.capabilities & 4) !== 0 }
+                                ComboBox {
+                                    visible: _screenView.count > 1 && (element.capabilities & 4) !== 0
+                                    Layout.fillWidth: true
+                                    model: element.replicationSourceModel
+                                    currentIndex: element.replicationSourceIndex
+                                    onActivated: element.replicationSourceIndex = currentIndex
                                 }
                             }
                         }
@@ -290,25 +313,31 @@ ItemPage {
                 FishUI.SegmentedControl {
                     id: dockSizeTabbar
                     Layout.fillWidth: true
+                    enabled: screen.available && !screen.busy
 
                     TabButton {
                         text: "100%"
+                        onClicked: if (_screenView.currentItem) _screenView.currentItem.element.scale = 1.0
                     }
 
                     TabButton {
                         text: "125%"
+                        onClicked: if (_screenView.currentItem) _screenView.currentItem.element.scale = 1.25
                     }
 
                     TabButton {
                         text: "150%"
+                        onClicked: if (_screenView.currentItem) _screenView.currentItem.element.scale = 1.5
                     }
 
                     TabButton {
                         text: "175%"
+                        onClicked: if (_screenView.currentItem) _screenView.currentItem.element.scale = 1.75
                     }
 
                     TabButton {
                         text: "200%"
+                        onClicked: if (_screenView.currentItem) _screenView.currentItem.element.scale = 2.0
                     }
 
                     currentIndex: {
@@ -330,34 +359,21 @@ ItemPage {
                         return index
                     }
 
-                    onCurrentIndexChanged: {
-                        var value = 1.0
-
-                        switch (currentIndex) {
-                        case 0:
-                            value = 1.0
-                            break;
-                        case 1:
-                            value = 1.25
-                            break;
-                        case 2:
-                            value = 1.50
-                            break;
-                        case 3:
-                            value = 1.75
-                            break;
-                        case 4:
-                            value = 2.0
-                            break;
-                        }
-
-                        var output = _screenView.currentItem ? _screenView.currentItem.element : null
-                        if (output && output.scale !== value) {
-                            output.scale = value
-                            screen.save()
-                        }
-                    }
                 }
+            }
+
+            Label {
+                Layout.fillWidth: true
+                visible: !screen.available || screen.error.length > 0
+                text: screen.available ? screen.error : qsTr("Display configuration is unavailable in this session.")
+                color: "#d93025"
+                wrapMode: Text.Wrap
+            }
+
+            RowLayout {
+                Layout.fillWidth: true
+                Button { text: qsTr("Identify"); enabled: screen.available; onClicked: screen.identify() }
+                Item { Layout.fillWidth: true }
             }
 
             Item {

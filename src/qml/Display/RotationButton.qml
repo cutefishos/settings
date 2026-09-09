@@ -36,8 +36,6 @@ IconCheckBox {
         }
 
         element.rotation = rot
-        // screen.resetTotalSize()
-        screen.save()
     }
 
     Component.onCompleted: {
