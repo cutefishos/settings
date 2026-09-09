@@ -44,6 +44,8 @@
         <file>images/rot270.svg</file>
         <file>images/rotnormal.svg</file>
         <file>qml/User/UserDelegateItem.qml</file>
+        <file>qml/User/AddUserDialog.qml</file>
+        <file>qml/User/ChangePasswordDialog.qml</file>
         <file>images/light/down.svg</file>
         <file>images/light/up.svg</file>
         <file>images/dark/down.svg</file>

@@ -20,6 +20,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import QtQuick.Window 2.12
 import QtCore
 import QtQuick.Dialogs
 import Qt5Compat.GraphicalEffects
@@ -48,6 +49,35 @@ RoundedItem {
             currentUser.iconFileName = decodeURIComponent(fileDialog.selectedFile.toString().replace("file://", ""))
             _userImage.source = fileDialog.selectedFile
             _userImage.update()
+        }
+    }
+
+    ChangePasswordDialog {
+        id: changePasswordDialog
+        userName: currentUser.userName
+        onPasswordSubmitted: function(password) {
+            currentUser.setPassword(Password.cryptPassword(password))
+        }
+    }
+
+    Component {
+        id: deleteUserDialogComponent
+
+        FishUI.ConfirmDialog {
+            property var targetUserId
+            property string targetUserName
+
+            title: qsTr("Delete this user")
+            text: qsTr("Delete user “%1”? Their home directory and its contents will be permanently deleted. This cannot be undone.").arg(targetUserName)
+            cancelText: qsTr("Cancel")
+            confirmText: qsTr("Delete")
+            destructive: true
+            confirmEnabled: targetUserId !== loggedUser.userId
+            onAccepted: {
+                if (targetUserId !== loggedUser.userId)
+                    accountsManager.deleteUser(targetUserId, true)
+            }
+            onClosing: destroy()
         }
     }
 
@@ -194,113 +224,24 @@ RoundedItem {
                 }
             }
 
-            // Change password
-            HorizontalDivider {
-                visible: changePasswdLabel.visible
-            }
-
-            Label {
-                id: changePasswdLabel
-                visible: false
-                text: qsTr("Change password")
-            }
-
-            GridLayout {
-                id: changePasswdLayout
-                visible: false
-                columns: 2
-                columnSpacing: FishUI.Units.largeSpacing * 2
-                rowSpacing: FishUI.Units.smallSpacing * 2
-
-                Label {
-                    text: qsTr("Password")
-                    Layout.alignment: Qt.AlignRight
-                }
-
-                TextField {
-                    id: passwordField
-                    placeholderText: qsTr("Password")
-                    echoMode: TextField.Password
-                    Layout.fillWidth: true
-                    selectByMouse: true
-                }
-
-                Label {
-                    text: qsTr("Verify password")
-                    Layout.alignment: Qt.AlignRight
-                }
-
-                TextField {
-                    id: verifyPasswordField
-                    placeholderText: qsTr("Verify password")
-                    echoMode: TextField.Password
-                    Layout.fillWidth: true
-                    selectByMouse: true
-                }
-            }
-
-            RowLayout {
-                id: changePasswdFooterLayout
-                spacing: FishUI.Units.largeSpacing
-                visible: false
-
-                Button {
-                    text: qsTr("Cancel")
-                    onClicked: hideChangePasswordItem()
-                    Layout.fillWidth: true
-                }
-
-                Button {
-                    text: qsTr("Change password")
-                    enabled: passwordField.text != "" &&
-                             passwordField.text == verifyPasswordField.text
-                    Layout.fillWidth: true
-                    flat: true
-                    onClicked: {
-                        currentUser.setPassword(Password.cryptPassword(passwordField.text));
-                        hideChangePasswordItem()
-                    }
-                }
-            }
-
-            HorizontalDivider {
-                visible: changePasswdLabel.visible
-            }
-
-            // Change password end.
-
             StandardButton {
                 text: qsTr("Change password")
-                onClicked: showChangePasswordItem()
+                onClicked: changePasswordDialog.show()
                 backgroundColor: FishUI.Theme.darkMode ? "#363636" : FishUI.Theme.backgroundColor
                 Layout.fillWidth: true
-                visible: !changePasswdLabel.visible
             }
 
             StandardButton {
                 text: qsTr("Delete this user")
                 enabled: model.userId !== loggedUser.userId
-                onClicked: accountsManager.deleteUser(userId, true)
+                onClicked: deleteUserDialogComponent.createObject(control, {
+                    "transientParent": control.Window.window,
+                    "targetUserId": currentUser.userId,
+                    "targetUserName": currentUser.userName
+                })
                 backgroundColor: FishUI.Theme.darkMode ? "#363636" : FishUI.Theme.backgroundColor
                 Layout.fillWidth: true
             }
         }
-    }
-
-    function showChangePasswordItem() {
-        changePasswdLabel.visible = true
-        changePasswdLayout.visible = true
-        changePasswdFooterLayout.visible = true
-
-        passwordField.forceActiveFocus()
-    }
-
-    function hideChangePasswordItem() {
-        passwordField.clear()
-        verifyPasswordField.clear()
-
-        changePasswdLabel.visible = false
-        changePasswdLayout.visible = false
-        changePasswdFooterLayout.visible = false
     }
 }

@@ -41,13 +41,24 @@ ItemPage {
     AccountsManager {
         id: accountsManager
 
-        onUserAdded: {
-            if (account.userName === userNameField.text) {
+        onUserCreated: function(account) {
+            if (addUserDialog.waitingForUser) {
                 account.passwordMode = UserAccount.RegularPasswordMode
-                account.setPassword(Password.cryptPassword(passwordField.text))
-                newUserItem.clear()
+                account.setPassword(Password.cryptPassword(addUserDialog.pendingPassword))
+                addUserDialog.finishUserCreation()
+                addUserDialog.close()
             }
         }
+
+        onUserCreationFailed: function(message) {
+            addUserDialog.finishUserCreation()
+            addUserDialog.errorMessage = message
+        }
+    }
+
+    AddUserDialog {
+        id: addUserDialog
+        accountManager: accountsManager
     }
 
     Scrollable {
@@ -80,128 +91,11 @@ ItemPage {
                 }
             }
 
-            // Add new user.
-            RoundedItem {
-                id: newUserItem
-
-                visible: false
-
-                function clear() {
-                    userNameField.clear()
-                    passwordField.clear()
-                    verifyPasswordField.clear()
-                    accountTypeCombo.currentIndex = 0
-                }
-
-                ColumnLayout {
-                    id: _mainLayout
-                    spacing: FishUI.Units.largeSpacing * 1.5
-
-                    Label {
-                        text: qsTr("Add new user")
-                    }
-
-                    GridLayout {
-                        columns: 2
-                        columnSpacing: FishUI.Units.largeSpacing * 2
-                        rowSpacing: FishUI.Units.smallSpacing * 2
-
-                        Label {
-                            text: qsTr("User name")
-                            Layout.alignment: Qt.AlignRight
-                        }
-
-                        TextField {
-                            id: userNameField
-                            placeholderText: qsTr("User name")
-                            Layout.fillWidth: true
-                            Layout.alignment: Qt.AlignRight
-                            selectByMouse: true
-                        }
-
-                        Label {
-                            text: qsTr("Password")
-                            Layout.alignment: Qt.AlignRight
-                        }
-
-                        TextField {
-                            id: passwordField
-                            placeholderText: qsTr("Password")
-                            echoMode: TextField.Password
-                            Layout.fillWidth: true
-                            selectByMouse: true
-                        }
-
-                        Label {
-                            text: qsTr("Verify password")
-                            Layout.alignment: Qt.AlignRight
-                        }
-
-                        TextField {
-                            id: verifyPasswordField
-                            placeholderText: qsTr("Verify password")
-                            echoMode: TextField.Password
-                            Layout.fillWidth: true
-                            selectByMouse: true
-                        }
-
-                        Label {
-                            text: qsTr("Account type")
-                            Layout.alignment: Qt.AlignRight
-                        }
-
-                        ComboBox {
-                            id: accountTypeCombo
-                            model: [qsTr("Standard"), qsTr("Administrator")]
-                            Layout.fillWidth: true
-                            topInset: 0
-                            bottomInset: 0
-                        }
-                    }
-
-                    RowLayout {
-                        id: footerLayout
-                        spacing: FishUI.Units.largeSpacing
-
-                        Button {
-                            id: cancelButton
-                            text: qsTr("Cancel")
-                            onClicked: {
-                                newUserItem.visible = false
-                                newUserItem.clear()
-                            }
-                            Layout.fillWidth: true
-                        }
-
-                        Button {
-                            id: addButton
-                            text: qsTr("Add")
-                            enabled: userNameField.text != "" &&
-                                     passwordField.text != "" &&
-                                     passwordField.text == verifyPasswordField.text
-                            Layout.fillWidth: true
-                            flat: true
-                            onClicked: {
-                                if (accountsManager.createUser(userNameField.text, "", accountTypeCombo.currentIndex)) {
-                                    newUserItem.visible = false
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
             StandardButton {
                 id: _addUserButton
                 text: qsTr("Add user")
                 Layout.fillWidth: true
-                visible: !newUserItem.visible
-                onClicked: {
-                    newUserItem.visible = true
-                    userNameField.forceActiveFocus()
-                    _scrollable.contentY = Math.max(newUserItem.y,
-                                                    _scrollable.contentHeight)
-                }
+                onClicked: addUserDialog.show()
             }
 
             Item {
