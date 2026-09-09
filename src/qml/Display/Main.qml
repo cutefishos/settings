@@ -208,6 +208,58 @@ ItemPage {
                                 }
 
                                 Label {
+                                    text: qsTr("Scale")
+                                }
+
+                                FishUI.SegmentedControl {
+                                    id: scaleTabbar
+                                    Layout.fillWidth: true
+
+                                    TabButton {
+                                        text: "100%"
+                                        onClicked: element.scale = 1.0
+                                    }
+
+                                    TabButton {
+                                        text: "125%"
+                                        onClicked: element.scale = 1.25
+                                    }
+
+                                    TabButton {
+                                        text: "150%"
+                                        onClicked: element.scale = 1.5
+                                    }
+
+                                    TabButton {
+                                        text: "175%"
+                                        onClicked: element.scale = 1.75
+                                    }
+
+                                    TabButton {
+                                        text: "200%"
+                                        onClicked: element.scale = 2.0
+                                    }
+
+                                    currentIndex: {
+                                        var index = 0
+                                        var scale = element.scale
+
+                                        if (scale <= 1.0)
+                                            index = 0
+                                        else if (scale <= 1.25)
+                                            index = 1
+                                        else if (scale <= 1.50)
+                                            index = 2
+                                        else if (scale <= 1.75)
+                                            index = 3
+                                        else if (scale <= 2.0)
+                                            index = 4
+
+                                        return index
+                                    }
+                                }
+
+                                Label {
                                     text: qsTr("Rotation")
                                 }
 
@@ -301,64 +353,6 @@ ItemPage {
                     onCurrentIndexChanged: _screenView.currentIndex = currentIndex
                     interactive: true
                     visible: count > 1
-                }
-            }
-
-            RoundedItem {
-                Label {
-                    text: qsTr("Scale")
-                    color: FishUI.Theme.disabledTextColor
-                }
-
-                FishUI.SegmentedControl {
-                    id: dockSizeTabbar
-                    Layout.fillWidth: true
-                    enabled: screen.available && !screen.busy
-
-                    TabButton {
-                        text: "100%"
-                        onClicked: if (_screenView.currentItem) _screenView.currentItem.element.scale = 1.0
-                    }
-
-                    TabButton {
-                        text: "125%"
-                        onClicked: if (_screenView.currentItem) _screenView.currentItem.element.scale = 1.25
-                    }
-
-                    TabButton {
-                        text: "150%"
-                        onClicked: if (_screenView.currentItem) _screenView.currentItem.element.scale = 1.5
-                    }
-
-                    TabButton {
-                        text: "175%"
-                        onClicked: if (_screenView.currentItem) _screenView.currentItem.element.scale = 1.75
-                    }
-
-                    TabButton {
-                        text: "200%"
-                        onClicked: if (_screenView.currentItem) _screenView.currentItem.element.scale = 2.0
-                    }
-
-                    currentIndex: {
-                        var index = 0
-                        var output = _screenView.currentItem ? _screenView.currentItem.element : null
-                        var scale = output ? output.scale : 1.0
-
-                        if (scale <= 1.0)
-                            index = 0
-                        else if (scale <= 1.25)
-                            index = 1
-                        else if (scale <= 1.50)
-                            index = 2
-                        else if (scale <= 1.75)
-                            index = 3
-                        else if (scale <= 2.0)
-                            index = 4
-
-                        return index
-                    }
-
                 }
             }
 
