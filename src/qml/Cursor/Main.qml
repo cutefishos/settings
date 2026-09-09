@@ -38,10 +38,6 @@ ItemPage {
         id: mouse
     }
 
-    function syncValues() {
-        accelerationSlider.init()
-    }
-
     Scrollable {
         anchors.fill: parent
         contentHeight: layout.implicitHeight
@@ -52,6 +48,7 @@ ItemPage {
             spacing: FishUI.Units.largeSpacing * 2
 
             RoundedItem {
+                enabled: mouse.available
                 GridLayout {
                     columns: 2
                     columnSpacing: FishUI.Units.largeSpacing * 1.5
@@ -67,7 +64,7 @@ ItemPage {
                         Layout.alignment: Qt.AlignRight
                         checked: mouse.leftHanded
                         rightPadding: 0
-                        onCheckedChanged: mouse.leftHanded = checked
+                        onToggled: mouse.leftHanded = checked
                     }
 
                     Label {
@@ -78,21 +75,21 @@ ItemPage {
                         Layout.fillHeight: true
                         Layout.alignment: Qt.AlignRight
                         checked: mouse.naturalScroll
-                        onCheckedChanged: mouse.naturalScroll = checked
+                        onToggled: mouse.naturalScroll = checked
                         rightPadding: 0
                     }
 
-//                    Label {
-//                        text: qsTr("Mouse acceleration")
-//                    }
+                    Label {
+                        text: qsTr("Mouse acceleration")
+                    }
 
-//                    Switch {
-//                        Layout.fillHeight: true
-//                        Layout.alignment: Qt.AlignRight
-//                        checked: mouse.acceleration
-//                        onCheckableChanged: mouse.acceleration = checked
-//                        rightPadding: 0
-//                    }
+                    Switch {
+                        Layout.fillHeight: true
+                        Layout.alignment: Qt.AlignRight
+                        checked: mouse.acceleration
+                        onToggled: mouse.acceleration = checked
+                        rightPadding: 0
+                    }
 
 //                    Label {
 //                        text: qsTr("Disable touchpad when mouse is connected")
@@ -122,13 +119,9 @@ ItemPage {
                         to: 11
                         stepSize: 1
 
-                        function init() {
-                            accelerationSlider.value = 6 + mouse.pointerAcceleration / 0.2
-                        }
+                        value: 6 + mouse.pointerAcceleration / 0.2
 
-                        Component.onCompleted: init()
-
-                        onValueChanged: {
+                        onMoved: {
                             mouse.pointerAcceleration = Math.round(((value - 6) * 0.2) * 10) / 10
                         }
                     }
