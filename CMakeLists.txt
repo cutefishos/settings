@@ -22,9 +22,6 @@ pkg_check_modules(Xcursor REQUIRED IMPORTED_TARGET xcursor)
 find_package(Libcrypt REQUIRED)
 # find_package(QApt REQUIRED)
 
-find_package(KF6NetworkManagerQt REQUIRED)
-find_package(KF6ModemManagerQt REQUIRED)
-find_package(KF6Config)
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/applications
                  ${CMAKE_CURRENT_BINARY_DIR}/cutefish-framework-applications-build)
@@ -90,10 +87,6 @@ target_link_libraries(${PROJECT_NAME}
         Qt6::Xml
         Qt6::Concurrent
         # FishUI
-
-        KF6::NetworkManagerQt
-        KF6::ModemManagerQt
-        KF6::ConfigCore
 
         PkgConfig::FontConfig
         ${FREETYPE_LIBRARIES}
