@@ -5,14 +5,15 @@ The System Settings application for Cutefish Desktop.
 ![screenshot](screenshots/Screenshot_20211025_150819.png)
 
 ## Dependencies
+
 Arch/Manjaro Dependencies:
 ```shell
-sudo pacman -S extra-cmake-modules qt5-base qt5-quickcontrols2 freetype2 fontconfig networkmanager-qt modemmanager-qt
+sudo pacman -S cmake qt6-base qt6-declarative qt6-tools icu libxcrypt freetype2 fontconfig libxcursor
 ```
 
 Debian/Ubuntu Dependencies:
 ```shell
-sudo apt install cmake debhelper extra-cmake-modules libicu-dev libcrypt-dev libfreetype6-dev libfontconfig1-dev libkf5networkmanagerqt-dev libkf5config-dev modemmanager-qt-dev qtbase5-dev qtdeclarative5-dev qtquickcontrols2-5-dev qttools5-dev qttools5-dev-tools qml-module-qtquick-controls2 qml-module-qtquick2 qml-module-qtquick-layouts qml-module-qt-labs-platform qml-module-qt-labs-settings qml-module-qtqml qml-module-qtquick-window2 qml-module-qtquick-shapes qml-module-qtquick-dialogs qml-module-qtquick-particles2
+sudo apt install cmake debhelper libicu-dev libcrypt-dev libfreetype6-dev libfontconfig1-dev libxcursor-dev qt6-base-dev qt6-declarative-dev qt6-tools-dev qt6-tools-dev-tools pkg-config
 ```
 
 ## Build
