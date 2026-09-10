@@ -34,6 +34,7 @@ FishUI.Window {
     minimumHeight: 600
 
     property alias stackView: _stackView
+    property string pendingPageName: ""
 
     background.color: FishUI.Theme.backgroundColor
     background.opacity: blurEnabled && blurAvailable ? (FishUI.Theme.darkMode ? 0.7 : 0.5) : 1
@@ -58,7 +59,13 @@ FishUI.Window {
                    : Math.round(implicitWidth * pixelRatio) / pixelRatio
 
             onCurrentIndexChanged: {
-                switchPageFromIndex(currentIndex)
+                if (!sideBar.updatingModel)
+                    switchPageFromIndex(currentIndex)
+            }
+            onCurrentPageRemoved: switchPageFromIndex(currentIndex)
+            onBluetoothItemAdded: {
+                if (rootWindow.pendingPageName === "bluetooth")
+                    rootWindow.switchPageFromName("bluetooth")
             }
         }
 
@@ -77,11 +84,15 @@ FishUI.Window {
     }
 
     function switchPageFromIndex(index) {
+        if (index < 0 || index >= sideBar.model.count)
+            return
+        pendingPageName = ""
         _stackView.pop()
         _stackView.push(Qt.resolvedUrl(sideBar.model.get(index).page))
     }
 
     function switchPageFromName(pageName) {
+        pendingPageName = pageName === "bluetooth" ? pageName : ""
         for (var i = 0; i < sideBar.model.count; ++i) {
             if (pageName === sideBar.model.get(i).name) {
                 switchPageFromIndex(i)

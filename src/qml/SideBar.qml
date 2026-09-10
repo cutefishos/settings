@@ -23,8 +23,10 @@ import QtQuick.Layouts 1.3
 import FishUI 1.0 as FishUI
 import Cutefish.Settings 1.0
 import Cutefish.Network 1.0 as NM
+import Cutefish.Bluetooth 1.0 as Bluetooth
 
 Item {
+    id: sideBar
     implicitWidth: 230
 
     property int itemRadiusV: 8
@@ -32,6 +34,67 @@ Item {
     property alias view: listView
     property alias model: listModel
     property alias currentIndex: listView.currentIndex
+    property bool updatingModel: false
+    signal currentPageRemoved()
+    signal bluetoothItemAdded()
+
+    Component.onCompleted: syncBluetoothItem()
+
+    Connections {
+        target: Bluetooth.Manager
+        function onAvailableChanged() {
+            Qt.callLater(sideBar.syncBluetoothItem)
+        }
+    }
+
+    function syncBluetoothItem() {
+        var bluetoothIndex = -1
+        for (var i = 0; i < listModel.count; ++i) {
+            if (listModel.get(i).name === "bluetooth") {
+                bluetoothIndex = i
+                break
+            }
+        }
+        if (Bluetooth.Manager.available === (bluetoothIndex >= 0))
+            return
+
+        var selectedPage = listView.currentIndex >= 0
+                ? listModel.get(listView.currentIndex).page : ""
+        var selectedRemoved = bluetoothIndex >= 0 && listView.currentIndex === bluetoothIndex
+        updatingModel = true
+        if (Bluetooth.Manager.available) {
+            var insertIndex = 0
+            while (insertIndex < listModel.count
+                   && (listModel.get(insertIndex).name === "wlan"
+                       || listModel.get(insertIndex).name === "ethernet"))
+                ++insertIndex
+            listModel.insert(insertIndex, {
+                title: qsTr("Bluetooth"),
+                name: "bluetooth",
+                page: "qrc:/qml/Bluetooth/Main.qml",
+                iconSource: "bluetooth.svg",
+                iconColor: "#0067FF",
+                category: qsTr("Network and connection")
+            })
+        } else {
+            listModel.remove(bluetoothIndex)
+        }
+        if (selectedRemoved) {
+            listView.currentIndex = 0
+        } else {
+            for (var j = 0; j < listModel.count; ++j) {
+                if (listModel.get(j).page === selectedPage) {
+                    listView.currentIndex = j
+                    break
+                }
+            }
+        }
+        updatingModel = false
+        if (selectedRemoved)
+            currentPageRemoved()
+        else if (Bluetooth.Manager.available)
+            bluetoothItemAdded()
+    }
 
     Rectangle {
         anchors.fill: parent
@@ -76,15 +139,6 @@ Item {
 //            iconColor: "#0067FF"
 //            category: qsTr("Network and connection")
 //        }
-
-        ListElement {
-            title: qsTr("Bluetooth")
-            name: "bluetooth"
-            page: "qrc:/qml/Bluetooth/Main.qml"
-            iconSource: "bluetooth.svg"
-            iconColor: "#0067FF"
-            category: qsTr("Network and connection")
-        }
 
 //        ListElement {
 //            title: qsTr("VPN")

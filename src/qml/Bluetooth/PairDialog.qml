@@ -1,103 +1,93 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.4
-import QtQuick.Layouts 1.3
-import Cutefish.Settings 1.0
-import FishUI 1.0 as FishUI
-import "../"
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import Cutefish.Bluetooth 1.0 as Bluetooth
 
-FishUI.Window {
-    id: control
+Dialog {
+    id: dialog
+    anchors.centerIn: parent
+    width: Math.min(parent.width - 32, 420)
+    modal: true
+    closePolicy: Popup.NoAutoClose
+    title: qsTr("Bluetooth pairing")
 
-    windowRadius: 16
-    windowButtonsTopMargin: 8
-    windowButtonsRightMargin: 8
-    minimizeButtonVisible: false
-    header.height: 44
-    contentTopMargin: 0
+    readonly property string kind: Bluetooth.Manager.pairingKind
+    readonly property bool inputRequired: kind === "RequestPinCode" || kind === "RequestPasskey"
+    readonly property bool displayOnly: kind === "DisplayPinCode" || kind === "DisplayPasskey"
 
-    width: contentWidth
-    height: contentHeight
-
-    property int contentWidth: 360
-    property int contentHeight: mainLayout.implicitHeight + 32
-
-    minimumWidth: contentWidth
-    minimumHeight: contentHeight
-    maximumWidth: contentWidth
-    maximumHeight: contentHeight
-
-    modality: Qt.WindowModal
-    flags: Qt.Dialog | Qt.FramelessWindowHint
-    visible: false
-    title: " "
-
-    property var pin: ""
-
-    background.color: FishUI.Theme.secondBackgroundColor
-
-    DragHandler {
-        target: null
-        acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
-        grabPermissions: PointerHandler.CanTakeOverFromItems | PointerHandler.CanTakeOverFromHandlersOfDifferentType | PointerHandler.ApprovesTakeOverByAnything
-        onActiveChanged: if (active) { control.helper.startSystemMove(control) }
+    Connections {
+        target: Bluetooth.Manager
+        function onPairingChanged() {
+            if (Bluetooth.Manager.pairingKind.length) {
+                if (!dialog.opened) {
+                    codeInput.clear()
+                    dialog.open()
+                    if (dialog.inputRequired)
+                        codeInput.forceActiveFocus()
+                }
+            } else {
+                dialog.close()
+            }
+        }
     }
 
-    ColumnLayout {
-        id: mainLayout
-        anchors.fill: parent
-        anchors.margins: 16
+    contentItem: ColumnLayout {
         spacing: 16
-
         Label {
             Layout.fillWidth: true
-            Layout.rightMargin: 32
-            text: "Bluetooth Pairing Request"
+            text: Bluetooth.Manager.pairingDevice
             textFormat: Text.PlainText
-            font.pixelSize: 14
-            font.weight: Font.DemiBold
-            color: FishUI.Theme.textColor
             wrapMode: Text.Wrap
         }
-
         Label {
             Layout.fillWidth: true
-            text: control.title.trim()
-            textFormat: Text.PlainText
-            font.pixelSize: 14
-            color: FishUI.Theme.disabledTextColor
+            text: dialog.kind === "RequestConfirmation" ? qsTr("Does this code match the code on your device?")
+                  : dialog.kind === "RequestPinCode" ? qsTr("Enter the PIN for your device.")
+                  : dialog.kind === "RequestPasskey" ? qsTr("Enter the passkey shown on your device.")
+                  : dialog.displayOnly ? qsTr("Enter this code on your device, then press Enter.")
+                  : dialog.kind === "AuthorizeService" ? qsTr("Allow this device to use the following Bluetooth service?")
+                  : qsTr("Allow this device to pair?")
             wrapMode: Text.Wrap
-            visible: text.length > 0
         }
-
         Label {
-            text: control.pin
+            Layout.fillWidth: true
+            visible: Bluetooth.Manager.pairingCode.length > 0
+            text: Bluetooth.Manager.pairingCode
             textFormat: Text.PlainText
-            visible: control.pin !== ""
-            font.pixelSize: 24
-            font.weight: Font.DemiBold
-            Layout.alignment: Qt.AlignHCenter
+            wrapMode: Text.WrapAnywhere
+            font.pixelSize: dialog.kind === "AuthorizeService" ? 14 : 28
+            horizontalAlignment: Text.AlignHCenter
         }
-
+        Label {
+            visible: dialog.kind === "DisplayPasskey"
+            text: qsTr("%1 digits entered").arg(Bluetooth.Manager.pairingEntered)
+        }
+        TextField {
+            id: codeInput
+            Layout.fillWidth: true
+            visible: dialog.inputRequired
+            maximumLength: dialog.kind === "RequestPasskey" ? 6 : 16
+            inputMethodHints: dialog.kind === "RequestPasskey" ? Qt.ImhDigitsOnly : Qt.ImhNone
+            onAccepted: Bluetooth.Manager.respondPairing(true, text)
+        }
+        Label {
+            Layout.fillWidth: true
+            visible: Bluetooth.Manager.errorText.length > 0
+            text: Bluetooth.Manager.errorText
+            textFormat: Text.PlainText
+            wrapMode: Text.Wrap
+        }
         RowLayout {
-            spacing: 8
             Layout.alignment: Qt.AlignRight
-
-            FishUI.ConfirmDialogButton {
+            Button {
                 text: qsTr("Cancel")
-                onClicked: {
-                    control.visible = false
-                    bluetoothMgr.confirmMatchButton(false)
-                }
+                onClicked: Bluetooth.Manager.cancelPairing()
             }
-
-            FishUI.ConfirmDialogButton {
-                text: qsTr("OK")
-                primary: true
-                onClicked: {
-                    control.visible = false
-                    bluetoothMgr.confirmMatchButton(true)
-                }
+            Button {
+                visible: !dialog.displayOnly
+                text: dialog.kind === "RequestConfirmation" ? qsTr("Confirm") : qsTr("Accept")
+                enabled: !dialog.inputRequired || codeInput.text.length > 0
+                onClicked: Bluetooth.Manager.respondPairing(true, codeInput.text)
             }
         }
     }
