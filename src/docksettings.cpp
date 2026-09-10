@@ -24,7 +24,7 @@
 
 DockSettings::DockSettings(QObject *parent)
     : QObject(parent)
-    , m_dockSettings(new QSettings(QSettings::UserScope, "cutefishos", "dock"))
+    , m_dockSettings(new QSettings(QSettings::UserScope, "cutefish", "dock"))
     , m_dockIconSize(0)
     , m_dockDirection(0)
     , m_dockVisibility(0)
@@ -45,9 +45,7 @@ int DockSettings::dockIconSize() const
 void DockSettings::setDockIconSize(int dockIconSize)
 {
     if (m_dockIconSize != dockIconSize) {
-        QDBusInterface iface("com.cutefish.Dock",
-                             "/Dock",
-                             "com.cutefish.Dock",
+        QDBusInterface iface("com.cutefish.Dock", "/Dock", "com.cutefish.Dock",
                              QDBusConnection::sessionBus());
         if (iface.isValid()) {
             iface.call("setIconSize", dockIconSize);
@@ -66,9 +64,7 @@ int DockSettings::dockDirection() const
 void DockSettings::setDockDirection(int dockDirection)
 {
     if (m_dockDirection != dockDirection) {
-        QDBusInterface iface("com.cutefish.Dock",
-                             "/Dock",
-                             "com.cutefish.Dock",
+        QDBusInterface iface("com.cutefish.Dock", "/Dock", "com.cutefish.Dock",
                              QDBusConnection::sessionBus());
         if (iface.isValid()) {
             iface.call("setDirection", dockDirection);
@@ -89,9 +85,7 @@ void DockSettings::setDockVisibility(int visibility)
     if (m_dockVisibility != visibility) {
         m_dockVisibility = visibility;
 
-        QDBusInterface iface("com.cutefish.Dock",
-                             "/Dock",
-                             "com.cutefish.Dock",
+        QDBusInterface iface("com.cutefish.Dock", "/Dock", "com.cutefish.Dock",
                              QDBusConnection::sessionBus());
         if (iface.isValid()) {
             iface.call("setVisibility", visibility);

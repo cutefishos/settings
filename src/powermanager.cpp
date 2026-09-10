@@ -22,8 +22,7 @@
 #include <QDBusInterface>
 #include <QSettings>
 
-namespace
-{
+namespace {
 constexpr auto s_powerGroup = "Power";
 
 int normalizedTimeout(int timeout)
@@ -49,7 +48,7 @@ int readTimeout(QSettings &settings, const QString &key, const QString &legacyKe
 
 void writePowerSetting(const QString &key, const QVariant &value)
 {
-    QSettings settings(QSettings::UserScope, "cutefishos", "power");
+    QSettings settings(QSettings::UserScope, "cutefish", "power");
     settings.beginGroup(QLatin1String(s_powerGroup));
     settings.setValue(key, value);
     settings.endGroup();
@@ -58,26 +57,24 @@ void writePowerSetting(const QString &key, const QVariant &value)
 
 void callPowerManager(const QString &method, const QVariant &value)
 {
-    QDBusInterface iface("com.cutefish.Services",
-                         "/com/cutefish/Services/Power", "com.cutefish.Services.Power",
-                         QDBusConnection::sessionBus());
+    QDBusInterface iface("com.cutefish.Services", "/com/cutefish/Services/Power",
+                         "com.cutefish.Services.Power", QDBusConnection::sessionBus());
     if (iface.isValid())
         iface.asyncCall(method, value);
 }
 
-}
+} // namespace
 
 PowerManager::PowerManager(QObject *parent)
     : QObject(parent)
-    , m_iface("com.cutefish.Services",
-              "/com/cutefish/Services/Power", "com.cutefish.Services.Power",
-              QDBusConnection::sessionBus())
+    , m_iface("com.cutefish.Services", "/com/cutefish/Services/Power",
+              "com.cutefish.Services.Power", QDBusConnection::sessionBus())
     , m_mode(-1)
 {
     if (m_iface.isValid())
         m_mode = m_iface.property("mode").toInt();
 
-    QSettings settings(QSettings::UserScope, "cutefishos", "power");
+    QSettings settings(QSettings::UserScope, "cutefish", "power");
     m_batteryScreenOff = readTimeout(settings, QStringLiteral("BatteryScreenOff"),
                                      QStringLiteral("CloseScreenTimeout"), 300);
     m_acScreenOff = readTimeout(settings, QStringLiteral("ACScreenOff"),

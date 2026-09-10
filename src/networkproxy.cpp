@@ -5,7 +5,7 @@
 
 NetworkProxy::NetworkProxy(QObject *parent)
     : QObject(parent)
-    , m_settings("cutefishos", "network")
+    , m_settings("cutefish", "network")
 {
     m_flag = m_settings.value("ProxyFlag", 0).toInt();
     m_useSameProxy = m_settings.value("UseSameProxy", false).toBool();

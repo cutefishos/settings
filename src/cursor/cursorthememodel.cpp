@@ -31,7 +31,7 @@
 
 CursorThemeModel::CursorThemeModel(QObject *parent)
     : QAbstractListModel(parent)
-    , m_settings("cutefishos", "theme")
+    , m_settings("cutefish", "theme")
 {
     initThemes();
 

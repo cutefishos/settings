@@ -1,26 +1,26 @@
 #include "application.h"
 #include <QCommandLineParser>
 #include <QDBusPendingCall>
-#include <QTranslator>
-#include <QLocale>
 #include <QIcon>
+#include <QLocale>
+#include <QTranslator>
 
-#include "settingsuiadaptor.h"
-#include "fontsmodel.h"
-#include "fonts/fonts.h"
-#include "docksettings.h"
+#include "about.h"
+#include "applicationregistry.h"
 #include "battery.h"
 #include "batteryhistorymodel.h"
 #include "brightness.h"
-#include "about.h"
+#include "defaultapplications.h"
+#include "docksettings.h"
+#include "fonts/fonts.h"
+#include "fontsmodel.h"
 #include "language.h"
-#include "password.h"
-#include "powermanager.h"
-#include "touchpad.h"
 #include "networkproxy.h"
 #include "notifications.h"
-#include "defaultapplications.h"
-#include "applicationregistry.h"
+#include "password.h"
+#include "powermanager.h"
+#include "settingsuiadaptor.h"
+#include "touchpad.h"
 
 #include "cursor/cursorthememodel.h"
 #include "cursor/mouse.h"
@@ -41,7 +41,7 @@ Application::Application(int &argc, char **argv)
     : QApplication(argc, argv)
 {
     setWindowIcon(QIcon::fromTheme("preferences-system"));
-    setOrganizationName("cutefishos");
+    setOrganizationName("cutefish");
 
     QCommandLineParser parser;
     parser.setApplicationDescription(QStringLiteral("Cutefish Settings"));
@@ -54,7 +54,8 @@ Application::Application(int &argc, char **argv)
     const QString module = parser.value(moduleOption);
 
     if (!QDBusConnection::sessionBus().registerService("com.cutefish.SettingsUI")) {
-        QDBusInterface iface("com.cutefish.SettingsUI", "/SettingsUI", "com.cutefish.SettingsUI", QDBusConnection::sessionBus());
+        QDBusInterface iface("com.cutefish.SettingsUI", "/SettingsUI", "com.cutefish.SettingsUI",
+                             QDBusConnection::sessionBus());
         if (iface.isValid())
             iface.call("switchToPage", module);
         return;
@@ -94,7 +95,9 @@ Application::Application(int &argc, char **argv)
 
     // Translations
     QLocale locale;
-    QString qmFilePath = QString("%1/%2.qm").arg("/usr/share/cutefish-settings/translations/").arg(locale.name());
+    QString qmFilePath = QString("%1/%2.qm")
+                                 .arg("/usr/share/cutefish-settings/translations/")
+                                 .arg(locale.name());
     if (QFile::exists(qmFilePath)) {
         QTranslator *translator = new QTranslator(QApplication::instance());
         if (translator->load(qmFilePath)) {

@@ -19,8 +19,7 @@
 
 #include "fonts.h"
 
-namespace
-{
+namespace {
 Fonts::Hinting hintingFromString(const QString &value)
 {
     if (value == QLatin1String("hintmedium"))
@@ -46,11 +45,11 @@ QString hintingToString(Fonts::Hinting hinting)
     }
     return QStringLiteral("hintnone");
 }
-}
+} // namespace
 
 Fonts::Fonts(QObject *parent)
     : QObject(parent)
-    , m_settings("cutefishos", "theme")
+    , m_settings("cutefish", "theme")
     , m_antiAliasing(false)
     , m_hintingModel(new QStandardItemModel(this))
 {

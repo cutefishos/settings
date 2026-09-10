@@ -18,31 +18,33 @@
  */
 
 #include "battery.h"
-#include <QDateTime>
-#include <QSettings>
 #include <QDBusArgument>
 #include <QDBusReply>
+#include <QDateTime>
 #include <QDebug>
+#include <QSettings>
 
 static const QString s_sServer = "com.cutefish.Services";
 static const QString s_sPath = "/com/cutefish/Services/Battery";
 static const QString s_sInterface = "com.cutefish.Services.Battery";
 
-//DBus Battery Info Structure
+// DBus Battery Info Structure
 struct BatteryInfo {
     uint time, state;
     double value;
 };
 Q_DECLARE_METATYPE(BatteryInfo)
 
-const QDBusArgument &operator<<(QDBusArgument &argument, const BatteryInfo &info) {
+const QDBusArgument &operator<<(QDBusArgument &argument, const BatteryInfo &info)
+{
     argument.beginStructure();
     argument << info.time << info.value << info.state;
     argument.endStructure();
     return argument;
 }
 
-const QDBusArgument &operator>>(const QDBusArgument &argument, BatteryInfo &info) {
+const QDBusArgument &operator>>(const QDBusArgument &argument, BatteryInfo &info)
+{
     argument.beginStructure();
     argument >> info.time >> info.value >> info.state;
     argument.endStructure();
@@ -51,33 +53,38 @@ const QDBusArgument &operator>>(const QDBusArgument &argument, BatteryInfo &info
 
 Battery::Battery(QObject *parent)
     : QObject(parent)
-    , m_upowerInterface("org.freedesktop.UPower",
-                        "/org/freedesktop/UPower",
-                        "org.freedesktop.UPower",
-                        QDBusConnection::systemBus())
-    , m_interface("com.cutefish.Services",
-                  "/com/cutefish/Services/Battery",
-                  "com.cutefish.Services.Battery",
-                  QDBusConnection::sessionBus())
+    , m_upowerInterface("org.freedesktop.UPower", "/org/freedesktop/UPower",
+                        "org.freedesktop.UPower", QDBusConnection::systemBus())
+    , m_interface("com.cutefish.Services", "/com/cutefish/Services/Battery",
+                  "com.cutefish.Services.Battery", QDBusConnection::sessionBus())
     , m_available(false)
     , m_onBattery(false)
 {
     m_available = m_interface.isValid() && !m_interface.lastError().isValid();
 
     if (m_available) {
-        QDBusConnection::sessionBus().connect(s_sServer, s_sPath, s_sInterface, "chargeStateChanged", this, SLOT(chargeStateChanged(int)));
-        QDBusConnection::sessionBus().connect(s_sServer, s_sPath, s_sInterface, "chargePercentChanged", this, SLOT(chargePercentChanged(int)));
-        QDBusConnection::sessionBus().connect(s_sServer, s_sPath, s_sInterface, "lastChargedPercentChanged", this, SLOT(lastChargedPercentChanged()));
-        QDBusConnection::sessionBus().connect(s_sServer, s_sPath, s_sInterface, "capacityChanged", this, SLOT(capacityChanged(int)));
-        QDBusConnection::sessionBus().connect(s_sServer, s_sPath, s_sInterface, "remainingTimeChanged", this, SLOT(remainingTimeChanged(qlonglong)));
+        QDBusConnection::sessionBus().connect(s_sServer, s_sPath, s_sInterface,
+                                              "chargeStateChanged", this,
+                                              SLOT(chargeStateChanged(int)));
+        QDBusConnection::sessionBus().connect(s_sServer, s_sPath, s_sInterface,
+                                              "chargePercentChanged", this,
+                                              SLOT(chargePercentChanged(int)));
+        QDBusConnection::sessionBus().connect(s_sServer, s_sPath, s_sInterface,
+                                              "lastChargedPercentChanged", this,
+                                              SLOT(lastChargedPercentChanged()));
+        QDBusConnection::sessionBus().connect(s_sServer, s_sPath, s_sInterface, "capacityChanged",
+                                              this, SLOT(capacityChanged(int)));
+        QDBusConnection::sessionBus().connect(s_sServer, s_sPath, s_sInterface,
+                                              "remainingTimeChanged", this,
+                                              SLOT(remainingTimeChanged(qlonglong)));
 
         QDBusInterface interface("org.freedesktop.UPower", "/org/freedesktop/UPower",
                                  "org.freedesktop.UPower", QDBusConnection::systemBus());
 
-        QDBusConnection::systemBus().connect("org.freedesktop.UPower", "/org/freedesktop/UPower",
-                                             "org.freedesktop.DBus.Properties",
-                                             "PropertiesChanged", this,
-                                             SLOT(onPropertiesChanged(QString, QVariantMap, QStringList)));
+        QDBusConnection::systemBus().connect(
+                "org.freedesktop.UPower", "/org/freedesktop/UPower",
+                "org.freedesktop.DBus.Properties", "PropertiesChanged", this,
+                SLOT(onPropertiesChanged(QString, QVariantMap, QStringList)));
 
         if (interface.isValid()) {
             m_onBattery = interface.property("OnBattery").toBool();
@@ -110,12 +117,12 @@ QVariantList Battery::getHistory(const int timespan, const int resolution)
     QVariantList listValues;
     QVariantMap listItem;
 
-    QDBusMessage historyMessage = QDBusMessage::createMethodCall("org.freedesktop.UPower", m_udi,
-                                                                 "org.freedesktop.UPower.Device", "GetHistory");
+    QDBusMessage historyMessage = QDBusMessage::createMethodCall(
+            "org.freedesktop.UPower", m_udi, "org.freedesktop.UPower.Device", "GetHistory");
     QVariantList historyMessageArguments;
     historyMessageArguments.append("charge");
-    historyMessageArguments.append((uint) timespan);
-    historyMessageArguments.append((uint) resolution);
+    historyMessageArguments.append((uint)timespan);
+    historyMessageArguments.append((uint)resolution);
     historyMessage.setArguments(historyMessageArguments);
 
     quint64 offset = QDateTime::currentDateTime().toSecsSinceEpoch();
@@ -170,7 +177,7 @@ QString Battery::lastChargedTime() const
 
 bool Battery::showPercent()
 {
-    QSettings settings(QSettings::UserScope, "cutefishos", "statusbar");
+    QSettings settings(QSettings::UserScope, "cutefish", "statusbar");
     return settings.value("BatteryPercentage", false).toBool();
 }
 
@@ -184,7 +191,8 @@ QString Battery::udi() const
     return m_udi;
 }
 
-void Battery::onPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps)
+void Battery::onPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps,
+                                  const QStringList &invalidatedProps)
 {
     Q_UNUSED(ifaceName);
     Q_UNUSED(changedProps);

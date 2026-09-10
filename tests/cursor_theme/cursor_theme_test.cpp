@@ -18,7 +18,7 @@ public slots:
 
     void setCursorTheme(const QString &theme)
     {
-        QSettings settings("cutefishos", "theme");
+        QSettings settings("cutefish", "theme");
         settings.setValue("CursorTheme", theme);
         settings.sync();
         emit cursorThemeChanged();
@@ -26,7 +26,7 @@ public slots:
 
     void setCursorSize(int size)
     {
-        QSettings settings("cutefishos", "theme");
+        QSettings settings("cutefish", "theme");
         settings.setValue("CursorSize", size);
         settings.sync();
         emit cursorSizeChanged();

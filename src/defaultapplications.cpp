@@ -21,10 +21,10 @@
 #include "applicationregistry.h"
 #include "desktopentry.h"
 
+#include <QDebug>
 #include <QFileInfo>
 #include <QSettings>
 #include <QStandardPaths>
-#include <QDebug>
 
 static QString firstDesktopEntry(const QString &value)
 {
@@ -35,8 +35,8 @@ DefaultApplications::DefaultApplications(QObject *parent)
     : QObject(parent)
 {
     ApplicationRegistry *registry = ApplicationRegistry::instance();
-    connect(registry, &ApplicationRegistry::applicationsChanged,
-            this, &DefaultApplications::loadApps);
+    connect(registry, &ApplicationRegistry::applicationsChanged, this,
+            &DefaultApplications::loadApps);
     if (!registry->loading())
         loadApps();
 }
@@ -65,7 +65,7 @@ void DefaultApplications::loadApps()
         item.fileName = QFileInfo(entry->path()).fileName();
 
         if (entry->categories().contains(QStringLiteral("FileManager"))
-                && entry->mimeTypes().contains(QStringLiteral("inode/directory"))) {
+            && entry->mimeTypes().contains(QStringLiteral("inode/directory"))) {
             m_fileManagerList.append(item);
         } else if (entry->categories().contains(QStringLiteral("WebBrowser"))
                    && entry->mimeTypes().contains(QStringLiteral("x-scheme-handler/http"))) {
@@ -82,11 +82,13 @@ void DefaultApplications::loadApps()
     QSettings mimeApps(mimeAppsListFilePath(), QSettings::IniFormat);
     mimeApps.beginGroup("Default Applications");
 
-    QSettings settings("cutefishos", "defaultApps");
+    QSettings settings("cutefish", "defaultApps");
 
-    const QString defaultBrowser = firstDesktopEntry(mimeApps.value("x-scheme-handler/http").toString());
+    const QString defaultBrowser =
+            firstDesktopEntry(mimeApps.value("x-scheme-handler/http").toString());
     const QString defaultFM = firstDesktopEntry(mimeApps.value("inode/directory").toString());
-    const QString defaultEMail = firstDesktopEntry(mimeApps.value("x-scheme-handler/mailto").toString());
+    const QString defaultEMail =
+            firstDesktopEntry(mimeApps.value("x-scheme-handler/mailto").toString());
     QString defaultTerminal = settings.value("terminal").toString();
 
     // Init indexes.
@@ -241,7 +243,7 @@ void DefaultApplications::setDefaultTerminal(int index)
 
     qDebug() << index << desktop;
 
-    QSettings settings("cutefishos", "defaultApps");
+    QSettings settings("cutefish", "defaultApps");
     settings.setValue("terminal", desktop);
 }
 
@@ -254,5 +256,6 @@ void DefaultApplications::setDefaultApp(const QString &mimeType, const QString &
 
 QString DefaultApplications::mimeAppsListFilePath() const
 {
-    return QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + QLatin1String("/mimeapps.list");
+    return QStandardPaths::writableLocation(QStandardPaths::ConfigLocation)
+            + QLatin1String("/mimeapps.list");
 }
