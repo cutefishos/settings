@@ -37,7 +37,7 @@ FishUI.Window {
     property string pendingPageName: ""
 
     background.color: FishUI.Theme.backgroundColor
-    background.opacity: blurEnabled && blurAvailable ? (FishUI.Theme.darkMode ? 0.7 : 0.5) : 1
+    background.opacity: blurAvailable ? (FishUI.Theme.darkMode ? 0.7 : 0.5) : 1
     header.height: 40
     contentTopMargin: 0
 

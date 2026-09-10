@@ -40,7 +40,7 @@ FishUI.Window {
     flags: Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
 
     background.color: FishUI.Theme.secondBackgroundColor
-    background.opacity: blurEnabled && blurAvailable ? 0.5 : 1
+    background.opacity: blurAvailable ? 0.5 : 1
     contentTopMargin: 0
 
     onWidthChanged: control.reset()
