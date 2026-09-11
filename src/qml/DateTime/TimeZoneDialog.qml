@@ -26,7 +26,6 @@ import FishUI 1.0 as FishUI
 FishUI.Window {
     id: control
 
-    windowRadius: 16
     windowButtonsTopMargin: 8
     windowButtonsRightMargin: 8
     minimizeButtonVisible: false
