@@ -20,7 +20,6 @@ find_package(Freetype REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(Xcursor REQUIRED IMPORTED_TARGET xcursor)
 find_package(Libcrypt REQUIRED)
-# find_package(QApt REQUIRED)
 
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/applications
@@ -62,7 +61,6 @@ set(SRCS
     src/vpn/nm-pptp-service.h
     src/networkproxy.cpp
     src/defaultapplications.cpp
-#    src/update/updatemodel.cpp
 )
 
 set(RESOURCES
@@ -93,7 +91,6 @@ target_link_libraries(${PROJECT_NAME}
         ${ICU_LDFLAGS}
         Libcrypt::Libcrypt
 
-        # QApt
 )
 
 file(GLOB TS_FILES translations/*.ts)
