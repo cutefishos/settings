@@ -276,6 +276,15 @@ Item {
         }
 
         ListElement {
+            title: qsTr("Input Method")
+            name: "inputmethod"
+            page: "qrc:/qml/InputMethod/Main.qml"
+            iconSource: "inputmethod.svg"
+            iconColor: "#6F7DE8"
+            category: qsTr("System")
+        }
+
+        ListElement {
             title: qsTr("Battery")
             name: "battery"
             page: "qrc:/qml/Battery/Main.qml"

@@ -14,6 +14,7 @@
 #include "docksettings.h"
 #include "fonts/fonts.h"
 #include "fontsmodel.h"
+#include "inputmethod.h"
 #include "language.h"
 #include "networkproxy.h"
 #include "notifications.h"
@@ -75,6 +76,7 @@ Application::Application(int &argc, char **argv)
     qmlRegisterType<CursorThemeModel>(uri, 1, 0, "CursorThemeModel");
     qmlRegisterType<About>(uri, 1, 0, "About");
     qmlRegisterType<Language>(uri, 1, 0, "Language");
+    qmlRegisterType<InputMethod>(uri, 1, 0, "InputMethod");
     qmlRegisterType<Fonts>(uri, 1, 0, "Fonts");
     qmlRegisterType<PowerManager>(uri, 1, 0, "PowerManager");
     qmlRegisterType<Mouse>(uri, 1, 0, "Mouse");

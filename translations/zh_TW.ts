@@ -71,6 +71,36 @@
 <context>
     <name>Main</name>
     <message>
+        <location filename="../src/qml/InputMethod/Main.qml" line="10"/>
+        <source>Input Method</source>
+        <translation>輸入法</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/InputMethod/Main.qml" line="27"/>
+        <source>Input method</source>
+        <translation>輸入法</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/InputMethod/Main.qml" line="34"/>
+        <source>Input methods can only be selected in a Cutefish Wayland session.</source>
+        <translation>只能在 Cutefish Wayland 工作階段中選擇輸入法。</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/InputMethod/Main.qml" line="42"/>
+        <source>None</source>
+        <translation>無</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/InputMethod/Main.qml" line="103"/>
+        <source>The selected input method is not running.</source>
+        <translation>所選輸入法未在執行。</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/InputMethod/Main.qml" line="112"/>
+        <source>Applications started before the input method may need to be restarted.</source>
+        <translation>在輸入法啟動前開啟的應用程式可能需要重新啟動。</translation>
+    </message>
+    <message>
         <location filename="../src/qml/About/Main.qml" line="28"/>
         <source>About</source>
         <translation>關於</translation>
@@ -533,6 +563,11 @@
 </context>
 <context>
     <name>SideBar</name>
+    <message>
+        <location filename="../src/qml/SideBar.qml" line="279"/>
+        <source>Input Method</source>
+        <translation>輸入法</translation>
+    </message>
     <message>
         <location filename="../src/qml/SideBar.qml" line="131"/>
         <source>User</source>

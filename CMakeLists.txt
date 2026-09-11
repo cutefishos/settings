@@ -61,6 +61,7 @@ set(SRCS
     src/vpn/nm-pptp-service.h
     src/networkproxy.cpp
     src/defaultapplications.cpp
+    src/inputmethod.cpp
 )
 
 set(RESOURCES
