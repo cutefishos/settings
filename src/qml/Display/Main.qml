@@ -28,22 +28,8 @@ import "../"
 ItemPage {
     headerTitle: qsTr("Display")
 
-    Brightness {
-        id: brightness
-    }
-
     CS.Screen {
         id: screen
-    }
-
-    Timer {
-        id: brightnessTimer
-        interval: 100
-        repeat: false
-
-        onTriggered: {
-            brightness.setValue(brightnessSlider.value)
-        }
     }
 
     Scrollable {
@@ -54,64 +40,6 @@ ItemPage {
             id: layout
             anchors.fill: parent
             spacing: FishUI.Units.largeSpacing * 2
-
-            RoundedItem {
-                Layout.fillWidth: true
-                visible: brightness.enabled
-
-                Label {
-                    text: qsTr("Brightness")
-                    color: FishUI.Theme.disabledTextColor
-                    visible: brightness.enabled
-                }
-
-                Item {
-                    height: FishUI.Units.smallSpacing / 2
-                }
-
-                RowLayout {
-                    spacing: FishUI.Units.largeSpacing
-
-                    Image {
-                        width: 16
-                        height: width
-                        sourceSize.width: width
-                        sourceSize.height: height
-                        Layout.alignment: Qt.AlignVCenter
-                        source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/display-brightness-low-symbolic.svg"
-                    }
-
-                    Slider {
-                        id: brightnessSlider
-                        Layout.fillWidth: true
-                        Layout.alignment: Qt.AlignVCenter
-                        value: brightness.value
-                        from: 1
-                        to: 100
-                        stepSize: 1
-                        onMoved: brightnessTimer.start()
-
-                        ToolTip {
-                            parent: brightnessSlider.handle
-                            visible: brightnessSlider.pressed
-                            text: brightnessSlider.value.toFixed(0)
-                        }
-                    }
-
-                    Image {
-                        width: 16
-                        height: width
-                        sourceSize.width: width
-                        sourceSize.height: height
-                        Layout.alignment: Qt.AlignVCenter
-                        source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/display-brightness-symbolic.svg"
-                    }
-                }
-
-                Item {
-                    height: FishUI.Units.smallSpacing / 2
-                }
-            }
 
             RoundedItem {
                 visible: _screenView.count > 0
@@ -158,6 +86,63 @@ ItemPage {
                                 columns: 2
                                 columnSpacing: FishUI.Units.largeSpacing * 1.5
                                 rowSpacing: FishUI.Units.largeSpacing * 1.5
+
+                                Brightness {
+                                    id: brightness
+                                    display: element.drmConnector
+                                }
+
+                                Timer {
+                                    id: brightnessTimer
+                                    interval: 100
+                                    onTriggered: brightness.setValue(brightnessSlider.value)
+                                }
+
+                                Label {
+                                    text: qsTr("Brightness")
+                                    visible: brightness.available
+                                }
+
+                                RowLayout {
+                                    Layout.fillWidth: true
+                                    spacing: FishUI.Units.largeSpacing
+                                    visible: brightness.available
+
+                                    Image {
+                                        width: 16
+                                        height: width
+                                        sourceSize.width: width
+                                        sourceSize.height: height
+                                        Layout.alignment: Qt.AlignVCenter
+                                        source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/display-brightness-low-symbolic.svg"
+                                    }
+
+                                    Slider {
+                                        id: brightnessSlider
+                                        Layout.fillWidth: true
+                                        Layout.alignment: Qt.AlignVCenter
+                                        value: brightness.value
+                                        from: 1
+                                        to: 100
+                                        stepSize: 1
+                                        onMoved: brightnessTimer.start()
+
+                                        ToolTip {
+                                            parent: brightnessSlider.handle
+                                            visible: brightnessSlider.pressed
+                                            text: brightnessSlider.value.toFixed(0)
+                                        }
+                                    }
+
+                                    Image {
+                                        width: 16
+                                        height: width
+                                        sourceSize.width: width
+                                        sourceSize.height: height
+                                        Layout.alignment: Qt.AlignVCenter
+                                        source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/display-brightness-symbolic.svg"
+                                    }
+                                }
 
                                 Label {
                                     text: qsTr("Screen Name")

@@ -18,27 +18,44 @@
  */
 
 #include "brightness.h"
+
+#include <QDBusConnection>
 #include <QDBusPendingCall>
+#include <QDBusReply>
+
+namespace {
+const QString Service = QStringLiteral("com.cutefish.Services");
+const QString Path = QStringLiteral("/com/cutefish/Services/Brightness");
+const QString Interface = QStringLiteral("com.cutefish.Services.Brightness");
+} // namespace
 
 Brightness::Brightness(QObject *parent)
     : QObject(parent)
-    , m_dbusConnection(QDBusConnection::sessionBus())
-    , m_iface("com.cutefish.Services",
-              "/com/cutefish/Services/Brightness",
-              "com.cutefish.Services.Brightness", m_dbusConnection)
-    , m_value(0)
-    , m_enabled(false)
+    , m_iface(Service, Path, Interface, QDBusConnection::sessionBus())
 {
-    if (!m_iface.isValid())
-        return;
-
-    m_value = m_iface.property("brightness").toInt();
-    m_enabled = m_iface.property("brightnessEnabled").toBool();
+    QDBusConnection bus = QDBusConnection::sessionBus();
+    bus.connect(Service, Path, Interface, QStringLiteral("displaysChanged"), this, SLOT(refresh()));
+    bus.connect(Service, Path, Interface, QStringLiteral("displayBrightnessChanged"), this,
+                SLOT(handleValueChanged(QString, int)));
 }
 
-void Brightness::setValue(int value)
+QString Brightness::display() const
 {
-    m_iface.asyncCall("setValue", QVariant::fromValue(value));
+    return m_display;
+}
+
+void Brightness::setDisplay(const QString &display)
+{
+    if (m_display == display)
+        return;
+    m_display = display;
+    emit displayChanged();
+    refresh();
+}
+
+bool Brightness::available() const
+{
+    return m_available;
 }
 
 int Brightness::value() const
@@ -46,7 +63,32 @@ int Brightness::value() const
     return m_value;
 }
 
-bool Brightness::enabled() const
+void Brightness::setValue(int value)
 {
-    return m_enabled;
+    if (m_available)
+        m_iface.asyncCall(QStringLiteral("setDisplayBrightness"), m_display, value);
+}
+
+void Brightness::refresh()
+{
+    const QDBusReply<QStringList> displays = m_iface.call(QStringLiteral("displays"));
+    const bool available =
+            !m_display.isEmpty() && displays.isValid() && displays.value().contains(m_display);
+    if (available) {
+        const QDBusReply<int> value = m_iface.call(QStringLiteral("displayBrightness"), m_display);
+        if (value.isValid())
+            handleValueChanged(m_display, value.value());
+    }
+    if (m_available != available) {
+        m_available = available;
+        emit availableChanged();
+    }
+}
+
+void Brightness::handleValueChanged(const QString &display, int value)
+{
+    if (display != m_display || value < 0 || m_value == value)
+        return;
+    m_value = value;
+    emit valueChanged();
 }
