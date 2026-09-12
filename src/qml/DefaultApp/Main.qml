@@ -44,6 +44,7 @@ ItemPage {
                 GridLayout {
                     columns: 2
                     columnSpacing: FishUI.Units.largeSpacing * 2
+                    rowSpacing: FishUI.Units.largeSpacing
 
                     Label {
                         text: qsTr("Web Browser")
@@ -54,6 +55,7 @@ ItemPage {
                         id: browserComboBox
                         Layout.fillWidth: true
                         textRole: "name"
+                        iconRole: "icon"
                         model: defaultApps.browserList
                         currentIndex: defaultApps.browserIndex >= 0
                                       ? defaultApps.browserIndex
@@ -73,6 +75,7 @@ ItemPage {
                         id: fileManagerComboBox
                         Layout.fillWidth: true
                         textRole: "name"
+                        iconRole: "icon"
                         model: defaultApps.fileManagerList
                         currentIndex: defaultApps.fileManagerIndex >= 0
                                       ? defaultApps.fileManagerIndex
@@ -92,6 +95,7 @@ ItemPage {
                         id: emailComboBox
                         Layout.fillWidth: true
                         textRole: "name"
+                        iconRole: "icon"
                         model: defaultApps.emailList
                         currentIndex: defaultApps.emailIndex >= 0
                                       ? defaultApps.emailIndex
@@ -111,6 +115,7 @@ ItemPage {
                         id: terminalComboBox
                         Layout.fillWidth: true
                         textRole: "name"
+                        iconRole: "icon"
                         model: defaultApps.terminalList
                         currentIndex: defaultApps.terminalIndex >= 0
                                       ? defaultApps.terminalIndex
