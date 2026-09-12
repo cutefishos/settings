@@ -57,16 +57,10 @@ ItemPage {
                     orientation: ListView.Horizontal
                     interactive: false
                     currentIndex: 0
+                    highlightMoveDuration: 0
                     clip: true
 
                     Layout.preferredHeight: currentItem ? currentItem.layout.implicitHeight + FishUI.Units.largeSpacing : 0
-
-                    Behavior on Layout.preferredHeight {
-                        NumberAnimation {
-                            duration: 300
-                            easing.type: Easing.OutSine
-                        }
-                    }
 
                     delegate: Item {
                         id: screenItem
