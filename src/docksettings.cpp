@@ -28,11 +28,13 @@ DockSettings::DockSettings(QObject *parent)
     , m_dockIconSize(0)
     , m_dockDirection(0)
     , m_dockVisibility(0)
+    , m_dockGlassTint(0.5)
 {
     m_dockIconSize = m_dockSettings->value("IconSize").toInt();
     m_dockDirection = m_dockSettings->value("Direction").toInt();
     m_dockVisibility = m_dockSettings->value("Visibility").toInt();
     m_dockRoundedWindow = m_dockSettings->value("RoundedWindow").toBool();
+    m_dockGlassTint = qBound(0.0, m_dockSettings->value("GlassTint", 0.5).toDouble(), 1.0);
     // Dock only supports the centered style. Migrate old Full style settings.
     m_dockSettings->setValue("Style", 0);
 }
@@ -107,4 +109,25 @@ void DockSettings::setDockRoundedWindow(bool enable)
 
     m_dockRoundedWindow = enable;
     m_dockSettings->setValue("RoundedWindow", m_dockRoundedWindow);
+}
+
+qreal DockSettings::dockGlassTint() const
+{
+    return m_dockGlassTint;
+}
+
+void DockSettings::setDockGlassTint(qreal tint)
+{
+    tint = qBound(0.0, tint, 1.0);
+    if (qFuzzyCompare(m_dockGlassTint, tint))
+        return;
+
+    // Called on every slider move; do not block on the dock.
+    QDBusInterface iface("com.cutefish.Dock", "/Dock", "com.cutefish.Dock",
+                         QDBusConnection::sessionBus());
+    if (iface.isValid())
+        iface.asyncCall("setGlassTint", tint);
+
+    m_dockGlassTint = tint;
+    emit dockGlassTintChanged();
 }

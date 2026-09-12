@@ -166,6 +166,35 @@ ItemPage {
                 }
             }
 
+            // Glass effect
+            RoundedItem {
+                Label {
+                    text: qsTr("Glass Effect")
+                    color: FishUI.Theme.disabledTextColor
+                }
+
+                RowLayout {
+                    Layout.fillWidth: true
+                    spacing: FishUI.Units.largeSpacing
+
+                    Label {
+                        text: qsTr("More Clear")
+                    }
+
+                    Slider {
+                        Layout.fillWidth: true
+                        from: 0
+                        to: 1
+                        value: dockSettings.dockGlassTint
+                        onMoved: dockSettings.setDockGlassTint(value)
+                    }
+
+                    Label {
+                        text: qsTr("More Tinted")
+                    }
+                }
+            }
+
             Item {
                 Layout.fillHeight: true
             }
