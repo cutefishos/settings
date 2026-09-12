@@ -343,7 +343,7 @@ ItemPage {
 
             Label {
                 Layout.fillWidth: true
-                visible: !screen.available || screen.error.length > 0
+                visible: screen.loaded && (!screen.available || screen.error.length > 0)
                 text: screen.available ? screen.error : qsTr("Display configuration is unavailable in this session.")
                 color: "#d93025"
                 wrapMode: Text.Wrap
