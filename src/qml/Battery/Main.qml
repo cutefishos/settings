@@ -135,152 +135,164 @@ ItemPage {
                 }
             }
 
-            RoundedItem {
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: FishUI.Units.smallSpacing
                 visible: history.count > 2
-                spacing: 0
 
                 Label {
                     text: qsTr("History")
+                    leftPadding: FishUI.Units.largeSpacing
+                    bottomPadding: FishUI.Units.smallSpacing
                     color: FishUI.Theme.disabledTextColor
                 }
 
-                HistoryGraph {
-                    Layout.fillWidth: true
-                    height: 300
+                RoundedItem {
+                    spacing: 0
 
-                    data: history.points
+                    HistoryGraph {
+                        Layout.fillWidth: true
+                        height: 300
 
-                    readonly property real xTicksAtDontCare: 0
-                    readonly property real xTicksAtTwelveOClock: 1
-                    readonly property real xTicksAtFullHour: 2
-                    readonly property real xTicksAtHalfHour: 3
-                    readonly property real xTicksAtFullSecondHour: 4
-                    readonly property real xTicksAtTenMinutes: 5
-                    readonly property var xTicksAtList: [xTicksAtTenMinutes, xTicksAtHalfHour, xTicksAtHalfHour,
-                                                         xTicksAtFullHour, xTicksAtFullSecondHour, xTicksAtTwelveOClock]
+                        data: history.points
 
-                    // Set grid lines distances which directly correspondent to the xTicksAt variables
-                    readonly property var xDivisionWidths: [1000 * 60 * 10, 1000 * 60 * 60 * 12, 1000 * 60 * 60, 1000 * 60 * 30, 1000 * 60 * 60 * 2, 1000 * 60 * 10]
-                    xTicksAt: xTicksAtList[4]
-                    xDivisionWidth: xDivisionWidths[xTicksAt]
+                        readonly property real xTicksAtDontCare: 0
+                        readonly property real xTicksAtTwelveOClock: 1
+                        readonly property real xTicksAtFullHour: 2
+                        readonly property real xTicksAtHalfHour: 3
+                        readonly property real xTicksAtFullSecondHour: 4
+                        readonly property real xTicksAtTenMinutes: 5
+                        readonly property var xTicksAtList: [xTicksAtTenMinutes, xTicksAtHalfHour, xTicksAtHalfHour,
+                                                             xTicksAtFullHour, xTicksAtFullSecondHour, xTicksAtTwelveOClock]
 
-                    xMin: history.firstDataPointTime
-                    xMax: history.lastDataPointTime
-                    xDuration: history.duration
+                        // Set grid lines distances which directly correspondent to the xTicksAt variables
+                        readonly property var xDivisionWidths: [1000 * 60 * 10, 1000 * 60 * 60 * 12, 1000 * 60 * 60, 1000 * 60 * 30, 1000 * 60 * 60 * 2, 1000 * 60 * 10]
+                        xTicksAt: xTicksAtList[4]
+                        xDivisionWidth: xDivisionWidths[xTicksAt]
 
-                    yUnits: batteryPage.historyType === BatteryHistoryModel.RateType ? qsTr("W") : "%"
-                    yMax: {
-                        if (batteryPage.historyType === BatteryHistoryModel.RateType) {
-                            // ceil to nearest 10
-                            var max = Math.floor(history.largestValue)
-                            max = max - max % 10 + 10
+                        xMin: history.firstDataPointTime
+                        xMax: history.lastDataPointTime
+                        xDuration: history.duration
 
-                            return max;
-                        } else {
-                            return 100;
+                        yUnits: batteryPage.historyType === BatteryHistoryModel.RateType ? qsTr("W") : "%"
+                        yMax: {
+                            if (batteryPage.historyType === BatteryHistoryModel.RateType) {
+                                // ceil to nearest 10
+                                var max = Math.floor(history.largestValue)
+                                max = max - max % 10 + 10
+
+                                return max;
+                            } else {
+                                return 100;
+                            }
                         }
+                        yStep: batteryPage.historyType === BatteryHistoryModel.RateType ? 10 : 20
+                        visible: history.count > 2
                     }
-                    yStep: batteryPage.historyType === BatteryHistoryModel.RateType ? 10 : 20
-                    visible: history.count > 2
                 }
             }
 
-            RoundedItem {
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: FishUI.Units.smallSpacing
                 visible: battery.capacity
 
                 Label {
                     text: qsTr("Health")
+                    leftPadding: FishUI.Units.largeSpacing
+                    bottomPadding: FishUI.Units.smallSpacing
                     color: FishUI.Theme.disabledTextColor
                 }
 
-                RowLayout {
-                    Layout.topMargin: FishUI.Units.largeSpacing
-                    spacing: FishUI.Units.largeSpacing * 4
+                RoundedItem {
+                    RowLayout {
+                        spacing: FishUI.Units.largeSpacing * 4
 
-                    // Poor
-                    Item {
-                        height: _poorLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
-                        width: _poorLabel.implicitWidth + FishUI.Units.largeSpacing
+                        // Poor
+                        Item {
+                            height: _poorLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
+                            width: _poorLabel.implicitWidth + FishUI.Units.largeSpacing
 
-                        Rectangle {
-                            id: _poorRect
-                            anchors.fill: parent
-                            color: "#FF8738"
-                            radius: FishUI.Theme.mediumRadius
-                            opacity: 0.1
-                            visible: battery.capacity >= 0 && battery.capacity <= 79
+                            Rectangle {
+                                id: _poorRect
+                                anchors.fill: parent
+                                color: "#FF8738"
+                                radius: FishUI.Theme.mediumRadius
+                                opacity: 0.1
+                                visible: battery.capacity >= 0 && battery.capacity <= 79
+                            }
+
+                            Label {
+                                id: _poorLabel
+                                anchors.centerIn: parent
+                                text: qsTr("Poor")
+                                color: "#FF8738"
+                            }
                         }
 
-                        Label {
-                            id: _poorLabel
-                            anchors.centerIn: parent
-                            text: qsTr("Poor")
-                            color: "#FF8738"
+                        Item {
+                            Layout.fillWidth: true
+                        }
+
+                        Item {
+                            height: _normalLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
+                            width: _normalLabel.implicitWidth + FishUI.Units.largeSpacing
+
+                            Rectangle {
+                                id: _normalRect
+                                anchors.fill: parent
+                                color: "#3385FF"
+                                radius: FishUI.Theme.mediumRadius
+                                opacity: 0.1
+                                visible: battery.capacity >= 80 && battery.capacity <= 89
+                            }
+
+                            Label {
+                                id: _normalLabel
+                                anchors.centerIn: parent
+                                text: qsTr("Normal")
+                                color: "#3385FF"
+                            }
+                        }
+
+                        Item {
+                            Layout.fillWidth: true
+                        }
+
+                        Item {
+                            height: _excellentLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
+                            width: _excellentLabel.implicitWidth + FishUI.Units.largeSpacing
+
+                            Rectangle {
+                                id: _excellentRect
+                                anchors.fill: parent
+                                color: "#00CD23"
+                                radius: FishUI.Theme.mediumRadius
+                                opacity: 0.1
+                                visible: battery.capacity >= 90 && battery.capacity <= 100
+                            }
+
+                            Label {
+                                id: _excellentLabel
+                                anchors.centerIn: parent
+                                text: qsTr("Excellent")
+                                color: "#00CD23"
+                            }
                         }
                     }
 
-                    Item {
-                        Layout.fillWidth: true
+                    HorizontalDivider {}
+
+                    StandardItem {
+                        key: qsTr("Last Charged to") + " " + battery.lastChargedPercent + "%"
+                        value: battery.lastChargedTime
+                        visible: battery.lastChargedPercent !== 0
                     }
 
-                    Item {
-                        height: _normalLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
-                        width: _normalLabel.implicitWidth + FishUI.Units.largeSpacing
-
-                        Rectangle {
-                            id: _normalRect
-                            anchors.fill: parent
-                            color: "#3385FF"
-                            radius: FishUI.Theme.mediumRadius
-                            opacity: 0.1
-                            visible: battery.capacity >= 80 && battery.capacity <= 89
-                        }
-
-                        Label {
-                            id: _normalLabel
-                            anchors.centerIn: parent
-                            text: qsTr("Normal")
-                            color: "#3385FF"
-                        }
+                    StandardItem {
+                        key: qsTr("Maximum Capacity")
+                        value: battery.capacity + "%"
                     }
-
-                    Item {
-                        Layout.fillWidth: true
-                    }
-
-                    Item {
-                        height: _excellentLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
-                        width: _excellentLabel.implicitWidth + FishUI.Units.largeSpacing
-
-                        Rectangle {
-                            id: _excellentRect
-                            anchors.fill: parent
-                            color: "#00CD23"
-                            radius: FishUI.Theme.mediumRadius
-                            opacity: 0.1
-                            visible: battery.capacity >= 90 && battery.capacity <= 100
-                        }
-
-                        Label {
-                            id: _excellentLabel
-                            anchors.centerIn: parent
-                            text: qsTr("Excellent")
-                            color: "#00CD23"
-                        }
-                    }
-                }
-
-                HorizontalDivider {}
-
-                StandardItem {
-                    key: qsTr("Last Charged to") + " " + battery.lastChargedPercent + "%"
-                    value: battery.lastChargedTime
-                    visible: battery.lastChargedPercent !== 0
-                }
-
-                StandardItem {
-                    key: qsTr("Maximum Capacity")
-                    value: battery.capacity + "%"
                 }
             }
 

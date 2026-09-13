@@ -68,41 +68,40 @@ ItemPage {
             spacing: FishUI.Units.largeSpacing * 2
 
             // Wired connection
-            RoundedItem {
-                spacing: FishUI.Units.largeSpacing
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: FishUI.Units.smallSpacing
 
-                RowLayout {
-                    spacing: FishUI.Units.largeSpacing
-
-                    Label {
-                        text: qsTr("Ethernet")
-                        color: FishUI.Theme.disabledTextColor
-                        Layout.fillWidth: true
-                    }
-
-
+                Label {
+                    text: qsTr("Ethernet")
+                    leftPadding: FishUI.Units.largeSpacing
+                    bottomPadding: FishUI.Units.smallSpacing
+                    color: FishUI.Theme.disabledTextColor
+                    visible: wiredView.count > 0
                 }
 
-                ListView {
-                    id: wiredView
-
+                RoundedItem {
                     visible: wiredView.count > 0
 
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: wiredView.count * control.itemHeight
-                    interactive: false
-                    clip: true
+                    ListView {
+                        id: wiredView
 
-                    model: NM.AppletProxyModel {
-                        type: NM.AppletProxyModel.WiredType
-                        sourceModel: connectionModel
-                    }
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: wiredView.count * control.itemHeight
+                        interactive: false
+                        clip: true
 
-                    ScrollBar.vertical: ScrollBar {}
+                        model: NM.AppletProxyModel {
+                            type: NM.AppletProxyModel.WiredType
+                            sourceModel: connectionModel
+                        }
 
-                    delegate: WiredItem {
-                        height: control.itemHeight
-                        width: wiredView.width
+                        ScrollBar.vertical: ScrollBar {}
+
+                        delegate: WiredItem {
+                            height: control.itemHeight
+                            width: wiredView.width
+                        }
                     }
                 }
             }

@@ -53,27 +53,34 @@ ItemPage {
             anchors.fill: parent
             spacing: FishUI.Units.largeSpacing
 
-            RoundedItem {
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: FishUI.Units.smallSpacing
+
                 Label {
                     text: qsTr("Mode")
+                    leftPadding: FishUI.Units.largeSpacing
+                    bottomPadding: FishUI.Units.smallSpacing
                     color: FishUI.Theme.disabledTextColor
                 }
 
-                RowLayout {
-                    spacing: FishUI.Units.largeSpacing * 2
+                RoundedItem {
+                    RowLayout {
+                        spacing: FishUI.Units.largeSpacing * 2
 
-                    IconCheckBox {
-                        source: "qrc:/images/powersave.svg"
-                        text: qsTr("Power Save")
-                        checked: power.mode === 0
-                        onClicked: power.mode = 0
-                    }
+                        IconCheckBox {
+                            source: "qrc:/images/powersave.svg"
+                            text: qsTr("Power Save")
+                            checked: power.mode === 0
+                            onClicked: power.mode = 0
+                        }
 
-                    IconCheckBox {
-                        source: "qrc:/images/performance.svg"
-                        text: qsTr("Performance")
-                        checked: power.mode === 1
-                        onClicked: power.mode = 1
+                        IconCheckBox {
+                            source: "qrc:/images/performance.svg"
+                            text: qsTr("Performance")
+                            checked: power.mode === 1
+                            onClicked: power.mode = 1
+                        }
                     }
                 }
             }

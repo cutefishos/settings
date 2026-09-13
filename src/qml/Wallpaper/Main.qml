@@ -28,7 +28,7 @@ import FishUI 1.0 as FishUI
 import "../"
 
 ItemPage {
-    headerTitle: qsTr("Background")
+    headerTitle: qsTr("Wallpaper")
 
     FrameworkAppearance.Wallpaper {
         id: background
@@ -43,179 +43,186 @@ ItemPage {
             anchors.fill: parent
             spacing: FishUI.Units.largeSpacing
 
-            RoundedItem {
-                RowLayout {
-                    spacing: FishUI.Units.largeSpacing * 2
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: FishUI.Units.smallSpacing
 
-                    Label {
-                        text: qsTr("Background type")
-                        leftPadding: FishUI.Units.smallSpacing
-                    }
-
-                    FishUI.SegmentedControl {
-                        Layout.fillWidth: true
-
-                        onCurrentIndexChanged: {
-                            background.type = currentIndex
-                        }
-
-                        Component.onCompleted: {
-                            currentIndex = background.type
-                        }
-
-                        TabButton {
-                            text: qsTr("Picture")
-                        }
-
-                        TabButton {
-                            text: qsTr("Color")
-                        }
-                    }
+                Label {
+                    text: qsTr("Wallpaper type")
+                    leftPadding: FishUI.Units.largeSpacing
+                    bottomPadding: FishUI.Units.smallSpacing
+                    color: FishUI.Theme.disabledTextColor
                 }
 
-                GridView {
-                    id: _view
+                RoundedItem {
+                    RowLayout {
+                        spacing: FishUI.Units.largeSpacing * 2
 
-                    property int rowCount: _view.width / itemWidth
+                        FishUI.SegmentedControl {
+                            Layout.fillWidth: true
 
-                    Layout.fillWidth: true
-                    implicitHeight: Math.ceil(_view.count / rowCount) * cellHeight + FishUI.Units.largeSpacing
+                            onCurrentIndexChanged: {
+                                background.type = currentIndex
+                            }
 
-                    visible: background.type === 0
+                            Component.onCompleted: {
+                                currentIndex = background.type
+                            }
 
-                    clip: true
-                    model: background.backgrounds
-                    currentIndex: -1
-                    interactive: false
+                            TabButton {
+                                text: qsTr("Picture")
+                            }
 
-                    cellHeight: itemHeight
-                    cellWidth: calcExtraSpacing(itemWidth, _view.width) + itemWidth
-
-                    property int itemWidth: 180
-                    property int itemHeight: 127
-
-                    delegate: Item {
-                        id: item
-
-                        property bool isSelected: modelData === background.path
-
-                        width: GridView.view.cellWidth
-                        height: GridView.view.cellHeight
-                        scale: 1.0
-
-                        Behavior on scale {
-                            NumberAnimation {
-                                duration: 200
-                                easing.type: Easing.OutSine
+                            TabButton {
+                                text: qsTr("Color")
                             }
                         }
+                    }
 
-                        // Preload background
-                        Rectangle {
-                            anchors.fill: parent
-                            anchors.margins: FishUI.Units.largeSpacing
-                            radius: FishUI.Theme.bigRadius + FishUI.Units.smallSpacing / 2
-                            color: FishUI.Theme.backgroundColor
-                            visible: _image.status !== Image.Ready
-                        }
+                    GridView {
+                        id: _view
 
-                        // Preload image
-                        Image {
-                            anchors.centerIn: parent
-                            width: 32
-                            height: width
-                            sourceSize: Qt.size(width, height)
-                            source: FishUI.Theme.darkMode ? "qrc:/images/dark/picture.svg"
-                                                          : "qrc:/images/light/picture.svg"
-                            visible: _image.status !== Image.Ready
-                        }
+                        property int rowCount: _view.width / itemWidth
 
-                        Rectangle {
-                            anchors.fill: parent
-                            anchors.margins: FishUI.Units.smallSpacing
-                            color: "transparent"
-                            radius: FishUI.Theme.bigRadius + FishUI.Units.smallSpacing / 2
+                        Layout.fillWidth: true
+                        implicitHeight: Math.ceil(_view.count / rowCount) * cellHeight + FishUI.Units.largeSpacing
 
-                            border.color: FishUI.Theme.highlightColor
-                            border.width: _image.status == Image.Ready & isSelected ? 3 : 0
+                        visible: background.type === 0
 
+                        clip: true
+                        model: background.backgrounds
+                        currentIndex: -1
+                        interactive: false
+
+                        cellHeight: itemHeight
+                        cellWidth: calcExtraSpacing(itemWidth, _view.width) + itemWidth
+
+                        property int itemWidth: 180
+                        property int itemHeight: 127
+
+                        delegate: Item {
+                            id: item
+
+                            property bool isSelected: modelData === background.path
+
+                            width: GridView.view.cellWidth
+                            height: GridView.view.cellHeight
+                            scale: 1.0
+
+                            Behavior on scale {
+                                NumberAnimation {
+                                    duration: 200
+                                    easing.type: Easing.OutSine
+                                }
+                            }
+
+                            // Preload background
+                            Rectangle {
+                                anchors.fill: parent
+                                anchors.margins: FishUI.Units.largeSpacing
+                                radius: FishUI.Theme.bigRadius + FishUI.Units.smallSpacing / 2
+                                color: FishUI.Theme.backgroundColor
+                                visible: _image.status !== Image.Ready
+                            }
+
+                            // Preload image
                             Image {
-                                id: _image
+                                anchors.centerIn: parent
+                                width: 32
+                                height: width
+                                sourceSize: Qt.size(width, height)
+                                source: FishUI.Theme.darkMode ? "qrc:/images/dark/picture.svg"
+                                                              : "qrc:/images/light/picture.svg"
+                                visible: _image.status !== Image.Ready
+                            }
+
+                            Rectangle {
                                 anchors.fill: parent
                                 anchors.margins: FishUI.Units.smallSpacing
-                                source: "file://" + modelData
-                                sourceSize: Qt.size(width, height)
-                                fillMode: Image.PreserveAspectCrop
-                                asynchronous: true
-                                mipmap: true
-                                cache: true
-                                smooth: true
-                                opacity: 1.0
+                                color: "transparent"
+                                radius: FishUI.Theme.bigRadius + FishUI.Units.smallSpacing / 2
 
-                                Behavior on opacity {
-                                    NumberAnimation {
-                                        duration: 100
-                                        easing.type: Easing.InOutCubic
+                                border.color: FishUI.Theme.highlightColor
+                                border.width: _image.status == Image.Ready & isSelected ? 3 : 0
+
+                                Image {
+                                    id: _image
+                                    anchors.fill: parent
+                                    anchors.margins: FishUI.Units.smallSpacing
+                                    source: "file://" + modelData
+                                    sourceSize: Qt.size(width, height)
+                                    fillMode: Image.PreserveAspectCrop
+                                    asynchronous: true
+                                    mipmap: true
+                                    cache: true
+                                    smooth: true
+                                    opacity: 1.0
+
+                                    Behavior on opacity {
+                                        NumberAnimation {
+                                            duration: 100
+                                            easing.type: Easing.InOutCubic
+                                        }
                                     }
-                                }
 
-                                layer.enabled: true
-                                layer.effect: OpacityMask {
-                                    maskSource: Item {
-                                        width: _image.width
-                                        height: _image.height
+                                    layer.enabled: true
+                                    layer.effect: OpacityMask {
+                                        maskSource: Item {
+                                            width: _image.width
+                                            height: _image.height
 
-                                        Rectangle {
-                                            anchors.fill: parent
-                                            radius: FishUI.Theme.bigRadius
+                                            Rectangle {
+                                                anchors.fill: parent
+                                                radius: FishUI.Theme.bigRadius
+                                            }
                                         }
                                     }
                                 }
+
+                                MouseArea {
+                                    anchors.fill: parent
+                                    acceptedButtons: Qt.LeftButton
+                                    hoverEnabled: true
+
+                                    onClicked: {
+                                        background.path = modelData
+                                    }
+
+                                    onEntered: function() {
+                                        _image.opacity = 0.7
+                                    }
+                                    onExited: function() {
+                                        _image.opacity = 1.0
+                                    }
+
+                                    onPressedChanged: item.scale = pressed ? 0.97 : 1.0
+                                }
                             }
+                        }
 
-                            MouseArea {
-                                anchors.fill: parent
-                                acceptedButtons: Qt.LeftButton
-                                hoverEnabled: true
-
-                                onClicked: {
-                                    background.path = modelData
-                                }
-
-                                onEntered: function() {
-                                    _image.opacity = 0.7
-                                }
-                                onExited: function() {
-                                    _image.opacity = 1.0
-                                }
-
-                                onPressedChanged: item.scale = pressed ? 0.97 : 1.0
+                        function calcExtraSpacing(cellSize, containerSize) {
+                            var availableColumns = Math.floor(containerSize / cellSize)
+                            var extraSpacing = 0
+                            if (availableColumns > 0) {
+                                var allColumnSize = availableColumns * cellSize
+                                var extraSpace = Math.max(containerSize - allColumnSize, 0)
+                                extraSpacing = extraSpace / availableColumns
                             }
+                            return Math.floor(extraSpacing)
                         }
                     }
 
-                    function calcExtraSpacing(cellSize, containerSize) {
-                        var availableColumns = Math.floor(containerSize / cellSize)
-                        var extraSpacing = 0
-                        if (availableColumns > 0) {
-                            var allColumnSize = availableColumns * cellSize
-                            var extraSpace = Math.max(containerSize - allColumnSize, 0)
-                            extraSpacing = extraSpace / availableColumns
-                        }
-                        return Math.floor(extraSpacing)
+                    Item {
+                        visible: background.type === 1
+                        height: FishUI.Units.smallSpacing
                     }
-                }
 
-                Item {
-                    visible: background.type === 1
-                    height: FishUI.Units.smallSpacing
-                }
-
-                Loader {
-                    Layout.fillWidth: true
-                    height: item ? item.height : 0
-                    visible: background.type === 1
-                    sourceComponent: colorView
+                    Loader {
+                        Layout.fillWidth: true
+                        height: item ? item.height : 0
+                        visible: background.type === 1
+                        sourceComponent: colorView
+                    }
                 }
             }
 

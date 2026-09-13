@@ -41,297 +41,304 @@ ItemPage {
             anchors.fill: parent
             spacing: FishUI.Units.largeSpacing * 2
 
-            RoundedItem {
-                visible: _screenView.count > 0
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: FishUI.Units.smallSpacing
 
                 Label {
                     text: qsTr("Screen")
+                    leftPadding: FishUI.Units.largeSpacing
+                    bottomPadding: FishUI.Units.smallSpacing
                     color: FishUI.Theme.disabledTextColor
                     visible: _screenView.count > 0
                 }
 
-                ListView {
-                    id: _screenView
-                    Layout.fillWidth: true
-                    model: screen.outputModel
-                    orientation: ListView.Horizontal
-                    interactive: false
-                    currentIndex: 0
-                    highlightMoveDuration: 0
-                    clip: true
+                RoundedItem {
+                    visible: _screenView.count > 0
 
-                    Layout.preferredHeight: currentItem ? currentItem.layout.implicitHeight + FishUI.Units.largeSpacing : 0
+                    ListView {
+                        id: _screenView
+                        Layout.fillWidth: true
+                        model: screen.outputModel
+                        orientation: ListView.Horizontal
+                        interactive: false
+                        currentIndex: 0
+                        highlightMoveDuration: 0
+                        clip: true
 
-                    delegate: Item {
-                        id: screenItem
-                        height: ListView.view.height
-                        width: ListView.view.width
+                        Layout.preferredHeight: currentItem ? currentItem.layout.implicitHeight + FishUI.Units.largeSpacing : 0
 
-                        property var element: model
-                        property var layout: _mainLayout
+                        delegate: Item {
+                            id: screenItem
+                            height: ListView.view.height
+                            width: ListView.view.width
 
-                        ColumnLayout {
-                            id: _mainLayout
-                            anchors.fill: parent
-                            enabled: screen.available && !screen.busy
+                            property var element: model
+                            property var layout: _mainLayout
 
-                            GridLayout {
-                                Layout.fillWidth: true
-                                columns: 2
-                                columnSpacing: FishUI.Units.largeSpacing * 1.5
-                                rowSpacing: FishUI.Units.largeSpacing * 1.5
+                            ColumnLayout {
+                                id: _mainLayout
+                                anchors.fill: parent
+                                enabled: screen.available && !screen.busy
 
-                                Brightness {
-                                    id: brightness
-                                    display: element.drmConnector
-                                }
-
-                                Timer {
-                                    id: brightnessTimer
-                                    interval: 100
-                                    onTriggered: brightness.setValue(brightnessSlider.value)
-                                }
-
-                                Label {
-                                    text: qsTr("Brightness")
-                                    visible: brightness.available
-                                }
-
-                                RowLayout {
+                                GridLayout {
                                     Layout.fillWidth: true
-                                    spacing: FishUI.Units.largeSpacing
-                                    visible: brightness.available
+                                    columns: 2
+                                    columnSpacing: FishUI.Units.largeSpacing * 1.5
+                                    rowSpacing: FishUI.Units.largeSpacing * 1.5
 
-                                    Image {
-                                        width: 16
-                                        height: width
-                                        sourceSize.width: width
-                                        sourceSize.height: height
-                                        Layout.alignment: Qt.AlignVCenter
-                                        source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/display-brightness-low-symbolic.svg"
+                                    Brightness {
+                                        id: brightness
+                                        display: element.drmConnector
                                     }
 
-                                    Slider {
-                                        id: brightnessSlider
-                                        Layout.fillWidth: true
-                                        Layout.alignment: Qt.AlignVCenter
-                                        value: brightness.value
-                                        from: 1
-                                        to: 100
-                                        stepSize: 1
-                                        onMoved: brightnessTimer.start()
-
-                                        ToolTip {
-                                            parent: brightnessSlider.handle
-                                            visible: brightnessSlider.pressed
-                                            text: brightnessSlider.value.toFixed(0)
-                                        }
+                                    Timer {
+                                        id: brightnessTimer
+                                        interval: 100
+                                        onTriggered: brightness.setValue(brightnessSlider.value)
                                     }
 
-                                    Image {
-                                        width: 16
-                                        height: width
-                                        sourceSize.width: width
-                                        sourceSize.height: height
-                                        Layout.alignment: Qt.AlignVCenter
-                                        source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/display-brightness-symbolic.svg"
+                                    Label {
+                                        text: qsTr("Brightness")
+                                        visible: brightness.available
                                     }
-                                }
-
-                                Label {
-                                    text: qsTr("Screen Name")
-                                    visible: _screenView.count > 1
-                                }
-
-                                Label {
-                                    text: element.display
-                                    color: FishUI.Theme.disabledTextColor
-                                    visible: _screenView.count > 1
-                                }
-
-                                Label {
-                                    text: qsTr("Resolution")
-                                }
-
-                                ComboBox {
-                                    Layout.fillWidth: true
-                                    model: element.resolutions
-                                    leftPadding: FishUI.Units.largeSpacing
-                                    rightPadding: FishUI.Units.largeSpacing
-                                    topInset: 0
-                                    bottomInset: 0
-                                    currentIndex: element.resolutionIndex !== undefined ?
-                                                      element.resolutionIndex : -1
-                                    onActivated: {
-                                        element.resolutionIndex = currentIndex
-                                    }
-                                }
-
-                                Label {
-                                    text: qsTr("Refresh rate")
-                                }
-
-                                ComboBox {
-                                    id: refreshRate
-                                    Layout.fillWidth: true
-                                    model: element.refreshRates
-                                    leftPadding: FishUI.Units.largeSpacing
-                                    rightPadding: FishUI.Units.largeSpacing
-                                    topInset: 0
-                                    bottomInset: 0
-                                    currentIndex: element.refreshRateIndex ?
-                                                      element.refreshRateIndex : 0
-                                    onActivated: {
-                                        element.refreshRateIndex = currentIndex
-                                    }
-                                }
-
-                                Label {
-                                    text: qsTr("Scale")
-                                }
-
-                                FishUI.SegmentedControl {
-                                    id: scaleTabbar
-                                    Layout.fillWidth: true
-
-                                    TabButton {
-                                        text: "100%"
-                                        onClicked: element.scale = 1.0
-                                    }
-
-                                    TabButton {
-                                        text: "125%"
-                                        onClicked: element.scale = 1.25
-                                    }
-
-                                    TabButton {
-                                        text: "150%"
-                                        onClicked: element.scale = 1.5
-                                    }
-
-                                    TabButton {
-                                        text: "175%"
-                                        onClicked: element.scale = 1.75
-                                    }
-
-                                    TabButton {
-                                        text: "200%"
-                                        onClicked: element.scale = 2.0
-                                    }
-
-                                    currentIndex: {
-                                        var index = 0
-                                        var scale = element.scale
-
-                                        if (scale <= 1.0)
-                                            index = 0
-                                        else if (scale <= 1.25)
-                                            index = 1
-                                        else if (scale <= 1.50)
-                                            index = 2
-                                        else if (scale <= 1.75)
-                                            index = 3
-                                        else if (scale <= 2.0)
-                                            index = 4
-
-                                        return index
-                                    }
-                                }
-
-                                Label {
-                                    text: qsTr("Rotation")
-                                }
-
-                                Item {
-                                    id: rotationItem
-                                    Layout.fillWidth: true
-                                    height: rotationLayout.implicitHeight
 
                                     RowLayout {
-                                        id: rotationLayout
-                                        anchors.fill: parent
-                                        spacing: 0
+                                        Layout.fillWidth: true
+                                        spacing: FishUI.Units.largeSpacing
+                                        visible: brightness.available
 
-                                        RotationButton {
-                                            value: 0
+                                        Image {
+                                            width: 16
+                                            height: width
+                                            sourceSize.width: width
+                                            sourceSize.height: height
+                                            Layout.alignment: Qt.AlignVCenter
+                                            source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/display-brightness-low-symbolic.svg"
                                         }
 
-                                        Item {
+                                        Slider {
+                                            id: brightnessSlider
                                             Layout.fillWidth: true
+                                            Layout.alignment: Qt.AlignVCenter
+                                            value: brightness.value
+                                            from: 1
+                                            to: 100
+                                            stepSize: 1
+                                            onMoved: brightnessTimer.start()
+
+                                            ToolTip {
+                                                parent: brightnessSlider.handle
+                                                visible: brightnessSlider.pressed
+                                                text: brightnessSlider.value.toFixed(0)
+                                            }
                                         }
 
-                                        RotationButton {
-                                            value: 90
-                                        }
-
-                                        Item {
-                                            Layout.fillWidth: true
-                                        }
-
-                                        RotationButton {
-                                            value: 180
-                                        }
-
-                                        Item {
-                                            Layout.fillWidth: true
-                                        }
-
-                                        RotationButton {
-                                            value: 270
+                                        Image {
+                                            width: 16
+                                            height: width
+                                            sourceSize.width: width
+                                            sourceSize.height: height
+                                            Layout.alignment: Qt.AlignVCenter
+                                            source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/display-brightness-symbolic.svg"
                                         }
                                     }
-                                }
 
-                                Label {
-                                    text: qsTr("Enabled")
-                                    visible: enabledBox.visible
-                                }
-
-                                CheckBox {
-                                    id: enabledBox
-                                    checked: element.enabled
-                                    visible: _screenView.count > 1
-                                    onClicked: {
-                                        element.enabled = checked
+                                    Label {
+                                        text: qsTr("Screen Name")
+                                        visible: _screenView.count > 1
                                     }
-                                }
 
-                                Label { text: qsTr("Primary"); visible: _screenView.count > 1 }
-                                CheckBox {
-                                    checked: element.primary
-                                    visible: _screenView.count > 1
-                                    enabled: element.enabled
-                                    onClicked: if (checked) element.primary = true
-                                }
+                                    Label {
+                                        text: element.display
+                                        color: FishUI.Theme.disabledTextColor
+                                        visible: _screenView.count > 1
+                                    }
 
-                                Label { text: qsTr("Position"); visible: _screenView.count > 1 }
-                                RowLayout {
-                                    visible: _screenView.count > 1
-                                    SpinBox { from: -32768; to: 32768; value: element.position.x; onValueModified: element.position = Qt.point(value, element.position.y) }
-                                    SpinBox { from: -32768; to: 32768; value: element.position.y; onValueModified: element.position = Qt.point(element.position.x, value) }
-                                }
+                                    Label {
+                                        text: qsTr("Resolution")
+                                    }
 
-                                Label { text: qsTr("Mode"); visible: _screenView.count > 1 && (element.capabilities & 4) !== 0 }
-                                ComboBox {
-                                    visible: _screenView.count > 1 && (element.capabilities & 4) !== 0
-                                    Layout.fillWidth: true
-                                    model: element.replicationSourceModel
-                                    currentIndex: element.replicationSourceIndex
-                                    onActivated: element.replicationSourceIndex = currentIndex
+                                    ComboBox {
+                                        Layout.fillWidth: true
+                                        model: element.resolutions
+                                        leftPadding: FishUI.Units.largeSpacing
+                                        rightPadding: FishUI.Units.largeSpacing
+                                        topInset: 0
+                                        bottomInset: 0
+                                        currentIndex: element.resolutionIndex !== undefined ?
+                                                          element.resolutionIndex : -1
+                                        onActivated: {
+                                            element.resolutionIndex = currentIndex
+                                        }
+                                    }
+
+                                    Label {
+                                        text: qsTr("Refresh rate")
+                                    }
+
+                                    ComboBox {
+                                        id: refreshRate
+                                        Layout.fillWidth: true
+                                        model: element.refreshRates
+                                        leftPadding: FishUI.Units.largeSpacing
+                                        rightPadding: FishUI.Units.largeSpacing
+                                        topInset: 0
+                                        bottomInset: 0
+                                        currentIndex: element.refreshRateIndex ?
+                                                          element.refreshRateIndex : 0
+                                        onActivated: {
+                                            element.refreshRateIndex = currentIndex
+                                        }
+                                    }
+
+                                    Label {
+                                        text: qsTr("Scale")
+                                    }
+
+                                    FishUI.SegmentedControl {
+                                        id: scaleTabbar
+                                        Layout.fillWidth: true
+
+                                        TabButton {
+                                            text: "100%"
+                                            onClicked: element.scale = 1.0
+                                        }
+
+                                        TabButton {
+                                            text: "125%"
+                                            onClicked: element.scale = 1.25
+                                        }
+
+                                        TabButton {
+                                            text: "150%"
+                                            onClicked: element.scale = 1.5
+                                        }
+
+                                        TabButton {
+                                            text: "175%"
+                                            onClicked: element.scale = 1.75
+                                        }
+
+                                        TabButton {
+                                            text: "200%"
+                                            onClicked: element.scale = 2.0
+                                        }
+
+                                        currentIndex: {
+                                            var index = 0
+                                            var scale = element.scale
+
+                                            if (scale <= 1.0)
+                                                index = 0
+                                            else if (scale <= 1.25)
+                                                index = 1
+                                            else if (scale <= 1.50)
+                                                index = 2
+                                            else if (scale <= 1.75)
+                                                index = 3
+                                            else if (scale <= 2.0)
+                                                index = 4
+
+                                            return index
+                                        }
+                                    }
+
+                                    Label {
+                                        text: qsTr("Rotation")
+                                    }
+
+                                    Item {
+                                        id: rotationItem
+                                        Layout.fillWidth: true
+                                        height: rotationLayout.implicitHeight
+
+                                        RowLayout {
+                                            id: rotationLayout
+                                            anchors.fill: parent
+                                            spacing: 0
+
+                                            RotationButton {
+                                                value: 0
+                                            }
+
+                                            Item {
+                                                Layout.fillWidth: true
+                                            }
+
+                                            RotationButton {
+                                                value: 90
+                                            }
+
+                                            Item {
+                                                Layout.fillWidth: true
+                                            }
+
+                                            RotationButton {
+                                                value: 180
+                                            }
+
+                                            Item {
+                                                Layout.fillWidth: true
+                                            }
+
+                                            RotationButton {
+                                                value: 270
+                                            }
+                                        }
+                                    }
+
+                                    Label {
+                                        text: qsTr("Enabled")
+                                        visible: enabledBox.visible
+                                    }
+
+                                    CheckBox {
+                                        id: enabledBox
+                                        checked: element.enabled
+                                        visible: _screenView.count > 1
+                                        onClicked: {
+                                            element.enabled = checked
+                                        }
+                                    }
+
+                                    Label { text: qsTr("Primary"); visible: _screenView.count > 1 }
+                                    CheckBox {
+                                        checked: element.primary
+                                        visible: _screenView.count > 1
+                                        enabled: element.enabled
+                                        onClicked: if (checked) element.primary = true
+                                    }
+
+                                    Label { text: qsTr("Position"); visible: _screenView.count > 1 }
+                                    RowLayout {
+                                        visible: _screenView.count > 1
+                                        SpinBox { from: -32768; to: 32768; value: element.position.x; onValueModified: element.position = Qt.point(value, element.position.y) }
+                                        SpinBox { from: -32768; to: 32768; value: element.position.y; onValueModified: element.position = Qt.point(element.position.x, value) }
+                                    }
+
+                                    Label { text: qsTr("Mode"); visible: _screenView.count > 1 && (element.capabilities & 4) !== 0 }
+                                    ComboBox {
+                                        visible: _screenView.count > 1 && (element.capabilities & 4) !== 0
+                                        Layout.fillWidth: true
+                                        model: element.replicationSourceModel
+                                        currentIndex: element.replicationSourceIndex
+                                        onActivated: element.replicationSourceIndex = currentIndex
+                                    }
                                 }
                             }
                         }
                     }
-                }
 
-                PageIndicator {
-                    id: screenPageIndicator
-                    Layout.alignment: Qt.AlignHCenter
-                    count: _screenView.count
-                    currentIndex: _screenView.currentIndex
-                    onCurrentIndexChanged: _screenView.currentIndex = currentIndex
-                    interactive: true
-                    visible: count > 1
+                    PageIndicator {
+                        id: screenPageIndicator
+                        Layout.alignment: Qt.AlignHCenter
+                        count: _screenView.count
+                        currentIndex: _screenView.currentIndex
+                        onCurrentIndexChanged: _screenView.currentIndex = currentIndex
+                        interactive: true
+                        visible: count > 1
+                    }
                 }
             }
 

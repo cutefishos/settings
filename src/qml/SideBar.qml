@@ -170,7 +170,7 @@ Item {
         }
 
         ListElement {
-            title: qsTr("Background")
+            title: qsTr("Wallpaper")
             name: "background"
             page: "qrc:/qml/Wallpaper/Main.qml"
             iconSource: "wallpaper.svg"

@@ -42,132 +42,145 @@ ItemPage {
             anchors.fill: parent
             spacing: FishUI.Units.largeSpacing * 2
 
-            RoundedItem {
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: FishUI.Units.smallSpacing
+
                 Label {
                     text: qsTr("Appearance")
+                    leftPadding: FishUI.Units.largeSpacing
+                    bottomPadding: FishUI.Units.smallSpacing
                     color: FishUI.Theme.disabledTextColor
                 }
 
-                // Light Mode and Dark Mode
-                RowLayout {
-                    spacing: FishUI.Units.largeSpacing * 2
+                RoundedItem {
+                    // Light Mode and Dark Mode
+                    RowLayout {
+                        spacing: FishUI.Units.largeSpacing * 2
 
-                    IconCheckBox {
-                        source: "qrc:/images/light_mode.svg"
-                        text: qsTr("Light")
-                        iconWidth: 120
-                        iconHeight: iconWidth * 68 / 100
-                        checked: !FishUI.Theme.darkMode
-                        onClicked: appearance.switchDarkMode(false)
-                    }
-
-                    IconCheckBox {
-                        source: "qrc:/images/dark_mode.svg"
-                        text: qsTr("Dark")
-                        iconWidth: 120
-                        iconHeight: iconWidth * 68 / 100
-                        checked: FishUI.Theme.darkMode
-                        onClicked: appearance.switchDarkMode(true)
-                    }
-                }
-
-                HorizontalDivider {}
-
-                RowLayout {
-                    spacing: FishUI.Units.largeSpacing
-
-                    Label {
-                        id: dimsTipsLabel
-                        text: qsTr("Dim the wallpaper in dark theme")
-                        bottomPadding: FishUI.Units.smallSpacing
-                        Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
-                    }
-
-                    Item {
-                        Layout.fillWidth: true
-                    }
-
-                    Switch {
-                        checked: appearance.dimsWallpaper
-                        height: dimsTipsLabel.height
-                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                        onCheckedChanged: appearance.setDimsWallpaper(checked)
-                        rightPadding: 0
-                    }
-                }
-
-            }
-
-            RoundedItem {
-                Label {
-                    text: qsTr("Accent color")
-                    color: FishUI.Theme.disabledTextColor
-                }
-
-                GridView {
-                    id: accentColorView
-                    height: itemSize
-                    Layout.fillWidth: true
-                    cellWidth: height
-                    cellHeight: height
-                    interactive: false
-                    model: ListModel {}
-
-                    property var itemSize: 30 + FishUI.Units.largeSpacing * 2
-
-                    Component.onCompleted: {
-                        model.append({"accentColor": String(FishUI.Theme.blueColor)})
-                        model.append({"accentColor": String(FishUI.Theme.redColor)})
-                        model.append({"accentColor": String(FishUI.Theme.greenColor)})
-                        model.append({"accentColor": String(FishUI.Theme.purpleColor)})
-                        model.append({"accentColor": String(FishUI.Theme.pinkColor)})
-                        model.append({"accentColor": String(FishUI.Theme.orangeColor)})
-                        model.append({"accentColor": String(FishUI.Theme.greyColor)})
-                    }
-
-                    delegate: Item {
-                        id: _accentColorItem
-
-                        property bool checked: Qt.colorEqual(FishUI.Theme.highlightColor, accentColor)
-                        property color currentColor: accentColor
-
-                        width: GridView.view.itemSize
-                        height: width
-
-                        MouseArea {
-                            id: _mouseArea
-                            anchors.fill: parent
-                            hoverEnabled: true
-                            onClicked: appearance.setAccentColor(index)
+                        IconCheckBox {
+                            source: "qrc:/images/light_mode.svg"
+                            text: qsTr("Light")
+                            iconWidth: 120
+                            iconHeight: iconWidth * 68 / 100
+                            checked: !FishUI.Theme.darkMode
+                            onClicked: appearance.switchDarkMode(false)
                         }
 
-                        Rectangle {
-                            anchors.fill: parent
-                            anchors.margins: FishUI.Units.smallSpacing
-                            color: "transparent"
-                            radius: width / 2
+                        IconCheckBox {
+                            source: "qrc:/images/dark_mode.svg"
+                            text: qsTr("Dark")
+                            iconWidth: 120
+                            iconHeight: iconWidth * 68 / 100
+                            checked: FishUI.Theme.darkMode
+                            onClicked: appearance.switchDarkMode(true)
+                        }
+                    }
 
-                            border.color: _mouseArea.pressed ? Qt.rgba(currentColor.r,
-                                                                       currentColor.g,
-                                                                       currentColor.b, 0.6)
-                                                             : Qt.rgba(currentColor.r,
-                                                                       currentColor.g,
-                                                                       currentColor.b, 0.4)
-                            border.width: checked || _mouseArea.containsMouse ? 3 : 0
+                    HorizontalDivider {}
+
+                    RowLayout {
+                        spacing: FishUI.Units.largeSpacing
+
+                        Label {
+                            id: dimsTipsLabel
+                            text: qsTr("Dim the wallpaper in dark theme")
+                            bottomPadding: FishUI.Units.smallSpacing
+                            Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
+                        }
+
+                        Item {
+                            Layout.fillWidth: true
+                        }
+
+                        Switch {
+                            checked: appearance.dimsWallpaper
+                            height: dimsTipsLabel.height
+                            Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                            onCheckedChanged: appearance.setDimsWallpaper(checked)
+                            rightPadding: 0
+                        }
+                    }
+                }
+            }
+
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: FishUI.Units.smallSpacing
+
+                Label {
+                    text: qsTr("Accent color")
+                    leftPadding: FishUI.Units.largeSpacing
+                    bottomPadding: FishUI.Units.smallSpacing
+                    color: FishUI.Theme.disabledTextColor
+                }
+
+                RoundedItem {
+                    GridView {
+                        id: accentColorView
+                        height: itemSize
+                        Layout.fillWidth: true
+                        cellWidth: height
+                        cellHeight: height
+                        interactive: false
+                        model: ListModel {}
+
+                        property var itemSize: 30 + FishUI.Units.largeSpacing * 2
+
+                        Component.onCompleted: {
+                            model.append({"accentColor": String(FishUI.Theme.blueColor)})
+                            model.append({"accentColor": String(FishUI.Theme.redColor)})
+                            model.append({"accentColor": String(FishUI.Theme.greenColor)})
+                            model.append({"accentColor": String(FishUI.Theme.purpleColor)})
+                            model.append({"accentColor": String(FishUI.Theme.pinkColor)})
+                            model.append({"accentColor": String(FishUI.Theme.orangeColor)})
+                            model.append({"accentColor": String(FishUI.Theme.greyColor)})
+                        }
+
+                        delegate: Item {
+                            id: _accentColorItem
+
+                            property bool checked: Qt.colorEqual(FishUI.Theme.highlightColor, accentColor)
+                            property color currentColor: accentColor
+
+                            width: GridView.view.itemSize
+                            height: width
+
+                            MouseArea {
+                                id: _mouseArea
+                                anchors.fill: parent
+                                hoverEnabled: true
+                                onClicked: appearance.setAccentColor(index)
+                            }
 
                             Rectangle {
                                 anchors.fill: parent
                                 anchors.margins: FishUI.Units.smallSpacing
-                                color: currentColor
+                                color: "transparent"
                                 radius: width / 2
 
-                                Image {
-                                    anchors.centerIn: parent
-                                    width: parent.height * 0.6
-                                    height: width
-                                    sourceSize: Qt.size(width, height)
-                                    source: "qrc:/images/dark/checked.svg"
-                                    visible: checked
+                                border.color: _mouseArea.pressed ? Qt.rgba(currentColor.r,
+                                                                           currentColor.g,
+                                                                           currentColor.b, 0.6)
+                                                                 : Qt.rgba(currentColor.r,
+                                                                           currentColor.g,
+                                                                           currentColor.b, 0.4)
+                                border.width: checked || _mouseArea.containsMouse ? 3 : 0
+
+                                Rectangle {
+                                    anchors.fill: parent
+                                    anchors.margins: FishUI.Units.smallSpacing
+                                    color: currentColor
+                                    radius: width / 2
+
+                                    Image {
+                                        anchors.centerIn: parent
+                                        width: parent.height * 0.6
+                                        height: width
+                                        sourceSize: Qt.size(width, height)
+                                        source: "qrc:/images/dark/checked.svg"
+                                        visible: checked
+                                    }
                                 }
                             }
                         }
