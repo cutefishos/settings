@@ -52,10 +52,7 @@ void DefaultApplications::loadApps()
     m_emailIndex = -1;
     m_terminalIndex = -1;
 
-    for (DesktopEntry *entry : ApplicationRegistry::instance()->entries()) {
-        if (entry->hidden())
-            continue;
-
+    for (DesktopEntry *entry : ApplicationRegistry::instance()->applicationEntries()) {
         AppItem item;
         item.path = entry->path();
         item.name = entry->name();

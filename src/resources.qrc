@@ -4,6 +4,7 @@
         <file>qml/SideBar.qml</file>
         <file>qml/ItemPage.qml</file>
         <file>qml/NavigationButton.qml</file>
+        <file>qml/NavigationItem.qml</file>
         <file>images/light/go-previous.svg</file>
         <file>images/light/go-next.svg</file>
         <file>images/dark/go-previous.svg</file>
@@ -89,6 +90,8 @@
         <file>qml/About/Main.qml</file>
         <file>qml/User/Main.qml</file>
         <file>qml/Appearance/Main.qml</file>
+        <file>qml/Appearance/Fonts.qml</file>
+        <file>qml/Appearance/CursorTheme.qml</file>
         <file>qml/Display/Main.qml</file>
         <file>qml/Battery/Main.qml</file>
         <file>qml/Battery/BatteryItem.qml</file>

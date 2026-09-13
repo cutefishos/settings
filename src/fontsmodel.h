@@ -32,6 +32,7 @@ class FontsModel : public QThread
 
 public:
     explicit FontsModel(QObject *parent = nullptr);
+    ~FontsModel() override;
 
     void run() override;
 

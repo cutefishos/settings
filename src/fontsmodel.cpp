@@ -19,17 +19,16 @@
 
 #include "fontsmodel.h"
 
-#include <QLocale>
-#include <QFontDatabase>
-#include <QFontInfo>
-#include <QTimer>
 #include <QDir>
 #include <QDirIterator>
+#include <QFontDatabase>
+#include <QFontInfo>
+#include <QLocale>
+#include <QTimer>
 
 // Freetype and Fontconfig
-#include <ft2build.h>
-#include <freetype/freetype.h>
 #include <fontconfig/fontconfig.h>
+#include <freetype/freetype.h>
 #include <ft2build.h>
 
 static QString getFcString(FcPattern *pat, const char *val, int index)
@@ -46,7 +45,7 @@ static QString getFcString(FcPattern *pat, const char *val, int index)
 static QString getFcLangString(FcPattern *pat, const char *val, const char *valLang)
 {
     QString rv;
-    int langIndex=-1;
+    int langIndex = -1;
 
     for (int i = 0; true; ++i) {
         QString lang = getFcString(pat, valLang, i);
@@ -56,7 +55,7 @@ static QString getFcLangString(FcPattern *pat, const char *val, const char *valL
         else if (QString::fromLatin1("en") == lang)
             return getFcString(pat, val, i);
         else if (QString::fromLatin1("xx") != lang && -1 == langIndex)
-            langIndex=i;
+            langIndex = i;
     }
 
     return getFcString(pat, val, langIndex > 0 ? langIndex : 0);
@@ -71,6 +70,12 @@ FontsModel::FontsModel(QObject *parent)
     QThread::setPriority(QThread::HighestPriority);
 }
 
+// The page owning the model can be closed before the font scan finishes.
+FontsModel::~FontsModel()
+{
+    wait();
+}
+
 void FontsModel::run()
 {
     m_generalFonts.clear();
@@ -80,14 +85,8 @@ void FontsModel::run()
     if (!pat)
         return;
 
-    FcObjectSet *objSet = FcObjectSetBuild(
-                FC_FAMILY,
-                FC_FAMILYLANG,
-                FC_CHARSET,
-                FC_STYLE,
-                FC_LANG,
-                FC_SPACING,
-                NULL);
+    FcObjectSet *objSet = FcObjectSetBuild(FC_FAMILY, FC_FAMILYLANG, FC_CHARSET, FC_STYLE, FC_LANG,
+                                           FC_SPACING, NULL);
 
     if (!objSet) {
         FcPatternDestroy(pat);
@@ -99,37 +98,37 @@ void FontsModel::run()
     FcPatternDestroy(pat);
 
     if (!fs) {
-         return;
+        return;
     }
 
     for (int i = 0; i < fs->nfont; ++i) {
-         char *charset = (char*)FcPatternFormat(fs->fonts[i], (FcChar8*)"%{charset}");
+        char *charset = (char *)FcPatternFormat(fs->fonts[i], (FcChar8 *)"%{charset}");
 
-         if (charset == NULL || strlen(charset) == 0) {
-             free(charset);
-             continue;
-         }
-         free(charset);
+        if (charset == NULL || strlen(charset) == 0) {
+            free(charset);
+            continue;
+        }
+        free(charset);
 
-         QString family = getFcLangString(fs->fonts[i], FC_FAMILY, FC_FAMILYLANG);
-         QString language = (char*)FcPatternFormat(fs->fonts[i], (FcChar8*)"%{lang}");
+        QString family = getFcLangString(fs->fonts[i], FC_FAMILY, FC_FAMILYLANG);
+        QString language = (char *)FcPatternFormat(fs->fonts[i], (FcChar8 *)"%{lang}");
 
-         int spacing = FC_PROPORTIONAL;
-         if (FcPatternGetInteger(fs->fonts[i], FC_SPACING, 0, &spacing) != FcResultMatch)
-             spacing = FC_PROPORTIONAL;
-         bool fixedPitch = spacing >= FC_MONO;
+        int spacing = FC_PROPORTIONAL;
+        if (FcPatternGetInteger(fs->fonts[i], FC_SPACING, 0, &spacing) != FcResultMatch)
+            spacing = FC_PROPORTIONAL;
+        bool fixedPitch = spacing >= FC_MONO;
 
-         if (family.isEmpty())
-             continue;
+        if (family.isEmpty())
+            continue;
 
-         if (fixedPitch && !m_fixedFonts.contains(family)) {
-             m_fixedFonts.append(family);
-         } else {
-             if (!m_generalFonts.contains(family)
-                     && (language.contains(m_lanCode, Qt::CaseInsensitive) ||
-                         language.contains(m_lanCode.split('-').first(), Qt::CaseInsensitive)))
-                 m_generalFonts.append(family);
-         }
+        if (fixedPitch && !m_fixedFonts.contains(family)) {
+            m_fixedFonts.append(family);
+        } else {
+            if (!m_generalFonts.contains(family)
+                && (language.contains(m_lanCode, Qt::CaseInsensitive)
+                    || language.contains(m_lanCode.split('-').first(), Qt::CaseInsensitive)))
+                m_generalFonts.append(family);
+        }
     }
     FcFontSetDestroy(fs);
 
