@@ -29,7 +29,7 @@ Rectangle {
     property alias layout: _mainLayout
 
     color: FishUI.Theme.secondBackgroundColor
-    radius: FishUI.Theme.mediumRadius
+    radius: FishUI.Theme.bigRadius
 
     implicitHeight: _mainLayout.implicitHeight +
                     _mainLayout.anchors.topMargin +
