@@ -1,4 +1,5 @@
 #include "application.h"
+#include "cutefishapplication.h"
 #include <QCommandLineParser>
 #include <QDBusPendingCall>
 #include <QIcon>
@@ -41,8 +42,8 @@ static QObject *passwordSingleton(QQmlEngine *engine, QJSEngine *scriptEngine)
 Application::Application(int &argc, char **argv)
     : QApplication(argc, argv)
 {
+    Cutefish::Application::prepare();
     setWindowIcon(QIcon::fromTheme("preferences-system"));
-    setOrganizationName("cutefish");
 
     QCommandLineParser parser;
     parser.setApplicationDescription(QStringLiteral("Cutefish Settings"));

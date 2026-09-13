@@ -22,6 +22,8 @@ pkg_check_modules(Xcursor REQUIRED IMPORTED_TARGET xcursor)
 find_package(Libcrypt REQUIRED)
 
 
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/application
+                 ${CMAKE_CURRENT_BINARY_DIR}/cutefish-framework-application-build)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/applications
                  ${CMAKE_CURRENT_BINARY_DIR}/cutefish-framework-applications-build)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/appearance
@@ -76,6 +78,7 @@ set_source_files_properties(${DBUS_SOURCES} PROPERTIES SKIP_AUTOGEN ON)
 add_executable(${PROJECT_NAME} ${DBUS_SOURCES} ${SRCS} ${RESOURCES})
 target_link_libraries(${PROJECT_NAME}
         PkgConfig::Xcursor
+        Cutefish::Application
         Cutefish::Applications
         Cutefish::Appearance
         Qt6::Core
