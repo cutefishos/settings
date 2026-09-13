@@ -31,13 +31,6 @@ Rectangle {
     color: FishUI.Theme.secondBackgroundColor
     radius: FishUI.Theme.mediumRadius
 
-    Behavior on color {
-        ColorAnimation {
-            duration: 200
-            easing.type: Easing.Linear
-        }
-    }
-
     implicitHeight: _mainLayout.implicitHeight +
                     _mainLayout.anchors.topMargin +
                     _mainLayout.anchors.bottomMargin
