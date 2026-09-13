@@ -31,18 +31,8 @@ Page {
         color: rootWindow.background.color
     }
 
+    // The title is drawn by the window header next to the navigation buttons.
     header: Item {
         height: rootWindow.header.height
-
-        Label {
-            anchors.left: parent.left
-            leftPadding: FishUI.Units.largeSpacing * 3
-            rightPadding: Qt.application.layoutDirection === Qt.RightToLeft ? FishUI.Units.largeSpacing * 3 : 0
-            topPadding: FishUI.Units.largeSpacing
-            bottomPadding: 0
-            font.pointSize: 12
-            text: page.headerTitle
-            color: rootWindow.active ? FishUI.Theme.textColor : FishUI.Theme.disabledTextColor
-        }
     }
 }

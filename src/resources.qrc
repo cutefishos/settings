@@ -3,6 +3,11 @@
         <file>qml/main.qml</file>
         <file>qml/SideBar.qml</file>
         <file>qml/ItemPage.qml</file>
+        <file>qml/NavigationButton.qml</file>
+        <file>images/light/go-previous.svg</file>
+        <file>images/light/go-next.svg</file>
+        <file>images/dark/go-previous.svg</file>
+        <file>images/dark/go-next.svg</file>
         <file>images/dark/display-brightness-low-symbolic.svg</file>
         <file>images/dark/display-brightness-symbolic.svg</file>
         <file>images/light/display-brightness-low-symbolic.svg</file>
