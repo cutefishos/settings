@@ -173,13 +173,12 @@ ItemPage {
                                     color: currentColor
                                     radius: width / 2
 
-                                    Image {
+                                    FishUI.CheckMark {
                                         anchors.centerIn: parent
                                         width: parent.height * 0.6
                                         height: width
-                                        sourceSize: Qt.size(width, height)
-                                        source: "qrc:/images/dark/checked.svg"
                                         visible: checked
+                                        color: FishUI.Theme.highlightedTextColor
                                     }
                                 }
                             }

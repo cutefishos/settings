@@ -91,13 +91,9 @@ ItemPage {
                                                            : FishUI.Theme.textColor
                                 }
 
-                                Image {
-                                    width: 16
-                                    height: 16
-                                    sourceSize: Qt.size(16, 16)
-                                    source: "qrc:/images/dark/checked.svg"
+                                FishUI.CheckMark {
                                     visible: item.isSelected
-                                    smooth: false
+                                    color: FishUI.Theme.highlightedTextColor
                                 }
                             }
                         }

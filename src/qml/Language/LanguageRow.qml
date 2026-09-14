@@ -65,11 +65,8 @@ ItemDelegate {
             }
         }
 
-        Label {
+        FishUI.CheckMark {
             visible: control.showCheck
-            text: "✓"
-            color: FishUI.Theme.highlightColor
-            font.pixelSize: 18
         }
     }
 }

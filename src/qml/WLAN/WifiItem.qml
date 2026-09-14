@@ -20,7 +20,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
-import Qt5Compat.GraphicalEffects
 import QtQuick.Window 2.3
 
 import FishUI 1.0 as FishUI
@@ -138,20 +137,8 @@ Item {
                 }
 
                 // Activated
-                Image {
-                    width: 16
-                    height: width
-                    sourceSize: Qt.size(width, height)
-                    source: "qrc:/images/light/checked.svg"
+                FishUI.CheckMark {
                     visible: model.connectionState === NM.Enums.Activated
-
-                    ColorOverlay {
-                        anchors.fill: parent
-                        source: parent
-                        color: FishUI.Theme.highlightColor
-                        opacity: 1
-                        visible: true
-                    }
                 }
 
                 // Locked

@@ -27,7 +27,6 @@
         <file>qml/Language/AddLanguageDialog.qml</file>
         <file>qml/Language/LanguageRow.qml</file>
         <file>qml/Language/PreferredLanguageList.qml</file>
-        <file>images/checked.svg</file>
         <file>images/light/network-wired.svg</file>
         <file>images/light/network-wireless-connected-00.svg</file>
         <file>images/light/network-wireless-connected-25.svg</file>
@@ -88,8 +87,6 @@
         <file>qml/Power/Main.qml</file>
         <file>images/light/picture.svg</file>
         <file>images/dark/picture.svg</file>
-        <file>images/light/checked.svg</file>
-        <file>images/dark/checked.svg</file>
         <file>qml/About/Main.qml</file>
         <file>qml/User/Main.qml</file>
         <file>qml/Appearance/Main.qml</file>
