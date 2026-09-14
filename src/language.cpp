@@ -88,9 +88,6 @@ static QList<LanguageEntry> languageCatalog(const QString &displayCode)
         "uk_UA",       // Ukrainian
         "vi_VN",       // Vietnamese
     };
-    const QStringList commonCodes = {"en_US", "en_GB", "zh_Hans_CN", "zh_Hant_TW", "es_ES",
-                                     "fr_FR", "de_DE", "ja_JP", "ko_KR", "pt_BR", "ru_RU",
-                                     "ar", "hi_IN", "it_IT", "id_ID", "tr_TR", "vi_VN"};
     QList<LanguageEntry> entries;
     const icu::Locale displayLocale(displayCode.toUtf8().constData());
     for (const QString &code : supportedSystemLanguages) {
@@ -102,16 +99,11 @@ static QList<LanguageEntry> languageCatalog(const QString &displayCode)
         entry.name = displayName(locale, locale);
         entry.description = displayName(locale, displayLocale);
         entry.searchText = entry.name + ' ' + entry.description + ' ' + entry.code;
-        entry.common = commonCodes.contains(entry.code);
         entries.append(entry);
     }
 
     QCollator collator{QLocale(displayCode)};
-    std::sort(entries.begin(), entries.end(), [&collator, &commonCodes](const auto &left, const auto &right) {
-        if (left.common != right.common)
-            return left.common;
-        if (left.common)
-            return commonCodes.indexOf(left.code) < commonCodes.indexOf(right.code);
+    std::sort(entries.begin(), entries.end(), [&collator](const auto &left, const auto &right) {
         const int order = collator.compare(left.description, right.description);
         return order == 0 ? left.code < right.code : order < 0;
     });
@@ -138,7 +130,6 @@ QVariant LanguageModel::data(const QModelIndex &index, int role) const
     case NameRole: return entry.name;
     case DescriptionRole: return entry.description;
     case SearchRole: return entry.searchText;
-    case GroupRole: return entry.common ? tr("Common languages") : tr("All languages");
     case AddedRole: return m_preferredCodes.contains(entry.code);
     default: return {};
     }
@@ -147,7 +138,7 @@ QVariant LanguageModel::data(const QModelIndex &index, int role) const
 QHash<int, QByteArray> LanguageModel::roleNames() const
 {
     return {{CodeRole, "code"}, {NameRole, "name"}, {DescriptionRole, "description"},
-            {SearchRole, "searchText"}, {GroupRole, "group"}, {AddedRole, "added"}};
+            {SearchRole, "searchText"}, {AddedRole, "added"}};
 }
 
 void LanguageModel::setEntries(const QList<LanguageEntry> &entries)

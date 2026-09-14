@@ -109,18 +109,6 @@ FishUI.Window {
             boundsBehavior: Flickable.StopAtBounds
             ScrollBar.vertical: ScrollBar {}
             FishUI.WheelHandler { target: availableList }
-            section.property: "group"
-            section.delegate: Label {
-                required property string section
-                width: availableList.width
-                height: 36
-                leftPadding: 12
-                verticalAlignment: Text.AlignVCenter
-                text: section
-                font.pixelSize: 12
-                font.weight: Font.DemiBold
-                color: FishUI.Theme.disabledTextColor
-            }
 
             delegate: LanguageRow {
                 required property string code
@@ -131,7 +119,6 @@ FishUI.Window {
                 selected: addDialog.selectedCode === code
                 languageName: name
                 separatorVisible: index < availableList.count - 1
-                                  && ListView.section === ListView.nextSection
                 showCheck: selected
                 onClicked: addDialog.selectedCode = code
             }

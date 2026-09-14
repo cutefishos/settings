@@ -31,7 +31,6 @@ struct LanguageEntry
     QString name;
     QString description;
     QString searchText;
-    bool common = false;
 };
 
 class LanguageModel : public QAbstractListModel
@@ -39,7 +38,7 @@ class LanguageModel : public QAbstractListModel
     Q_OBJECT
 
 public:
-    enum Role { CodeRole = Qt::UserRole + 1, NameRole, DescriptionRole, SearchRole, GroupRole, AddedRole };
+    enum Role { CodeRole = Qt::UserRole + 1, NameRole, DescriptionRole, SearchRole, AddedRole };
     explicit LanguageModel(QObject *parent = nullptr);
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role) const override;

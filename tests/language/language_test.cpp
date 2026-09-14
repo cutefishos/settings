@@ -40,7 +40,6 @@ private slots:
         QVERIFY(language.loading());
         QTRY_VERIFY_WITH_TIMEOUT(!language.loading(), 5000);
         QCOMPARE(model->rowCount(), 40);
-        QCOMPARE(model->data(model->index(0, 0), LanguageModel::CodeRole).toString(), "en_GB");
         language.search("zh_Hans_CN");
         QCOMPARE(model->rowCount(), 0);
         language.search("");
@@ -64,8 +63,8 @@ private slots:
     {
         LanguageModel source;
         AvailableLanguageModel model(&source);
-        source.setEntries({{"en_US", "English", "English", "en_US", true},
-                           {"ja_JP", "日本語", "Japanese", "ja_JP", true}});
+        source.setEntries({{"en_US", "English", "English", "en_US"},
+                           {"ja_JP", "日本語", "Japanese", "ja_JP"}});
         QCOMPARE(model.rowCount(), 2);
         source.setPreferredCodes({"en_US"});
         QCOMPARE(model.rowCount(), 1);
