@@ -51,6 +51,7 @@ ItemDelegate {
                 text: control.languageName
                 textFormat: Text.PlainText
                 color: FishUI.Theme.textColor
+                font.pixelSize: 14
                 elide: Text.ElideRight
             }
 
@@ -59,7 +60,7 @@ ItemDelegate {
                 text: control.description
                 textFormat: Text.PlainText
                 color: FishUI.Theme.disabledTextColor
-                font.pixelSize: 12
+                font.pixelSize: 13
                 elide: Text.ElideRight
             }
         }

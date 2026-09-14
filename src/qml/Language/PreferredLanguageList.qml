@@ -110,6 +110,7 @@ Item {
                         textFormat: Text.PlainText
                         elide: Text.ElideRight
                         color: FishUI.Theme.textColor
+                        font.pixelSize: 14
                     }
 
                     Label {
@@ -118,7 +119,7 @@ Item {
                         textFormat: Text.PlainText
                         elide: Text.ElideRight
                         color: FishUI.Theme.disabledTextColor
-                        font.pixelSize: 12
+                        font.pixelSize: 13
                     }
                 }
 
@@ -156,8 +157,6 @@ Item {
                             control.cancel()
                         }
                     }
-
-
                 }
             }
 
