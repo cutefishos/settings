@@ -145,12 +145,15 @@ Item {
 
                 // Locked
                 FishUI.Icon {
+                    width: 22
+                    height: 22
                     name: "lock"
                     visible: (model.securityType === -1 | model.securityType === 0) ? false : true
                 }
 
                 IconButton {
                     iconName: "info"
+                    iconColor: FishUI.Theme.highlightColor
                     onClicked: {
                         var component = Qt.createComponent("WirelessDetailsDialog.qml")
                         if (component.status === Component.Ready) {

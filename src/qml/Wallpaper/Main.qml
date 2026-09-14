@@ -125,6 +125,7 @@ ItemPage {
                             width: 32
                             height: width
                             name: "image"
+                            color: FishUI.Theme.darkMode ? "#FFFFFF" : "#C8CAD5"
                             visible: _image.status !== Image.Ready
                         }
 

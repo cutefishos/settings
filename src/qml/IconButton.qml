@@ -28,6 +28,7 @@ Item {
     property alias source: image.source
     // A FishUI.Icon glyph drawn instead of source.
     property string iconName
+    property alias iconColor: glyph.color
     signal clicked()
 
     width: 22
