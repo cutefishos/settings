@@ -47,11 +47,11 @@ ItemDelegate {
             spacing: 2
 
             Label {
+                id: primaryLabel
                 Layout.fillWidth: true
                 text: control.languageName
                 textFormat: Text.PlainText
                 color: FishUI.Theme.textColor
-                font.pixelSize: 14
                 elide: Text.ElideRight
             }
 
@@ -60,7 +60,7 @@ ItemDelegate {
                 text: control.description
                 textFormat: Text.PlainText
                 color: FishUI.Theme.disabledTextColor
-                font.pixelSize: 13
+                font.pixelSize: Math.max(1, primaryLabel.font.pixelSize - 1)
                 elide: Text.ElideRight
             }
         }

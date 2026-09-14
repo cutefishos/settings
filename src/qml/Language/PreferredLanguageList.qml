@@ -105,12 +105,12 @@ Item {
                     spacing: 2
 
                     Label {
+                        id: primaryLabel
                         Layout.fillWidth: true
                         text: row.modelData.name
                         textFormat: Text.PlainText
                         elide: Text.ElideRight
                         color: FishUI.Theme.textColor
-                        font.pixelSize: 14
                     }
 
                     Label {
@@ -119,7 +119,7 @@ Item {
                         textFormat: Text.PlainText
                         elide: Text.ElideRight
                         color: FishUI.Theme.disabledTextColor
-                        font.pixelSize: 13
+                        font.pixelSize: Math.max(1, primaryLabel.font.pixelSize - 1)
                     }
                 }
 
