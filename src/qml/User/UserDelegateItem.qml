@@ -173,8 +173,7 @@ RoundedItem {
 
                     FishUI.RoundImageButton {
                         iconMargins: FishUI.Units.smallSpacing
-                        source: FishUI.Theme.darkMode ? additionalSettings.shown ? "qrc:/images/dark/up.svg" : "qrc:/images/dark/down.svg"
-                                                      : additionalSettings.shown ? "qrc:/images/light/up.svg" : "qrc:/images/light/down.svg"
+                        iconName: additionalSettings.shown ? "chevron-up" : "chevron-down"
                         onClicked: additionalSettings.toggle()
                         Layout.alignment: Qt.AlignVCenter
                     }

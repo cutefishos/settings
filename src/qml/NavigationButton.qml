@@ -6,7 +6,7 @@ Item {
     width: 24
     height: 24
 
-    property alias source: _image.source
+    property alias iconName: _icon.name
     property color hoveredColor: FishUI.Theme.darkMode ? Qt.lighter(FishUI.Theme.secondBackgroundColor, 1.7)
                                                    : Qt.darker(FishUI.Theme.secondBackgroundColor, 1.2)
     property color pressedColor: FishUI.Theme.darkMode ? Qt.lighter(FishUI.Theme.secondBackgroundColor, 1.4)
@@ -25,14 +25,11 @@ Item {
              : "transparent"
     }
 
-    Image {
-        id: _image
+    FishUI.Icon {
+        id: _icon
         anchors.centerIn: parent
         width: 18
         height: width
-        sourceSize: Qt.size(width, height)
-        smooth: false
-        antialiasing: true
         mirror: control.LayoutMirroring.enabled
         opacity: control.enabled ? 1 : 0.35
     }

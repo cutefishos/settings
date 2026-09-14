@@ -61,17 +61,11 @@ Item {
             elide: Text.ElideRight
         }
 
-        Image {
-            width: 16
-            height: 16
-            sourceSize: Qt.size(width, height)
-            Layout.preferredWidth: width
-            Layout.preferredHeight: height
-            source: FishUI.Theme.darkMode ? "qrc:/images/dark/go-next.svg"
-                                          : "qrc:/images/light/go-next.svg"
+        FishUI.Icon {
+            Layout.preferredWidth: 16
+            Layout.preferredHeight: 16
+            name: "chevron-right"
             mirror: control.LayoutMirroring.enabled
-            smooth: false
-            antialiasing: true
             opacity: 0.6
         }
     }

@@ -65,7 +65,9 @@ ItemDelegate {
             }
         }
 
-        FishUI.CheckMark {
+        FishUI.Icon {
+            name: "check"
+            color: FishUI.Theme.highlightColor
             visible: control.showCheck
         }
     }

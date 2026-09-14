@@ -91,7 +91,8 @@ ItemPage {
                                                            : FishUI.Theme.textColor
                                 }
 
-                                FishUI.CheckMark {
+                                FishUI.Icon {
+                                    name: "check"
                                     visible: item.isSelected
                                     color: FishUI.Theme.highlightedTextColor
                                 }

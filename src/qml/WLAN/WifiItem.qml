@@ -137,7 +137,9 @@ Item {
                 }
 
                 // Activated
-                FishUI.CheckMark {
+                FishUI.Icon {
+                    name: "check"
+                    color: FishUI.Theme.highlightColor
                     visible: model.connectionState === NM.Enums.Activated
                 }
 

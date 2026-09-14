@@ -173,7 +173,8 @@ ItemPage {
                                     color: currentColor
                                     radius: width / 2
 
-                                    FishUI.CheckMark {
+                                    FishUI.Icon {
+                                        name: "check"
                                         anchors.centerIn: parent
                                         width: parent.height * 0.6
                                         height: width

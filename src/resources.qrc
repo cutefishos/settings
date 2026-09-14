@@ -5,10 +5,6 @@
         <file>qml/ItemPage.qml</file>
         <file>qml/NavigationButton.qml</file>
         <file>qml/NavigationItem.qml</file>
-        <file>images/light/go-previous.svg</file>
-        <file>images/light/go-next.svg</file>
-        <file>images/dark/go-previous.svg</file>
-        <file>images/dark/go-next.svg</file>
         <file>images/dark/display-brightness-low-symbolic.svg</file>
         <file>images/dark/display-brightness-symbolic.svg</file>
         <file>images/light/display-brightness-low-symbolic.svg</file>
@@ -42,7 +38,6 @@
         <file>images/view-refresh.svg</file>
         <file>images/info.svg</file>
         <file>qml/IconButton.qml</file>
-        <file>images/go-previous.svg</file>
         <file>qml/Hideable.qml</file>
         <file>qml/BluetoothPage.qml</file>
         <file>images/dock_top.svg</file>
@@ -54,10 +49,6 @@
         <file>qml/User/UserDelegateItem.qml</file>
         <file>qml/User/AddUserDialog.qml</file>
         <file>qml/User/ChangePasswordDialog.qml</file>
-        <file>images/light/down.svg</file>
-        <file>images/light/up.svg</file>
-        <file>images/dark/down.svg</file>
-        <file>images/dark/up.svg</file>
         <file>qml/Wallpaper/Main.qml</file>
         <file>qml/Wallpaper/DesktopPreview.qml</file>
         <file>images/sidebar/dark/about.svg</file>
