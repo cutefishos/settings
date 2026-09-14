@@ -44,20 +44,61 @@ static QString displayName(const icu::Locale &locale, const icu::Locale &display
 
 static QList<LanguageEntry> languageCatalog(const QString &displayCode)
 {
-    // These entries only affect ordering; the full ICU catalog remains available.
+    static const QStringList supportedSystemLanguages = {
+        "ar",          // Arabic
+        "bn_BD",       // Bangla
+        "bg_BG",       // Bulgarian
+        "ca_ES",       // Catalan
+        "zh_Hans_CN",  // Chinese, Simplified
+        "zh_Hant_HK",  // Chinese, Traditional (Hong Kong)
+        "zh_Hant_TW",  // Chinese, Traditional (Taiwan)
+        "hr_HR",       // Croatian
+        "cs_CZ",       // Czech
+        "da_DK",       // Danish
+        "nl_NL",       // Dutch
+        "en_US",       // English (US)
+        "en_GB",       // English (UK)
+        "fi_FI",       // Finnish
+        "fr_FR",       // French
+        "fr_CA",       // French (Canada)
+        "de_DE",       // German
+        "el_GR",       // Greek
+        "he_IL",       // Hebrew
+        "hi_IN",       // Hindi
+        "hu_HU",       // Hungarian
+        "id_ID",       // Indonesian
+        "it_IT",       // Italian
+        "ja_JP",       // Japanese
+        "ko_KR",       // Korean
+        "ms_MY",       // Malay
+        "nb_NO",       // Norwegian Bokmål
+        "pl_PL",       // Polish
+        "pt_BR",       // Portuguese (Brazil)
+        "pt_PT",       // Portuguese (Portugal)
+        "ro_RO",       // Romanian
+        "ru_RU",       // Russian
+        "sk_SK",       // Slovak
+        "sl_SI",       // Slovenian
+        "es_ES",       // Spanish (Spain)
+        "es_419",      // Spanish (Latin America)
+        "es_MX",       // Spanish (Mexico)
+        "sv_SE",       // Swedish
+        "th_TH",       // Thai
+        "tr_TR",       // Turkish
+        "uk_UA",       // Ukrainian
+        "vi_VN",       // Vietnamese
+    };
     const QStringList commonCodes = {"en_US", "en_GB", "zh_Hans_CN", "zh_Hant_TW", "es_ES",
                                      "fr_FR", "de_DE", "ja_JP", "ko_KR", "pt_BR", "ru_RU",
                                      "ar", "hi_IN", "it_IT", "id_ID", "tr_TR", "vi_VN"};
     QList<LanguageEntry> entries;
     const icu::Locale displayLocale(displayCode.toUtf8().constData());
-    int32_t count = 0;
-    const icu::Locale *locales = icu::Locale::getAvailableLocales(count);
-    for (int32_t i = 0; i < count; ++i) {
-        const icu::Locale &locale = locales[i];
+    for (const QString &code : supportedSystemLanguages) {
+        const icu::Locale locale(code.toUtf8().constData());
         if (locale.isBogus() || !*locale.getLanguage())
             continue;
         LanguageEntry entry;
-        entry.code = QString::fromLatin1(locale.getName());
+        entry.code = code;
         entry.name = displayName(locale, locale);
         entry.description = displayName(locale, displayLocale);
         entry.searchText = entry.name + ' ' + entry.description + ' ' + entry.code;

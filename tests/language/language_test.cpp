@@ -39,7 +39,7 @@ private slots:
         language.loadLanguages();
         QVERIFY(language.loading());
         QTRY_VERIFY_WITH_TIMEOUT(!language.loading(), 5000);
-        QVERIFY(model->rowCount() > 500);
+        QCOMPARE(model->rowCount(), 40);
         QCOMPARE(model->data(model->index(0, 0), LanguageModel::CodeRole).toString(), "en_GB");
         language.search("zh_Hans_CN");
         QCOMPARE(model->rowCount(), 0);
@@ -57,7 +57,7 @@ private slots:
         QCOMPARE(model->rowCount(), 1);
         qInfo() << "Four catalog searches:" << timer.nsecsElapsed() / 1000000.0 << "ms";
         language.search("");
-        QVERIFY(model->rowCount() > 500);
+        QCOMPARE(model->rowCount(), 40);
     }
 
     void preferredLanguagesAreFilteredDynamically()
@@ -84,7 +84,7 @@ private slots:
         Language reopened;
         reopened.loadLanguages();
         QTRY_VERIFY_WITH_TIMEOUT(!reopened.loading(), 5000);
-        QVERIFY(reopened.availableLanguages()->rowCount() > 500);
+        QCOMPARE(reopened.availableLanguages()->rowCount(), 40);
     }
 
 private:
