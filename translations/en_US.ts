@@ -101,7 +101,7 @@
 <context>
     <name>LanguagePage</name>
     <message>
-        <location filename="../src/qml/LanguagePage.qml" line="+28"/>
+        <location filename="../src/qml/Language/LanguagePage.qml" line="+28"/>
         <source>Language</source>
         <translation>Language</translation>
     </message>

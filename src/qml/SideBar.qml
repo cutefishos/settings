@@ -262,7 +262,7 @@ Item {
         ListElement {
             title: qsTr("Language")
             name: "language"
-            page: "qrc:/qml/LanguagePage.qml"
+            page: "qrc:/qml/Language/LanguagePage.qml"
             iconSource: "language.svg"
             iconColor: "#20A7FF"
             category: qsTr("System")

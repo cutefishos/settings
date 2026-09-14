@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.22)
+project(language_test LANGUAGES CXX)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_CXX_STANDARD 17)
+find_package(Qt6 REQUIRED COMPONENTS Core Concurrent DBus Test)
+find_package(ICU REQUIRED COMPONENTS i18n uc)
+add_executable(language_test language_test.cpp ../../src/language.cpp)
+target_include_directories(language_test PRIVATE ../../src)
+target_link_libraries(language_test PRIVATE Qt6::Core Qt6::Concurrent Qt6::DBus Qt6::Test ICU::i18n ICU::uc)
+enable_testing()
+add_test(NAME language_test COMMAND language_test)
+
+find_program(QMLTESTRUNNER qmltestrunner HINTS /usr/lib/qt6/bin REQUIRED)
+add_test(NAME language_drag_test COMMAND ${QMLTESTRUNNER} -input ${CMAKE_CURRENT_SOURCE_DIR}/tst_drag.qml)
+set_tests_properties(language_drag_test PROPERTIES ENVIRONMENT
+    "QT_QPA_PLATFORM=offscreen;QT_QUICK_BACKEND=software;QT_QUICK_CONTROLS_STYLE=Fish")

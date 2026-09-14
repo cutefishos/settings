@@ -1,0 +1,74 @@
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import FishUI 1.0 as FishUI
+
+ItemDelegate {
+    id: control
+
+    property string languageName
+    property string description
+    property bool selected: false
+    property bool showCheck: false
+    property bool separatorVisible: false
+
+    height: 52
+    leftPadding: 12
+    rightPadding: 12
+    topPadding: 8
+    bottomPadding: 8
+
+    background: Rectangle {
+        radius: FishUI.Theme.smallRadius
+        color: control.selected ? Qt.alpha(FishUI.Theme.highlightColor, 0.14)
+                                : control.hovered ? Qt.alpha(FishUI.Theme.textColor, 0.05)
+                                                  : "transparent"
+        border.width: control.activeFocus ? 1 : 0
+        border.color: FishUI.Theme.highlightColor
+    }
+
+    Rectangle {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.leftMargin: control.leftPadding
+        anchors.rightMargin: control.rightPadding
+        height: 1
+        color: FishUI.Theme.disabledTextColor
+        opacity: FishUI.Theme.darkMode ? 0.3 : 0.1
+        visible: control.separatorVisible
+    }
+
+    contentItem: RowLayout {
+        spacing: 12
+
+        ColumnLayout {
+            Layout.fillWidth: true
+            spacing: 2
+
+            Label {
+                Layout.fillWidth: true
+                text: control.languageName
+                textFormat: Text.PlainText
+                color: FishUI.Theme.textColor
+                elide: Text.ElideRight
+            }
+
+            Label {
+                Layout.fillWidth: true
+                text: control.description
+                textFormat: Text.PlainText
+                color: FishUI.Theme.disabledTextColor
+                font.pixelSize: 12
+                elide: Text.ElideRight
+            }
+        }
+
+        Label {
+            visible: control.showCheck
+            text: "✓"
+            color: FishUI.Theme.highlightColor
+            font.pixelSize: 18
+        }
+    }
+}

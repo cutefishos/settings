@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (C) 2021 CutefishOS Team.
  *
  * Author:     Reion Wong <reionwong@gmail.com>
@@ -18,78 +18,258 @@
  */
 
 #include "language.h"
+
+#include <QCollator>
+#include <QDBusConnection>
+#include <QDBusMessage>
+#include <QDBusPendingCallWatcher>
+#include <QDBusPendingReply>
+#include <QFutureWatcher>
 #include <QLocale>
-#include <QDebug>
-#include <QDir>
+#include <QSettings>
+#include <QtConcurrent>
 
-#include <QDBusPendingCall>
-
+#include <algorithm>
 #include <unicode/locid.h>
 #include <unicode/unistr.h>
 
-static const QStringList supportList = {"en_US", "en_GB", "de_DE", "cs_CZ", "es_ES",
-                                        "es_MX", "ar_AA", "bg_BG", "fa_IR", "fi_FI", "fr_FR",
-                                        "uk_UA", "uz_UZ", "hu_HU", "hi_IN", "id_ID"
-                                        "it_IT", "ja_JP", "nb_NO", "ne_NP", "pl_PL",
-                                        "pt_BR", "pt_PT", "ru_RU", "sv_SE", "so",
-                                        "be_BY", "be_Latn", "tr_TR", "zh_CN", "zh_HK", "zh_TW"
-                                       };
+static QString displayName(const icu::Locale &locale, const icu::Locale &displayLocale)
+{
+    icu::UnicodeString name;
+    locale.getDisplayName(displayLocale, name);
+    std::string utf8;
+    name.toUTF8String(utf8);
+    return QString::fromUtf8(utf8.data(), utf8.size());
+}
 
-static const QMap<QString, QString> s_displayName = {{"zh_CN", "简体中文"},
-                                                     {"zh_HK", "繁體中文(香港)"},
-                                                     {"zh_TW", "正體中文"}
-                                                    };
+static QList<LanguageEntry> languageCatalog(const QString &displayCode)
+{
+    // These entries only affect ordering; the full ICU catalog remains available.
+    const QStringList commonCodes = {"en_US", "en_GB", "zh_Hans_CN", "zh_Hant_TW", "es_ES",
+                                     "fr_FR", "de_DE", "ja_JP", "ko_KR", "pt_BR", "ru_RU",
+                                     "ar", "hi_IN", "it_IT", "id_ID", "tr_TR", "vi_VN"};
+    QList<LanguageEntry> entries;
+    const icu::Locale displayLocale(displayCode.toUtf8().constData());
+    int32_t count = 0;
+    const icu::Locale *locales = icu::Locale::getAvailableLocales(count);
+    for (int32_t i = 0; i < count; ++i) {
+        const icu::Locale &locale = locales[i];
+        if (locale.isBogus() || !*locale.getLanguage())
+            continue;
+        LanguageEntry entry;
+        entry.code = QString::fromLatin1(locale.getName());
+        entry.name = displayName(locale, locale);
+        entry.description = displayName(locale, displayLocale);
+        entry.searchText = entry.name + ' ' + entry.description + ' ' + entry.code;
+        entry.common = commonCodes.contains(entry.code);
+        entries.append(entry);
+    }
+
+    QCollator collator{QLocale(displayCode)};
+    std::sort(entries.begin(), entries.end(), [&collator, &commonCodes](const auto &left, const auto &right) {
+        if (left.common != right.common)
+            return left.common;
+        if (left.common)
+            return commonCodes.indexOf(left.code) < commonCodes.indexOf(right.code);
+        const int order = collator.compare(left.description, right.description);
+        return order == 0 ? left.code < right.code : order < 0;
+    });
+    return entries;
+}
+
+LanguageModel::LanguageModel(QObject *parent)
+    : QAbstractListModel(parent)
+{
+}
+
+int LanguageModel::rowCount(const QModelIndex &parent) const
+{
+    return parent.isValid() ? 0 : m_entries.size();
+}
+
+QVariant LanguageModel::data(const QModelIndex &index, int role) const
+{
+    if (!index.isValid() || index.row() < 0 || index.row() >= m_entries.size())
+        return {};
+    const auto &entry = m_entries.at(index.row());
+    switch (role) {
+    case CodeRole: return entry.code;
+    case NameRole: return entry.name;
+    case DescriptionRole: return entry.description;
+    case SearchRole: return entry.searchText;
+    case GroupRole: return entry.common ? tr("Common languages") : tr("All languages");
+    case AddedRole: return m_preferredCodes.contains(entry.code);
+    default: return {};
+    }
+}
+
+QHash<int, QByteArray> LanguageModel::roleNames() const
+{
+    return {{CodeRole, "code"}, {NameRole, "name"}, {DescriptionRole, "description"},
+            {SearchRole, "searchText"}, {GroupRole, "group"}, {AddedRole, "added"}};
+}
+
+void LanguageModel::setEntries(const QList<LanguageEntry> &entries)
+{
+    beginResetModel();
+    m_entries = entries;
+    endResetModel();
+}
+
+void LanguageModel::setPreferredCodes(const QStringList &codes)
+{
+    if (m_preferredCodes == codes)
+        return;
+    m_preferredCodes = codes;
+    if (!m_entries.isEmpty())
+        emit dataChanged(index(0), index(m_entries.size() - 1), {AddedRole});
+}
+
+bool LanguageModel::contains(const QString &code) const
+{
+    return std::any_of(m_entries.cbegin(), m_entries.cend(), [&code](const auto &entry) {
+        return entry.code == code;
+    });
+}
+
+AvailableLanguageModel::AvailableLanguageModel(LanguageModel *source)
+{
+    setSourceModel(source);
+    setFilterRole(LanguageModel::SearchRole);
+    setFilterCaseSensitivity(Qt::CaseInsensitive);
+    connect(source, &QAbstractItemModel::dataChanged, this,
+            [this](const QModelIndex &, const QModelIndex &, const QList<int> &roles) {
+        if (roles.isEmpty() || roles.contains(LanguageModel::AddedRole))
+            invalidateFilter();
+    });
+}
+
+bool AvailableLanguageModel::filterAcceptsRow(int row, const QModelIndex &parent) const
+{
+    const QModelIndex index = sourceModel()->index(row, 0, parent);
+    return !sourceModel()->data(index, LanguageModel::AddedRole).toBool()
+           && QSortFilterProxyModel::filterAcceptsRow(row, parent);
+}
 
 Language::Language(QObject *parent)
     : QObject(parent)
-    , m_interface("com.cutefish.Services",
-                  "/com/cutefish/Services/Language",
-                  "com.cutefish.Services.Language",
-                  QDBusConnection::sessionBus())
-    , m_currentLanguage(-1)
+    , m_filteredLanguages(&m_languages)
 {
-    QString systemLanguage = m_interface.property("languageCode").toString();
+    reload();
+    QDBusConnection::sessionBus().connect("com.cutefish.Services", "/com/cutefish/Services/Language",
+                                         "com.cutefish.Services.Language", "languageChanged",
+                                         this, SLOT(reload()));
+}
 
-    for (const QString &code : supportList) {
-        std::string string;
-        icu::Locale locale = qPrintable(code);
-        icu::UnicodeString unicodeString;
-        locale.getDisplayName(locale, unicodeString);
-        unicodeString.toUTF8String(string);
+void Language::loadLanguages()
+{
+    if (m_loading || m_loaded)
+        return;
+    m_loading = true;
+    emit loadingChanged();
 
-        QString displayName = s_displayName.contains(code) ? s_displayName.value(code)
-                                                           : string.c_str();
+    // Reopening the page reuses the catalog without repeating ICU work.
+    static QHash<QString, QFuture<QList<LanguageEntry>>> catalogs;
+    const QString displayCode = QLocale().name();
+    if (!catalogs.contains(displayCode))
+        catalogs.insert(displayCode, QtConcurrent::run(languageCatalog, displayCode));
 
-        if (displayName.isEmpty() || displayName == "C")
-            continue;
+    auto *watcher = new QFutureWatcher<QList<LanguageEntry>>(this);
+    connect(watcher, &QFutureWatcherBase::finished, this, [this, watcher]() {
+        m_languages.setEntries(watcher->result());
+        m_loaded = true;
+        m_loading = false;
+        emit loadingChanged();
+        watcher->deleteLater();
+    });
+    watcher->setFuture(catalogs.value(displayCode));
+}
 
-        m_languageNames.append(displayName);
-        m_languageCodes.append(code);
+void Language::search(const QString &text)
+{
+    m_filteredLanguages.setFilterFixedString(text.trimmed());
+}
+
+void Language::reload()
+{
+    QSettings settings("cutefish", "language");
+    QString primary = settings.value("language", QLocale::system().name()).toString();
+    QStringList codes = settings.value("preferredLanguages").toStringList();
+    codes.removeAll(primary);
+    codes.prepend(primary);
+    codes.removeDuplicates();
+    if (codes == m_preferredCodes)
+        return;
+    m_preferredCodes = codes;
+    m_languages.setPreferredCodes(codes);
+    emit preferredLanguagesChanged();
+}
+
+QVariantList Language::preferredLanguages() const
+{
+    QVariantList entries;
+    const icu::Locale displayLocale(QLocale().name().toUtf8().constData());
+    for (const QString &code : m_preferredCodes) {
+        const icu::Locale locale(code.toUtf8().constData());
+        entries.append(QVariantMap{{"code", code}, {"name", displayName(locale, locale)},
+                                   {"description", displayName(locale, displayLocale)}});
     }
-
-    // Update current language
-    m_currentLanguage = m_languageCodes.indexOf(systemLanguage);
-
-    emit loadLanguageFinished();
-    emit currentLanguageChanged();
+    return entries;
 }
 
-int Language::currentLanguage() const
+void Language::addLanguage(const QString &code)
 {
-    return m_currentLanguage;
+    if (!m_languages.contains(code) || m_preferredCodes.contains(code))
+        return;
+    QStringList codes = m_preferredCodes;
+    codes.append(code);
+    saveLanguages(codes);
 }
 
-void Language::setCurrentLanguage(int index)
+void Language::removeLanguage(int index)
 {
-    if (index >= 0 && index < m_languageCodes.length()) {
-        m_interface.asyncCall("setLanguage", m_languageCodes[index]);
-        qDebug() << "set language: " << m_languageCodes[index];
-        m_currentLanguage = index;
-        emit currentLanguageChanged();
-    }
+    if (m_preferredCodes.size() <= 1 || index < 0 || index >= m_preferredCodes.size())
+        return;
+    QStringList codes = m_preferredCodes;
+    codes.removeAt(index);
+    saveLanguages(codes);
 }
 
-QStringList Language::languages() const
+void Language::moveLanguage(int from, int to)
 {
-    return m_languageNames;
+    if (from < 0 || to < 0 || from >= m_preferredCodes.size()
+        || to >= m_preferredCodes.size() || from == to)
+        return;
+    QStringList codes = m_preferredCodes;
+    codes.move(from, to);
+    saveLanguages(codes);
+}
+
+void Language::saveLanguages(const QStringList &codes)
+{
+    if (m_saving)
+        return;
+    m_errorMessage.clear();
+    emit errorMessageChanged();
+    m_saving = true;
+    emit savingChanged();
+
+    QDBusMessage message = QDBusMessage::createMethodCall("com.cutefish.Services",
+        "/com/cutefish/Services/Language", "com.cutefish.Services.Language", "setPreferredLanguages");
+    message << codes;
+    auto *watcher = new QDBusPendingCallWatcher(QDBusConnection::sessionBus().asyncCall(message), this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher, codes]() {
+        QDBusPendingReply<> reply = *watcher;
+        if (reply.isError()) {
+            m_errorMessage = tr("Could not save preferred languages. Please try again.");
+            emit errorMessageChanged();
+        } else {
+            m_preferredCodes = codes;
+            m_languages.setPreferredCodes(codes);
+            emit preferredLanguagesChanged();
+        }
+        m_saving = false;
+        emit savingChanged();
+        watcher->deleteLater();
+    });
 }
