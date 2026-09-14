@@ -40,6 +40,11 @@ private slots:
         QVERIFY(language.loading());
         QTRY_VERIFY_WITH_TIMEOUT(!language.loading(), 5000);
         QCOMPARE(model->rowCount(), 40);
+        QCOMPARE(model->data(model->index(0, 0), LanguageModel::CodeRole).toString(), "en_GB");
+        QCOMPARE(model->data(model->index(model->rowCount() - 2, 0), LanguageModel::CodeRole).toString(),
+                 "zh_Hant_HK");
+        QCOMPARE(model->data(model->index(model->rowCount() - 1, 0), LanguageModel::CodeRole).toString(),
+                 "zh_Hant_TW");
         language.search("zh_Hans_CN");
         QCOMPARE(model->rowCount(), 0);
         language.search("");

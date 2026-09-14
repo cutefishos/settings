@@ -19,7 +19,6 @@
 
 #include "language.h"
 
-#include <QCollator>
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QDBusPendingCallWatcher>
@@ -45,48 +44,48 @@ static QString displayName(const icu::Locale &locale, const icu::Locale &display
 static QList<LanguageEntry> languageCatalog(const QString &displayCode)
 {
     static const QStringList supportedSystemLanguages = {
-        "ar",          // Arabic
+        "en_US",       // English (US)
+        "en_GB",       // English (UK)
+        "ja_JP",       // Japanese
+        "ko_KR",       // Korean
+        "fr_FR",       // French
+        "de_DE",       // German
+        "es_ES",       // Spanish (Spain)
+        "pt_BR",       // Portuguese (Brazil)
+        "ru_RU",       // Russian
+        "it_IT",       // Italian
+        "id_ID",       // Indonesian
+        "vi_VN",       // Vietnamese
+        "th_TH",       // Thai
+        "ms_MY",       // Malay
+        "hi_IN",       // Hindi
         "bn_BD",       // Bangla
+        "tr_TR",       // Turkish
+        "uk_UA",       // Ukrainian
+        "pl_PL",       // Polish
+        "nl_NL",       // Dutch
+        "fr_CA",       // French (Canada)
+        "pt_PT",       // Portuguese (Portugal)
+        "es_419",      // Spanish (Latin America)
+        "es_MX",       // Spanish (Mexico)
+        "cs_CZ",       // Czech
+        "da_DK",       // Danish
+        "fi_FI",       // Finnish
+        "sv_SE",       // Swedish
+        "nb_NO",       // Norwegian Bokmål
+        "hu_HU",       // Hungarian
+        "ro_RO",       // Romanian
+        "sk_SK",       // Slovak
+        "sl_SI",       // Slovenian
+        "hr_HR",       // Croatian
         "bg_BG",       // Bulgarian
         "ca_ES",       // Catalan
+        "el_GR",       // Greek
+        "ar",          // Arabic
+        "he_IL",       // Hebrew
         "zh_Hans_CN",  // Chinese, Simplified
         "zh_Hant_HK",  // Chinese, Traditional (Hong Kong)
         "zh_Hant_TW",  // Chinese, Traditional (Taiwan)
-        "hr_HR",       // Croatian
-        "cs_CZ",       // Czech
-        "da_DK",       // Danish
-        "nl_NL",       // Dutch
-        "en_US",       // English (US)
-        "en_GB",       // English (UK)
-        "fi_FI",       // Finnish
-        "fr_FR",       // French
-        "fr_CA",       // French (Canada)
-        "de_DE",       // German
-        "el_GR",       // Greek
-        "he_IL",       // Hebrew
-        "hi_IN",       // Hindi
-        "hu_HU",       // Hungarian
-        "id_ID",       // Indonesian
-        "it_IT",       // Italian
-        "ja_JP",       // Japanese
-        "ko_KR",       // Korean
-        "ms_MY",       // Malay
-        "nb_NO",       // Norwegian Bokmål
-        "pl_PL",       // Polish
-        "pt_BR",       // Portuguese (Brazil)
-        "pt_PT",       // Portuguese (Portugal)
-        "ro_RO",       // Romanian
-        "ru_RU",       // Russian
-        "sk_SK",       // Slovak
-        "sl_SI",       // Slovenian
-        "es_ES",       // Spanish (Spain)
-        "es_419",      // Spanish (Latin America)
-        "es_MX",       // Spanish (Mexico)
-        "sv_SE",       // Swedish
-        "th_TH",       // Thai
-        "tr_TR",       // Turkish
-        "uk_UA",       // Ukrainian
-        "vi_VN",       // Vietnamese
     };
     QList<LanguageEntry> entries;
     const icu::Locale displayLocale(displayCode.toUtf8().constData());
@@ -101,12 +100,6 @@ static QList<LanguageEntry> languageCatalog(const QString &displayCode)
         entry.searchText = entry.name + ' ' + entry.description + ' ' + entry.code;
         entries.append(entry);
     }
-
-    QCollator collator{QLocale(displayCode)};
-    std::sort(entries.begin(), entries.end(), [&collator](const auto &left, const auto &right) {
-        const int order = collator.compare(left.description, right.description);
-        return order == 0 ? left.code < right.code : order < 0;
-    });
     return entries;
 }
 
