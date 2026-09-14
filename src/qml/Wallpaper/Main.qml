@@ -120,13 +120,11 @@ ItemPage {
                         }
 
                         // Preload image
-                        Image {
+                        FishUI.Icon {
                             anchors.centerIn: parent
                             width: 32
                             height: width
-                            sourceSize: Qt.size(width, height)
-                            source: FishUI.Theme.darkMode ? "qrc:/images/dark/picture.svg"
-                                                          : "qrc:/images/light/picture.svg"
+                            name: "image"
                             visible: _image.status !== Image.Ready
                         }
 

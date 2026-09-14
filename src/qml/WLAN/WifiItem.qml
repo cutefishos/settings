@@ -144,17 +144,13 @@ Item {
                 }
 
                 // Locked
-                Image {
-                    width: 22
-                    height: width
-                    sourceSize: Qt.size(width, height)
-                    source: FishUI.Theme.darkMode ? "qrc:/images/dark/locked.svg" : "qrc:/images/light/locked.svg"
+                FishUI.Icon {
+                    name: "lock"
                     visible: (model.securityType === -1 | model.securityType === 0) ? false : true
-                    smooth: false
                 }
 
                 IconButton {
-                    source: "qrc:/images/info.svg"
+                    iconName: "info"
                     onClicked: {
                         var component = Qt.createComponent("WirelessDetailsDialog.qml")
                         if (component.status === Component.Ready) {

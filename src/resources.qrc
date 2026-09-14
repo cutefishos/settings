@@ -35,7 +35,6 @@
         <file>images/dark/network-wireless-connected-50.svg</file>
         <file>images/dark/network-wireless-connected-75.svg</file>
         <file>images/dark/network-wireless-connected-100.svg</file>
-        <file>images/info.svg</file>
         <file>qml/IconButton.qml</file>
         <file>qml/Hideable.qml</file>
         <file>qml/BluetoothPage.qml</file>
@@ -74,8 +73,6 @@
         <file>images/powersave.svg</file>
         <file>images/performance.svg</file>
         <file>qml/Power/Main.qml</file>
-        <file>images/light/picture.svg</file>
-        <file>images/dark/picture.svg</file>
         <file>qml/About/Main.qml</file>
         <file>qml/User/Main.qml</file>
         <file>qml/Appearance/Main.qml</file>
@@ -87,8 +84,6 @@
         <file>qml/Battery/HistoryGraph.qml</file>
         <file>qml/Dock/Main.qml</file>
         <file>qml/Display/RotationButton.qml</file>
-        <file>images/dark/locked.svg</file>
-        <file>images/light/locked.svg</file>
         <file>images/sidebar/light/power.svg</file>
         <file>images/sidebar/dark/power.svg</file>
         <file>qml/WLAN/Main.qml</file>

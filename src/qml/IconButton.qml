@@ -26,6 +26,8 @@ Item {
     id: control
 
     property alias source: image.source
+    // A FishUI.Icon glyph drawn instead of source.
+    property string iconName
     signal clicked()
 
     width: 22
@@ -36,6 +38,14 @@ Item {
         anchors.fill: parent
         sourceSize: Qt.size(control.width, control.height)
         smooth: false
+        visible: !control.iconName
+    }
+
+    FishUI.Icon {
+        id: glyph
+        anchors.fill: parent
+        name: control.iconName
+        visible: !!control.iconName
     }
 
     MouseArea {
@@ -47,7 +57,7 @@ Item {
 
     ColorOverlay {
         anchors.fill: image
-        source: image
+        source: control.iconName ? glyph : image
         color: "white"
         opacity: 0.5
         visible: mouseArea.containsPress
