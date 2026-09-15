@@ -157,8 +157,10 @@ Item {
                     onClicked: {
                         var component = Qt.createComponent("WirelessDetailsDialog.qml")
                         if (component.status === Component.Ready) {
-                            var dialog = component.createObject(rootWindow)
-                            dialog.open()
+                            var dialog = component.createObject(rootWindow, { "parentWindow": rootWindow })
+                            dialog.show()
+                            dialog.raise()
+                            dialog.requestActivate()
                         }
                     }
                 }

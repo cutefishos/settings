@@ -24,31 +24,39 @@ import QtQuick.Layouts 1.3
 import FishUI 1.0 as FishUI
 import Cutefish.Network 1.0 as NM
 
-Dialog {
+FishUI.Window {
     id: control
     title: model.itemUniqueName
 
-    x: (parent.width - width) / 2
-    y: (parent.height - height) / 2
+    parentWindow: rootWindow
+    x: parentWindow ? parentWindow.x + Math.round((parentWindow.width - width) / 2) : 0
+    y: parentWindow ? parentWindow.y + Math.round((parentWindow.height - height) / 2) : 0
     width: 400
-    padding: 16
-    spacing: 16
-    modal: true
+    property int contentHeight: detailsLayout.implicitHeight + header.height + 32
+    height: contentHeight
+    minimumWidth: width
+    maximumWidth: width
+    minimumHeight: contentHeight
+    maximumHeight: contentHeight
+    flags: Qt.Dialog | Qt.FramelessWindowHint
+    modality: Qt.WindowModal
+    visible: false
+    minimizeButtonVisible: false
+    header.height: 44
+    contentTopMargin: header.height
+    background.color: FishUI.Theme.secondBackgroundColor
 
-    background: Rectangle {
-        radius: 16
-        color: FishUI.Theme.secondBackgroundColor
-    }
-
-    header: Label {
+    headerItem: Label {
+        anchors.left: parent.left
+        anchors.leftMargin: 16
+        anchors.verticalCenter: parent.verticalCenter
+        width: parent.width - 64
         text: control.title
         textFormat: Text.PlainText
-        padding: 16
-        bottomPadding: 0
         font.pixelSize: 14
         font.weight: Font.DemiBold
         color: FishUI.Theme.textColor
-        wrapMode: Text.Wrap
+        elide: Text.ElideRight
     }
 
     signal forgetBtnClicked()
@@ -66,8 +74,10 @@ Dialog {
         }
     }
 
-    contentItem: ColumnLayout {
+    ColumnLayout {
         id: detailsLayout
+        anchors.fill: parent
+        anchors.margins: 16
         spacing: 16
 
         GridLayout {
@@ -189,7 +199,7 @@ Dialog {
 
             FishUI.ConfirmDialogButton {
                 text: qsTr("Close")
-                onClicked: control.reject()
+                onClicked: control.close()
             }
 
             FishUI.ConfirmDialogButton {
@@ -198,7 +208,7 @@ Dialog {
                 destructive: true
                 onClicked: {
                     handler.removeConnection(model.connectionPath)
-                    control.reject()
+                    control.close()
                 }
             }
         }

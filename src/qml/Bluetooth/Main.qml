@@ -45,25 +45,86 @@ ItemPage {
     }
 
     Bluetooth.DevicesModel { id: devicesModel }
-    PairDialog { }
+    PairDialog {
+        hostWindow: rootWindow
+    }
 
-    Dialog {
+    FishUI.Window {
         id: forgetDialog
         property var device: null
+        parentWindow: rootWindow
+        x: rootWindow.x + Math.round((rootWindow.width - width) / 2)
+        y: rootWindow.y + Math.round((rootWindow.height - height) / 2)
+        width: 420
+        property int contentHeight: forgetLayout.implicitHeight + header.height + 32
+        height: contentHeight
+        minimumWidth: width
+        maximumWidth: width
+        minimumHeight: contentHeight
+        maximumHeight: contentHeight
+        flags: Qt.Dialog | Qt.FramelessWindowHint
+        modality: Qt.WindowModal
+        visible: false
+        minimizeButtonVisible: false
+        header.height: 44
+        contentTopMargin: header.height
+        background.color: FishUI.Theme.secondBackgroundColor
         title: qsTr("Forget this device?")
-        anchors.centerIn: parent
-        modal: true
-        standardButtons: Dialog.Cancel | Dialog.Ok
-        Label {
-            text: forgetDialog.device ? forgetDialog.device.name : ""
+
+        function open() {
+            show()
+            raise()
+            requestActivate()
+        }
+
+        headerItem: Label {
+            anchors.left: parent.left
+            anchors.leftMargin: 16
+            anchors.verticalCenter: parent.verticalCenter
+            width: parent.width - 64
+            text: forgetDialog.title
             textFormat: Text.PlainText
+            font.pixelSize: 14
+            font.weight: Font.DemiBold
+            color: FishUI.Theme.textColor
+            elide: Text.ElideRight
         }
-        onAccepted: {
-            if (device)
-                device.forget()
-            device = null
+
+        ColumnLayout {
+            id: forgetLayout
+            anchors.fill: parent
+            anchors.margins: 16
+            spacing: 16
+
+            Label {
+                Layout.fillWidth: true
+                text: forgetDialog.device ? forgetDialog.device.name : ""
+                textFormat: Text.PlainText
+                wrapMode: Text.Wrap
+            }
+
+            RowLayout {
+                Layout.alignment: Qt.AlignRight
+                spacing: 8
+
+                FishUI.ConfirmDialogButton {
+                    text: qsTr("Cancel")
+                    onClicked: forgetDialog.close()
+                }
+
+                FishUI.ConfirmDialogButton {
+                    text: qsTr("Forget")
+                    primary: true
+                    onClicked: {
+                        if (forgetDialog.device)
+                            forgetDialog.device.forget()
+                        forgetDialog.close()
+                    }
+                }
+            }
         }
-        onRejected: device = null
+
+        onClosing: device = null
     }
 
     Scrollable {

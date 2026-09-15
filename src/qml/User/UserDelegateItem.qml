@@ -234,7 +234,7 @@ RoundedItem {
                 text: qsTr("Delete this user")
                 enabled: model.userId !== loggedUser.userId
                 onClicked: deleteUserDialogComponent.createObject(control, {
-                    "transientParent": control.Window.window,
+                    "parentWindow": control.Window.window,
                     "targetUserId": currentUser.userId,
                     "targetUserName": currentUser.userName
                 })

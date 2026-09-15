@@ -1,15 +1,43 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import FishUI 1.0 as FishUI
 import Cutefish.Bluetooth 1.0 as Bluetooth
 
-Dialog {
+FishUI.Window {
     id: dialog
-    anchors.centerIn: parent
-    width: Math.min(parent.width - 32, 420)
-    modal: true
-    closePolicy: Popup.NoAutoClose
+    property var hostWindow
+    parentWindow: hostWindow
+    x: hostWindow ? hostWindow.x + Math.round((hostWindow.width - width) / 2) : 0
+    y: hostWindow ? hostWindow.y + Math.round((hostWindow.height - height) / 2) : 0
+    width: 420
+    property int contentHeight: content.implicitHeight + header.height + 32
+    height: contentHeight
+    minimumWidth: width
+    maximumWidth: width
+    minimumHeight: contentHeight
+    maximumHeight: contentHeight
+    flags: Qt.Dialog | Qt.FramelessWindowHint
+    modality: Qt.WindowModal
+    visible: false
+    minimizeButtonVisible: false
+    header.height: 44
+    contentTopMargin: header.height
+    background.color: FishUI.Theme.secondBackgroundColor
     title: qsTr("Bluetooth pairing")
+
+    headerItem: Label {
+        anchors.left: parent.left
+        anchors.leftMargin: 16
+        anchors.verticalCenter: parent.verticalCenter
+        width: parent.width - 64
+        text: dialog.title
+        textFormat: Text.PlainText
+        font.pixelSize: 14
+        font.weight: Font.DemiBold
+        color: FishUI.Theme.textColor
+        elide: Text.ElideRight
+    }
 
     readonly property string kind: Bluetooth.Manager.pairingKind
     readonly property bool inputRequired: kind === "RequestPinCode" || kind === "RequestPasskey"
@@ -19,9 +47,11 @@ Dialog {
         target: Bluetooth.Manager
         function onPairingChanged() {
             if (Bluetooth.Manager.pairingKind.length) {
-                if (!dialog.opened) {
+                if (!dialog.visible) {
                     codeInput.clear()
-                    dialog.open()
+                    dialog.show()
+                    dialog.raise()
+                    dialog.requestActivate()
                     if (dialog.inputRequired)
                         codeInput.forceActiveFocus()
                 }
@@ -31,7 +61,10 @@ Dialog {
         }
     }
 
-    contentItem: ColumnLayout {
+    ColumnLayout {
+        id: content
+        anchors.fill: parent
+        anchors.margins: 16
         spacing: 16
         Label {
             Layout.fillWidth: true
@@ -79,13 +112,14 @@ Dialog {
         }
         RowLayout {
             Layout.alignment: Qt.AlignRight
-            Button {
+            FishUI.ConfirmDialogButton {
                 text: qsTr("Cancel")
                 onClicked: Bluetooth.Manager.cancelPairing()
             }
-            Button {
+            FishUI.ConfirmDialogButton {
                 visible: !dialog.displayOnly
                 text: dialog.kind === "RequestConfirmation" ? qsTr("Confirm") : qsTr("Accept")
+                primary: true
                 enabled: !dialog.inputRequired || codeInput.text.length > 0
                 onClicked: Bluetooth.Manager.respondPairing(true, codeInput.text)
             }
