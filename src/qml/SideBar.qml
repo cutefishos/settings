@@ -206,6 +206,15 @@ Item {
         }
 
         ListElement {
+            title: qsTr("Privacy")
+            name: "privacy"
+            page: "qrc:/qml/Privacy/Main.qml"
+            iconSource: "privacy.svg"
+            iconColor: "#4A6CF7"
+            category: qsTr("System")
+        }
+
+        ListElement {
             title: qsTr("Sound")
             name: "sound"
             page: "qrc:/qml/Sound/Main.qml"

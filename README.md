@@ -16,6 +16,14 @@ Debian/Ubuntu Dependencies:
 sudo apt install cmake debhelper libicu-dev libcrypt-dev libfreetype6-dev libfontconfig1-dev libxcursor-dev qt6-base-dev qt6-declarative-dev qt6-tools-dev qt6-tools-dev-tools pkg-config
 ```
 
+## Privacy
+
+The Privacy page lists applications that have asked to record the screen
+through the portal, read from `~/.config/cutefish/privacy.conf` via the
+framework's `ScreenRecordingPermissions`. The switch grants or revokes the
+standing permission; an application that is switched off is asked again the
+next time it starts a screen cast.
+
 ## Build
 
 ```shell

@@ -30,6 +30,8 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/appearance
                  ${CMAKE_CURRENT_BINARY_DIR}/cutefish-framework-appearance-build)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/io
                  ${CMAKE_CURRENT_BINARY_DIR}/cutefish-framework-io-build)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/privacy
+                 ${CMAKE_CURRENT_BINARY_DIR}/cutefish-framework-privacy-build)
 
 pkg_search_module(FontConfig REQUIRED fontconfig IMPORTED_TARGET)
 pkg_search_module(ICU REQUIRED icu-i18n)
@@ -67,6 +69,7 @@ set(SRCS
     src/defaultapplications.cpp
     src/inputmethod.cpp
     src/mock/networkmockmodel.cpp
+    src/privacy/screenrecordingmodel.cpp
 )
 
 set(RESOURCES
@@ -85,6 +88,7 @@ target_link_libraries(${PROJECT_NAME}
         Cutefish::Applications
         Cutefish::Appearance
         Cutefish::IO
+        Cutefish::Privacy
         Qt6::Core
         Qt6::Widgets
         Qt6::Quick
