@@ -47,6 +47,7 @@
         <file>qml/User/AddUserDialog.qml</file>
         <file>qml/User/ChangePasswordDialog.qml</file>
         <file>qml/Wallpaper/Main.qml</file>
+        <file>qml/Wallpaper/WallpaperGrid.qml</file>
         <file>qml/Wallpaper/DesktopPreview.qml</file>
         <file>images/sidebar/dark/about.svg</file>
         <file>images/sidebar/dark/accounts.svg</file>

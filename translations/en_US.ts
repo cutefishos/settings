@@ -2,6 +2,39 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
+    <name>AddLanguageDialog</name>
+    <message>
+        <location filename="../src/qml/Language/AddLanguageDialog.qml" line="+11"/>
+        <source>Add Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+71"/>
+        <source>Search languages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+47"/>
+        <source>Loading languages…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>No languages found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Add</source>
+        <translation type="unfinished">Add</translation>
+    </message>
+</context>
+<context>
     <name>AddUserDialog</name>
     <message>
         <location filename="../src/qml/User/AddUserDialog.qml" line="+30"/>
@@ -76,6 +109,19 @@
     </message>
 </context>
 <context>
+    <name>CursorTheme</name>
+    <message>
+        <location filename="../src/qml/Appearance/CursorTheme.qml" line="+10"/>
+        <source>Cursor Theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Cursor size</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Fonts</name>
     <message>
         <location filename="../src/fonts/fonts.cpp" line="+59"/>
@@ -88,22 +134,86 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location filename="../src/qml/Appearance/Fonts.qml" line="+11"/>
+        <source>Fonts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+54"/>
+        <source>General Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>Fixed Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>Font Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Small</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <location filename="../src/fonts/fonts.cpp" line="+0"/>
         <source>Medium</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="+4"/>
+        <source>Large</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Huge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+41"/>
+        <source>Hinting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Anti-Aliasing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/fonts/fonts.cpp" line="+0"/>
         <source>Full</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Language</name>
+    <message>
+        <location filename="../src/language.cpp" line="+289"/>
+        <source>Could not save preferred languages. Please try again.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>LanguagePage</name>
     <message>
-        <location filename="../src/qml/Language/LanguagePage.qml" line="+28"/>
+        <location filename="../src/qml/Language/LanguagePage.qml" line="+30"/>
         <source>Language</source>
         <translation>Language</translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>Preferred languages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+18"/>
+        <source>Add Language…</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -155,17 +265,16 @@
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="+30"/>
-        <location line="+45"/>
+        <location line="+20"/>
         <source>Appearance</source>
         <translation>Appearance</translation>
     </message>
     <message>
-        <location filename="../src/qml/Cursor/Main.qml" line="+132"/>
         <source>Theme</source>
-        <translation>Theme</translation>
+        <translation type="vanished">Theme</translation>
     </message>
     <message>
-        <location filename="../src/qml/Appearance/Main.qml" line="+10"/>
+        <location line="+13"/>
         <source>Light</source>
         <translation>Light</translation>
     </message>
@@ -180,61 +289,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+25"/>
         <source>Accent color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+79"/>
+        <location line="+88"/>
         <source>Fonts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
-        <source>General Font</source>
+        <location line="+6"/>
+        <source>Cursor Theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+16"/>
-        <source>Fixed Font</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source>Font Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+61"/>
-        <source>Hinting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+13"/>
-        <source>Anti-Aliasing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-66"/>
-        <location filename="../src/qml/Dock/Main.qml" line="+88"/>
+        <location filename="../src/qml/Dock/Main.qml" line="+100"/>
         <source>Small</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../src/qml/Dock/Main.qml" line="+4"/>
         <source>Medium</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../src/qml/Dock/Main.qml" line="+4"/>
         <source>Large</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../src/qml/Dock/Main.qml" line="+4"/>
         <source>Huge</source>
         <translation type="unfinished"></translation>
     </message>
@@ -274,22 +359,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+111"/>
+        <location line="+112"/>
         <source>History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+33"/>
         <source>W</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+24"/>
         <source>Health</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+27"/>
         <source>Poor</source>
         <translation type="unfinished"></translation>
     </message>
@@ -314,7 +399,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+9"/>
         <source>Show percentage in status bar</source>
         <translation type="unfinished"></translation>
     </message>
@@ -329,17 +414,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+67"/>
+        <location line="+73"/>
         <source>Brightness</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-48"/>
+        <location line="-53"/>
         <source>Screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+94"/>
+        <location line="+99"/>
         <source>Screen Name</source>
         <translation type="unfinished"></translation>
     </message>
@@ -374,7 +459,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+34"/>
+        <location line="+35"/>
         <source>Display configuration is unavailable in this session.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -384,22 +469,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-158"/>
+        <location line="-159"/>
         <source>Scale</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="-72"/>
+        <location filename="../src/qml/Dock/Main.qml" line="-84"/>
         <source>Dock</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+20"/>
         <source>Position on screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+12"/>
         <source>Left</source>
         <translation type="unfinished"></translation>
     </message>
@@ -414,17 +499,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+14"/>
         <source>Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+67"/>
+        <location line="+74"/>
         <source>Display mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+13"/>
         <source>Always show</source>
         <translation type="unfinished"></translation>
     </message>
@@ -439,12 +524,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+12"/>
         <source>Glass Effect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+12"/>
         <source>More Clear</source>
         <translation type="unfinished"></translation>
     </message>
@@ -460,12 +545,12 @@
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="+124"/>
-        <location filename="../src/qml/Power/Main.qml" line="+28"/>
+        <location filename="../src/qml/Power/Main.qml" line="+31"/>
         <source>Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="+9"/>
+        <location filename="../src/qml/Power/Main.qml" line="+12"/>
         <source>Power Save</source>
         <translation type="unfinished"></translation>
     </message>
@@ -475,7 +560,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+14"/>
         <source>Performance mode: CPU and GPU frequencies will be increased, while power consumption and heat generation will be increased.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -548,23 +633,33 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Wallpaper/Main.qml" line="+31"/>
-        <source>Background</source>
+        <location filename="../src/qml/Wallpaper/Main.qml" line="+12"/>
+        <source>Wallpaper</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
-        <source>Background type</source>
+        <location line="+18"/>
+        <source>Your Wallpapers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+18"/>
+        <source>System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+16"/>
-        <source>Picture</source>
+        <source>Colors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+4"/>
-        <source>Color</source>
+        <location line="+92"/>
+        <source>Add Wallpaper</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Image files (*.jpg *.jpeg *.png *.webp)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -579,17 +674,22 @@
     </message>
     <message>
         <location filename="../src/qml/Bluetooth/Main.qml" line="+29"/>
-        <location line="+52"/>
+        <location line="+113"/>
         <source>Bluetooth</source>
         <translation type="unfinished">Bluetooth</translation>
     </message>
     <message>
-        <location line="-28"/>
+        <location line="-70"/>
         <source>Forget this device?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+42"/>
+        <location line="+39"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <location line="+45"/>
         <source>Bluetooth service is unavailable</source>
         <translation type="unfinished"></translation>
     </message>
@@ -684,7 +784,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="-186"/>
+        <location line="+192"/>
         <source>Forget</source>
         <translation type="unfinished"></translation>
     </message>
@@ -715,7 +816,7 @@
     </message>
     <message>
         <location filename="../src/qml/Wired/Main.qml" line="+31"/>
-        <location line="+47"/>
+        <location line="+45"/>
         <source>Ethernet</source>
         <translation type="unfinished"></translation>
     </message>
@@ -777,12 +878,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Cursor/Main.qml" line="-102"/>
+        <location filename="../src/qml/Cursor/Main.qml" line="+30"/>
         <source>Mouse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+23"/>
         <source>Left hand</source>
         <translation type="unfinished"></translation>
     </message>
@@ -800,11 +901,6 @@
     <message>
         <location line="+28"/>
         <source>Pointer speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+28"/>
-        <source>Cursor size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -966,12 +1062,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+20"/>
         <source>Input method</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+10"/>
         <source>Input methods can only be selected in a Cutefish Wayland session.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -981,12 +1077,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+63"/>
+        <location line="+60"/>
         <source>The selected input method is not running.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Applications started before the input method may need to be restarted.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1039,12 +1135,12 @@
 <context>
     <name>PairDialog</name>
     <message>
-        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="+12"/>
+        <location filename="../src/qml/Bluetooth/PairDialog.qml" line="+27"/>
         <source>Bluetooth pairing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+50"/>
         <source>Does this code match the code on your device?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1091,6 +1187,19 @@
     <message>
         <location line="+0"/>
         <source>Accept</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PreferredLanguageList</name>
+    <message>
+        <location filename="../src/qml/Language/PreferredLanguageList.qml" line="+133"/>
+        <source>Reorder %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+40"/>
+        <source>Remove Language</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1143,7 +1252,12 @@
         <translation type="unfinished">Appearance</translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+9"/>
+        <source>Wallpaper</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+45"/>
         <source>Mouse</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1153,12 +1267,7 @@
         <translation type="unfinished">Bluetooth</translation>
     </message>
     <message>
-        <location line="+101"/>
-        <source>Background</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+9"/>
+        <location line="+110"/>
         <source>Dock</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1260,7 +1369,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+34"/>
         <source>Account type</source>
         <translation type="unfinished">Account type</translation>
     </message>
@@ -1299,21 +1408,39 @@
     </message>
     <message>
         <location line="+11"/>
-        <location filename="../src/qml/User/UserDelegateItem.qml" line="-156"/>
+        <location filename="../src/qml/User/UserDelegateItem.qml" line="-155"/>
         <source>Cancel</source>
         <translation type="unfinished">Cancel</translation>
     </message>
     <message>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="-2"/>
-        <location line="+165"/>
+        <location line="+164"/>
         <source>Delete this user</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WallpaperGrid</name>
+    <message>
+        <location filename="../src/qml/Wallpaper/WallpaperGrid.qml" line="+49"/>
+        <source>Show Less</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Show All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+106"/>
+        <source>Add Wallpaper</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>WifiItem</name>
     <message>
-        <location filename="../src/qml/WLAN/WifiItem.qml" line="+204"/>
+        <location filename="../src/qml/WLAN/WifiItem.qml" line="+194"/>
         <location line="+8"/>
         <source>Password</source>
         <translation type="unfinished">Password</translation>
@@ -1346,7 +1473,7 @@
 <context>
     <name>WirelessDetailsDialog</name>
     <message>
-        <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="+82"/>
+        <location filename="../src/qml/WLAN/WirelessDetailsDialog.qml" line="+92"/>
         <source>Auto-Join</source>
         <translation type="unfinished"></translation>
     </message>

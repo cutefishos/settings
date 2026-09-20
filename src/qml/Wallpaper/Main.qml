@@ -1,26 +1,7 @@
-/*
- * Copyright (C) 2021 CutefishOS Team.
- *
- * Author:     revenmartin <revenmartin@gmail.com>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 import QtQuick 2.12
 import QtQuick.Controls 2.12
+import QtQuick.Dialogs
 import QtQuick.Layouts 1.12
-import Qt5Compat.GraphicalEffects
 import Cutefish.Settings 1.0
 import Cutefish.Appearance 1.0 as FrameworkAppearance
 import FishUI 1.0 as FishUI
@@ -40,189 +21,124 @@ ItemPage {
 
         ColumnLayout {
             id: layout
+
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing
+            spacing: FishUI.Units.largeSpacing * 2
 
             RoundedItem {
-                RowLayout {
-                    spacing: FishUI.Units.largeSpacing * 2
+                spacing: FishUI.Units.largeSpacing * 2
 
-                    Label {
-                        text: qsTr("Wallpaper type")
-                        leftPadding: FishUI.Units.smallSpacing
+                WallpaperGrid {
+                    title: qsTr("Your Wallpapers")
+                    wallpapers: background.userWallpapers
+                    currentWallpaper: background.path
+                    imageSelected: background.type === 0
+                    showAddWallpaper: true
+                    removable: true
+
+                    onWallpaperSelected: function (path) {
+                        background.type = 0;
+                        background.path = path;
                     }
-
-                    FishUI.SegmentedControl {
-                        Layout.fillWidth: true
-
-                        onCurrentIndexChanged: {
-                            background.type = currentIndex
-                        }
-
-                        Component.onCompleted: {
-                            currentIndex = background.type
-                        }
-
-                        TabButton {
-                            text: qsTr("Picture")
-                        }
-
-                        TabButton {
-                            text: qsTr("Color")
-                        }
+                    onAddWallpaperRequested: wallpaperDialog.open()
+                    onRemoveWallpaperRequested: function (path) {
+                        background.removeUserWallpaper(path);
                     }
                 }
 
-                GridView {
-                    id: _view
+                WallpaperGrid {
+                    title: qsTr("System")
+                    wallpapers: background.systemWallpapers
+                    currentWallpaper: background.path
+                    imageSelected: background.type === 0
 
-                    property int rowCount: _view.width / itemWidth
+                    onWallpaperSelected: function (path) {
+                        background.type = 0;
+                        background.path = path;
+                    }
+                }
 
+                ColumnLayout {
                     Layout.fillWidth: true
-                    implicitHeight: Math.ceil(_view.count / rowCount) * cellHeight + FishUI.Units.largeSpacing
+                    spacing: FishUI.Units.largeSpacing
 
-                    visible: background.type === 0
+                    Label {
+                        text: qsTr("Colors")
+                        font.bold: true
+                    }
 
-                    clip: true
-                    model: background.backgrounds
-                    currentIndex: -1
-                    interactive: false
+                    GridView {
+                        id: colorView
 
-                    cellHeight: itemHeight
-                    cellWidth: calcExtraSpacing(itemWidth, _view.width) + itemWidth
+                        readonly property int itemSize: 32
+                        readonly property int columnCount: Math.max(Math.floor(width / cellWidth), 1)
 
-                    property int itemWidth: 180
-                    property int itemHeight: 127
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: Math.ceil(count / columnCount) * cellHeight
 
-                    delegate: Item {
-                        id: item
-
-                        property bool isSelected: modelData === background.path
-
-                        width: GridView.view.cellWidth
-                        height: GridView.view.cellHeight
-                        scale: 1.0
-
-                        Behavior on scale {
-                            NumberAnimation {
-                                duration: 200
-                                easing.type: Easing.OutSine
+                        cellWidth: 50
+                        cellHeight: 50
+                        interactive: false
+                        model: ListModel {
+                            ListElement {
+                                bgColor: "#2B8ADA"
+                            }
+                            ListElement {
+                                bgColor: "#4DA4ED"
+                            }
+                            ListElement {
+                                bgColor: "#B7E786"
+                            }
+                            ListElement {
+                                bgColor: "#F2BB73"
+                            }
+                            ListElement {
+                                bgColor: "#EE72EB"
+                            }
+                            ListElement {
+                                bgColor: "#F0905A"
+                            }
+                            ListElement {
+                                bgColor: "#595959"
+                            }
+                            ListElement {
+                                bgColor: "#000000"
                             }
                         }
 
-                        // Preload background
-                        Rectangle {
-                            anchors.fill: parent
-                            anchors.margins: FishUI.Units.largeSpacing
-                            radius: FishUI.Theme.bigRadius + FishUI.Units.smallSpacing / 2
-                            color: FishUI.Theme.backgroundColor
-                            visible: _image.status !== Image.Ready
-                        }
+                        delegate: Rectangle {
+                            readonly property bool selected: background.type === 1 && Qt.colorEqual(background.color, bgColor)
+                            readonly property color currentColor: bgColor
 
-                        // Preload image
-                        FishUI.Icon {
-                            anchors.centerIn: parent
-                            width: 32
+                            width: colorView.itemSize + FishUI.Units.largeSpacing
                             height: width
-                            name: "image"
-                            color: FishUI.Theme.darkMode ? "#FFFFFF" : "#C8CAD5"
-                            visible: _image.status !== Image.Ready
-                        }
-
-                        Rectangle {
-                            anchors.fill: parent
-                            anchors.margins: FishUI.Units.smallSpacing
                             color: "transparent"
-                            radius: FishUI.Theme.bigRadius + FishUI.Units.smallSpacing / 2
+                            radius: width / 2
+                            border.color: colorMouseArea.pressed ? Qt.rgba(currentColor.r, currentColor.g, currentColor.b, 0.6) : Qt.rgba(currentColor.r, currentColor.g, currentColor.b, 0.4)
+                            border.width: selected ? 3 : colorMouseArea.containsMouse ? 2 : 0
 
-                            border.color: FishUI.Theme.highlightColor
-                            border.width: _image.status == Image.Ready & isSelected ? 3 : 0
-
-                            Image {
-                                id: _image
-                                anchors.fill: parent
-                                anchors.margins: FishUI.Units.smallSpacing
-                                source: "file://" + modelData
-                                sourceSize: Qt.size(width, height)
-                                fillMode: Image.PreserveAspectCrop
-                                asynchronous: true
-                                mipmap: true
-                                cache: true
-                                smooth: true
-                                opacity: 1.0
-
-                                Behavior on opacity {
-                                    NumberAnimation {
-                                        duration: 100
-                                        easing.type: Easing.InOutCubic
-                                    }
-                                }
-
-                                layer.enabled: true
-                                layer.effect: OpacityMask {
-                                    maskSource: Item {
-                                        width: _image.width
-                                        height: _image.height
-
-                                        Rectangle {
-                                            anchors.fill: parent
-                                            radius: FishUI.Theme.bigRadius
-                                        }
-                                    }
-                                }
+                            Rectangle {
+                                anchors.centerIn: parent
+                                width: colorView.itemSize
+                                height: width
+                                color: currentColor
+                                radius: width / 2
                             }
 
                             MouseArea {
+                                id: colorMouseArea
+
                                 anchors.fill: parent
-                                acceptedButtons: Qt.LeftButton
                                 hoverEnabled: true
-
                                 onClicked: {
-                                    background.path = modelData
+                                    background.type = 1;
+                                    background.color = bgColor;
                                 }
-
-                                onEntered: function() {
-                                    _image.opacity = 0.7
-                                }
-                                onExited: function() {
-                                    _image.opacity = 1.0
-                                }
-
-                                onPressedChanged: item.scale = pressed ? 0.97 : 1.0
                             }
                         }
                     }
-
-                    function calcExtraSpacing(cellSize, containerSize) {
-                        var availableColumns = Math.floor(containerSize / cellSize)
-                        var extraSpacing = 0
-                        if (availableColumns > 0) {
-                            var allColumnSize = availableColumns * cellSize
-                            var extraSpace = Math.max(containerSize - allColumnSize, 0)
-                            extraSpacing = extraSpace / availableColumns
-                        }
-                        return Math.floor(extraSpacing)
-                    }
-                }
-
-                Item {
-                    visible: background.type === 1
-                    height: FishUI.Units.smallSpacing
-                }
-
-                Loader {
-                    Layout.fillWidth: true
-                    height: item ? item.height : 0
-                    visible: background.type === 1
-                    sourceComponent: colorView
                 }
             }
-
-//            DesktopPreview {
-//                Layout.alignment: Qt.AlignHCenter
-//                width: 500
-//                height: 300
-//            }
 
             Item {
                 height: FishUI.Units.largeSpacing
@@ -230,67 +146,16 @@ ItemPage {
         }
     }
 
-    Component {
-        id: colorView
+    FileDialog {
+        id: wallpaperDialog
 
-        GridView {
-            id: _colorView
-            Layout.fillWidth: true
+        title: qsTr("Add Wallpaper")
+        nameFilters: [qsTr("Image files (*.jpg *.jpeg *.png *.webp)")]
 
-            property int rowCount: _colorView.width / cellWidth
-
-            implicitHeight: Math.ceil(_colorView.count / _colorView.rowCount) * cellHeight + FishUI.Units.largeSpacing
-
-            cellWidth: 50
-            cellHeight: 50
-
-            interactive: false
-            model: ListModel {}
-
-            property var itemSize: 32
-
-            Component.onCompleted: {
-                model.append({"bgColor": "#2B8ADA"})
-                model.append({"bgColor": "#4DA4ED"})
-                model.append({"bgColor": "#B7E786"})
-                model.append({"bgColor": "#F2BB73"})
-                model.append({"bgColor": "#EE72EB"})
-                model.append({"bgColor": "#F0905A"})
-                model.append({"bgColor": "#595959"})
-                model.append({"bgColor": "#000000"})
-            }
-
-            delegate: Rectangle {
-                property bool checked: Qt.colorEqual(background.color, bgColor)
-                property color currentColor: bgColor
-
-                width: _colorView.itemSize + FishUI.Units.largeSpacing
-                height: width
-                color: "transparent"
-                radius: width / 2
-                border.color: _mouseArea.pressed ? Qt.rgba(currentColor.r,
-                                                           currentColor.g,
-                                                           currentColor.b, 0.6)
-                                                 : Qt.rgba(currentColor.r,
-                                                           currentColor.g,
-                                                           currentColor.b, 0.4)
-                border.width: checked ? 3 : _mouseArea.containsMouse ? 2 : 0
-
-                MouseArea {
-                    id: _mouseArea
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onClicked: background.color = bgColor
-                }
-
-                Rectangle {
-                    width: 32
-                    height: width
-                    anchors.centerIn: parent
-                    color: currentColor
-                    radius: width / 2
-                }
-            }
+        onAccepted: {
+            var path = decodeURIComponent(selectedFile.toString().replace("file://", ""));
+            background.type = 0;
+            background.path = path;
         }
     }
 }
