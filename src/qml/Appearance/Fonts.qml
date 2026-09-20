@@ -52,8 +52,6 @@ ItemPage {
             spacing: FishUI.Units.largeSpacing * 2
 
             RoundedItem {
-                Layout.bottomMargin: FishUI.Units.largeSpacing * 2
-
                 GridLayout {
                     columns: 2
                     Layout.fillWidth: true
@@ -174,8 +172,10 @@ ItemPage {
 
                     Switch {
                         Layout.fillHeight: true
-                        Layout.alignment: Qt.AlignRight
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         checked: fonts.antiAliasing
+                        rightPadding: 0
+                        rightInset: 0
                         onCheckedChanged: fonts.antiAliasing = checked
                     }
                 }

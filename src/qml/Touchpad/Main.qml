@@ -56,8 +56,9 @@ ItemPage {
                     Switch {
                         id: _enableSwitch
                         Layout.fillHeight: true
-                        Layout.alignment: Qt.AlignRight
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         rightPadding: 0
+                        rightInset: 0
 
                         Component.onCompleted: {
                             checked = touchpad.enabled
@@ -76,8 +77,9 @@ ItemPage {
                         visible: _enableSwitch.checked
                         Layout.fillHeight: true
                         onCheckedChanged: touchpad.tapToClick = checked
-                        Layout.alignment: Qt.AlignRight
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         rightPadding: 0
+                        rightInset: 0
 
                         Component.onCompleted: {
                             checked = touchpad.tapToClick
@@ -93,9 +95,10 @@ ItemPage {
                     Switch {
                         visible: _enableSwitch.checked
                         Layout.fillHeight: true
-                        Layout.alignment: Qt.AlignRight
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         onCheckedChanged: touchpad.naturalScroll = checked
                         rightPadding: 0
+                        rightInset: 0
 
                         Component.onCompleted: {
                             checked = touchpad.naturalScroll
@@ -148,9 +151,6 @@ ItemPage {
                 }
             }
 
-            Item {
-                height: FishUI.Units.smallSpacing
-            }
         }
     }
 }

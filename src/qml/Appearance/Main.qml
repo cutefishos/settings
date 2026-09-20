@@ -46,11 +46,8 @@ ItemPage {
                 Layout.fillWidth: true
                 spacing: FishUI.Units.smallSpacing
 
-                Label {
+                SectionLabel {
                     text: qsTr("Appearance")
-                    leftPadding: FishUI.Units.largeSpacing
-                    bottomPadding: FishUI.Units.smallSpacing
-                    color: FishUI.Theme.disabledTextColor
                 }
 
                 RoundedItem {
@@ -99,6 +96,7 @@ ItemPage {
                             Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                             onCheckedChanged: appearance.setDimsWallpaper(checked)
                             rightPadding: 0
+                            rightInset: 0
                         }
                     }
                 }
@@ -108,11 +106,8 @@ ItemPage {
                 Layout.fillWidth: true
                 spacing: FishUI.Units.smallSpacing
 
-                Label {
+                SectionLabel {
                     text: qsTr("Accent color")
-                    leftPadding: FishUI.Units.largeSpacing
-                    bottomPadding: FishUI.Units.smallSpacing
-                    color: FishUI.Theme.disabledTextColor
                 }
 
                 RoundedItem {
@@ -189,7 +184,6 @@ ItemPage {
             }
 
             RoundedItem {
-                Layout.bottomMargin: FishUI.Units.largeSpacing * 2
                 spacing: 0
                 layout.anchors.leftMargin: 0
                 layout.anchors.rightMargin: 0

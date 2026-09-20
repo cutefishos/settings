@@ -56,9 +56,10 @@ ItemPage {
 
                     Switch {
                         Layout.fillHeight: true
-                        Layout.alignment: Qt.AlignRight
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         checked: mouse.leftHanded
                         rightPadding: 0
+                        rightInset: 0
                         onToggled: mouse.leftHanded = checked
                     }
 
@@ -68,10 +69,11 @@ ItemPage {
 
                     Switch {
                         Layout.fillHeight: true
-                        Layout.alignment: Qt.AlignRight
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         checked: mouse.naturalScroll
                         onToggled: mouse.naturalScroll = checked
                         rightPadding: 0
+                        rightInset: 0
                     }
 
                     Label {
@@ -80,10 +82,11 @@ ItemPage {
 
                     Switch {
                         Layout.fillHeight: true
-                        Layout.alignment: Qt.AlignRight
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         checked: mouse.acceleration
                         onToggled: mouse.acceleration = checked
                         rightPadding: 0
+                        rightInset: 0
                     }
 
 //                    Label {
@@ -123,9 +126,6 @@ ItemPage {
                 }
             }
 
-            Item {
-                height: FishUI.Units.smallSpacing
-            }
         }
     }
 }

@@ -45,11 +45,8 @@ ItemPage {
                 Layout.fillWidth: true
                 spacing: FishUI.Units.smallSpacing
 
-                Label {
+                SectionLabel {
                     text: qsTr("Screen")
-                    leftPadding: FishUI.Units.largeSpacing
-                    bottomPadding: FishUI.Units.smallSpacing
-                    color: FishUI.Theme.disabledTextColor
                     visible: _screenView.count > 0
                 }
 

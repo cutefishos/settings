@@ -59,8 +59,10 @@ ColumnLayout {
         Switch {
             id: wirelessSwitch
             height: wlanLabel.implicitHeight
+            Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
             leftPadding: 0
             rightPadding: 0
+            rightInset: 0
 
             checked: enabledConnections.wirelessEnabled
             onCheckedChanged: {

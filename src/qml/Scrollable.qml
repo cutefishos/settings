@@ -27,6 +27,7 @@ Flickable {
     clip: true
 
     topMargin: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
+    bottomMargin: FishUI.Units.largeSpacing * 2
     leftMargin: FishUI.Units.largeSpacing * 2
     rightMargin: FishUI.Units.largeSpacing * 2
 

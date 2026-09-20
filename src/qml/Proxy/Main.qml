@@ -281,9 +281,6 @@ ItemPage {
                 }
             }
 
-            Item {
-                height: FishUI.Units.smallSpacing
-            }
         }
     }
 

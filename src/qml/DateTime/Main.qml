@@ -62,6 +62,7 @@ ItemPage {
 
                     Switch {
                         Layout.fillHeight: true
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         rightPadding: 0
                         rightInset: 0
                         checkable: time.canNTP
@@ -91,6 +92,7 @@ ItemPage {
 
                     Switch {
                         Layout.fillHeight: true
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         rightPadding: 0
                         rightInset: 0
                         checked: time.twentyFour

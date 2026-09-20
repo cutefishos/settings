@@ -55,7 +55,6 @@ ItemPage {
         ColumnLayout {
             id: mainLayout
             anchors.fill: parent
-            anchors.bottomMargin: FishUI.Units.largeSpacing
             spacing: FishUI.Units.largeSpacing * 2
 
             // Hotspot
@@ -139,9 +138,6 @@ ItemPage {
                 }
             }
 
-            Item {
-                height: FishUI.Units.largeSpacing
-            }
         }
     }
 }

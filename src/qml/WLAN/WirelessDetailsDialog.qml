@@ -98,9 +98,10 @@ FishUI.Window {
             Switch {
                 id: autoJoinSwitch
                 rightPadding: 0
+                rightInset: 0
                 Layout.fillHeight: true
                 visible: false
-                Layout.alignment: Qt.AlignRight
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 onCheckedChanged: settings.autoConnect = checked
             }
 

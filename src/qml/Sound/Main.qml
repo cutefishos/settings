@@ -80,11 +80,8 @@ ItemPage {
             id: layout
             anchors.fill: parent
 
-            Label {
+            SectionLabel {
                 text: qsTr("Output Devices")
-                leftPadding: FishUI.Units.largeSpacing
-                bottomPadding: FishUI.Units.smallSpacing
-                color: FishUI.Theme.disabledTextColor
                 visible: sinks.count >= 1
             }
 
@@ -120,7 +117,10 @@ ItemPage {
                     ColumnLayout {
                         id: _itemLayout
                         anchors.fill: parent
-                        anchors.margins: FishUI.Units.largeSpacing
+                        anchors.leftMargin: FishUI.Units.largeSpacing * 1.5
+                        anchors.rightMargin: FishUI.Units.largeSpacing * 1.5
+                        anchors.topMargin: FishUI.Units.largeSpacing
+                        anchors.bottomMargin: FishUI.Units.largeSpacing
                         spacing: FishUI.Units.largeSpacing
 
                         Label {
@@ -169,11 +169,8 @@ ItemPage {
                 height: FishUI.Units.largeSpacing * 2
             }
 
-            Label {
+            SectionLabel {
                 text: qsTr("Input Devices")
-                leftPadding: FishUI.Units.largeSpacing
-                bottomPadding: FishUI.Units.smallSpacing
-                color: FishUI.Theme.disabledTextColor
                 visible: sinkInputView.count >= 1
             }
 
@@ -202,7 +199,10 @@ ItemPage {
                     ColumnLayout {
                         id: _layout
                         anchors.fill: parent
-                        anchors.margins: FishUI.Units.largeSpacing
+                        anchors.leftMargin: FishUI.Units.largeSpacing * 1.5
+                        anchors.rightMargin: FishUI.Units.largeSpacing * 1.5
+                        anchors.topMargin: FishUI.Units.largeSpacing
+                        anchors.bottomMargin: FishUI.Units.largeSpacing
                         spacing: FishUI.Units.largeSpacing
 
                         Label {
@@ -247,9 +247,6 @@ ItemPage {
                 }
             }
 
-            Item {
-                height: FishUI.Units.largeSpacing * 2
-            }
         }
     }
 }

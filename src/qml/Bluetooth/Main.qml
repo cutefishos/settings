@@ -143,8 +143,11 @@ ItemPage {
                         Layout.fillWidth: true
                     }
                     Switch {
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         checked: Bluetooth.Manager.enabled
                         enabled: Bluetooth.Manager.operational && Bluetooth.Manager.adapters.length > 0
+                        rightPadding: 0
+                        rightInset: 0
                         onClicked: Bluetooth.Manager.enabled = checked
                     }
                 }

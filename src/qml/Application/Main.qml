@@ -37,9 +37,8 @@ ItemPage {
             anchors.fill: parent
             spacing: FishUI.Units.smallSpacing
 
-            Label {
+            SectionLabel {
                 text: qsTr("Default application")
-                leftPadding: FishUI.Units.largeSpacing
             }
 
             RoundedItem {

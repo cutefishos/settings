@@ -140,9 +140,6 @@ ItemPage {
                 }
             }
 
-            Item {
-                height: FishUI.Units.largeSpacing
-            }
         }
     }
 

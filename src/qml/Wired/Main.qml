@@ -64,7 +64,6 @@ ItemPage {
         ColumnLayout {
             id: mainLayout
             anchors.fill: parent
-            anchors.bottomMargin: FishUI.Units.largeSpacing
             spacing: FishUI.Units.largeSpacing * 2
 
             // Wired connection
@@ -72,11 +71,8 @@ ItemPage {
                 Layout.fillWidth: true
                 spacing: FishUI.Units.smallSpacing
 
-                Label {
+                SectionLabel {
                     text: qsTr("Ethernet")
-                    leftPadding: FishUI.Units.largeSpacing
-                    bottomPadding: FishUI.Units.smallSpacing
-                    color: FishUI.Theme.disabledTextColor
                     visible: wiredView.count > 0
                 }
 
@@ -106,9 +102,6 @@ ItemPage {
                 }
             }
 
-            Item {
-                height: FishUI.Units.largeSpacing
-            }
         }
     }
 }

@@ -25,7 +25,7 @@ import FishUI 1.0 as FishUI
 Item {
     id: control
 
-    height: mainLayout.implicitHeight + FishUI.Theme.smallRadius * 2
+    implicitHeight: Math.max(36, mainLayout.implicitHeight + FishUI.Units.largeSpacing)
 
     property alias key: keyLabel.text
     property alias value: valueLabel.text
@@ -42,19 +42,21 @@ Item {
     RowLayout {
         id: mainLayout
         anchors.fill: parent
+        spacing: FishUI.Units.largeSpacing
 
         Label {
             id: keyLabel
-            color: FishUI.Theme.textColor
-        }
-
-        Item {
             Layout.fillWidth: true
+            color: FishUI.Theme.textColor
+            elide: Text.ElideRight
         }
 
         Label {
             id: valueLabel
+            Layout.maximumWidth: control.width * 0.65
+            horizontalAlignment: control.LayoutMirroring.enabled ? Text.AlignLeft : Text.AlignRight
             color: FishUI.Theme.disabledTextColor
+            elide: Text.ElideRight
         }
     }
 }

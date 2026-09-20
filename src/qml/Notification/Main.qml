@@ -52,6 +52,9 @@ ItemPage {
                     Switch {
                         checked: notifications.doNotDisturb
                         Layout.fillHeight: true
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                        rightPadding: 0
+                        rightInset: 0
                         onClicked: notifications.doNotDisturb = checked
                     }
                 }

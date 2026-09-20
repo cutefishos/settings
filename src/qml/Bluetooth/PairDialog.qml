@@ -112,6 +112,8 @@ FishUI.Window {
         }
         RowLayout {
             Layout.alignment: Qt.AlignRight
+            spacing: 8
+
             FishUI.ConfirmDialogButton {
                 text: qsTr("Cancel")
                 onClicked: Bluetooth.Manager.cancelPairing()

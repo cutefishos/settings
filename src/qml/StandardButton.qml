@@ -30,6 +30,9 @@ Button {
     property color pressedColor: FishUI.Theme.darkMode ? Qt.lighter(backgroundColor, 1.1)
                                                        : Qt.darker(backgroundColor, 1.2)
 
+    implicitHeight: 38
+    leftPadding: FishUI.Units.largeSpacing * 1.5
+    rightPadding: FishUI.Units.largeSpacing * 1.5
     scale: 1
 
     background: Rectangle {

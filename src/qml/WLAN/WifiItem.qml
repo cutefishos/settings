@@ -107,8 +107,6 @@ Item {
             RowLayout {
                 id: _topItem
                 anchors.fill: parent
-                anchors.leftMargin: FishUI.Units.smallSpacing
-                anchors.rightMargin: FishUI.Units.smallSpacing
                 spacing: FishUI.Units.largeSpacing
 
                 Image {

@@ -44,11 +44,8 @@ ItemPage {
                 Layout.fillWidth: true
                 spacing: FishUI.Units.smallSpacing
 
-                Label {
+                SectionLabel {
                     text: qsTr("Position on screen")
-                    leftPadding: FishUI.Units.largeSpacing
-                    bottomPadding: FishUI.Units.smallSpacing
-                    color: FishUI.Theme.disabledTextColor
                 }
 
                 RoundedItem {
@@ -90,11 +87,8 @@ ItemPage {
                 Layout.fillWidth: true
                 spacing: FishUI.Units.smallSpacing
 
-                Label {
+                SectionLabel {
                     text: qsTr("Size")
-                    leftPadding: FishUI.Units.largeSpacing
-                    bottomPadding: FishUI.Units.smallSpacing
-                    color: FishUI.Theme.disabledTextColor
                 }
 
                 RoundedItem {
@@ -164,11 +158,8 @@ ItemPage {
                 Layout.fillWidth: true
                 spacing: FishUI.Units.smallSpacing
 
-                Label {
+                SectionLabel {
                     text: qsTr("Display mode")
-                    leftPadding: FishUI.Units.largeSpacing
-                    bottomPadding: FishUI.Units.smallSpacing
-                    color: FishUI.Theme.disabledTextColor
                 }
 
                 RoundedItem {
@@ -197,11 +188,8 @@ ItemPage {
                 Layout.fillWidth: true
                 spacing: FishUI.Units.smallSpacing
 
-                Label {
+                SectionLabel {
                     text: qsTr("Glass Effect")
-                    leftPadding: FishUI.Units.largeSpacing
-                    bottomPadding: FishUI.Units.smallSpacing
-                    color: FishUI.Theme.disabledTextColor
                 }
 
                 RoundedItem {

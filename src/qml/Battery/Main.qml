@@ -140,11 +140,8 @@ ItemPage {
                 spacing: FishUI.Units.smallSpacing
                 visible: history.count > 2
 
-                Label {
+                SectionLabel {
                     text: qsTr("History")
-                    leftPadding: FishUI.Units.largeSpacing
-                    bottomPadding: FishUI.Units.smallSpacing
-                    color: FishUI.Theme.disabledTextColor
                 }
 
                 RoundedItem {
@@ -197,11 +194,8 @@ ItemPage {
                 spacing: FishUI.Units.smallSpacing
                 visible: battery.capacity
 
-                Label {
+                SectionLabel {
                     text: qsTr("Health")
-                    leftPadding: FishUI.Units.largeSpacing
-                    bottomPadding: FishUI.Units.smallSpacing
-                    color: FishUI.Theme.disabledTextColor
                 }
 
                 RoundedItem {
@@ -308,16 +302,15 @@ ItemPage {
 
                     Switch {
                         Layout.fillHeight: true
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         checked: battery.showPercent
                         onCheckedChanged: battery.setPercentEnabled(checked)
                         rightPadding: 0
+                        rightInset: 0
                     }
                 }
             }
 
-            Item {
-                height: FishUI.Units.largeSpacing
-            }
         }
     }
 

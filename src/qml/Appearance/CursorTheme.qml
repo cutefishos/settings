@@ -26,11 +26,8 @@ ItemPage {
                 Layout.fillWidth: true
                 spacing: FishUI.Units.smallSpacing
 
-                Label {
+                SectionLabel {
                     text: qsTr("Cursor Theme")
-                    leftPadding: FishUI.Units.largeSpacing
-                    bottomPadding: FishUI.Units.smallSpacing
-                    color: FishUI.Theme.disabledTextColor
                 }
 
                 RoundedItem {
@@ -82,11 +79,8 @@ ItemPage {
                 Layout.fillWidth: true
                 spacing: FishUI.Units.smallSpacing
 
-                Label {
+                SectionLabel {
                     text: qsTr("Cursor Size")
-                    leftPadding: FishUI.Units.largeSpacing
-                    bottomPadding: FishUI.Units.smallSpacing
-                    color: FishUI.Theme.disabledTextColor
                 }
 
                 RoundedItem {
@@ -107,9 +101,6 @@ ItemPage {
                 }
             }
 
-            Item {
-                height: FishUI.Units.smallSpacing
-            }
         }
     }
 }

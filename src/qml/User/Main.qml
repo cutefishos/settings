@@ -97,9 +97,6 @@ ItemPage {
                 onClicked: addUserDialog.show()
             }
 
-            Item {
-                height: FishUI.Units.largeSpacing
-            }
         }
     }
 }

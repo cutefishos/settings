@@ -57,11 +57,8 @@ ItemPage {
                 Layout.fillWidth: true
                 spacing: FishUI.Units.smallSpacing
 
-                Label {
+                SectionLabel {
                     text: qsTr("Mode")
-                    leftPadding: FishUI.Units.largeSpacing
-                    bottomPadding: FishUI.Units.smallSpacing
-                    color: FishUI.Theme.disabledTextColor
                 }
 
                 RoundedItem {
@@ -87,20 +84,17 @@ ItemPage {
 
             Label {
                 color: FishUI.Theme.disabledTextColor
-                leftPadding: FishUI.Units.largeSpacing * 2
-                rightPadding: FishUI.Units.largeSpacing
+                leftPadding: FishUI.Units.largeSpacing * 1.5
+                rightPadding: FishUI.Units.largeSpacing * 1.5
                 Layout.fillWidth: true
                 wrapMode: Text.WordWrap
                 text: qsTr("Performance mode: CPU and GPU frequencies will be increased, while power consumption and heat generation will be increased.")
             }
 
             RoundedItem {
-                Layout.topMargin: FishUI.Units.largeSpacing
-
                 GridLayout {
                     columns: 2
                     rowSpacing: FishUI.Units.largeSpacing * 2
-                    Layout.bottomMargin: FishUI.Units.largeSpacing
 
                     Label {
                         visible: battery.available
@@ -136,9 +130,6 @@ ItemPage {
                 }
             }
 
-            Item {
-                height: FishUI.Units.largeSpacing * 2
-            }
         }
     }
 }

@@ -85,7 +85,6 @@ ItemPage {
         ColumnLayout {
             id: mainLayout
             anchors.fill: parent
-            anchors.bottomMargin: FishUI.Units.largeSpacing
             spacing: FishUI.Units.largeSpacing * 2
 
             RoundedItem {
@@ -148,9 +147,6 @@ ItemPage {
 //                }
 //            }
 
-            Item {
-                height: FishUI.Units.largeSpacing
-            }
         }
     }
 }

@@ -5,6 +5,7 @@
         <file>qml/ItemPage.qml</file>
         <file>qml/NavigationButton.qml</file>
         <file>qml/NavigationItem.qml</file>
+        <file>qml/SectionLabel.qml</file>
         <file>images/dark/display-brightness-low-symbolic.svg</file>
         <file>images/dark/display-brightness-symbolic.svg</file>
         <file>images/light/display-brightness-low-symbolic.svg</file>
@@ -102,6 +103,7 @@
         <file>qml/Application/Main.qml</file>
         <file>qml/Cursor/Main.qml</file>
         <file>qml/InputMethod/Main.qml</file>
+        <file>qml/InputMethod/InputMethodRow.qml</file>
         <file>images/sidebar/dark/cursor.svg</file>
         <file>qml/DateTime/Main.qml</file>
         <file>qml/DateTime/TimeZoneDialog.qml</file>

@@ -46,11 +46,8 @@ ItemPage {
                 Layout.fillWidth: true
                 spacing: FishUI.Units.smallSpacing
 
-                Label {
+                SectionLabel {
                     text: qsTr("Preferred languages")
-                    leftPadding: FishUI.Units.largeSpacing
-                    bottomPadding: FishUI.Units.smallSpacing
-                    color: FishUI.Theme.disabledTextColor
                 }
 
                 RoundedItem {
@@ -83,9 +80,6 @@ ItemPage {
                 wrapMode: Text.WordWrap
             }
 
-            Item {
-                height: FishUI.Units.largeSpacing
-            }
         }
     }
 
