@@ -1,23 +1,17 @@
 #include "screenrecordingmodel.h"
-#include "desktopentry.h"
-
-#include <QDir>
-#include <QFile>
-#include <QStandardPaths>
+#include "applicationregistry.h"
 
 ScreenRecordingModel::ScreenRecordingModel(QObject *parent)
     : QAbstractListModel(parent)
+    , m_registry(ApplicationRegistry::instance())
 {
     connect(&m_permissions, &ScreenRecordingPermissions::changed, this,
             &ScreenRecordingModel::reload);
-    // Installing or removing an application changes what is listed.
-    for (const QString &directory :
-         QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation)) {
-        if (QDir(directory).exists())
-            m_applications.addPath(directory);
-    }
-    connect(&m_applications, &QFileSystemWatcher::directoryChanged, this,
-            &ScreenRecordingModel::reload);
+    // The registry scans in the background and rescans on install or removal.
+    auto *applications = m_registry->applications();
+    connect(applications, &QAbstractItemModel::modelReset, this, &ScreenRecordingModel::reload);
+    connect(applications, &QAbstractItemModel::rowsInserted, this, &ScreenRecordingModel::reload);
+    connect(applications, &QAbstractItemModel::rowsRemoved, this, &ScreenRecordingModel::reload);
     reload();
 }
 
@@ -72,15 +66,11 @@ void ScreenRecordingModel::reload()
 {
     QList<Entry> entries;
     for (const auto &grant : m_permissions.grants()) {
-        const QString path = QStandardPaths::locate(QStandardPaths::ApplicationsLocation,
-                                                    grant.appId + QStringLiteral(".desktop"));
-        QFile file(path);
-        DesktopEntryData data;
-        if (path.isEmpty() || !file.open(QIODevice::ReadOnly)
-            || !DesktopEntry::parse(grant.appId, path, file.readAll(), &data))
+        const DesktopEntry *entry = m_registry->byId(grant.appId);
+        if (!entry)
             continue;
-        entries.append({grant.appId, data.name.isEmpty() ? grant.appId : data.name, data.icon,
-                        grant.allowed});
+        entries.append({grant.appId, entry->name().isEmpty() ? grant.appId : entry->name(),
+                        entry->icon(), grant.allowed});
     }
     std::sort(entries.begin(), entries.end(), [](const Entry &a, const Entry &b) {
         return a.name.localeAwareCompare(b.name) < 0;
