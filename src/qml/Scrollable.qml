@@ -26,11 +26,14 @@ Flickable {
     flickableDirection: Flickable.VerticalFlick
     clip: true
 
-    topMargin: FishUI.Units.largeSpacing
+    topMargin: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
     leftMargin: FishUI.Units.largeSpacing * 2
     rightMargin: FishUI.Units.largeSpacing * 2
 
     contentWidth: width - (leftMargin + rightMargin)
+
+    // Flickable does not include topMargin in its initial content position.
+    Component.onCompleted: contentY = -topMargin
 
     FishUI.WheelHandler {
         id: wheelHandler
