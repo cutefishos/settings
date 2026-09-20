@@ -28,6 +28,8 @@ ImageSelectionItem {
     property int value
     property var rot
 
+    previewWidth: 80
+    previewHeight: 80
     checked: element.rotation === rot
 
     onClicked: {

@@ -15,7 +15,10 @@ Item {
     property alias cache: preview.cache
     property alias smooth: preview.smooth
     property alias imageStatus: preview.status
+    property alias iconSource: iconPreview.source
     property bool checked: false
+    property bool useIcon: false
+    property real iconSize: 36
     property real previewWidth: 96
     property real previewHeight: 96
     property real previewInset: 4
@@ -45,6 +48,7 @@ Item {
 
                 anchors.fill: parent
                 anchors.margins: control.previewInset
+                visible: !control.useIcon
                 sourceSize: Qt.size(width * control.sourceSizeScale,
                                     height * control.sourceSizeScale)
                 smooth: false
@@ -64,9 +68,19 @@ Item {
                 }
             }
 
+            FishUI.IconItem {
+                id: iconPreview
+
+                anchors.centerIn: parent
+                width: control.iconSize
+                height: control.iconSize
+                visible: control.useIcon
+            }
+
             Rectangle {
-                anchors.fill: preview
-                visible: preview.status === Image.Ready
+                anchors.fill: parent
+                anchors.margins: control.previewInset
+                visible: control.useIcon || preview.status === Image.Ready
                 radius: Math.max(FishUI.Theme.bigRadius - control.previewInset, 0)
                 color: "#FFFFFF"
                 opacity: control.hovered ? 0.08 : 0

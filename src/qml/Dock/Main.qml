@@ -58,6 +58,8 @@ ItemPage {
                         ImageSelectionItem {
                             source: "qrc:/images/dock_left.svg"
                             text: qsTr("Left")
+                            previewWidth: 80
+                            previewHeight: 80
                             checked: dockSettings.dockDirection === 0
                             onClicked: dockSettings.setDockDirection(0)
                         }
@@ -65,6 +67,8 @@ ItemPage {
                         ImageSelectionItem {
                             source: "qrc:/images/dock_bottom.svg"
                             text: qsTr("Bottom")
+                            previewWidth: 80
+                            previewHeight: 80
                             checked: dockSettings.dockDirection === 1
                             onClicked: dockSettings.setDockDirection(1)
                         }
@@ -72,6 +76,8 @@ ItemPage {
                         ImageSelectionItem {
                             source: "qrc:/images/dock_right.svg"
                             text: qsTr("Right")
+                            previewWidth: 80
+                            previewHeight: 80
                             checked: dockSettings.dockDirection === 2
                             onClicked: dockSettings.setDockDirection(2)
                         }

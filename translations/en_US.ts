@@ -112,12 +112,17 @@
     <name>CursorTheme</name>
     <message>
         <location filename="../src/qml/Appearance/CursorTheme.qml" line="+10"/>
-        <source>Cursor Theme</source>
+        <source>Cursor Style</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+17"/>
-        <source>Cursor size</source>
+        <location line="+76"/>
+        <source>Cursor Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-56"/>
+        <source>Cursor Theme</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -300,11 +305,11 @@
     </message>
     <message>
         <location line="+6"/>
-        <source>Cursor Theme</source>
+        <source>Cursor Style</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="+100"/>
+        <location filename="../src/qml/Dock/Main.qml" line="+106"/>
         <source>Small</source>
         <translation type="unfinished"></translation>
     </message>
@@ -474,7 +479,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Dock/Main.qml" line="-84"/>
+        <location filename="../src/qml/Dock/Main.qml" line="-90"/>
         <source>Dock</source>
         <translation type="unfinished"></translation>
     </message>
@@ -489,17 +494,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+9"/>
         <source>Bottom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+9"/>
         <source>Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+16"/>
         <source>Size</source>
         <translation type="unfinished"></translation>
     </message>
@@ -638,7 +643,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+20"/>
         <source>Your Wallpapers</source>
         <translation type="unfinished"></translation>
     </message>
@@ -653,7 +658,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+92"/>
+        <location line="+86"/>
         <source>Add Wallpaper</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1422,7 +1427,7 @@
 <context>
     <name>WallpaperGrid</name>
     <message>
-        <location filename="../src/qml/Wallpaper/WallpaperGrid.qml" line="+49"/>
+        <location filename="../src/qml/Wallpaper/WallpaperGrid.qml" line="+52"/>
         <source>Show Less</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1432,7 +1437,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+106"/>
+        <location line="+119"/>
         <source>Add Wallpaper</source>
         <translation type="unfinished"></translation>
     </message>

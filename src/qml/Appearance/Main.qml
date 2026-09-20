@@ -203,7 +203,7 @@ ItemPage {
                 }
 
                 NavigationItem {
-                    text: qsTr("Cursor Theme")
+                    text: qsTr("Cursor Style")
                     firstItem: false
                     onClicked: rootWindow.pushPage("qrc:/qml/Appearance/CursorTheme.qml")
                 }
