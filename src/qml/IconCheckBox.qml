@@ -30,6 +30,8 @@ Item {
     property alias source: icon.source
     property alias text: label.text
     property bool checked: false
+    property bool useSelectionRing: false
+    readonly property real imageInset: useSelectionRing ? 4 : iconSpacing
 
     property var iconWidth: iconSize
     property var iconHeight: iconSize
@@ -51,19 +53,21 @@ Item {
             width: control.iconWidth
             height: control.iconHeight
             color: "transparent"
-            border.width: 3
+            border.width: control.useSelectionRing ? (control.checked ? 2 : 0) : 3
             border.color: control.checked ? FishUI.Theme.highlightColor : "transparent"
 
-            radius: FishUI.Theme.bigRadius + control.iconSpacing / 2
+            radius: control.useSelectionRing
+                    ? FishUI.Theme.bigRadius
+                    : FishUI.Theme.bigRadius + control.iconSpacing / 2
             visible: true
 
             Image {
                 id: icon
                 anchors.fill: parent
-                anchors.margins: control.iconSpacing
+                anchors.margins: control.imageInset
                 sourceSize: Qt.size(icon.width, icon.height)
                 opacity: 1
-                smooth: false
+                smooth: control.useSelectionRing
 
                 layer.enabled: true
                 layer.effect: OpacityMask {
@@ -73,7 +77,10 @@ Item {
 
                         Rectangle {
                             anchors.fill: parent
-                            radius: FishUI.Theme.bigRadius
+                            radius: control.useSelectionRing
+                                    ? Math.max(FishUI.Theme.bigRadius - control.imageInset, 0)
+                                    : FishUI.Theme.bigRadius
+                            antialiasing: control.useSelectionRing
                         }
                     }
                 }
@@ -90,7 +97,8 @@ Item {
                     hoverEnabled: true
 
                     onEntered: function() {
-                        icon.opacity = 0.8
+                        if (!control.useSelectionRing)
+                            icon.opacity = 0.8
                     }
                     onExited: function() {
                         icon.opacity = 1.0
@@ -120,7 +128,7 @@ Item {
         onClicked: control.clicked()
 
         onPressedChanged: {
-            control.scale = pressed ? 0.95 : 1.0
+            control.scale = !control.useSelectionRing && pressed ? 0.95 : 1.0
         }
     }
 }

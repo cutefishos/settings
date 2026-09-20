@@ -64,6 +64,7 @@ ItemPage {
                             iconWidth: 120
                             iconHeight: iconWidth * 68 / 100
                             checked: !FishUI.Theme.darkMode
+                            useSelectionRing: true
                             onClicked: appearance.switchDarkMode(false)
                         }
 
@@ -73,6 +74,7 @@ ItemPage {
                             iconWidth: 120
                             iconHeight: iconWidth * 68 / 100
                             checked: FishUI.Theme.darkMode
+                            useSelectionRing: true
                             onClicked: appearance.switchDarkMode(true)
                         }
                     }
