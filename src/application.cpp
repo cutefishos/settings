@@ -23,6 +23,7 @@
 #include "powermanager.h"
 #include "settingsuiadaptor.h"
 #include "touchpad.h"
+#include "thumbnailprovider.h"
 
 #include "cursor/cursorthememodel.h"
 #include "cursor/mouse.h"
@@ -67,6 +68,8 @@ Application::Application(int &argc, char **argv)
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/SettingsUI"), this);
 
     // QML
+    m_engine.addImageProvider(QStringLiteral("thumbnailer"), new ThumbnailProvider);
+
     registerApplicationsQmlTypes();
     const char *uri = "Cutefish.Settings";
     qmlRegisterType<DockSettings>(uri, 1, 0, "DockSettings");

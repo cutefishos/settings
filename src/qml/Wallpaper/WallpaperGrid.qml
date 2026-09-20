@@ -198,8 +198,10 @@ ColumnLayout {
 
                     anchors.fill: parent
                     anchors.margins: wallpaperItem.thumbnailInset
-                    source: wallpaperItem.addWallpaper ? "" : "file://" + modelData
-                    sourceSize: Qt.size(width, height)
+                    source: wallpaperItem.addWallpaper
+                            ? ""
+                            : "image://thumbnailer/" + Qt.resolvedUrl("file://" + modelData)
+                    sourceSize: Qt.size(width * 2, height * 2)
                     fillMode: Image.PreserveAspectCrop
                     asynchronous: true
                     mipmap: true
@@ -246,7 +248,7 @@ ColumnLayout {
                     anchors.top: parent.top
                     anchors.right: parent.right
                     anchors.margins: FishUI.Units.smallSpacing
-                    width: 24
+                    width: 20
                     height: width
                     z: 2
                     visible: control.removable && !wallpaperItem.currentWallpaper && thumbnailHover.hovered
@@ -255,12 +257,12 @@ ColumnLayout {
 
                     Item {
                         anchors.centerIn: parent
-                        width: 14
+                        width: 12
                         height: width
 
                         Rectangle {
                             anchors.centerIn: parent
-                            width: 12
+                            width: 10
                             height: 1.5
                             radius: height / 2
                             rotation: 45
@@ -269,7 +271,7 @@ ColumnLayout {
 
                         Rectangle {
                             anchors.centerIn: parent
-                            width: 12
+                            width: 10
                             height: 1.5
                             radius: height / 2
                             rotation: -45

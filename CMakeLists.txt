@@ -28,6 +28,8 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/applications
                  ${CMAKE_CURRENT_BINARY_DIR}/cutefish-framework-applications-build)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/appearance
                  ${CMAKE_CURRENT_BINARY_DIR}/cutefish-framework-appearance-build)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/io
+                 ${CMAKE_CURRENT_BINARY_DIR}/cutefish-framework-io-build)
 
 pkg_search_module(FontConfig REQUIRED fontconfig IMPORTED_TARGET)
 pkg_search_module(ICU REQUIRED icu-i18n)
@@ -81,6 +83,7 @@ target_link_libraries(${PROJECT_NAME}
         Cutefish::Application
         Cutefish::Applications
         Cutefish::Appearance
+        Cutefish::IO
         Qt6::Core
         Qt6::Widgets
         Qt6::Quick
