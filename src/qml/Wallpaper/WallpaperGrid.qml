@@ -1,8 +1,8 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
-import Qt5Compat.GraphicalEffects
 import FishUI 1.0 as FishUI
+import "../"
 
 ColumnLayout {
     id: control
@@ -120,7 +120,7 @@ ColumnLayout {
                 height: wallpaperView.thumbnailHeight - wallpaperItem.thumbnailInset * 2
                 radius: Math.max(FishUI.Theme.bigRadius - wallpaperItem.thumbnailInset, 0)
                 color: FishUI.Theme.backgroundColor
-                visible: !wallpaperItem.addWallpaper && wallpaperImage.status !== Image.Ready
+                visible: !wallpaperItem.addWallpaper && thumbnail.imageStatus !== Image.Ready
             }
 
             FishUI.Icon {
@@ -129,7 +129,7 @@ ColumnLayout {
                 height: width
                 name: "image"
                 color: FishUI.Theme.darkMode ? "#FFFFFF" : "#C8CAD5"
-                visible: !wallpaperItem.addWallpaper && wallpaperImage.status !== Image.Ready
+                visible: !wallpaperItem.addWallpaper && thumbnail.imageStatus !== Image.Ready
             }
 
             Rectangle {
@@ -183,66 +183,27 @@ ColumnLayout {
                 }
             }
 
-            Rectangle {
+            ImageSelectionItem {
                 id: thumbnail
 
                 x: wallpaperItem.thumbnailOffset
                 width: wallpaperView.thumbnailWidth
                 height: wallpaperView.thumbnailHeight
                 visible: !wallpaperItem.addWallpaper
-                color: "transparent"
-                radius: FishUI.Theme.bigRadius
-
-                Image {
-                    id: wallpaperImage
-
-                    anchors.fill: parent
-                    anchors.margins: wallpaperItem.thumbnailInset
-                    source: wallpaperItem.addWallpaper
-                            ? ""
-                            : "image://thumbnailer/" + Qt.resolvedUrl("file://" + modelData)
-                    sourceSize: Qt.size(width * 2, height * 2)
-                    fillMode: Image.PreserveAspectCrop
-                    asynchronous: true
-                    mipmap: true
-                    cache: true
-                    smooth: true
-
-                    layer.enabled: true
-                    layer.effect: OpacityMask {
-                        maskSource: Item {
-                            width: wallpaperImage.width
-                            height: wallpaperImage.height
-
-                            Rectangle {
-                                anchors.fill: parent
-                                radius: Math.max(FishUI.Theme.bigRadius - wallpaperItem.thumbnailInset, 0)
-                            }
-                        }
-                    }
-                }
-
-                Rectangle {
-                    anchors.fill: parent
-                    color: "transparent"
-                    radius: parent.radius
-                    border.color: FishUI.Theme.highlightColor
-                    border.width: wallpaperImage.status === Image.Ready && wallpaperItem.selected ? 2 : 0
-                }
-
-                HoverHandler {
-                    id: thumbnailHover
-                }
-
-                MouseArea {
-                    id: wallpaperMouseArea
-
-                    anchors.fill: parent
-                    acceptedButtons: Qt.LeftButton
-                    hoverEnabled: true
-
-                    onClicked: control.wallpaperSelected(modelData)
-                }
+                previewWidth: width
+                previewHeight: height
+                previewInset: wallpaperItem.thumbnailInset
+                source: wallpaperItem.addWallpaper
+                        ? ""
+                        : "image://thumbnailer/" + Qt.resolvedUrl("file://" + modelData)
+                sourceSizeScale: 2
+                fillMode: Image.PreserveAspectCrop
+                asynchronous: true
+                mipmap: true
+                cache: true
+                smooth: true
+                checked: imageStatus === Image.Ready && wallpaperItem.selected
+                onClicked: control.wallpaperSelected(modelData)
 
                 Rectangle {
                     anchors.top: parent.top
@@ -251,7 +212,7 @@ ColumnLayout {
                     width: 20
                     height: width
                     z: 2
-                    visible: control.removable && !wallpaperItem.currentWallpaper && thumbnailHover.hovered
+                    visible: control.removable && !wallpaperItem.currentWallpaper && thumbnail.hovered
                     radius: width / 2
                     color: closeMouseArea.pressed ? Qt.rgba(0, 0, 0, 0.7) : Qt.rgba(0, 0, 0, 0.55)
 

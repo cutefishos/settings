@@ -17,7 +17,7 @@
         <file>images/light_mode.svg</file>
         <file>images/dock_bottom.svg</file>
         <file>images/dock_left.svg</file>
-        <file>qml/IconCheckBox.qml</file>
+        <file>qml/ImageSelectionItem.qml</file>
         <file>qml/HorizontalDivider.qml</file>
         <file>qml/Language/LanguagePage.qml</file>
         <file>qml/Language/AddLanguageDialog.qml</file>
@@ -77,7 +77,6 @@
         <file>qml/About/Main.qml</file>
         <file>qml/User/Main.qml</file>
         <file>qml/Appearance/Main.qml</file>
-        <file>qml/Appearance/ThemePreviewButton.qml</file>
         <file>qml/Appearance/Fonts.qml</file>
         <file>qml/Appearance/CursorTheme.qml</file>
         <file>qml/Display/Main.qml</file>

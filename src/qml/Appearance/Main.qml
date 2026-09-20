@@ -58,7 +58,7 @@ ItemPage {
                     RowLayout {
                         spacing: FishUI.Units.largeSpacing * 2
 
-                        ThemePreviewButton {
+                        ImageSelectionItem {
                             source: "qrc:/images/light_mode.svg"
                             text: qsTr("Light")
                             previewWidth: 120
@@ -67,7 +67,7 @@ ItemPage {
                             onClicked: appearance.switchDarkMode(false)
                         }
 
-                        ThemePreviewButton {
+                        ImageSelectionItem {
                             source: "qrc:/images/dark_mode.svg"
                             text: qsTr("Dark")
                             previewWidth: 120

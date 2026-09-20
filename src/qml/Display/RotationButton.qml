@@ -22,7 +22,7 @@ import FishUI 1.0 as FishUI
 import Cutefish.Screen 1.0 as CS
 import "../"
 
-IconCheckBox {
+ImageSelectionItem {
     id: control
 
     property int value

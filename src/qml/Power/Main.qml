@@ -68,14 +68,14 @@ ItemPage {
                     RowLayout {
                         spacing: FishUI.Units.largeSpacing * 2
 
-                        IconCheckBox {
+                        ImageSelectionItem {
                             source: "qrc:/images/powersave.svg"
                             text: qsTr("Power Save")
                             checked: power.mode === 0
                             onClicked: power.mode = 0
                         }
 
-                        IconCheckBox {
+                        ImageSelectionItem {
                             source: "qrc:/images/performance.svg"
                             text: qsTr("Performance")
                             checked: power.mode === 1

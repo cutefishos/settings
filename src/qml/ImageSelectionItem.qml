@@ -9,10 +9,18 @@ Item {
 
     property alias source: preview.source
     property alias text: label.text
+    property alias fillMode: preview.fillMode
+    property alias asynchronous: preview.asynchronous
+    property alias mipmap: preview.mipmap
+    property alias cache: preview.cache
+    property alias smooth: preview.smooth
+    property alias imageStatus: preview.status
     property bool checked: false
-    property real previewWidth: 120
-    property real previewHeight: previewWidth * 0.68
-    readonly property real previewInset: 4
+    property real previewWidth: 96
+    property real previewHeight: 96
+    property real previewInset: 4
+    property real sourceSizeScale: 1
+    readonly property bool hovered: mouseArea.containsMouse
 
     signal clicked
 
@@ -37,7 +45,8 @@ Item {
 
                 anchors.fill: parent
                 anchors.margins: control.previewInset
-                sourceSize: Qt.size(width, height)
+                sourceSize: Qt.size(width * control.sourceSizeScale,
+                                    height * control.sourceSizeScale)
                 smooth: false
 
                 layer.enabled: true
@@ -54,6 +63,14 @@ Item {
                     }
                 }
             }
+
+            Rectangle {
+                anchors.fill: preview
+                visible: preview.status === Image.Ready
+                radius: Math.max(FishUI.Theme.bigRadius - control.previewInset, 0)
+                color: "#FFFFFF"
+                opacity: control.hovered ? 0.08 : 0
+            }
         }
 
         Label {
@@ -66,8 +83,11 @@ Item {
     }
 
     MouseArea {
+        id: mouseArea
+
         anchors.fill: parent
         acceptedButtons: Qt.LeftButton
+        hoverEnabled: true
         onClicked: control.clicked()
     }
 }

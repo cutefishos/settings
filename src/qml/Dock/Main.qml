@@ -55,21 +55,21 @@ ItemPage {
                     RowLayout {
                         spacing: FishUI.Units.largeSpacing * 2
 
-                        IconCheckBox {
+                        ImageSelectionItem {
                             source: "qrc:/images/dock_left.svg"
                             text: qsTr("Left")
                             checked: dockSettings.dockDirection === 0
                             onClicked: dockSettings.setDockDirection(0)
                         }
 
-                        IconCheckBox {
+                        ImageSelectionItem {
                             source: "qrc:/images/dock_bottom.svg"
                             text: qsTr("Bottom")
                             checked: dockSettings.dockDirection === 1
                             onClicked: dockSettings.setDockDirection(1)
                         }
 
-                        IconCheckBox {
+                        ImageSelectionItem {
                             source: "qrc:/images/dock_right.svg"
                             text: qsTr("Right")
                             checked: dockSettings.dockDirection === 2
