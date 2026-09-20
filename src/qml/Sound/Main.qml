@@ -1,252 +1,290 @@
-/*
- * Copyright (C) 2021 CutefishOS Team.
- *
- * Author:     revenmartin <revenmartin@gmail.com>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 import FishUI 1.0 as FishUI
-import Cutefish.Settings 1.0
 import Cutefish.Audio 1.0
 import "../"
 
 ItemPage {
+    id: page
     headerTitle: qsTr("Sound")
+    property string operationError: ""
 
-    function audioIcon(value) {
-        if (value <= 0)
-            return "audio-volume-muted-symbolic"
-        else if (value <= 25)
-            return "audio-volume-low-symbolic"
-        else if (value <= 75)
-            return "audio-volume-medium-symbolic"
-        else
-            return "audio-volume-high-symbolic"
+    SinkModel { id: outputs }
+    SourceModel { id: inputs }
+    CardModel { id: cards }
+
+    Connections {
+        target: AudioService
+        function onOperationFailed(message) {
+            page.operationError = message
+        }
+        function onConnectedChanged() {
+            page.operationError = ""
+        }
     }
 
-    function microphoneIcon(value) {
-        if (value <= 25)
-            return "audio-input-microphone-low-symbolic"
-        else if (value <= 70)
-            return "audio-input-microphone-medium-symbolic"
-        else
-            return "audio-input-microphone-high-symbolic"
+    component VolumeControl: RowLayout {
+        id: volumeControl
+        required property var device
+        spacing: FishUI.Units.largeSpacing
+
+        Slider {
+            objectName: "volume-" + volumeControl.device.index
+            Layout.fillWidth: true
+            from: PipeWire.MinimalVolume
+            to: PipeWire.NormalVolume
+            stepSize: 0.01
+            value: volumeControl.device.muted ? 0 : volumeControl.device.volume
+            enabled: volumeControl.device.volumeWritable
+            Accessible.name: qsTr("Volume for %1").arg(volumeControl.device.description)
+            onMoved: {
+                volumeControl.device.volume = value
+                volumeControl.device.muted = value === 0
+            }
+        }
+
+        Label {
+            Layout.preferredWidth: 48
+            horizontalAlignment: Text.AlignRight
+            text: qsTr("%1%").arg(volumeControl.device.muted ? 0 : Math.round(volumeControl.device.volume * 100))
+        }
     }
 
-    SinkModel {
-        id: paSinkModel
-    }
+    component DeviceCard: RoundedItem {
+        id: deviceCard
+        required property var device
+        property bool input: false
+        objectName: "device-" + device.index
 
-    SourceModel {
-        id: paSourceModel
-    }
+        RowLayout {
+            Layout.fillWidth: true
+            spacing: FishUI.Units.largeSpacing
 
-    PulseObjectFilterModel {
-        id: paSinkFilterModel
-        sortRole: "SortByDefault"
-        sortOrder: Qt.DescendingOrder
-        filterOutInactiveDevices: true
-        sourceModel: paSinkModel
-    }
+            Label {
+                Layout.fillWidth: true
+                text: deviceCard.device.description
+                textFormat: Text.PlainText
+                wrapMode: Text.Wrap
+            }
 
-    PulseObjectFilterModel {
-        id: paSourceFilterModel
-        sortRole: "SortByDefault"
-        sortOrder: Qt.DescendingOrder
-        filterOutInactiveDevices: true
-        sourceModel: paSourceModel
+            Button {
+                objectName: "default-" + deviceCard.device.index
+                Layout.preferredWidth: 88
+                Layout.preferredHeight: 28
+                leftPadding: 10
+                rightPadding: 10
+                topPadding: 3
+                bottomPadding: 3
+                font.pixelSize: 12
+                text: deviceCard.device.default ? qsTr("Default") : qsTr("Set default")
+                enabled: !deviceCard.device.default
+                Accessible.name: deviceCard.input ? qsTr("Use as default input") : qsTr("Use as default output")
+                onClicked: {
+                    page.operationError = ""
+                    deviceCard.device.default = true
+                }
+            }
+        }
+
+        VolumeControl {
+            Layout.fillWidth: true
+            device: deviceCard.device
+            visible: deviceCard.device.hasVolume
+        }
+
+        RowLayout {
+            Layout.fillWidth: true
+            visible: deviceCard.device.ports.length > 1
+
+            Label {
+                text: qsTr("Port")
+            }
+
+            ComboBox {
+                Layout.fillWidth: true
+                model: deviceCard.device.ports
+                textRole: "description"
+                currentIndex: deviceCard.device.activePortIndex
+                Accessible.name: qsTr("Port for %1").arg(deviceCard.device.description)
+                onActivated: {
+                    page.operationError = ""
+                    deviceCard.device.activePortIndex = currentIndex
+                }
+                delegate: ItemDelegate {
+                    required property var modelData
+                    width: parent ? parent.width : implicitWidth
+                    text: modelData.description
+                    enabled: modelData.availability !== AudioObject.Unavailable
+                }
+            }
+        }
+
+        RowLayout {
+            Layout.fillWidth: true
+            visible: deviceCard.input && deviceCard.device.default
+
+            Label {
+                text: qsTr("Input level")
+                color: FishUI.Theme.disabledTextColor
+            }
+
+            ProgressBar {
+                Layout.fillWidth: true
+                from: 0
+                to: 1
+                value: inputMonitor.volume
+                Accessible.name: qsTr("Microphone input level")
+            }
+        }
+
+        VolumeMonitor {
+            id: inputMonitor
+            target: page.visible && deviceCard.input && deviceCard.device.default
+                    ? deviceCard.device : null
+        }
     }
 
     Scrollable {
+        id: scroll
         anchors.fill: parent
         contentHeight: layout.implicitHeight
 
         ColumnLayout {
             id: layout
-            anchors.fill: parent
+            width: scroll.contentWidth
+            spacing: FishUI.Units.largeSpacing * 2
 
-            SectionLabel {
-                text: qsTr("Output Devices")
-                visible: sinks.count >= 1
+            RoundedItem {
+                visible: !AudioService.connected
+
+                Label {
+                    Layout.fillWidth: true
+                    text: qsTr("Connecting to the audio service…")
+                    wrapMode: Text.Wrap
+                }
             }
 
-            // Playback Devices
-            ListView {
-                id: sinks
+            RoundedItem {
+                visible: page.operationError.length > 0
+
+                Label {
+                    Layout.fillWidth: true
+                    text: qsTr("Could not apply the audio change: %1").arg(page.operationError)
+                    textFormat: Text.PlainText
+                    wrapMode: Text.Wrap
+                }
+
+                Button {
+                    text: qsTr("Dismiss")
+                    onClicked: page.operationError = ""
+                }
+            }
+
+            ColumnLayout {
+                objectName: "output-section"
                 Layout.fillWidth: true
-                interactive: false
-                spacing: FishUI.Units.largeSpacing
+                spacing: FishUI.Units.smallSpacing
 
-                Layout.preferredHeight: {
-                    var totalHeight = 0
-                    for (var i = 0; i < sinks.visibleChildren.length; ++i) {
-                        totalHeight += sinks.visibleChildren[i].height
-                    }
-                    return totalHeight
+                SectionLabel { text: qsTr("Output devices") }
+
+                Label {
+                    objectName: "no-outputs"
+                    Layout.fillWidth: true
+                    visible: AudioService.connected && outputs.count === 0
+                    text: qsTr("No output devices connected")
+                    color: FishUI.Theme.disabledTextColor
+                    wrapMode: Text.Wrap
                 }
 
-                model: paSinkFilterModel
-
-                delegate: Item {
-                    width: ListView.view.width
-                    height: _itemLayout.implicitHeight + FishUI.Units.largeSpacing * 2
-
-                    readonly property var currentPort: Ports[ActivePortIndex]
-
-                    Rectangle {
-                        anchors.fill: parent
-                        color: FishUI.Theme.secondBackgroundColor
-                        radius: FishUI.Theme.bigRadius
-                    }
-
-                    ColumnLayout {
-                        id: _itemLayout
-                        anchors.fill: parent
-                        anchors.leftMargin: FishUI.Units.largeSpacing * 1.5
-                        anchors.rightMargin: FishUI.Units.largeSpacing * 1.5
-                        anchors.topMargin: FishUI.Units.largeSpacing
-                        anchors.bottomMargin: FishUI.Units.largeSpacing
-                        spacing: FishUI.Units.largeSpacing
-
-                        Label {
-                            text: !currentPort ? Description : currentPort.description
-                        }
-
-                        RowLayout {
-                            spacing: FishUI.Units.largeSpacing
-
-                            Image {
-                                Layout.leftMargin: 2
-                                height: 16
-                                width: height
-                                sourceSize: Qt.size(width, height)
-                                source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/" + audioIcon(slider.value / slider.to * 100) + ".svg"
-                                smooth: false
-                                antialiasing: true
-                            }
-
-                            Slider {
-                                id: slider
-                                Layout.fillWidth: true
-                                value: Volume
-                                from: PulseAudio.MinimalVolume
-                                to: PulseAudio.NormalVolume
-                                enabled: VolumeWritable
-                                visible: HasVolume
-
-                                ToolTip {
-                                    parent: slider.handle
-                                    visible: slider.pressed
-                                    text: (slider.value / slider.to * 100).toFixed(0)
-                                }
-
-                                onMoved: {
-                                    Volume = value
-                                    Muted = (value === 0)
-                                }
-                            }
-                        }
+                Repeater {
+                    model: outputs
+                    delegate: DeviceCard {
+                        required property var model
+                        device: model.AudioObject
                     }
                 }
             }
 
-            Item {
-                height: FishUI.Units.largeSpacing * 2
-            }
-
-            SectionLabel {
-                text: qsTr("Input Devices")
-                visible: sinkInputView.count >= 1
-            }
-
-            // Recording Devices
-            ListView {
-                id: sinkInputView
+            ColumnLayout {
+                objectName: "input-section"
                 Layout.fillWidth: true
-                Layout.preferredHeight: contentHeight
+                spacing: FishUI.Units.smallSpacing
 
-                interactive: false
-                spacing: FishUI.Units.largeSpacing
-                model: paSourceFilterModel
+                SectionLabel { text: qsTr("Input devices") }
 
-                delegate: Item {
-                    width: ListView.view.width
-                    height: _layout.implicitHeight + FishUI.Units.largeSpacing * 2
+                Label {
+                    objectName: "no-inputs"
+                    Layout.fillWidth: true
+                    visible: AudioService.connected && inputs.count === 0
+                    text: qsTr("No input devices connected")
+                    color: FishUI.Theme.disabledTextColor
+                    wrapMode: Text.Wrap
+                }
 
-                    readonly property var currentPort: Ports[ActivePortIndex]
-
-                    Rectangle {
-                        anchors.fill: parent
-                        color: FishUI.Theme.secondBackgroundColor
-                        radius: FishUI.Theme.bigRadius
+                Repeater {
+                    model: inputs
+                    delegate: DeviceCard {
+                        required property var model
+                        device: model.AudioObject
+                        input: true
                     }
+                }
+            }
 
-                    ColumnLayout {
-                        id: _layout
-                        anchors.fill: parent
-                        anchors.leftMargin: FishUI.Units.largeSpacing * 1.5
-                        anchors.rightMargin: FishUI.Units.largeSpacing * 1.5
-                        anchors.topMargin: FishUI.Units.largeSpacing
-                        anchors.bottomMargin: FishUI.Units.largeSpacing
-                        spacing: FishUI.Units.largeSpacing
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: FishUI.Units.smallSpacing
+                visible: cards.count > 0
 
-                        Label {
-                            text: !currentPort ? Description : currentPort.description
-                        }
+                SectionLabel { text: qsTr("Device profiles") }
 
-                        RowLayout {
+                RoundedItem {
+                    spacing: 0
+
+                    Repeater {
+                        model: cards
+                        delegate: ColumnLayout {
+                            id: profileCard
+                            required property var model
+                            required property int index
+                            readonly property var device: model.AudioObject
+                            Layout.fillWidth: true
                             spacing: FishUI.Units.largeSpacing
+                            visible: device.profiles.length > 0
 
-                            Image {
-                                Layout.leftMargin: 2
-                                height: 16
-                                width: height
-                                sourceSize: Qt.size(width, height)
-                                source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/" + microphoneIcon(_slider.value / _slider.to * 100) + ".svg"
-                                smooth: false
-                                antialiasing: true
+                            Label {
+                                Layout.fillWidth: true
+                                text: profileCard.device.description
+                                textFormat: Text.PlainText
+                                wrapMode: Text.Wrap
                             }
 
-                            Slider {
-                                id: _slider
+                            ComboBox {
                                 Layout.fillWidth: true
-                                value: Volume
-                                from: PulseAudio.MinimalVolume
-                                to: PulseAudio.NormalVolume
-                                enabled: VolumeWritable
-                                visible: HasVolume
-
-                                onMoved: {
-                                    Volume = value
-                                    Muted = (value === 0)
+                                model: profileCard.device.profiles
+                                textRole: "description"
+                                currentIndex: profileCard.device.activeProfileIndex
+                                Accessible.name: qsTr("Profile for %1").arg(profileCard.device.description)
+                                onActivated: {
+                                    page.operationError = ""
+                                    profileCard.device.activeProfileIndex = currentIndex
                                 }
-
-                                ToolTip {
-                                    parent: _slider.handle
-                                    visible: _slider.pressed
-                                    text: (_slider.value / _slider.to * 100).toFixed(0)
+                                delegate: ItemDelegate {
+                                    required property var modelData
+                                    width: parent ? parent.width : implicitWidth
+                                    text: modelData.description
+                                    enabled: modelData.availability !== AudioObject.Unavailable
                                 }
+                            }
+
+                            HorizontalDivider {
+                                visible: profileCard.index < cards.count - 1
                             }
                         }
                     }
                 }
             }
-
         }
     }
 }
