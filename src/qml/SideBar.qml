@@ -107,7 +107,7 @@ Item {
         id: listModel
 
         ListElement {
-            title: qsTr("WLAN")
+            title: qsTr("Wi-Fi")
             name: "wlan"
             page: "qrc:/qml/WLAN/Main.qml"
             iconSource: "wlan.svg"

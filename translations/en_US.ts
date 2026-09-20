@@ -669,7 +669,7 @@
     </message>
     <message>
         <location filename="../src/qml/WLAN/Main.qml" line="+31"/>
-        <source>WLAN</source>
+        <source>Wi-Fi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1222,7 +1222,7 @@
     </message>
     <message>
         <location line="-45"/>
-        <source>WLAN</source>
+        <source>Wi-Fi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1471,7 +1471,7 @@
     <name>WifiView</name>
     <message>
         <location filename="../src/qml/WLAN/WifiView.qml" line="+51"/>
-        <source>WLAN</source>
+        <source>Wi-Fi</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

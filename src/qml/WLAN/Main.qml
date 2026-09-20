@@ -28,7 +28,7 @@ import "../"
 
 ItemPage {
     id: control
-    headerTitle: qsTr("WLAN")
+    headerTitle: qsTr("Wi-Fi")
 
     property var itemHeight: 45
     property var settingsMap: ({})

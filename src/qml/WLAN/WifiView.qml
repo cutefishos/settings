@@ -48,7 +48,7 @@ ColumnLayout {
 
         Label {
             id: wlanLabel
-            text: qsTr("WLAN")
+            text: qsTr("Wi-Fi")
             color: FishUI.Theme.disabledTextColor
         }
 
