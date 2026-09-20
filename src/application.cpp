@@ -21,7 +21,6 @@
 #include "notifications.h"
 #include "password.h"
 #include "powermanager.h"
-#include "privacy/screenrecordingmodel.h"
 #include "mock/networkmockmodel.h"
 #include "settingsuiadaptor.h"
 #include "touchpad.h"
@@ -95,7 +94,6 @@ Application::Application(int &argc, char **argv)
     qmlRegisterType<Notifications>(uri, 1, 0, "Notifications");
     qmlRegisterType<DefaultApplications>(uri, 1, 0, "DefaultApplications");
     qmlRegisterType<NetworkMockModel>(uri, 1, 0, "NetworkMockModel");
-    qmlRegisterType<ScreenRecordingModel>(uri, 1, 0, "ScreenRecordingModel");
 
     qmlRegisterSingletonType<Password>(uri, 1, 0, "Password", passwordSingleton);
 
