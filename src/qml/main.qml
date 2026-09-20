@@ -97,7 +97,7 @@ FishUI.Window {
             anchors.fill: parent
             anchors.leftMargin: sideBar.width + FishUI.Units.smallSpacing * 1.5
             anchors.rightMargin: FishUI.Units.smallSpacing
-            spacing: FishUI.Units.smallSpacing
+            spacing: FishUI.Units.smallSpacing / 2
 
             readonly property int buttonSize: 31
 
@@ -124,6 +124,7 @@ FishUI.Window {
             Label {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
+                Layout.leftMargin: FishUI.Units.smallSpacing / 2
                 leftPadding: rootWindow.windowButtonsTopMargin
                 topPadding: rootWindow.windowButtonsTopMargin / 2
                 verticalAlignment: Text.AlignVCenter

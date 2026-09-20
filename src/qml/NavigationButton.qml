@@ -28,7 +28,7 @@ Item {
     FishUI.Icon {
         id: _icon
         anchors.centerIn: parent
-        width: 18
+        width: 16
         height: width
         mirror: control.LayoutMirroring.enabled
         opacity: control.enabled ? 1 : 0.35
