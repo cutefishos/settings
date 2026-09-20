@@ -1,10 +1,13 @@
 #pragma once
 
 #include <QAbstractListModel>
+#include <QFileSystemWatcher>
 
 #include "screenrecordingpermissions.h"
 
-// Applications that have asked to record the screen, with their grant state.
+// Installed applications that have asked to record the screen, with their
+// grant state. A record whose desktop entry is gone stays in the store but is
+// not listed; it comes back with the application.
 class ScreenRecordingModel : public QAbstractListModel
 {
     Q_OBJECT
@@ -37,5 +40,6 @@ private:
     void reload();
 
     ScreenRecordingPermissions m_permissions;
+    QFileSystemWatcher m_applications;
     QList<Entry> m_entries;
 };

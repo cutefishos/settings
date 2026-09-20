@@ -22,7 +22,9 @@ The Privacy page lists applications that have asked to record the screen
 through the portal, read from `~/.config/cutefish/privacy.conf` via the
 framework's `ScreenRecordingPermissions`. The switch grants or revokes the
 standing permission; an application that is switched off is asked again the
-next time it starts a screen cast.
+next time it starts a screen cast. Only installed applications are listed: a
+record whose desktop entry is gone stays in the file and reappears, with its
+previous setting, when the application is installed again.
 
 ## Build
 

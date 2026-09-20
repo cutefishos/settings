@@ -1,6 +1,7 @@
 #include "screenrecordingmodel.h"
 #include "desktopentry.h"
 
+#include <QDir>
 #include <QFile>
 #include <QStandardPaths>
 
@@ -8,6 +9,14 @@ ScreenRecordingModel::ScreenRecordingModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     connect(&m_permissions, &ScreenRecordingPermissions::changed, this,
+            &ScreenRecordingModel::reload);
+    // Installing or removing an application changes what is listed.
+    for (const QString &directory :
+         QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation)) {
+        if (QDir(directory).exists())
+            m_applications.addPath(directory);
+    }
+    connect(&m_applications, &QFileSystemWatcher::directoryChanged, this,
             &ScreenRecordingModel::reload);
     reload();
 }
@@ -63,18 +72,15 @@ void ScreenRecordingModel::reload()
 {
     QList<Entry> entries;
     for (const auto &grant : m_permissions.grants()) {
-        Entry entry {grant.appId, grant.appId, QString(), grant.allowed};
         const QString path = QStandardPaths::locate(QStandardPaths::ApplicationsLocation,
                                                     grant.appId + QStringLiteral(".desktop"));
         QFile file(path);
         DesktopEntryData data;
-        if (!path.isEmpty() && file.open(QIODevice::ReadOnly)
-            && DesktopEntry::parse(grant.appId, path, file.readAll(), &data)) {
-            if (!data.name.isEmpty())
-                entry.name = data.name;
-            entry.icon = data.icon;
-        }
-        entries.append(entry);
+        if (path.isEmpty() || !file.open(QIODevice::ReadOnly)
+            || !DesktopEntry::parse(grant.appId, path, file.readAll(), &data))
+            continue;
+        entries.append({grant.appId, data.name.isEmpty() ? grant.appId : data.name, data.icon,
+                        grant.allowed});
     }
     std::sort(entries.begin(), entries.end(), [](const Entry &a, const Entry &b) {
         return a.name.localeAwareCompare(b.name) < 0;
