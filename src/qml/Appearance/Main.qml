@@ -58,23 +58,21 @@ ItemPage {
                     RowLayout {
                         spacing: FishUI.Units.largeSpacing * 2
 
-                        IconCheckBox {
+                        ThemePreviewButton {
                             source: "qrc:/images/light_mode.svg"
                             text: qsTr("Light")
-                            iconWidth: 120
-                            iconHeight: iconWidth * 68 / 100
+                            previewWidth: 120
+                            previewHeight: previewWidth * 68 / 100
                             checked: !FishUI.Theme.darkMode
-                            useSelectionRing: true
                             onClicked: appearance.switchDarkMode(false)
                         }
 
-                        IconCheckBox {
+                        ThemePreviewButton {
                             source: "qrc:/images/dark_mode.svg"
                             text: qsTr("Dark")
-                            iconWidth: 120
-                            iconHeight: iconWidth * 68 / 100
+                            previewWidth: 120
+                            previewHeight: previewWidth * 68 / 100
                             checked: FishUI.Theme.darkMode
-                            useSelectionRing: true
                             onClicked: appearance.switchDarkMode(true)
                         }
                     }

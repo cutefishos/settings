@@ -77,6 +77,7 @@
         <file>qml/About/Main.qml</file>
         <file>qml/User/Main.qml</file>
         <file>qml/Appearance/Main.qml</file>
+        <file>qml/Appearance/ThemePreviewButton.qml</file>
         <file>qml/Appearance/Fonts.qml</file>
         <file>qml/Appearance/CursorTheme.qml</file>
         <file>qml/Display/Main.qml</file>
