@@ -153,12 +153,6 @@ ItemPage {
 
                         data: history.points
 
-                        readonly property real xTicksAtDontCare: 0
-                        readonly property real xTicksAtTwelveOClock: 1
-                        readonly property real xTicksAtFullHour: 2
-                        readonly property real xTicksAtHalfHour: 3
-                        readonly property real xTicksAtFullSecondHour: 4
-                        readonly property real xTicksAtTenMinutes: 5
                         readonly property var xTicksAtList: [xTicksAtTenMinutes, xTicksAtHalfHour, xTicksAtHalfHour,
                                                              xTicksAtFullHour, xTicksAtFullSecondHour, xTicksAtTwelveOClock]
 

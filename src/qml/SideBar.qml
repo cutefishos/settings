@@ -467,7 +467,7 @@ Item {
         id: nmEnabledConnections
 
         Component.onCompleted: {
-            if (!nmEnabledConnections.wirelessHwEnabled)
+            if (!nmEnabledConnections.wirelessHwEnabled && !rootWindow.mockNetworkData)
                 removeItem("wlan")
         }
     }

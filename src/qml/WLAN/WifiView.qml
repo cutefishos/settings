@@ -28,6 +28,7 @@ import Cutefish.Network 1.0 as NM
 ColumnLayout {
     id: _contentLayout
     spacing: FishUI.Units.largeSpacing
+    property var sourceModel: connectionModel
 
     ConnectDialog {
         id: connectDialog
@@ -64,8 +65,11 @@ ColumnLayout {
             rightPadding: 0
             rightInset: 0
 
-            checked: enabledConnections.wirelessEnabled
+            checked: rootWindow.mockNetworkData || enabledConnections.wirelessEnabled
             onCheckedChanged: {
+                if (rootWindow.mockNetworkData)
+                    return
+
                 if (checked) {
                     if (!enabledConnections.wirelessEnabled) {
                         handler.enableWireless(checked)
@@ -99,7 +103,7 @@ ColumnLayout {
 
         model: NM.AppletProxyModel {
             type: NM.AppletProxyModel.WirelessType
-            sourceModel: connectionModel
+            sourceModel: _contentLayout.sourceModel
         }
 
         spacing: 0

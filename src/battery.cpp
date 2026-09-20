@@ -18,6 +18,7 @@
  */
 
 #include "battery.h"
+#include <QCoreApplication>
 #include <QDBusArgument>
 #include <QDBusReply>
 #include <QDateTime>
@@ -27,6 +28,11 @@
 static const QString s_sServer = "com.cutefish.Services";
 static const QString s_sPath = "/com/cutefish/Services/Battery";
 static const QString s_sInterface = "com.cutefish.Services.Battery";
+
+static bool mockBatteryEnabled()
+{
+    return QCoreApplication::arguments().contains(QStringLiteral("--mock-battery"));
+}
 
 // DBus Battery Info Structure
 struct BatteryInfo {
@@ -60,6 +66,13 @@ Battery::Battery(QObject *parent)
     , m_available(false)
     , m_onBattery(false)
 {
+    if (mockBatteryEnabled()) {
+        m_available = true;
+        m_onBattery = true;
+        m_udi = QStringLiteral("mock-battery");
+        return;
+    }
+
     m_available = m_interface.isValid() && !m_interface.lastError().isValid();
 
     if (m_available) {
@@ -109,6 +122,9 @@ bool Battery::onBattery() const
 
 void Battery::refresh()
 {
+    if (mockBatteryEnabled())
+        return;
+
     m_interface.call("refresh");
 }
 
@@ -147,42 +163,66 @@ QVariantList Battery::getHistory(const int timespan, const int resolution)
 
 int Battery::chargeState() const
 {
+    if (mockBatteryEnabled())
+        return 2;
+
     return m_interface.property("chargeState").toInt();
 }
 
 int Battery::chargePercent() const
 {
+    if (mockBatteryEnabled())
+        return 78;
+
     return m_interface.property("chargePercent").toInt();
 }
 
 int Battery::lastChargedPercent() const
 {
+    if (mockBatteryEnabled())
+        return 100;
+
     return m_interface.property("lastChargedPercent").toInt();
 }
 
 int Battery::capacity() const
 {
+    if (mockBatteryEnabled())
+        return 94;
+
     return m_interface.property("capacity").toInt();
 }
 
 QString Battery::statusString() const
 {
+    if (mockBatteryEnabled())
+        return tr("Discharging · 3 hours 24 minutes remaining");
+
     return m_interface.property("statusString").toString();
 }
 
 QString Battery::lastChargedTime() const
 {
+    if (mockBatteryEnabled())
+        return tr("2 hours ago");
+
     return m_interface.property("lastChargedTime").toString();
 }
 
 bool Battery::showPercent()
 {
+    if (mockBatteryEnabled())
+        return true;
+
     QSettings settings(QSettings::UserScope, "cutefish", "statusbar");
     return settings.value("BatteryPercentage", false).toBool();
 }
 
 void Battery::setPercentEnabled(bool value)
 {
+    if (mockBatteryEnabled())
+        return;
+
     QDBusInterface("com.cutefish.Statusbar", "/Statusbar").call("setBatteryPercentage", value);
 }
 

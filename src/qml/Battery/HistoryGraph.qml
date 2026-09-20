@@ -39,7 +39,7 @@ Canvas {
     property int xPadding: 45
     property int yPadding: 40
 
-    property var data //expect an array of QPointF
+    property var data: [] //expect an array of QPointF
 
     property real yMax: 100
     property real xMax: 100
@@ -54,6 +54,13 @@ Canvas {
     property real xDivisions: 6
     property real xDivisionWidth: 600000
     property real xTicksAt: xTicksAtDontCare
+
+    readonly property real xTicksAtDontCare: 0
+    readonly property real xTicksAtTwelveOClock: 1
+    readonly property real xTicksAtFullHour: 2
+    readonly property real xTicksAtHalfHour: 3
+    readonly property real xTicksAtFullSecondHour: 4
+    readonly property real xTicksAtTenMinutes: 5
 
     //internal
 
@@ -86,6 +93,9 @@ Canvas {
         var c = canvas.getContext('2d');
 
         c.clearRect(0,0, width, height)
+
+        if (!data || data.length < 2)
+            return
 
         //draw the background
         c.fillStyle = bgColor

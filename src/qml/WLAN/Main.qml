@@ -22,6 +22,7 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 
 import FishUI 1.0 as FishUI
+import Cutefish.Settings 1.0
 import Cutefish.Network 1.0 as NM
 
 import "../"
@@ -45,6 +46,10 @@ ItemPage {
         id: networkModel
     }
 
+    NetworkMockModel {
+        id: mockNetworkModel
+    }
+
     NM.EnabledConnections {
         id: enabledConnections
     }
@@ -66,21 +71,22 @@ ItemPage {
     }
 
     Component.onCompleted: {
-        handler.requestScan()
+        if (!rootWindow.mockNetworkData)
+            handler.requestScan()
     }
 
     Timer {
         id: scanTimer
         interval: 10200
         repeat: true
-        running: control.visible
+        running: control.visible && !rootWindow.mockNetworkData
         onTriggered: handler.requestScan()
     }
 
     Scrollable {
         anchors.fill: parent
         contentHeight: mainLayout.implicitHeight
-        visible: enabledConnections.wirelessHwEnabled
+        visible: enabledConnections.wirelessHwEnabled || rootWindow.mockNetworkData
 
         ColumnLayout {
             id: mainLayout
@@ -90,7 +96,8 @@ ItemPage {
             RoundedItem {
                 WifiView {
                     Layout.fillWidth: true
-                    visible: enabledConnections.wirelessHwEnabled
+                    visible: enabledConnections.wirelessHwEnabled || rootWindow.mockNetworkData
+                    sourceModel: rootWindow.mockNetworkData ? mockNetworkModel : connectionModel
                 }
             }
 

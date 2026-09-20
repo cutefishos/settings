@@ -22,6 +22,7 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 
 import FishUI 1.0 as FishUI
+import Cutefish.Settings 1.0
 import Cutefish.Network 1.0 as NM
 
 import "../"
@@ -43,6 +44,10 @@ ItemPage {
 
     NM.NetworkModel {
         id: networkModel
+    }
+
+    NetworkMockModel {
+        id: mockNetworkModel
     }
 
     NM.EnabledConnections {
@@ -89,7 +94,7 @@ ItemPage {
 
                         model: NM.AppletProxyModel {
                             type: NM.AppletProxyModel.WiredType
-                            sourceModel: connectionModel
+                            sourceModel: rootWindow.mockNetworkData ? mockNetworkModel : connectionModel
                         }
 
                         ScrollBar.vertical: ScrollBar {}

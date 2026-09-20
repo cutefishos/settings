@@ -20,6 +20,8 @@
 
 #include "batteryhistorymodel.h"
 
+#include <QCoreApplication>
+#include <QDateTime>
 #include <QDebug>
 #include <QDBusArgument>
 #include <QDBusConnection>
@@ -162,6 +164,26 @@ void BatteryHistoryModel::refresh()
 void BatteryHistoryModel::load()
 {
     if (!m_isComplete || m_device.isEmpty()) {
+        return;
+    }
+
+    if (QCoreApplication::arguments().contains(QStringLiteral("--mock-battery"))) {
+        m_values.clear();
+        const uint now = QDateTime::currentSecsSinceEpoch();
+        const QList<double> chargeValues { 96, 92, 88, 83, 77, 71, 64, 59, 65, 70, 74, 78 };
+        const QList<double> rateValues { 8.2, 7.6, 7.1, 6.8, 6.4, 5.9, 6.3, 7.0, 6.5, 6.1, 5.8, 5.5 };
+        const auto &values = m_type == RateType ? rateValues : chargeValues;
+        const uint interval = m_duration / values.size();
+
+        for (int i = 0; i < values.size(); ++i) {
+            HistoryReply reply;
+            reply.time = now - m_duration + interval * i;
+            reply.value = values.at(i);
+            reply.charging = 0;
+            m_values.append(reply);
+        }
+
+        Q_EMIT dataChanged();
         return;
     }
 

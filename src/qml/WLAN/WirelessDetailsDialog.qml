@@ -137,7 +137,7 @@ FishUI.Window {
 
             Label {
                 id: ipv4AddressLabel
-                // text: model.ipV4Address
+                text: model.ipAddress
                 Layout.alignment: Qt.AlignRight
                 Layout.fillWidth: true
             }
@@ -176,7 +176,7 @@ FishUI.Window {
 
             Label {
                 id: routerLabel
-                // text: model.gateway
+                text: model.gateWay
                 Layout.alignment: Qt.AlignRight
             }
 

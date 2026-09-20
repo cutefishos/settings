@@ -35,6 +35,7 @@ FishUI.Window {
 
     property alias stackView: _stackView
     property string pendingPageName: ""
+    readonly property bool mockNetworkData: Qt.application.arguments.indexOf("--mock-network") >= 0
 
     // Entries are {page, rootPage, properties}; rootPage is the sidebar page a sub page belongs to.
     property var history: []

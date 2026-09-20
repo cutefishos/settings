@@ -66,6 +66,7 @@ set(SRCS
     src/networkproxy.cpp
     src/defaultapplications.cpp
     src/inputmethod.cpp
+    src/mock/networkmockmodel.cpp
 )
 
 set(RESOURCES

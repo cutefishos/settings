@@ -21,6 +21,7 @@
 #include "notifications.h"
 #include "password.h"
 #include "powermanager.h"
+#include "mock/networkmockmodel.h"
 #include "settingsuiadaptor.h"
 #include "touchpad.h"
 #include "thumbnailprovider.h"
@@ -52,6 +53,8 @@ Application::Application(int &argc, char **argv)
 
     QCommandLineOption moduleOption("m", "Switch to module", "module");
     parser.addOption(moduleOption);
+    parser.addOption(QCommandLineOption("mock-network", "Show sample network data"));
+    parser.addOption(QCommandLineOption("mock-battery", "Show sample battery data"));
     parser.process(*this);
 
     const QString module = parser.value(moduleOption);
@@ -90,6 +93,7 @@ Application::Application(int &argc, char **argv)
     qmlRegisterType<NetworkProxy>(uri, 1, 0, "NetworkProxy");
     qmlRegisterType<Notifications>(uri, 1, 0, "Notifications");
     qmlRegisterType<DefaultApplications>(uri, 1, 0, "DefaultApplications");
+    qmlRegisterType<NetworkMockModel>(uri, 1, 0, "NetworkMockModel");
 
     qmlRegisterSingletonType<Password>(uri, 1, 0, "Password", passwordSingleton);
 
