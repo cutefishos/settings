@@ -22,7 +22,7 @@ ListRow {
     }
 
     leading: Image {
-        width: 22
+        width: 18
         height: width
         sourceSize: Qt.size(width, height)
         source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark/" : "light/") + "network-wired.svg"

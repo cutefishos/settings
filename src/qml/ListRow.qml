@@ -6,7 +6,8 @@ import FishUI 1.0 as FishUI
 // One row of a ListCard. The hover background fills the whole row and only
 // rounds the corners it shares with the card, which the row
 // finds out by itself from its visible siblings; a separator runs between
-// rows. Content goes into the row's layout after the label; `leading` before it.
+// rows. Content goes into the row's layout after the label; `leading` before
+// it; `details` is a panel that unfolds below the row while `expanded`.
 Item {
     id: control
 
@@ -22,7 +23,15 @@ Item {
     // Goes before the label: an icon, a colour swatch.
     property alias leading: _leading.data
     property alias contentSpacing: _row.spacing
+    property alias details: _details.content
+    property alias detailsSpacing: _details.spacing
+    property bool expanded: false
+    // A row that only holds a control, such as a switch, neither highlights
+    // nor reacts to clicks.
+    property bool interactive: true
     signal clicked()
+
+    readonly property real rowHeight: Math.max(40, _row.implicitHeight + FishUI.Units.largeSpacing)
 
     readonly property real horizontalPadding: FishUI.Units.largeSpacing * 1.5
     readonly property color hoverColor: Qt.rgba(FishUI.Theme.textColor.r, FishUI.Theme.textColor.g,
@@ -32,8 +41,8 @@ Item {
                                                                    : 0.1)
 
     Layout.fillWidth: true
-    implicitHeight: Math.max(40, _row.implicitHeight + FishUI.Units.largeSpacing)
-    activeFocusOnTab: true
+    implicitHeight: rowHeight + _details.implicitHeight
+    activeFocusOnTab: interactive
 
     Accessible.role: Accessible.Button
     Accessible.name: text
@@ -78,18 +87,22 @@ Item {
 
     // One shape only: overlapping translucent pieces would darken where they meet.
     Item {
-        anchors.fill: parent
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        height: control.rowHeight
         clip: true
-        visible: _mouseArea.containsMouse
+        visible: control.interactive && _mouseArea.containsMouse
 
         FishUI.RoundedRectangle {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: parent.top
             anchors.bottom: parent.bottom
-            // Push the corners that meet a neighbouring row outside the clip.
+            // Push the corners that meet a neighbouring row, or the row's own
+            // unfolded details, outside the clip.
             anchors.topMargin: control.firstItem ? 0 : -radius
-            anchors.bottomMargin: control.lastItem ? 0 : -radius
+            anchors.bottomMargin: control.lastItem && !control.expanded ? 0 : -radius
             radius: FishUI.Theme.bigRadius
             color: control.hoverColor
         }
@@ -97,7 +110,11 @@ Item {
 
     MouseArea {
         id: _mouseArea
-        anchors.fill: parent
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        height: control.rowHeight
+        enabled: control.interactive
         hoverEnabled: true
         acceptedButtons: Qt.LeftButton
         onClicked: {
@@ -108,9 +125,12 @@ Item {
 
     RowLayout {
         id: _row
-        anchors.fill: parent
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
         anchors.leftMargin: control.horizontalPadding
         anchors.rightMargin: control.horizontalPadding
+        height: control.rowHeight
         spacing: FishUI.Units.largeSpacing
 
         Row {
@@ -127,6 +147,17 @@ Item {
             color: FishUI.Theme.textColor
             elide: Text.ElideRight
         }
+    }
+
+    Hideable {
+        id: _details
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: _row.bottom
+        anchors.leftMargin: control.horizontalPadding
+        anchors.rightMargin: control.horizontalPadding
+        height: implicitHeight
+        shown: control.expanded
     }
 
     Rectangle {

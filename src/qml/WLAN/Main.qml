@@ -93,12 +93,10 @@ ItemPage {
             anchors.fill: parent
             spacing: FishUI.Units.largeSpacing * 2
 
-            RoundedItem {
-                WifiView {
-                    Layout.fillWidth: true
-                    visible: enabledConnections.wirelessHwEnabled || rootWindow.mockNetworkData
-                    sourceModel: rootWindow.mockNetworkData ? mockNetworkModel : connectionModel
-                }
+            WifiView {
+                Layout.fillWidth: true
+                visible: enabledConnections.wirelessHwEnabled || rootWindow.mockNetworkData
+                sourceModel: rootWindow.mockNetworkData ? mockNetworkModel : connectionModel
             }
 
             StandardButton {

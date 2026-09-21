@@ -27,7 +27,7 @@ import Cutefish.Network 1.0 as NM
 
 ColumnLayout {
     id: _contentLayout
-    spacing: FishUI.Units.largeSpacing
+    spacing: FishUI.Units.largeSpacing * 2
     property var sourceModel: connectionModel
 
     ConnectDialog {
@@ -44,81 +44,67 @@ ColumnLayout {
         }
     }
 
-    RowLayout {
-        spacing: FishUI.Units.smallSpacing * 1.5
-
-        Label {
-            id: wlanLabel
+    // The switch and the network in use share the first card; the rest is
+    // split into the networks with a saved connection and the others.
+    ListCard {
+        ListRow {
+            interactive: false
             text: qsTr("Wi-Fi")
-            color: FishUI.Theme.disabledTextColor
-        }
 
-        Item {
-            Layout.fillWidth: true
-        }
+            Switch {
+                id: wirelessSwitch
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                rightPadding: 0
+                rightInset: 0
 
-        Switch {
-            id: wirelessSwitch
-            height: wlanLabel.implicitHeight
-            Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-            leftPadding: 0
-            rightPadding: 0
-            rightInset: 0
+                checked: rootWindow.mockNetworkData || enabledConnections.wirelessEnabled
+                onCheckedChanged: {
+                    if (rootWindow.mockNetworkData)
+                        return
 
-            checked: rootWindow.mockNetworkData || enabledConnections.wirelessEnabled
-            onCheckedChanged: {
-                if (rootWindow.mockNetworkData)
-                    return
-
-                if (checked) {
-                    if (!enabledConnections.wirelessEnabled) {
-                        handler.enableWireless(checked)
-                        handler.requestScan()
-                    }
-                } else {
-                    if (enabledConnections.wirelessEnabled) {
-                        handler.enableWireless(checked)
+                    if (checked) {
+                        if (!enabledConnections.wirelessEnabled) {
+                            handler.enableWireless(checked)
+                            handler.requestScan()
+                        }
+                    } else {
+                        if (enabledConnections.wirelessEnabled) {
+                            handler.enableWireless(checked)
+                        }
                     }
                 }
             }
         }
+
+        Repeater {
+            model: wirelessModel
+
+            delegate: WifiItem {
+                visible: model.connectionState !== NM.Enums.Deactivated
+            }
+        }
     }
 
-    ListView {
-        id: wirelessView
-        Layout.fillWidth: true
-        Layout.preferredHeight: {
-            var totalHeight = 0
-            for (var i = 0; i < wirelessView.visibleChildren.length; ++i) {
-                totalHeight += wirelessView.visibleChildren[i].height
-            }
-            return totalHeight
+    NM.AppletProxyModel {
+        id: wirelessModel
+        type: NM.AppletProxyModel.WirelessType
+        sourceModel: _contentLayout.sourceModel
+    }
+
+    WifiSection {
+        title: qsTr("Known Networks")
+        model: wirelessModel
+        // A saved connection that is not the one in use.
+        includes: function(item) {
+            return !!item.uuid && item.connectionState === NM.Enums.Deactivated
         }
+    }
 
-        Component.onCompleted: {
-            wirelessView.contentY = 0
-        }
-
-        clip: true
-
-        model: NM.AppletProxyModel {
-            type: NM.AppletProxyModel.WirelessType
-            sourceModel: _contentLayout.sourceModel
-        }
-
-        spacing: 0
-        interactive: false
-        visible: count > 0
-
-        delegate: WifiItem {
-            width: ListView.view.width
-            // height: ListView.view.itemHeight
-        }
-
-        function hideAllItems() {
-            for (var i = 0; i < wirelessView.count; ++i) {
-                wirelessView.itemAtIndex(i).hideAdditional()
-            }
+    WifiSection {
+        title: qsTr("Other Networks")
+        model: wirelessModel
+        includes: function(item) {
+            return !item.uuid && item.connectionState === NM.Enums.Deactivated
         }
     }
 }

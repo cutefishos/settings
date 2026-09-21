@@ -94,6 +94,7 @@
         <file>qml/Wired/Main.qml</file>
         <file>qml/Wired/WiredItem.qml</file>
         <file>qml/WLAN/WifiItem.qml</file>
+        <file>qml/WLAN/WifiSection.qml</file>
         <file>qml/WLAN/WifiView.qml</file>
         <file>qml/WLAN/WirelessDetailsDialog.qml</file>
         <file>images/sidebar/light/wlan.svg</file>
