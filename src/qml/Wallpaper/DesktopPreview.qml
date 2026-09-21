@@ -55,7 +55,7 @@ Item {
         }
     }
 
-    Rectangle {
+    FishUI.RoundedRectangle {
         id: desktopItem
 
         anchors.left: parent.left
@@ -72,7 +72,7 @@ Item {
         color: FishUI.Theme.backgroundColor
     }
 
-    Rectangle {
+    FishUI.RoundedRectangle {
         id: desktopItem2
 
         anchors.left: parent.left
@@ -89,7 +89,7 @@ Item {
         color: FishUI.Theme.backgroundColor
     }
 
-    Rectangle {
+    FishUI.RoundedRectangle {
         id: dockArea
         anchors.left: parent.left
         anchors.right: parent.right
@@ -111,7 +111,7 @@ Item {
             width: control.width
             height: control.height
 
-            Rectangle {
+            FishUI.RoundedRectangle {
                 anchors.fill: parent
                 radius: FishUI.Theme.bigRadius
             }

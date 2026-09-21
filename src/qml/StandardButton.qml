@@ -35,7 +35,7 @@ Button {
     rightPadding: FishUI.Units.largeSpacing * 1.5
     scale: 1
 
-    background: Rectangle {
+    background: FishUI.RoundedRectangle {
         radius: FishUI.Theme.mediumRadius
         color: control.pressed ? control.pressedColor : control.hovered ? control.hoveredColor : control.backgroundColor
     }

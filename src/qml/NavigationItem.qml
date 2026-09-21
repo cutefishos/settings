@@ -28,7 +28,7 @@ Item {
         clip: true
         visible: _mouseArea.containsMouse
 
-        Rectangle {
+        FishUI.RoundedRectangle {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: parent.top

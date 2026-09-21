@@ -339,7 +339,7 @@ Item {
             highlightFollowsCurrentItem: true
             highlightMoveDuration: 0
             highlightResizeDuration : 0
-            highlight: Rectangle {
+            highlight: FishUI.RoundedRectangle {
                 radius: FishUI.Theme.mediumRadius
                 color: Qt.rgba(FishUI.Theme.textColor.r,
                                FishUI.Theme.textColor.g,

@@ -28,7 +28,7 @@ Item {
     Keys.onReturnPressed: clicked()
     Keys.onEnterPressed: clicked()
 
-    Rectangle {
+    FishUI.RoundedRectangle {
         anchors.fill: parent
         anchors.margins: 4
         radius: FishUI.Theme.smallRadius

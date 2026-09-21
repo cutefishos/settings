@@ -35,7 +35,7 @@ Item {
 
         anchors.fill: parent
 
-        Rectangle {
+        FishUI.RoundedRectangle {
             width: control.previewWidth
             height: control.previewHeight
             radius: FishUI.Theme.bigRadius
@@ -59,10 +59,9 @@ Item {
                         width: preview.width
                         height: preview.height
 
-                        Rectangle {
+                        FishUI.RoundedRectangle {
                             anchors.fill: parent
                             radius: Math.max(FishUI.Theme.bigRadius - control.previewInset, 0)
-                            antialiasing: true
                         }
                     }
                 }
@@ -77,7 +76,7 @@ Item {
                 visible: control.useIcon
             }
 
-            Rectangle {
+            FishUI.RoundedRectangle {
                 anchors.fill: parent
                 anchors.margins: control.previewInset
                 visible: control.useIcon || preview.status === Image.Ready

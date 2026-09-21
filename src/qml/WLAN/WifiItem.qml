@@ -49,7 +49,7 @@ Item {
             Layout.fillWidth: true
             Layout.preferredHeight: _topItem.implicitHeight + FishUI.Units.largeSpacing
 
-            Rectangle {
+            FishUI.RoundedRectangle {
                 anchors.fill: parent
                 radius: FishUI.Theme.smallRadius
                 color: FishUI.Theme.textColor

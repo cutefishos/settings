@@ -201,7 +201,7 @@ ItemPage {
                             height: _poorLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
                             width: _poorLabel.implicitWidth + FishUI.Units.largeSpacing
 
-                            Rectangle {
+                            FishUI.RoundedRectangle {
                                 id: _poorRect
                                 anchors.fill: parent
                                 color: "#FF8738"
@@ -226,7 +226,7 @@ ItemPage {
                             height: _normalLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
                             width: _normalLabel.implicitWidth + FishUI.Units.largeSpacing
 
-                            Rectangle {
+                            FishUI.RoundedRectangle {
                                 id: _normalRect
                                 anchors.fill: parent
                                 color: "#3385FF"
@@ -251,7 +251,7 @@ ItemPage {
                             height: _excellentLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
                             width: _excellentLabel.implicitWidth + FishUI.Units.largeSpacing
 
-                            Rectangle {
+                            FishUI.RoundedRectangle {
                                 id: _excellentRect
                                 anchors.fill: parent
                                 color: "#00CD23"

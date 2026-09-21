@@ -18,7 +18,7 @@ ItemDelegate {
     topPadding: 8
     bottomPadding: 8
 
-    background: Rectangle {
+    background: FishUI.RoundedRectangle {
         radius: FishUI.Theme.smallRadius
         color: control.selected ? Qt.alpha(FishUI.Theme.highlightColor, 0.14)
                                 : control.hovered ? Qt.alpha(FishUI.Theme.textColor, 0.05)

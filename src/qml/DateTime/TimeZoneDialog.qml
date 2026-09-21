@@ -126,7 +126,7 @@ FishUI.Window {
                 width: popupText.implicitWidth + FishUI.Units.largeSpacing
                 height: popupText.implicitHeight + FishUI.Units.largeSpacing
 
-                Rectangle {
+                FishUI.RoundedRectangle {
                     anchors.fill: parent
                     radius: FishUI.Theme.smallRadius
                     color: FishUI.Theme.highlightColor

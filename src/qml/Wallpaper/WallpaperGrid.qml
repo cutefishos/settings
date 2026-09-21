@@ -113,7 +113,7 @@ ColumnLayout {
             width: GridView.view.cellWidth
             height: GridView.view.cellHeight
 
-            Rectangle {
+            FishUI.RoundedRectangle {
                 x: wallpaperItem.thumbnailOffset + wallpaperItem.thumbnailInset
                 y: wallpaperItem.thumbnailInset
                 width: wallpaperView.thumbnailWidth - wallpaperItem.thumbnailInset * 2
@@ -132,7 +132,7 @@ ColumnLayout {
                 visible: !wallpaperItem.addWallpaper && thumbnail.imageStatus !== Image.Ready
             }
 
-            Rectangle {
+            FishUI.RoundedRectangle {
                 x: wallpaperItem.thumbnailOffset + wallpaperItem.thumbnailInset
                 y: wallpaperItem.thumbnailInset
                 width: wallpaperView.thumbnailWidth - wallpaperItem.thumbnailInset * 2

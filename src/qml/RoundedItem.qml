@@ -21,7 +21,7 @@ import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import FishUI 1.0 as FishUI
 
-Rectangle {
+FishUI.RoundedRectangle {
     Layout.fillWidth: true
 
     default property alias content : _mainLayout.data

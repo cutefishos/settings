@@ -27,7 +27,7 @@ import Cutefish.Network 1.0 as NM
 Item {
     id: control
 
-    Rectangle {
+    FishUI.RoundedRectangle {
         anchors.fill: parent
         radius: FishUI.Theme.smallRadius
         color: mouseArea.containsMouse ? Qt.rgba(FishUI.Theme.textColor.r,
