@@ -22,14 +22,7 @@ pkg_check_modules(Xcursor REQUIRED IMPORTED_TARGET xcursor)
 find_package(Libcrypt REQUIRED)
 
 
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/application
-                 ${CMAKE_CURRENT_BINARY_DIR}/cutefish-framework-application-build)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/applications
-                 ${CMAKE_CURRENT_BINARY_DIR}/cutefish-framework-applications-build)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/appearance
-                 ${CMAKE_CURRENT_BINARY_DIR}/cutefish-framework-appearance-build)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../cutefish-framework/io
-                 ${CMAKE_CURRENT_BINARY_DIR}/cutefish-framework-io-build)
+find_package(CutefishFramework REQUIRED COMPONENTS Application Applications Appearance IO)
 
 pkg_search_module(FontConfig REQUIRED fontconfig IMPORTED_TARGET)
 pkg_search_module(ICU REQUIRED icu-i18n)
