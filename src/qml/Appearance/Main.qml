@@ -58,8 +58,10 @@ ItemPage {
                         ImageSelectionItem {
                             source: "qrc:/images/light_mode.svg"
                             text: qsTr("Light")
-                            previewWidth: 120
-                            previewHeight: previewWidth * 68 / 100
+                            // The 100x68 artwork at its own size inside the 4px inset: the
+                            // SVG loader letterboxes any other aspect with transparent bars.
+                            previewWidth: 108
+                            previewHeight: 76
                             checked: !FishUI.Theme.darkMode
                             onClicked: appearance.switchDarkMode(false)
                         }
@@ -67,8 +69,8 @@ ItemPage {
                         ImageSelectionItem {
                             source: "qrc:/images/dark_mode.svg"
                             text: qsTr("Dark")
-                            previewWidth: 120
-                            previewHeight: previewWidth * 68 / 100
+                            previewWidth: 108
+                            previewHeight: 76
                             checked: FishUI.Theme.darkMode
                             onClicked: appearance.switchDarkMode(true)
                         }

@@ -118,7 +118,8 @@ ColumnLayout {
                 y: wallpaperItem.thumbnailInset
                 width: wallpaperView.thumbnailWidth - wallpaperItem.thumbnailInset * 2
                 height: wallpaperView.thumbnailHeight - wallpaperItem.thumbnailInset * 2
-                radius: Math.max(FishUI.Theme.bigRadius - wallpaperItem.thumbnailInset, 0)
+                radius: FishUI.Theme.bigRadius
+                inset: wallpaperItem.thumbnailInset
                 color: FishUI.Theme.backgroundColor
                 visible: !wallpaperItem.addWallpaper && thumbnail.imageStatus !== Image.Ready
             }
@@ -138,7 +139,8 @@ ColumnLayout {
                 width: wallpaperView.thumbnailWidth - wallpaperItem.thumbnailInset * 2
                 height: wallpaperView.thumbnailHeight - wallpaperItem.thumbnailInset * 2
                 visible: wallpaperItem.addWallpaper
-                radius: Math.max(FishUI.Theme.bigRadius - wallpaperItem.thumbnailInset, 0)
+                radius: FishUI.Theme.bigRadius
+                inset: wallpaperItem.thumbnailInset
                 color: FishUI.Theme.alternateBackgroundColor
 
                 Column {

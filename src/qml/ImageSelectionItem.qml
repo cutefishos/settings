@@ -61,7 +61,8 @@ Item {
 
                         FishUI.RoundedRectangle {
                             anchors.fill: parent
-                            radius: Math.max(FishUI.Theme.bigRadius - control.previewInset, 0)
+                            radius: FishUI.Theme.bigRadius
+                            inset: control.previewInset
                         }
                     }
                 }
@@ -80,7 +81,8 @@ Item {
                 anchors.fill: parent
                 anchors.margins: control.previewInset
                 visible: control.useIcon || preview.status === Image.Ready
-                radius: Math.max(FishUI.Theme.bigRadius - control.previewInset, 0)
+                radius: FishUI.Theme.bigRadius
+                inset: control.previewInset
                 color: "#FFFFFF"
                 opacity: control.hovered ? 0.08 : 0
             }
