@@ -33,8 +33,10 @@ FishUI.Window {
     title: "Time Zone"
     width: 900
     height: 600
-    minimumWidth: 800
-    minimumHeight: 500
+    minimumWidth: 900
+    minimumHeight: 600
+    maximumWidth: 900
+    maximumHeight: 600
     visible: false
     flags: Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
 
@@ -42,26 +44,70 @@ FishUI.Window {
     background.opacity: blurAvailable ? 0.5 : 1
     contentTopMargin: 0
 
-    onWidthChanged: control.reset()
-    onHeightChanged: control.reset()
+    // The zone the dot and the Set button refer to.
+    property string selectedZone: ""
 
-    function reset() {
-        dot.visible = false
-        popupItem.visible = false
-    }
 
     onVisibleChanged: {
-        if (!visible)
-            control.reset()
+        if (visible) {
+            searchField.clear()
+            selectZone(timeZoneMap.currentTimeZoneId)
+            searchField.forceActiveFocus()
+        } else {
+            resultsPopup.close()
+        }
+    }
+
+    function selectZone(zone) {
+        if (!zone)
+            return
+        timeZoneMap.select(zone)
+    }
+
+    function pickResult(index) {
+        if (index < 0 || index >= resultsView.count)
+            return
+        var zone = resultsView.model[index].id
+        resultsPopup.close()
+        searchField.text = ""
+        selectZone(zone)
+    }
+
+    // Marks the selected zone where it sits on the map, with its name beside.
+    function place() {
+        if (!selectedZone) {
+            dot.visible = false
+            popupItem.visible = false
+            return
+        }
+        // The projection covers the painted map, which the aspect-fit image
+        // centres inside the item.
+        var point = timeZoneMap.position(selectedZone, _worldMap.paintedWidth, _worldMap.paintedHeight)
+        if (point.x < 0) {
+            dot.visible = false
+            popupItem.visible = false
+            return
+        }
+        point.x += (_worldMap.width - _worldMap.paintedWidth) / 2
+        point.y += (_worldMap.height - _worldMap.paintedHeight) / 2
+        dot.show(point.x, point.y)
+        popupText.text = timeZoneMap.localeTimeZoneName(selectedZone)
+        popupItem.x = point.x + FishUI.Units.smallSpacing * 1.5
+        popupItem.y = point.y + FishUI.Units.smallSpacing * 1.5
+        if (popupItem.x + popupItem.width >= _worldMap.width)
+            popupItem.x = _worldMap.width - popupItem.width - 2
+        if (popupItem.y + popupItem.height >= _worldMap.height)
+            popupItem.y = _worldMap.height - popupItem.height - 2
+        popupItem.visible = true
     }
 
     Connections {
         target: timeZoneMap
 
         function onAvailableListChanged() {
-            popupText.text = timeZoneMap.availableList[0]
-            popupText.text = timeZoneMap.localeTimeZoneName(timeZoneMap.availableList[0])
-            popupItem.visible = true
+            control.selectedZone = timeZoneMap.availableList.length > 0
+                    ? timeZoneMap.availableList[0] : ""
+            control.place()
         }
     }
 
@@ -81,15 +127,127 @@ FishUI.Window {
         anchors.margins: 16
         spacing: 16
 
-        Label {
+        // The title sits at the left and the search box in the middle of the
+        // window, not in the middle of what the title leaves free.
+        Item {
             Layout.fillWidth: true
-            Layout.rightMargin: 32
-            text: control.title
-            textFormat: Text.PlainText
-            font.pixelSize: 14
-            font.weight: Font.DemiBold
-            color: FishUI.Theme.textColor
-            wrapMode: Text.Wrap
+            Layout.preferredHeight: searchField.implicitHeight
+
+            Label {
+                anchors.left: parent.left
+                anchors.verticalCenter: parent.verticalCenter
+                text: control.title
+                textFormat: Text.PlainText
+                font.pixelSize: 14
+                font.weight: Font.DemiBold
+                color: FishUI.Theme.textColor
+            }
+
+            // Typing lists matching zones; Up/Down move through them, Enter picks.
+            TextField {
+                id: searchField
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                width: 320
+                placeholderText: qsTr("Search for a city or time zone")
+                selectByMouse: true
+
+                onTextChanged: {
+                    resultsView.model = timeZoneMap.search(text)
+                    resultsView.currentIndex = resultsView.count > 0 ? 0 : -1
+                    if (resultsView.count > 0)
+                        resultsPopup.open()
+                    else
+                        resultsPopup.close()
+                }
+                onAccepted: control.pickResult(resultsView.currentIndex)
+                Keys.onDownPressed: {
+                    if (resultsView.count > 0)
+                        resultsView.currentIndex = (resultsView.currentIndex + 1) % resultsView.count
+                }
+                Keys.onUpPressed: {
+                    if (resultsView.count > 0)
+                        resultsView.currentIndex = (resultsView.currentIndex - 1 + resultsView.count) % resultsView.count
+                }
+                Keys.onEscapePressed: function(event) {
+                    if (resultsPopup.opened) {
+                        resultsPopup.close()
+                        event.accepted = true
+                    }
+                }
+
+                Popup {
+                    id: resultsPopup
+                    y: searchField.height + 4
+                    width: searchField.width
+                    height: Math.min(resultsView.contentHeight + padding * 2, 320)
+                    padding: 4
+                    focus: false
+                    closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+
+                    background: FishUI.RoundedRectangle {
+                        radius: FishUI.Theme.mediumRadius
+                        color: FishUI.Theme.secondBackgroundColor
+                        border.width: 1
+                        border.color: Qt.rgba(FishUI.Theme.textColor.r, FishUI.Theme.textColor.g,
+                                              FishUI.Theme.textColor.b, 0.15)
+                    }
+
+                    ListView {
+                        id: resultsView
+                        anchors.fill: parent
+                        clip: true
+                        boundsBehavior: Flickable.StopAtBounds
+                        highlightMoveDuration: 0
+                        onCurrentIndexChanged: positionViewAtIndex(currentIndex, ListView.Contain)
+                        ScrollBar.vertical: ScrollBar {}
+                        FishUI.WheelHandler { target: resultsView }
+
+                        delegate: Item {
+                            width: ListView.view.width
+                            height: 36
+                            readonly property bool current: ListView.isCurrentItem
+
+                            FishUI.RoundedRectangle {
+                                anchors.fill: parent
+                                radius: FishUI.Theme.smallRadius
+                                color: current ? FishUI.Theme.highlightColor
+                                     : resultArea.containsMouse
+                                       ? Qt.rgba(FishUI.Theme.textColor.r, FishUI.Theme.textColor.g,
+                                                 FishUI.Theme.textColor.b, 0.08)
+                                       : "transparent"
+                            }
+
+                            RowLayout {
+                                anchors.fill: parent
+                                anchors.leftMargin: FishUI.Units.largeSpacing
+                                anchors.rightMargin: FishUI.Units.largeSpacing
+                                spacing: FishUI.Units.largeSpacing
+
+                                Label {
+                                    Layout.fillWidth: true
+                                    text: modelData.name
+                                    color: current ? FishUI.Theme.highlightedTextColor : FishUI.Theme.textColor
+                                    elide: Text.ElideRight
+                                }
+
+                                Label {
+                                    text: modelData.offset
+                                    color: current ? FishUI.Theme.highlightedTextColor : FishUI.Theme.disabledTextColor
+                                    font.pointSize: 9
+                                }
+                            }
+
+                            MouseArea {
+                                id: resultArea
+                                anchors.fill: parent
+                                hoverEnabled: true
+                                onClicked: control.pickResult(index)
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         Image {
@@ -99,6 +257,8 @@ FishUI.Window {
             source: FishUI.Theme.darkMode ? "qrc:/images/dark/world.svg" : "qrc:/images/light/world.svg"
             sourceSize: Qt.size(width, height)
             fillMode: Image.PreserveAspectFit
+            onPaintedWidthChanged: control.place()
+            onPaintedHeightChanged: control.place()
 
             Rectangle {
                 id: dot
@@ -135,7 +295,6 @@ FishUI.Window {
                 Label {
                     id: popupText
                     anchors.centerIn: parent
-                    text: timeZoneMap.availableList[0] ? timeZoneMap.availableList[0] : ""
                     color: FishUI.Theme.highlightedTextColor
                 }
             }
@@ -144,19 +303,10 @@ FishUI.Window {
                 anchors.fill: parent
 
                 onClicked: {
-                    timeZoneMap.clicked(mouse.x, mouse.y, _worldMap.width, _worldMap.height)
-                    dot.show(mouse.x, mouse.y)
-
-                    popupItem.x = mouse.x + FishUI.Units.smallSpacing * 1.5
-                    popupItem.y = mouse.y + FishUI.Units.smallSpacing * 1.5
-
-                    if (popupItem.x + popupItem.width >= _worldMap.width)
-                        popupItem.x = _worldMap.width - popupItem.width - 2
-
-                    if (popupItem.y + popupItem.height >= _worldMap.height)
-                        popupItem.y = _worldMap.height - popupItem.height - 2
-
-                    popupItem.visible = true
+                    resultsPopup.close()
+                    timeZoneMap.clicked(mouse.x - (_worldMap.width - _worldMap.paintedWidth) / 2,
+                                        mouse.y - (_worldMap.height - _worldMap.paintedHeight) / 2,
+                                        _worldMap.paintedWidth, _worldMap.paintedHeight)
                 }
             }
         }
@@ -173,9 +323,10 @@ FishUI.Window {
             FishUI.ConfirmDialogButton {
                 text: qsTr("Set")
                 primary: true
-                enabled: popupText.text
+                // Only a change is worth applying.
+                enabled: control.selectedZone !== "" && control.selectedZone !== timeZoneMap.currentTimeZoneId
                 onClicked: {
-                    timeZoneMap.setTimeZone(timeZoneMap.availableList[0])
+                    timeZoneMap.setTimeZone(control.selectedZone)
                     control.close()
                 }
             }

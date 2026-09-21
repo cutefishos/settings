@@ -22,6 +22,8 @@
 
 #include <QFile>
 #include <QDebug>
+#include <QDateTime>
+#include <QLocale>
 #include <QTimeZone>
 
 #include <math.h>
@@ -140,6 +142,83 @@ void TimeZoneMap::setTimeZone(QString value)
     emit currentTimeZoneChanged();
 }
 
+void TimeZoneMap::select(const QString &timeZone)
+{
+    if (timeZone.isEmpty())
+        return;
+    m_currentList = QStringList {timeZone};
+    emit availableListChanged();
+}
+
+QPointF TimeZoneMap::position(const QString &timeZone, int width, int height) const
+{
+    for (const TimeZoneItem *item : m_list) {
+        if (item->timeZone == timeZone) {
+            return QPointF(convert_longitude_to_x(item->longitude) * width,
+                           convert_latitude_to_y(item->latitude) * height);
+        }
+    }
+    return QPointF(-1, -1);
+}
+
+QVariantList TimeZoneMap::search(const QString &text, int limit) const
+{
+    const QString needle = text.trimmed();
+    if (needle.isEmpty())
+        return {};
+
+    struct Match {
+        int rank;
+        const TimeZoneItem *item;
+    };
+    QList<Match> matches;
+    for (const TimeZoneItem *item : m_list) {
+        // "New_York" is typed as "new york"; the country code as "US".
+        const QString id = QString(item->timeZone).replace(QLatin1Char('_'), QLatin1Char(' '));
+        const QString city = localeTimeZoneName(id);
+        const QString country = QLocale::territoryToString(
+                QLocale::codeToTerritory(item->country));
+        int rank = -1;
+        if (city.startsWith(needle, Qt::CaseInsensitive))
+            rank = 0;
+        else if (id.startsWith(needle, Qt::CaseInsensitive))
+            rank = 1;
+        else if (city.contains(needle, Qt::CaseInsensitive)
+                 || id.contains(needle, Qt::CaseInsensitive))
+            rank = 2;
+        else if (country.startsWith(needle, Qt::CaseInsensitive)
+                 || item->country.compare(needle, Qt::CaseInsensitive) == 0)
+            rank = 3;
+        if (rank >= 0)
+            matches.append({rank, item});
+    }
+    std::stable_sort(matches.begin(), matches.end(), [](const Match &a, const Match &b) {
+        return a.rank != b.rank ? a.rank < b.rank : a.item->timeZone < b.item->timeZone;
+    });
+
+    QVariantList result;
+    for (const Match &match : matches) {
+        if (result.size() >= limit)
+            break;
+        const QTimeZone zone(match.item->timeZone.toLatin1());
+        const int offset = zone.offsetFromUtc(QDateTime::currentDateTime());
+        const QString sign = offset < 0 ? QStringLiteral("-") : QStringLiteral("+");
+        const int minutes = qAbs(offset) / 60;
+        result.append(QVariantMap {
+                {QStringLiteral("id"), match.item->timeZone},
+                {QStringLiteral("name"), localeTimeZoneName(match.item->timeZone)},
+                {QStringLiteral("region"),
+                 QLocale::territoryToString(QLocale::codeToTerritory(match.item->country))},
+                {QStringLiteral("offset"),
+                 QStringLiteral("UTC%1%2:%3")
+                         .arg(sign)
+                         .arg(minutes / 60, 2, 10, QLatin1Char('0'))
+                         .arg(minutes % 60, 2, 10, QLatin1Char('0'))},
+        });
+    }
+    return result;
+}
+
 QString TimeZoneMap::currentTimeZone() const
 {
     return localeTimeZoneName(m_currentTimeZone);
@@ -156,7 +235,9 @@ QString TimeZoneMap::localeTimeZoneName(const QString &timeZone) const
     setlocale(LC_ALL, QString(locale + ".UTF-8").toStdString().c_str());
     int index = timeZone.lastIndexOf('/');
     setlocale(LC_ALL, "en_US.UTF-8");
-    return (index > -1) ? timeZone.mid(index + 1) : timeZone;
+    const QString city = (index > -1) ? timeZone.mid(index + 1) : timeZone;
+    // "Los_Angeles" is written that way in the database only.
+    return QString(city).replace(QLatin1Char('_'), QLatin1Char(' '));
 }
 
 void TimeZoneMap::initDatas()

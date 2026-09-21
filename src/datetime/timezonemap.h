@@ -21,6 +21,8 @@
 #define TIMEZONEMAP_H
 
 #include <QObject>
+#include <QPointF>
+#include <QVariantList>
 
 class TimeZoneItem {
 public:
@@ -35,6 +37,7 @@ class TimeZoneMap : public QObject
     Q_OBJECT
     Q_PROPERTY(QStringList availableList READ availableList NOTIFY availableListChanged)
     Q_PROPERTY(QString currentTimeZone READ currentTimeZone NOTIFY currentTimeZoneChanged)
+    Q_PROPERTY(QString currentTimeZoneId READ currentTimeZoneId NOTIFY currentTimeZoneChanged)
 
 public:
     explicit TimeZoneMap(QObject *parent = nullptr);
@@ -42,7 +45,18 @@ public:
     Q_INVOKABLE void clicked(int x, int y, int width, int height);
     Q_INVOKABLE void setTimeZone(QString value);
 
+    // Makes `timeZone` the only candidate, as a click on its spot would.
+    Q_INVOKABLE void select(const QString &timeZone);
+
+    // Where `timeZone` sits on a map of the given size; (-1, -1) if unknown.
+    Q_INVOKABLE QPointF position(const QString &timeZone, int width, int height) const;
+
+    // Zones whose id, city or country matches `text`, best matches first:
+    // [{id, name, region, offset}]. Empty text gives nothing.
+    Q_INVOKABLE QVariantList search(const QString &text, int limit = 12) const;
+
     QString currentTimeZone() const;
+    QString currentTimeZoneId() const { return m_currentTimeZone; }
     QStringList availableList();
 
     Q_INVOKABLE QString localeTimeZoneName(const QString &timeZone) const;
