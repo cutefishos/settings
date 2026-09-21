@@ -91,64 +91,62 @@ ItemPage {
                     text: qsTr("Size")
                 }
 
-                RoundedItem {
-                    FishUI.SegmentedControl {
-                        id: dockSizeTabbar
-                        Layout.fillWidth: true
+                FishUI.SegmentedControl {
+                    id: dockSizeTabbar
+                    Layout.fillWidth: true
 
-                        TabButton {
-                            text: qsTr("Small")
+                    TabButton {
+                        text: qsTr("Small")
+                    }
+
+                    TabButton {
+                        text: qsTr("Medium")
+                    }
+
+                    TabButton {
+                        text: qsTr("Large")
+                    }
+
+                    TabButton {
+                        text: qsTr("Huge")
+                    }
+
+                    currentIndex: {
+                        var index = 0
+
+                        if (dockSettings.dockIconSize <= 40)
+                            index = 0
+                        else if (dockSettings.dockIconSize <= 54)
+                            index = 1
+                        else if (dockSettings.dockIconSize <= 68)
+                            index = 2
+                        else
+                            index = 3
+
+                        return index
+                    }
+
+                    onCurrentIndexChanged: {
+                        var iconSize = 0
+
+                        switch (currentIndex) {
+                        // The value is the icon size itself; the dock derives
+                        // its paddings from it (54 is the design baseline).
+                        case 0:
+                            iconSize = 40
+                            break;
+                        case 1:
+                            iconSize = 54
+                            break;
+                        case 2:
+                            iconSize = 68
+                            break;
+                        case 3:
+                            iconSize = 82
+                            break;
                         }
 
-                        TabButton {
-                            text: qsTr("Medium")
-                        }
-
-                        TabButton {
-                            text: qsTr("Large")
-                        }
-
-                        TabButton {
-                            text: qsTr("Huge")
-                        }
-
-                        currentIndex: {
-                            var index = 0
-
-                            if (dockSettings.dockIconSize <= 40)
-                                index = 0
-                            else if (dockSettings.dockIconSize <= 54)
-                                index = 1
-                            else if (dockSettings.dockIconSize <= 68)
-                                index = 2
-                            else
-                                index = 3
-
-                            return index
-                        }
-
-                        onCurrentIndexChanged: {
-                            var iconSize = 0
-
-                            switch (currentIndex) {
-                            // The value is the icon size itself; the dock derives
-                            // its paddings from it (54 is the design baseline).
-                            case 0:
-                                iconSize = 40
-                                break;
-                            case 1:
-                                iconSize = 54
-                                break;
-                            case 2:
-                                iconSize = 68
-                                break;
-                            case 3:
-                                iconSize = 82
-                                break;
-                            }
-
-                            dockSettings.setDockIconSize(iconSize)
-                        }
+                        dockSettings.setDockIconSize(iconSize)
                     }
                 }
             }
@@ -162,23 +160,21 @@ ItemPage {
                     text: qsTr("Display mode")
                 }
 
-                RoundedItem {
-                    FishUI.SegmentedControl {
-                        Layout.fillWidth: true
-                        currentIndex: dockSettings.dockVisibility
-                        onCurrentIndexChanged: dockSettings.setDockVisibility(currentIndex)
+                FishUI.SegmentedControl {
+                    Layout.fillWidth: true
+                    currentIndex: dockSettings.dockVisibility
+                    onCurrentIndexChanged: dockSettings.setDockVisibility(currentIndex)
 
-                        TabButton {
-                            text: qsTr("Always show")
-                        }
+                    TabButton {
+                        text: qsTr("Always show")
+                    }
 
-                        TabButton {
-                            text: qsTr("Always hide")
-                        }
+                    TabButton {
+                        text: qsTr("Always hide")
+                    }
 
-                        TabButton {
-                            text: qsTr("Smart hide")
-                        }
+                    TabButton {
+                        text: qsTr("Smart hide")
                     }
                 }
             }
