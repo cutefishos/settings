@@ -99,30 +99,6 @@ ItemPage {
                             rightInset: 0
                         }
                     }
-
-                    RowLayout {
-                        spacing: FishUI.Units.largeSpacing
-
-                        Label {
-                            id: continuousCornersLabel
-                            text: qsTr("Continuous Corners")
-                            bottomPadding: FishUI.Units.smallSpacing
-                            Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
-                        }
-
-                        Item {
-                            Layout.fillWidth: true
-                        }
-
-                        Switch {
-                            checked: appearance.continuousCorners
-                            height: continuousCornersLabel.height
-                            Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                            onCheckedChanged: appearance.setContinuousCorners(checked)
-                            rightPadding: 0
-                            rightInset: 0
-                        }
-                    }
                 }
             }
 
