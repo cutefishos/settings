@@ -28,9 +28,6 @@ FishUI.Window {
     property string selectedCode: ""
     property bool adding: false
 
-    // Fixed-size dialogs must also ignore title-bar double clicks.
-    function toggleMaximized() {}
-
     onVisibleChanged: {
         if (visible) {
             selectedCode = ""

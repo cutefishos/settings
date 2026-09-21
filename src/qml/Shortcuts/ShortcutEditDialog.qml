@@ -44,7 +44,6 @@ FishUI.Window {
     minimumHeight: mainLayout.implicitHeight + 32
     maximumHeight: mainLayout.implicitHeight + 32
 
-    function toggleMaximized() {}
 
     Component.onCompleted: refresh()
 
