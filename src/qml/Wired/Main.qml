@@ -31,7 +31,6 @@ ItemPage {
     id: control
     headerTitle: qsTr("Ethernet")
 
-    property var itemHeight: 45
     property var settingsMap: ({})
 
     NM.Handler {
@@ -81,28 +80,18 @@ ItemPage {
                     visible: wiredView.count > 0
                 }
 
-                RoundedItem {
+                ListCard {
                     visible: wiredView.count > 0
 
-                    ListView {
+                    Repeater {
                         id: wiredView
-
-                        Layout.fillWidth: true
-                        Layout.preferredHeight: wiredView.count * control.itemHeight
-                        interactive: false
-                        clip: true
 
                         model: NM.AppletProxyModel {
                             type: NM.AppletProxyModel.WiredType
                             sourceModel: rootWindow.mockNetworkData ? mockNetworkModel : connectionModel
                         }
 
-                        ScrollBar.vertical: ScrollBar {}
-
-                        delegate: WiredItem {
-                            height: control.itemHeight
-                            width: wiredView.width
-                        }
+                        delegate: WiredItem {}
                     }
                 }
             }

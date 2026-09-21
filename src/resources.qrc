@@ -5,6 +5,8 @@
         <file>qml/ItemPage.qml</file>
         <file>qml/NavigationButton.qml</file>
         <file>qml/NavigationItem.qml</file>
+        <file>qml/ListCard.qml</file>
+        <file>qml/ListRow.qml</file>
         <file>qml/SectionLabel.qml</file>
         <file>images/dark/display-brightness-low-symbolic.svg</file>
         <file>images/dark/display-brightness-symbolic.svg</file>

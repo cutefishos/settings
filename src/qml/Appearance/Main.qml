@@ -185,22 +185,14 @@ ItemPage {
                 }
             }
 
-            RoundedItem {
-                spacing: 0
-                layout.anchors.leftMargin: 0
-                layout.anchors.rightMargin: 0
-                layout.anchors.topMargin: 0
-                layout.anchors.bottomMargin: 0
-
+            ListCard {
                 NavigationItem {
                     text: qsTr("Fonts")
-                    lastItem: false
                     onClicked: rootWindow.pushPage("qrc:/qml/Appearance/Fonts.qml")
                 }
 
                 NavigationItem {
                     text: qsTr("Cursor Style")
-                    firstItem: false
                     onClicked: rootWindow.pushPage("qrc:/qml/Appearance/CursorTheme.qml")
                 }
             }

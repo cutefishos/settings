@@ -42,11 +42,8 @@ ItemPage {
                     }
                 }
 
-                RoundedItem {
+                ListCard {
                     visible: inputMethod.available
-                    horizontalPadding: FishUI.Units.smallSpacing
-                    verticalPadding: FishUI.Units.smallSpacing
-                    spacing: 2
 
                     Repeater {
                         model: [{ "id": "", "name": qsTr("None"), "icon": "" }]

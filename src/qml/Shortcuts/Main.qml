@@ -57,9 +57,7 @@ ItemPage {
                         text: section.modelData
                     }
 
-                    RoundedItem {
-                        spacing: 0
-
+                    ListCard {
                         Repeater {
                             model: shortcuts
 

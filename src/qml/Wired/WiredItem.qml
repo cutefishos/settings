@@ -1,84 +1,36 @@
-/*
- * Copyright (C) 2021 CutefishOS Team.
- *
- * Author:     revenmartin <revenmartin@gmail.com>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-import QtQuick 2.4
-import QtQuick.Controls 2.4
-import QtQuick.Layouts 1.3
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.12
 
 import FishUI 1.0 as FishUI
 import Cutefish.Network 1.0 as NM
+import "../"
 
-Item {
+// One wired connection: click activates or deactivates it.
+ListRow {
     id: control
 
-    FishUI.RoundedRectangle {
-        anchors.fill: parent
-        radius: FishUI.Theme.smallRadius
-        color: mouseArea.containsMouse ? Qt.rgba(FishUI.Theme.textColor.r,
-                                                 FishUI.Theme.textColor.g,
-                                                 FishUI.Theme.textColor.b,
-                                                 0.1) : "transparent"
+    text: model.itemUniqueName
+    checked: model.connectionState === NM.NetworkModel.Activated
 
-        Behavior on color {
-            ColorAnimation {
-                duration: 125
-                easing.type: Easing.InOutCubic
-            }
+    onClicked: {
+        if (model.connectionState === NM.Enums.Deactivated) {
+            handler.activateConnection(model.connectionPath, model.devicePath, model.specificPath)
+        } else {
+            handler.deactivateConnection(model.connectionPath, model.devicePath)
         }
     }
 
-    MouseArea {
-        id: mouseArea
-        anchors.fill: parent
-        hoverEnabled: true
-        onClicked: {
-            if (model.connectionState === NM.Enums.Deactivated) {
-                handler.activateConnection(model.connectionPath, model.devicePath, model.specificPath)
-            } else {
-                handler.deactivateConnection(model.connectionPath, model.devicePath)
-            }
-        }
+    leading: Image {
+        width: 22
+        height: width
+        sourceSize: Qt.size(width, height)
+        source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark/" : "light/") + "network-wired.svg"
     }
 
-    RowLayout {
-        anchors.fill: parent
-        anchors.topMargin: FishUI.Units.smallSpacing
-        anchors.bottomMargin: FishUI.Units.smallSpacing
-        spacing: FishUI.Units.largeSpacing
-
-        Image {
-            width: 22
-            height: width
-            sourceSize: Qt.size(width, height)
-            source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark/" : "light/") + "network-wired.svg"
-        }
-
-        Label {
-            text: model.itemUniqueName
-            Layout.fillWidth: true
-        }
-
-        // Activated
-        FishUI.Icon {
-            name: "check"
-            color: FishUI.Theme.highlightColor
-            visible: model.connectionState === NM.NetworkModel.Activated
-        }
+    FishUI.Icon {
+        name: "check"
+        color: FishUI.Theme.highlightColor
+        visible: control.checked
     }
 }
