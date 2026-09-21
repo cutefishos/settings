@@ -52,6 +52,7 @@ set(SRCS
     src/datetime/timezonemap.cpp
     src/datetime/timedated_interface.cpp
     src/touchpad.cpp
+    src/shortcuts/shortcutsmodel.cpp
     src/vpn/vpn.cpp
     src/vpn/nm-l2tp-service.h
     src/vpn/nm-openvpn-service.h

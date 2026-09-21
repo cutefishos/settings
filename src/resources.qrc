@@ -112,6 +112,11 @@
         <file>images/sidebar/dark/datetime.svg</file>
         <file>qml/Update/Main.qml</file>
         <file>qml/Touchpad/Main.qml</file>
+        <file>qml/Shortcuts/Main.qml</file>
+        <file>qml/Shortcuts/ShortcutRow.qml</file>
+        <file>qml/Shortcuts/ShortcutKeys.qml</file>
+        <file>qml/Shortcuts/ShortcutEditDialog.qml</file>
+        <file>images/sidebar/dark/keyboard.svg</file>
         <file>images/sidebar/dark/touchpad.svg</file>
         <file>images/logo.png</file>
         <file>qml/Bluetooth/PairDialog.qml</file>

@@ -24,6 +24,7 @@
 #include "mock/networkmockmodel.h"
 #include "settingsuiadaptor.h"
 #include "touchpad.h"
+#include "shortcuts/shortcutsmodel.h"
 #include "thumbnailprovider.h"
 
 #include "cursor/cursorthememodel.h"
@@ -90,6 +91,7 @@ Application::Application(int &argc, char **argv)
     qmlRegisterType<Time>(uri, 1, 0, "Time");
     qmlRegisterType<TimeZoneMap>(uri, 1, 0, "TimeZoneMap");
     qmlRegisterType<Touchpad>(uri, 1, 0, "Touchpad");
+    qmlRegisterType<ShortcutsModel>(uri, 1, 0, "ShortcutsModel");
     qmlRegisterType<NetworkProxy>(uri, 1, 0, "NetworkProxy");
     qmlRegisterType<Notifications>(uri, 1, 0, "Notifications");
     qmlRegisterType<DefaultApplications>(uri, 1, 0, "DefaultApplications");
