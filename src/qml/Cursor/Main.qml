@@ -49,12 +49,12 @@ ItemPage {
                     columnSpacing: FishUI.Units.largeSpacing * 1.5
                     rowSpacing: FishUI.Units.largeSpacing * 2
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Left hand")
                         Layout.fillWidth: true
                     }
 
-                    Switch {
+                    FishUI.Switch {
                         Layout.fillHeight: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         checked: mouse.leftHanded
@@ -63,11 +63,11 @@ ItemPage {
                         onToggled: mouse.leftHanded = checked
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Natural scrolling")
                     }
 
-                    Switch {
+                    FishUI.Switch {
                         Layout.fillHeight: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         checked: mouse.naturalScroll
@@ -76,11 +76,11 @@ ItemPage {
                         rightInset: 0
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Mouse acceleration")
                     }
 
-                    Switch {
+                    FishUI.Switch {
                         Layout.fillHeight: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         checked: mouse.acceleration
@@ -105,11 +105,11 @@ ItemPage {
                 RowLayout {
                     spacing: FishUI.Units.largeSpacing * 2
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Pointer speed")
                     }
 
-                    Slider {
+                    FishUI.Slider {
                         id: accelerationSlider
                         Layout.fillWidth: true
                         rightPadding: FishUI.Units.largeSpacing

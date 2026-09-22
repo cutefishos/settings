@@ -46,35 +46,35 @@ ItemPage {
                     columns: 2
                     columnSpacing: FishUI.Units.largeSpacing * 2
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Web browser")
                     }
 
-                    ComboBox {
+                    FishUI.ComboBox {
                         Layout.fillWidth: true
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("File manager")
                     }
 
-                    ComboBox {
+                    FishUI.ComboBox {
                         Layout.fillWidth: true
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Email")
                     }
 
-                    ComboBox {
+                    FishUI.ComboBox {
                         Layout.fillWidth: true
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Terminal emulator")
                     }
 
-                    ComboBox {
+                    FishUI.ComboBox {
                         Layout.fillWidth: true
                     }
                 }

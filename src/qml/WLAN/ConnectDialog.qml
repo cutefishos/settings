@@ -69,7 +69,7 @@ FishUI.Window {
         anchors.margins: 16
         spacing: 16
 
-        Label {
+        FishUI.Label {
             Layout.fillWidth: true
             Layout.rightMargin: 32
             text: control.title
@@ -80,7 +80,7 @@ FishUI.Window {
             wrapMode: Text.Wrap
         }
 
-        Label {
+        FishUI.Label {
             Layout.fillWidth: true
             textFormat: Text.PlainText
             font.pixelSize: 14
@@ -89,7 +89,7 @@ FishUI.Window {
             wrapMode: Text.WordWrap
         }
 
-        TextField {
+        FishUI.TextField {
             id: passwordField
             focus: true
             echoMode: TextInput.Password

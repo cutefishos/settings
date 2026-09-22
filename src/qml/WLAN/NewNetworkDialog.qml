@@ -69,7 +69,7 @@ FishUI.Window {
         anchors.margins: 16
         spacing: 16
 
-        Label {
+        FishUI.Label {
             Layout.fillWidth: true
             Layout.rightMargin: 32
             text: control.title
@@ -86,34 +86,34 @@ FishUI.Window {
             columnSpacing: 16
             rowSpacing: 16
 
-            Label {
+            FishUI.Label {
                 text: qsTr("Name")
             }
 
-            TextField {
+            FishUI.TextField {
                 id: _nameTextField
                 placeholderText: qsTr("Network Name")
                 Layout.fillWidth: true
                 Keys.onEscapePressed: control.close()
             }
 
-            Label {
+            FishUI.Label {
                 text: qsTr("Security")
             }
 
-            ComboBox {
+            FishUI.ComboBox {
                 id: securitybox
                 Layout.fillWidth: true
                 currentIndex: 2
                 model: [ qsTr("None"), "WEP", "WPA/WPA2", "WPA3" ]
             }
 
-            Label {
+            FishUI.Label {
                 visible: securitybox.currentIndex === 1
                 text: qsTr("UserName")
             }
 
-            TextField {
+            FishUI.TextField {
                 id: _userNameTextField
                 visible: securitybox.currentIndex === 1
                 placeholderText: qsTr("Password")
@@ -122,12 +122,12 @@ FishUI.Window {
                 Keys.onEscapePressed: control.close()
             }
 
-            Label {
+            FishUI.Label {
                 visible: securitybox.currentIndex != 0
                 text: qsTr("Password")
             }
 
-            TextField {
+            FishUI.TextField {
                 visible: securitybox.currentIndex != 0
                 id: _passwordTextField
                 placeholderText: qsTr("Password")

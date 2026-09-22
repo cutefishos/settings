@@ -41,7 +41,7 @@ ItemPage {
         id: configuration
     }
 
-    Label {
+    FishUI.Label {
         anchors.centerIn: parent
         text: qsTr("Not supported")
         visible: !handler.hotspotSupported
@@ -63,7 +63,7 @@ ItemPage {
                 visible: handler.hotspotSupported
 
                 RowLayout {
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Hotspot")
                         color: FishUI.Theme.disabledTextColor
                     }
@@ -72,7 +72,7 @@ ItemPage {
                         Layout.fillWidth: true
                     }
 
-                    Switch {
+                    FishUI.Switch {
                         id: _switch
                         Layout.fillHeight: true
                         rightPadding: 0
@@ -96,22 +96,22 @@ ItemPage {
                     columnSpacing: FishUI.Units.largeSpacing * 2
                     rowSpacing: FishUI.Units.largeSpacing
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("SSID")
                     }
 
-                    TextField {
+                    FishUI.TextField {
                         id: ssidName
                         text: configuration.hotspotName
                         // placeholderText: qsTr("SSID")
                         Layout.fillWidth: true
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Password")
                     }
 
-                    TextField {
+                    FishUI.TextField {
                         id: hotspotPassword
                         // placeholderText: qsTr("Password")
                         text: configuration.hotspotPassword
@@ -123,7 +123,7 @@ ItemPage {
                     height: FishUI.Units.largeSpacing
                 }
 
-                Button {
+                FishUI.Button {
                     text: qsTr("Save")
                     Layout.alignment: Qt.AlignRight
                     onClicked: {

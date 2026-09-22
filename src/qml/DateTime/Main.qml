@@ -52,7 +52,7 @@ ItemPage {
                 spacing: FishUI.Units.largeSpacing * 1.5
 
                 RowLayout {
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Auto Sync")
                     }
 
@@ -60,7 +60,7 @@ ItemPage {
                         Layout.fillWidth: true
                     }
 
-                    Switch {
+                    FishUI.Switch {
                         Layout.fillHeight: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         rightPadding: 0
@@ -71,7 +71,7 @@ ItemPage {
                     }
                 }
 
-                Label {
+                FishUI.Label {
                     text: qsTr("Unable to use Auto Sync. Please ensure your NTP service is installed.")
                     color: FishUI.Theme.disabledTextColor
                     visible: !time.canNTP
@@ -82,7 +82,7 @@ ItemPage {
                 spacing: FishUI.Units.largeSpacing * 1.5
 
                 RowLayout {
-                    Label {
+                    FishUI.Label {
                         text: qsTr("24-Hour Time")
                     }
 
@@ -90,7 +90,7 @@ ItemPage {
                         Layout.fillWidth: true
                     }
 
-                    Switch {
+                    FishUI.Switch {
                         Layout.fillHeight: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         rightPadding: 0
@@ -112,7 +112,7 @@ ItemPage {
                     anchors.leftMargin: FishUI.Units.largeSpacing * 1.5
                     anchors.rightMargin: FishUI.Units.largeSpacing * 1.5
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Time Zone")
                     }
 
@@ -120,7 +120,7 @@ ItemPage {
                         Layout.fillWidth: true
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: timeZoneMap.currentTimeZone
                     }
                 }

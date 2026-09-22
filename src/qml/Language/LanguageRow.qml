@@ -46,7 +46,7 @@ ItemDelegate {
             Layout.fillWidth: true
             spacing: 2
 
-            Label {
+            FishUI.Label {
                 id: primaryLabel
                 Layout.fillWidth: true
                 text: control.languageName
@@ -55,7 +55,7 @@ ItemDelegate {
                 elide: Text.ElideRight
             }
 
-            Label {
+            FishUI.Label {
                 Layout.fillWidth: true
                 text: control.description
                 textFormat: Text.PlainText

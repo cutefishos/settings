@@ -73,7 +73,7 @@ ItemPage {
                 }
             }
 
-            Label {
+            FishUI.Label {
                 Layout.fillWidth: true
                 visible: languageSettings.errorMessage.length > 0
                 text: languageSettings.errorMessage

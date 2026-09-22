@@ -139,7 +139,7 @@ RoundedItem {
                         }
                     }
 
-                    Label {
+                    FishUI.Label {
                         Layout.alignment: Qt.AlignVCenter
                         font.pixelSize: 15
                         text: "<b>%1</b>".arg(userName)
@@ -150,7 +150,7 @@ RoundedItem {
                         width: FishUI.Units.largeSpacing
                     }
 
-                    Label {
+                    FishUI.Label {
                         Layout.alignment: Qt.AlignVCenter
                         text: realName
                         color: FishUI.Theme.disabledTextColor
@@ -161,7 +161,7 @@ RoundedItem {
                         Layout.fillWidth: true
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Currently logged")
                         Layout.alignment: Qt.AlignVCenter
                         visible: currentUser.userId === loggedUser.userId
@@ -195,21 +195,21 @@ RoundedItem {
                 rowSpacing: FishUI.Units.largeSpacing * 2
                 columns: 2
 
-                Label {
+                FishUI.Label {
                     text: qsTr("Account type")
                 }
 
-                Label {
+                FishUI.Label {
                     text: currentUser.accountType === 0 ? qsTr("Standard")
                                                         : qsTr("Administrator")
                 }
 
-                Label {
+                FishUI.Label {
                     text: qsTr("Automatic login")
                     Layout.fillWidth: true
                 }
 
-                Switch {
+                FishUI.Switch {
                     id: automaticLoginSwitch
                     Layout.fillHeight: true
                     leftPadding: 0

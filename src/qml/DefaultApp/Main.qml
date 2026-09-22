@@ -46,7 +46,7 @@ ItemPage {
                     columnSpacing: FishUI.Units.largeSpacing * 2
                     rowSpacing: FishUI.Units.largeSpacing
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Web Browser")
                         enabled: browserComboBox.count !== 0
                     }
@@ -66,7 +66,7 @@ ItemPage {
                         }
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("File Manager")
                         enabled: fileManagerComboBox.count !== 0
                     }
@@ -86,7 +86,7 @@ ItemPage {
                         }
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Email Client")
                         enabled: emailComboBox.count !== 0
                     }
@@ -106,7 +106,7 @@ ItemPage {
                         }
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Terminal")
                         enabled: terminalComboBox.count !== 0
                     }

@@ -41,7 +41,7 @@ Flickable {
         target: root
     }
 
-    ScrollBar.vertical: ScrollBar {
+    FishUI.ScrollBar.vertical: FishUI.ScrollBar {
         bottomPadding: FishUI.Theme.smallRadius
     }
 }

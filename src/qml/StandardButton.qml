@@ -21,7 +21,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import FishUI 1.0 as FishUI
 
-Button {
+FishUI.Button {
     id: control
 
     property color backgroundColor: FishUI.Theme.darkMode ? "#363636" : "#FFFFFF"

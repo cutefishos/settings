@@ -48,12 +48,12 @@ ItemPage {
                     columns: 2
                     rowSpacing: FishUI.Units.largeSpacing * 2
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Enable")
                         Layout.fillWidth: true
                     }
 
-                    Switch {
+                    FishUI.Switch {
                         id: _enableSwitch
                         Layout.fillHeight: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
@@ -67,13 +67,13 @@ ItemPage {
                         onCheckedChanged: touchpad.enabled = checked
                     }
 
-                    Label {
+                    FishUI.Label {
                         visible: _enableSwitch.checked
                         text: qsTr("Tap to click")
                         Layout.fillWidth: true
                     }
 
-                    Switch {
+                    FishUI.Switch {
                         visible: _enableSwitch.checked
                         Layout.fillHeight: true
                         onCheckedChanged: touchpad.tapToClick = checked
@@ -86,13 +86,13 @@ ItemPage {
                         }
                     }
 
-                    Label {
+                    FishUI.Label {
                         visible: _enableSwitch.checked
                         text: qsTr("Natural scrolling")
                         Layout.fillWidth: true
                     }
 
-                    Switch {
+                    FishUI.Switch {
                         visible: _enableSwitch.checked
                         Layout.fillHeight: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
@@ -105,12 +105,12 @@ ItemPage {
                         }
                     }
 
-                    Label {
+                    FishUI.Label {
                         visible: _enableSwitch.checked
                         text: qsTr("Pointer acceleration")
                     }
 
-                    Slider {
+                    FishUI.Slider {
                         id: accelSpeedSlider
 
                         visible: _enableSwitch.checked

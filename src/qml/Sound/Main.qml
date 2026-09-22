@@ -29,7 +29,7 @@ ItemPage {
         required property var device
         spacing: FishUI.Units.largeSpacing
 
-        Slider {
+        FishUI.Slider {
             objectName: "volume-" + volumeControl.device.index
             Layout.fillWidth: true
             from: PipeWire.MinimalVolume
@@ -44,7 +44,7 @@ ItemPage {
             }
         }
 
-        Label {
+        FishUI.Label {
             Layout.preferredWidth: 48
             horizontalAlignment: Text.AlignRight
             text: qsTr("%1%").arg(volumeControl.device.muted ? 0 : Math.round(volumeControl.device.volume * 100))
@@ -61,14 +61,14 @@ ItemPage {
             Layout.fillWidth: true
             spacing: FishUI.Units.largeSpacing
 
-            Label {
+            FishUI.Label {
                 Layout.fillWidth: true
                 text: deviceCard.device.description
                 textFormat: Text.PlainText
                 wrapMode: Text.Wrap
             }
 
-            Button {
+            FishUI.Button {
                 objectName: "default-" + deviceCard.device.index
                 Layout.preferredWidth: 88
                 Layout.preferredHeight: 28
@@ -97,11 +97,11 @@ ItemPage {
             Layout.fillWidth: true
             visible: deviceCard.device.ports.length > 1
 
-            Label {
+            FishUI.Label {
                 text: qsTr("Port")
             }
 
-            ComboBox {
+            FishUI.ComboBox {
                 Layout.fillWidth: true
                 model: deviceCard.device.ports
                 textRole: "description"
@@ -124,12 +124,12 @@ ItemPage {
             Layout.fillWidth: true
             visible: deviceCard.input && deviceCard.device.default
 
-            Label {
+            FishUI.Label {
                 text: qsTr("Input level")
                 color: FishUI.Theme.disabledTextColor
             }
 
-            ProgressBar {
+            FishUI.ProgressBar {
                 Layout.fillWidth: true
                 from: 0
                 to: 1
@@ -158,7 +158,7 @@ ItemPage {
             RoundedItem {
                 visible: !AudioService.connected
 
-                Label {
+                FishUI.Label {
                     Layout.fillWidth: true
                     text: qsTr("Connecting to the audio service…")
                     wrapMode: Text.Wrap
@@ -168,14 +168,14 @@ ItemPage {
             RoundedItem {
                 visible: page.operationError.length > 0
 
-                Label {
+                FishUI.Label {
                     Layout.fillWidth: true
                     text: qsTr("Could not apply the audio change: %1").arg(page.operationError)
                     textFormat: Text.PlainText
                     wrapMode: Text.Wrap
                 }
 
-                Button {
+                FishUI.Button {
                     text: qsTr("Dismiss")
                     onClicked: page.operationError = ""
                 }
@@ -188,7 +188,7 @@ ItemPage {
 
                 SectionLabel { text: qsTr("Output devices") }
 
-                Label {
+                FishUI.Label {
                     objectName: "no-outputs"
                     Layout.fillWidth: true
                     visible: AudioService.connected && outputs.count === 0
@@ -213,7 +213,7 @@ ItemPage {
 
                 SectionLabel { text: qsTr("Input devices") }
 
-                Label {
+                FishUI.Label {
                     objectName: "no-inputs"
                     Layout.fillWidth: true
                     visible: AudioService.connected && inputs.count === 0
@@ -253,14 +253,14 @@ ItemPage {
                             spacing: FishUI.Units.largeSpacing
                             visible: device.profiles.length > 0
 
-                            Label {
+                            FishUI.Label {
                                 Layout.fillWidth: true
                                 text: profileCard.device.description
                                 textFormat: Text.PlainText
                                 wrapMode: Text.Wrap
                             }
 
-                            ComboBox {
+                            FishUI.ComboBox {
                                 Layout.fillWidth: true
                                 model: profileCard.device.profiles
                                 textRole: "description"

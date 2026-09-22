@@ -88,7 +88,7 @@ Item {
             }
         }
 
-        Label {
+        FishUI.Label {
             id: label
 
             Layout.alignment: Qt.AlignHCenter

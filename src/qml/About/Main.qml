@@ -55,7 +55,7 @@ ItemPage {
                 height: FishUI.Units.smallSpacing
             }
 
-            Label {
+            FishUI.Label {
                 Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
                 text: "<b>Cutefish</b>"
                 visible: !about.isCutefishOS
@@ -75,7 +75,7 @@ ItemPage {
                 asynchronous: true
             }
 
-            Label {
+            FishUI.Label {
                 text: qsTr("Built on %1").arg(about.prettyProductName)
                 visible: !about.isCutefishOS
                 Layout.alignment: Qt.AlignTop | Qt.AlignHCenter

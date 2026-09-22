@@ -81,7 +81,7 @@ ItemPage {
                     RowLayout {
                         spacing: FishUI.Units.largeSpacing
 
-                        Label {
+                        FishUI.Label {
                             id: dimsTipsLabel
                             text: qsTr("Dim the wallpaper in dark theme")
                             bottomPadding: FishUI.Units.smallSpacing
@@ -92,7 +92,7 @@ ItemPage {
                             Layout.fillWidth: true
                         }
 
-                        Switch {
+                        FishUI.Switch {
                             checked: appearance.dimsWallpaper
                             height: dimsTipsLabel.height
                             Layout.alignment: Qt.AlignVCenter | Qt.AlignRight

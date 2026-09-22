@@ -59,12 +59,12 @@ ItemPage {
                     columnSpacing: FishUI.Units.largeSpacing * 1.5
                     rowSpacing: FishUI.Units.largeSpacing * 1.5
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("General Font")
                         bottomPadding: FishUI.Units.smallSpacing
                     }
 
-                    ComboBox {
+                    FishUI.ComboBox {
                         id: generalFontComboBox
                         model: fontsModel.generalFonts
                         Layout.fillWidth: true
@@ -75,12 +75,12 @@ ItemPage {
                         onActivated: appearance.setFontFamily(currentText)
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Fixed Font")
                         bottomPadding: FishUI.Units.smallSpacing
                     }
 
-                    ComboBox {
+                    FishUI.ComboBox {
                         id: fixedFontComboBox
                         model: fontsModel.fixedFonts
                         Layout.fillWidth: true
@@ -91,7 +91,7 @@ ItemPage {
                         onActivated: appearance.setFixedFontFamily(currentText)
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Font Size")
                         bottomPadding: FishUI.Units.smallSpacing
                     }
@@ -99,19 +99,19 @@ ItemPage {
                     FishUI.SegmentedControl {
                         Layout.fillWidth: true
 
-                        TabButton {
+                        FishUI.TabButton {
                             text: qsTr("Small")
                         }
 
-                        TabButton {
+                        FishUI.TabButton {
                             text: qsTr("Medium")
                         }
 
-                        TabButton {
+                        FishUI.TabButton {
                             text: qsTr("Large")
                         }
 
-                        TabButton {
+                        FishUI.TabButton {
                             text: qsTr("Huge")
                         }
 
@@ -152,12 +152,12 @@ ItemPage {
                         }
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Hinting")
                         bottomPadding: FishUI.Units.smallSpacing
                     }
 
-                    ComboBox {
+                    FishUI.ComboBox {
                         model: fonts.hintingModel
                         textRole: "display"
                         Layout.fillWidth: true
@@ -165,12 +165,12 @@ ItemPage {
                         onCurrentIndexChanged: fonts.hintingCurrentIndex = currentIndex
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Anti-Aliasing")
                         bottomPadding: FishUI.Units.smallSpacing
                     }
 
-                    Switch {
+                    FishUI.Switch {
                         Layout.fillHeight: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         checked: fonts.antiAliasing

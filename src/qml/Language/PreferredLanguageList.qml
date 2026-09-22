@@ -85,7 +85,7 @@ Item {
         interactive: control.pressedIndex < 0
         enabled: !control.language.saving
         boundsBehavior: Flickable.StopAtBounds
-        ScrollBar.vertical: ScrollBar {}
+        FishUI.ScrollBar.vertical: FishUI.ScrollBar {}
         FishUI.WheelHandler { target: list }
 
         delegate: Item {
@@ -104,7 +104,7 @@ Item {
                     Layout.fillWidth: true
                     spacing: 2
 
-                    Label {
+                    FishUI.Label {
                         id: primaryLabel
                         Layout.fillWidth: true
                         text: row.modelData.name
@@ -113,7 +113,7 @@ Item {
                         color: FishUI.Theme.textColor
                     }
 
-                    Label {
+                    FishUI.Label {
                         Layout.fillWidth: true
                         text: row.modelData.description
                         textFormat: Text.PlainText

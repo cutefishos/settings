@@ -133,7 +133,7 @@ FishUI.Window {
             Layout.fillWidth: true
             Layout.preferredHeight: searchField.implicitHeight
 
-            Label {
+            FishUI.Label {
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
                 text: control.title
@@ -144,7 +144,7 @@ FishUI.Window {
             }
 
             // Typing lists matching zones; Up/Down move through them, Enter picks.
-            TextField {
+            FishUI.TextField {
                 id: searchField
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
@@ -200,7 +200,7 @@ FishUI.Window {
                         boundsBehavior: Flickable.StopAtBounds
                         highlightMoveDuration: 0
                         onCurrentIndexChanged: positionViewAtIndex(currentIndex, ListView.Contain)
-                        ScrollBar.vertical: ScrollBar {}
+                        FishUI.ScrollBar.vertical: FishUI.ScrollBar {}
                         FishUI.WheelHandler { target: resultsView }
 
                         delegate: Item {
@@ -224,14 +224,14 @@ FishUI.Window {
                                 anchors.rightMargin: FishUI.Units.largeSpacing
                                 spacing: FishUI.Units.largeSpacing
 
-                                Label {
+                                FishUI.Label {
                                     Layout.fillWidth: true
                                     text: modelData.name
                                     color: current ? FishUI.Theme.highlightedTextColor : FishUI.Theme.textColor
                                     elide: Text.ElideRight
                                 }
 
-                                Label {
+                                FishUI.Label {
                                     text: modelData.offset
                                     color: current ? FishUI.Theme.highlightedTextColor : FishUI.Theme.disabledTextColor
                                     font.pointSize: 9
@@ -292,7 +292,7 @@ FishUI.Window {
                     color: FishUI.Theme.highlightColor
                 }
 
-                Label {
+                FishUI.Label {
                     id: popupText
                     anchors.centerIn: parent
                     color: FishUI.Theme.highlightedTextColor

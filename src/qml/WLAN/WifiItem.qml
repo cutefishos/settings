@@ -101,11 +101,11 @@ ListRow {
             visible: predictableWirelessPassword
             spacing: FishUI.Units.largeSpacing
 
-            Label {
+            FishUI.Label {
                 text: qsTr("Password")
             }
 
-            TextField {
+            FishUI.TextField {
                 id: passwordField
                 focus: true
                 echoMode: TextInput.Password
@@ -123,12 +123,12 @@ ListRow {
                 Layout.fillWidth: true
             }
 
-            Button {
+            FishUI.Button {
                 text: qsTr("Cancel")
                 onClicked: control.expanded = false
             }
 
-            Button {
+            FishUI.Button {
                 text: qsTr("Connect")
                 flat: true
                 enabled: passwordField.acceptableInput
@@ -139,7 +139,7 @@ ListRow {
         RowLayout {
             visible: !predictableWirelessPassword
 
-            Button {
+            FishUI.Button {
                 visible: (model.uuid || !predictableWirelessPassword) && connectionState === NM.Enums.Deactivated
                 text: qsTr("Connect")
                 flat: true
@@ -153,7 +153,7 @@ ListRow {
                 }
             }
 
-            Button {
+            FishUI.Button {
                 visible: connectionState === NM.Enums.Activated
                 text: qsTr("Disconnect")
 

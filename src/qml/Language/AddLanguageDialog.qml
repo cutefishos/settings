@@ -62,7 +62,7 @@ FishUI.Window {
         anchors.margins: 16
         spacing: 16
 
-        Label {
+        FishUI.Label {
             Layout.fillWidth: true
             Layout.rightMargin: 32
             text: addDialog.title
@@ -73,7 +73,7 @@ FishUI.Window {
             wrapMode: Text.Wrap
         }
 
-        TextField {
+        FishUI.TextField {
             id: searchField
             Layout.fillWidth: true
             placeholderText: qsTr("Search languages")
@@ -104,7 +104,7 @@ FishUI.Window {
             cacheBuffer: 120
             enabled: !addDialog.adding
             boundsBehavior: Flickable.StopAtBounds
-            ScrollBar.vertical: ScrollBar {}
+            FishUI.ScrollBar.vertical: FishUI.ScrollBar {}
             FishUI.WheelHandler { target: availableList }
 
             delegate: LanguageRow {
@@ -120,7 +120,7 @@ FishUI.Window {
                 onClicked: addDialog.selectedCode = code
             }
 
-            Label {
+            FishUI.Label {
                 anchors.centerIn: parent
                 visible: availableList.count === 0
                 text: addDialog.language.loading ? qsTr("Loading languages…") : qsTr("No languages found")
@@ -128,7 +128,7 @@ FishUI.Window {
             }
         }
 
-        Label {
+        FishUI.Label {
             Layout.fillWidth: true
             visible: addDialog.language.errorMessage.length > 0
             text: addDialog.language.errorMessage

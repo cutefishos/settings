@@ -95,19 +95,19 @@ ItemPage {
                     id: dockSizeTabbar
                     Layout.fillWidth: true
 
-                    TabButton {
+                    FishUI.TabButton {
                         text: qsTr("Small")
                     }
 
-                    TabButton {
+                    FishUI.TabButton {
                         text: qsTr("Medium")
                     }
 
-                    TabButton {
+                    FishUI.TabButton {
                         text: qsTr("Large")
                     }
 
-                    TabButton {
+                    FishUI.TabButton {
                         text: qsTr("Huge")
                     }
 
@@ -165,15 +165,15 @@ ItemPage {
                     currentIndex: dockSettings.dockVisibility
                     onCurrentIndexChanged: dockSettings.setDockVisibility(currentIndex)
 
-                    TabButton {
+                    FishUI.TabButton {
                         text: qsTr("Always show")
                     }
 
-                    TabButton {
+                    FishUI.TabButton {
                         text: qsTr("Always hide")
                     }
 
-                    TabButton {
+                    FishUI.TabButton {
                         text: qsTr("Smart hide")
                     }
                 }
@@ -193,11 +193,11 @@ ItemPage {
                         Layout.fillWidth: true
                         spacing: FishUI.Units.largeSpacing
 
-                        Label {
+                        FishUI.Label {
                             text: qsTr("More Clear")
                         }
 
-                        Slider {
+                        FishUI.Slider {
                             Layout.fillWidth: true
                             from: 0
                             to: 1
@@ -205,7 +205,7 @@ ItemPage {
                             onMoved: dockSettings.setDockGlassTint(value)
                         }
 
-                        Label {
+                        FishUI.Label {
                             text: qsTr("More Tinted")
                         }
                     }

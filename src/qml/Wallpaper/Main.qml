@@ -62,7 +62,7 @@ ItemPage {
                     Layout.fillWidth: true
                     spacing: FishUI.Units.largeSpacing
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Colors")
                         font.bold: true
                     }

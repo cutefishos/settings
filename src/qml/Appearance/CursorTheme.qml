@@ -3,7 +3,6 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
 import FishUI 1.0 as FishUI
-import Fish as FishStyle
 import Cutefish.Settings 1.0
 import "../"
 
@@ -86,7 +85,7 @@ ItemPage {
 
                 RoundedItem {
                     RowLayout {
-                        FishStyle.Slider {
+                        FishUI.Slider {
                             Layout.fillWidth: true
                             from: 16
                             to: 64
@@ -96,7 +95,7 @@ ItemPage {
                             onMoved: cursorModel.cursorSize = value
                         }
 
-                        Label {
+                        FishUI.Label {
                             text: cursorModel.cursorSize
                         }
                     }

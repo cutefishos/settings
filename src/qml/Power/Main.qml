@@ -82,7 +82,7 @@ ItemPage {
                 }
             }
 
-            Label {
+            FishUI.Label {
                 color: FishUI.Theme.disabledTextColor
                 leftPadding: FishUI.Units.largeSpacing * 1.5
                 rightPadding: FishUI.Units.largeSpacing * 1.5
@@ -96,13 +96,13 @@ ItemPage {
                     columns: 2
                     rowSpacing: FishUI.Units.largeSpacing * 2
 
-                    Label {
+                    FishUI.Label {
                         visible: battery.available
                         text: qsTr("Turn off display when inactive on battery")
                         Layout.fillWidth: true
                     }
 
-                    ComboBox {
+                    FishUI.ComboBox {
                         visible: battery.available
                         Layout.preferredWidth: 160
 
@@ -113,12 +113,12 @@ ItemPage {
                         onActivated: power.batteryScreenOff = timeoutValues[currentIndex]
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Turn off display when inactive on power adapter")
                         Layout.fillWidth: true
                     }
 
-                    ComboBox {
+                    FishUI.ComboBox {
                         Layout.preferredWidth: 160
                         model: [qsTr("1 Minute"), qsTr("2 Minutes"), qsTr("5 Minutes"),
                                 qsTr("10 Minutes"), qsTr("15 Minutes"), qsTr("20 Minutes"),

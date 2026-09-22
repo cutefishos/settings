@@ -17,7 +17,7 @@ ListRow {
 
     text: description
 
-    Label {
+    FishUI.Label {
         visible: control.accelerators.length === 0
         text: qsTr("None")
         color: FishUI.Theme.disabledTextColor

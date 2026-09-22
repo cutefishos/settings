@@ -34,7 +34,7 @@ ColumnLayout {
         Layout.fillWidth: true
         Layout.preferredHeight: 24
 
-        Label {
+        FishUI.Label {
             Layout.alignment: Qt.AlignVCenter
             text: control.title
             font.bold: true
@@ -44,7 +44,7 @@ ColumnLayout {
             Layout.fillWidth: true
         }
 
-        Button {
+        FishUI.Button {
             id: showButton
 
             Layout.alignment: Qt.AlignVCenter
@@ -54,7 +54,7 @@ ColumnLayout {
             padding: 0
 
             background: Item {}
-            contentItem: Label {
+            contentItem: FishUI.Label {
                 text: showButton.text
                 color: FishUI.Theme.highlightColor
                 font.underline: showButton.hovered
@@ -169,7 +169,7 @@ ColumnLayout {
                         }
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Add Wallpaper")
                         color: FishUI.Theme.textColor
                         font.pointSize: Math.max(FishUI.Theme.fontSize - 1, 7)

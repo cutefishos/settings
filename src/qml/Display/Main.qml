@@ -95,7 +95,7 @@ ItemPage {
                                         onTriggered: brightness.setValue(brightnessSlider.value)
                                     }
 
-                                    Label {
+                                    FishUI.Label {
                                         text: qsTr("Brightness")
                                         visible: brightness.available
                                     }
@@ -114,7 +114,7 @@ ItemPage {
                                             source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/display-brightness-low-symbolic.svg"
                                         }
 
-                                        Slider {
+                                        FishUI.Slider {
                                             id: brightnessSlider
                                             Layout.fillWidth: true
                                             Layout.alignment: Qt.AlignVCenter
@@ -124,7 +124,7 @@ ItemPage {
                                             stepSize: 1
                                             onMoved: brightnessTimer.start()
 
-                                            ToolTip {
+                                            FishUI.ToolTip {
                                                 parent: brightnessSlider.handle
                                                 visible: brightnessSlider.pressed
                                                 text: brightnessSlider.value.toFixed(0)
@@ -141,22 +141,22 @@ ItemPage {
                                         }
                                     }
 
-                                    Label {
+                                    FishUI.Label {
                                         text: qsTr("Screen Name")
                                         visible: _screenView.count > 1
                                     }
 
-                                    Label {
+                                    FishUI.Label {
                                         text: element.display
                                         color: FishUI.Theme.disabledTextColor
                                         visible: _screenView.count > 1
                                     }
 
-                                    Label {
+                                    FishUI.Label {
                                         text: qsTr("Resolution")
                                     }
 
-                                    ComboBox {
+                                    FishUI.ComboBox {
                                         Layout.fillWidth: true
                                         model: element.resolutions
                                         leftPadding: FishUI.Units.largeSpacing
@@ -170,11 +170,11 @@ ItemPage {
                                         }
                                     }
 
-                                    Label {
+                                    FishUI.Label {
                                         text: qsTr("Refresh rate")
                                     }
 
-                                    ComboBox {
+                                    FishUI.ComboBox {
                                         id: refreshRate
                                         Layout.fillWidth: true
                                         model: element.refreshRates
@@ -189,7 +189,7 @@ ItemPage {
                                         }
                                     }
 
-                                    Label {
+                                    FishUI.Label {
                                         text: qsTr("Scale")
                                     }
 
@@ -197,27 +197,27 @@ ItemPage {
                                         id: scaleTabbar
                                         Layout.fillWidth: true
 
-                                        TabButton {
+                                        FishUI.TabButton {
                                             text: "100%"
                                             onClicked: element.scale = 1.0
                                         }
 
-                                        TabButton {
+                                        FishUI.TabButton {
                                             text: "125%"
                                             onClicked: element.scale = 1.25
                                         }
 
-                                        TabButton {
+                                        FishUI.TabButton {
                                             text: "150%"
                                             onClicked: element.scale = 1.5
                                         }
 
-                                        TabButton {
+                                        FishUI.TabButton {
                                             text: "175%"
                                             onClicked: element.scale = 1.75
                                         }
 
-                                        TabButton {
+                                        FishUI.TabButton {
                                             text: "200%"
                                             onClicked: element.scale = 2.0
                                         }
@@ -241,7 +241,7 @@ ItemPage {
                                         }
                                     }
 
-                                    Label {
+                                    FishUI.Label {
                                         text: qsTr("Rotation")
                                     }
 
@@ -285,12 +285,12 @@ ItemPage {
                                         }
                                     }
 
-                                    Label {
+                                    FishUI.Label {
                                         text: qsTr("Enabled")
                                         visible: enabledBox.visible
                                     }
 
-                                    CheckBox {
+                                    FishUI.CheckBox {
                                         id: enabledBox
                                         checked: element.enabled
                                         visible: _screenView.count > 1
@@ -299,23 +299,23 @@ ItemPage {
                                         }
                                     }
 
-                                    Label { text: qsTr("Primary"); visible: _screenView.count > 1 }
-                                    CheckBox {
+                                    FishUI.Label { text: qsTr("Primary"); visible: _screenView.count > 1 }
+                                    FishUI.CheckBox {
                                         checked: element.primary
                                         visible: _screenView.count > 1
                                         enabled: element.enabled
                                         onClicked: if (checked) element.primary = true
                                     }
 
-                                    Label { text: qsTr("Position"); visible: _screenView.count > 1 }
+                                    FishUI.Label { text: qsTr("Position"); visible: _screenView.count > 1 }
                                     RowLayout {
                                         visible: _screenView.count > 1
                                         SpinBox { from: -32768; to: 32768; value: element.position.x; onValueModified: element.position = Qt.point(value, element.position.y) }
                                         SpinBox { from: -32768; to: 32768; value: element.position.y; onValueModified: element.position = Qt.point(element.position.x, value) }
                                     }
 
-                                    Label { text: qsTr("Mode"); visible: _screenView.count > 1 && (element.capabilities & 4) !== 0 }
-                                    ComboBox {
+                                    FishUI.Label { text: qsTr("Mode"); visible: _screenView.count > 1 && (element.capabilities & 4) !== 0 }
+                                    FishUI.ComboBox {
                                         visible: _screenView.count > 1 && (element.capabilities & 4) !== 0
                                         Layout.fillWidth: true
                                         model: element.replicationSourceModel
@@ -339,7 +339,7 @@ ItemPage {
                 }
             }
 
-            Label {
+            FishUI.Label {
                 Layout.fillWidth: true
                 visible: screen.loaded && (!screen.available || screen.error.length > 0)
                 text: screen.available ? screen.error : qsTr("Display configuration is unavailable in this session.")
@@ -349,7 +349,7 @@ ItemPage {
 
             RowLayout {
                 Layout.fillWidth: true
-                Button { text: qsTr("Identify"); enabled: screen.available; onClicked: screen.identify() }
+                FishUI.Button { text: qsTr("Identify"); enabled: screen.available; onClicked: screen.identify() }
                 Item { Layout.fillWidth: true }
             }
 

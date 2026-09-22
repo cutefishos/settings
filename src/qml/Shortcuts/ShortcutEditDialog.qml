@@ -147,7 +147,7 @@ FishUI.Window {
         anchors.margins: 16
         spacing: 12
 
-        Label {
+        FishUI.Label {
             Layout.fillWidth: true
             Layout.rightMargin: 32
             text: dialog.title
@@ -158,7 +158,7 @@ FishUI.Window {
             wrapMode: Text.Wrap
         }
 
-        Label {
+        FishUI.Label {
             visible: dialog.accelerators.length === 0 && !dialog.recording
             text: qsTr("No shortcut. Add one below.")
             color: FishUI.Theme.disabledTextColor
@@ -179,7 +179,7 @@ FishUI.Window {
                     dimmed: parent.beingReplaced
                 }
 
-                Label {
+                FishUI.Label {
                     visible: modelData.type === "user"
                     text: qsTr("Custom")
                     color: FishUI.Theme.disabledTextColor
@@ -188,7 +188,7 @@ FishUI.Window {
 
                 Item { Layout.fillWidth: true }
 
-                Label {
+                FishUI.Label {
                     text: qsTr("Change")
                     color: changeArea.containsMouse ? FishUI.Theme.highlightColor : FishUI.Theme.textColor
                     visible: !dialog.recording && !modelData.locked
@@ -202,7 +202,7 @@ FishUI.Window {
                     }
                 }
 
-                Label {
+                FishUI.Label {
                     text: qsTr("Remove")
                     color: removeArea.containsMouse ? FishUI.Theme.highlightColor : FishUI.Theme.textColor
                     visible: !dialog.recording && !modelData.locked
@@ -250,7 +250,7 @@ FishUI.Window {
                 anchors.rightMargin: 12
                 spacing: FishUI.Units.largeSpacing
 
-                Label {
+                FishUI.Label {
                     visible: dialog.pendingParts.length === 0
                     text: dialog.replacing ? qsTr("Press the new shortcut…") : qsTr("Press the shortcut…")
                     color: FishUI.Theme.textColor
@@ -263,7 +263,7 @@ FishUI.Window {
 
                 Item { Layout.fillWidth: true }
 
-                Label {
+                FishUI.Label {
                     text: qsTr("Cancel")
                     color: cancelArea.containsMouse ? FishUI.Theme.highlightColor : FishUI.Theme.textColor
 
@@ -278,7 +278,7 @@ FishUI.Window {
             }
         }
 
-        Label {
+        FishUI.Label {
             Layout.fillWidth: true
             visible: dialog.message.length > 0
             text: dialog.message

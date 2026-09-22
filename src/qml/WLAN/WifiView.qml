@@ -51,7 +51,7 @@ ColumnLayout {
             interactive: false
             text: qsTr("Wi-Fi")
 
-            Switch {
+            FishUI.Switch {
                 id: wirelessSwitch
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 rightPadding: 0

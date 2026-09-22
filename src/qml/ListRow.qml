@@ -139,7 +139,7 @@ Item {
             Layout.alignment: Qt.AlignVCenter
         }
 
-        Label {
+        FishUI.Label {
             Layout.fillWidth: true
             visible: control.text.length > 0
             text: control.text

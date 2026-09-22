@@ -46,7 +46,7 @@ FishUI.Window {
     contentTopMargin: header.height
     background.color: FishUI.Theme.secondBackgroundColor
 
-    headerItem: Label {
+    headerItem: FishUI.Label {
         anchors.left: parent.left
         anchors.leftMargin: 16
         anchors.verticalCenter: parent.verticalCenter
@@ -87,7 +87,7 @@ FishUI.Window {
             columnSpacing: 16
             rowSpacing: 8
 
-            Label {
+            FishUI.Label {
                 id: autoJoinLabel
                 text: qsTr("Auto-Join")
                 visible: false
@@ -95,7 +95,7 @@ FishUI.Window {
                 color: FishUI.Theme.disabledTextColor
             }
 
-            Switch {
+            FishUI.Switch {
                 id: autoJoinSwitch
                 rightPadding: 0
                 rightInset: 0
@@ -105,88 +105,88 @@ FishUI.Window {
                 onCheckedChanged: settings.autoConnect = checked
             }
 
-            Label {
+            FishUI.Label {
                 text: qsTr("Security")
                 color: FishUI.Theme.disabledTextColor
                 Layout.alignment: Qt.AlignRight
             }
 
-            Label {
+            FishUI.Label {
                 id: securityLabel
                 text: model.securityTypeString
                 Layout.alignment: Qt.AlignRight
             }
 
-            Label {
+            FishUI.Label {
                 text: qsTr("Signal")
                 color: FishUI.Theme.disabledTextColor
                 Layout.alignment: Qt.AlignRight
             }
 
-            Label {
+            FishUI.Label {
                 id: signalLabel
                 text: model.signal
                 Layout.alignment: Qt.AlignRight
             }
 
-            Label {
+            FishUI.Label {
                 text: qsTr("IPv4 Address")
                 color: FishUI.Theme.disabledTextColor
                 Layout.alignment: Qt.AlignRight
             }
 
-            Label {
+            FishUI.Label {
                 id: ipv4AddressLabel
                 text: model.ipAddress
                 Layout.alignment: Qt.AlignRight
                 Layout.fillWidth: true
             }
 
-            Label {
+            FishUI.Label {
                 text: qsTr("IPv6 Address")
                 color: FishUI.Theme.disabledTextColor
                 Layout.alignment: Qt.AlignRight
             }
 
-            Label {
+            FishUI.Label {
                 id: ipV6AddressLabel
                 // text: model.ipV6Address
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignRight
             }
 
-            Label {
+            FishUI.Label {
                 text: qsTr("MAC Address")
                 color: FishUI.Theme.disabledTextColor
                 Layout.alignment: Qt.AlignRight
             }
 
-            Label {
+            FishUI.Label {
                 id: macAddressLabel
                 // text: model.macAddress
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignRight
             }
 
-            Label {
+            FishUI.Label {
                 text: qsTr("Gateway")
                 color: FishUI.Theme.disabledTextColor
                 Layout.alignment: Qt.AlignRight
             }
 
-            Label {
+            FishUI.Label {
                 id: routerLabel
                 text: model.gateWay
                 Layout.alignment: Qt.AlignRight
             }
 
-            Label {
+            FishUI.Label {
                 text: qsTr("DNS")
                 color: FishUI.Theme.disabledTextColor
                 Layout.alignment: Qt.AlignRight
             }
 
-            Label {
+            FishUI.Label {
                 id: dnsLabel
                 // text: model.nameServer
                 Layout.alignment: Qt.AlignRight

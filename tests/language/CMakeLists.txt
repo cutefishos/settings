@@ -13,4 +13,4 @@ add_test(NAME language_test COMMAND language_test)
 find_program(QMLTESTRUNNER qmltestrunner HINTS /usr/lib/qt6/bin REQUIRED)
 add_test(NAME language_drag_test COMMAND ${QMLTESTRUNNER} -input ${CMAKE_CURRENT_SOURCE_DIR}/tst_drag.qml)
 set_tests_properties(language_drag_test PROPERTIES ENVIRONMENT
-    "QT_QPA_PLATFORM=offscreen;QT_QUICK_BACKEND=software;QT_QUICK_CONTROLS_STYLE=Fish")
+    "QT_QPA_PLATFORM=offscreen;QT_QUICK_BACKEND=software")

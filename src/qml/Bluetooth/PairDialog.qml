@@ -26,7 +26,7 @@ FishUI.Window {
     background.color: FishUI.Theme.secondBackgroundColor
     title: qsTr("Bluetooth pairing")
 
-    headerItem: Label {
+    headerItem: FishUI.Label {
         anchors.left: parent.left
         anchors.leftMargin: 16
         anchors.verticalCenter: parent.verticalCenter
@@ -66,13 +66,13 @@ FishUI.Window {
         anchors.fill: parent
         anchors.margins: 16
         spacing: 16
-        Label {
+        FishUI.Label {
             Layout.fillWidth: true
             text: Bluetooth.Manager.pairingDevice
             textFormat: Text.PlainText
             wrapMode: Text.Wrap
         }
-        Label {
+        FishUI.Label {
             Layout.fillWidth: true
             text: dialog.kind === "RequestConfirmation" ? qsTr("Does this code match the code on your device?")
                   : dialog.kind === "RequestPinCode" ? qsTr("Enter the PIN for your device.")
@@ -82,7 +82,7 @@ FishUI.Window {
                   : qsTr("Allow this device to pair?")
             wrapMode: Text.Wrap
         }
-        Label {
+        FishUI.Label {
             Layout.fillWidth: true
             visible: Bluetooth.Manager.pairingCode.length > 0
             text: Bluetooth.Manager.pairingCode
@@ -91,11 +91,11 @@ FishUI.Window {
             font.pixelSize: dialog.kind === "AuthorizeService" ? 14 : 28
             horizontalAlignment: Text.AlignHCenter
         }
-        Label {
+        FishUI.Label {
             visible: dialog.kind === "DisplayPasskey"
             text: qsTr("%1 digits entered").arg(Bluetooth.Manager.pairingEntered)
         }
-        TextField {
+        FishUI.TextField {
             id: codeInput
             Layout.fillWidth: true
             visible: dialog.inputRequired
@@ -103,7 +103,7 @@ FishUI.Window {
             inputMethodHints: dialog.kind === "RequestPasskey" ? Qt.ImhDigitsOnly : Qt.ImhNone
             onAccepted: Bluetooth.Manager.respondPairing(true, text)
         }
-        Label {
+        FishUI.Label {
             Layout.fillWidth: true
             visible: Bluetooth.Manager.errorText.length > 0
             text: Bluetooth.Manager.errorText

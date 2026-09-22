@@ -44,14 +44,14 @@ Item {
         anchors.fill: parent
         spacing: FishUI.Units.largeSpacing
 
-        Label {
+        FishUI.Label {
             id: keyLabel
             Layout.fillWidth: true
             color: FishUI.Theme.textColor
             elide: Text.ElideRight
         }
 
-        Label {
+        FishUI.Label {
             id: valueLabel
             Layout.maximumWidth: control.width * 0.65
             horizontalAlignment: control.LayoutMirroring.enabled ? Text.AlignLeft : Text.AlignRight

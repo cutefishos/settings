@@ -25,7 +25,7 @@ ItemPage {
             RoundedItem {
                 visible: !shortcuts.available
 
-                Label {
+                FishUI.Label {
                     Layout.fillWidth: true
                     text: qsTr("Keyboard shortcuts are managed by the Cutefish compositor, which is not running.")
                     color: FishUI.Theme.disabledTextColor
@@ -33,7 +33,7 @@ ItemPage {
                 }
             }
 
-            Label {
+            FishUI.Label {
                 visible: shortcuts.available
                 Layout.fillWidth: true
                 Layout.leftMargin: FishUI.Units.largeSpacing * 1.5

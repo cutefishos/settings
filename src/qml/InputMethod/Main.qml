@@ -33,7 +33,7 @@ ItemPage {
                 RoundedItem {
                     visible: !inputMethod.available
 
-                    Label {
+                    FishUI.Label {
                         Layout.fillWidth: true
                         text: qsTr("Input methods can only be selected in a Cutefish Wayland session.")
                         color: FishUI.Theme.disabledTextColor
@@ -59,7 +59,7 @@ ItemPage {
                 }
             }
 
-            Label {
+            FishUI.Label {
                 Layout.fillWidth: true
                 visible: inputMethod.available && inputMethod.current !== "" && !inputMethod.running
                 text: qsTr("The selected input method is not running.")
@@ -70,7 +70,7 @@ ItemPage {
                 rightPadding: FishUI.Units.largeSpacing * 1.5
             }
 
-            Label {
+            FishUI.Label {
                 Layout.fillWidth: true
                 visible: inputMethod.available
                 text: qsTr("Applications started before the input method may need to be restarted.")

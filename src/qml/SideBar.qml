@@ -319,7 +319,7 @@ Item {
         anchors.margins: 0
         spacing: 0
 
-        Label {
+        FishUI.Label {
             text: rootWindow.title
             color: rootWindow.active ? FishUI.Theme.textColor : FishUI.Theme.disabledTextColor
             Layout.preferredHeight: rootWindow.header.height
@@ -343,7 +343,7 @@ Item {
             topMargin: 0
             bottomMargin: FishUI.Units.largeSpacing
 
-            ScrollBar.vertical: ScrollBar {}
+            FishUI.ScrollBar.vertical: FishUI.ScrollBar {}
 
             highlightFollowsCurrentItem: true
             highlightMoveDuration: 0
@@ -439,7 +439,7 @@ Item {
                         }
                     }
 
-                    Label {
+                    FishUI.Label {
                         id: itemTitle
                         text: model.title
                         color: FishUI.Theme.darkMode ? FishUI.Theme.textColor : "#363636"

@@ -41,7 +41,7 @@ ItemPage {
 
             RoundedItem {
                 RowLayout {
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Do Not Disturb")
                     }
 
@@ -49,7 +49,7 @@ ItemPage {
                         Layout.fillWidth: true
                     }
 
-                    Switch {
+                    FishUI.Switch {
                         checked: notifications.doNotDisturb
                         Layout.fillHeight: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight

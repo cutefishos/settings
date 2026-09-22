@@ -97,7 +97,7 @@ ItemPage {
                     }
 
                     RowLayout {
-                        Label {
+                        FishUI.Label {
                             property int value: 0
 
                             id: percentLabel
@@ -107,7 +107,7 @@ ItemPage {
                             font.weight: Font.DemiBold
                         }
 
-                        Label {
+                        FishUI.Label {
                             text: "%"
                             color: "white"
                             font.pointSize: 12
@@ -124,7 +124,7 @@ ItemPage {
                         }
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: battery.statusString
                         color: "white"
                     }
@@ -210,7 +210,7 @@ ItemPage {
                                 visible: battery.capacity >= 0 && battery.capacity <= 79
                             }
 
-                            Label {
+                            FishUI.Label {
                                 id: _poorLabel
                                 anchors.centerIn: parent
                                 text: qsTr("Poor")
@@ -235,7 +235,7 @@ ItemPage {
                                 visible: battery.capacity >= 80 && battery.capacity <= 89
                             }
 
-                            Label {
+                            FishUI.Label {
                                 id: _normalLabel
                                 anchors.centerIn: parent
                                 text: qsTr("Normal")
@@ -260,7 +260,7 @@ ItemPage {
                                 visible: battery.capacity >= 90 && battery.capacity <= 100
                             }
 
-                            Label {
+                            FishUI.Label {
                                 id: _excellentLabel
                                 anchors.centerIn: parent
                                 text: qsTr("Excellent")
@@ -286,7 +286,7 @@ ItemPage {
 
             RoundedItem {
                 RowLayout {
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Show percentage in status bar")
                     }
 
@@ -294,7 +294,7 @@ ItemPage {
                         Layout.fillWidth: true
                     }
 
-                    Switch {
+                    FishUI.Switch {
                         Layout.fillHeight: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         checked: battery.showPercent
@@ -308,7 +308,7 @@ ItemPage {
         }
     }
 
-    Label {
+    FishUI.Label {
         anchors.centerIn: parent
         text: qsTr("No battery found")
         visible: !battery.available

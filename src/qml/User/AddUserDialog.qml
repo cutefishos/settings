@@ -61,7 +61,7 @@ FishUI.Window {
         anchors.margins: 16
         spacing: 16
 
-        Label {
+        FishUI.Label {
             Layout.fillWidth: true
             Layout.rightMargin: 32
             text: control.title
@@ -79,11 +79,11 @@ FishUI.Window {
             columnSpacing: 16
             rowSpacing: 16
 
-            Label {
+            FishUI.Label {
                 text: qsTr("User name")
             }
 
-            TextField {
+            FishUI.TextField {
                 id: _nameTextField
                 placeholderText: qsTr("User name")
                 selectByMouse: true
@@ -91,11 +91,11 @@ FishUI.Window {
                 Keys.onEscapePressed: control.close()
             }
 
-            Label {
+            FishUI.Label {
                 text: qsTr("Password")
             }
 
-            TextField {
+            FishUI.TextField {
                 id: _passwordTextField
                 placeholderText: qsTr("Password")
                 echoMode: TextInput.Password
@@ -104,11 +104,11 @@ FishUI.Window {
                 Keys.onEscapePressed: control.close()
             }
 
-            Label {
+            FishUI.Label {
                 text: qsTr("Verify password")
             }
 
-            TextField {
+            FishUI.TextField {
                 id: _verifyPasswordTextField
                 placeholderText: qsTr("Verify password")
                 echoMode: TextInput.Password
@@ -117,18 +117,18 @@ FishUI.Window {
                 Keys.onEscapePressed: control.close()
             }
 
-            Label {
+            FishUI.Label {
                 text: qsTr("Account type")
             }
 
-            ComboBox {
+            FishUI.ComboBox {
                 id: accountTypeCombo
                 model: [qsTr("Standard"), qsTr("Administrator")]
                 Layout.fillWidth: true
             }
         }
 
-        Label {
+        FishUI.Label {
             Layout.fillWidth: true
             visible: control.errorMessage !== ""
             text: control.errorMessage

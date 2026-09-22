@@ -48,7 +48,7 @@ FishUI.Window {
         anchors.margins: 16
         spacing: 16
 
-        Label {
+        FishUI.Label {
             Layout.fillWidth: true
             Layout.rightMargin: 32
             text: control.title
@@ -58,7 +58,7 @@ FishUI.Window {
             wrapMode: Text.Wrap
         }
 
-        Label {
+        FishUI.Label {
             Layout.fillWidth: true
             text: control.userName
             textFormat: Text.PlainText
@@ -72,11 +72,11 @@ FishUI.Window {
             columnSpacing: 16
             rowSpacing: 16
 
-            Label {
+            FishUI.Label {
                 text: qsTranslate("UserDelegateItem", "Password")
             }
 
-            TextField {
+            FishUI.TextField {
                 id: passwordField
                 Layout.fillWidth: true
                 placeholderText: qsTranslate("UserDelegateItem", "Password")
@@ -84,11 +84,11 @@ FishUI.Window {
                 selectByMouse: true
             }
 
-            Label {
+            FishUI.Label {
                 text: qsTranslate("UserDelegateItem", "Verify password")
             }
 
-            TextField {
+            FishUI.TextField {
                 id: verifyPasswordField
                 Layout.fillWidth: true
                 placeholderText: qsTranslate("UserDelegateItem", "Verify password")

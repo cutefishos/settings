@@ -77,7 +77,7 @@ ItemPage {
             requestActivate()
         }
 
-        headerItem: Label {
+        headerItem: FishUI.Label {
             anchors.left: parent.left
             anchors.leftMargin: 16
             anchors.verticalCenter: parent.verticalCenter
@@ -96,7 +96,7 @@ ItemPage {
             anchors.margins: 16
             spacing: 16
 
-            Label {
+            FishUI.Label {
                 Layout.fillWidth: true
                 text: forgetDialog.device ? forgetDialog.device.name : ""
                 textFormat: Text.PlainText
@@ -138,11 +138,11 @@ ItemPage {
 
             RoundedItem {
                 RowLayout {
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Bluetooth")
                         Layout.fillWidth: true
                     }
-                    Switch {
+                    FishUI.Switch {
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         checked: Bluetooth.Manager.enabled
                         enabled: Bluetooth.Manager.operational && Bluetooth.Manager.adapters.length > 0
@@ -151,7 +151,7 @@ ItemPage {
                         onClicked: Bluetooth.Manager.enabled = checked
                     }
                 }
-                Label {
+                FishUI.Label {
                     Layout.fillWidth: true
                     wrapMode: Text.Wrap
                     visible: !Bluetooth.Manager.operational || !Bluetooth.Manager.adapters.length
@@ -163,7 +163,7 @@ ItemPage {
                 }
                 RowLayout {
                     visible: Bluetooth.Manager.enabled
-                    Label {
+                    FishUI.Label {
                         Layout.fillWidth: true
                         text: Bluetooth.Manager.scanning ? qsTr("Searching for devices…") : qsTr("Devices")
                     }
@@ -172,7 +172,7 @@ ItemPage {
                         implicitWidth: 28
                         implicitHeight: 28
                     }
-                    Button {
+                    FishUI.Button {
                         text: Bluetooth.Manager.discoveryRequested ? qsTr("Stop searching") : qsTr("Search")
                         onClicked: {
                             Bluetooth.Manager.clearError()
@@ -184,13 +184,13 @@ ItemPage {
 
             RoundedItem {
                 visible: Bluetooth.Manager.errorText.length > 0
-                Label {
+                FishUI.Label {
                     Layout.fillWidth: true
                     wrapMode: Text.Wrap
                     textFormat: Text.PlainText
                     text: Bluetooth.Manager.errorText
                 }
-                Button {
+                FishUI.Button {
                     text: qsTr("Dismiss")
                     onClicked: Bluetooth.Manager.clearError()
                 }
@@ -200,7 +200,7 @@ ItemPage {
                 model: Bluetooth.Manager.adapters
                 delegate: RoundedItem {
                     required property var modelData
-                    Label {
+                    FishUI.Label {
                         Layout.fillWidth: true
                         text: modelData.name + " · " + modelData.address
                         textFormat: Text.PlainText
@@ -208,13 +208,13 @@ ItemPage {
                     }
                     RowLayout {
                         Layout.fillWidth: true
-                        TextField {
+                        FishUI.TextField {
                             id: adapterName
                             Layout.fillWidth: true
                             placeholderText: modelData.name
                             maximumLength: 248
                         }
-                        Button {
+                        FishUI.Button {
                             text: qsTr("Rename")
                             enabled: adapterName.text.length > 0
                             onClicked: {
@@ -224,19 +224,19 @@ ItemPage {
                         }
                     }
                     RowLayout {
-                        Switch {
+                        FishUI.Switch {
                             text: qsTr("Powered")
                             checked: modelData.powered
                             onClicked: modelData.powered = checked
                         }
-                        Switch {
+                        FishUI.Switch {
                             text: qsTr("Visible to other devices")
                             enabled: modelData.powered
                             checked: modelData.discoverable
                             onClicked: modelData.discoverable = checked
                         }
                     }
-                    Switch {
+                    FishUI.Switch {
                         text: qsTr("Allow incoming pairing")
                         enabled: modelData.powered
                         checked: modelData.pairable
@@ -245,7 +245,7 @@ ItemPage {
                 }
             }
 
-            Label {
+            FishUI.Label {
                 visible: Bluetooth.Manager.enabled && devicesModel.count === 0
                 text: qsTr("No devices found. Make your device discoverable and search again.")
                 wrapMode: Text.Wrap
@@ -260,22 +260,22 @@ ItemPage {
                     RowLayout {
                         ColumnLayout {
                             Layout.fillWidth: true
-                            Label {
+                            FishUI.Label {
                                 Layout.fillWidth: true
                                 text: device.name
                                 textFormat: Text.PlainText
                                 elide: Text.ElideRight
                             }
-                            Label {
+                            FishUI.Label {
                                 text: device.address + " · " + device.adapterPath.split("/").pop()
                                 color: FishUI.Theme.disabledTextColor
                             }
-                            Label {
+                            FishUI.Label {
                                 text: device.connected ? qsTr("Connected")
                                       : device.paired ? qsTr("Paired") : qsTr("Not paired")
                             }
                         }
-                        Label {
+                        FishUI.Label {
                             visible: device.batteryPercentage >= 0
                             text: qsTr("%1% battery").arg(device.batteryPercentage)
                         }
@@ -287,7 +287,7 @@ ItemPage {
                         }
                     }
                     RowLayout {
-                        Button {
+                        FishUI.Button {
                             text: device.connected ? qsTr("Disconnect")
                                   : device.paired ? qsTr("Connect") : qsTr("Pair")
                             enabled: !device.busy && (device.paired || Bluetooth.Manager.agentReady)
@@ -300,12 +300,12 @@ ItemPage {
                                     device.pair()
                             }
                         }
-                        Button {
+                        FishUI.Button {
                             visible: device.busy && !device.paired
                             text: qsTr("Cancel pairing")
                             onClicked: device.cancelPairing()
                         }
-                        Button {
+                        FishUI.Button {
                             visible: device.paired
                             enabled: !device.busy
                             text: qsTr("Forget")
@@ -314,14 +314,14 @@ ItemPage {
                                 forgetDialog.open()
                             }
                         }
-                        CheckBox {
+                        FishUI.CheckBox {
                             visible: device.paired
                             text: qsTr("Trusted")
                             checked: device.trusted
                             enabled: !device.busy
                             onClicked: device.trusted = checked
                         }
-                        CheckBox {
+                        FishUI.CheckBox {
                             text: qsTr("Blocked")
                             checked: device.blocked
                             enabled: !device.busy

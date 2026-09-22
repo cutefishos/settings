@@ -50,7 +50,7 @@ ItemPage {
                 spacing: FishUI.Units.largeSpacing
 
                 RowLayout {
-                    Label {
+                    FishUI.Label {
                         text: qsTr("VPN")
                         color: FishUI.Theme.disabledTextColor
                     }
@@ -59,7 +59,7 @@ ItemPage {
                         Layout.fillWidth: true
                     }
 
-                    Switch {
+                    FishUI.Switch {
                         id: vpnSwitch
                         Layout.fillHeight: true
                         rightPadding: 0

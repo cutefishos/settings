@@ -77,7 +77,7 @@ FishUI.Window {
             }
         }
 
-        StackView {
+        FishUI.StackView {
             id: _stackView
             anchors.left: sideBar.right
             anchors.right: parent.right
@@ -122,7 +122,7 @@ FishUI.Window {
                 onClicked: rootWindow.goForward()
             }
 
-            Label {
+            FishUI.Label {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.leftMargin: FishUI.Units.smallSpacing / 2
@@ -205,7 +205,7 @@ FishUI.Window {
     function showHistoryEntry(index) {
         var entry = history[index]
         historyIndex = index
-        _stackView.replace(null, Qt.resolvedUrl(entry.page), entry.properties, StackView.Immediate)
+        _stackView.replace(null, Qt.resolvedUrl(entry.page), entry.properties, FishUI.StackView.Immediate)
 
         var sideBarIndex = sideBarIndexOf(entry.rootPage)
         if (sideBar.currentIndex !== sideBarIndex) {

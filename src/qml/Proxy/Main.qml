@@ -63,7 +63,7 @@ ItemPage {
                 id: mainItem
                 spacing: FishUI.Units.largeSpacing
 
-                RadioButton {
+                FishUI.RadioButton {
                     id: noProxyRadioButton
                     checked: networkProxy.flag === 0
                     text: qsTr("No Proxy")
@@ -72,7 +72,7 @@ ItemPage {
                     }
                 }
 
-                RadioButton {
+                FishUI.RadioButton {
                     id: autoScriptProxyRadioButton
                     checked: networkProxy.flag === 1
                     text: qsTr("Use proxy auto configuration URL")
@@ -82,7 +82,7 @@ ItemPage {
                     }
                 }
 
-                RadioButton {
+                FishUI.RadioButton {
                     id: manualProxyRadioButton
                     checked: networkProxy.flag === 2
                     text: qsTr("Use manually specified proxy configuration")
@@ -105,7 +105,7 @@ ItemPage {
                     spacing: FishUI.Units.largeSpacing
                     visible: autoScriptProxyRadioButton.checked
 
-                    TextField {
+                    FishUI.TextField {
                         id: autoScriptField
                         Layout.fillWidth: true
                         text: networkProxy.scriptProxy
@@ -116,7 +116,7 @@ ItemPage {
                         }
                     }
 
-                    Button {
+                    FishUI.Button {
                         text: qsTr("Select file")
                         flat: true
                         onClicked: fileDialog.open()
@@ -130,11 +130,11 @@ ItemPage {
                     columnSpacing: FishUI.Units.largeSpacing
                     rowSpacing: FishUI.Units.largeSpacing
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("HTTP Proxy")
                     }
 
-                    TextField {
+                    FishUI.TextField {
                         id: httpProxyField
                         Layout.fillWidth: true
                         height: 40
@@ -144,11 +144,11 @@ ItemPage {
                         }
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Port")
                     }
 
-                    TextField {
+                    FishUI.TextField {
                         id: httpProxyPortField
                         height: 40
                         Layout.preferredWidth: 80
@@ -166,7 +166,7 @@ ItemPage {
                         width: 1
                     }
 
-                    CheckBox {
+                    FishUI.CheckBox {
                         id: forFtpCheckBox
                         text: qsTr("Also use this proxy for FTP")
                         Layout.fillWidth: true
@@ -185,11 +185,11 @@ ItemPage {
                     }
 
                     // FTP
-                    Label {
+                    FishUI.Label {
                         text: qsTr("FTP Proxy")
                     }
 
-                    TextField {
+                    FishUI.TextField {
                         id: ftpProxyTextField
                         Layout.fillWidth: true
                         height: 40
@@ -200,11 +200,11 @@ ItemPage {
                         }
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Port")
                     }
 
-                    TextField {
+                    FishUI.TextField {
                         id: ftpProxyPortField
                         height: 40
                         Layout.preferredWidth: 80
@@ -219,11 +219,11 @@ ItemPage {
                     }
 
                     // SOCKS
-                    Label {
+                    FishUI.Label {
                         text: qsTr("SOCKS Proxy")
                     }
 
-                    TextField {
+                    FishUI.TextField {
                         id: socksProxyField
                         Layout.fillWidth: true
                         height: 40
@@ -234,11 +234,11 @@ ItemPage {
                         }
                     }
 
-                    Label {
+                    FishUI.Label {
                         text: qsTr("Port")
                     }
 
-                    TextField {
+                    FishUI.TextField {
                         id: socksProxyPortField
                         height: 40
                         Layout.preferredWidth: 80
@@ -263,7 +263,7 @@ ItemPage {
                         Layout.fillWidth: true
                     }
 
-                    Button {
+                    FishUI.Button {
                         text: qsTr("Save")
 
                         onClicked: {
