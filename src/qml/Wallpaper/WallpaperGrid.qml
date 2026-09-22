@@ -8,6 +8,10 @@ ColumnLayout {
     id: control
 
     property string title
+    // A FishUI.Icon glyph drawn before the title, for sections that stand for
+    // something other than the wallpapers themselves.
+    property string iconName
+    property bool closable: false
     property var wallpapers: []
     property string currentWallpaper
     property bool imageSelected: true
@@ -26,18 +30,82 @@ ColumnLayout {
     signal wallpaperSelected(string path)
     signal addWallpaperRequested
     signal removeWallpaperRequested(string path)
+    signal closeRequested
 
     Layout.fillWidth: true
     spacing: FishUI.Units.largeSpacing
 
+    HoverHandler {
+        id: sectionHover
+
+        enabled: control.closable
+    }
+
     RowLayout {
         Layout.fillWidth: true
         Layout.preferredHeight: 24
+        spacing: FishUI.Units.smallSpacing
+
+        FishUI.Icon {
+            Layout.alignment: Qt.AlignVCenter
+            width: 18
+            height: width
+            visible: control.iconName !== ""
+            name: control.iconName
+            color: FishUI.Theme.textColor
+        }
 
         FishUI.Label {
             Layout.alignment: Qt.AlignVCenter
             text: control.title
             font.bold: true
+            elide: Text.ElideRight
+        }
+
+        Item {
+            Layout.alignment: Qt.AlignVCenter
+            implicitWidth: 20
+            implicitHeight: 20
+            visible: control.closable && sectionHover.hovered
+
+            Rectangle {
+                anchors.fill: parent
+                radius: width / 2
+                color: FishUI.Theme.textColor
+                opacity: closeSectionMouseArea.pressed ? 0.2 : closeSectionMouseArea.containsMouse ? 0.1 : 0.0
+            }
+
+            Item {
+                anchors.centerIn: parent
+                width: 10
+                height: width
+
+                Rectangle {
+                    anchors.centerIn: parent
+                    width: 10
+                    height: 1.5
+                    radius: height / 2
+                    rotation: 45
+                    color: FishUI.Theme.textColor
+                }
+
+                Rectangle {
+                    anchors.centerIn: parent
+                    width: 10
+                    height: 1.5
+                    radius: height / 2
+                    rotation: -45
+                    color: FishUI.Theme.textColor
+                }
+            }
+
+            MouseArea {
+                id: closeSectionMouseArea
+
+                anchors.fill: parent
+                hoverEnabled: true
+                onClicked: control.closeRequested()
+            }
         }
 
         Item {

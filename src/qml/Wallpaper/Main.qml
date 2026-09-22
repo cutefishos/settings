@@ -40,7 +40,7 @@ ItemPage {
                         background.type = 0;
                         background.path = path;
                     }
-                    onAddWallpaperRequested: wallpaperDialog.open()
+                    onAddWallpaperRequested: addMenu.popup()
                     onRemoveWallpaperRequested: function (path) {
                         background.removeUserWallpaper(path);
                     }
@@ -55,6 +55,42 @@ ItemPage {
                     onWallpaperSelected: function (path) {
                         background.type = 0;
                         background.path = path;
+                    }
+                }
+
+                Repeater {
+                    model: background.wallpaperFolders
+
+                    WallpaperGrid {
+                        id: folderGrid
+
+                        required property string modelData
+                        // The copies are made in the background, so the list is
+                        // asked for again every time the service reports more.
+                        property int revision: 0
+
+                        title: modelData.replace(/\/+$/, "").split("/").pop()
+                        iconName: "folder"
+                        closable: true
+                        wallpapers: folderGrid.revision >= 0
+                                    ? background.wallpapersInFolder(modelData) : []
+                        currentWallpaper: background.path
+                        imageSelected: background.type === 0
+
+                        onWallpaperSelected: function (path) {
+                            background.type = 0;
+                            background.path = path;
+                        }
+                        onCloseRequested: background.removeWallpaperFolder(modelData)
+
+                        Connections {
+                            target: background
+
+                            function onWallpaperFolderImagesChanged(folder) {
+                                if (folder === folderGrid.modelData)
+                                    folderGrid.revision += 1;
+                            }
+                        }
                     }
                 }
 
@@ -143,16 +179,41 @@ ItemPage {
         }
     }
 
+    FishUI.DesktopMenu {
+        id: addMenu
+
+        FishUI.MenuItem {
+            text: qsTr("Choose File...")
+            onTriggered: wallpaperDialog.open()
+        }
+
+        FishUI.MenuItem {
+            text: qsTr("Choose Folder...")
+            onTriggered: folderDialog.open()
+        }
+    }
+
     FileDialog {
         id: wallpaperDialog
 
         title: qsTr("Add Wallpaper")
-        nameFilters: [qsTr("Image files (*.jpg *.jpeg *.png *.webp)")]
+        nameFilters: [qsTr("Image files (*.jpg *.jpeg *.png *.webp *.bmp *.tif *.tiff *.avif)")]
 
         onAccepted: {
             var path = decodeURIComponent(selectedFile.toString().replace("file://", ""));
             background.type = 0;
             background.path = path;
+        }
+    }
+
+    FolderDialog {
+        id: folderDialog
+
+        title: qsTr("Add Wallpaper Folder")
+
+        onAccepted: {
+            var path = decodeURIComponent(selectedFolder.toString().replace("file://", ""));
+            background.addWallpaperFolder(path);
         }
     }
 }

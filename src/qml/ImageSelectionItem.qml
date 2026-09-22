@@ -36,8 +36,12 @@ Item {
         anchors.fill: parent
 
         FishUI.RoundedRectangle {
-            width: control.previewWidth
-            height: control.previewHeight
+            // The size goes through the layout's own hints: an explicit width
+            // and height alone are read once, and a thumbnail that is resized
+            // after the item was built keeps the stale size until something
+            // else invalidates the layout.
+            Layout.preferredWidth: control.previewWidth
+            Layout.preferredHeight: control.previewHeight
             radius: FishUI.Theme.bigRadius
             color: "transparent"
             border.color: FishUI.Theme.highlightColor
