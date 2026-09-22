@@ -3,6 +3,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
 import FishUI 1.0 as FishUI
+import Fish as FishStyle
 import Cutefish.Settings 1.0
 import "../"
 
@@ -85,11 +86,12 @@ ItemPage {
 
                 RoundedItem {
                     RowLayout {
-                        Slider {
+                        FishStyle.Slider {
                             Layout.fillWidth: true
                             from: 16
                             to: 64
                             stepSize: 8
+                            stepped: true
                             value: cursorModel.cursorSize
                             onMoved: cursorModel.cursorSize = value
                         }
