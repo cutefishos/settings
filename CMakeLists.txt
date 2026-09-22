@@ -22,7 +22,7 @@ pkg_check_modules(Xcursor REQUIRED IMPORTED_TARGET xcursor)
 find_package(Libcrypt REQUIRED)
 
 
-find_package(CutefishFramework REQUIRED COMPONENTS Application Applications Appearance IO)
+find_package(CutefishFramework REQUIRED COMPONENTS Application Appearance IO)
 
 pkg_search_module(FontConfig REQUIRED fontconfig IMPORTED_TARGET)
 pkg_search_module(ICU REQUIRED icu-i18n)
@@ -77,7 +77,6 @@ add_executable(${PROJECT_NAME} ${DBUS_SOURCES} ${SRCS} ${RESOURCES})
 target_link_libraries(${PROJECT_NAME}
         PkgConfig::Xcursor
         Cutefish::Application
-        Cutefish::Applications
         Cutefish::Appearance
         Cutefish::IO
         Qt6::Core

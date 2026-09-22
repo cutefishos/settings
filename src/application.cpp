@@ -7,7 +7,6 @@
 #include <QTranslator>
 
 #include "about.h"
-#include "applicationregistry.h"
 #include "battery.h"
 #include "batteryhistorymodel.h"
 #include "brightness.h"
@@ -74,7 +73,6 @@ Application::Application(int &argc, char **argv)
     // QML
     m_engine.addImageProvider(QStringLiteral("thumbnailer"), new ThumbnailProvider);
 
-    registerApplicationsQmlTypes();
     const char *uri = "Cutefish.Settings";
     qmlRegisterType<DockSettings>(uri, 1, 0, "DockSettings");
     qmlRegisterType<FontsModel>(uri, 1, 0, "FontsModel");
