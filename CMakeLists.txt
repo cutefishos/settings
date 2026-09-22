@@ -59,6 +59,7 @@ set(SRCS
     src/vpn/nm-pptp-service.h
     src/networkproxy.cpp
     src/defaultapplications.cpp
+    src/mimeapps.cpp
     src/inputmethod.cpp
     src/mock/networkmockmodel.cpp
 )

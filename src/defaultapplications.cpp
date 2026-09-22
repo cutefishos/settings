@@ -20,16 +20,12 @@
 #include "defaultapplications.h"
 #include "applicationregistry.h"
 #include "desktopentry.h"
+#include "mimeapps.h"
 
 #include <QDebug>
 #include <QFileInfo>
 #include <QSettings>
 #include <QStandardPaths>
-
-static QString firstDesktopEntry(const QString &value)
-{
-    return value.split(QLatin1Char(';'), Qt::SkipEmptyParts).value(0).trimmed();
-}
 
 DefaultApplications::DefaultApplications(QObject *parent)
     : QObject(parent)
@@ -44,11 +40,9 @@ DefaultApplications::DefaultApplications(QObject *parent)
 void DefaultApplications::loadApps()
 {
     m_browserList.clear();
-    m_fileManagerList.clear();
     m_emailList.clear();
     m_terminalList.clear();
     m_browserIndex = -1;
-    m_fileManagerIndex = -1;
     m_emailIndex = -1;
     m_terminalIndex = -1;
 
@@ -61,11 +55,8 @@ void DefaultApplications::loadApps()
         item.categories = entry->categories().join(QLatin1Char(';'));
         item.fileName = QFileInfo(entry->path()).fileName();
 
-        if (entry->categories().contains(QStringLiteral("FileManager"))
-            && entry->mimeTypes().contains(QStringLiteral("inode/directory"))) {
-            m_fileManagerList.append(item);
-        } else if (entry->categories().contains(QStringLiteral("WebBrowser"))
-                   && entry->mimeTypes().contains(QStringLiteral("x-scheme-handler/http"))) {
+        if (entry->categories().contains(QStringLiteral("WebBrowser"))
+            && entry->mimeTypes().contains(QStringLiteral("x-scheme-handler/http"))) {
             m_browserList.append(item);
         } else if (entry->categories().contains(QStringLiteral("Email"))
                    && entry->mimeTypes().contains(QStringLiteral("x-scheme-handler/mailto"))) {
@@ -75,30 +66,20 @@ void DefaultApplications::loadApps()
         }
     }
 
-    // XDG values are semicolon-separated lists and may end with a semicolon.
-    QSettings mimeApps(mimeAppsListFilePath(), QSettings::IniFormat);
-    mimeApps.beginGroup("Default Applications");
-
     QSettings settings("cutefish", "defaultApps");
 
     const QString defaultBrowser =
-            firstDesktopEntry(mimeApps.value("x-scheme-handler/http").toString());
-    const QString defaultFM = firstDesktopEntry(mimeApps.value("inode/directory").toString());
+            MimeApps::associations(mimeAppsListFilePath(), "Default Applications",
+                                   "x-scheme-handler/http").value(0);
     const QString defaultEMail =
-            firstDesktopEntry(mimeApps.value("x-scheme-handler/mailto").toString());
+            MimeApps::associations(mimeAppsListFilePath(), "Default Applications",
+                                   "x-scheme-handler/mailto").value(0);
     QString defaultTerminal = settings.value("terminal").toString();
 
     // Init indexes.
     for (int i = 0; i < m_browserList.size(); ++i) {
         if (defaultBrowser == m_browserList.at(i).fileName) {
             m_browserIndex = i;
-            break;
-        }
-    }
-
-    for (int i = 0; i < m_fileManagerList.size(); ++i) {
-        if (defaultFM == m_fileManagerList.at(i).fileName) {
-            m_fileManagerIndex = i;
             break;
         }
     }
@@ -125,21 +106,6 @@ QVariantList DefaultApplications::browserList()
     QVariantList list;
 
     for (const AppItem &item : m_browserList) {
-        QVariantMap map;
-        map["name"] = item.name;
-        map["icon"] = item.icon;
-        map["path"] = item.path;
-        list << map;
-    }
-
-    return list;
-}
-
-QVariantList DefaultApplications::fileManagerList()
-{
-    QVariantList list;
-
-    for (const AppItem &item : m_fileManagerList) {
         QVariantMap map;
         map["name"] = item.name;
         map["icon"] = item.icon;
@@ -185,11 +151,6 @@ int DefaultApplications::browserIndex()
     return m_browserIndex;
 }
 
-int DefaultApplications::fileManagerIndex()
-{
-    return m_fileManagerIndex;
-}
-
 int DefaultApplications::emailIndex()
 {
     return m_emailIndex;
@@ -209,16 +170,6 @@ void DefaultApplications::setDefaultBrowser(int index)
 
     setDefaultApp("x-scheme-handler/http", desktop);
     setDefaultApp("x-scheme-handler/https", desktop);
-}
-
-void DefaultApplications::setDefaultFileManager(int index)
-{
-    if (index < 0 || index >= m_fileManagerList.size())
-        return;
-
-    const QString desktop = m_fileManagerList.at(index).fileName;
-
-    setDefaultApp("inode/directory", desktop);
 }
 
 void DefaultApplications::setDefaultEMail(int index)
@@ -246,9 +197,11 @@ void DefaultApplications::setDefaultTerminal(int index)
 
 void DefaultApplications::setDefaultApp(const QString &mimeType, const QString &path)
 {
-    QSettings mimeApps(mimeAppsListFilePath(), QSettings::IniFormat);
-    mimeApps.beginGroup("Default Applications");
-    mimeApps.setValue(mimeType, path + QLatin1Char(';'));
+    if (!MimeApps::setDefault(mimeAppsListFilePath(), mimeType, path)) {
+        qWarning() << "Failed to save default application for" << mimeType;
+        return;
+    }
+    loadApps();
 }
 
 QString DefaultApplications::mimeAppsListFilePath() const

@@ -67,26 +67,6 @@ ItemPage {
                     }
 
                     FishUI.Label {
-                        text: qsTr("File Manager")
-                        enabled: fileManagerComboBox.count !== 0
-                    }
-
-                    FishUI.ComboBox {
-                        id: fileManagerComboBox
-                        Layout.fillWidth: true
-                        textRole: "name"
-                        iconRole: "icon"
-                        model: defaultApps.fileManagerList
-                        currentIndex: defaultApps.fileManagerIndex >= 0
-                                      ? defaultApps.fileManagerIndex
-                                      : (defaultApps.fileManagerList.length > 0 ? 0 : -1)
-                        enabled: count !== 0
-                        onActivated: {
-                            defaultApps.setDefaultFileManager(fileManagerComboBox.currentIndex)
-                        }
-                    }
-
-                    FishUI.Label {
                         text: qsTr("Email Client")
                         enabled: emailComboBox.count !== 0
                     }

@@ -21,6 +21,7 @@
 #define DEFAULTAPPLICATIONS_H
 
 #include <QObject>
+#include <QVariantList>
 
 class AppItem {
 public:
@@ -36,11 +37,9 @@ class DefaultApplications : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QVariantList browserList READ browserList NOTIFY loadFinished)
-    Q_PROPERTY(QVariantList fileManagerList READ fileManagerList NOTIFY loadFinished)
     Q_PROPERTY(QVariantList emailList READ emailList NOTIFY loadFinished)
     Q_PROPERTY(QVariantList terminalList READ terminalList NOTIFY loadFinished)
     Q_PROPERTY(int browserIndex READ browserIndex NOTIFY loadFinished)
-    Q_PROPERTY(int fileManagerIndex READ fileManagerIndex NOTIFY loadFinished)
     Q_PROPERTY(int emailIndex READ emailIndex NOTIFY loadFinished)
     Q_PROPERTY(int terminalIndex READ terminalIndex NOTIFY loadFinished)
 
@@ -50,17 +49,14 @@ public:
     void loadApps();
 
     QVariantList browserList();
-    QVariantList fileManagerList();
     QVariantList emailList();
     QVariantList terminalList();
 
     int browserIndex();
-    int fileManagerIndex();
     int emailIndex();
     int terminalIndex();
 
     Q_INVOKABLE void setDefaultBrowser(int index);
-    Q_INVOKABLE void setDefaultFileManager(int index);
     Q_INVOKABLE void setDefaultEMail(int index);
     Q_INVOKABLE void setDefaultTerminal(int index);
 
@@ -73,12 +69,10 @@ signals:
 
 private:
     QList<AppItem> m_browserList;
-    QList<AppItem> m_fileManagerList;
     QList<AppItem> m_emailList;
     QList<AppItem> m_terminalList;
 
     int m_browserIndex = -1;
-    int m_fileManagerIndex = -1;
     int m_emailIndex = -1;
     int m_terminalIndex = -1;
 };
