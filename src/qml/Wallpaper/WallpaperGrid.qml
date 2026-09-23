@@ -174,7 +174,6 @@ ColumnLayout {
 
             readonly property bool selected: control.imageSelected && modelData === control.currentWallpaper
             readonly property bool addWallpaper: control.showAddWallpaper && modelData === ""
-            readonly property bool currentWallpaper: !addWallpaper && modelData === control.currentWallpaper
             readonly property int thumbnailInset: 4
             readonly property real thumbnailOffset: wallpaperView.columnCount > 1 ? (index % wallpaperView.columnCount) * (width - wallpaperView.thumbnailWidth) / (wallpaperView.columnCount - 1) : 0
 
@@ -275,6 +274,12 @@ ColumnLayout {
                 checked: imageStatus === Image.Ready && wallpaperItem.selected
                 onClicked: control.wallpaperSelected(modelData)
 
+                HoverHandler {
+                    id: thumbnailHover
+
+                    enabled: control.removable
+                }
+
                 Rectangle {
                     anchors.top: parent.top
                     anchors.right: parent.right
@@ -282,7 +287,7 @@ ColumnLayout {
                     width: 20
                     height: width
                     z: 2
-                    visible: control.removable && !wallpaperItem.currentWallpaper && thumbnail.hovered
+                    visible: control.removable && thumbnailHover.hovered
                     radius: width / 2
                     color: closeMouseArea.pressed ? Qt.rgba(0, 0, 0, 0.7) : Qt.rgba(0, 0, 0, 0.55)
 
