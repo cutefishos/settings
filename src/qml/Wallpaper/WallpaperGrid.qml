@@ -42,6 +42,7 @@ ColumnLayout {
 
         RowLayout {
             Layout.alignment: Qt.AlignVCenter
+            Layout.fillHeight: true
             spacing: FishUI.Units.smallSpacing
 
             HoverHandler {
@@ -79,7 +80,10 @@ ColumnLayout {
                 Layout.alignment: Qt.AlignVCenter
                 implicitWidth: 20
                 implicitHeight: 20
-                visible: control.closable && sectionHover.hovered
+                // Stays laid out while hidden so the row height and the
+                // centred title do not move when the button appears.
+                visible: control.closable
+                opacity: sectionHover.hovered ? 1.0 : 0.0
 
                 Rectangle {
                     anchors.fill: parent
@@ -116,6 +120,7 @@ ColumnLayout {
                     id: closeSectionMouseArea
 
                     anchors.fill: parent
+                    enabled: sectionHover.hovered
                     hoverEnabled: true
                     onClicked: control.closeRequested()
                 }
