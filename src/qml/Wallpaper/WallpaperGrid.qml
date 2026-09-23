@@ -58,7 +58,6 @@ ColumnLayout {
         FishUI.Label {
             Layout.alignment: Qt.AlignVCenter
             text: control.title
-            font.bold: true
             elide: Text.ElideRight
         }
 

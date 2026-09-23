@@ -100,7 +100,6 @@ ItemPage {
 
                     FishUI.Label {
                         text: qsTr("Colors")
-                        font.bold: true
                     }
 
                     GridView {
