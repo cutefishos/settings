@@ -35,75 +35,80 @@ ColumnLayout {
     Layout.fillWidth: true
     spacing: FishUI.Units.largeSpacing
 
-    HoverHandler {
-        id: sectionHover
-
-        enabled: control.closable
-    }
-
     RowLayout {
         Layout.fillWidth: true
         Layout.preferredHeight: 24
         spacing: FishUI.Units.smallSpacing
 
-        FishUI.Icon {
+        RowLayout {
             Layout.alignment: Qt.AlignVCenter
-            width: 18
-            height: width
-            visible: control.iconName !== ""
-            name: control.iconName
-            color: FishUI.Theme.textColor
-        }
+            spacing: FishUI.Units.smallSpacing
 
-        FishUI.Label {
-            Layout.alignment: Qt.AlignVCenter
-            text: control.title
-            elide: Text.ElideRight
-        }
+            HoverHandler {
+                id: sectionHover
 
-        Item {
-            Layout.alignment: Qt.AlignVCenter
-            implicitWidth: 20
-            implicitHeight: 20
-            visible: control.closable && sectionHover.hovered
+                enabled: control.closable
+            }
 
-            Rectangle {
-                anchors.fill: parent
-                radius: width / 2
+            FishUI.Icon {
+                Layout.alignment: Qt.AlignVCenter
+                Layout.preferredWidth: 18
+                Layout.preferredHeight: 18
+                visible: control.iconName !== ""
+                name: control.iconName
                 color: FishUI.Theme.textColor
-                opacity: closeSectionMouseArea.pressed ? 0.2 : closeSectionMouseArea.containsMouse ? 0.1 : 0.0
+            }
+
+            FishUI.Label {
+                Layout.alignment: Qt.AlignVCenter
+                text: control.title
+                elide: Text.ElideRight
             }
 
             Item {
-                anchors.centerIn: parent
-                width: 10
-                height: width
+                Layout.alignment: Qt.AlignVCenter
+                implicitWidth: 20
+                implicitHeight: 20
+                visible: control.closable && sectionHover.hovered
 
                 Rectangle {
-                    anchors.centerIn: parent
-                    width: 10
-                    height: 1.5
-                    radius: height / 2
-                    rotation: 45
+                    anchors.fill: parent
+                    radius: width / 2
                     color: FishUI.Theme.textColor
+                    opacity: closeSectionMouseArea.pressed ? 0.2 : closeSectionMouseArea.containsMouse ? 0.1 : 0.0
                 }
 
-                Rectangle {
+                Item {
                     anchors.centerIn: parent
                     width: 10
-                    height: 1.5
-                    radius: height / 2
-                    rotation: -45
-                    color: FishUI.Theme.textColor
+                    height: width
+
+                    Rectangle {
+                        anchors.centerIn: parent
+                        width: 10
+                        height: 1.5
+                        radius: height / 2
+                        rotation: 45
+                        color: FishUI.Theme.textColor
+                    }
+
+                    Rectangle {
+                        anchors.centerIn: parent
+                        width: 10
+                        height: 1.5
+                        radius: height / 2
+                        rotation: -45
+                        color: FishUI.Theme.textColor
+                    }
                 }
-            }
 
-            MouseArea {
-                id: closeSectionMouseArea
+                MouseArea {
+                    id: closeSectionMouseArea
 
-                anchors.fill: parent
-                hoverEnabled: true
-                onClicked: control.closeRequested()
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    onClicked: control.closeRequested()
+                }
             }
         }
 
