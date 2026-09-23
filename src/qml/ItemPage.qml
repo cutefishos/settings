@@ -31,8 +31,6 @@ FishUI.Page {
         color: rootWindow.background.color
     }
 
-    // The title is drawn by the window header next to the navigation buttons.
-    header: Item {
-        height: rootWindow.header.height
-    }
+    // No header of its own: the title is drawn by the window header next to the
+    // navigation buttons, which floats over the page content.
 }

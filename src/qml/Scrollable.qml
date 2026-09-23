@@ -26,7 +26,10 @@ Flickable {
     flickableDirection: Flickable.VerticalFlick
     clip: true
 
-    topMargin: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
+    // The window header floats over the top of the page; content scrolls beneath it.
+    readonly property real topInset: rootWindow.header.height
+
+    topMargin: topInset + FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
     bottomMargin: FishUI.Units.largeSpacing * 2
     leftMargin: FishUI.Units.largeSpacing * 2
     rightMargin: FishUI.Units.largeSpacing * 2
@@ -42,6 +45,17 @@ Flickable {
     }
 
     FishUI.ScrollBar.vertical: FishUI.ScrollBar {
+        topPadding: root.topInset
         bottomPadding: FishUI.Theme.smallRadius
+    }
+
+    FishUI.HeaderBackdrop {
+        // Declared children of a Flickable would otherwise scroll with its content.
+        parent: root
+        z: 1
+        width: root.width
+        height: root.topInset
+        view: root
+        baseColor: rootWindow.background.color
     }
 }

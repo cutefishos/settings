@@ -90,6 +90,17 @@ FishUI.Window {
             replaceEnter: Transition {}
             replaceExit: Transition {}
         }
+
+        // Pages run up under the window header, so its empty parts must not
+        // reach them. Wheel events still pass through.
+        MouseArea {
+            anchors.left: sideBar.right
+            anchors.right: parent.right
+            anchors.top: parent.top
+            height: rootWindow.header.height
+            acceptedButtons: Qt.AllButtons
+            hoverEnabled: true
+        }
     }
 
     headerItem: Item {
