@@ -60,9 +60,19 @@ ColumnLayout {
             }
 
             FishUI.Label {
+                id: titleLabel
+
                 Layout.alignment: Qt.AlignVCenter
                 text: control.title
                 elide: Text.ElideRight
+            }
+
+            FishUI.Label {
+                Layout.alignment: Qt.AlignVCenter
+                visible: control.wallpapers.length > 0
+                text: "(" + control.wallpapers.length + ")"
+                color: FishUI.Theme.disabledTextColor
+                font.pointSize: Math.max(titleLabel.font.pointSize - 1, 1)
             }
 
             Item {
