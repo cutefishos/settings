@@ -21,7 +21,6 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import FishUI 1.0 as FishUI
-import Qt5Compat.GraphicalEffects
 
 Item {
     id: control
@@ -106,7 +105,7 @@ Item {
     }
 
     layer.enabled: true
-    layer.effect: OpacityMask {
+    layer.effect: FishUI.OpacityMask {
         maskSource: Item {
             width: control.width
             height: control.height

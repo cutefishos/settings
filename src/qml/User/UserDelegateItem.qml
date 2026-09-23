@@ -23,7 +23,6 @@ import QtQuick.Layouts 1.12
 import QtQuick.Window 2.12
 import QtCore
 import QtQuick.Dialogs
-import Qt5Compat.GraphicalEffects
 
 import Cutefish.Settings 1.0
 import Cutefish.Accounts 1.0
@@ -126,7 +125,7 @@ RoundedItem {
                         }
 
                         layer.enabled: true
-                        layer.effect: OpacityMask {
+                        layer.effect: FishUI.OpacityMask {
                             maskSource: Item {
                                 width: _userImage.width
                                 height: width

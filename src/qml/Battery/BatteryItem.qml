@@ -19,7 +19,6 @@
 
 import QtQuick 2.12
 import QtQuick.Controls 2.12
-import Qt5Compat.GraphicalEffects
 import QtQuick.Particles 2.12
 import FishUI 1.0 as FishUI
 
@@ -40,7 +39,7 @@ Item {
         radius: control.radius
 
         layer.enabled: true
-        layer.effect: OpacityMask {
+        layer.effect: FishUI.OpacityMask {
             maskSource: Item {
                 width: bgRect.width
                 height: bgRect.height

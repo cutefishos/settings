@@ -19,7 +19,6 @@
 
 import QtQuick 2.4
 import QtQuick.Controls 2.4
-import Qt5Compat.GraphicalEffects
 import FishUI 1.0 as FishUI
 
 Item {
@@ -56,7 +55,7 @@ Item {
         onClicked: control.clicked()
     }
 
-    ColorOverlay {
+    FishUI.ColorOverlay {
         anchors.fill: image
         source: control.iconName ? glyph : image
         color: "white"

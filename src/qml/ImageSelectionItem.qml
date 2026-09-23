@@ -1,7 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
-import Qt5Compat.GraphicalEffects
 import FishUI 1.0 as FishUI
 
 Item {
@@ -58,7 +57,7 @@ Item {
                 smooth: false
 
                 layer.enabled: true
-                layer.effect: OpacityMask {
+                layer.effect: FishUI.OpacityMask {
                     maskSource: Item {
                         width: preview.width
                         height: preview.height
