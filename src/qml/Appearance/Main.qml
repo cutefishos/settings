@@ -188,16 +188,28 @@ ItemPage {
             ListCard {
                 NavigationItem {
                     text: qsTr("Fonts")
+                    leading: RowIcon {
+                        source: "fonts.svg"
+                        tint: "#FE8433"
+                    }
                     onClicked: rootWindow.pushPage("qrc:/qml/Appearance/Fonts.qml")
                 }
 
                 NavigationItem {
                     text: qsTr("Icon Theme")
+                    leading: RowIcon {
+                        source: "icontheme.svg"
+                        tint: "#2EC347"
+                    }
                     onClicked: rootWindow.pushPage("qrc:/qml/Appearance/IconTheme.qml")
                 }
 
                 NavigationItem {
                     text: qsTr("Cursor Style")
+                    leading: RowIcon {
+                        source: "cursor.svg"
+                        tint: "#3385FF"
+                    }
                     onClicked: rootWindow.pushPage("qrc:/qml/Appearance/CursorTheme.qml")
                 }
             }

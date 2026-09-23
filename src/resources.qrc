@@ -5,6 +5,7 @@
         <file>qml/ItemPage.qml</file>
         <file>qml/NavigationButton.qml</file>
         <file>qml/NavigationItem.qml</file>
+        <file>qml/RowIcon.qml</file>
         <file>qml/ListCard.qml</file>
         <file>qml/ListRow.qml</file>
         <file>qml/SectionLabel.qml</file>
@@ -109,6 +110,8 @@
         <file>qml/InputMethod/Main.qml</file>
         <file>qml/InputMethod/InputMethodRow.qml</file>
         <file>images/sidebar/dark/cursor.svg</file>
+        <file>images/sidebar/dark/fonts.svg</file>
+        <file>images/sidebar/dark/icontheme.svg</file>
         <file>qml/DateTime/Main.qml</file>
         <file>qml/DateTime/TimeZoneDialog.qml</file>
         <file>images/light/world.svg</file>
