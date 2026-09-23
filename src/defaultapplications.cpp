@@ -66,7 +66,7 @@ void DefaultApplications::loadApps()
         }
     }
 
-    QSettings settings("cutefish", "defaultApps");
+    QSettings settings("cutefish", "defaultapps");
 
     const QString defaultBrowser =
             MimeApps::associations(mimeAppsListFilePath(), "Default Applications",
@@ -191,7 +191,7 @@ void DefaultApplications::setDefaultTerminal(int index)
 
     qDebug() << index << desktop;
 
-    QSettings settings("cutefish", "defaultApps");
+    QSettings settings("cutefish", "defaultapps");
     settings.setValue("terminal", desktop);
 }
 

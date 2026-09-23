@@ -214,7 +214,7 @@ bool Battery::showPercent()
     if (mockBatteryEnabled())
         return true;
 
-    QSettings settings(QSettings::UserScope, "cutefish", "statusbar");
+    QSettings settings(QSettings::UserScope, "cutefish", "battery");
     return settings.value("BatteryPercentage", false).toBool();
 }
 

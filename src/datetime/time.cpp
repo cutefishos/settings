@@ -25,7 +25,7 @@
 
 Time::Time(QObject *parent)
     : QObject(parent)
-    , m_settings("cutefish", "locale")
+    , m_settings("cutefish", "language")
 {
     m_twentyFour = m_settings.value("twentyFour", false).toBool();
 
