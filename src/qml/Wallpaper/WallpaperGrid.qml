@@ -52,8 +52,8 @@ ColumnLayout {
 
             FishUI.Icon {
                 Layout.alignment: Qt.AlignVCenter
-                Layout.preferredWidth: 18
-                Layout.preferredHeight: 18
+                Layout.preferredWidth: 16
+                Layout.preferredHeight: 16
                 visible: control.iconName !== ""
                 name: control.iconName
                 color: FishUI.Theme.textColor
