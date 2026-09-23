@@ -192,6 +192,11 @@ ItemPage {
                 }
 
                 NavigationItem {
+                    text: qsTr("Icon Theme")
+                    onClicked: rootWindow.pushPage("qrc:/qml/Appearance/IconTheme.qml")
+                }
+
+                NavigationItem {
                     text: qsTr("Cursor Style")
                     onClicked: rootWindow.pushPage("qrc:/qml/Appearance/CursorTheme.qml")
                 }

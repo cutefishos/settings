@@ -28,6 +28,7 @@
 
 #include "cursor/cursorthememodel.h"
 #include "cursor/mouse.h"
+#include "icontheme/iconthememodel.h"
 
 #include "datetime/time.h"
 #include "datetime/timezonemap.h"
@@ -80,6 +81,7 @@ Application::Application(int &argc, char **argv)
     qmlRegisterType<Battery>(uri, 1, 0, "Battery");
     qmlRegisterType<BatteryHistoryModel>(uri, 1, 0, "BatteryHistoryModel");
     qmlRegisterType<CursorThemeModel>(uri, 1, 0, "CursorThemeModel");
+    qmlRegisterType<IconThemeModel>(uri, 1, 0, "IconThemeModel");
     qmlRegisterType<About>(uri, 1, 0, "About");
     qmlRegisterType<Language>(uri, 1, 0, "Language");
     qmlRegisterType<InputMethod>(uri, 1, 0, "InputMethod");

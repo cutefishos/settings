@@ -41,7 +41,7 @@ set(SRCS
     src/notifications.cpp
     src/password.cpp
     src/batteryhistorymodel.cpp
-    src/cicontheme.cpp
+    src/icontheme/iconthememodel.cpp
     src/fonts/fonts.cpp
     src/powermanager.cpp
     src/cursor/cursorthememodel.cpp

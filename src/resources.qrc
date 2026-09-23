@@ -82,6 +82,7 @@
         <file>qml/Appearance/Main.qml</file>
         <file>qml/Appearance/Fonts.qml</file>
         <file>qml/Appearance/CursorTheme.qml</file>
+        <file>qml/Appearance/IconTheme.qml</file>
         <file>qml/Display/Main.qml</file>
         <file>qml/Battery/Main.qml</file>
         <file>qml/Battery/BatteryItem.qml</file>
