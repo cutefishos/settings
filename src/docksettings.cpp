@@ -47,10 +47,11 @@ int DockSettings::dockIconSize() const
 void DockSettings::setDockIconSize(int dockIconSize)
 {
     if (m_dockIconSize != dockIconSize) {
+        // Called on every slider move; do not block on the dock.
         QDBusInterface iface("com.cutefish.Dock", "/Dock", "com.cutefish.Dock",
                              QDBusConnection::sessionBus());
         if (iface.isValid()) {
-            iface.call("setIconSize", dockIconSize);
+            iface.asyncCall("setIconSize", dockIconSize);
         }
 
         m_dockIconSize = dockIconSize;

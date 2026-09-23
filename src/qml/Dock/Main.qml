@@ -91,90 +91,30 @@ ItemPage {
                     text: qsTr("Size")
                 }
 
-                FishUI.SegmentedControl {
-                    id: dockSizeTabbar
-                    Layout.fillWidth: true
+                RoundedItem {
+                    RowLayout {
+                        Layout.fillWidth: true
+                        spacing: FishUI.Units.largeSpacing
 
-                    FishUI.TabButton {
-                        text: qsTr("Small")
-                    }
-
-                    FishUI.TabButton {
-                        text: qsTr("Medium")
-                    }
-
-                    FishUI.TabButton {
-                        text: qsTr("Large")
-                    }
-
-                    FishUI.TabButton {
-                        text: qsTr("Huge")
-                    }
-
-                    currentIndex: {
-                        var index = 0
-
-                        if (dockSettings.dockIconSize <= 40)
-                            index = 0
-                        else if (dockSettings.dockIconSize <= 54)
-                            index = 1
-                        else if (dockSettings.dockIconSize <= 68)
-                            index = 2
-                        else
-                            index = 3
-
-                        return index
-                    }
-
-                    onCurrentIndexChanged: {
-                        var iconSize = 0
-
-                        switch (currentIndex) {
-                        // The value is the icon size itself; the dock derives
-                        // its paddings from it (54 is the design baseline).
-                        case 0:
-                            iconSize = 40
-                            break;
-                        case 1:
-                            iconSize = 54
-                            break;
-                        case 2:
-                            iconSize = 68
-                            break;
-                        case 3:
-                            iconSize = 82
-                            break;
+                        FishUI.Label {
+                            text: qsTr("Small")
                         }
 
-                        dockSettings.setDockIconSize(iconSize)
-                    }
-                }
-            }
+                        FishUI.Slider {
+                            Layout.fillWidth: true
+                            // The value is the icon size itself; the dock derives
+                            // its paddings from it (54 is the design baseline).
+                            // Read the setting once: a live binding would drag the
+                            // handle back to the rounded value on every move.
+                            from: 32
+                            to: 128
+                            Component.onCompleted: value = dockSettings.dockIconSize
+                            onMoved: dockSettings.setDockIconSize(Math.round(value))
+                        }
 
-            // Visibility
-            ColumnLayout {
-                Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
-
-                SectionLabel {
-                    text: qsTr("Display mode")
-                }
-
-                FishUI.SegmentedControl {
-                    Layout.fillWidth: true
-                    currentIndex: dockSettings.dockVisibility
-                    onCurrentIndexChanged: dockSettings.setDockVisibility(currentIndex)
-
-                    FishUI.TabButton {
-                        text: qsTr("Always show")
-                    }
-
-                    FishUI.TabButton {
-                        text: qsTr("Always hide")
-                    }
-
-                    FishUI.TabButton {
-                        text: qsTr("Smart hide")
+                        FishUI.Label {
+                            text: qsTr("Huge")
+                        }
                     }
                 }
             }
@@ -208,6 +148,34 @@ ItemPage {
                         FishUI.Label {
                             text: qsTr("More Tinted")
                         }
+                    }
+                }
+            }
+
+            // Visibility
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: FishUI.Units.smallSpacing
+
+                SectionLabel {
+                    text: qsTr("Display mode")
+                }
+
+                FishUI.SegmentedControl {
+                    Layout.fillWidth: true
+                    currentIndex: dockSettings.dockVisibility
+                    onCurrentIndexChanged: dockSettings.setDockVisibility(currentIndex)
+
+                    FishUI.TabButton {
+                        text: qsTr("Always show")
+                    }
+
+                    FishUI.TabButton {
+                        text: qsTr("Always hide")
+                    }
+
+                    FishUI.TabButton {
+                        text: qsTr("Smart hide")
                     }
                 }
             }
