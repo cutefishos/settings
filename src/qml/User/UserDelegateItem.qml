@@ -113,8 +113,9 @@ RoundedItem {
 
                         Layout.preferredWidth: iconSize
                         Layout.preferredHeight: iconSize
-                        sourceSize: String(source) === "image://icontheme/default-user" ? Qt.size(iconSize, iconSize) : undefined
-                        source: iconFileName ? "file:///" + iconFileName : "image://icontheme/default-user"
+                        sourceSize: String(source).startsWith("image://icontheme/default-user") ? Qt.size(iconSize, iconSize) : undefined
+                        source: iconFileName ? "file:///" + iconFileName
+                                              : "image://icontheme/default-user" + FishUI.Theme.iconThemeQuery
                         visible: status === Image.Ready
                         Layout.alignment: Qt.AlignVCenter
 
