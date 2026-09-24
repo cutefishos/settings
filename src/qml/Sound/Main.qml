@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 import Cutefish.Audio 1.0
 import "../"
@@ -27,7 +28,7 @@ ItemPage {
     component VolumeControl: RowLayout {
         id: volumeControl
         required property var device
-        spacing: FishUI.Units.largeSpacing
+        spacing: Metrics.rowSpacing
 
         FishUI.Slider {
             objectName: "volume-" + volumeControl.device.index
@@ -59,7 +60,7 @@ ItemPage {
 
         RowLayout {
             Layout.fillWidth: true
-            spacing: FishUI.Units.largeSpacing
+            spacing: Metrics.rowSpacing
 
             FishUI.Label {
                 Layout.fillWidth: true
@@ -96,6 +97,7 @@ ItemPage {
         RowLayout {
             Layout.fillWidth: true
             visible: deviceCard.device.ports.length > 1
+            spacing: Metrics.rowSpacing
 
             FishUI.Label {
                 text: qsTr("Port")
@@ -121,6 +123,7 @@ ItemPage {
         }
 
         RowLayout {
+            spacing: Metrics.rowSpacing
             Layout.fillWidth: true
             visible: deviceCard.input && deviceCard.device.default
 
@@ -153,7 +156,7 @@ ItemPage {
         ColumnLayout {
             id: layout
             width: scroll.contentWidth
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: Metrics.sectionSpacing
 
             RoundedItem {
                 visible: !AudioService.connected
@@ -184,7 +187,7 @@ ItemPage {
             ColumnLayout {
                 objectName: "output-section"
                 Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
+                spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel { text: qsTr("Output devices") }
 
@@ -209,7 +212,7 @@ ItemPage {
             ColumnLayout {
                 objectName: "input-section"
                 Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
+                spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel { text: qsTr("Input devices") }
 
@@ -234,14 +237,12 @@ ItemPage {
 
             ColumnLayout {
                 Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
+                spacing: Metrics.sectionLabelSpacing
                 visible: cards.count > 0
 
                 SectionLabel { text: qsTr("Device profiles") }
 
                 RoundedItem {
-                    spacing: 0
-
                     Repeater {
                         model: cards
                         delegate: ColumnLayout {
@@ -250,7 +251,7 @@ ItemPage {
                             required property int index
                             readonly property var device: model.AudioObject
                             Layout.fillWidth: true
-                            spacing: FishUI.Units.largeSpacing
+                            spacing: Metrics.cardSpacing
                             visible: device.profiles.length > 0
 
                             FishUI.Label {

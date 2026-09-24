@@ -79,7 +79,7 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: Metrics.sectionSpacing
 
             // Battery Info
             BatteryItem {
@@ -90,7 +90,7 @@ ItemPage {
 
                 ColumnLayout {
                     anchors.fill: parent
-                    anchors.leftMargin: batteryBackground.radius + FishUI.Units.smallSpacing
+                    anchors.leftMargin: Metrics.cardHorizontalPadding
 
                     Item {
                         Layout.fillHeight: true
@@ -137,7 +137,7 @@ ItemPage {
 
             ColumnLayout {
                 Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
+                spacing: Metrics.sectionLabelSpacing
                 visible: history.count > 2
 
                 SectionLabel {
@@ -185,7 +185,7 @@ ItemPage {
 
             ColumnLayout {
                 Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
+                spacing: Metrics.sectionLabelSpacing
                 visible: battery.capacity
 
                 SectionLabel {
@@ -194,12 +194,12 @@ ItemPage {
 
                 RoundedItem {
                     RowLayout {
-                        spacing: FishUI.Units.largeSpacing * 4
+                        spacing: Metrics.rowSpacing
 
                         // Poor
                         Item {
-                            height: _poorLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
-                            width: _poorLabel.implicitWidth + FishUI.Units.largeSpacing
+                            height: _poorLabel.implicitHeight + Metrics.s
+                            width: _poorLabel.implicitWidth + Metrics.l
 
                             FishUI.RoundedRectangle {
                                 id: _poorRect
@@ -223,8 +223,8 @@ ItemPage {
                         }
 
                         Item {
-                            height: _normalLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
-                            width: _normalLabel.implicitWidth + FishUI.Units.largeSpacing
+                            height: _normalLabel.implicitHeight + Metrics.s
+                            width: _normalLabel.implicitWidth + Metrics.l
 
                             FishUI.RoundedRectangle {
                                 id: _normalRect
@@ -248,8 +248,8 @@ ItemPage {
                         }
 
                         Item {
-                            height: _excellentLabel.implicitHeight + 4 + FishUI.Units.smallSpacing
-                            width: _excellentLabel.implicitWidth + FishUI.Units.largeSpacing
+                            height: _excellentLabel.implicitHeight + Metrics.s
+                            width: _excellentLabel.implicitWidth + Metrics.l
 
                             FishUI.RoundedRectangle {
                                 id: _excellentRect
@@ -286,6 +286,8 @@ ItemPage {
 
             RoundedItem {
                 RowLayout {
+                    spacing: Metrics.rowSpacing
+
                     FishUI.Label {
                         text: qsTr("Show percentage in status bar")
                     }

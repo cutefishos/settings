@@ -20,6 +20,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 import Cutefish.Bluetooth 1.0 as Bluetooth
 import "../"
@@ -79,7 +80,7 @@ ItemPage {
 
         headerItem: FishUI.Label {
             anchors.left: parent.left
-            anchors.leftMargin: 16
+            anchors.leftMargin: Metrics.dialogPadding
             anchors.verticalCenter: parent.verticalCenter
             width: parent.width - 64
             text: forgetDialog.title
@@ -93,8 +94,8 @@ ItemPage {
         ColumnLayout {
             id: forgetLayout
             anchors.fill: parent
-            anchors.margins: 16
-            spacing: 16
+            anchors.margins: Metrics.dialogPadding
+            spacing: Metrics.dialogSpacing
 
             FishUI.Label {
                 Layout.fillWidth: true
@@ -105,7 +106,7 @@ ItemPage {
 
             RowLayout {
                 Layout.alignment: Qt.AlignRight
-                spacing: 8
+                spacing: Metrics.dialogButtonSpacing
 
                 FishUI.ConfirmDialogButton {
                     text: qsTr("Cancel")
@@ -134,10 +135,12 @@ ItemPage {
         ColumnLayout {
             id: layout
             width: parent.contentWidth
-            spacing: FishUI.Units.largeSpacing
+            spacing: Metrics.sectionSpacing
 
             RoundedItem {
                 RowLayout {
+                    spacing: Metrics.rowSpacing
+
                     FishUI.Label {
                         text: qsTr("Bluetooth")
                         Layout.fillWidth: true
@@ -162,6 +165,7 @@ ItemPage {
                           : qsTr("Bluetooth is disabled")
                 }
                 RowLayout {
+                    spacing: Metrics.rowSpacing
                     visible: Bluetooth.Manager.enabled
                     FishUI.Label {
                         Layout.fillWidth: true
@@ -208,6 +212,7 @@ ItemPage {
                     }
                     RowLayout {
                         Layout.fillWidth: true
+                        spacing: Metrics.controlSpacing
                         FishUI.TextField {
                             id: adapterName
                             Layout.fillWidth: true
@@ -224,6 +229,7 @@ ItemPage {
                         }
                     }
                     RowLayout {
+                        spacing: Metrics.rowSpacing
                         FishUI.Switch {
                             text: qsTr("Powered")
                             checked: modelData.powered
@@ -258,8 +264,10 @@ ItemPage {
                     required property var device
                     visible: Bluetooth.Manager.enabled
                     RowLayout {
+                        spacing: Metrics.rowSpacing
                         ColumnLayout {
                             Layout.fillWidth: true
+                            spacing: Metrics.textSpacing
                             FishUI.Label {
                                 Layout.fillWidth: true
                                 text: device.name
@@ -287,6 +295,7 @@ ItemPage {
                         }
                     }
                     RowLayout {
+                        spacing: Metrics.controlSpacing
                         FishUI.Button {
                             text: device.connected ? qsTr("Disconnect")
                                   : device.paired ? qsTr("Connect") : qsTr("Pair")

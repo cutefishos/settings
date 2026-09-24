@@ -21,13 +21,14 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 
 FishUI.Window {
     id: control
 
-    windowButtonsTopMargin: 8
-    windowButtonsRightMargin: 8
+    windowButtonsTopMargin: Metrics.dialogWindowButtonsMargin
+    windowButtonsRightMargin: Metrics.dialogWindowButtonsMargin
     minimizeButtonVisible: false
     header.height: 44
     title: "Time Zone"
@@ -92,8 +93,8 @@ FishUI.Window {
         point.y += (_worldMap.height - _worldMap.paintedHeight) / 2
         dot.show(point.x, point.y)
         popupText.text = timeZoneMap.localeTimeZoneName(selectedZone)
-        popupItem.x = point.x + FishUI.Units.smallSpacing * 1.5
-        popupItem.y = point.y + FishUI.Units.smallSpacing * 1.5
+        popupItem.x = point.x + Metrics.s
+        popupItem.y = point.y + Metrics.s
         if (popupItem.x + popupItem.width >= _worldMap.width)
             popupItem.x = _worldMap.width - popupItem.width - 2
         if (popupItem.y + popupItem.height >= _worldMap.height)
@@ -124,8 +125,8 @@ FishUI.Window {
 
     ColumnLayout {
         anchors.fill: parent
-        anchors.margins: 16
-        spacing: 16
+        anchors.margins: Metrics.dialogPadding
+        spacing: Metrics.dialogSpacing
 
         // The title sits at the left and the search box in the middle of the
         // window, not in the middle of what the title leaves free.
@@ -220,9 +221,9 @@ FishUI.Window {
 
                             RowLayout {
                                 anchors.fill: parent
-                                anchors.leftMargin: FishUI.Units.largeSpacing
-                                anchors.rightMargin: FishUI.Units.largeSpacing
-                                spacing: FishUI.Units.largeSpacing
+                                anchors.leftMargin: Metrics.m
+                                anchors.rightMargin: Metrics.m
+                                spacing: Metrics.rowSpacing
 
                                 FishUI.Label {
                                     Layout.fillWidth: true
@@ -283,8 +284,8 @@ FishUI.Window {
             Item {
                 id: popupItem
                 visible: popupText.text !== ""
-                width: popupText.implicitWidth + FishUI.Units.largeSpacing
-                height: popupText.implicitHeight + FishUI.Units.largeSpacing
+                width: popupText.implicitWidth + Metrics.m
+                height: popupText.implicitHeight + Metrics.m
 
                 FishUI.RoundedRectangle {
                     anchors.fill: parent
@@ -313,7 +314,7 @@ FishUI.Window {
 
         RowLayout {
             Layout.alignment: Qt.AlignRight
-            spacing: 8
+            spacing: Metrics.dialogButtonSpacing
 
             FishUI.ConfirmDialogButton {
                 text: qsTr("Cancel")

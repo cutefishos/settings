@@ -42,11 +42,13 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
+            spacing: Metrics.sectionSpacing
 
             RoundedItem {
                 GridLayout {
                     columns: 2
-                    rowSpacing: FishUI.Units.largeSpacing * 2
+                    columnSpacing: Metrics.formColumnSpacing
+                    rowSpacing: Metrics.formRowSpacing
 
                     FishUI.Label {
                         text: qsTr("Enable")

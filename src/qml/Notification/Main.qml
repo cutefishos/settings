@@ -38,9 +38,12 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
+            spacing: Metrics.sectionSpacing
 
             RoundedItem {
                 RowLayout {
+                    spacing: Metrics.rowSpacing
+
                     FishUI.Label {
                         text: qsTr("Do Not Disturb")
                     }

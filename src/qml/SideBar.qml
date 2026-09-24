@@ -314,9 +314,9 @@ Item {
             text: rootWindow.title
             color: rootWindow.active ? FishUI.Theme.textColor : FishUI.Theme.disabledTextColor
             Layout.preferredHeight: rootWindow.header.height
-            leftPadding: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
-            rightPadding: FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
-            topPadding: FishUI.Units.smallSpacing
+            leftPadding: Metrics.sidebarMargin + Metrics.sidebarItemPadding
+            rightPadding: Metrics.sidebarMargin + Metrics.sidebarItemPadding
+            topPadding: rootWindow.windowButtonsTopMargin
             bottomPadding: 0
             font.pointSize: 13
         }
@@ -328,11 +328,11 @@ Item {
             clip: true
             model: listModel
 
-            spacing: FishUI.Units.smallSpacing / 2
-            leftMargin: FishUI.Units.largeSpacing
-            rightMargin: FishUI.Units.largeSpacing
+            spacing: Metrics.sidebarItemSpacing
+            leftMargin: Metrics.sidebarMargin
+            rightMargin: Metrics.sidebarMargin
             topMargin: 0
-            bottomMargin: FishUI.Units.largeSpacing
+            bottomMargin: Metrics.sidebarMargin
 
             FishUI.ScrollBar.vertical: FishUI.ScrollBar {}
 
@@ -350,15 +350,14 @@ Item {
             section.property: "category"
             section.delegate: Item {
                 width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
-                height: FishUI.Units.fontMetrics.height + FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
+                height: FishUI.Units.fontMetrics.height + Metrics.sidebarCategorySpacing + Metrics.xs
 
                 Text {
                     anchors.left: parent.left
                     anchors.top: parent.top
-                    anchors.leftMargin: Qt.application.layoutDirection === Qt.RightToLeft ? 0 : FishUI.Units.smallSpacing
-                    anchors.rightMargin: FishUI.Units.smallSpacing
-                    anchors.topMargin: FishUI.Units.largeSpacing
-                    anchors.bottomMargin: FishUI.Units.smallSpacing
+                    anchors.leftMargin: Qt.application.layoutDirection === Qt.RightToLeft ? 0 : Metrics.sidebarItemPadding
+                    anchors.rightMargin: Metrics.sidebarItemPadding
+                    anchors.topMargin: Metrics.sidebarCategorySpacing
                     color: FishUI.Theme.disabledTextColor
                     font.pointSize: 8
                     text: section
@@ -372,7 +371,7 @@ Item {
             delegate: Item {
                 id: item
                 width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
-                height: 35
+                height: Metrics.sidebarItemHeight
 
                 property bool isCurrent: listView.currentIndex === index
 
@@ -401,8 +400,8 @@ Item {
 
                 RowLayout {
                     anchors.fill: parent
-                    anchors.leftMargin: FishUI.Units.smallSpacing
-                    spacing: FishUI.Units.smallSpacing
+                    anchors.leftMargin: Metrics.sidebarItemPadding
+                    spacing: Metrics.s
 
                     Rectangle {
                         id: iconRect

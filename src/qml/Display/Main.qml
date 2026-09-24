@@ -39,11 +39,11 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: Metrics.sectionSpacing
 
             ColumnLayout {
                 Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
+                spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel {
                     text: qsTr("Screen")
@@ -63,7 +63,7 @@ ItemPage {
                         highlightMoveDuration: 0
                         clip: true
 
-                        Layout.preferredHeight: currentItem ? currentItem.layout.implicitHeight + FishUI.Units.largeSpacing : 0
+                        Layout.preferredHeight: currentItem ? currentItem.layout.implicitHeight + Metrics.m : 0
 
                         delegate: Item {
                             id: screenItem
@@ -81,8 +81,8 @@ ItemPage {
                                 GridLayout {
                                     Layout.fillWidth: true
                                     columns: 2
-                                    columnSpacing: FishUI.Units.largeSpacing * 1.5
-                                    rowSpacing: FishUI.Units.largeSpacing * 1.5
+                                    columnSpacing: Metrics.formColumnSpacing
+                                    rowSpacing: Metrics.formRowSpacing
 
                                     Brightness {
                                         id: brightness
@@ -102,7 +102,7 @@ ItemPage {
 
                                     RowLayout {
                                         Layout.fillWidth: true
-                                        spacing: FishUI.Units.largeSpacing
+                                        spacing: Metrics.rowSpacing
                                         visible: brightness.available
 
                                         Image {
@@ -159,8 +159,6 @@ ItemPage {
                                     FishUI.ComboBox {
                                         Layout.fillWidth: true
                                         model: element.resolutions
-                                        leftPadding: FishUI.Units.largeSpacing
-                                        rightPadding: FishUI.Units.largeSpacing
                                         topInset: 0
                                         bottomInset: 0
                                         currentIndex: element.resolutionIndex !== undefined ?
@@ -178,8 +176,6 @@ ItemPage {
                                         id: refreshRate
                                         Layout.fillWidth: true
                                         model: element.refreshRates
-                                        leftPadding: FishUI.Units.largeSpacing
-                                        rightPadding: FishUI.Units.largeSpacing
                                         topInset: 0
                                         bottomInset: 0
                                         currentIndex: element.refreshRateIndex ?
@@ -310,6 +306,7 @@ ItemPage {
                                     FishUI.Label { text: qsTr("Position"); visible: _screenView.count > 1 }
                                     RowLayout {
                                         visible: _screenView.count > 1
+                                        spacing: Metrics.controlSpacing
                                         SpinBox { from: -32768; to: 32768; value: element.position.x; onValueModified: element.position = Qt.point(value, element.position.y) }
                                         SpinBox { from: -32768; to: 32768; value: element.position.y; onValueModified: element.position = Qt.point(element.position.x, value) }
                                     }

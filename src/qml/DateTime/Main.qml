@@ -46,83 +46,55 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: Metrics.sectionSpacing
 
-            RoundedItem {
-                spacing: FishUI.Units.largeSpacing * 1.5
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: Metrics.sectionLabelSpacing
 
-                RowLayout {
-                    FishUI.Label {
+                ListCard {
+                    ListRow {
+                        interactive: false
                         text: qsTr("Auto Sync")
+
+                        FishUI.Switch {
+                            Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                            rightPadding: 0
+                            rightInset: 0
+                            checkable: time.canNTP
+                            checked: time.useNtp
+                            onCheckedChanged: time.useNtp = checked
+                        }
                     }
 
-                    Item {
-                        Layout.fillWidth: true
+                    ListRow {
+                        interactive: false
+                        text: qsTr("24-Hour Time")
+
+                        FishUI.Switch {
+                            Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                            rightPadding: 0
+                            rightInset: 0
+                            checked: time.twentyFour
+                            onCheckedChanged: time.twentyFour = checked
+                        }
                     }
 
-                    FishUI.Switch {
-                        Layout.fillHeight: true
-                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                        rightPadding: 0
-                        rightInset: 0
-                        checkable: time.canNTP
-                        checked: time.useNtp
-                        onCheckedChanged: time.useNtp = checked
+                    NavigationItem {
+                        text: qsTr("Time Zone")
+                        value: timeZoneMap.currentTimeZone
+                        onClicked: timeZoneDialog.show()
                     }
                 }
 
                 FishUI.Label {
+                    Layout.fillWidth: true
+                    leftPadding: Metrics.cardHorizontalPadding
+                    rightPadding: Metrics.cardHorizontalPadding
                     text: qsTr("Unable to use Auto Sync. Please ensure your NTP service is installed.")
                     color: FishUI.Theme.disabledTextColor
+                    wrapMode: Text.WordWrap
                     visible: !time.canNTP
-                }
-            }
-
-            RoundedItem {
-                spacing: FishUI.Units.largeSpacing * 1.5
-
-                RowLayout {
-                    FishUI.Label {
-                        text: qsTr("24-Hour Time")
-                    }
-
-                    Item {
-                        Layout.fillWidth: true
-                    }
-
-                    FishUI.Switch {
-                        Layout.fillHeight: true
-                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                        rightPadding: 0
-                        rightInset: 0
-                        checked: time.twentyFour
-                        onCheckedChanged: time.twentyFour = checked
-                    }
-                }
-            }
-
-            StandardButton {
-                Layout.fillWidth: true
-                text: ""
-                // onClicked: timeZoneDialog.visibility = "Maximized"
-                onClicked: timeZoneDialog.show()
-
-                RowLayout {
-                    anchors.fill: parent
-                    anchors.leftMargin: FishUI.Units.largeSpacing * 1.5
-                    anchors.rightMargin: FishUI.Units.largeSpacing * 1.5
-
-                    FishUI.Label {
-                        text: qsTr("Time Zone")
-                    }
-
-                    Item {
-                        Layout.fillWidth: true
-                    }
-
-                    FishUI.Label {
-                        text: timeZoneMap.currentTimeZone
-                    }
                 }
             }
         }

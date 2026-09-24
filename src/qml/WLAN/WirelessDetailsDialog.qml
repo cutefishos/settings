@@ -21,6 +21,7 @@ import QtQuick 2.4
 import QtQuick.Window 2.3
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 import Cutefish.Network 1.0 as NM
 
@@ -48,7 +49,7 @@ FishUI.Window {
 
     headerItem: FishUI.Label {
         anchors.left: parent.left
-        anchors.leftMargin: 16
+        anchors.leftMargin: Metrics.dialogPadding
         anchors.verticalCenter: parent.verticalCenter
         width: parent.width - 64
         text: control.title
@@ -77,15 +78,15 @@ FishUI.Window {
     ColumnLayout {
         id: detailsLayout
         anchors.fill: parent
-        anchors.margins: 16
-        spacing: 16
+        anchors.margins: Metrics.dialogPadding
+        spacing: Metrics.dialogSpacing
 
         GridLayout {
             Layout.fillWidth: true
             id: gridLayout
             columns: 2
-            columnSpacing: 16
-            rowSpacing: 8
+            columnSpacing: Metrics.dialogSpacing
+            rowSpacing: Metrics.s
 
             FishUI.Label {
                 id: autoJoinLabel
@@ -195,7 +196,7 @@ FishUI.Window {
 
         RowLayout {
             id: footerLayout
-            spacing: 8
+            spacing: Metrics.dialogButtonSpacing
             Layout.alignment: Qt.AlignRight
 
             FishUI.ConfirmDialogButton {

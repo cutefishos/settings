@@ -57,11 +57,10 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: Metrics.sectionSpacing
 
             RoundedItem {
                 id: mainItem
-                spacing: FishUI.Units.largeSpacing
 
                 FishUI.RadioButton {
                     id: noProxyRadioButton
@@ -102,7 +101,7 @@ ItemPage {
 
                 RowLayout {
                     id: autoScriptProxyLayout
-                    spacing: FishUI.Units.largeSpacing
+                    spacing: Metrics.controlSpacing
                     visible: autoScriptProxyRadioButton.checked
 
                     FishUI.TextField {
@@ -127,8 +126,8 @@ ItemPage {
                 GridLayout {
                     visible: manualProxyRadioButton.checked
                     columns: 4
-                    columnSpacing: FishUI.Units.largeSpacing
-                    rowSpacing: FishUI.Units.largeSpacing
+                    columnSpacing: Metrics.rowSpacing
+                    rowSpacing: Metrics.formRowSpacing
 
                     FishUI.Label {
                         text: qsTr("HTTP Proxy")
@@ -257,6 +256,7 @@ ItemPage {
                 }
 
                 RowLayout {
+                    spacing: Metrics.rowSpacing
                     visible: proxyItem.needSave
 
                     Item {

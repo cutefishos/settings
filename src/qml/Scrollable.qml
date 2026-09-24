@@ -19,6 +19,7 @@
 
 import QtQuick 2.4
 import QtQuick.Controls 2.4
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 
 Flickable {
@@ -29,10 +30,10 @@ Flickable {
     // The window header floats over the top of the page; content scrolls beneath it.
     readonly property real topInset: rootWindow.header.height
 
-    topMargin: topInset + FishUI.Units.largeSpacing + FishUI.Units.smallSpacing
-    bottomMargin: FishUI.Units.largeSpacing * 2
-    leftMargin: FishUI.Units.largeSpacing * 2
-    rightMargin: FishUI.Units.largeSpacing * 2
+    topMargin: topInset + Metrics.pageTopMargin
+    bottomMargin: Metrics.pageMargin
+    leftMargin: Metrics.pageMargin
+    rightMargin: Metrics.pageMargin
 
     contentWidth: width - (leftMargin + rightMargin)
 

@@ -49,19 +49,18 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: Metrics.sectionSpacing
 
             RoundedItem {
                 GridLayout {
                     columns: 2
                     Layout.fillWidth: true
 
-                    columnSpacing: FishUI.Units.largeSpacing * 1.5
-                    rowSpacing: FishUI.Units.largeSpacing * 1.5
+                    columnSpacing: Metrics.formColumnSpacing
+                    rowSpacing: Metrics.formRowSpacing
 
                     FishUI.Label {
                         text: qsTr("General Font")
-                        bottomPadding: FishUI.Units.smallSpacing
                     }
 
                     FishUI.ComboBox {
@@ -70,14 +69,11 @@ ItemPage {
                         Layout.fillWidth: true
                         topInset: 0
                         bottomInset: 0
-                        leftPadding: FishUI.Units.largeSpacing
-                        rightPadding: FishUI.Units.largeSpacing
                         onActivated: appearance.setFontFamily(currentText)
                     }
 
                     FishUI.Label {
                         text: qsTr("Fixed Font")
-                        bottomPadding: FishUI.Units.smallSpacing
                     }
 
                     FishUI.ComboBox {
@@ -86,14 +82,11 @@ ItemPage {
                         Layout.fillWidth: true
                         topInset: 0
                         bottomInset: 0
-                        leftPadding: FishUI.Units.largeSpacing
-                        rightPadding: FishUI.Units.largeSpacing
                         onActivated: appearance.setFixedFontFamily(currentText)
                     }
 
                     FishUI.Label {
                         text: qsTr("Font Size")
-                        bottomPadding: FishUI.Units.smallSpacing
                     }
 
                     FishUI.SegmentedControl {
@@ -154,7 +147,6 @@ ItemPage {
 
                     FishUI.Label {
                         text: qsTr("Hinting")
-                        bottomPadding: FishUI.Units.smallSpacing
                     }
 
                     FishUI.ComboBox {
@@ -167,7 +159,6 @@ ItemPage {
 
                     FishUI.Label {
                         text: qsTr("Anti-Aliasing")
-                        bottomPadding: FishUI.Units.smallSpacing
                     }
 
                     FishUI.Switch {

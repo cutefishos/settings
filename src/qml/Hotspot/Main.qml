@@ -21,6 +21,7 @@ import QtQuick 2.4
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 import Cutefish.Network 1.0 as NM
 
@@ -55,7 +56,7 @@ ItemPage {
         ColumnLayout {
             id: mainLayout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: Metrics.sectionSpacing
 
             // Hotspot
             RoundedItem {
@@ -63,6 +64,8 @@ ItemPage {
                 visible: handler.hotspotSupported
 
                 RowLayout {
+                    spacing: Metrics.rowSpacing
+
                     FishUI.Label {
                         text: qsTr("Hotspot")
                         color: FishUI.Theme.disabledTextColor
@@ -87,14 +90,11 @@ ItemPage {
                     }
                 }
 
-                Item {
-                    height: FishUI.Units.largeSpacing
-                }
-
                 GridLayout {
+                    Layout.topMargin: Metrics.cardSpacing
                     columns: 2
-                    columnSpacing: FishUI.Units.largeSpacing * 2
-                    rowSpacing: FishUI.Units.largeSpacing
+                    columnSpacing: Metrics.formColumnSpacing
+                    rowSpacing: Metrics.formRowSpacing
 
                     FishUI.Label {
                         text: qsTr("SSID")
@@ -119,12 +119,9 @@ ItemPage {
                     }
                 }
 
-                Item {
-                    height: FishUI.Units.largeSpacing
-                }
-
                 FishUI.Button {
                     text: qsTr("Save")
+                    Layout.topMargin: Metrics.cardSpacing
                     Layout.alignment: Qt.AlignRight
                     onClicked: {
                         configuration.hotspotName = ssidName.text

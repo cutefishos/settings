@@ -38,11 +38,11 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: Metrics.sectionSpacing
 
             ColumnLayout {
                 Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
+                spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel {
                     text: qsTr("Position on screen")
@@ -50,7 +50,7 @@ ItemPage {
 
                 RoundedItem {
                     RowLayout {
-                        spacing: FishUI.Units.largeSpacing * 2
+                        spacing: Metrics.tileSpacing
 
                         ImageSelectionItem {
                             source: "qrc:/images/dock_left.svg"
@@ -85,7 +85,7 @@ ItemPage {
             // Dock Size
             ColumnLayout {
                 Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
+                spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel {
                     text: qsTr("Size")
@@ -94,7 +94,7 @@ ItemPage {
                 RoundedItem {
                     RowLayout {
                         Layout.fillWidth: true
-                        spacing: FishUI.Units.largeSpacing
+                        spacing: Metrics.rowSpacing
 
                         FishUI.Label {
                             text: qsTr("Small")
@@ -122,7 +122,7 @@ ItemPage {
             // Glass effect
             ColumnLayout {
                 Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
+                spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel {
                     text: qsTr("Glass Effect")
@@ -131,7 +131,7 @@ ItemPage {
                 RoundedItem {
                     RowLayout {
                         Layout.fillWidth: true
-                        spacing: FishUI.Units.largeSpacing
+                        spacing: Metrics.rowSpacing
 
                         FishUI.Label {
                             text: qsTr("More Clear")
@@ -155,7 +155,7 @@ ItemPage {
             // Visibility
             ColumnLayout {
                 Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
+                spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel {
                     text: qsTr("Display mode")

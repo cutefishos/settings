@@ -40,14 +40,14 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: Metrics.sectionSpacing
 
             RoundedItem {
                 enabled: mouse.available
                 GridLayout {
                     columns: 2
-                    columnSpacing: FishUI.Units.largeSpacing * 1.5
-                    rowSpacing: FishUI.Units.largeSpacing * 2
+                    columnSpacing: Metrics.formColumnSpacing
+                    rowSpacing: Metrics.formRowSpacing
 
                     FishUI.Label {
                         text: qsTr("Left hand")
@@ -103,7 +103,7 @@ ItemPage {
                 HorizontalDivider {}
 
                 RowLayout {
-                    spacing: FishUI.Units.largeSpacing * 2
+                    spacing: Metrics.rowSpacing
 
                     FishUI.Label {
                         text: qsTr("Pointer speed")
@@ -112,7 +112,6 @@ ItemPage {
                     FishUI.Slider {
                         id: accelerationSlider
                         Layout.fillWidth: true
-                        rightPadding: FishUI.Units.largeSpacing
                         from: 1
                         to: 11
                         stepSize: 1

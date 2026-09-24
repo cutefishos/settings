@@ -40,11 +40,11 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: Metrics.sectionSpacing
 
             ColumnLayout {
                 Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
+                spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel {
                     text: qsTr("Appearance")
@@ -53,7 +53,7 @@ ItemPage {
                 RoundedItem {
                     // Light Mode and Dark Mode
                     RowLayout {
-                        spacing: FishUI.Units.largeSpacing * 2
+                        spacing: Metrics.tileSpacing
 
                         ImageSelectionItem {
                             source: "qrc:/images/light_mode.svg"
@@ -79,12 +79,11 @@ ItemPage {
                     HorizontalDivider {}
 
                     RowLayout {
-                        spacing: FishUI.Units.largeSpacing
+                        spacing: Metrics.rowSpacing
 
                         FishUI.Label {
                             id: dimsTipsLabel
                             text: qsTr("Dim the wallpaper in dark theme")
-                            bottomPadding: FishUI.Units.smallSpacing
                             Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
                         }
 
@@ -106,7 +105,7 @@ ItemPage {
 
             ColumnLayout {
                 Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
+                spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel {
                     text: qsTr("Accent color")

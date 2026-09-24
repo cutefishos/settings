@@ -33,7 +33,7 @@ import "../"
 RoundedItem {
     id: control
 
-    height: mainLayout.implicitHeight + FishUI.Units.largeSpacing * 2
+    height: mainLayout.implicitHeight + Metrics.cardVerticalPadding * 2
 
     UserAccount {
         id: currentUser
@@ -92,7 +92,7 @@ RoundedItem {
                 id: _topItem
 
                 Layout.fillWidth: true
-                height: _topLayout.implicitHeight + FishUI.Units.largeSpacing
+                height: _topLayout.implicitHeight + Metrics.m
 
                 MouseArea {
                     anchors.fill: parent
@@ -102,9 +102,7 @@ RoundedItem {
                 RowLayout {
                     id: _topLayout
                     anchors.fill: parent
-                    anchors.topMargin: FishUI.Units.smallSpacing
-                    anchors.bottomMargin: FishUI.Units.smallSpacing
-                    spacing: 0
+                    spacing: Metrics.rowSpacing
 
                     Image {
                         id: _userImage
@@ -143,11 +141,6 @@ RoundedItem {
                         Layout.alignment: Qt.AlignVCenter
                         font.pixelSize: 15
                         text: "<b>%1</b>".arg(userName)
-                        leftPadding: FishUI.Units.largeSpacing
-                    }
-
-                    Item {
-                        width: FishUI.Units.largeSpacing
                     }
 
                     FishUI.Label {
@@ -167,10 +160,6 @@ RoundedItem {
                         visible: currentUser.userId === loggedUser.userId
                     }
 
-                    Item {
-                        width: FishUI.Units.smallSpacing
-                    }
-
                     FishUI.RoundImageButton {
                         iconMargins: FishUI.Units.smallSpacing
                         iconName: additionalSettings.shown ? "chevron-up" : "chevron-down"
@@ -183,16 +172,13 @@ RoundedItem {
 
         Hideable {
             id: additionalSettings
-            spacing: FishUI.Units.largeSpacing
-
-            Item {
-                height: FishUI.Units.largeSpacing
-            }
+            spacing: Metrics.cardSpacing
 
             GridLayout {
                 Layout.fillWidth: true
-                Layout.bottomMargin: FishUI.Units.smallSpacing
-                rowSpacing: FishUI.Units.largeSpacing * 2
+                Layout.topMargin: Metrics.cardSpacing
+                columnSpacing: Metrics.formColumnSpacing
+                rowSpacing: Metrics.formRowSpacing
                 columns: 2
 
                 FishUI.Label {

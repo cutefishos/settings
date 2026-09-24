@@ -3,6 +3,7 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.3
 
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 import Cutefish.Network 1.0 as NM
 import "../"
@@ -99,7 +100,7 @@ ListRow {
     details: [
         RowLayout {
             visible: predictableWirelessPassword
-            spacing: FishUI.Units.largeSpacing
+            spacing: Metrics.controlSpacing
 
             FishUI.Label {
                 text: qsTr("Password")
@@ -138,6 +139,7 @@ ListRow {
 
         RowLayout {
             visible: !predictableWirelessPassword
+            spacing: Metrics.controlSpacing
 
             FishUI.Button {
                 visible: (model.uuid || !predictableWirelessPassword) && connectionState === NM.Enums.Deactivated
@@ -164,7 +166,7 @@ ListRow {
         },
 
         Item {
-            height: FishUI.Units.largeSpacing
+            Layout.preferredHeight: Metrics.cardVerticalPadding
         }
     ]
 

@@ -21,6 +21,7 @@ import QtQuick 2.4
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 import "../"
 
@@ -35,7 +36,7 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.smallSpacing
+            spacing: Metrics.sectionLabelSpacing
 
             SectionLabel {
                 text: qsTr("Default application")
@@ -44,7 +45,8 @@ ItemPage {
             RoundedItem {
                 GridLayout {
                     columns: 2
-                    columnSpacing: FishUI.Units.largeSpacing * 2
+                    columnSpacing: Metrics.formColumnSpacing
+                    rowSpacing: Metrics.formRowSpacing
 
                     FishUI.Label {
                         text: qsTr("Web browser")

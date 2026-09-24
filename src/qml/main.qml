@@ -21,6 +21,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.3
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 
 FishUI.Window {
@@ -107,9 +108,9 @@ FishUI.Window {
         RowLayout {
             id: _headerRow
             anchors.fill: parent
-            anchors.leftMargin: sideBar.width + FishUI.Units.smallSpacing * 1.5
-            anchors.rightMargin: FishUI.Units.smallSpacing
-            spacing: FishUI.Units.smallSpacing / 2
+            anchors.leftMargin: sideBar.width + Metrics.s
+            anchors.rightMargin: Metrics.s
+            spacing: Metrics.xxs
 
             readonly property int buttonSize: 31
 
@@ -136,7 +137,7 @@ FishUI.Window {
             FishUI.Label {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                Layout.leftMargin: FishUI.Units.smallSpacing / 2
+                Layout.leftMargin: Metrics.xxs
                 leftPadding: rootWindow.windowButtonsTopMargin
                 topPadding: rootWindow.windowButtonsTopMargin / 2
                 verticalAlignment: Text.AlignVCenter

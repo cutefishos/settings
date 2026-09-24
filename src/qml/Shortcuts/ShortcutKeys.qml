@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 
 // One shortcut drawn as key caps: [Ctrl] + [Shift] + [Q].
@@ -10,7 +11,7 @@ Row {
     property bool dimmed: false
     property color capColor: FishUI.Theme.darkMode ? Qt.lighter(FishUI.Theme.secondBackgroundColor, 1.6)
                                                    : Qt.darker(FishUI.Theme.secondBackgroundColor, 1.08)
-    spacing: 4
+    spacing: Metrics.xs
 
     Repeater {
         model: control.parts

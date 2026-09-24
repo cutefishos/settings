@@ -38,11 +38,11 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing
+            spacing: Metrics.sectionSpacing
 
             ColumnLayout {
                 Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
+                spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel {
                     text: qsTr("Input method")
@@ -75,29 +75,29 @@ ItemPage {
                         }
                     }
                 }
-            }
 
-            FishUI.Label {
-                Layout.fillWidth: true
-                visible: inputMethod.available && inputMethod.current !== "" && !inputMethod.running
-                text: qsTr("The selected input method is not running.")
-                color: FishUI.Theme.disabledTextColor
-                textFormat: Text.PlainText
-                wrapMode: Text.WordWrap
-                leftPadding: FishUI.Units.largeSpacing * 1.5
-                rightPadding: FishUI.Units.largeSpacing * 1.5
-            }
+                FishUI.Label {
+                    Layout.fillWidth: true
+                    visible: inputMethod.available && inputMethod.current !== "" && !inputMethod.running
+                    text: qsTr("The selected input method is not running.")
+                    color: FishUI.Theme.disabledTextColor
+                    textFormat: Text.PlainText
+                    wrapMode: Text.WordWrap
+                    leftPadding: Metrics.cardHorizontalPadding
+                    rightPadding: Metrics.cardHorizontalPadding
+                }
 
-            FishUI.Label {
-                Layout.fillWidth: true
-                visible: inputMethod.available
-                text: qsTr("Applications started before the input method may need to be restarted.")
-                color: FishUI.Theme.disabledTextColor
-                textFormat: Text.PlainText
-                wrapMode: Text.WordWrap
-                leftPadding: FishUI.Units.largeSpacing * 1.5
-                rightPadding: FishUI.Units.largeSpacing * 1.5
-                opacity: 0.8
+                FishUI.Label {
+                    Layout.fillWidth: true
+                    visible: inputMethod.available
+                    text: qsTr("Applications started before the input method may need to be restarted.")
+                    color: FishUI.Theme.disabledTextColor
+                    textFormat: Text.PlainText
+                    wrapMode: Text.WordWrap
+                    leftPadding: Metrics.cardHorizontalPadding
+                    rightPadding: Metrics.cardHorizontalPadding
+                    opacity: 0.8
+                }
             }
 
             RoundedItem {
@@ -105,8 +105,8 @@ ItemPage {
 
                 GridLayout {
                     columns: 2
-                    columnSpacing: FishUI.Units.largeSpacing * 1.5
-                    rowSpacing: FishUI.Units.largeSpacing * 2
+                    columnSpacing: Metrics.formColumnSpacing
+                    rowSpacing: Metrics.formRowSpacing
 
                     FishUI.Label {
                         text: qsTr("Key repeat")

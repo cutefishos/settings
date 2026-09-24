@@ -68,13 +68,13 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: Metrics.sectionSpacing
 
             ListView {
                 id: _userView
                 model: userModel
                 Layout.fillWidth: true
-                spacing: FishUI.Units.largeSpacing * 2
+                spacing: Metrics.sectionSpacing
                 interactive: false
 
                 Layout.preferredHeight: {

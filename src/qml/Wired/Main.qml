@@ -68,12 +68,12 @@ ItemPage {
         ColumnLayout {
             id: mainLayout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: Metrics.sectionSpacing
 
             // Wired connection
             ColumnLayout {
                 Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
+                spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel {
                     text: qsTr("Ethernet")

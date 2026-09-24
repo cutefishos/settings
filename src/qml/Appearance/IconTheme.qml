@@ -20,11 +20,11 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: Metrics.sectionSpacing
 
             ColumnLayout {
                 Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
+                spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel {
                     text: qsTr("Icon Theme")
@@ -34,7 +34,7 @@ ItemPage {
                     GridView {
                         id: _view
                         Layout.fillWidth: true
-                        implicitHeight: Math.ceil(_view.count / rowCount) * cellHeight + FishUI.Units.largeSpacing
+                        implicitHeight: Math.ceil(_view.count / rowCount) * cellHeight + Metrics.m
                         model: iconModel
                         interactive: false
                         visible: _view.count > 0
@@ -48,7 +48,7 @@ ItemPage {
                         currentIndex: iconModel.themeIndex(iconModel.currentTheme)
 
                         property int rowCount: Math.max(1, Math.floor(_view.width / itemWidth))
-                        property int itemWidth: 120
+                        property int itemWidth: 104 + Metrics.tileSpacing
                         property int itemHeight: 104
 
                         delegate: Item {

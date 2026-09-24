@@ -20,7 +20,7 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing
+            spacing: Metrics.sectionSpacing
 
             RoundedItem {
                 visible: !shortcuts.available
@@ -36,8 +36,8 @@ ItemPage {
             FishUI.Label {
                 visible: shortcuts.available
                 Layout.fillWidth: true
-                Layout.leftMargin: FishUI.Units.largeSpacing * 1.5
-                Layout.rightMargin: FishUI.Units.largeSpacing * 1.5
+                Layout.leftMargin: Metrics.cardHorizontalPadding
+                Layout.rightMargin: Metrics.cardHorizontalPadding
                 text: qsTr("Click a shortcut to change it. Shortcuts with Meta are the safest choice: applications never use them.")
                 color: FishUI.Theme.disabledTextColor
                 wrapMode: Text.WordWrap
@@ -51,7 +51,7 @@ ItemPage {
                     required property string modelData
                     Layout.fillWidth: true
                     visible: shortcuts.available
-                    spacing: 0
+                    spacing: Metrics.sectionLabelSpacing
 
                     SectionLabel {
                         text: section.modelData
@@ -73,7 +73,6 @@ ItemPage {
             StandardButton {
                 visible: shortcuts.available
                 Layout.fillWidth: true
-                Layout.topMargin: FishUI.Units.largeSpacing
                 text: qsTr("Restore all defaults")
                 enabled: shortcuts.hasCustomAccelerators
                 onClicked: resetAllDialog.createObject(page)

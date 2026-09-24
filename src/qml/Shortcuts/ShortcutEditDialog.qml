@@ -31,8 +31,8 @@ FishUI.Window {
     modality: Qt.WindowModal
     flags: Qt.Dialog | Qt.FramelessWindowHint
     minimizeButtonVisible: false
-    windowButtonsTopMargin: 8
-    windowButtonsRightMargin: 8
+    windowButtonsTopMargin: Metrics.dialogWindowButtonsMargin
+    windowButtonsRightMargin: Metrics.dialogWindowButtonsMargin
     header.height: 44
     contentTopMargin: 0
     background.color: FishUI.Theme.secondBackgroundColor
@@ -144,12 +144,12 @@ FishUI.Window {
     ColumnLayout {
         id: mainLayout
         anchors.fill: parent
-        anchors.margins: 16
-        spacing: 12
+        anchors.margins: Metrics.dialogPadding
+        spacing: Metrics.dialogSpacing
 
         FishUI.Label {
             Layout.fillWidth: true
-            Layout.rightMargin: 32
+            Layout.rightMargin: Metrics.xxl
             text: dialog.title
             textFormat: Text.PlainText
             font.pixelSize: 14
@@ -169,7 +169,7 @@ FishUI.Window {
 
             RowLayout {
                 Layout.fillWidth: true
-                spacing: FishUI.Units.largeSpacing
+                spacing: Metrics.rowSpacing
                 readonly property bool beingReplaced: dialog.recording && dialog.replacing
                                                       && dialog.replacing.keysym === modelData.keysym
                                                       && dialog.replacing.modifiers === modelData.modifiers
@@ -246,9 +246,9 @@ FishUI.Window {
 
             RowLayout {
                 anchors.fill: parent
-                anchors.leftMargin: 12
-                anchors.rightMargin: 12
-                spacing: FishUI.Units.largeSpacing
+                anchors.leftMargin: Metrics.m
+                anchors.rightMargin: Metrics.m
+                spacing: Metrics.rowSpacing
 
                 FishUI.Label {
                     visible: dialog.pendingParts.length === 0
@@ -289,8 +289,8 @@ FishUI.Window {
 
         RowLayout {
             Layout.fillWidth: true
-            Layout.topMargin: 4
-            spacing: FishUI.Units.largeSpacing
+            Layout.topMargin: Metrics.xs
+            spacing: Metrics.dialogButtonSpacing
 
             FishUI.ConfirmDialogButton {
                 text: qsTr("Add shortcut")

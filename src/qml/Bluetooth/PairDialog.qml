@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 import Cutefish.Bluetooth 1.0 as Bluetooth
 
@@ -28,7 +29,7 @@ FishUI.Window {
 
     headerItem: FishUI.Label {
         anchors.left: parent.left
-        anchors.leftMargin: 16
+        anchors.leftMargin: Metrics.dialogPadding
         anchors.verticalCenter: parent.verticalCenter
         width: parent.width - 64
         text: dialog.title
@@ -64,8 +65,8 @@ FishUI.Window {
     ColumnLayout {
         id: content
         anchors.fill: parent
-        anchors.margins: 16
-        spacing: 16
+        anchors.margins: Metrics.dialogPadding
+        spacing: Metrics.dialogSpacing
         FishUI.Label {
             Layout.fillWidth: true
             text: Bluetooth.Manager.pairingDevice
@@ -112,7 +113,7 @@ FishUI.Window {
         }
         RowLayout {
             Layout.alignment: Qt.AlignRight
-            spacing: 8
+            spacing: Metrics.dialogButtonSpacing
 
             FishUI.ConfirmDialogButton {
                 text: qsTr("Cancel")

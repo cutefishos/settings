@@ -27,11 +27,10 @@ ItemPage {
     FishUI.RoundedRectangle {
         anchors.fill: parent
         // The window header floats over the top of the page.
-        anchors.topMargin: rootWindow.header.height + FishUI.Units.largeSpacing
-                           + FishUI.Units.smallSpacing
-        anchors.leftMargin: FishUI.Units.largeSpacing * 2
-        anchors.rightMargin: FishUI.Units.largeSpacing * 2
-        anchors.bottomMargin: FishUI.Units.largeSpacing * 2
+        anchors.topMargin: rootWindow.header.height + Metrics.pageTopMargin
+        anchors.leftMargin: Metrics.pageMargin
+        anchors.rightMargin: Metrics.pageMargin
+        anchors.bottomMargin: Metrics.pageMargin
         color: FishUI.Theme.secondBackgroundColor
         radius: FishUI.Theme.bigRadius
 
@@ -42,7 +41,7 @@ ItemPage {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: parent.top
-            anchors.margins: FishUI.Units.largeSpacing
+            anchors.margins: Metrics.m
             placeholderText: qsTr("Search layouts")
             selectByMouse: true
             onTextChanged: layoutList.positionViewAtBeginning()
@@ -54,8 +53,8 @@ ItemPage {
             anchors.right: parent.right
             anchors.top: searchField.bottom
             anchors.bottom: parent.bottom
-            anchors.margins: FishUI.Units.smallSpacing
-            anchors.topMargin: FishUI.Units.smallSpacing
+            anchors.margins: Metrics.xs
+            anchors.topMargin: Metrics.s
             clip: true
             model: page.filteredLayouts
             reuseItems: true
@@ -71,8 +70,9 @@ ItemPage {
                 readonly property bool current: modelData.id === keyboard.layout
 
                 width: ListView.view.width
-                height: 40
-                leftPadding: FishUI.Units.largeSpacing * 1.5 - FishUI.Units.smallSpacing
+                height: Metrics.rowHeight
+                // The list is inset by Metrics.xs; this puts the text on the card's edge.
+                leftPadding: Metrics.cardHorizontalPadding - Metrics.xs
                 rightPadding: leftPadding
 
                 Accessible.role: Accessible.RadioButton
@@ -97,7 +97,7 @@ ItemPage {
                 }
 
                 contentItem: RowLayout {
-                    spacing: FishUI.Units.largeSpacing
+                    spacing: Metrics.rowSpacing
 
                     FishUI.Label {
                         Layout.fillWidth: true

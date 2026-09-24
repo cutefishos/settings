@@ -44,12 +44,14 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
+            spacing: Metrics.sectionSpacing
 
             RoundedItem {
                 id: mainItem
-                spacing: FishUI.Units.largeSpacing
 
                 RowLayout {
+                    spacing: Metrics.rowSpacing
+
                     FishUI.Label {
                         text: qsTr("VPN")
                         color: FishUI.Theme.disabledTextColor

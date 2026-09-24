@@ -22,12 +22,13 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import "../"
 
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 import Cutefish.Network 1.0 as NM
 
 ColumnLayout {
     id: _contentLayout
-    spacing: FishUI.Units.largeSpacing * 2
+    spacing: Metrics.sectionSpacing
     property var sourceModel: connectionModel
 
     ConnectDialog {

@@ -51,11 +51,11 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing
+            spacing: Metrics.sectionSpacing
 
             ColumnLayout {
                 Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
+                spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel {
                     text: qsTr("Mode")
@@ -63,7 +63,7 @@ ItemPage {
 
                 RoundedItem {
                     RowLayout {
-                        spacing: FishUI.Units.largeSpacing * 2
+                        spacing: Metrics.tileSpacing
 
                         ImageSelectionItem {
                             source: "qrc:/images/powersave.svg"
@@ -84,21 +84,22 @@ ItemPage {
                         }
                     }
                 }
-            }
 
-            FishUI.Label {
-                color: FishUI.Theme.disabledTextColor
-                leftPadding: FishUI.Units.largeSpacing * 1.5
-                rightPadding: FishUI.Units.largeSpacing * 1.5
-                Layout.fillWidth: true
-                wrapMode: Text.WordWrap
-                text: qsTr("Performance mode: CPU and GPU frequencies will be increased, while power consumption and heat generation will be increased.")
+                FishUI.Label {
+                    color: FishUI.Theme.disabledTextColor
+                    leftPadding: Metrics.cardHorizontalPadding
+                    rightPadding: Metrics.cardHorizontalPadding
+                    Layout.fillWidth: true
+                    wrapMode: Text.WordWrap
+                    text: qsTr("Performance mode: CPU and GPU frequencies will be increased, while power consumption and heat generation will be increased.")
+                }
             }
 
             RoundedItem {
                 GridLayout {
                     columns: 2
-                    rowSpacing: FishUI.Units.largeSpacing * 2
+                    columnSpacing: Metrics.formColumnSpacing
+                    rowSpacing: Metrics.formRowSpacing
 
                     FishUI.Label {
                         visible: battery.available

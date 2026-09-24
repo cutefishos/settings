@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 
 // One row of a ListCard. The hover background fills the whole row and only
@@ -31,9 +32,9 @@ Item {
     property bool interactive: true
     signal clicked()
 
-    readonly property real rowHeight: Math.max(40, _row.implicitHeight + FishUI.Units.largeSpacing)
+    readonly property real rowHeight: Math.max(Metrics.rowHeight, _row.implicitHeight + Metrics.cardVerticalPadding)
 
-    readonly property real horizontalPadding: FishUI.Units.largeSpacing * 1.5
+    readonly property real horizontalPadding: Metrics.cardHorizontalPadding
     readonly property color hoverColor: Qt.rgba(FishUI.Theme.textColor.r, FishUI.Theme.textColor.g,
                                                 FishUI.Theme.textColor.b,
                                                 // Light cards are white, so 0.05 would match the page background.
@@ -131,7 +132,7 @@ Item {
         anchors.leftMargin: control.horizontalPadding
         anchors.rightMargin: control.horizontalPadding
         height: control.rowHeight
-        spacing: FishUI.Units.largeSpacing
+        spacing: Metrics.rowSpacing
 
         Row {
             id: _leading

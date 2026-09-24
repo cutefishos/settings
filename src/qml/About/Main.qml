@@ -38,52 +38,47 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
+            spacing: Metrics.sectionSpacing
 
-            Item {
-                height: FishUI.Units.largeSpacing
-            }
-
-            Image {
-                Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
-                width: 140
-                height: 72
-                sourceSize: Qt.size(width, height)
-                source: "qrc:/images/logo.svg"
-            }
-
-            Item {
-                height: FishUI.Units.smallSpacing
-            }
-
-            FishUI.Label {
-                Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
-                text: "<b>Cutefish</b>"
-                visible: !about.isCutefishOS
-                font.pointSize: 22
-                color: "#3385FF"
-                leftPadding: FishUI.Units.largeSpacing * 2
-                rightPadding: FishUI.Units.largeSpacing * 2
-            }
-
-            Image {
-                Layout.preferredWidth: 167
-                Layout.preferredHeight: 26
-                sourceSize: Qt.size(500, 76)
-                source: "qrc:/images/logo.png"
+            // A nested layout never grows past its children's width, so it is centred
+            // itself rather than filled.
+            ColumnLayout {
                 Layout.alignment: Qt.AlignHCenter
-                visible: about.isCutefishOS
-                asynchronous: true
-            }
+                Layout.topMargin: Metrics.l
+                spacing: Metrics.s
 
-            FishUI.Label {
-                text: qsTr("Built on %1").arg(about.prettyProductName)
-                visible: !about.isCutefishOS
-                Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
-                color: FishUI.Theme.disabledTextColor
-            }
+                Image {
+                    Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
+                    width: 140
+                    height: 72
+                    sourceSize: Qt.size(width, height)
+                    source: "qrc:/images/logo.svg"
+                }
 
-            Item {
-                height: FishUI.Units.largeSpacing * 2
+                FishUI.Label {
+                    Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
+                    text: "<b>Cutefish</b>"
+                    visible: !about.isCutefishOS
+                    font.pointSize: 22
+                    color: "#3385FF"
+                }
+
+                Image {
+                    Layout.preferredWidth: 167
+                    Layout.preferredHeight: 26
+                    sourceSize: Qt.size(500, 76)
+                    source: "qrc:/images/logo.png"
+                    Layout.alignment: Qt.AlignHCenter
+                    visible: about.isCutefishOS
+                    asynchronous: true
+                }
+
+                FishUI.Label {
+                    text: qsTr("Built on %1").arg(about.prettyProductName)
+                    visible: !about.isCutefishOS
+                    Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
+                    color: FishUI.Theme.disabledTextColor
+                }
             }
 
             RoundedItem {
@@ -116,10 +111,6 @@ ItemPage {
                     key: qsTr("Internal Storage")
                     value: about.internalStorage
                 }
-            }
-
-            Item {
-                height: FishUI.Units.smallSpacing
             }
 
             StandardButton {

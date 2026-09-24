@@ -100,6 +100,7 @@ Application::Application(int &argc, char **argv)
     qmlRegisterType<NetworkMockModel>(uri, 1, 0, "NetworkMockModel");
 
     qmlRegisterSingletonType<Password>(uri, 1, 0, "Password", passwordSingleton);
+    qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/qml/Metrics.qml")), uri, 1, 0, "Metrics");
 
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
     qmlRegisterType<QAbstractItemModel>();

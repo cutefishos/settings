@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 import "../"
 
@@ -33,17 +34,17 @@ ColumnLayout {
     signal closeRequested
 
     Layout.fillWidth: true
-    spacing: FishUI.Units.largeSpacing
+    spacing: Metrics.cardSpacing
 
     RowLayout {
         Layout.fillWidth: true
         Layout.preferredHeight: 24
-        spacing: FishUI.Units.smallSpacing
+        spacing: Metrics.controlSpacing
 
         RowLayout {
             Layout.alignment: Qt.AlignVCenter
             Layout.fillHeight: true
-            spacing: FishUI.Units.smallSpacing
+            spacing: Metrics.controlSpacing
 
             HoverHandler {
                 id: sectionHover
@@ -158,9 +159,8 @@ ColumnLayout {
 
         readonly property int preferredThumbnailWidth: 160
         readonly property int minimumThumbnailWidth: 128
-        readonly property int horizontalSpacing: FishUI.Units.largeSpacing
-                                                 + FishUI.Units.smallSpacing
-        readonly property int verticalSpacing: FishUI.Units.largeSpacing
+        readonly property int horizontalSpacing: Metrics.tileSpacing
+        readonly property int verticalSpacing: Metrics.tileSpacing
         readonly property int baseColumnCount: Math.max(
                                                    Math.floor((width + horizontalSpacing)
                                                               / (preferredThumbnailWidth
@@ -231,7 +231,7 @@ ColumnLayout {
 
                 Column {
                     anchors.centerIn: parent
-                    spacing: FishUI.Units.smallSpacing / 2
+                    spacing: Metrics.xs
 
                     Item {
                         anchors.horizontalCenter: parent.horizontalCenter
@@ -302,7 +302,7 @@ ColumnLayout {
                 Rectangle {
                     anchors.top: parent.top
                     anchors.right: parent.right
-                    anchors.margins: FishUI.Units.smallSpacing
+                    anchors.margins: Metrics.s
                     width: 20
                     height: width
                     z: 2

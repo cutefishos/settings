@@ -20,12 +20,13 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 
 Item {
     id: control
 
-    implicitHeight: Math.max(36, mainLayout.implicitHeight + FishUI.Units.largeSpacing)
+    implicitHeight: Math.max(36, mainLayout.implicitHeight + Metrics.m)
 
     property alias key: keyLabel.text
     property alias value: valueLabel.text
@@ -42,7 +43,7 @@ Item {
     RowLayout {
         id: mainLayout
         anchors.fill: parent
-        spacing: FishUI.Units.largeSpacing
+        spacing: Metrics.rowSpacing
 
         FishUI.Label {
             id: keyLabel

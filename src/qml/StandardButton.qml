@@ -19,6 +19,7 @@
 
 import QtQuick 2.12
 import QtQuick.Controls 2.12
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 
 FishUI.Button {
@@ -30,9 +31,9 @@ FishUI.Button {
     property color pressedColor: FishUI.Theme.darkMode ? Qt.lighter(backgroundColor, 1.1)
                                                        : Qt.darker(backgroundColor, 1.2)
 
-    implicitHeight: 38
-    leftPadding: FishUI.Units.largeSpacing * 1.5
-    rightPadding: FishUI.Units.largeSpacing * 1.5
+    implicitHeight: Metrics.buttonHeight
+    leftPadding: Metrics.cardHorizontalPadding
+    rightPadding: Metrics.cardHorizontalPadding
     scale: 1
 
     background: FishUI.RoundedRectangle {

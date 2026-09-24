@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 
 Item {
@@ -33,6 +34,7 @@ Item {
         id: layout
 
         anchors.fill: parent
+        spacing: Metrics.s
 
         FishUI.RoundedRectangle {
             // The size goes through the layout's own hints: an explicit width

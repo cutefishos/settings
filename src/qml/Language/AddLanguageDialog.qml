@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 
 FishUI.Window {
@@ -21,8 +22,8 @@ FishUI.Window {
     maximumHeight: 560
     header.height: 44
     contentTopMargin: 0
-    windowButtonsTopMargin: 8
-    windowButtonsRightMargin: 8
+    windowButtonsTopMargin: Metrics.dialogWindowButtonsMargin
+    windowButtonsRightMargin: Metrics.dialogWindowButtonsMargin
     background.color: FishUI.Theme.secondBackgroundColor
 
     property string selectedCode: ""
@@ -59,12 +60,12 @@ FishUI.Window {
 
     ColumnLayout {
         anchors.fill: parent
-        anchors.margins: 16
-        spacing: 16
+        anchors.margins: Metrics.dialogPadding
+        spacing: Metrics.dialogSpacing
 
         FishUI.Label {
             Layout.fillWidth: true
-            Layout.rightMargin: 32
+            Layout.rightMargin: Metrics.xxl
             text: addDialog.title
             textFormat: Text.PlainText
             font.pixelSize: 14
@@ -137,7 +138,7 @@ FishUI.Window {
 
         RowLayout {
             Layout.alignment: Qt.AlignRight
-            spacing: 8
+            spacing: Metrics.dialogButtonSpacing
 
             FishUI.ConfirmDialogButton {
                 text: qsTr("Cancel")

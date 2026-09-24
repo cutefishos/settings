@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 import "../"
 
@@ -16,7 +17,7 @@ ColumnLayout {
     property int shown: 0
 
     Layout.fillWidth: true
-    spacing: FishUI.Units.smallSpacing
+    spacing: Metrics.sectionLabelSpacing
     visible: shown > 0
 
     // Counts the rows' own verdicts, not their visibility: while the card is

@@ -21,14 +21,15 @@ import QtQuick 2.4
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 import Cutefish.Network 1.0 as NM
 
 FishUI.Window {
     id: control
 
-    windowButtonsTopMargin: 8
-    windowButtonsRightMargin: 8
+    windowButtonsTopMargin: Metrics.dialogWindowButtonsMargin
+    windowButtonsRightMargin: Metrics.dialogWindowButtonsMargin
     header.height: 44
     contentTopMargin: 0
 
@@ -66,12 +67,12 @@ FishUI.Window {
     ColumnLayout {
         id: _mainLayout
         anchors.fill: parent
-        anchors.margins: 16
-        spacing: 16
+        anchors.margins: Metrics.dialogPadding
+        spacing: Metrics.dialogSpacing
 
         FishUI.Label {
             Layout.fillWidth: true
-            Layout.rightMargin: 32
+            Layout.rightMargin: Metrics.xxl
             text: control.title
             textFormat: Text.PlainText
             font.pixelSize: 14
@@ -83,8 +84,8 @@ FishUI.Window {
         GridLayout {
             Layout.fillWidth: true
             columns: 2
-            columnSpacing: 16
-            rowSpacing: 16
+            columnSpacing: Metrics.dialogSpacing
+            rowSpacing: Metrics.formRowSpacing
 
             FishUI.Label {
                 text: qsTr("Name")
@@ -138,7 +139,7 @@ FishUI.Window {
         }
 
         RowLayout {
-            spacing: 8
+            spacing: Metrics.dialogButtonSpacing
             Layout.alignment: Qt.AlignRight
 
             FishUI.ConfirmDialogButton {

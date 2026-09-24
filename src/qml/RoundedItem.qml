@@ -19,6 +19,7 @@
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 
 FishUI.RoundedRectangle {
@@ -27,8 +28,8 @@ FishUI.RoundedRectangle {
     default property alias content : _mainLayout.data
     property alias spacing: _mainLayout.spacing
     property alias layout: _mainLayout
-    property real horizontalPadding: FishUI.Units.largeSpacing * 1.5
-    property real verticalPadding: FishUI.Units.largeSpacing
+    property real horizontalPadding: Metrics.cardHorizontalPadding
+    property real verticalPadding: Metrics.cardVerticalPadding
 
     color: FishUI.Theme.secondBackgroundColor
     radius: FishUI.Theme.bigRadius
@@ -44,6 +45,6 @@ FishUI.RoundedRectangle {
         anchors.rightMargin: horizontalPadding
         anchors.topMargin: verticalPadding
         anchors.bottomMargin: verticalPadding
-        spacing: FishUI.Units.largeSpacing
+        spacing: Metrics.cardSpacing
     }
 }

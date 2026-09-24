@@ -9,6 +9,7 @@
         <file>qml/ListCard.qml</file>
         <file>qml/ListRow.qml</file>
         <file>qml/SectionLabel.qml</file>
+        <file>qml/Metrics.qml</file>
         <file>images/dark/display-brightness-low-symbolic.svg</file>
         <file>images/dark/display-brightness-symbolic.svg</file>
         <file>images/light/display-brightness-low-symbolic.svg</file>

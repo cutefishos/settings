@@ -40,19 +40,18 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: Metrics.sectionSpacing
 
             ColumnLayout {
                 Layout.fillWidth: true
-                spacing: FishUI.Units.smallSpacing
+                spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel {
                     text: qsTr("Preferred languages")
                 }
 
                 RoundedItem {
-                    layout.anchors.topMargin: 4
-                    layout.anchors.bottomMargin: 4
+                    verticalPadding: Metrics.xs
 
                     PreferredLanguageList {
                         Layout.fillWidth: true

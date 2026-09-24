@@ -91,7 +91,7 @@ ItemPage {
         ColumnLayout {
             id: mainLayout
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: Metrics.sectionSpacing
 
             WifiView {
                 Layout.fillWidth: true

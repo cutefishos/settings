@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 import "../"
 
@@ -24,10 +25,10 @@ ListRow {
     }
 
     Column {
-        spacing: 4
+        spacing: Metrics.xs
         Layout.alignment: Qt.AlignVCenter
-        Layout.topMargin: 6
-        Layout.bottomMargin: 6
+        Layout.topMargin: Metrics.xs
+        Layout.bottomMargin: Metrics.xs
 
         Repeater {
             model: control.accelerators

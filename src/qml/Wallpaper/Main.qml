@@ -23,10 +23,10 @@ ItemPage {
             id: layout
 
             anchors.fill: parent
-            spacing: FishUI.Units.largeSpacing * 2
+            spacing: Metrics.sectionSpacing
 
             RoundedItem {
-                spacing: FishUI.Units.largeSpacing * 2
+                spacing: Metrics.sectionSpacing
 
                 WallpaperGrid {
                     title: qsTr("Your Wallpapers")
@@ -96,7 +96,7 @@ ItemPage {
 
                 ColumnLayout {
                     Layout.fillWidth: true
-                    spacing: FishUI.Units.largeSpacing
+                    spacing: Metrics.cardSpacing
 
                     FishUI.Label {
                         text: qsTr("Colors")
@@ -145,7 +145,7 @@ ItemPage {
                             readonly property bool selected: background.type === 1 && Qt.colorEqual(background.color, bgColor)
                             readonly property color currentColor: bgColor
 
-                            width: colorView.itemSize + FishUI.Units.largeSpacing
+                            width: colorView.itemSize + Metrics.m
                             height: width
                             color: "transparent"
                             radius: width / 2
