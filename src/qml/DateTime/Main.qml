@@ -54,6 +54,8 @@ ItemPage {
 
                 ListCard {
                     ListRow {
+                        // Greyed out, with the note below, when no NTP service is installed.
+                        enabled: time.canNTP
                         interactive: false
                         text: qsTr("Auto Sync")
 
@@ -61,7 +63,6 @@ ItemPage {
                             Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                             rightPadding: 0
                             rightInset: 0
-                            checkable: time.canNTP
                             checked: time.useNtp
                             onCheckedChanged: time.useNtp = checked
                         }
