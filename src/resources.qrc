@@ -61,7 +61,6 @@
         <file>images/sidebar/dark/display.svg</file>
         <file>images/sidebar/dark/dock.svg</file>
         <file>images/sidebar/dark/language.svg</file>
-        <file>images/sidebar/dark/inputmethod.svg</file>
         <file>images/sidebar/dark/network.svg</file>
         <file>images/sidebar/dark/wallpaper.svg</file>
         <file>images/sidebar/light/about.svg</file>
@@ -107,8 +106,8 @@
         <file>images/sidebar/dark/hotspot.svg</file>
         <file>qml/Application/Main.qml</file>
         <file>qml/Cursor/Main.qml</file>
-        <file>qml/InputMethod/Main.qml</file>
-        <file>qml/InputMethod/InputMethodRow.qml</file>
+        <file>qml/Keyboard/Main.qml</file>
+        <file>qml/Keyboard/InputMethodRow.qml</file>
         <file>images/sidebar/dark/cursor.svg</file>
         <file>images/sidebar/dark/fonts.svg</file>
         <file>images/sidebar/dark/icontheme.svg</file>

@@ -233,9 +233,9 @@ Item {
         }
 
         ListElement {
-            title: qsTr("Keyboard Shortcuts")
-            name: "shortcuts"
-            page: "qrc:/qml/Shortcuts/Main.qml"
+            title: qsTr("Keyboard")
+            name: "keyboard"
+            page: "qrc:/qml/Keyboard/Main.qml"
             iconSource: "keyboard.svg"
             iconColor: "#5E6AD2"
             category: qsTr("System")
@@ -274,15 +274,6 @@ Item {
             page: "qrc:/qml/Language/LanguagePage.qml"
             iconSource: "language.svg"
             iconColor: "#20A7FF"
-            category: qsTr("System")
-        }
-
-        ListElement {
-            title: qsTr("Input Method")
-            name: "inputmethod"
-            page: "qrc:/qml/InputMethod/Main.qml"
-            iconSource: "inputmethod.svg"
-            iconColor: "#6F7DE8"
             category: qsTr("System")
         }
 

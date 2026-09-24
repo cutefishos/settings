@@ -7,7 +7,7 @@ import Cutefish.Settings 1.0
 import "../"
 
 ItemPage {
-    headerTitle: qsTr("Input Method")
+    headerTitle: qsTr("Keyboard")
 
     InputMethod {
         id: inputMethod
@@ -80,6 +80,13 @@ ItemPage {
                 leftPadding: FishUI.Units.largeSpacing * 1.5
                 rightPadding: FishUI.Units.largeSpacing * 1.5
                 opacity: 0.8
+            }
+
+            ListCard {
+                NavigationItem {
+                    text: qsTr("Keyboard Shortcuts")
+                    onClicked: rootWindow.pushPage("qrc:/qml/Shortcuts/Main.qml")
+                }
             }
         }
     }
