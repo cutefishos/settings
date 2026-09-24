@@ -44,20 +44,13 @@ ItemPage {
             anchors.fill: parent
             spacing: Metrics.sectionSpacing
 
-            RoundedItem {
-                GridLayout {
-                    columns: 2
-                    columnSpacing: Metrics.formColumnSpacing
-                    rowSpacing: Metrics.formRowSpacing
-
-                    FishUI.Label {
-                        text: qsTr("Enable")
-                        Layout.fillWidth: true
-                    }
+            ListCard {
+                ListRow {
+                    interactive: false
+                    text: qsTr("Enable")
 
                     FishUI.Switch {
                         id: _enableSwitch
-                        Layout.fillHeight: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         rightPadding: 0
                         rightInset: 0
@@ -68,16 +61,14 @@ ItemPage {
 
                         onCheckedChanged: touchpad.enabled = checked
                     }
+                }
 
-                    FishUI.Label {
-                        visible: _enableSwitch.checked
-                        text: qsTr("Tap to click")
-                        Layout.fillWidth: true
-                    }
+                ListRow {
+                    visible: _enableSwitch.checked
+                    interactive: false
+                    text: qsTr("Tap to click")
 
                     FishUI.Switch {
-                        visible: _enableSwitch.checked
-                        Layout.fillHeight: true
                         onCheckedChanged: touchpad.tapToClick = checked
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         rightPadding: 0
@@ -87,16 +78,14 @@ ItemPage {
                             checked = touchpad.tapToClick
                         }
                     }
+                }
 
-                    FishUI.Label {
-                        visible: _enableSwitch.checked
-                        text: qsTr("Natural scrolling")
-                        Layout.fillWidth: true
-                    }
+                ListRow {
+                    visible: _enableSwitch.checked
+                    interactive: false
+                    text: qsTr("Natural scrolling")
 
                     FishUI.Switch {
-                        visible: _enableSwitch.checked
-                        Layout.fillHeight: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         onCheckedChanged: touchpad.naturalScroll = checked
                         rightPadding: 0
@@ -106,18 +95,18 @@ ItemPage {
                             checked = touchpad.naturalScroll
                         }
                     }
+                }
 
-                    FishUI.Label {
-                        visible: _enableSwitch.checked
-                        text: qsTr("Pointer acceleration")
-                    }
+                ListRow {
+                    visible: _enableSwitch.checked
+                    interactive: false
+                    text: qsTr("Pointer acceleration")
 
                     FishUI.Slider {
                         id: accelSpeedSlider
 
-                        visible: _enableSwitch.checked
-                        Layout.fillWidth: true
-
+                        // The label fills the rest of the row.
+                        Layout.preferredWidth: Math.round(parent.width / 2)
                         from: 1
                         to: 11
                         stepSize: 1

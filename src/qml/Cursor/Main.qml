@@ -42,76 +42,56 @@ ItemPage {
             anchors.fill: parent
             spacing: Metrics.sectionSpacing
 
-            RoundedItem {
+            ListCard {
                 enabled: mouse.available
-                GridLayout {
-                    columns: 2
-                    columnSpacing: Metrics.formColumnSpacing
-                    rowSpacing: Metrics.formRowSpacing
 
-                    FishUI.Label {
-                        text: qsTr("Left hand")
-                        Layout.fillWidth: true
-                    }
+                ListRow {
+                    interactive: false
+                    text: qsTr("Left hand")
 
                     FishUI.Switch {
-                        Layout.fillHeight: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         checked: mouse.leftHanded
                         rightPadding: 0
                         rightInset: 0
                         onToggled: mouse.leftHanded = checked
                     }
-
-                    FishUI.Label {
-                        text: qsTr("Natural scrolling")
-                    }
-
-                    FishUI.Switch {
-                        Layout.fillHeight: true
-                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                        checked: mouse.naturalScroll
-                        onToggled: mouse.naturalScroll = checked
-                        rightPadding: 0
-                        rightInset: 0
-                    }
-
-                    FishUI.Label {
-                        text: qsTr("Mouse acceleration")
-                    }
-
-                    FishUI.Switch {
-                        Layout.fillHeight: true
-                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                        checked: mouse.acceleration
-                        onToggled: mouse.acceleration = checked
-                        rightPadding: 0
-                        rightInset: 0
-                    }
-
-//                    Label {
-//                        text: qsTr("Disable touchpad when mouse is connected")
-//                    }
-
-//                    Switch {
-//                        Layout.fillHeight: true
-//                        Layout.alignment: Qt.AlignRight
-//                        rightPadding: 0
-//                    }
                 }
 
-                HorizontalDivider {}
+                ListRow {
+                    interactive: false
+                    text: qsTr("Natural scrolling")
 
-                RowLayout {
-                    spacing: Metrics.rowSpacing
-
-                    FishUI.Label {
-                        text: qsTr("Pointer speed")
+                    FishUI.Switch {
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                        checked: mouse.naturalScroll
+                        rightPadding: 0
+                        rightInset: 0
+                        onToggled: mouse.naturalScroll = checked
                     }
+                }
+
+                ListRow {
+                    interactive: false
+                    text: qsTr("Mouse acceleration")
+
+                    FishUI.Switch {
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                        checked: mouse.acceleration
+                        rightPadding: 0
+                        rightInset: 0
+                        onToggled: mouse.acceleration = checked
+                    }
+                }
+
+                ListRow {
+                    interactive: false
+                    text: qsTr("Pointer speed")
 
                     FishUI.Slider {
                         id: accelerationSlider
-                        Layout.fillWidth: true
+                        // The label fills the rest of the row.
+                        Layout.preferredWidth: Math.round(parent.width / 2)
                         from: 1
                         to: 11
                         stepSize: 1
@@ -124,7 +104,6 @@ ItemPage {
                     }
                 }
             }
-
         }
     }
 }

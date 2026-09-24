@@ -100,51 +100,46 @@ ItemPage {
                 }
             }
 
-            RoundedItem {
+            ListCard {
                 visible: keyboard.available
 
-                GridLayout {
-                    columns: 2
-                    columnSpacing: Metrics.formColumnSpacing
-                    rowSpacing: Metrics.formRowSpacing
-
-                    FishUI.Label {
-                        text: qsTr("Key repeat")
-                        Layout.fillWidth: true
-                    }
+                ListRow {
+                    interactive: false
+                    text: qsTr("Key repeat")
 
                     FishUI.Switch {
-                        Layout.fillHeight: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         checked: keyboard.repeatEnabled
                         rightPadding: 0
                         rightInset: 0
                         onToggled: keyboard.repeatEnabled = checked
                     }
+                }
 
-                    FishUI.Label {
-                        text: qsTr("Delay until repeat")
-                        enabled: keyboard.repeatEnabled
-                    }
+                ListRow {
+                    enabled: keyboard.repeatEnabled
+                    interactive: false
+                    text: qsTr("Delay until repeat")
 
                     FishUI.Slider {
-                        Layout.fillWidth: true
-                        enabled: keyboard.repeatEnabled
+                        // The label fills the rest of the row.
+                        Layout.preferredWidth: Math.round(parent.width / 2)
                         from: 0
                         to: page.repeatDelays.length - 1
                         stepSize: 1
                         value: page.nearestStop(page.repeatDelays, keyboard.repeatDelay)
                         onMoved: keyboard.repeatDelay = page.repeatDelays[Math.round(value)]
                     }
+                }
 
-                    FishUI.Label {
-                        text: qsTr("Repeat rate")
-                        enabled: keyboard.repeatEnabled
-                    }
+                ListRow {
+                    enabled: keyboard.repeatEnabled
+                    interactive: false
+                    text: qsTr("Repeat rate")
 
                     FishUI.Slider {
-                        Layout.fillWidth: true
-                        enabled: keyboard.repeatEnabled
+                        // The label fills the rest of the row.
+                        Layout.preferredWidth: Math.round(parent.width / 2)
                         from: 0
                         to: page.repeatIntervals.length - 1
                         stepSize: 1
