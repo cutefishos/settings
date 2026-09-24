@@ -149,6 +149,30 @@ ItemPage {
                         onMoved: touchpad.pointerAcceleration = Math.round(value) * 2 / to - 1
                     }
                 }
+
+                ListRow {
+                    interactive: false
+                    minimumRowHeight: Metrics.controlRowHeight
+                    text: qsTr("Scroll speed")
+
+                    FishUI.Slider {
+                        // The label fills the rest of the row.
+                        Layout.preferredWidth: Math.round(parent.width / 2)
+
+                        // Ten steps doubling every third, from a quarter to
+                        // twice libinput's speed; the default half is step 4.
+                        readonly property int defaultStep: 3
+                        readonly property real defaultSpeed: 0.5
+
+                        from: 0
+                        to: 9
+                        stepSize: 1
+                        snapMode: Slider.SnapAlways
+
+                        value: Math.round(defaultStep + 3 * Math.log(touchpad.scrollSpeed / defaultSpeed) / Math.LN2)
+                        onMoved: touchpad.scrollSpeed = defaultSpeed * Math.pow(2, (Math.round(value) - defaultStep) / 3)
+                    }
+                }
             }
         }
     }

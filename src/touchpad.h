@@ -38,6 +38,7 @@ class Touchpad : public QObject
                        naturalScrollChanged)
     Q_PROPERTY(qreal pointerAcceleration READ pointerAcceleration WRITE setPointerAcceleration
                        NOTIFY pointerAccelerationChanged)
+    Q_PROPERTY(qreal scrollSpeed READ scrollSpeed WRITE setScrollSpeed NOTIFY scrollSpeedChanged)
 
 public:
     explicit Touchpad(QObject *parent = nullptr);
@@ -65,6 +66,9 @@ public:
     qreal pointerAcceleration() const;
     void setPointerAcceleration(qreal value);
 
+    qreal scrollSpeed() const;
+    void setScrollSpeed(qreal value);
+
 signals:
     void availableChanged();
     void enabledChanged();
@@ -74,6 +78,7 @@ signals:
     void tapDraggingChanged();
     void naturalScrollChanged();
     void pointerAccelerationChanged();
+    void scrollSpeedChanged();
 
 private:
     void refreshInterface();

@@ -56,6 +56,7 @@ void Touchpad::refreshInterface()
         connect(m_interface, SIGNAL(naturalScrollChanged()), this, SIGNAL(naturalScrollChanged()));
         connect(m_interface, SIGNAL(pointerAccelerationChanged()), this,
                 SIGNAL(pointerAccelerationChanged()));
+        connect(m_interface, SIGNAL(scrollSpeedChanged()), this, SIGNAL(scrollSpeedChanged()));
     }
     notifyChanged();
 }
@@ -70,6 +71,7 @@ void Touchpad::notifyChanged()
     emit tapDraggingChanged();
     emit naturalScrollChanged();
     emit pointerAccelerationChanged();
+    emit scrollSpeedChanged();
 }
 
 void Touchpad::call(const QString &method, const QVariant &value)
@@ -168,4 +170,15 @@ qreal Touchpad::pointerAcceleration() const
 void Touchpad::setPointerAcceleration(qreal value)
 {
     call(QStringLiteral("setPointerAcceleration"), value);
+}
+
+qreal Touchpad::scrollSpeed() const
+{
+    // The compositor's default: content under the fingers at 150%.
+    return m_interface->isValid() ? m_interface->property("scrollSpeed").toReal() : 0.5;
+}
+
+void Touchpad::setScrollSpeed(qreal value)
+{
+    call(QStringLiteral("setScrollSpeed"), value);
 }
