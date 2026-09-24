@@ -85,7 +85,8 @@ ItemPage {
             BatteryItem {
                 id: batteryBackground
                 Layout.fillWidth: true
-                enableAnimation: !battery.onBattery
+                // chargeState follows the service enum: NoCharge, Charging, Discharging, FullyCharged
+                enableAnimation: battery.chargeState === 1 && battery.chargePercent < 100
                 height: 150
 
                 ColumnLayout {

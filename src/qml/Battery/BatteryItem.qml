@@ -79,6 +79,7 @@ Item {
 
             ParticleSystem {
                 anchors.fill: parent
+                running: control.enableAnimation
 
                 Emitter {
                     id: emitter
