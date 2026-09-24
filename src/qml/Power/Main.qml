@@ -68,6 +68,8 @@ ItemPage {
                         ImageSelectionItem {
                             source: "qrc:/images/powersave.svg"
                             text: qsTr("Power Save")
+                            previewWidth: 80
+                            previewHeight: 80
                             checked: power.mode === 0
                             onClicked: power.mode = 0
                         }
@@ -75,6 +77,8 @@ ItemPage {
                         ImageSelectionItem {
                             source: "qrc:/images/performance.svg"
                             text: qsTr("Performance")
+                            previewWidth: 80
+                            previewHeight: 80
                             checked: power.mode === 1
                             onClicked: power.mode = 1
                         }
