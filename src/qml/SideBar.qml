@@ -261,7 +261,7 @@ Item {
 
         ListElement {
             title: qsTr("Default Applications")
-            name: "datetime"
+            name: "defaultapps"
             page: "qrc:/qml/DefaultApp/Main.qml"
             iconSource: "defaultapps.svg"
             iconColor: "#418CFF"
