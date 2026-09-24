@@ -64,7 +64,7 @@ ListRow {
     }
 
     IconButton {
-        width: 16
+        width: 20
         iconName: "info"
         iconColor: FishUI.Theme.highlightColor
         onClicked: {
