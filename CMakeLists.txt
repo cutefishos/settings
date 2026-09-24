@@ -61,6 +61,7 @@ set(SRCS
     src/defaultapplications.cpp
     src/mimeapps.cpp
     src/inputmethod.cpp
+    src/keyboard.cpp
     src/mock/networkmockmodel.cpp
 )
 

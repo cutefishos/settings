@@ -15,6 +15,7 @@
 #include "fonts/fonts.h"
 #include "fontsmodel.h"
 #include "inputmethod.h"
+#include "keyboard.h"
 #include "language.h"
 #include "networkproxy.h"
 #include "notifications.h"
@@ -85,6 +86,7 @@ Application::Application(int &argc, char **argv)
     qmlRegisterType<About>(uri, 1, 0, "About");
     qmlRegisterType<Language>(uri, 1, 0, "Language");
     qmlRegisterType<InputMethod>(uri, 1, 0, "InputMethod");
+    qmlRegisterType<Keyboard>(uri, 1, 0, "Keyboard");
     qmlRegisterType<Fonts>(uri, 1, 0, "Fonts");
     qmlRegisterType<PowerManager>(uri, 1, 0, "PowerManager");
     qmlRegisterType<Mouse>(uri, 1, 0, "Mouse");

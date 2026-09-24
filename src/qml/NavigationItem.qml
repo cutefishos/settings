@@ -6,6 +6,18 @@ import FishUI 1.0 as FishUI
 ListRow {
     id: control
 
+    // The current choice, shown before the chevron.
+    property string value
+
+    FishUI.Label {
+        Layout.maximumWidth: control.width / 2
+        visible: control.value.length > 0
+        text: control.value
+        textFormat: Text.PlainText
+        color: FishUI.Theme.disabledTextColor
+        elide: Text.ElideRight
+    }
+
     FishUI.Icon {
         Layout.preferredWidth: 16
         Layout.preferredHeight: 16

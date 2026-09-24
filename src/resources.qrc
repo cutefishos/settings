@@ -108,6 +108,7 @@
         <file>qml/Cursor/Main.qml</file>
         <file>qml/Keyboard/Main.qml</file>
         <file>qml/Keyboard/InputMethodRow.qml</file>
+        <file>qml/Keyboard/LayoutPage.qml</file>
         <file>images/sidebar/dark/cursor.svg</file>
         <file>images/sidebar/dark/fonts.svg</file>
         <file>images/sidebar/dark/icontheme.svg</file>

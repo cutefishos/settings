@@ -7,10 +7,28 @@ import Cutefish.Settings 1.0
 import "../"
 
 ItemPage {
+    id: page
     headerTitle: qsTr("Keyboard")
+
+    // Slider stops, slowest first, in milliseconds.
+    readonly property var repeatDelays: [1500, 1000, 750, 500, 400, 300, 250, 200, 150]
+    readonly property var repeatIntervals: [500, 250, 100, 67, 50, 40, 33, 25, 20]
+
+    function nearestStop(stops, value) {
+        var best = 0
+        for (var i = 1; i < stops.length; ++i) {
+            if (Math.abs(stops[i] - value) < Math.abs(stops[best] - value))
+                best = i
+        }
+        return best
+    }
 
     InputMethod {
         id: inputMethod
+    }
+
+    Keyboard {
+        id: keyboard
     }
 
     Scrollable {
@@ -82,7 +100,68 @@ ItemPage {
                 opacity: 0.8
             }
 
+            RoundedItem {
+                visible: keyboard.available
+
+                GridLayout {
+                    columns: 2
+                    columnSpacing: FishUI.Units.largeSpacing * 1.5
+                    rowSpacing: FishUI.Units.largeSpacing * 2
+
+                    FishUI.Label {
+                        text: qsTr("Key repeat")
+                        Layout.fillWidth: true
+                    }
+
+                    FishUI.Switch {
+                        Layout.fillHeight: true
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                        checked: keyboard.repeatEnabled
+                        rightPadding: 0
+                        rightInset: 0
+                        onToggled: keyboard.repeatEnabled = checked
+                    }
+
+                    FishUI.Label {
+                        text: qsTr("Delay until repeat")
+                        enabled: keyboard.repeatEnabled
+                    }
+
+                    FishUI.Slider {
+                        Layout.fillWidth: true
+                        enabled: keyboard.repeatEnabled
+                        from: 0
+                        to: page.repeatDelays.length - 1
+                        stepSize: 1
+                        value: page.nearestStop(page.repeatDelays, keyboard.repeatDelay)
+                        onMoved: keyboard.repeatDelay = page.repeatDelays[Math.round(value)]
+                    }
+
+                    FishUI.Label {
+                        text: qsTr("Repeat rate")
+                        enabled: keyboard.repeatEnabled
+                    }
+
+                    FishUI.Slider {
+                        Layout.fillWidth: true
+                        enabled: keyboard.repeatEnabled
+                        from: 0
+                        to: page.repeatIntervals.length - 1
+                        stepSize: 1
+                        value: page.nearestStop(page.repeatIntervals, keyboard.repeatInterval)
+                        onMoved: keyboard.repeatInterval = page.repeatIntervals[Math.round(value)]
+                    }
+                }
+            }
+
             ListCard {
+                NavigationItem {
+                    visible: keyboard.available
+                    text: qsTr("Layout")
+                    value: keyboard.layoutName
+                    onClicked: rootWindow.pushPage("qrc:/qml/Keyboard/LayoutPage.qml")
+                }
+
                 NavigationItem {
                     text: qsTr("Keyboard Shortcuts")
                     onClicked: rootWindow.pushPage("qrc:/qml/Shortcuts/Main.qml")
