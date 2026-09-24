@@ -23,7 +23,6 @@ Rectangle {
         width: 16
         height: width
         source: "qrc:/images/sidebar/dark/" + control.source
-        sourceSize: Qt.size(width, height)
         antialiasing: false
         smooth: false
     }

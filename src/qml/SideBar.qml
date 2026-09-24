@@ -350,7 +350,9 @@ Item {
             section.property: "category"
             section.delegate: Item {
                 width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
-                height: FishUI.Units.fontMetrics.height + Metrics.sidebarCategorySpacing + Metrics.xs
+                // fontMetrics.height is fractional; unrounded, every row below a
+                // header lands off the pixel grid and its icon tile blurs.
+                height: Math.ceil(FishUI.Units.fontMetrics.height) + Metrics.sidebarCategorySpacing + Metrics.xs
 
                 Text {
                     anchors.left: parent.left
@@ -422,7 +424,6 @@ Item {
                             width: 16
                             height: width
                             source: "qrc:/images/sidebar/dark/" + model.iconSource
-                            sourceSize: Qt.size(width, height)
                             Layout.alignment: Qt.AlignVCenter
                             antialiasing: false
                             smooth: false
