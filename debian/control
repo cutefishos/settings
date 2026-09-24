@@ -4,7 +4,6 @@ Priority: optional
 Maintainer: Reion Wong <reionwong@gmail.com>
 Build-Depends: cmake,
                debhelper (>= 9),
-               libcutefish,
                libicu-dev,
                libcrypt-dev,
                libfreetype6-dev,
@@ -33,7 +32,6 @@ Depends: qml6-module-qtquick-controls,
          qml6-module-qtquick-particles,
          network-manager,
          fishui,
-         libcutefish,
          ${misc:Depends},
          ${shlibs:Depends}
 Description: CutefishOS Settings
