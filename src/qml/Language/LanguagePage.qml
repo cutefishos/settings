@@ -58,6 +58,15 @@ ItemPage {
                         language: languageSettings
                     }
                 }
+
+                FishUI.Label {
+                    Layout.fillWidth: true
+                    leftPadding: Metrics.cardHorizontalPadding
+                    rightPadding: Metrics.cardHorizontalPadding
+                    text: qsTr("Drag a language to the top to make it the system language. Right-click a language to remove it.")
+                    color: FishUI.Theme.disabledTextColor
+                    wrapMode: Text.WordWrap
+                }
             }
 
             StandardButton {

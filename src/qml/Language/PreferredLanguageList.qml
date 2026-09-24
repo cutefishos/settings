@@ -104,13 +104,63 @@ Item {
                     Layout.fillWidth: true
                     spacing: 2
 
-                    FishUI.Label {
-                        id: primaryLabel
+                    RowLayout {
                         Layout.fillWidth: true
-                        text: row.modelData.name
-                        textFormat: Text.PlainText
-                        elide: Text.ElideRight
-                        color: FishUI.Theme.textColor
+                        spacing: 8
+
+                        FishUI.Label {
+                            id: primaryLabel
+                            // Shrinks to elide but never grows, so the badge stays next to the
+                            // name. Rounded up: a width a fraction short of the text elides it.
+                            Layout.fillWidth: true
+                            Layout.maximumWidth: Math.ceil(implicitWidth)
+                            text: row.modelData.name
+                            textFormat: Text.PlainText
+                            elide: Text.ElideRight
+                            color: FishUI.Theme.textColor
+                        }
+
+                        Rectangle {
+                            visible: row.index === 0
+                            Layout.alignment: Qt.AlignVCenter
+                            implicitWidth: Math.ceil(primaryBadge.implicitWidth) + 16
+                            implicitHeight: Math.round(inkMetrics.tightBoundingRect.height) + 8
+                            radius: height / 2
+                            color: Qt.alpha(FishUI.Theme.highlightColor, FishUI.Theme.darkMode ? 0.2 : 0.12)
+
+                            TextMetrics {
+                                id: inkMetrics
+                                font: primaryBadge.font
+                                text: primaryBadge.text
+                            }
+
+                            TextMetrics {
+                                id: capMetrics
+                                font: primaryBadge.font
+                                text: "H"
+                            }
+
+                            FishUI.Label {
+                                id: primaryBadge
+
+                                // Baselines that centre all the ink and just the capitals: the
+                                // first reads high once descenders count, the second low.
+                                readonly property real inkBaseline: (parent.height - inkMetrics.tightBoundingRect.height) / 2
+                                                                    - inkMetrics.tightBoundingRect.y
+                                readonly property real capBaseline: (parent.height + capMetrics.tightBoundingRect.height) / 2
+
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                y: Math.round((inkBaseline + capBaseline) / 2 - baselineOffset)
+                                text: qsTr("System language")
+                                color: FishUI.Theme.highlightColor
+                                font.pixelSize: Math.max(1, primaryLabel.font.pixelSize - 2)
+                                font.weight: Font.Medium
+                            }
+                        }
+
+                        Item {
+                            Layout.fillWidth: true
+                        }
                     }
 
                     FishUI.Label {
