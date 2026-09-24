@@ -100,7 +100,7 @@ ItemPage {
                 ListRow {
                     visible: _enableSwitch.checked
                     interactive: false
-                    minimumRowHeight: Metrics.sliderRowHeight
+                    minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Pointer acceleration")
 
                     FishUI.Slider {

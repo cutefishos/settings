@@ -171,6 +171,9 @@ Item {
         height: 1
         color: FishUI.Theme.disabledTextColor
         opacity: FishUI.Theme.darkMode ? 0.3 : 0.1
+        // A ListCard holds its rows in its layout, so the card is the parent's parent.
         visible: !control.lastItem
+                 && !(control.parent && control.parent.parent
+                      && control.parent.parent.separatorsVisible === false)
     }
 }

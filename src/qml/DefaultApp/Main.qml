@@ -41,70 +41,64 @@ ItemPage {
             anchors.fill: parent
             spacing: Metrics.sectionSpacing
 
-            RoundedItem {
-                GridLayout {
-                    columns: 2
-                    columnSpacing: Metrics.formColumnSpacing
-                    rowSpacing: Metrics.formRowSpacing
-
-                    FishUI.Label {
-                        text: qsTr("Web Browser")
-                        enabled: browserComboBox.count !== 0
-                    }
+            ListCard {
+                ListRow {
+                    interactive: false
+                    minimumRowHeight: Metrics.controlRowHeight
+                    text: qsTr("Web Browser")
+                    enabled: browserComboBox.count !== 0
 
                     FishUI.ComboBox {
                         id: browserComboBox
-                        Layout.fillWidth: true
+                        // The label fills the rest of the row.
+                        Layout.preferredWidth: Math.round(parent.width / 2)
                         textRole: "name"
                         iconRole: "icon"
                         model: defaultApps.browserList
                         currentIndex: defaultApps.browserIndex >= 0
                                       ? defaultApps.browserIndex
                                       : (defaultApps.browserList.length > 0 ? 0 : -1)
-                        enabled: count !== 0
-                        onActivated: {
-                            defaultApps.setDefaultBrowser(browserComboBox.currentIndex)
-                        }
+                        onActivated: defaultApps.setDefaultBrowser(browserComboBox.currentIndex)
                     }
+                }
 
-                    FishUI.Label {
-                        text: qsTr("Email Client")
-                        enabled: emailComboBox.count !== 0
-                    }
+                ListRow {
+                    interactive: false
+                    minimumRowHeight: Metrics.controlRowHeight
+                    text: qsTr("Email Client")
+                    enabled: emailComboBox.count !== 0
 
                     FishUI.ComboBox {
                         id: emailComboBox
-                        Layout.fillWidth: true
+                        // The label fills the rest of the row.
+                        Layout.preferredWidth: Math.round(parent.width / 2)
                         textRole: "name"
                         iconRole: "icon"
                         model: defaultApps.emailList
                         currentIndex: defaultApps.emailIndex >= 0
                                       ? defaultApps.emailIndex
                                       : (defaultApps.emailList.length > 0 ? 0 : -1)
-                        enabled: count !== 0
-                        onActivated: {
-                            defaultApps.setDefaultEMail(emailComboBox.currentIndex)
-                        }
+                        onActivated: defaultApps.setDefaultEMail(emailComboBox.currentIndex)
                     }
+                }
 
-                    FishUI.Label {
-                        text: qsTr("Terminal")
-                        enabled: terminalComboBox.count !== 0
-                    }
+                ListRow {
+                    interactive: false
+                    minimumRowHeight: Metrics.controlRowHeight
+                    text: qsTr("Terminal")
+                    enabled: terminalComboBox.count !== 0
 
                     FishUI.ComboBox {
                         id: terminalComboBox
-                        Layout.fillWidth: true
+                        // The label fills the rest of the row.
+                        Layout.preferredWidth: Math.round(parent.width / 2)
                         textRole: "name"
                         iconRole: "icon"
                         model: defaultApps.terminalList
                         currentIndex: defaultApps.terminalIndex >= 0
                                       ? defaultApps.terminalIndex
                                       : (defaultApps.terminalList.length > 0 ? 0 : -1)
-                        enabled: count !== 0
-                        onActivated: {
-                            defaultApps.setDefaultTerminal(terminalComboBox.currentIndex)
-                        }
+                        onActivated: defaultApps.setDefaultTerminal(terminalComboBox.currentIndex)
                     }
                 }
             }
