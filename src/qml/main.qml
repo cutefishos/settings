@@ -72,9 +72,9 @@ FishUI.Window {
                     switchPageFromIndex(currentIndex)
             }
             onCurrentPageRemoved: switchPageFromIndex(currentIndex)
-            onBluetoothItemAdded: {
-                if (rootWindow.pendingPageName === "bluetooth")
-                    rootWindow.switchPageFromName("bluetooth")
+            onItemAdded: (name) => {
+                if (rootWindow.pendingPageName === name)
+                    rootWindow.switchPageFromName(name)
             }
         }
 
@@ -162,8 +162,12 @@ FishUI.Window {
 
     // Deferred: sidebar items drop unavailable pages in their own onCompleted handlers.
     Component.onCompleted: Qt.callLater(function() {
-        if (historyIndex < 0)
+        if (historyIndex < 0) {
+            // A page asked for by name may still be waiting for its hardware entry.
+            var pending = pendingPageName
             switchPageFromIndex(0)
+            pendingPageName = pending
+        }
     })
 
     function sideBarIndexOf(page) {
@@ -236,7 +240,8 @@ FishUI.Window {
     }
 
     function switchPageFromName(pageName) {
-        pendingPageName = pageName === "bluetooth" ? pageName : ""
+        // Hardware entries may join the sidebar after the request arrives.
+        pendingPageName = pageName === "bluetooth" || pageName === "ethernet" ? pageName : ""
         for (var i = 0; i < sideBar.model.count; ++i) {
             if (pageName === sideBar.model.get(i).name) {
                 switchPageFromIndex(i)

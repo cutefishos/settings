@@ -36,9 +36,32 @@ Item {
     property alias currentIndex: listView.currentIndex
     property bool updatingModel: false
     signal currentPageRemoved()
-    signal bluetoothItemAdded()
+    signal itemAdded(string name)
 
-    Component.onCompleted: syncBluetoothItem()
+    // Entries that come and go with the hardware, in sidebar order.
+    readonly property var hardwareItems: [
+        {
+            title: qsTr("Ethernet"),
+            name: "ethernet",
+            page: "qrc:/qml/Wired/Main.qml",
+            iconSource: "network.svg",
+            iconColor: "#0067FF",
+            category: qsTr("Network and connection")
+        },
+        {
+            title: qsTr("Bluetooth"),
+            name: "bluetooth",
+            page: "qrc:/qml/Bluetooth/Main.qml",
+            iconSource: "bluetooth.svg",
+            iconColor: "#0067FF",
+            category: qsTr("Network and connection")
+        }
+    ]
+
+    Component.onCompleted: {
+        syncEthernetItem()
+        syncBluetoothItem()
+    }
 
     Connections {
         target: Bluetooth.Manager
@@ -47,37 +70,63 @@ Item {
         }
     }
 
-    function syncBluetoothItem() {
-        var bluetoothIndex = -1
-        for (var i = 0; i < listModel.count; ++i) {
-            if (listModel.get(i).name === "bluetooth") {
-                bluetoothIndex = i
-                break
-            }
+    // The Ethernet page lists only connections on a present wired device;
+    // without one it would be blank.
+    Repeater {
+        id: wiredConnections
+        model: NM.AppletProxyModel {
+            type: NM.AppletProxyModel.WiredType
+            sourceModel: rootWindow.mockNetworkData ? mockNetworkModel : networkModel
         }
-        if (Bluetooth.Manager.available === (bluetoothIndex >= 0))
+        delegate: Item {}
+        onCountChanged: Qt.callLater(sideBar.syncEthernetItem)
+    }
+
+    NM.NetworkModel {
+        id: networkModel
+    }
+
+    NetworkMockModel {
+        id: mockNetworkModel
+    }
+
+    // Separate functions: Qt.callLater folds calls to one function into one.
+    function syncEthernetItem() {
+        syncItem("ethernet", wiredConnections.count > 0)
+    }
+
+    function syncBluetoothItem() {
+        syncItem("bluetooth", Bluetooth.Manager.available)
+    }
+
+    function indexOfItem(name) {
+        for (var i = 0; i < listModel.count; ++i) {
+            if (listModel.get(i).name === name)
+                return i
+        }
+        return -1
+    }
+
+    function syncItem(name, available) {
+        var itemIndex = indexOfItem(name)
+        if (available === (itemIndex >= 0))
             return
 
         var selectedPage = listView.currentIndex >= 0
                 ? listModel.get(listView.currentIndex).page : ""
-        var selectedRemoved = bluetoothIndex >= 0 && listView.currentIndex === bluetoothIndex
+        var selectedRemoved = itemIndex >= 0 && listView.currentIndex === itemIndex
         updatingModel = true
-        if (Bluetooth.Manager.available) {
+        if (available) {
+            // After Wi-Fi and whichever hardware entries precede this one.
+            var order = hardwareItems.map(function(item) { return item.name })
+            var predecessors = ["wlan"].concat(order.slice(0, order.indexOf(name)))
             var insertIndex = 0
             while (insertIndex < listModel.count
-                   && (listModel.get(insertIndex).name === "wlan"
-                       || listModel.get(insertIndex).name === "ethernet"))
+                   && predecessors.indexOf(listModel.get(insertIndex).name) >= 0)
                 ++insertIndex
-            listModel.insert(insertIndex, {
-                title: qsTr("Bluetooth"),
-                name: "bluetooth",
-                page: "qrc:/qml/Bluetooth/Main.qml",
-                iconSource: "bluetooth.svg",
-                iconColor: "#0067FF",
-                category: qsTr("Network and connection")
-            })
+            listModel.insert(insertIndex, hardwareItems[order.indexOf(name)])
         } else {
-            listModel.remove(bluetoothIndex)
+            listModel.remove(itemIndex)
         }
         if (selectedRemoved) {
             listView.currentIndex = 0
@@ -92,8 +141,8 @@ Item {
         updatingModel = false
         if (selectedRemoved)
             currentPageRemoved()
-        else if (Bluetooth.Manager.available)
-            bluetoothItemAdded()
+        else if (available)
+            itemAdded(name)
     }
 
     Rectangle {
@@ -111,15 +160,6 @@ Item {
             name: "wlan"
             page: "qrc:/qml/WLAN/Main.qml"
             iconSource: "wlan.svg"
-            iconColor: "#0067FF"
-            category: qsTr("Network and connection")
-        }
-
-        ListElement {
-            title: qsTr("Ethernet")
-            name: "ethernet"
-            page: "qrc:/qml/Wired/Main.qml"
-            iconSource: "network.svg"
             iconColor: "#0067FF"
             category: qsTr("Network and connection")
         }
