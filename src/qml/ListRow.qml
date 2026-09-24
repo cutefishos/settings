@@ -32,7 +32,8 @@ Item {
     property bool interactive: true
     signal clicked()
 
-    readonly property real rowHeight: Math.max(Metrics.rowHeight, _row.implicitHeight + Metrics.cardVerticalPadding)
+    property real minimumRowHeight: Metrics.rowHeight
+    readonly property real rowHeight: Math.max(minimumRowHeight, _row.implicitHeight + Metrics.cardVerticalPadding)
 
     readonly property real horizontalPadding: Metrics.cardHorizontalPadding
     readonly property color hoverColor: Qt.rgba(FishUI.Theme.textColor.r, FishUI.Theme.textColor.g,

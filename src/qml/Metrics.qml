@@ -31,6 +31,8 @@ QtObject {
 
     // Row inside a card.
     readonly property int rowHeight: 44
+    // A slider's track is thin; the extra height keeps its row from looking cramped.
+    readonly property int sliderRowHeight: 52
     readonly property int rowSpacing: m
 
     // A full-width button standing alone between cards.

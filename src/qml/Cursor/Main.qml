@@ -86,6 +86,7 @@ ItemPage {
 
                 ListRow {
                     interactive: false
+                    minimumRowHeight: Metrics.sliderRowHeight
                     text: qsTr("Pointer speed")
 
                     FishUI.Slider {

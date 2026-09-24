@@ -119,6 +119,7 @@ ItemPage {
                 ListRow {
                     enabled: keyboard.repeatEnabled
                     interactive: false
+                    minimumRowHeight: Metrics.sliderRowHeight
                     text: qsTr("Delay until repeat")
 
                     FishUI.Slider {
@@ -135,6 +136,7 @@ ItemPage {
                 ListRow {
                     enabled: keyboard.repeatEnabled
                     interactive: false
+                    minimumRowHeight: Metrics.sliderRowHeight
                     text: qsTr("Repeat rate")
 
                     FishUI.Slider {
