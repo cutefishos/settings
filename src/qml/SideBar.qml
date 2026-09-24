@@ -410,6 +410,15 @@ Item {
                 target: listView
             }
 
+            // Rows joining or leaving the top of the list, such as hardware entries, move
+            // originY but not contentY, which scrolls the first rows out of view.
+            property real lastOriginY: 0
+            onOriginYChanged: {
+                if (contentY <= lastOriginY - topMargin + 0.5)
+                    contentY = originY - topMargin
+                lastOriginY = originY
+            }
+
             delegate: Item {
                 id: item
                 width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
