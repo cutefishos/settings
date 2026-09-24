@@ -5,7 +5,7 @@ import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 import "../"
 
-// A titled card of the devices `includes` accepts. Empty, it hides, or shows
+// A titled card of the devices in `model`. Empty, it hides, or shows
 // `placeholderText` in the card's place when one is set.
 ColumnLayout {
     id: deviceSection
@@ -14,25 +14,11 @@ ColumnLayout {
     property string placeholderText
     property bool busy: false
     property var model
-    // (device) -> bool, given the device object.
-    property var includes: function(item) { return true }
-    property int shown: 0
+    readonly property int shown: repeater.count
 
     Layout.fillWidth: true
     spacing: Metrics.sectionLabelSpacing
     visible: shown > 0 || placeholderText.length > 0
-
-    // Counts the rows' own verdicts, not their visibility: while the card is
-    // hidden for being empty every row is invisible too.
-    function recount() {
-        var count = 0
-        for (var i = 0; i < repeater.count; ++i) {
-            var item = repeater.itemAt(i)
-            if (item && item.included)
-                ++count
-        }
-        shown = count
-    }
 
     RowLayout {
         Layout.fillWidth: true
@@ -72,13 +58,7 @@ ColumnLayout {
             id: repeater
             model: deviceSection.model
 
-            delegate: DeviceItem {
-                readonly property bool included: deviceSection.includes(device)
-                visible: included
-                onIncludedChanged: deviceSection.recount()
-                Component.onCompleted: deviceSection.recount()
-                Component.onDestruction: deviceSection.recount()
-            }
+            delegate: DeviceItem {}
         }
     }
 }

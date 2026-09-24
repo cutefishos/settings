@@ -45,7 +45,17 @@ ItemPage {
         Bluetooth.Manager.agentEnabled = false
     }
 
-    Bluetooth.DevicesModel { id: devicesModel }
+    Bluetooth.DevicesModel {
+        id: pairedDevices
+        filter: Bluetooth.DevicesModelPrivate.PairedDevices
+    }
+
+    Bluetooth.DevicesModel {
+        id: otherDevices
+        filter: Bluetooth.DevicesModelPrivate.UnpairedDevices
+        namedOnly: true
+    }
+
     PairDialog {
         hostWindow: rootWindow
     }
@@ -138,21 +148,15 @@ ItemPage {
 
                 DeviceSection {
                     title: qsTr("My Devices")
-                    model: devicesModel
-                    includes: function(device) { return device.paired }
+                    model: pairedDevices
                 }
 
                 DeviceSection {
                     title: qsTr("Other Devices")
-                    model: devicesModel
+                    model: otherDevices
                     busy: Bluetooth.Manager.scanning
                     placeholderText: Bluetooth.Manager.scanning ? qsTr("Searching for devices…")
                                      : qsTr("No devices found. Make sure your device is discoverable.")
-                    // Without a name BlueZ aliases a device to its address; such
-                    // devices are mostly anonymous BLE advertisers nobody can pick out.
-                    includes: function(device) {
-                        return !device.paired && device.name !== device.address.replace(/:/g, "-")
-                    }
                 }
             }
         }
