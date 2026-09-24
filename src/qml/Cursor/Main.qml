@@ -93,14 +93,27 @@ ItemPage {
                         id: accelerationSlider
                         // The label fills the rest of the row.
                         Layout.preferredWidth: Math.round(parent.width / 2)
-                        from: 1
-                        to: 11
-                        stepSize: 1
 
-                        value: 6 + mouse.pointerAcceleration / 0.2
+                        // Ten steps, one per acceleration curve the compositor
+                        // has. Speed 0 is the fourth and default; below it a
+                        // step is a third of the range, above it a sixth.
+                        readonly property int defaultStep: 3
+
+                        from: 0
+                        to: 9
+                        stepSize: 1
+                        snapMode: Slider.SnapAlways
+
+                        value: {
+                            const speed = mouse.pointerAcceleration
+                            return Math.round(speed < 0 ? defaultStep * (1 + speed)
+                                                        : defaultStep + speed * (to - defaultStep))
+                        }
 
                         onMoved: {
-                            mouse.pointerAcceleration = Math.round(((value - 6) * 0.2) * 10) / 10
+                            const step = Math.round(value)
+                            mouse.pointerAcceleration = step < defaultStep ? step / defaultStep - 1
+                                                                           : (step - defaultStep) / (to - defaultStep)
                         }
                     }
                 }
