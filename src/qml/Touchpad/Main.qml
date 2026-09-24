@@ -29,10 +29,6 @@ ItemPage {
 
     Touchpad {
         id: touchpad
-
-        Component.onCompleted: {
-            accelSpeedSlider.load()
-        }
     }
 
     Scrollable {
@@ -45,104 +41,115 @@ ItemPage {
             spacing: Metrics.sectionSpacing
 
             ListCard {
+                enabled: touchpad.available
+
                 ListRow {
                     interactive: false
                     text: qsTr("Enable")
 
                     FishUI.Switch {
-                        id: _enableSwitch
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                        checked: touchpad.enabled
                         rightPadding: 0
                         rightInset: 0
-
-                        Component.onCompleted: {
-                            checked = touchpad.enabled
-                        }
-
-                        onCheckedChanged: touchpad.enabled = checked
+                        onToggled: touchpad.enabled = checked
                     }
                 }
 
                 ListRow {
-                    visible: _enableSwitch.checked
+                    enabled: touchpad.enabled
+                    interactive: false
+                    text: qsTr("Disable when a mouse is connected")
+
+                    FishUI.Switch {
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                        checked: touchpad.disableWithMouse
+                        rightPadding: 0
+                        rightInset: 0
+                        onToggled: touchpad.disableWithMouse = checked
+                    }
+                }
+
+                ListRow {
+                    enabled: touchpad.enabled
+                    interactive: false
+                    text: qsTr("Disable while typing")
+
+                    FishUI.Switch {
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                        checked: touchpad.disableWhileTyping
+                        rightPadding: 0
+                        rightInset: 0
+                        onToggled: touchpad.disableWhileTyping = checked
+                    }
+                }
+            }
+
+            ListCard {
+                enabled: touchpad.available && touchpad.enabled
+
+                ListRow {
                     interactive: false
                     text: qsTr("Tap to click")
 
                     FishUI.Switch {
-                        onCheckedChanged: touchpad.tapToClick = checked
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                        checked: touchpad.tapToClick
                         rightPadding: 0
                         rightInset: 0
-
-                        Component.onCompleted: {
-                            checked = touchpad.tapToClick
-                        }
+                        onToggled: touchpad.tapToClick = checked
                     }
                 }
 
                 ListRow {
-                    visible: _enableSwitch.checked
+                    // Tap and drag starts with a tap, so it needs tapping on.
+                    enabled: touchpad.tapToClick
+                    interactive: false
+                    text: qsTr("Tap and drag")
+
+                    FishUI.Switch {
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                        checked: touchpad.tapDragging
+                        rightPadding: 0
+                        rightInset: 0
+                        onToggled: touchpad.tapDragging = checked
+                    }
+                }
+
+                ListRow {
                     interactive: false
                     text: qsTr("Natural scrolling")
 
                     FishUI.Switch {
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                        onCheckedChanged: touchpad.naturalScroll = checked
+                        checked: touchpad.naturalScroll
                         rightPadding: 0
                         rightInset: 0
-
-                        Component.onCompleted: {
-                            checked = touchpad.naturalScroll
-                        }
+                        onToggled: touchpad.naturalScroll = checked
                     }
                 }
 
                 ListRow {
-                    visible: _enableSwitch.checked
                     interactive: false
                     minimumRowHeight: Metrics.controlRowHeight
-                    text: qsTr("Pointer acceleration")
+                    text: qsTr("Pointer speed")
 
                     FishUI.Slider {
-                        id: accelSpeedSlider
-
                         // The label fills the rest of the row.
                         Layout.preferredWidth: Math.round(parent.width / 2)
-                        from: 1
-                        to: 11
+
+                        // libinput's speed runs from -1 to 1; eleven steps
+                        // put its default in the middle.
+                        from: 0
+                        to: 10
                         stepSize: 1
-                        property int accelSpeedValue: 0 // [-100, 100]
+                        snapMode: Slider.SnapAlways
 
-                        function load() {
-                            accelSpeedValue = Math.round(touchpad.pointerAcceleration * 100)
-                            // convert libinput pointer acceleration range [-1, 1] to slider range [1, 11]
-                            value = Math.round(6 + touchpad.pointerAcceleration / 0.2)
-                        }
-
-                        function onAccelSpeedChanged(val) {
-                            // check slider
-                            if (val !== accelSpeedSlider.accelSpeedValue) {
-                                accelSpeedSlider.accelSpeedValue = val
-                                accelSpeedSlider.value = Math.round(6 + (val / 100) / 0.2)
-                            }
-
-                            // check libinput accelspeed
-                            if ((val / 100) != touchpad.pointerAcceleration) {
-                                touchpad.pointerAcceleration = val / 100
-                            }
-                        }
-
-                        onMoved: {
-                            if (touchpad != undefined) {
-                                // convert slider range [1, 11] to accelSpeedValue range [-100, 100]
-                                accelSpeedValue = Math.round(((value - 6) * 0.2) * 100)
-                                onAccelSpeedChanged(accelSpeedValue)
-                            }
-                        }
+                        value: Math.round((touchpad.pointerAcceleration + 1) * to / 2)
+                        onMoved: touchpad.pointerAcceleration = Math.round(value) * 2 / to - 1
                     }
                 }
             }
-
         }
     }
 }
