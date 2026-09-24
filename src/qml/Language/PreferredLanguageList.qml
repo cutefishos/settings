@@ -96,6 +96,14 @@ Item {
             height: control.rowHeight
             opacity: control.dragging && control.pressedIndex === index ? 0.45 : 1
 
+            // Below the row content: a MouseArea always sets a cursor, so one on top
+            // would override the drag handle's.
+            MouseArea {
+                anchors.fill: parent
+                acceptedButtons: Qt.RightButton
+                onClicked: actions.popup()
+            }
+
             RowLayout {
                 anchors.fill: parent
                 spacing: 12
@@ -208,12 +216,6 @@ Item {
                         }
                     }
                 }
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                acceptedButtons: Qt.RightButton
-                onClicked: actions.popup()
             }
 
             FishUI.DesktopMenu {
