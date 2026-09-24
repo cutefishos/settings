@@ -70,28 +70,34 @@ ItemPage {
             anchors.fill: parent
             spacing: Metrics.sectionSpacing
 
-            // Wired connection
-            ColumnLayout {
-                Layout.fillWidth: true
-                spacing: Metrics.sectionLabelSpacing
+            // The switch and the wired connections share one card.
+            ListCard {
+                visible: rootWindow.mockNetworkData || enabledConnections.wiredAvailable
 
-                SectionLabel {
+                ListRow {
+                    interactive: false
                     text: qsTr("Ethernet")
-                    visible: wiredView.count > 0
+
+                    FishUI.Switch {
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                        rightPadding: 0
+                        rightInset: 0
+                        checked: rootWindow.mockNetworkData || enabledConnections.wiredEnabled
+                        onToggled: {
+                            if (!rootWindow.mockNetworkData)
+                                handler.enableWired(checked)
+                        }
+                    }
                 }
 
-                ListCard {
-                    visible: wiredView.count > 0
+                Repeater {
+                    model: NM.AppletProxyModel {
+                        type: NM.AppletProxyModel.WiredType
+                        sourceModel: rootWindow.mockNetworkData ? mockNetworkModel : connectionModel
+                    }
 
-                    Repeater {
-                        id: wiredView
-
-                        model: NM.AppletProxyModel {
-                            type: NM.AppletProxyModel.WiredType
-                            sourceModel: rootWindow.mockNetworkData ? mockNetworkModel : connectionModel
-                        }
-
-                        delegate: WiredItem {}
+                    delegate: WiredItem {
+                        visible: rootWindow.mockNetworkData || enabledConnections.wiredEnabled
                     }
                 }
             }
