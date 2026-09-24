@@ -26,6 +26,7 @@
 #include <QLocale>
 #include <QTimeZone>
 
+#include <limits>
 #include <math.h>
 #include <locale.h>
 
@@ -82,33 +83,43 @@ TimeZoneMap::TimeZoneMap(QObject *parent)
     initDatas();
 }
 
-void TimeZoneMap::clicked(int x, int y, int width, int height)
+int TimeZoneMap::nearestIndex(int x, int y, int width, int height) const
 {
-    double minimum_distance = width * width + height * height;
+    double minimum_distance = std::numeric_limits<double>::max();
     int nearest_zone_index = -1;
 
-    QList<TimeZoneItem *> items;
-
     for (int i = 0; i < m_list.size(); ++i) {
-        TimeZoneItem *item = m_list.at(i);
-        const double point_x = convert_longitude_to_x(item->longitude) * width;
-        const double point_y = convert_latitude_to_y(item->latitude) * height;
-        const double dx = point_x - x;
-        const double dy = point_y - y;
+        const TimeZoneItem *item = m_list.at(i);
+        const double dx = convert_longitude_to_x(item->longitude) * width - x;
+        const double dy = convert_latitude_to_y(item->latitude) * height - y;
         const double distance = dx * dx + dy * dy;
 
         if (distance < minimum_distance) {
             minimum_distance = distance;
             nearest_zone_index = i;
         }
+    }
 
-        if (distance <= 20) {
+    return nearest_zone_index;
+}
+
+void TimeZoneMap::clicked(int x, int y, int width, int height)
+{
+    QList<TimeZoneItem *> items;
+
+    for (TimeZoneItem *item : m_list) {
+        const double dx = convert_longitude_to_x(item->longitude) * width - x;
+        const double dy = convert_latitude_to_y(item->latitude) * height - y;
+
+        if (dx * dx + dy * dy <= 20) {
             items << item;
         }
     }
 
-    if (items.isEmpty() && nearest_zone_index != -1) {
-        items.append(m_list.at(nearest_zone_index));
+    if (items.isEmpty()) {
+        const int nearest_zone_index = nearestIndex(x, y, width, height);
+        if (nearest_zone_index != -1)
+            items.append(m_list.at(nearest_zone_index));
     }
 
     m_currentList.clear();
@@ -161,6 +172,86 @@ QPointF TimeZoneMap::position(const QString &timeZone, int width, int height) co
     return QPointF(-1, -1);
 }
 
+QString TimeZoneMap::nearest(int x, int y, int width, int height) const
+{
+    const int index = nearestIndex(x, y, width, height);
+    return index < 0 ? QString() : m_list.at(index)->timeZone;
+}
+
+QVariantList TimeZoneMap::points() const
+{
+    const QDateTime now = QDateTime::currentDateTimeUtc();
+    QVariantList result;
+    result.reserve(m_list.size());
+    for (const TimeZoneItem *item : m_list) {
+        result.append(QVariantMap {
+                {QStringLiteral("id"), item->timeZone},
+                {QStringLiteral("x"), convert_longitude_to_x(item->longitude)},
+                {QStringLiteral("y"), convert_latitude_to_y(item->latitude)},
+                {QStringLiteral("offsetSeconds"), QTimeZone(item->timeZone.toLatin1()).offsetFromUtc(now)},
+        });
+    }
+    return result;
+}
+
+QVariantMap TimeZoneMap::info(const QString &timeZone) const
+{
+    const TimeZoneItem *found = nullptr;
+    for (const TimeZoneItem *item : m_list) {
+        if (item->timeZone == timeZone) {
+            found = item;
+            break;
+        }
+    }
+    if (!found)
+        return {};
+
+    // Offsets are not something most people think in: the gap to the zone
+    // in use, and the day when it differs, say the same thing plainly.
+    const QDateTime utc = QDateTime::currentDateTimeUtc();
+    const QTimeZone zone(found->timeZone.toLatin1());
+    const QTimeZone here(m_currentTimeZone.toLatin1());
+    const QDateTime there = utc.toTimeZone(zone);
+    const QDateTime local = utc.toTimeZone(here);
+    const int offset = zone.offsetFromUtc(utc);
+    const int gap = offset - here.offsetFromUtc(utc);
+
+    QString difference;
+    const int hours = qAbs(gap) / 3600;
+    const int minutes = qAbs(gap) % 3600 / 60;
+    if (gap == 0)
+        difference = tr("Same time as now");
+    // Singular and plural spelled out: the English text ships without a
+    // translation, where "%n hour(s)" would show as written.
+    else if (minutes == 0 && hours == 1)
+        difference = gap > 0 ? tr("1 hour ahead") : tr("1 hour behind");
+    else if (minutes == 0)
+        difference = gap > 0 ? tr("%1 hours ahead").arg(hours) : tr("%1 hours behind").arg(hours);
+    else if (hours == 0)
+        difference = gap > 0 ? tr("%1 min ahead").arg(minutes) : tr("%1 min behind").arg(minutes);
+    else
+        difference = gap > 0 ? tr("%1 h %2 min ahead").arg(hours).arg(minutes)
+                             : tr("%1 h %2 min behind").arg(hours).arg(minutes);
+
+    QString day;
+    const qint64 days = local.date().daysTo(there.date());
+    if (days > 0)
+        day = tr("Tomorrow");
+    else if (days < 0)
+        day = tr("Yesterday");
+
+    return QVariantMap {
+            {QStringLiteral("id"), found->timeZone},
+            {QStringLiteral("name"), localeTimeZoneName(found->timeZone)},
+            {QStringLiteral("region"),
+             QLocale::territoryToString(QLocale::codeToTerritory(found->country))},
+            {QStringLiteral("offsetSeconds"), offset},
+            {QStringLiteral("time"), QLocale::system().toString(there.time(), QLocale::ShortFormat)},
+            {QStringLiteral("day"), day},
+            {QStringLiteral("difference"), difference},
+    };
+}
+
 QVariantList TimeZoneMap::search(const QString &text, int limit) const
 {
     const QString needle = text.trimmed();
@@ -200,21 +291,7 @@ QVariantList TimeZoneMap::search(const QString &text, int limit) const
     for (const Match &match : matches) {
         if (result.size() >= limit)
             break;
-        const QTimeZone zone(match.item->timeZone.toLatin1());
-        const int offset = zone.offsetFromUtc(QDateTime::currentDateTime());
-        const QString sign = offset < 0 ? QStringLiteral("-") : QStringLiteral("+");
-        const int minutes = qAbs(offset) / 60;
-        result.append(QVariantMap {
-                {QStringLiteral("id"), match.item->timeZone},
-                {QStringLiteral("name"), localeTimeZoneName(match.item->timeZone)},
-                {QStringLiteral("region"),
-                 QLocale::territoryToString(QLocale::codeToTerritory(match.item->country))},
-                {QStringLiteral("offset"),
-                 QStringLiteral("UTC%1%2:%3")
-                         .arg(sign)
-                         .arg(minutes / 60, 2, 10, QLatin1Char('0'))
-                         .arg(minutes % 60, 2, 10, QLatin1Char('0'))},
-        });
+        result.append(info(match.item->timeZone));
     }
     return result;
 }
