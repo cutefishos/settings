@@ -1,6 +1,5 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.4
-import QtQuick.Layouts 1.3
 import QtQuick.Window 2.3
 
 import Cutefish.Settings 1.0
@@ -8,9 +7,9 @@ import FishUI 1.0 as FishUI
 import Cutefish.Network 1.0 as NM
 import "../"
 
-// One wireless network. Clicking connects, or unfolds the connect/disconnect
-// controls for the current connection. A password is asked for by the shell's
-// secret agent once NetworkManager needs one.
+// One wireless network. Clicking connects; the current connection is managed
+// from the info dialog. A password is asked for by the shell's secret agent
+// once NetworkManager needs one.
 ListRow {
     id: control
 
@@ -21,13 +20,8 @@ ListRow {
     checked: model.connectionState === NM.Enums.Activated
 
     onClicked: {
-        if (busyIndicator.visible)
-            return
-
         if (control.displayedState === NM.Enums.Deactivated)
             control.connectNetwork()
-        else
-            expanded = !expanded
     }
 
     leading: FishUI.Icon {
@@ -74,33 +68,6 @@ ListRow {
             }
         }
     }
-
-    details: [
-        RowLayout {
-            spacing: Metrics.controlSpacing
-
-            FishUI.Button {
-                visible: control.displayedState === NM.Enums.Deactivated
-                text: qsTr("Connect")
-                flat: true
-
-                onClicked: control.connectNetwork()
-            }
-
-            FishUI.Button {
-                visible: connectionState === NM.Enums.Activated
-                text: qsTr("Disconnect")
-
-                onClicked: {
-                    handler.deactivateConnection(model.connectionPath, model.devicePath)
-                }
-            }
-        },
-
-        Item {
-            Layout.preferredHeight: Metrics.cardVerticalPadding
-        }
-    ]
 
     function connectNetwork() {
         if (model.uuid)
