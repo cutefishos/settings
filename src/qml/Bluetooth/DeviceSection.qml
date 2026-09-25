@@ -26,6 +26,7 @@ ColumnLayout {
 
         SectionLabel {
             Layout.fillWidth: false
+            rightPadding: Metrics.m
             text: deviceSection.title
         }
 
@@ -34,6 +35,7 @@ ColumnLayout {
             Layout.preferredHeight: 14
             visible: deviceSection.busy
             running: visible
+            duration: 1600
         }
 
         Item {
