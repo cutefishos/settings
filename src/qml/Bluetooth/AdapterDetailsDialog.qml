@@ -60,6 +60,7 @@ FishUI.Window {
         ListCard {
             ListRow {
                 interactive: false
+                minimumRowHeight: Metrics.controlRowHeight
                 text: qsTr("Name")
 
                 FishUI.TextField {
