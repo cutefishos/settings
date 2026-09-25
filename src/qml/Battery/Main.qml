@@ -263,14 +263,42 @@ ItemPage {
                 ListCard {
                     ListRow {
                         interactive: false
-                        text: qsTr("Limit charging to %1%").arg(battery.chargeLimitEnd)
+                        minimumRowHeight: Metrics.controlRowHeight
+                        text: qsTr("Charge limit")
 
-                        FishUI.Switch {
-                            Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                            rightPadding: 0
-                            rightInset: 0
-                            checked: battery.chargeLimitEnabled
-                            onToggled: battery.setChargeLimitEnabled(checked)
+                        FishUI.Slider {
+                            id: chargeLimitSlider
+                            // The label fills the rest of the row.
+                            Layout.preferredWidth: Math.round(parent.width / 2)
+                            from: 80
+                            to: 100
+                            stepSize: 5
+                            stepped: true
+                            value: battery.chargeLimit
+
+                            // Each change asks for root through pkexec, so a drag
+                            // applies only where it is let go.
+                            onPressedChanged: {
+                                if (!pressed)
+                                    battery.setChargeLimit(value)
+                            }
+                            onMoved: {
+                                if (!pressed)
+                                    battery.setChargeLimit(value)
+                            }
+                        }
+
+                        FishUI.Label {
+                            Layout.preferredWidth: Math.ceil(chargeLimitMetrics.advanceWidth)
+                            horizontalAlignment: Text.AlignRight
+                            text: Math.round(chargeLimitSlider.value) + "%"
+                            color: FishUI.Theme.disabledTextColor
+
+                            TextMetrics {
+                                id: chargeLimitMetrics
+                                font: parent.font
+                                text: "100%"
+                            }
                         }
                     }
                 }
@@ -279,8 +307,17 @@ ItemPage {
                     Layout.fillWidth: true
                     leftPadding: Metrics.cardHorizontalPadding
                     rightPadding: Metrics.cardHorizontalPadding
-                    text: qsTr("While plugged in, charging stops at %1% and resumes below %2%, so the battery wears more slowly.")
-                          .arg(battery.chargeLimitEnd).arg(battery.chargeLimitStart)
+                    text: {
+                        if (battery.chargeLimit >= 100)
+                            return qsTr("The battery charges fully.")
+
+                        if (battery.chargeResume > 0)
+                            return qsTr("While plugged in, charging stops at %1% and resumes below %2%, so the battery wears more slowly.")
+                                   .arg(battery.chargeLimit).arg(battery.chargeResume)
+
+                        return qsTr("While plugged in, charging stops at %1%, so the battery wears more slowly.")
+                               .arg(battery.chargeLimit)
+                    }
                     color: FishUI.Theme.disabledTextColor
                     wrapMode: Text.WordWrap
                 }
