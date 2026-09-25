@@ -24,7 +24,6 @@ import QtQuick.Layouts 1.3
 import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 import "../"
-import "../Battery"
 
 ItemPage {
     id: control
@@ -53,12 +52,6 @@ ItemPage {
             id: layout
             anchors.fill: parent
             spacing: Metrics.sectionSpacing
-
-            BatterySection {
-                Layout.fillWidth: true
-                battery: _battery
-                visible: _battery.available
-            }
 
             ColumnLayout {
                 Layout.fillWidth: true

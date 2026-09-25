@@ -391,13 +391,23 @@ Item {
 //        }
 
         ListElement {
+            title: qsTr("Battery")
+            name: "battery"
+            page: "qrc:/qml/Battery/Main.qml"
+            iconSource: "battery.svg"
+            iconColor: "#2EC347"
+            category: qsTr("System")
+            keywords: qsTr("charge, charging limit, battery health, capacity, history, percentage")
+        }
+
+        ListElement {
             title: qsTr("Power")
             name: "power"
             page: "qrc:/qml/Power/Main.qml"
             iconSource: "power.svg"
             iconColor: "#FE8433"
             category: qsTr("System")
-            keywords: qsTr("battery, energy, performance, power saving, sleep, turn off display")
+            keywords: qsTr("energy, performance, power saving, sleep, turn off display")
         }
 
         ListElement {
@@ -881,6 +891,15 @@ Item {
         Component.onCompleted: {
             if (!nmEnabledConnections.wirelessHwEnabled && !rootWindow.mockNetworkData)
                 removeItem("wlan")
+        }
+    }
+
+    Battery {
+        id: _battery
+
+        Component.onCompleted: {
+            if (!_battery.available)
+                removeItem("battery")
         }
     }
 
