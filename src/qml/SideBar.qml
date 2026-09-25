@@ -458,15 +458,12 @@ Item {
                             GradientStop { position: 1.0; color: model.iconColor }
                         }
 
-                        Image {
+                        FishUI.IconItem {
                             id: icon
                             anchors.centerIn: parent
                             width: 16
                             height: width
                             source: "qrc:/images/sidebar/dark/" + model.iconSource
-                            Layout.alignment: Qt.AlignVCenter
-                            antialiasing: false
-                            smooth: false
                         }
                     }
 
