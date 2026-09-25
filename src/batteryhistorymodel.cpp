@@ -225,6 +225,12 @@ void BatteryHistoryModel::load()
                 continue;
             }
 
+            // The curve needs distinct times; of two readings in a second, keep the later.
+            if (!m_values.isEmpty() && it->time == m_values.last().time) {
+                m_values.last() = *it;
+                continue;
+            }
+
             m_values.append(*it);
         }
 

@@ -63,12 +63,19 @@ ItemPage {
         type: BatteryHistoryModel.ChargeType
     }
 
-    // Picks up new samples and moves the plot's right edge along with the clock.
+    // Picks up new samples and moves the plot's right edge along with the clock,
+    // only while the page is in front.
     Timer {
         interval: 60 * 1000
-        running: battery.available
+        running: battery.available && batteryPage.visible
+                 && Qt.application.state === Qt.ApplicationActive
         repeat: true
         onTriggered: history.refresh()
+        // The model loads by itself at first, so only a return needs a refresh.
+        onRunningChanged: {
+            if (running && history.count > 0)
+                history.refresh()
+        }
     }
 
     Connections {
@@ -161,6 +168,7 @@ ItemPage {
                         height: 240
 
                         points: history.points
+                        end: history.lastDataPointTime
                         duration: history.duration
                         yUnits: batteryPage.historyType === BatteryHistoryModel.RateType ? qsTr("W") : "%"
                         yMax: {
