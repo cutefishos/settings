@@ -161,10 +161,13 @@ ItemPage {
 
                                             FishUI.ComboBox {
                                                 Layout.preferredWidth: Math.round(parent.width / 2)
+                                                // "Recommended" is only a hint while choosing.
                                                 model: element.resolutions.map(function (text, index) {
                                                     return index === element.recommendedResolutionIndex
                                                             ? qsTr("%1 (Recommended)").arg(text) : text
                                                 })
+                                                displayText: currentIndex >= 0 ?
+                                                                 element.resolutions[currentIndex] : ""
                                                 currentIndex: element.resolutionIndex !== undefined ?
                                                                   element.resolutionIndex : -1
                                                 onActivated: element.resolutionIndex = currentIndex
@@ -286,6 +289,8 @@ ItemPage {
                                                     return Math.abs(scale - element.recommendedScale) < 0.001
                                                             ? qsTr("%1 (Recommended)").arg(text) : text
                                                 })
+                                                displayText: currentIndex < scales.length
+                                                             ? Math.round(scales[currentIndex] * 100) + "%" : ""
                                                 // The nearest step, for a scale set some other way.
                                                 currentIndex: {
                                                     var best = 0
