@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
+import "../"
 
 FishUI.Window {
     id: control
@@ -26,7 +27,8 @@ FishUI.Window {
     minimizeButtonVisible: false
     header.height: 44
     contentTopMargin: header.height
-    background.color: FishUI.Theme.secondBackgroundColor
+    // The page colour, so the cards stand out as they do on a page.
+    background.color: FishUI.Theme.backgroundColor
 
     headerItem: FishUI.Label {
         anchors.left: parent.left
@@ -55,77 +57,68 @@ FishUI.Window {
         anchors.margins: Metrics.dialogPadding
         spacing: Metrics.dialogSpacing
 
-        GridLayout {
-            Layout.fillWidth: true
-            columns: 2
-            columnSpacing: Metrics.dialogSpacing
-            rowSpacing: Metrics.s
-
-            FishUI.Label {
+        ListCard {
+            ListRow {
+                interactive: false
                 text: qsTr("Name")
-                color: FishUI.Theme.disabledTextColor
+
+                FishUI.TextField {
+                    id: nameField
+                    Layout.preferredWidth: 200
+                    Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                    text: control.adapter ? control.adapter.name : ""
+                    maximumLength: 248
+                    selectByMouse: true
+                    onAccepted: control.rename()
+                }
             }
 
-            FishUI.TextField {
-                id: nameField
-                Layout.fillWidth: true
-                text: control.adapter ? control.adapter.name : ""
-                maximumLength: 248
-                selectByMouse: true
-                onAccepted: control.rename()
-            }
-
-            FishUI.Label {
+            InfoRow {
                 text: qsTr("Address")
-                color: FishUI.Theme.disabledTextColor
+                value: control.adapter ? control.adapter.address : ""
             }
+        }
 
-            FishUI.Label {
-                Layout.fillWidth: true
-                horizontalAlignment: Text.AlignRight
-                text: control.adapter ? control.adapter.address : ""
-                textFormat: Text.PlainText
-            }
-
-            FishUI.Label {
+        ListCard {
+            ListRow {
+                interactive: false
                 text: qsTr("Powered")
-                color: FishUI.Theme.disabledTextColor
+
+                FishUI.Switch {
+                    Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                    rightPadding: 0
+                    rightInset: 0
+                    checked: !!control.adapter && control.adapter.powered
+                    onClicked: control.adapter.powered = checked
+                }
             }
 
-            FishUI.Switch {
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                rightPadding: 0
-                rightInset: 0
-                checked: !!control.adapter && control.adapter.powered
-                onClicked: control.adapter.powered = checked
-            }
-
-            FishUI.Label {
+            ListRow {
+                interactive: false
                 text: qsTr("Visible to Other Devices")
-                color: FishUI.Theme.disabledTextColor
+
+                FishUI.Switch {
+                    Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                    rightPadding: 0
+                    rightInset: 0
+                    enabled: !!control.adapter && control.adapter.powered
+                    checked: !!control.adapter && control.adapter.discoverable
+                    onClicked: control.adapter.discoverable = checked
+                }
             }
 
-            FishUI.Switch {
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                rightPadding: 0
-                rightInset: 0
-                enabled: !!control.adapter && control.adapter.powered
-                checked: !!control.adapter && control.adapter.discoverable
-                onClicked: control.adapter.discoverable = checked
-            }
-
-            FishUI.Label {
+            ListRow {
+                interactive: false
                 text: qsTr("Allow Incoming Pairing")
-                color: FishUI.Theme.disabledTextColor
-            }
 
-            FishUI.Switch {
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                rightPadding: 0
-                rightInset: 0
-                enabled: !!control.adapter && control.adapter.powered
-                checked: !!control.adapter && control.adapter.pairable
-                onClicked: control.adapter.pairable = checked
+                FishUI.Switch {
+                    Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                    rightPadding: 0
+                    rightInset: 0
+                    enabled: !!control.adapter && control.adapter.powered
+                    checked: !!control.adapter && control.adapter.pairable
+                    onClicked: control.adapter.pairable = checked
+                }
             }
         }
 
