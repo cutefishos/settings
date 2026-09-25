@@ -24,6 +24,7 @@ import QtQuick.Layouts 1.3
 import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 import "../"
+import "../Battery"
 
 ItemPage {
     id: control
@@ -34,7 +35,7 @@ ItemPage {
     }
 
     Battery {
-        id: battery
+        id: _battery
     }
 
     property var timeoutValues: [60, 120, 300, 600, 900, 1200, 1800, -1]
@@ -52,6 +53,12 @@ ItemPage {
             id: layout
             anchors.fill: parent
             spacing: Metrics.sectionSpacing
+
+            BatterySection {
+                Layout.fillWidth: true
+                battery: _battery
+                visible: _battery.available
+            }
 
             ColumnLayout {
                 Layout.fillWidth: true
@@ -102,13 +109,13 @@ ItemPage {
                     rowSpacing: Metrics.formRowSpacing
 
                     FishUI.Label {
-                        visible: battery.available
+                        visible: _battery.available
                         text: qsTr("Turn off display when inactive on battery")
                         Layout.fillWidth: true
                     }
 
                     FishUI.ComboBox {
-                        visible: battery.available
+                        visible: _battery.available
                         Layout.preferredWidth: 160
 
                         model: [qsTr("1 Minute"), qsTr("2 Minutes"), qsTr("5 Minutes"),

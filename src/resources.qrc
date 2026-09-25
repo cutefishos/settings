@@ -51,7 +51,6 @@
         <file>images/sidebar/dark/about.svg</file>
         <file>images/sidebar/dark/accounts.svg</file>
         <file>images/sidebar/dark/appearance.svg</file>
-        <file>images/sidebar/dark/battery.svg</file>
         <file>images/sidebar/dark/bluetooth.svg</file>
         <file>images/sidebar/dark/display.svg</file>
         <file>images/sidebar/dark/dock.svg</file>
@@ -61,7 +60,6 @@
         <file>images/sidebar/light/about.svg</file>
         <file>images/sidebar/light/accounts.svg</file>
         <file>images/sidebar/light/appearance.svg</file>
-        <file>images/sidebar/light/battery.svg</file>
         <file>images/sidebar/light/bluetooth.svg</file>
         <file>images/sidebar/light/display.svg</file>
         <file>images/sidebar/light/dock.svg</file>
@@ -79,7 +77,7 @@
         <file>qml/Appearance/CursorTheme.qml</file>
         <file>qml/Appearance/IconTheme.qml</file>
         <file>qml/Display/Main.qml</file>
-        <file>qml/Battery/Main.qml</file>
+        <file>qml/Battery/BatterySection.qml</file>
         <file>qml/Battery/BatteryItem.qml</file>
         <file>qml/Battery/HistoryGraph.qml</file>
         <file>qml/Dock/Main.qml</file>

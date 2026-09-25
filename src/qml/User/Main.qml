@@ -27,7 +27,7 @@ import Cutefish.Accounts 1.0
 import "../"
 
 ItemPage {
-    headerTitle: qsTr("User")
+    headerTitle: qsTr("Users")
 
     UserAccount {
         id: loggedUser
