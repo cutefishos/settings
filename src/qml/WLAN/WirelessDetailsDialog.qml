@@ -24,6 +24,7 @@ import QtQuick.Layouts 1.3
 import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 import Cutefish.Network 1.0 as NM
+import "../"
 
 FishUI.Window {
     id: control
@@ -45,7 +46,8 @@ FishUI.Window {
     minimizeButtonVisible: false
     header.height: 44
     contentTopMargin: header.height
-    background.color: FishUI.Theme.secondBackgroundColor
+    // The page colour, so the cards stand out as they do on a page.
+    background.color: FishUI.Theme.backgroundColor
 
     headerItem: FishUI.Label {
         anchors.left: parent.left
@@ -60,6 +62,9 @@ FishUI.Window {
         elide: Text.ElideRight
     }
 
+    // Only a saved network has settings to auto-join with or forget.
+    readonly property bool saved: !!model.connectionPath
+
     signal forgetBtnClicked()
 
     NM.WirelessItemSettings {
@@ -67,13 +72,14 @@ FishUI.Window {
     }
 
     Component.onCompleted: {
-        if (model.connectionPath) {
+        if (control.saved) {
             settings.path = model.connectionPath
             autoJoinSwitch.checked = settings.autoConnect
-            autoJoinSwitch.visible = true
-            autoJoinLabel.visible = true
         }
     }
+
+    // Created per click, so each one goes away with its window.
+    onClosing: destroy()
 
     ColumnLayout {
         id: detailsLayout
@@ -81,126 +87,57 @@ FishUI.Window {
         anchors.margins: Metrics.dialogPadding
         spacing: Metrics.dialogSpacing
 
-        GridLayout {
-            Layout.fillWidth: true
-            id: gridLayout
-            columns: 2
-            columnSpacing: Metrics.dialogSpacing
-            rowSpacing: Metrics.s
+        ListCard {
+            visible: control.saved
 
-            FishUI.Label {
-                id: autoJoinLabel
+            ListRow {
+                interactive: false
                 text: qsTr("Auto-Join")
-                visible: false
-                Layout.alignment: Qt.AlignRight
-                color: FishUI.Theme.disabledTextColor
-            }
 
-            FishUI.Switch {
-                id: autoJoinSwitch
-                rightPadding: 0
-                rightInset: 0
-                Layout.fillHeight: true
-                visible: false
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                onCheckedChanged: settings.autoConnect = checked
+                FishUI.Switch {
+                    id: autoJoinSwitch
+                    Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                    rightPadding: 0
+                    rightInset: 0
+                    onCheckedChanged: settings.autoConnect = checked
+                }
             }
+        }
 
-            FishUI.Label {
+        ListCard {
+            InfoRow {
                 text: qsTr("Security")
-                color: FishUI.Theme.disabledTextColor
-                Layout.alignment: Qt.AlignRight
+                value: model.securityTypeString
             }
 
-            FishUI.Label {
-                id: securityLabel
-                text: model.securityTypeString
-                Layout.alignment: Qt.AlignRight
-            }
-
-            FishUI.Label {
+            InfoRow {
                 text: qsTr("Signal")
-                color: FishUI.Theme.disabledTextColor
-                Layout.alignment: Qt.AlignRight
+                value: qsTr("%1%").arg(model.signal)
             }
 
-            FishUI.Label {
-                id: signalLabel
-                text: model.signal
-                Layout.alignment: Qt.AlignRight
-            }
-
-            FishUI.Label {
+            InfoRow {
                 text: qsTr("IPv4 Address")
-                color: FishUI.Theme.disabledTextColor
-                visible: ipv4AddressLabel.visible
-                Layout.alignment: Qt.AlignRight
+                value: model.ipAddress
             }
 
-            FishUI.Label {
-                id: ipv4AddressLabel
-                text: model.ipAddress
-                visible: text !== ""
-                Layout.alignment: Qt.AlignRight
-                Layout.fillWidth: true
-            }
-
-            FishUI.Label {
+            InfoRow {
                 text: qsTr("IPv6 Address")
-                color: FishUI.Theme.disabledTextColor
-                visible: ipV6AddressLabel.visible
-                Layout.alignment: Qt.AlignRight
+                value: model.ipV6Address
             }
 
-            FishUI.Label {
-                id: ipV6AddressLabel
-                text: model.ipV6Address
-                visible: text !== ""
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignRight
-            }
-
-            FishUI.Label {
+            InfoRow {
                 text: qsTr("MAC Address")
-                color: FishUI.Theme.disabledTextColor
-                visible: macAddressLabel.visible
-                Layout.alignment: Qt.AlignRight
+                value: model.macAddress
             }
 
-            FishUI.Label {
-                id: macAddressLabel
-                text: model.macAddress
-                visible: text !== ""
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignRight
-            }
-
-            FishUI.Label {
+            InfoRow {
                 text: qsTr("Gateway")
-                color: FishUI.Theme.disabledTextColor
-                visible: routerLabel.visible
-                Layout.alignment: Qt.AlignRight
+                value: model.gateWay
             }
 
-            FishUI.Label {
-                id: routerLabel
-                text: model.gateWay
-                visible: text !== ""
-                Layout.alignment: Qt.AlignRight
-            }
-
-            FishUI.Label {
+            InfoRow {
                 text: qsTr("DNS")
-                color: FishUI.Theme.disabledTextColor
-                visible: dnsLabel.visible
-                Layout.alignment: Qt.AlignRight
-            }
-
-            FishUI.Label {
-                id: dnsLabel
-                text: model.nameServer
-                visible: text !== ""
-                Layout.alignment: Qt.AlignRight
+                value: model.nameServer
             }
         }
 
@@ -216,6 +153,7 @@ FishUI.Window {
 
             FishUI.ConfirmDialogButton {
                 text: qsTr("Forget this network")
+                visible: control.saved
                 primary: true
                 destructive: true
                 onClicked: {

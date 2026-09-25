@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
+import "../"
 
 FishUI.Window {
     id: control
@@ -26,7 +27,8 @@ FishUI.Window {
     minimizeButtonVisible: false
     header.height: 44
     contentTopMargin: header.height
-    background.color: FishUI.Theme.secondBackgroundColor
+    // The page colour, so the cards stand out as they do on a page.
+    background.color: FishUI.Theme.backgroundColor
 
     headerItem: FishUI.Label {
         anchors.left: parent.left
@@ -50,79 +52,52 @@ FishUI.Window {
         anchors.margins: Metrics.dialogPadding
         spacing: Metrics.dialogSpacing
 
-        GridLayout {
-            Layout.fillWidth: true
-            columns: 2
-            columnSpacing: Metrics.dialogSpacing
-            rowSpacing: Metrics.s
-
-            FishUI.Label {
+        ListCard {
+            InfoRow {
                 text: qsTr("Address")
-                color: FishUI.Theme.disabledTextColor
+                value: control.device ? control.device.address : ""
             }
 
-            FishUI.Label {
-                Layout.fillWidth: true
-                horizontalAlignment: Text.AlignRight
-                text: control.device ? control.device.address : ""
-                textFormat: Text.PlainText
-            }
-
-            FishUI.Label {
+            InfoRow {
                 text: qsTr("Adapter")
-                color: FishUI.Theme.disabledTextColor
+                value: control.device ? control.device.adapterPath.split("/").pop() : ""
             }
 
-            FishUI.Label {
-                Layout.fillWidth: true
-                horizontalAlignment: Text.AlignRight
-                text: control.device ? control.device.adapterPath.split("/").pop() : ""
-                textFormat: Text.PlainText
-            }
-
-            FishUI.Label {
-                visible: batteryLabel.visible
+            InfoRow {
                 text: qsTr("Battery")
-                color: FishUI.Theme.disabledTextColor
+                value: !!control.device && control.device.batteryPercentage >= 0
+                       ? qsTr("%1%").arg(control.device.batteryPercentage) : ""
             }
+        }
 
-            FishUI.Label {
-                id: batteryLabel
-                Layout.fillWidth: true
-                horizontalAlignment: Text.AlignRight
-                visible: !!control.device && control.device.batteryPercentage >= 0
-                text: control.device ? qsTr("%1%").arg(control.device.batteryPercentage) : ""
-            }
-
-            FishUI.Label {
-                visible: trustedSwitch.visible
-                text: qsTr("Trusted")
-                color: FishUI.Theme.disabledTextColor
-            }
-
-            FishUI.Switch {
-                id: trustedSwitch
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                rightPadding: 0
-                rightInset: 0
+        ListCard {
+            ListRow {
+                interactive: false
                 visible: !!control.device && control.device.paired
-                enabled: !!control.device && !control.device.busy
-                checked: !!control.device && control.device.trusted
-                onClicked: control.device.trusted = checked
+                text: qsTr("Trusted")
+
+                FishUI.Switch {
+                    Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                    rightPadding: 0
+                    rightInset: 0
+                    enabled: !!control.device && !control.device.busy
+                    checked: !!control.device && control.device.trusted
+                    onClicked: control.device.trusted = checked
+                }
             }
 
-            FishUI.Label {
+            ListRow {
+                interactive: false
                 text: qsTr("Blocked")
-                color: FishUI.Theme.disabledTextColor
-            }
 
-            FishUI.Switch {
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                rightPadding: 0
-                rightInset: 0
-                enabled: !!control.device && !control.device.busy
-                checked: !!control.device && control.device.blocked
-                onClicked: control.device.blocked = checked
+                FishUI.Switch {
+                    Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                    rightPadding: 0
+                    rightInset: 0
+                    enabled: !!control.device && !control.device.busy
+                    checked: !!control.device && control.device.blocked
+                    onClicked: control.device.blocked = checked
+                }
             }
         }
 
