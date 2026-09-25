@@ -57,6 +57,10 @@ void Touchpad::refreshInterface()
         connect(m_interface, SIGNAL(pointerAccelerationChanged()), this,
                 SIGNAL(pointerAccelerationChanged()));
         connect(m_interface, SIGNAL(scrollSpeedChanged()), this, SIGNAL(scrollSpeedChanged()));
+        connect(m_interface, SIGNAL(secondaryClickConfigurableChanged()), this,
+                SIGNAL(secondaryClickConfigurableChanged()));
+        connect(m_interface, SIGNAL(twoFingerSecondaryClickChanged()), this,
+                SIGNAL(twoFingerSecondaryClickChanged()));
     }
     notifyChanged();
 }
@@ -72,6 +76,8 @@ void Touchpad::notifyChanged()
     emit naturalScrollChanged();
     emit pointerAccelerationChanged();
     emit scrollSpeedChanged();
+    emit secondaryClickConfigurableChanged();
+    emit twoFingerSecondaryClickChanged();
 }
 
 void Touchpad::call(const QString &method, const QVariant &value)
@@ -181,4 +187,19 @@ qreal Touchpad::scrollSpeed() const
 void Touchpad::setScrollSpeed(qreal value)
 {
     call(QStringLiteral("setScrollSpeed"), value);
+}
+
+bool Touchpad::secondaryClickConfigurable() const
+{
+    return flag("secondaryClickConfigurable", false);
+}
+
+bool Touchpad::twoFingerSecondaryClick() const
+{
+    return flag("twoFingerSecondaryClick", true);
+}
+
+void Touchpad::setTwoFingerSecondaryClick(bool enabled)
+{
+    call(QStringLiteral("setTwoFingerSecondaryClick"), enabled);
 }

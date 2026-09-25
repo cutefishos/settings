@@ -117,6 +117,23 @@ ItemPage {
                 }
 
                 ListRow {
+                    // Pads with physical buttons, or only one click method,
+                    // have no choice to make.
+                    visible: touchpad.secondaryClickConfigurable
+                    interactive: false
+                    minimumRowHeight: Metrics.controlRowHeight
+                    text: qsTr("Secondary click")
+
+                    FishUI.ComboBox {
+                        // The label fills the rest of the row.
+                        Layout.preferredWidth: Math.round(parent.width / 2)
+                        model: [qsTr("Two-finger press"), qsTr("Bottom-right corner press")]
+                        currentIndex: touchpad.twoFingerSecondaryClick ? 0 : 1
+                        onActivated: touchpad.twoFingerSecondaryClick = currentIndex === 0
+                    }
+                }
+
+                ListRow {
                     interactive: false
                     text: qsTr("Natural scrolling")
 

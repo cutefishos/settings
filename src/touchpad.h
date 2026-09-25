@@ -39,6 +39,10 @@ class Touchpad : public QObject
     Q_PROPERTY(qreal pointerAcceleration READ pointerAcceleration WRITE setPointerAcceleration
                        NOTIFY pointerAccelerationChanged)
     Q_PROPERTY(qreal scrollSpeed READ scrollSpeed WRITE setScrollSpeed NOTIFY scrollSpeedChanged)
+    Q_PROPERTY(bool secondaryClickConfigurable READ secondaryClickConfigurable NOTIFY
+                       secondaryClickConfigurableChanged)
+    Q_PROPERTY(bool twoFingerSecondaryClick READ twoFingerSecondaryClick WRITE
+                       setTwoFingerSecondaryClick NOTIFY twoFingerSecondaryClickChanged)
 
 public:
     explicit Touchpad(QObject *parent = nullptr);
@@ -69,6 +73,11 @@ public:
     qreal scrollSpeed() const;
     void setScrollSpeed(qreal value);
 
+    bool secondaryClickConfigurable() const;
+
+    bool twoFingerSecondaryClick() const;
+    void setTwoFingerSecondaryClick(bool enabled);
+
 signals:
     void availableChanged();
     void enabledChanged();
@@ -79,6 +88,8 @@ signals:
     void naturalScrollChanged();
     void pointerAccelerationChanged();
     void scrollSpeedChanged();
+    void secondaryClickConfigurableChanged();
+    void twoFingerSecondaryClickChanged();
 
 private:
     void refreshInterface();
