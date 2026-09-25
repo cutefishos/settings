@@ -43,7 +43,7 @@ RoundedItem {
     FileDialog {
         id: fileDialog
         currentFolder: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
-        nameFilters: ["Image files (*.jpg *.png)", "All files (*)"]
+        nameFilters: [qsTr("Image files (*.jpg *.jpeg *.png *.webp *.bmp *.tif *.tiff *.avif)"), qsTr("All files (*)")]
         onAccepted: {
             currentUser.iconFileName = decodeURIComponent(fileDialog.selectedFile.toString().replace("file://", ""))
             _userImage.source = fileDialog.selectedFile
