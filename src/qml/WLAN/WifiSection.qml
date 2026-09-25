@@ -14,6 +14,8 @@ ColumnLayout {
     property var model
     // (item) -> bool, given the delegate's model roles.
     property var includes: function(item) { return true }
+    // (connectionState) -> the state the rows show.
+    property var displayedState: function(state) { return state }
     property int shown: 0
 
     Layout.fillWidth: true
@@ -43,6 +45,7 @@ ColumnLayout {
 
             delegate: WifiItem {
                 readonly property bool included: wifiSection.includes(model)
+                displayedState: wifiSection.displayedState(model.connectionState)
                 visible: included
                 onIncludedChanged: wifiSection.recount()
                 Component.onCompleted: wifiSection.recount()

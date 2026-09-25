@@ -30,6 +30,26 @@ ColumnLayout {
     id: _contentLayout
     spacing: Metrics.sectionSpacing
     property var sourceModel: connectionModel
+    property int activatingCount: 0
+
+    // Switching networks leaves the old one Deactivating until the new one is
+    // up; show it as already gone so only the network being joined spins.
+    function displayedState(state) {
+        if (state === NM.Enums.Deactivating && activatingCount > 0)
+            return NM.Enums.Deactivated
+
+        return state
+    }
+
+    function recountActivating() {
+        var count = 0
+        for (var i = 0; i < currentRepeater.count; ++i) {
+            var item = currentRepeater.itemAt(i)
+            if (item && item.activating)
+                ++count
+        }
+        activatingCount = count
+    }
 
     // The switch and the network in use share the first card; the rest is
     // split into the networks with a saved connection and the others.
@@ -64,10 +84,16 @@ ColumnLayout {
         }
 
         Repeater {
+            id: currentRepeater
             model: wirelessModel
 
             delegate: WifiItem {
-                visible: model.connectionState !== NM.Enums.Deactivated
+                readonly property bool activating: model.connectionState === NM.Enums.Activating
+                displayedState: _contentLayout.displayedState(model.connectionState)
+                visible: displayedState !== NM.Enums.Deactivated
+                onActivatingChanged: _contentLayout.recountActivating()
+                Component.onCompleted: _contentLayout.recountActivating()
+                Component.onDestruction: _contentLayout.recountActivating()
             }
         }
     }
@@ -81,17 +107,19 @@ ColumnLayout {
     WifiSection {
         title: qsTr("Known Networks")
         model: wirelessModel
+        displayedState: _contentLayout.displayedState
         // A saved connection that is not the one in use.
         includes: function(item) {
-            return !!item.uuid && item.connectionState === NM.Enums.Deactivated
+            return !!item.uuid && _contentLayout.displayedState(item.connectionState) === NM.Enums.Deactivated
         }
     }
 
     WifiSection {
         title: qsTr("Other Networks")
         model: wirelessModel
+        displayedState: _contentLayout.displayedState
         includes: function(item) {
-            return !item.uuid && item.connectionState === NM.Enums.Deactivated
+            return !item.uuid && _contentLayout.displayedState(item.connectionState) === NM.Enums.Deactivated
         }
     }
 }

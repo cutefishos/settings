@@ -14,6 +14,9 @@ import "../"
 ListRow {
     id: control
 
+    // The state the row shows, which may lag behind NetworkManager's.
+    property int displayedState: model.connectionState
+
     text: model.itemUniqueName
     checked: model.connectionState === NM.Enums.Activated
 
@@ -21,7 +24,7 @@ ListRow {
         if (busyIndicator.visible)
             return
 
-        if (connectionState === NM.Enums.Deactivated)
+        if (control.displayedState === NM.Enums.Deactivated)
             control.connectNetwork()
         else
             expanded = !expanded
@@ -37,8 +40,8 @@ ListRow {
         id: busyIndicator
         width: 18
         height: width
-        visible: connectionState === NM.Enums.Activating ||
-                 connectionState === NM.Enums.Deactivating
+        visible: control.displayedState === NM.Enums.Activating ||
+                 control.displayedState === NM.Enums.Deactivating
         running: busyIndicator.visible
     }
 
@@ -77,7 +80,7 @@ ListRow {
             spacing: Metrics.controlSpacing
 
             FishUI.Button {
-                visible: connectionState === NM.Enums.Deactivated
+                visible: control.displayedState === NM.Enums.Deactivated
                 text: qsTr("Connect")
                 flat: true
 
