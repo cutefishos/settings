@@ -31,20 +31,6 @@ ColumnLayout {
     spacing: Metrics.sectionSpacing
     property var sourceModel: connectionModel
 
-    ConnectDialog {
-        id: connectDialog
-
-        onConnect: {
-            handler.addAndActivateConnection(connectDialog.devicePath,
-                                             connectDialog.specificPath,
-                                             password)
-
-            console.log(connectDialog.devicePath + ", "
-                        + connectDialog.specificPath + ", " +
-                        password)
-        }
-    }
-
     // The switch and the network in use share the first card; the rest is
     // split into the networks with a saved connection and the others.
     ListCard {

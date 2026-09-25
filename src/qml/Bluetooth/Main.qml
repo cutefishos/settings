@@ -30,8 +30,8 @@ ItemPage {
     headerTitle: qsTr("Bluetooth")
     readonly property bool bluetoothEnabled: Bluetooth.Manager.enabled
 
+    // Pairing prompts come from the shell's agent, which BlueZ falls back to.
     function updateActivity() {
-        Bluetooth.Manager.agentEnabled = visible
         Bluetooth.Manager.discoveryRequested = visible && Bluetooth.Manager.enabled
     }
 
@@ -42,7 +42,6 @@ ItemPage {
     Component.onCompleted: updateActivity()
     Component.onDestruction: {
         Bluetooth.Manager.discoveryRequested = false
-        Bluetooth.Manager.agentEnabled = false
     }
 
     Bluetooth.DevicesModel {
@@ -54,10 +53,6 @@ ItemPage {
         id: otherDevices
         filter: Bluetooth.DevicesModelPrivate.UnpairedDevices
         namedOnly: true
-    }
-
-    PairDialog {
-        hostWindow: rootWindow
     }
 
     function openAdapterDetails(adapter) {
