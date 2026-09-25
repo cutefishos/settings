@@ -100,7 +100,9 @@ NetworkMockModel::NetworkMockModel(QObject *parent)
         const QString name = item.value("name").toString();
         item["itemUniqueName"] = name;
         item["ssid"] = name;
-        item["connectionPath"] = QString();
+        // Saved networks need a path: the details dialog keys Auto-Join and Forget on it.
+        item["connectionPath"] = item.contains("uuid") ? QStringLiteral("/mock/connection/%1").arg(i)
+                                                       : QString();
         item["devicePath"] = QStringLiteral("/mock/device/%1").arg(i);
         item["specificPath"] = QStringLiteral("/mock/network/%1").arg(i);
         item["slave"] = false;

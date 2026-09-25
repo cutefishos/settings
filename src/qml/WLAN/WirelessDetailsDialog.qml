@@ -72,10 +72,13 @@ FishUI.Window {
     }
 
     Component.onCompleted: {
-        if (control.saved) {
+        if (!control.saved)
+            return
+
+        // The sample networks have no NetworkManager connection behind them.
+        if (!rootWindow.mockNetworkData)
             settings.path = model.connectionPath
-            autoJoinSwitch.checked = settings.autoConnect
-        }
+        autoJoinSwitch.checked = rootWindow.mockNetworkData || settings.autoConnect
     }
 
     // Created per click, so each one goes away with its window.
@@ -99,7 +102,10 @@ FishUI.Window {
                     Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                     rightPadding: 0
                     rightInset: 0
-                    onCheckedChanged: settings.autoConnect = checked
+                    onCheckedChanged: {
+                        if (!rootWindow.mockNetworkData)
+                            settings.autoConnect = checked
+                    }
                 }
             }
         }
@@ -157,7 +163,8 @@ FishUI.Window {
                 primary: true
                 destructive: true
                 onClicked: {
-                    handler.removeConnection(model.connectionPath)
+                    if (!rootWindow.mockNetworkData)
+                        handler.removeConnection(model.connectionPath)
                     control.close()
                 }
             }
