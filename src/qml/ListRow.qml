@@ -30,6 +30,7 @@ Item {
     // A row that only holds a control, such as a switch, neither highlights
     // nor reacts to clicks.
     property bool interactive: true
+    property bool separatorVisible: true
     readonly property bool highlighted: interactive && _mouseArea.containsMouse
     signal clicked()
 
@@ -176,7 +177,7 @@ Item {
         anchors.rightMargin: control.horizontalPadding
         // A highlight hides the separators it touches, as the translucent fill
         // would otherwise show them through.
-        visible: !control.lastItem
+        visible: control.separatorVisible && !control.lastItem
                  && !(control.highlighted && _details.height === 0)
                  && !(control._nextRow && control._nextRow.highlighted)
     }

@@ -51,46 +51,44 @@ ItemPage {
             anchors.fill: parent
             spacing: Metrics.sectionSpacing
 
-            RoundedItem {
-                GridLayout {
-                    columns: 2
-                    Layout.fillWidth: true
-
-                    columnSpacing: Metrics.formColumnSpacing
-                    rowSpacing: Metrics.formRowSpacing
-
-                    FishUI.Label {
-                        text: qsTr("General Font")
-                    }
+            ListCard {
+                ListRow {
+                    interactive: false
+                    separatorVisible: false
+                    minimumRowHeight: Metrics.controlRowHeight
+                    text: qsTr("General Font")
 
                     FishUI.ComboBox {
                         id: generalFontComboBox
+                        // The label fills the rest of the row.
+                        Layout.preferredWidth: Math.round(parent.width / 2)
                         model: fontsModel.generalFonts
-                        Layout.fillWidth: true
-                        topInset: 0
-                        bottomInset: 0
                         onActivated: appearance.setFontFamily(currentText)
                     }
+                }
 
-                    FishUI.Label {
-                        text: qsTr("Fixed Font")
-                    }
+                ListRow {
+                    interactive: false
+                    separatorVisible: false
+                    minimumRowHeight: Metrics.controlRowHeight
+                    text: qsTr("Fixed Font")
 
                     FishUI.ComboBox {
                         id: fixedFontComboBox
+                        Layout.preferredWidth: Math.round(parent.width / 2)
                         model: fontsModel.fixedFonts
-                        Layout.fillWidth: true
-                        topInset: 0
-                        bottomInset: 0
                         onActivated: appearance.setFixedFontFamily(currentText)
                     }
+                }
 
-                    FishUI.Label {
-                        text: qsTr("Font Size")
-                    }
+                ListRow {
+                    interactive: false
+                    separatorVisible: false
+                    minimumRowHeight: Metrics.controlRowHeight
+                    text: qsTr("Font Size")
 
                     FishUI.SegmentedControl {
-                        Layout.fillWidth: true
+                        Layout.preferredWidth: Math.round(parent.width / 2)
 
                         FishUI.TabButton {
                             text: qsTr("Small")
@@ -144,29 +142,33 @@ ItemPage {
                             appearance.setFontPointSize(fontSize)
                         }
                     }
+                }
 
-                    FishUI.Label {
-                        text: qsTr("Hinting")
-                    }
+                ListRow {
+                    interactive: false
+                    separatorVisible: false
+                    minimumRowHeight: Metrics.controlRowHeight
+                    text: qsTr("Hinting")
 
                     FishUI.ComboBox {
+                        Layout.preferredWidth: Math.round(parent.width / 2)
                         model: fonts.hintingModel
                         textRole: "display"
-                        Layout.fillWidth: true
                         currentIndex: fonts.hintingCurrentIndex
                         onCurrentIndexChanged: fonts.hintingCurrentIndex = currentIndex
                     }
+                }
 
-                    FishUI.Label {
-                        text: qsTr("Anti-Aliasing")
-                    }
+                ListRow {
+                    interactive: false
+                    separatorVisible: false
+                    text: qsTr("Anti-Aliasing")
 
                     FishUI.Switch {
-                        Layout.fillHeight: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                        checked: fonts.antiAliasing
                         rightPadding: 0
                         rightInset: 0
+                        checked: fonts.antiAliasing
                         onCheckedChanged: fonts.antiAliasing = checked
                     }
                 }
