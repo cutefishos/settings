@@ -26,15 +26,7 @@
         <file>qml/Language/LanguageRow.qml</file>
         <file>qml/Language/PreferredLanguageList.qml</file>
         <file>images/light/network-wired.svg</file>
-        <file>images/light/network-wireless-connected-00.svg</file>
-        <file>images/light/network-wireless-connected-33.svg</file>
-        <file>images/light/network-wireless-connected-66.svg</file>
-        <file>images/light/network-wireless-connected-100.svg</file>
         <file>images/dark/network-wired.svg</file>
-        <file>images/dark/network-wireless-connected-00.svg</file>
-        <file>images/dark/network-wireless-connected-33.svg</file>
-        <file>images/dark/network-wireless-connected-66.svg</file>
-        <file>images/dark/network-wireless-connected-100.svg</file>
         <file>qml/IconButton.qml</file>
         <file>qml/Hideable.qml</file>
         <file>qml/BluetoothPage.qml</file>
@@ -87,8 +79,6 @@
         <file>qml/WLAN/WifiSection.qml</file>
         <file>qml/WLAN/WifiView.qml</file>
         <file>qml/WLAN/WirelessDetailsDialog.qml</file>
-        <file>images/sidebar/light/wlan.svg</file>
-        <file>images/sidebar/dark/wlan.svg</file>
         <file>qml/Bluetooth/Main.qml</file>
         <file>qml/StandardButton.qml</file>
         <file>qml/Hotspot/Main.qml</file>

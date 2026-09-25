@@ -159,7 +159,7 @@ Item {
             title: qsTr("Wi-Fi")
             name: "wlan"
             page: "qrc:/qml/WLAN/Main.qml"
-            iconSource: "wlan.svg"
+            iconSource: "qrc:/fishui/kit/images/icons/network-wireless-connected-100.svg"
             iconColor: "#0067FF"
             category: qsTr("Network")
         }
@@ -463,7 +463,10 @@ Item {
                             anchors.centerIn: parent
                             width: 16
                             height: width
-                            source: "qrc:/images/sidebar/dark/" + model.iconSource
+                            source: model.iconSource.startsWith("qrc:") ? model.iconSource
+                                                                        : "qrc:/images/sidebar/dark/" + model.iconSource
+                            // The sidebar's own glyphs are white already; FishUI's shared ones need tinting.
+                            color: "white"
                         }
                     }
 

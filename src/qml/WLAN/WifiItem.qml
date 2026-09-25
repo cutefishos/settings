@@ -27,12 +27,10 @@ ListRow {
             expanded = !expanded
     }
 
-    leading: Image {
+    leading: FishUI.Icon {
         width: 18
         height: width
-        sourceSize: Qt.size(width, height)
-        source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark/" : "light/") + model.connectionIcon + ".svg"
-        smooth: false
+        name: model.connectionIcon
     }
 
     FishUI.BusyIndicator {
