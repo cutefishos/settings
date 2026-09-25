@@ -81,34 +81,34 @@ ItemPage {
                 }
             }
 
-            RoundedItem {
-                StandardItem {
-                    key: qsTr("System Version")
+            ListCard {
+                InfoRow {
+                    text: qsTr("System Version")
                     value: about.version
                 }
 
-                StandardItem {
-                    key: qsTr("System Type")
+                InfoRow {
+                    text: qsTr("System Type")
                     value: about.architecture
                 }
 
-                StandardItem {
-                    key: qsTr("Kernel Version")
+                InfoRow {
+                    text: qsTr("Kernel Version")
                     value: about.kernelVersion
                 }
 
-                StandardItem {
-                    key: qsTr("Processor")
+                InfoRow {
+                    text: qsTr("Processor")
                     value: about.cpuInfo
                 }
 
-                StandardItem {
-                    key: qsTr("RAM")
+                InfoRow {
+                    text: qsTr("RAM")
                     value: about.memorySize
                 }
 
-                StandardItem {
-                    key: qsTr("Internal Storage")
+                InfoRow {
+                    text: qsTr("Internal Storage")
                     value: about.internalStorage
                 }
             }
