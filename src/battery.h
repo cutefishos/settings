@@ -36,6 +36,10 @@ class Battery : public QObject
     Q_PROPERTY(bool onBattery READ onBattery NOTIFY onBatteryChanged)
     Q_PROPERTY(QString udi READ udi NOTIFY udiChanged)
     Q_PROPERTY(bool showPercent READ showPercent CONSTANT)
+    Q_PROPERTY(bool chargeLimitSupported READ chargeLimitSupported NOTIFY chargeLimitChanged)
+    Q_PROPERTY(bool chargeLimitEnabled READ chargeLimitEnabled NOTIFY chargeLimitChanged)
+    Q_PROPERTY(int chargeLimitStart READ chargeLimitStart NOTIFY chargeLimitChanged)
+    Q_PROPERTY(int chargeLimitEnd READ chargeLimitEnd NOTIFY chargeLimitChanged)
 
 public:
     explicit Battery(QObject *parent = nullptr);
@@ -56,6 +60,13 @@ public:
     bool showPercent();
     Q_INVOKABLE void setPercentEnabled(bool value);
 
+    // UPower's charge limit: only on or off, between thresholds the system sets.
+    bool chargeLimitSupported() const;
+    bool chargeLimitEnabled() const;
+    int chargeLimitStart() const;
+    int chargeLimitEnd() const;
+    Q_INVOKABLE void setChargeLimitEnabled(bool enabled);
+
     QString udi() const;
 
 signals:
@@ -67,9 +78,11 @@ signals:
     void onBatteryChanged();
     void lastChargedPercentChanged();
     void udiChanged();
+    void chargeLimitChanged();
 
 private slots:
     void onPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps);
+    void onDevicePropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps);
 
 private:
     QDBusInterface m_upowerInterface;
@@ -77,6 +90,14 @@ private:
     bool m_available;
     bool m_onBattery;
     QString m_udi;
+
+    bool m_chargeLimitSupported = false;
+    bool m_chargeLimitEnabled = false;
+    int m_chargeLimitStart = 0;
+    int m_chargeLimitEnd = 0;
+
+    void loadChargeLimit();
+    void updateChargeLimit(const QVariantMap &props);
 };
 
 #endif // BATTERY_H

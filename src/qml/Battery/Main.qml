@@ -251,25 +251,52 @@ ItemPage {
                 }
             }
 
-            RoundedItem {
-                RowLayout {
-                    spacing: Metrics.rowSpacing
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: Metrics.sectionLabelSpacing
+                visible: battery.chargeLimitSupported
 
-                    FishUI.Label {
-                        text: qsTr("Show percentage in status bar")
-                    }
+                SectionLabel {
+                    text: qsTr("Charging")
+                }
 
-                    Item {
-                        Layout.fillWidth: true
+                ListCard {
+                    ListRow {
+                        interactive: false
+                        text: qsTr("Limit charging to %1%").arg(battery.chargeLimitEnd)
+
+                        FishUI.Switch {
+                            Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                            rightPadding: 0
+                            rightInset: 0
+                            checked: battery.chargeLimitEnabled
+                            onToggled: battery.setChargeLimitEnabled(checked)
+                        }
                     }
+                }
+
+                FishUI.Label {
+                    Layout.fillWidth: true
+                    leftPadding: Metrics.cardHorizontalPadding
+                    rightPadding: Metrics.cardHorizontalPadding
+                    text: qsTr("While plugged in, charging stops at %1% and resumes below %2%, so the battery wears more slowly.")
+                          .arg(battery.chargeLimitEnd).arg(battery.chargeLimitStart)
+                    color: FishUI.Theme.disabledTextColor
+                    wrapMode: Text.WordWrap
+                }
+            }
+
+            ListCard {
+                ListRow {
+                    interactive: false
+                    text: qsTr("Show percentage in status bar")
 
                     FishUI.Switch {
-                        Layout.fillHeight: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                        checked: battery.showPercent
-                        onCheckedChanged: battery.setPercentEnabled(checked)
                         rightPadding: 0
                         rightInset: 0
+                        checked: battery.showPercent
+                        onCheckedChanged: battery.setPercentEnabled(checked)
                     }
                 }
             }

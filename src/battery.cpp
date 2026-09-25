@@ -20,6 +20,9 @@
 #include "battery.h"
 #include <QCoreApplication>
 #include <QDBusArgument>
+#include <QDBusMessage>
+#include <QDBusPendingCallWatcher>
+#include <QDBusPendingReply>
 #include <QDBusReply>
 #include <QDateTime>
 #include <QDebug>
@@ -71,6 +74,9 @@ Battery::Battery(QObject *parent)
         m_available = true;
         m_onBattery = true;
         m_udi = QStringLiteral("mock-battery");
+        m_chargeLimitSupported = true;
+        m_chargeLimitStart = 75;
+        m_chargeLimitEnd = 80;
         return;
     }
 
@@ -105,6 +111,14 @@ Battery::Battery(QObject *parent)
         }
 
         m_udi = m_interface.property("udi").toString();
+
+        if (!m_udi.isEmpty()) {
+            QDBusConnection::systemBus().connect(
+                    "org.freedesktop.UPower", m_udi, "org.freedesktop.DBus.Properties",
+                    "PropertiesChanged", this,
+                    SLOT(onDevicePropertiesChanged(QString, QVariantMap, QStringList)));
+            loadChargeLimit();
+        }
 
         emit udiChanged();
         emit validChanged();
@@ -247,6 +261,88 @@ QString Battery::udi() const
     return m_udi;
 }
 
+bool Battery::chargeLimitSupported() const
+{
+    return m_chargeLimitSupported;
+}
+
+bool Battery::chargeLimitEnabled() const
+{
+    return m_chargeLimitEnabled;
+}
+
+int Battery::chargeLimitStart() const
+{
+    return m_chargeLimitStart;
+}
+
+int Battery::chargeLimitEnd() const
+{
+    return m_chargeLimitEnd;
+}
+
+void Battery::setChargeLimitEnabled(bool enabled)
+{
+    if (mockBatteryEnabled()) {
+        m_chargeLimitEnabled = enabled;
+        emit chargeLimitChanged();
+        return;
+    }
+
+    QDBusMessage message = QDBusMessage::createMethodCall(
+            "org.freedesktop.UPower", m_udi, "org.freedesktop.UPower.Device", "EnableChargeThreshold");
+    message << enabled;
+    // Polkit lets the active session through without asking; anyone else gets a prompt.
+    message.setInteractiveAuthorizationAllowed(true);
+
+    auto *watcher = new QDBusPendingCallWatcher(QDBusConnection::systemBus().asyncCall(message), this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
+        QDBusPendingReply<> reply = *watcher;
+        watcher->deleteLater();
+
+        if (reply.isError()) {
+            qWarning() << "Failed to change the charge limit" << reply.error().message();
+            // Puts a switch bound to chargeLimitEnabled back.
+            emit chargeLimitChanged();
+        }
+    });
+}
+
+void Battery::loadChargeLimit()
+{
+    QDBusMessage message = QDBusMessage::createMethodCall(
+            "org.freedesktop.UPower", m_udi, "org.freedesktop.DBus.Properties", "GetAll");
+    message << QStringLiteral("org.freedesktop.UPower.Device");
+
+    auto *watcher = new QDBusPendingCallWatcher(QDBusConnection::systemBus().asyncCall(message), this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
+        QDBusPendingReply<QVariantMap> reply = *watcher;
+        watcher->deleteLater();
+
+        if (!reply.isError())
+            updateChargeLimit(reply.value());
+    });
+}
+
+// UPower before 1.90 has none of these properties, which leaves the limit unsupported.
+void Battery::updateChargeLimit(const QVariantMap &props)
+{
+    const bool supported = props.value("ChargeThresholdSupported", m_chargeLimitSupported).toBool();
+    const bool enabled = props.value("ChargeThresholdEnabled", m_chargeLimitEnabled).toBool();
+    const int start = props.value("ChargeStartThreshold", m_chargeLimitStart).toInt();
+    const int end = props.value("ChargeEndThreshold", m_chargeLimitEnd).toInt();
+
+    if (supported == m_chargeLimitSupported && enabled == m_chargeLimitEnabled
+        && start == m_chargeLimitStart && end == m_chargeLimitEnd)
+        return;
+
+    m_chargeLimitSupported = supported;
+    m_chargeLimitEnabled = enabled;
+    m_chargeLimitStart = start;
+    m_chargeLimitEnd = end;
+    emit chargeLimitChanged();
+}
+
 void Battery::onPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps,
                                   const QStringList &invalidatedProps)
 {
@@ -260,4 +356,13 @@ void Battery::onPropertiesChanged(const QString &ifaceName, const QVariantMap &c
         m_interface.call("refresh");
         emit onBatteryChanged();
     }
+}
+
+void Battery::onDevicePropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps,
+                                        const QStringList &invalidatedProps)
+{
+    Q_UNUSED(invalidatedProps);
+
+    if (ifaceName == QLatin1String("org.freedesktop.UPower.Device"))
+        updateChargeLimit(changedProps);
 }
