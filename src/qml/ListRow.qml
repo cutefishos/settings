@@ -31,7 +31,8 @@ Item {
     // nor reacts to clicks.
     property bool interactive: true
     property bool separatorVisible: true
-    readonly property bool highlighted: interactive && _mouseArea.containsMouse
+    // A disabled row keeps whatever containsMouse it had, so it is checked too.
+    readonly property bool highlighted: interactive && enabled && _mouseArea.containsMouse
     signal clicked()
 
     // The next visible row, whose highlight hides this row's separator.
@@ -153,7 +154,7 @@ Item {
             visible: control.text.length > 0
             text: control.text
             textFormat: Text.PlainText
-            color: FishUI.Theme.textColor
+            color: control.enabled ? FishUI.Theme.textColor : FishUI.Theme.disabledTextColor
             elide: Text.ElideRight
         }
     }
