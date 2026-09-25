@@ -168,15 +168,12 @@ Item {
         shown: control.expanded
     }
 
-    Rectangle {
+    Separator {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.leftMargin: control.horizontalPadding
         anchors.rightMargin: control.horizontalPadding
-        height: 1
-        color: FishUI.Theme.disabledTextColor
-        opacity: FishUI.Theme.darkMode ? 0.3 : 0.1
         // A highlight hides the separators it touches, as the translucent fill
         // would otherwise show them through.
         // A ListCard holds its rows in its layout, so the card is the parent's parent.

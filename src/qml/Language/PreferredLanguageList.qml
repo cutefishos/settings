@@ -3,6 +3,7 @@ import QtQuick.Window
 import QtQuick.Controls
 import QtQuick.Layouts
 import FishUI 1.0 as FishUI
+import "../"
 
 Item {
     id: control
@@ -228,14 +229,11 @@ Item {
                 }
             }
 
-            Rectangle {
+            Separator {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
-                height: 1
                 visible: row.index < list.count - 1
-                color: FishUI.Theme.disabledTextColor
-                opacity: FishUI.Theme.darkMode ? 0.3 : 0.1
             }
         }
     }

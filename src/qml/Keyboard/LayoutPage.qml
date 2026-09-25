@@ -84,15 +84,12 @@ ItemPage {
                     color: row.hovered ? Qt.alpha(FishUI.Theme.textColor, 0.05) : "transparent"
                 }
 
-                Rectangle {
+                Separator {
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.bottom: parent.bottom
                     anchors.leftMargin: row.leftPadding
                     anchors.rightMargin: row.rightPadding
-                    height: 1
-                    color: FishUI.Theme.disabledTextColor
-                    opacity: FishUI.Theme.darkMode ? 0.3 : 0.1
                     visible: row.index < layoutList.count - 1
                 }
 

@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import FishUI 1.0 as FishUI
+import "../"
 
 ItemDelegate {
     id: control
@@ -27,15 +28,12 @@ ItemDelegate {
         border.color: FishUI.Theme.highlightColor
     }
 
-    Rectangle {
+    Separator {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.leftMargin: control.leftPadding
         anchors.rightMargin: control.rightPadding
-        height: 1
-        color: FishUI.Theme.disabledTextColor
-        opacity: FishUI.Theme.darkMode ? 0.3 : 0.1
         visible: control.separatorVisible
     }
 

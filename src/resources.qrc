@@ -25,6 +25,7 @@
         <file>images/dock_left.svg</file>
         <file>qml/ImageSelectionItem.qml</file>
         <file>qml/HorizontalDivider.qml</file>
+        <file>qml/Separator.qml</file>
         <file>qml/Language/LanguagePage.qml</file>
         <file>qml/Language/AddLanguageDialog.qml</file>
         <file>qml/Language/LanguageRow.qml</file>

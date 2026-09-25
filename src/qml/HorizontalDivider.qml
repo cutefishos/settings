@@ -28,11 +28,8 @@ Item {
 
     Layout.fillWidth: true
 
-    Rectangle {
+    Separator {
         anchors.centerIn: parent
-        height: 1
         width: control.width
-        color: FishUI.Theme.disabledTextColor
-        opacity: FishUI.Theme.darkMode ? 0.3 : 0.1
     }
 }
