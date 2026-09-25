@@ -175,6 +175,10 @@ ColumnLayout {
                                                ? additionalColumnWidth
                                                : Math.min(preferredThumbnailWidth, width)
         readonly property int thumbnailHeight: Math.round(thumbnailWidth * 0.625)
+        // The thumbnail width follows the window but never exceeds the preferred
+        // width; a source size bound to it re-requests every image on each resize step.
+        readonly property size thumbnailSourceSize: Qt.size(preferredThumbnailWidth * 2,
+                                                            Math.round(preferredThumbnailWidth * 0.625) * 2)
         readonly property int rowCount: control.expanded ? Math.ceil(count / columnCount) : Math.min(count, columnCount) > 0 ? 1 : 0
 
         Layout.fillWidth: true
@@ -284,7 +288,7 @@ ColumnLayout {
                 source: wallpaperItem.addWallpaper
                         ? ""
                         : "image://thumbnailer/" + Qt.resolvedUrl("file://" + modelData)
-                sourceSizeScale: 2
+                sourceSize: wallpaperView.thumbnailSourceSize
                 fillMode: Image.PreserveAspectCrop
                 asynchronous: true
                 mipmap: true

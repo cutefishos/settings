@@ -22,7 +22,7 @@ Item {
     property real previewWidth: 96
     property real previewHeight: 96
     property real previewInset: 4
-    property real sourceSizeScale: 1
+    property size sourceSize: Qt.size(preview.width, preview.height)
     readonly property bool hovered: mouseArea.containsMouse
 
     signal clicked
@@ -54,8 +54,7 @@ Item {
                 anchors.fill: parent
                 anchors.margins: control.previewInset
                 visible: !control.useIcon
-                sourceSize: Qt.size(width * control.sourceSizeScale,
-                                    height * control.sourceSizeScale)
+                sourceSize: control.sourceSize
                 smooth: false
 
                 layer.enabled: true
