@@ -140,7 +140,7 @@ void Touchpad::setDisableWhileTyping(bool enabled)
 
 bool Touchpad::tapToClick() const
 {
-    return flag("tapToClick", true);
+    return flag("tapToClick", false);
 }
 
 void Touchpad::setTapToClick(bool enabled)
