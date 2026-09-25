@@ -40,24 +40,16 @@ ItemPage {
             anchors.fill: parent
             spacing: Metrics.sectionSpacing
 
-            RoundedItem {
-                RowLayout {
-                    spacing: Metrics.rowSpacing
-
-                    FishUI.Label {
-                        text: qsTr("Do Not Disturb")
-                    }
-
-                    Item {
-                        Layout.fillWidth: true
-                    }
+            ListCard {
+                ListRow {
+                    interactive: false
+                    text: qsTr("Do Not Disturb")
 
                     FishUI.Switch {
-                        checked: notifications.doNotDisturb
-                        Layout.fillHeight: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         rightPadding: 0
                         rightInset: 0
+                        checked: notifications.doNotDisturb
                         onClicked: notifications.doNotDisturb = checked
                     }
                 }
