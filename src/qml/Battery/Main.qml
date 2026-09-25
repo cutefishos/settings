@@ -63,6 +63,14 @@ ItemPage {
         type: BatteryHistoryModel.ChargeType
     }
 
+    // Picks up new samples and moves the plot's right edge along with the clock.
+    Timer {
+        interval: 60 * 1000
+        running: battery.available
+        repeat: true
+        onTriggered: history.refresh()
+    }
+
     Connections {
         target: battery
 
@@ -150,22 +158,10 @@ ItemPage {
 
                     HistoryGraph {
                         Layout.fillWidth: true
-                        height: 300
+                        height: 240
 
-                        data: history.points
-
-                        readonly property var xTicksAtList: [xTicksAtTenMinutes, xTicksAtHalfHour, xTicksAtHalfHour,
-                                                             xTicksAtFullHour, xTicksAtFullSecondHour, xTicksAtTwelveOClock]
-
-                        // Set grid lines distances which directly correspondent to the xTicksAt variables
-                        readonly property var xDivisionWidths: [1000 * 60 * 10, 1000 * 60 * 60 * 12, 1000 * 60 * 60, 1000 * 60 * 30, 1000 * 60 * 60 * 2, 1000 * 60 * 10]
-                        xTicksAt: xTicksAtList[4]
-                        xDivisionWidth: xDivisionWidths[xTicksAt]
-
-                        xMin: history.firstDataPointTime
-                        xMax: history.lastDataPointTime
-                        xDuration: history.duration
-
+                        points: history.points
+                        duration: history.duration
                         yUnits: batteryPage.historyType === BatteryHistoryModel.RateType ? qsTr("W") : "%"
                         yMax: {
                             if (batteryPage.historyType === BatteryHistoryModel.RateType) {
@@ -179,7 +175,6 @@ ItemPage {
                             }
                         }
                         yStep: batteryPage.historyType === BatteryHistoryModel.RateType ? 10 : 20
-                        visible: history.count > 2
                     }
                 }
             }

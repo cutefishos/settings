@@ -111,10 +111,6 @@ QVariantList BatteryHistoryModel::asPoints() const
         points.append(QPointF(h.time, h.value));
     }
 
-    if (!points.isEmpty()) {
-        points.takeLast();
-    }
-
     return points;
 }
 
@@ -213,10 +209,31 @@ void BatteryHistoryModel::load()
             return;
         }
 
-        foreach (const HistoryReply &r, reply.value()) {
-            if (r.value > 0) { //we get back some values which contain no value, possibly to indicate if charging changes, ignore them
-                m_values.prepend(r);
+        const uint now = QDateTime::currentSecsSinceEpoch();
+        const QList<HistoryReply> history = reply.value();
+
+        // UPower returns the newest sample first, in the order it recorded them.
+        // A sample older than the one recorded before it was stamped while the
+        // clock was wrong (before NTP set it after boot), so it is dropped.
+        for (auto it = history.crbegin(); it != history.crend(); ++it) {
+            // A zero value marks a UPower restart, not a reading.
+            if (it->value <= 0 || it->time > now) {
+                continue;
             }
+
+            if (!m_values.isEmpty() && it->time < m_values.last().time) {
+                continue;
+            }
+
+            m_values.append(*it);
+        }
+
+        // UPower records a sample only when the value changes, so the last one
+        // still holds and the plot runs on to the present.
+        if (!m_values.isEmpty() && m_values.last().time < now) {
+            HistoryReply current = m_values.last();
+            current.time = now;
+            m_values.append(current);
         }
 
         Q_EMIT dataChanged();
