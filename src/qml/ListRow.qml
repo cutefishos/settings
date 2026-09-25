@@ -30,7 +30,11 @@ Item {
     // A row that only holds a control, such as a switch, neither highlights
     // nor reacts to clicks.
     property bool interactive: true
+    readonly property bool highlighted: interactive && _mouseArea.containsMouse
     signal clicked()
+
+    // The next visible row, whose highlight hides this row's separator.
+    property Item _nextRow: null
 
     property real minimumRowHeight: Metrics.rowHeight
     readonly property real rowHeight: Math.max(minimumRowHeight, _row.implicitHeight + Metrics.cardVerticalPadding)
@@ -65,6 +69,8 @@ Item {
         }
         firstItem = rows.length === 0 || rows[0] === control
         lastItem = rows.length === 0 || rows[rows.length - 1] === control
+        var index = rows.indexOf(control)
+        _nextRow = index >= 0 && index + 1 < rows.length ? rows[index + 1] : null
     }
 
     // A row appearing or disappearing changes its neighbours' corners too.
@@ -94,7 +100,7 @@ Item {
         anchors.top: parent.top
         height: control.rowHeight
         clip: true
-        visible: control.interactive && _mouseArea.containsMouse
+        visible: control.highlighted
 
         FishUI.RoundedRectangle {
             anchors.left: parent.left
@@ -171,8 +177,12 @@ Item {
         height: 1
         color: FishUI.Theme.disabledTextColor
         opacity: FishUI.Theme.darkMode ? 0.3 : 0.1
+        // A highlight hides the separators it touches, as the translucent fill
+        // would otherwise show them through.
         // A ListCard holds its rows in its layout, so the card is the parent's parent.
         visible: !control.lastItem
+                 && !(control.highlighted && _details.height === 0)
+                 && !(control._nextRow && control._nextRow.highlighted)
                  && !(control.parent && control.parent.parent
                       && control.parent.parent.separatorsVisible === false)
     }
