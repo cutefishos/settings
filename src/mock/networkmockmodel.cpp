@@ -31,8 +31,10 @@ NetworkMockModel::NetworkMockModel(QObject *parent)
             { "type", wirelessType },
             { "uuid", QStringLiteral("mock-wifi-connected") },
             { "ipAddress", QStringLiteral("192.168.1.86") },
-            { "router", QStringLiteral("192.168.1.1") },
+            { "ipV6Address", QStringLiteral("fe80::1c2b:3aff:fe4d:5e6f") },
             { "gateWay", QStringLiteral("192.168.1.1") },
+            { "nameServer", QStringLiteral("192.168.1.1") },
+            { "macAddress", QStringLiteral("80:30:49:12:34:56") },
             { "timeStamp", now }
         },
         {
@@ -151,7 +153,9 @@ QHash<int, QByteArray> NetworkMockModel::roleNames() const
         { RxBytesRole, "rxBytes" },
         { TxBytesRole, "txBytes" },
         { IpAddressRole, "ipAddress" },
-        { RouterRole, "router" },
-        { GateWayRole, "gateWay" }
+        { IpV6AddressRole, "ipV6Address" },
+        { GateWayRole, "gateWay" },
+        { NameServerRole, "nameServer" },
+        { MacAddressRole, "macAddress" }
     };
 }

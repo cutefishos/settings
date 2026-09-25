@@ -133,12 +133,14 @@ FishUI.Window {
             FishUI.Label {
                 text: qsTr("IPv4 Address")
                 color: FishUI.Theme.disabledTextColor
+                visible: ipv4AddressLabel.visible
                 Layout.alignment: Qt.AlignRight
             }
 
             FishUI.Label {
                 id: ipv4AddressLabel
                 text: model.ipAddress
+                visible: text !== ""
                 Layout.alignment: Qt.AlignRight
                 Layout.fillWidth: true
             }
@@ -146,12 +148,14 @@ FishUI.Window {
             FishUI.Label {
                 text: qsTr("IPv6 Address")
                 color: FishUI.Theme.disabledTextColor
+                visible: ipV6AddressLabel.visible
                 Layout.alignment: Qt.AlignRight
             }
 
             FishUI.Label {
                 id: ipV6AddressLabel
-                // text: model.ipV6Address
+                text: model.ipV6Address
+                visible: text !== ""
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignRight
             }
@@ -159,12 +163,14 @@ FishUI.Window {
             FishUI.Label {
                 text: qsTr("MAC Address")
                 color: FishUI.Theme.disabledTextColor
+                visible: macAddressLabel.visible
                 Layout.alignment: Qt.AlignRight
             }
 
             FishUI.Label {
                 id: macAddressLabel
-                // text: model.macAddress
+                text: model.macAddress
+                visible: text !== ""
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignRight
             }
@@ -172,24 +178,28 @@ FishUI.Window {
             FishUI.Label {
                 text: qsTr("Gateway")
                 color: FishUI.Theme.disabledTextColor
+                visible: routerLabel.visible
                 Layout.alignment: Qt.AlignRight
             }
 
             FishUI.Label {
                 id: routerLabel
                 text: model.gateWay
+                visible: text !== ""
                 Layout.alignment: Qt.AlignRight
             }
 
             FishUI.Label {
                 text: qsTr("DNS")
                 color: FishUI.Theme.disabledTextColor
+                visible: dnsLabel.visible
                 Layout.alignment: Qt.AlignRight
             }
 
             FishUI.Label {
                 id: dnsLabel
-                // text: model.nameServer
+                text: model.nameServer
+                visible: text !== ""
                 Layout.alignment: Qt.AlignRight
             }
         }

@@ -45,8 +45,10 @@ private:
         RxBytesRole,
         TxBytesRole,
         IpAddressRole,
-        RouterRole,
-        GateWayRole
+        IpV6AddressRole,
+        GateWayRole,
+        NameServerRole,
+        MacAddressRole
     };
 
     QList<QVariantMap> m_items;
