@@ -332,6 +332,16 @@ Item {
         }
 
         ListElement {
+            title: qsTr("Touchscreen")
+            name: "touchscreen"
+            page: "qrc:/qml/Touchscreen/Main.qml"
+            iconSource: "touchscreen.svg"
+            iconColor: "#999999"
+            category: qsTr("Devices")
+            keywords: qsTr("touch, touch screen, touch panel")
+        }
+
+        ListElement {
             title: qsTr("Users")
             name: "accounts"
             page: "qrc:/qml/User/Main.qml"
@@ -880,6 +890,15 @@ Item {
         Component.onCompleted: {
             if (!_touchPad.available)
                 removeItem("touchpad")
+        }
+    }
+
+    Touchscreen {
+        id: _touchscreen
+
+        Component.onCompleted: {
+            if (!_touchscreen.available)
+                removeItem("touchscreen")
         }
     }
 }
