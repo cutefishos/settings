@@ -84,6 +84,9 @@ void ShortcutsModel::reload()
             {"cycle-backward-mru", windows, tr("Switch to the previous window")},
             {"toggle-maximized", windows, tr("Maximize or restore the window")},
             {"window-minimize", windows, tr("Minimize the window")},
+            {"quit-application", windows, tr("Quit the application")},
+            {"hide-application", windows, tr("Hide the application")},
+            {"hide-other-applications", windows, tr("Hide other applications")},
             {"toggle-fullscreen", windows, tr("Toggle full screen")},
             {"window-cycle-snap-left", windows, tr("Snap the window to the left")},
             {"window-cycle-snap-right", windows, tr("Snap the window to the right")},
@@ -107,6 +110,11 @@ void ShortcutsModel::reload()
         }
         const QDBusReply<bool> custom = m_interface->call(QStringLiteral("hasCustomAccelerators"));
         hasCustom = custom.isValid() && custom.value();
+        m_commandKeys = m_interface->property("shortcutConvention").toString()
+                == QLatin1String("command");
+        // A compositor that does not say is one whose shortcuts are all editable.
+        const QVariant customizable = m_interface->property("customizable");
+        m_customizable = !customizable.isValid() || customizable.toBool();
     }
 
     beginResetModel();
@@ -151,13 +159,13 @@ QVariantMap ShortcutsModel::acceleratorFromJson(const QJsonObject &object) const
 
 QString ShortcutsModel::keyDisplay(const QString &keyName, const QString &keyText) const
 {
+    if (keyName == QLatin1String("Super_L") || keyName == QLatin1String("Super_R"))
+        return m_commandKeys ? tr("Command") : tr("Meta");
     static const QHash<QString, QString> names = {
             {QStringLiteral("Up"), QStringLiteral("↑")},
             {QStringLiteral("Down"), QStringLiteral("↓")},
             {QStringLiteral("Left"), QStringLiteral("←")},
             {QStringLiteral("Right"), QStringLiteral("→")},
-            {QStringLiteral("Super_L"), tr("Meta")},
-            {QStringLiteral("Super_R"), tr("Meta")},
             {QStringLiteral("Escape"), tr("Esc")},
             {QStringLiteral("Return"), tr("Enter")},
             {QStringLiteral("KP_Enter"), tr("Enter")},
@@ -274,17 +282,26 @@ QString ShortcutsModel::messageFor(const QString &result, const QString &conflic
     if (result == QLatin1String("conflict-can-override"))
         return tr("This shortcut is used by \"%1\". Press it again to reassign it.")
                 .arg(conflictDescription);
-    if (result == QLatin1String("missing-modifier"))
-        return tr("Include Ctrl, Alt or Meta, or use a function key.");
-    if (result == QLatin1String("shift-only-not-allowed"))
-        return tr("Shift cannot be the only modifier. Add Ctrl, Alt or Meta.");
+    if (result == QLatin1String("missing-modifier")) {
+        return m_commandKeys
+                ? tr("Include Control, Option or Command, or use a function key.")
+                : tr("Include Ctrl, Alt or Meta, or use a function key.");
+    }
+    if (result == QLatin1String("shift-only-not-allowed")) {
+        return m_commandKeys
+                ? tr("Shift cannot be the only modifier. Add Control, Option or Command.")
+                : tr("Shift cannot be the only modifier. Add Ctrl, Alt or Meta.");
+    }
     if (result == QLatin1String("key-not-allowed") || result == QLatin1String("reserved-key-not-allowed"))
         return tr("This key cannot be used in a shortcut.");
     if (result == QLatin1String("maximum-accelerators-reached"))
         return tr("This action already has the maximum of five shortcuts.");
-    if (result == QLatin1String("non-meta-accelerator-warning"))
-        return tr("Shortcuts without Meta may be intercepted before applications see them. "
-                  "Press it again to keep it.");
+    if (result == QLatin1String("non-meta-accelerator-warning")) {
+        return m_commandKeys ? tr("Shortcuts without Command may be intercepted before "
+                                  "applications see them. Press it again to keep it.")
+                             : tr("Shortcuts without Meta may be intercepted before applications "
+                                  "see them. Press it again to keep it.");
+    }
     if (result == QLatin1String("restore-success-with-conflicts"))
         return tr("Some default shortcuts are in use by other actions and were not restored.");
     if (result == QLatin1String("action-locked") || result == QLatin1String("accelerator-locked"))
@@ -336,15 +353,17 @@ void ShortcutsModel::setRecording(bool recording)
 
 QStringList ShortcutsModel::modifierParts(int modifiers) const
 {
+    // Under the Command convention Meta is the Command key next to the space
+    // bar, Alt is Option and Ctrl is Control.
     QStringList parts;
     if (modifiers & ControlDown)
-        parts << tr("Ctrl");
+        parts << (m_commandKeys ? tr("Control") : tr("Ctrl"));
     if (modifiers & AltDown)
-        parts << tr("Alt");
+        parts << (m_commandKeys ? tr("Option") : tr("Alt"));
     if (modifiers & ShiftDown)
         parts << tr("Shift");
     if (modifiers & MetaDown)
-        parts << tr("Meta");
+        parts << (m_commandKeys ? tr("Command") : tr("Meta"));
     return parts;
 }
 

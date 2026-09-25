@@ -105,6 +105,8 @@ void Keyboard::refreshInterface()
         connect(m_interface, SIGNAL(repeatIntervalChanged()), this,
                 SIGNAL(repeatIntervalChanged()));
         connect(m_interface, SIGNAL(layoutChanged()), this, SIGNAL(layoutChanged()));
+        connect(m_interface, SIGNAL(shortcutConventionChanged()), this,
+                SIGNAL(shortcutConventionChanged()));
     }
     notifyChanged();
 }
@@ -116,6 +118,7 @@ void Keyboard::notifyChanged()
     emit repeatDelayChanged();
     emit repeatIntervalChanged();
     emit layoutChanged();
+    emit shortcutConventionChanged();
 }
 
 void Keyboard::call(const QString &method, const QVariant &value)
@@ -207,4 +210,15 @@ void Keyboard::selectLayout(const QString &id)
                 emit layoutChanged();
                 call->deleteLater();
             });
+}
+
+QString Keyboard::shortcutConvention() const
+{
+    return m_interface->isValid() ? m_interface->property("shortcutConvention").toString()
+                                  : QStringLiteral("pc");
+}
+
+void Keyboard::setShortcutConvention(const QString &convention)
+{
+    call(QStringLiteral("setShortcutConvention"), convention);
 }

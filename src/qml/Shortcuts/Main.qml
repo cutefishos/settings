@@ -38,7 +38,9 @@ ItemPage {
                 Layout.fillWidth: true
                 Layout.leftMargin: Metrics.cardHorizontalPadding
                 Layout.rightMargin: Metrics.cardHorizontalPadding
-                text: qsTr("Click a shortcut to change it. Shortcuts with Meta are the safest choice: applications never use them.")
+                text: shortcuts.customizable
+                      ? qsTr("Click a system shortcut to change it. Shortcuts with Meta are the safest choice: applications never use them.")
+                      : qsTr("The Mac keyboard style has fixed shortcuts. To change them, choose PC as the keyboard style in Keyboard settings.")
                 color: FishUI.Theme.disabledTextColor
                 wrapMode: Text.WordWrap
             }
@@ -58,6 +60,9 @@ ItemPage {
                     }
 
                     ListCard {
+                        // The Mac keyboard style shows its fixed shortcuts greyed out.
+                        enabled: shortcuts.customizable
+
                         Repeater {
                             model: shortcuts
 
@@ -71,7 +76,7 @@ ItemPage {
             }
 
             StandardButton {
-                visible: shortcuts.available
+                visible: shortcuts.available && shortcuts.customizable
                 Layout.fillWidth: true
                 text: qsTr("Restore all defaults")
                 enabled: shortcuts.hasCustomAccelerators

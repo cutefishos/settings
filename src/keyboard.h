@@ -19,6 +19,9 @@ class Keyboard : public QObject
     Q_PROPERTY(QString layoutName READ layoutName NOTIFY layoutChanged)
     // Every layout and variant as {id, name}, sorted by name. Read on first use.
     Q_PROPERTY(QVariantList layouts READ layouts CONSTANT)
+    // "pc", or "command" for the key next to the space bar working as Command.
+    Q_PROPERTY(QString shortcutConvention READ shortcutConvention WRITE setShortcutConvention
+                       NOTIFY shortcutConventionChanged)
 
 public:
     explicit Keyboard(QObject *parent = nullptr);
@@ -39,6 +42,9 @@ public:
 
     QVariantList layouts() const;
 
+    QString shortcutConvention() const;
+    void setShortcutConvention(const QString &convention);
+
     Q_INVOKABLE void selectLayout(const QString &id);
 
 signals:
@@ -47,6 +53,7 @@ signals:
     void repeatDelayChanged();
     void repeatIntervalChanged();
     void layoutChanged();
+    void shortcutConventionChanged();
 
 private:
     void refreshInterface();

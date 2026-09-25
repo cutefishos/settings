@@ -100,6 +100,57 @@ ItemPage {
                 }
             }
 
+            ColumnLayout {
+                Layout.fillWidth: true
+                visible: keyboard.available
+                spacing: Metrics.sectionLabelSpacing
+
+                SectionLabel {
+                    text: qsTr("Keyboard style")
+                }
+
+                ListCard {
+                    Repeater {
+                        model: [
+                            { "id": "pc", "name": qsTr("PC") },
+                            { "id": "command", "name": qsTr("Mac") }
+                        ]
+
+                        delegate: CheckRow {
+                            text: modelData.name
+                            checked: keyboard.shortcutConvention === modelData.id
+                            onClicked: keyboard.shortcutConvention = modelData.id
+                        }
+                    }
+                }
+
+                FishUI.Label {
+                    Layout.fillWidth: true
+                    text: keyboard.shortcutConvention === "command"
+                          ? qsTr("The key next to the space bar works as Command and the one beside it as Option, on any keyboard: Command+C copies, Command+Tab switches windows, Command+Q quits. The shortcuts are fixed.")
+                          : qsTr("Ctrl is the shortcut key and Alt switches windows. The shortcuts can be changed in Keyboard Shortcuts.")
+                    color: FishUI.Theme.disabledTextColor
+                    textFormat: Text.PlainText
+                    wrapMode: Text.WordWrap
+                    leftPadding: Metrics.cardHorizontalPadding
+                    rightPadding: Metrics.cardHorizontalPadding
+                }
+            }
+
+            ListCard {
+                NavigationItem {
+                    visible: keyboard.available
+                    text: qsTr("Layout")
+                    value: keyboard.layoutName
+                    onClicked: rootWindow.pushPage("qrc:/qml/Keyboard/LayoutPage.qml")
+                }
+
+                NavigationItem {
+                    text: qsTr("Keyboard Shortcuts")
+                    onClicked: rootWindow.pushPage("qrc:/qml/Shortcuts/Main.qml")
+                }
+            }
+
             ListCard {
                 visible: keyboard.available
 
@@ -148,20 +199,6 @@ ItemPage {
                         value: page.nearestStop(page.repeatIntervals, keyboard.repeatInterval)
                         onMoved: keyboard.repeatInterval = page.repeatIntervals[Math.round(value)]
                     }
-                }
-            }
-
-            ListCard {
-                NavigationItem {
-                    visible: keyboard.available
-                    text: qsTr("Layout")
-                    value: keyboard.layoutName
-                    onClicked: rootWindow.pushPage("qrc:/qml/Keyboard/LayoutPage.qml")
-                }
-
-                NavigationItem {
-                    text: qsTr("Keyboard Shortcuts")
-                    onClicked: rootWindow.pushPage("qrc:/qml/Shortcuts/Main.qml")
                 }
             }
         }

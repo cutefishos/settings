@@ -35,6 +35,7 @@ ListRow {
 
             ShortcutKeys {
                 parts: modelData.parts
+                dimmed: !control.enabled
                 anchors.right: parent.right
             }
         }
