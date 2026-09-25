@@ -41,22 +41,41 @@ ItemPage {
             anchors.fill: parent
             spacing: Metrics.sectionSpacing
 
-            // Always there: with no screens to list, the error below is all
-            // it shows.
             ColumnLayout {
                 Layout.fillWidth: true
+                visible: _screenView.count > 0
                 spacing: Metrics.sectionLabelSpacing
 
-                // One page per screen, flipped with the indicator below.
+                // A single screen is named; several are picked between here.
+                SectionLabel {
+                    visible: _screenView.count === 1
+                    text: _screenView.currentItem && _screenView.currentItem.element.display
+                          ? _screenView.currentItem.element.display : qsTr("Screen")
+                }
+
+                FishUI.SegmentedControl {
+                    id: _screenTabs
+                    Layout.fillWidth: true
+                    visible: _screenView.count > 1
+
+                    Repeater {
+                        model: screen.outputModel
+
+                        FishUI.TabButton {
+                            text: model.display ? model.display : qsTr("Screen")
+                        }
+                    }
+                }
+
+                // One page per screen, flipped with the tabs above.
                 ListView {
                     id: _screenView
                     Layout.fillWidth: true
-                    visible: count > 0
                     Layout.preferredHeight: currentItem ? currentItem.layout.implicitHeight : 0
                     model: screen.outputModel
                     orientation: ListView.Horizontal
                     interactive: false
-                    currentIndex: 0
+                    currentIndex: Math.max(0, _screenTabs.currentIndex)
                     highlightMoveDuration: 0
                     clip: true
 
@@ -73,7 +92,7 @@ ItemPage {
                             anchors.left: parent.left
                             anchors.right: parent.right
                             enabled: screen.available && !screen.busy
-                            spacing: Metrics.sectionSpacing
+                            spacing: Metrics.cardSpacing
 
                             Brightness {
                                 id: brightness
@@ -86,223 +105,187 @@ ItemPage {
                                 onTriggered: brightness.setValue(brightnessSlider.value)
                             }
 
-                            // The name heads both cards, so it keeps the same distance
-                            // from them as they keep from each other.
-                            ColumnLayout {
-                                Layout.fillWidth: true
-                                spacing: Metrics.cardSpacing
+                            ListCard {
+                                ListRow {
+                                    interactive: false
+                                    visible: brightness.available
+                                    minimumRowHeight: Metrics.controlRowHeight
+                                    text: qsTr("Brightness")
 
-                                SectionLabel {
-                                    text: element.display ? element.display : qsTr("Screen")
-                                }
+                                    FishUI.Slider {
+                                        id: brightnessSlider
+                                        // The label fills the rest of the row.
+                                        Layout.preferredWidth: Math.round(parent.width / 2)
+                                        value: brightness.value
+                                        from: 1
+                                        to: 100
+                                        stepSize: 1
+                                        onMoved: brightnessTimer.start()
 
-                                ColumnLayout {
-                                    Layout.fillWidth: true
-                                    spacing: Metrics.cardSpacing
-
-                                    ListCard {
-                                        visible: brightness.available
-
-                                        ListRow {
-                                            interactive: false
-                                            minimumRowHeight: Metrics.controlRowHeight
-                                            text: qsTr("Brightness")
-
-                                            RowLayout {
-                                                // The label fills the rest of the row.
-                                                Layout.preferredWidth: Math.round(parent.width / 2)
-                                                spacing: Metrics.controlSpacing
-
-                                                Image {
-                                                    width: 16
-                                                    height: width
-                                                    sourceSize.width: width
-                                                    sourceSize.height: height
-                                                    Layout.alignment: Qt.AlignVCenter
-                                                    source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/display-brightness-low-symbolic.svg"
-                                                }
-
-                                                FishUI.Slider {
-                                                    id: brightnessSlider
-                                                    Layout.fillWidth: true
-                                                    Layout.alignment: Qt.AlignVCenter
-                                                    value: brightness.value
-                                                    from: 1
-                                                    to: 100
-                                                    stepSize: 1
-                                                    onMoved: brightnessTimer.start()
-
-                                                    FishUI.ToolTip {
-                                                        parent: brightnessSlider.handle
-                                                        visible: brightnessSlider.pressed
-                                                        text: brightnessSlider.value.toFixed(0)
-                                                    }
-                                                }
-
-                                                Image {
-                                                    width: 16
-                                                    height: width
-                                                    sourceSize.width: width
-                                                    sourceSize.height: height
-                                                    Layout.alignment: Qt.AlignVCenter
-                                                    source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/display-brightness-symbolic.svg"
-                                                }
-                                            }
+                                        FishUI.ToolTip {
+                                            parent: brightnessSlider.handle
+                                            visible: brightnessSlider.pressed
+                                            text: brightnessSlider.value.toFixed(0)
                                         }
                                     }
+                                }
 
-                                    ListCard {
-                                        separatorsVisible: false
+                                ListRow {
+                                    interactive: false
+                                    minimumRowHeight: Metrics.controlRowHeight
+                                    text: qsTr("Resolution")
 
-                                        ListRow {
-                                            interactive: false
-                                            minimumRowHeight: Metrics.controlRowHeight
-                                            text: qsTr("Resolution")
+                                    FishUI.ComboBox {
+                                        Layout.preferredWidth: Math.round(parent.width / 2)
+                                        // "Recommended" is only a hint while choosing.
+                                        model: element.resolutions.map(function (text, index) {
+                                            return index === element.recommendedResolutionIndex
+                                                    ? qsTr("%1 (Recommended)").arg(text) : text
+                                        })
+                                        displayText: currentIndex >= 0 ?
+                                                         element.resolutions[currentIndex] : ""
+                                        currentIndex: element.resolutionIndex !== undefined ?
+                                                          element.resolutionIndex : -1
+                                        onActivated: element.resolutionIndex = currentIndex
+                                    }
+                                }
 
-                                            FishUI.ComboBox {
-                                                Layout.preferredWidth: Math.round(parent.width / 2)
-                                                // "Recommended" is only a hint while choosing.
-                                                model: element.resolutions.map(function (text, index) {
-                                                    return index === element.recommendedResolutionIndex
-                                                            ? qsTr("%1 (Recommended)").arg(text) : text
-                                                })
-                                                displayText: currentIndex >= 0 ?
-                                                                 element.resolutions[currentIndex] : ""
-                                                currentIndex: element.resolutionIndex !== undefined ?
-                                                                  element.resolutionIndex : -1
-                                                onActivated: element.resolutionIndex = currentIndex
+                                ListRow {
+                                    interactive: false
+                                    minimumRowHeight: Metrics.controlRowHeight
+                                    text: qsTr("Refresh rate")
+
+                                    FishUI.ComboBox {
+                                        Layout.preferredWidth: Math.round(parent.width / 2)
+                                        model: element.refreshRates
+                                        currentIndex: element.refreshRateIndex ?
+                                                          element.refreshRateIndex : 0
+                                        onActivated: element.refreshRateIndex = currentIndex
+                                    }
+                                }
+
+                                ListRow {
+                                    interactive: false
+                                    minimumRowHeight: Metrics.controlRowHeight
+                                    text: qsTr("Scale")
+
+                                    FishUI.ComboBox {
+                                        readonly property var scales: element.supportedScales
+
+                                        Layout.preferredWidth: Math.round(parent.width / 2)
+                                        model: scales.map(function (scale) {
+                                            var text = Math.round(scale * 100) + "%"
+                                            return Math.abs(scale - element.recommendedScale) < 0.001
+                                                    ? qsTr("%1 (Recommended)").arg(text) : text
+                                        })
+                                        displayText: currentIndex < scales.length
+                                                     ? Math.round(scales[currentIndex] * 100) + "%" : ""
+                                        // The nearest step, for a scale set some other way.
+                                        currentIndex: {
+                                            var best = 0
+                                            for (var i = 1; i < scales.length; ++i) {
+                                                if (Math.abs(scales[i] - element.scale)
+                                                        < Math.abs(scales[best] - element.scale))
+                                                    best = i
                                             }
+                                            return best
+                                        }
+                                        onActivated: element.scale = scales[currentIndex]
+                                    }
+                                }
+
+                                ListRow {
+                                    interactive: false
+                                    minimumRowHeight: Metrics.controlRowHeight
+                                    text: qsTr("Rotation")
+
+                                    FishUI.ComboBox {
+                                        // Paired with the labels as the old rotation pictures were.
+                                        readonly property var rotations: [CS.Output.None, CS.Output.Left,
+                                                                          CS.Output.Inverted, CS.Output.Right]
+
+                                        Layout.preferredWidth: Math.round(parent.width / 2)
+                                        model: [qsTr("Normal"), "90°", "180°", "270°"]
+                                        currentIndex: Math.max(0, rotations.indexOf(element.rotation))
+                                        onActivated: element.rotation = rotations[currentIndex]
+                                    }
+                                }
+                            }
+
+                            // How this screen sits among the others.
+                            ListCard {
+                                visible: _screenView.count > 1
+
+                                ListRow {
+                                    interactive: false
+                                    text: qsTr("Enabled")
+
+                                    FishUI.Switch {
+                                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                                        rightPadding: 0
+                                        rightInset: 0
+                                        checked: element.enabled
+                                        onToggled: element.enabled = checked
+                                    }
+                                }
+
+                                ListRow {
+                                    interactive: false
+                                    text: qsTr("Primary")
+
+                                    // A screen stops being primary only when another one
+                                    // takes over, so the switch turns on and never off.
+                                    FishUI.Switch {
+                                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                                        rightPadding: 0
+                                        rightInset: 0
+                                        enabled: element.enabled && !element.primary
+                                        checked: element.primary
+                                        onToggled: element.primary = true
+                                    }
+                                }
+
+                                ListRow {
+                                    interactive: false
+                                    minimumRowHeight: Metrics.controlRowHeight
+                                    visible: (element.capabilities & 4) !== 0
+                                    text: qsTr("Mode")
+
+                                    FishUI.ComboBox {
+                                        Layout.preferredWidth: Math.round(parent.width / 2)
+                                        model: element.replicationSourceModel
+                                        currentIndex: element.replicationSourceIndex
+                                        onActivated: element.replicationSourceIndex = currentIndex
+                                    }
+                                }
+
+                                ListRow {
+                                    interactive: false
+                                    minimumRowHeight: Metrics.controlRowHeight
+                                    text: qsTr("Position")
+
+                                    RowLayout {
+                                        Layout.preferredWidth: Math.round(parent.width / 2)
+                                        spacing: Metrics.controlSpacing
+
+                                        // Typing leaves the text binding in place, so a position
+                                        // changed elsewhere still shows up here.
+                                        FishUI.TextField {
+                                            Layout.fillWidth: true
+                                            Layout.preferredWidth: 1
+                                            text: element.position.x
+                                            validator: IntValidator { bottom: -32768; top: 32768 }
+                                            Accessible.name: qsTr("Horizontal position")
+                                            onEditingFinished: element.position = Qt.point(parseInt(text), element.position.y)
                                         }
 
-                                        ListRow {
-                                            interactive: false
-                                            minimumRowHeight: Metrics.controlRowHeight
-                                            text: qsTr("Refresh rate")
-
-                                            FishUI.ComboBox {
-                                                Layout.preferredWidth: Math.round(parent.width / 2)
-                                                model: element.refreshRates
-                                                currentIndex: element.refreshRateIndex ?
-                                                                  element.refreshRateIndex : 0
-                                                onActivated: element.refreshRateIndex = currentIndex
-                                            }
-                                        }
-
-                                        ListRow {
-                                            interactive: false
-                                            minimumRowHeight: Metrics.controlRowHeight
-                                            text: qsTr("Rotation")
-
-                                            FishUI.ComboBox {
-                                                // Paired with the labels as the old rotation pictures were.
-                                                readonly property var rotations: [CS.Output.None, CS.Output.Left,
-                                                                                  CS.Output.Inverted, CS.Output.Right]
-
-                                                Layout.preferredWidth: Math.round(parent.width / 2)
-                                                model: [qsTr("Normal"), "90°", "180°", "270°"]
-                                                currentIndex: Math.max(0, rotations.indexOf(element.rotation))
-                                                onActivated: element.rotation = rotations[currentIndex]
-                                            }
-                                        }
-
-                                        ListRow {
-                                            interactive: false
-                                            visible: _screenView.count > 1
-                                            text: qsTr("Enabled")
-
-                                            FishUI.Switch {
-                                                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                                                rightPadding: 0
-                                                rightInset: 0
-                                                checked: element.enabled
-                                                onToggled: element.enabled = checked
-                                            }
-                                        }
-
-                                        ListRow {
-                                            interactive: false
-                                            visible: _screenView.count > 1
-                                            text: qsTr("Primary")
-
-                                            // A screen stops being primary only when another one
-                                            // takes over, so the switch turns on and never off.
-                                            FishUI.Switch {
-                                                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                                                rightPadding: 0
-                                                rightInset: 0
-                                                enabled: element.enabled && !element.primary
-                                                checked: element.primary
-                                                onToggled: element.primary = true
-                                            }
-                                        }
-
-                                        ListRow {
-                                            interactive: false
-                                            minimumRowHeight: Metrics.controlRowHeight
-                                            visible: _screenView.count > 1
-                                            text: qsTr("Position")
-
-                                            RowLayout {
-                                                spacing: Metrics.controlSpacing
-
-                                                SpinBox {
-                                                    from: -32768
-                                                    to: 32768
-                                                    value: element.position.x
-                                                    onValueModified: element.position = Qt.point(value, element.position.y)
-                                                }
-
-                                                SpinBox {
-                                                    from: -32768
-                                                    to: 32768
-                                                    value: element.position.y
-                                                    onValueModified: element.position = Qt.point(element.position.x, value)
-                                                }
-                                            }
-                                        }
-
-                                        ListRow {
-                                            interactive: false
-                                            minimumRowHeight: Metrics.controlRowHeight
-                                            visible: _screenView.count > 1 && (element.capabilities & 4) !== 0
-                                            text: qsTr("Mode")
-
-                                            FishUI.ComboBox {
-                                                Layout.preferredWidth: Math.round(parent.width / 2)
-                                                model: element.replicationSourceModel
-                                                currentIndex: element.replicationSourceIndex
-                                                onActivated: element.replicationSourceIndex = currentIndex
-                                            }
-                                        }
-
-                                        ListRow {
-                                            interactive: false
-                                            minimumRowHeight: Metrics.controlRowHeight
-                                            text: qsTr("Scale")
-
-                                            FishUI.ComboBox {
-                                                readonly property var scales: element.supportedScales
-
-                                                Layout.preferredWidth: Math.round(parent.width / 2)
-                                                model: scales.map(function (scale) {
-                                                    var text = Math.round(scale * 100) + "%"
-                                                    return Math.abs(scale - element.recommendedScale) < 0.001
-                                                            ? qsTr("%1 (Recommended)").arg(text) : text
-                                                })
-                                                displayText: currentIndex < scales.length
-                                                             ? Math.round(scales[currentIndex] * 100) + "%" : ""
-                                                // The nearest step, for a scale set some other way.
-                                                currentIndex: {
-                                                    var best = 0
-                                                    for (var i = 1; i < scales.length; ++i) {
-                                                        if (Math.abs(scales[i] - element.scale)
-                                                                < Math.abs(scales[best] - element.scale))
-                                                            best = i
-                                                    }
-                                                    return best
-                                                }
-                                                onActivated: element.scale = scales[currentIndex]
-                                            }
+                                        FishUI.TextField {
+                                            Layout.fillWidth: true
+                                            Layout.preferredWidth: 1
+                                            text: element.position.y
+                                            validator: IntValidator { bottom: -32768; top: 32768 }
+                                            Accessible.name: qsTr("Vertical position")
+                                            onEditingFinished: element.position = Qt.point(element.position.x, parseInt(text))
                                         }
                                     }
                                 }
@@ -310,30 +293,22 @@ ItemPage {
                         }
                     }
                 }
+            }
 
-                PageIndicator {
-                    id: screenPageIndicator
-                    Layout.alignment: Qt.AlignHCenter
-                    count: _screenView.count
-                    currentIndex: _screenView.currentIndex
-                    onCurrentIndexChanged: _screenView.currentIndex = currentIndex
-                    interactive: true
-                    visible: count > 1
-                }
+            RoundedItem {
+                visible: screen.loaded && (!screen.available || screen.error.length > 0)
 
                 FishUI.Label {
                     Layout.fillWidth: true
-                    leftPadding: Metrics.cardHorizontalPadding
-                    rightPadding: Metrics.cardHorizontalPadding
-                    visible: screen.loaded && (!screen.available || screen.error.length > 0)
                     text: screen.available ? screen.error : qsTr("Display configuration is unavailable in this session.")
-                    color: "#d93025"
+                    textFormat: Text.PlainText
                     wrapMode: Text.Wrap
                 }
             }
 
             StandardButton {
                 Layout.fillWidth: true
+                visible: _screenView.count > 1
                 text: qsTr("Identify Displays")
                 enabled: screen.available
                 onClicked: screen.identify()

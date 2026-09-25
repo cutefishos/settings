@@ -176,11 +176,8 @@ Item {
         anchors.rightMargin: control.horizontalPadding
         // A highlight hides the separators it touches, as the translucent fill
         // would otherwise show them through.
-        // A ListCard holds its rows in its layout, so the card is the parent's parent.
         visible: !control.lastItem
                  && !(control.highlighted && _details.height === 0)
                  && !(control._nextRow && control._nextRow.highlighted)
-                 && !(control.parent && control.parent.parent
-                      && control.parent.parent.separatorsVisible === false)
     }
 }
