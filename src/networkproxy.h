@@ -1,9 +1,14 @@
 #ifndef NETWORKPROXY_H
 #define NETWORKPROXY_H
 
-#include <QObject>
-#include <QSettings>
+#include "proxysettings.h"
 
+#include <QFileSystemWatcher>
+#include <QObject>
+#include <QTimer>
+
+// Edits org.gnome.system.proxy, the store third-party proxy clients write too, and follows
+// their changes while the page is open.
 class NetworkProxy : public QObject
 {
     Q_OBJECT
@@ -47,9 +52,6 @@ public:
     QString socksProxyPort() const;
     void setSocksProxyPort(const QString &port);
 
-    Q_INVOKABLE void updateProxy();
-    Q_INVOKABLE void delayUpdateProxy();
-
 signals:
     void flagChanged();
     void useSameProxyChanged();
@@ -62,18 +64,15 @@ signals:
     void socksProxyPortChanged();
 
 private:
-    QSettings m_settings;
-    int m_flag;
-    bool m_useSameProxy;
+    void watch();
+    void reload();
 
-    QString m_scriptProxy;
-    QString m_httpProxy;
-    QString m_ftpProxy;
-    QString m_socksProxy;
-
-    QString m_httpProxyPort;
-    QString m_ftpProxyPort;
-    QString m_socksProxyPort;
+    QFileSystemWatcher m_watcher;
+    QTimer m_reloadTimer;
+    // The page sets every field in a row on Save; one write covers them all.
+    QTimer m_saveTimer;
+    ProxySettings m_settings;
+    bool m_useSameProxy = false;
 };
 
 #endif // NETWORKPROXY_H
