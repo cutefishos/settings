@@ -165,6 +165,11 @@ FishUI.Window {
         onActivated: rootWindow.goForward()
     }
 
+    Shortcut {
+        sequences: [StandardKey.Find]
+        onActivated: sideBar.focusSearch()
+    }
+
     // Deferred: sidebar items drop unavailable pages in their own onCompleted handlers.
     Component.onCompleted: Qt.callLater(function() {
         if (historyIndex < 0) {
