@@ -86,9 +86,11 @@ ItemPage {
                                 onTriggered: brightness.setValue(brightnessSlider.value)
                             }
 
+                            // The name heads both cards, so it keeps the same distance
+                            // from them as they keep from each other.
                             ColumnLayout {
                                 Layout.fillWidth: true
-                                spacing: Metrics.sectionLabelSpacing
+                                spacing: Metrics.cardSpacing
 
                                 SectionLabel {
                                     text: element.display ? element.display : qsTr("Screen")
@@ -96,7 +98,7 @@ ItemPage {
 
                                 ColumnLayout {
                                     Layout.fillWidth: true
-                                    spacing: Metrics.sectionSpacing
+                                    spacing: Metrics.cardSpacing
 
                                     ListCard {
                                         visible: brightness.available
