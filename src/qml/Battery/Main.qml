@@ -196,94 +196,57 @@ ItemPage {
                     text: qsTr("Health")
                 }
 
-                RoundedItem {
-                    RowLayout {
-                        spacing: Metrics.rowSpacing
+                ListCard {
+                    ListRow {
+                        interactive: false
+                        text: qsTr("Condition")
 
-                        // Poor
+                        // Only the current condition, tinted in its own colour.
                         Item {
-                            height: _poorLabel.implicitHeight + Metrics.s
-                            width: _poorLabel.implicitWidth + Metrics.l
+                            readonly property color tint: battery.capacity >= 90 ? "#00CD23"
+                                                          : battery.capacity >= 80 ? "#3385FF"
+                                                          : "#FF8738"
+
+                            implicitWidth: _conditionLabel.implicitWidth + Metrics.l
+                            implicitHeight: _conditionLabel.implicitHeight + Metrics.s
 
                             FishUI.RoundedRectangle {
-                                id: _poorRect
                                 anchors.fill: parent
-                                color: "#FF8738"
+                                color: parent.tint
                                 radius: FishUI.Theme.mediumRadius
                                 opacity: 0.1
-                                visible: battery.capacity >= 0 && battery.capacity <= 79
                             }
 
                             FishUI.Label {
-                                id: _poorLabel
+                                id: _conditionLabel
                                 anchors.centerIn: parent
-                                text: qsTr("Poor")
-                                color: "#FF8738"
-                            }
-                        }
-
-                        Item {
-                            Layout.fillWidth: true
-                        }
-
-                        Item {
-                            height: _normalLabel.implicitHeight + Metrics.s
-                            width: _normalLabel.implicitWidth + Metrics.l
-
-                            FishUI.RoundedRectangle {
-                                id: _normalRect
-                                anchors.fill: parent
-                                color: "#3385FF"
-                                radius: FishUI.Theme.mediumRadius
-                                opacity: 0.1
-                                visible: battery.capacity >= 80 && battery.capacity <= 89
-                            }
-
-                            FishUI.Label {
-                                id: _normalLabel
-                                anchors.centerIn: parent
-                                text: qsTr("Normal")
-                                color: "#3385FF"
-                            }
-                        }
-
-                        Item {
-                            Layout.fillWidth: true
-                        }
-
-                        Item {
-                            height: _excellentLabel.implicitHeight + Metrics.s
-                            width: _excellentLabel.implicitWidth + Metrics.l
-
-                            FishUI.RoundedRectangle {
-                                id: _excellentRect
-                                anchors.fill: parent
-                                color: "#00CD23"
-                                radius: FishUI.Theme.mediumRadius
-                                opacity: 0.1
-                                visible: battery.capacity >= 90 && battery.capacity <= 100
-                            }
-
-                            FishUI.Label {
-                                id: _excellentLabel
-                                anchors.centerIn: parent
-                                text: qsTr("Excellent")
-                                color: "#00CD23"
+                                text: battery.capacity >= 90 ? qsTr("Excellent")
+                                      : battery.capacity >= 80 ? qsTr("Normal")
+                                      : qsTr("Poor")
+                                color: parent.tint
                             }
                         }
                     }
 
-                    HorizontalDivider {}
+                    ListRow {
+                        interactive: false
+                        text: qsTr("Maximum Capacity")
 
-                    StandardItem {
-                        key: qsTr("Last Charged to") + " " + battery.lastChargedPercent + "%"
-                        value: battery.lastChargedTime
+                        FishUI.Label {
+                            text: battery.capacity + "%"
+                            color: FishUI.Theme.disabledTextColor
+                        }
+                    }
+
+                    ListRow {
+                        interactive: false
                         visible: battery.lastChargedPercent !== 0
-                    }
+                        text: qsTr("Last Charged to") + " " + battery.lastChargedPercent + "%"
 
-                    StandardItem {
-                        key: qsTr("Maximum Capacity")
-                        value: battery.capacity + "%"
+                        FishUI.Label {
+                            text: battery.lastChargedTime
+                            color: FishUI.Theme.disabledTextColor
+                        }
                     }
                 }
             }

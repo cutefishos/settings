@@ -23,6 +23,7 @@
 #include <QDBusReply>
 #include <QDateTime>
 #include <QDebug>
+#include <QLocale>
 #include <QSettings>
 
 static const QString s_sServer = "com.cutefish.Services";
@@ -203,10 +204,25 @@ QString Battery::statusString() const
 
 QString Battery::lastChargedTime() const
 {
-    if (mockBatteryEnabled())
-        return tr("2 hours ago");
+    const qint64 secs = mockBatteryEnabled() ? QDateTime::currentSecsSinceEpoch() - 2 * 3600
+                                             : m_interface.property("lastChargedSecs").toLongLong();
 
-    return m_interface.property("lastChargedTime").toString();
+    if (secs <= 0)
+        return QString();
+
+    // A date and time, as the file manager shows them; the service's own
+    // "13 h 15 min ago" is worked out once and goes stale on an open page.
+    const QDateTime time = QDateTime::fromSecsSinceEpoch(secs);
+    const QLocale locale;
+    const QString clock = locale.toString(time.time(), QLocale::ShortFormat);
+    const qint64 days = time.date().daysTo(QDate::currentDate());
+
+    if (days == 0)
+        return tr("Today at %1").arg(clock);
+    if (days == 1)
+        return tr("Yesterday at %1").arg(clock);
+
+    return locale.toString(time, QLocale::ShortFormat);
 }
 
 bool Battery::showPercent()
