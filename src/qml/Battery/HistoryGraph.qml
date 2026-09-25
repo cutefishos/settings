@@ -208,6 +208,9 @@ Item {
         Shape {
             anchors.fill: parent
             preferredRendererType: Shape.CurveRenderer
+            // Qt 6.8's synchronous curve renderer skips a path changed twice before a
+            // frame, as a layout settling does, and keeps drawing the first one.
+            asynchronous: true
 
             ShapePath {
                 strokeColor: "transparent"
