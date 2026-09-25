@@ -45,8 +45,9 @@ FishUI.Window {
     readonly property bool canGoBack: historyStep(-1) >= 0
     readonly property bool canGoForward: historyStep(1) >= 0
 
+    blurEnabled: active
     background.color: FishUI.Theme.backgroundColor
-    background.opacity: blurAvailable ? (FishUI.Theme.darkMode ? 0.7 : 0.5) : 1
+    background.opacity: blurEnabled && blurAvailable ? (FishUI.Theme.darkMode ? 0.7 : 0.5) : 1
     header.height: 40
     contentTopMargin: 0
 
