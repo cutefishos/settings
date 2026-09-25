@@ -28,7 +28,7 @@ Flickable {
     clip: true
 
     // The window header floats over the top of the page; content scrolls beneath it.
-    readonly property real topInset: rootWindow.header.height
+    readonly property real topInset: rootWindow.headerInset
 
     topMargin: topInset + Metrics.pageTopMargin
     bottomMargin: Metrics.pageMargin

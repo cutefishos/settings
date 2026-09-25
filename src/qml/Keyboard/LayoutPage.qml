@@ -27,7 +27,7 @@ ItemPage {
     FishUI.RoundedRectangle {
         anchors.fill: parent
         // The window header floats over the top of the page.
-        anchors.topMargin: rootWindow.header.height + Metrics.pageTopMargin
+        anchors.topMargin: rootWindow.headerInset + Metrics.pageTopMargin
         anchors.leftMargin: Metrics.pageMargin
         anchors.rightMargin: Metrics.pageMargin
         anchors.bottomMargin: Metrics.pageMargin

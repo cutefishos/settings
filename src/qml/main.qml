@@ -50,6 +50,10 @@ FishUI.Window {
     header.height: 40
     contentTopMargin: 0
 
+    // Room for the header buttons with as much space below them as above;
+    // content starts under it and its frosted backdrop covers it.
+    readonly property real headerInset: windowButtonsTopMargin * 2 + _headerRow.buttonSize
+
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
@@ -98,7 +102,7 @@ FishUI.Window {
             anchors.left: sideBar.right
             anchors.right: parent.right
             anchors.top: parent.top
-            height: rootWindow.header.height
+            height: rootWindow.headerInset
             acceptedButtons: Qt.AllButtons
             hoverEnabled: true
         }
