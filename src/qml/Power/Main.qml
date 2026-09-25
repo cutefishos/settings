@@ -102,33 +102,27 @@ ItemPage {
                 }
             }
 
-            RoundedItem {
-                GridLayout {
-                    columns: 2
-                    columnSpacing: Metrics.formColumnSpacing
-                    rowSpacing: Metrics.formRowSpacing
-
-                    FishUI.Label {
-                        visible: _battery.available
-                        text: qsTr("Turn off display when inactive on battery")
-                        Layout.fillWidth: true
-                    }
+            ListCard {
+                ListRow {
+                    interactive: false
+                    visible: _battery.available
+                    minimumRowHeight: Metrics.controlRowHeight
+                    text: qsTr("Turn off display when inactive on battery")
 
                     FishUI.ComboBox {
-                        visible: _battery.available
                         Layout.preferredWidth: 160
-
                         model: [qsTr("1 Minute"), qsTr("2 Minutes"), qsTr("5 Minutes"),
                                 qsTr("10 Minutes"), qsTr("15 Minutes"), qsTr("20 Minutes"),
                                 qsTr("30 Minutes"), qsTr("Never")]
                         currentIndex: timeoutToIndex(power.batteryScreenOff)
                         onActivated: power.batteryScreenOff = timeoutValues[currentIndex]
                     }
+                }
 
-                    FishUI.Label {
-                        text: qsTr("Turn off display when inactive on power adapter")
-                        Layout.fillWidth: true
-                    }
+                ListRow {
+                    interactive: false
+                    minimumRowHeight: Metrics.controlRowHeight
+                    text: qsTr("Turn off display when inactive on power adapter")
 
                     FishUI.ComboBox {
                         Layout.preferredWidth: 160
@@ -138,7 +132,6 @@ ItemPage {
                         currentIndex: timeoutToIndex(power.acScreenOff)
                         onActivated: power.acScreenOff = timeoutValues[currentIndex]
                     }
-
                 }
             }
 
