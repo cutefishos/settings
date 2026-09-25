@@ -39,7 +39,7 @@ NetworkMockModel::NetworkMockModel(QObject *parent)
         },
         {
             { "name", QStringLiteral("Coffee Shop") },
-            { "connectionIcon", QStringLiteral("network-wireless-connected-75") },
+            { "connectionIcon", QStringLiteral("network-wireless-connected-100") },
             { "connectionState", deactivated },
             { "itemType", availableAccessPoint },
             { "securityType", wpa2Psk },
@@ -51,7 +51,7 @@ NetworkMockModel::NetworkMockModel(QObject *parent)
         },
         {
             { "name", QStringLiteral("Guest Network") },
-            { "connectionIcon", QStringLiteral("network-wireless-connected-50") },
+            { "connectionIcon", QStringLiteral("network-wireless-connected-66") },
             { "connectionState", deactivated },
             { "itemType", availableAccessPoint },
             { "securityType", noSecurity },
@@ -62,7 +62,7 @@ NetworkMockModel::NetworkMockModel(QObject *parent)
         },
         {
             { "name", QStringLiteral("Neighbor Wi-Fi") },
-            { "connectionIcon", QStringLiteral("network-wireless-connected-25") },
+            { "connectionIcon", QStringLiteral("network-wireless-connected-33") },
             { "connectionState", deactivated },
             { "itemType", availableAccessPoint },
             { "securityType", sae },

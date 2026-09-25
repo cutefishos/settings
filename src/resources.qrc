@@ -27,15 +27,13 @@
         <file>qml/Language/PreferredLanguageList.qml</file>
         <file>images/light/network-wired.svg</file>
         <file>images/light/network-wireless-connected-00.svg</file>
-        <file>images/light/network-wireless-connected-25.svg</file>
-        <file>images/light/network-wireless-connected-50.svg</file>
-        <file>images/light/network-wireless-connected-75.svg</file>
+        <file>images/light/network-wireless-connected-33.svg</file>
+        <file>images/light/network-wireless-connected-66.svg</file>
         <file>images/light/network-wireless-connected-100.svg</file>
         <file>images/dark/network-wired.svg</file>
         <file>images/dark/network-wireless-connected-00.svg</file>
-        <file>images/dark/network-wireless-connected-25.svg</file>
-        <file>images/dark/network-wireless-connected-50.svg</file>
-        <file>images/dark/network-wireless-connected-75.svg</file>
+        <file>images/dark/network-wireless-connected-33.svg</file>
+        <file>images/dark/network-wireless-connected-66.svg</file>
         <file>images/dark/network-wireless-connected-100.svg</file>
         <file>qml/IconButton.qml</file>
         <file>qml/Hideable.qml</file>
