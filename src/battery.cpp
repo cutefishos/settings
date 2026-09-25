@@ -26,8 +26,10 @@
 #include <QDBusReply>
 #include <QDateTime>
 #include <QDebug>
+#include <QFile>
 #include <QLocale>
 #include <QSettings>
+#include <QTimer>
 
 static const QString s_sServer = "com.cutefish.Services";
 static const QString s_sPath = "/com/cutefish/Services/Battery";
@@ -281,6 +283,14 @@ int Battery::chargeLimitEnd() const
     return m_chargeLimitEnd;
 }
 
+bool Battery::chargeLimitHeld() const
+{
+    if (!m_chargeLimitEnabled || m_kernelChargeLimit < 0)
+        return true;
+
+    return m_kernelChargeLimit == m_chargeLimitEnd;
+}
+
 void Battery::setChargeLimitEnabled(bool enabled)
 {
     if (mockBatteryEnabled()) {
@@ -319,9 +329,32 @@ void Battery::loadChargeLimit()
         QDBusPendingReply<QVariantMap> reply = *watcher;
         watcher->deleteLater();
 
-        if (!reply.isError())
-            updateChargeLimit(reply.value());
+        if (reply.isError())
+            return;
+
+        const QString nativePath = reply.value().value("NativePath").toString();
+
+        if (!nativePath.isEmpty())
+            m_batteryPath = QStringLiteral("/sys/class/power_supply/") + nativePath + QLatin1Char('/');
+
+        updateChargeLimit(reply.value());
+        readKernelChargeLimit();
     });
+}
+
+void Battery::readKernelChargeLimit()
+{
+    if (m_batteryPath.isEmpty())
+        return;
+
+    QFile file(m_batteryPath + QStringLiteral("charge_control_end_threshold"));
+    const int limit = file.open(QIODevice::ReadOnly) ? file.readAll().trimmed().toInt() : -1;
+
+    if (limit == m_kernelChargeLimit)
+        return;
+
+    m_kernelChargeLimit = limit;
+    emit chargeLimitChanged();
 }
 
 // UPower before 1.90 has none of these properties, which leaves the limit unsupported.
@@ -336,11 +369,18 @@ void Battery::updateChargeLimit(const QVariantMap &props)
         && start == m_chargeLimitStart && end == m_chargeLimitEnd)
         return;
 
+    const bool turnedOn = enabled && !m_chargeLimitEnabled;
+
     m_chargeLimitSupported = supported;
     m_chargeLimitEnabled = enabled;
     m_chargeLimitStart = start;
     m_chargeLimitEnd = end;
     emit chargeLimitChanged();
+
+    // A controller that rejects the thresholds resets them within seconds,
+    // without UPower or the kernel announcing it.
+    if (turnedOn)
+        QTimer::singleShot(5000, this, &Battery::readKernelChargeLimit);
 }
 
 void Battery::onPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps,
@@ -363,6 +403,10 @@ void Battery::onDevicePropertiesChanged(const QString &ifaceName, const QVariant
 {
     Q_UNUSED(invalidatedProps);
 
-    if (ifaceName == QLatin1String("org.freedesktop.UPower.Device"))
-        updateChargeLimit(changedProps);
+    if (ifaceName != QLatin1String("org.freedesktop.UPower.Device"))
+        return;
+
+    updateChargeLimit(changedProps);
+    // UPower updates the battery every little while; a cheap moment to look again.
+    readKernelChargeLimit();
 }

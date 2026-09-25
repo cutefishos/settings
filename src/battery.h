@@ -40,6 +40,7 @@ class Battery : public QObject
     Q_PROPERTY(bool chargeLimitEnabled READ chargeLimitEnabled NOTIFY chargeLimitChanged)
     Q_PROPERTY(int chargeLimitStart READ chargeLimitStart NOTIFY chargeLimitChanged)
     Q_PROPERTY(int chargeLimitEnd READ chargeLimitEnd NOTIFY chargeLimitChanged)
+    Q_PROPERTY(bool chargeLimitHeld READ chargeLimitHeld NOTIFY chargeLimitChanged)
 
 public:
     explicit Battery(QObject *parent = nullptr);
@@ -65,6 +66,9 @@ public:
     bool chargeLimitEnabled() const;
     int chargeLimitStart() const;
     int chargeLimitEnd() const;
+    // False when UPower has the limit on but the kernel does not: some battery
+    // controllers take the thresholds and reset them a few seconds later.
+    bool chargeLimitHeld() const;
     Q_INVOKABLE void setChargeLimitEnabled(bool enabled);
 
     QString udi() const;
@@ -95,9 +99,14 @@ private:
     bool m_chargeLimitEnabled = false;
     int m_chargeLimitStart = 0;
     int m_chargeLimitEnd = 0;
+    // The battery's directory in /sys/class/power_supply, and the end
+    // threshold the kernel reports there; -1 when it cannot be read.
+    QString m_batteryPath;
+    int m_kernelChargeLimit = -1;
 
     void loadChargeLimit();
     void updateChargeLimit(const QVariantMap &props);
+    void readKernelChargeLimit();
 };
 
 #endif // BATTERY_H

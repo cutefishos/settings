@@ -279,9 +279,11 @@ ItemPage {
                     Layout.fillWidth: true
                     leftPadding: Metrics.cardHorizontalPadding
                     rightPadding: Metrics.cardHorizontalPadding
-                    text: qsTr("While plugged in, charging stops at %1% and resumes below %2%, so the battery wears more slowly.")
-                          .arg(battery.chargeLimitEnd).arg(battery.chargeLimitStart)
-                    color: FishUI.Theme.disabledTextColor
+                    text: battery.chargeLimitHeld
+                          ? qsTr("While plugged in, charging stops at %1% and resumes below %2%, so the battery wears more slowly.")
+                            .arg(battery.chargeLimitEnd).arg(battery.chargeLimitStart)
+                          : qsTr("This computer's battery controller did not keep the limit, so the battery still charges fully.")
+                    color: battery.chargeLimitHeld ? FishUI.Theme.disabledTextColor : FishUI.Theme.orangeColor
                     wrapMode: Text.WordWrap
                 }
             }
