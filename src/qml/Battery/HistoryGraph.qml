@@ -18,25 +18,32 @@ Item {
 
     readonly property real start: end - duration
 
-    // The smallest whole step that leaves six or fewer time ticks.
-    readonly property real tickStep: {
+    // The time ticks as one value, computed from `end` and `duration` alone: a
+    // count chained through other bindings can be evaluated against a stale
+    // start when `end` first arrives, and ask the Repeater for 100000 ticks.
+    readonly property var ticks: {
         const steps = [600, 1800, 3600, 7200, 14400, 21600, 43200, 86400]
+        let step = Math.ceil(duration / 6 / 86400) * 86400
 
+        // The smallest whole step that leaves six or fewer ticks.
         for (let i = 0; i < steps.length; ++i) {
-            if (duration / steps[i] <= 6)
-                return steps[i]
+            if (duration / steps[i] <= 6) {
+                step = steps[i]
+                break
+            }
         }
 
-        return Math.ceil(duration / 6 / 86400) * 86400
-    }
+        // On a whole local multiple of the step, e.g. midnight for every 4 hours.
+        const from = end - duration
+        const offset = new Date(from * 1000).getTimezoneOffset() * 60
+        const first = Math.ceil((from - offset) / step) * step + offset
 
-    // On a whole local multiple of the step, e.g. midnight for every 4 hours.
-    readonly property real firstTick: {
-        const offset = new Date(start * 1000).getTimezoneOffset() * 60
-        return Math.ceil((start - offset) / tickStep) * tickStep + offset
+        return {
+            step: step,
+            first: first,
+            count: end < first ? 0 : Math.floor((end - first) / step) + 1
+        }
     }
-
-    readonly property int tickCount: end < firstTick ? 0 : Math.floor((end - firstTick) / tickStep) + 1
 
     readonly property color lineColor: FishUI.Theme.highlightColor
     readonly property color gridColor: FishUI.Theme.darkMode ? Qt.rgba(1, 1, 1, 0.1)
@@ -161,12 +168,12 @@ Item {
         // Indexed rather than a list of times, so the ticks are kept and only
         // moved as the right edge follows the clock.
         Repeater {
-            model: control.tickCount
+            model: control.ticks.count
 
             FishUI.RoundedRectangle {
                 id: tick
 
-                readonly property real time: control.firstTick + index * control.tickStep
+                readonly property real time: control.ticks.first + index * control.ticks.step
 
                 x: control.xFor(time) - width / 2
                 width: 1 / FishUI.Dpi.ratio
