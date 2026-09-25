@@ -37,8 +37,9 @@ class Battery : public QObject
     Q_PROPERTY(QString udi READ udi NOTIFY udiChanged)
     Q_PROPERTY(bool showPercent READ showPercent CONSTANT)
     Q_PROPERTY(bool chargeLimitSupported READ chargeLimitSupported NOTIFY chargeLimitChanged)
-    Q_PROPERTY(int chargeLimit READ chargeLimit NOTIFY chargeLimitChanged)
-    Q_PROPERTY(int chargeResume READ chargeResume NOTIFY chargeLimitChanged)
+    Q_PROPERTY(bool chargeLimitEnabled READ chargeLimitEnabled NOTIFY chargeLimitChanged)
+    Q_PROPERTY(int chargeLimitStart READ chargeLimitStart NOTIFY chargeLimitChanged)
+    Q_PROPERTY(int chargeLimitEnd READ chargeLimitEnd NOTIFY chargeLimitChanged)
 
 public:
     explicit Battery(QObject *parent = nullptr);
@@ -59,12 +60,12 @@ public:
     bool showPercent();
     Q_INVOKABLE void setPercentEnabled(bool value);
 
-    // The kernel's charge thresholds: charging stops at chargeLimit (100 is
-    // none) and resumes below chargeResume (0 when the driver decides).
+    // UPower's charge limit: only on or off, between thresholds the system sets.
     bool chargeLimitSupported() const;
-    int chargeLimit() const;
-    int chargeResume() const;
-    Q_INVOKABLE void setChargeLimit(int percent);
+    bool chargeLimitEnabled() const;
+    int chargeLimitStart() const;
+    int chargeLimitEnd() const;
+    Q_INVOKABLE void setChargeLimitEnabled(bool enabled);
 
     QString udi() const;
 
@@ -90,20 +91,13 @@ private:
     bool m_onBattery;
     QString m_udi;
 
-    // The battery's directory in /sys/class/power_supply.
-    QString m_batteryPath;
-    bool m_upowerLimitEnabled = false;
     bool m_chargeLimitSupported = false;
-    int m_chargeLimit = 100;
-    int m_chargeResume = 0;
-    bool m_chargeLimitBusy = false;
-    int m_requestedChargeLimit = -1;
+    bool m_chargeLimitEnabled = false;
+    int m_chargeLimitStart = 0;
+    int m_chargeLimitEnd = 0;
 
-    void loadBatteryDevice();
-    void readChargeLimit(bool notify);
-    void applyChargeLimit(int percent);
-    void runChargeLimitHelper(int percent);
-    void finishChargeLimit();
+    void loadChargeLimit();
+    void updateChargeLimit(const QVariantMap &props);
 };
 
 #endif // BATTERY_H

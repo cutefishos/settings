@@ -26,9 +26,7 @@
 #include <QDBusReply>
 #include <QDateTime>
 #include <QDebug>
-#include <QFile>
 #include <QLocale>
-#include <QProcess>
 #include <QSettings>
 
 static const QString s_sServer = "com.cutefish.Services";
@@ -77,6 +75,8 @@ Battery::Battery(QObject *parent)
         m_onBattery = true;
         m_udi = QStringLiteral("mock-battery");
         m_chargeLimitSupported = true;
+        m_chargeLimitStart = 75;
+        m_chargeLimitEnd = 80;
         return;
     }
 
@@ -117,7 +117,7 @@ Battery::Battery(QObject *parent)
                     "org.freedesktop.UPower", m_udi, "org.freedesktop.DBus.Properties",
                     "PropertiesChanged", this,
                     SLOT(onDevicePropertiesChanged(QString, QVariantMap, QStringList)));
-            loadBatteryDevice();
+            loadChargeLimit();
         }
 
         emit udiChanged();
@@ -266,114 +266,49 @@ bool Battery::chargeLimitSupported() const
     return m_chargeLimitSupported;
 }
 
-int Battery::chargeLimit() const
+bool Battery::chargeLimitEnabled() const
 {
-    return m_chargeLimit;
+    return m_chargeLimitEnabled;
 }
 
-int Battery::chargeResume() const
+int Battery::chargeLimitStart() const
 {
-    return m_chargeResume;
+    return m_chargeLimitStart;
 }
 
-void Battery::setChargeLimit(int percent)
+int Battery::chargeLimitEnd() const
 {
-    // The helper takes only these steps.
-    percent = qBound(80, qRound(percent / 5.0) * 5, 100);
+    return m_chargeLimitEnd;
+}
 
+void Battery::setChargeLimitEnabled(bool enabled)
+{
     if (mockBatteryEnabled()) {
-        m_chargeLimit = percent;
-        m_chargeResume = percent < 100 ? percent - 5 : 0;
+        m_chargeLimitEnabled = enabled;
         emit chargeLimitChanged();
         return;
     }
 
-    if (!m_chargeLimitSupported)
-        return;
-
-    // One change at a time; the newest request follows when it is done.
-    if (m_chargeLimitBusy) {
-        m_requestedChargeLimit = percent;
-        return;
-    }
-
-    if (percent == m_chargeLimit && !m_upowerLimitEnabled)
-        return;
-
-    applyChargeLimit(percent);
-}
-
-void Battery::applyChargeLimit(int percent)
-{
-    m_chargeLimitBusy = true;
-
-    if (!m_upowerLimitEnabled) {
-        runChargeLimitHelper(percent);
-        return;
-    }
-
-    // UPower re-applies its own thresholds while its limit is on, so it lets
-    // go of them first; turning it off also resets them.
     QDBusMessage message = QDBusMessage::createMethodCall(
             "org.freedesktop.UPower", m_udi, "org.freedesktop.UPower.Device", "EnableChargeThreshold");
-    message << false;
+    message << enabled;
+    // Polkit lets the active session through without asking; anyone else gets a prompt.
     message.setInteractiveAuthorizationAllowed(true);
 
     auto *watcher = new QDBusPendingCallWatcher(QDBusConnection::systemBus().asyncCall(message), this);
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, percent](QDBusPendingCallWatcher *watcher) {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
         QDBusPendingReply<> reply = *watcher;
         watcher->deleteLater();
 
         if (reply.isError()) {
-            qWarning() << "Failed to turn off UPower's charge limit" << reply.error().message();
-            finishChargeLimit();
-            return;
+            qWarning() << "Failed to change the charge limit" << reply.error().message();
+            // Puts a switch bound to chargeLimitEnabled back.
+            emit chargeLimitChanged();
         }
-
-        m_upowerLimitEnabled = false;
-        runChargeLimitHelper(percent);
     });
 }
 
-void Battery::runChargeLimitHelper(int percent)
-{
-    auto *process = new QProcess(this);
-
-    connect(process, &QProcess::finished, this, [this, process](int exitCode, QProcess::ExitStatus status) {
-        process->deleteLater();
-
-        if (status != QProcess::NormalExit || exitCode != 0)
-            qWarning() << "Failed to set the charge limit, cutefish-charge-limit exited with" << exitCode;
-
-        finishChargeLimit();
-    });
-    connect(process, &QProcess::errorOccurred, this, [this, process](QProcess::ProcessError error) {
-        if (error != QProcess::FailedToStart)
-            return;
-
-        process->deleteLater();
-        qWarning() << "Failed to run pkexec for the charge limit";
-        finishChargeLimit();
-    });
-
-    process->start(QStringLiteral("pkexec"), { QStringLiteral("cutefish-charge-limit"), QString::number(percent) });
-}
-
-void Battery::finishChargeLimit()
-{
-    m_chargeLimitBusy = false;
-
-    // Notifies even when nothing changed, which puts a slider back after a failure.
-    readChargeLimit(true);
-
-    if (m_requestedChargeLimit > 0) {
-        const int percent = m_requestedChargeLimit;
-        m_requestedChargeLimit = -1;
-        setChargeLimit(percent);
-    }
-}
-
-void Battery::loadBatteryDevice()
+void Battery::loadChargeLimit()
 {
     QDBusMessage message = QDBusMessage::createMethodCall(
             "org.freedesktop.UPower", m_udi, "org.freedesktop.DBus.Properties", "GetAll");
@@ -384,49 +319,27 @@ void Battery::loadBatteryDevice()
         QDBusPendingReply<QVariantMap> reply = *watcher;
         watcher->deleteLater();
 
-        if (reply.isError())
-            return;
-
-        const QVariantMap props = reply.value();
-        const QString nativePath = props.value("NativePath").toString();
-
-        m_upowerLimitEnabled = props.value("ChargeThresholdEnabled").toBool();
-
-        if (!nativePath.isEmpty())
-            m_batteryPath = QStringLiteral("/sys/class/power_supply/") + nativePath + QLatin1Char('/');
-
-        readChargeLimit(false);
+        if (!reply.isError())
+            updateChargeLimit(reply.value());
     });
 }
 
-static int readThreshold(const QString &path)
+// UPower before 1.90 has none of these properties, which leaves the limit unsupported.
+void Battery::updateChargeLimit(const QVariantMap &props)
 {
-    QFile file(path);
+    const bool supported = props.value("ChargeThresholdSupported", m_chargeLimitSupported).toBool();
+    const bool enabled = props.value("ChargeThresholdEnabled", m_chargeLimitEnabled).toBool();
+    const int start = props.value("ChargeStartThreshold", m_chargeLimitStart).toInt();
+    const int end = props.value("ChargeEndThreshold", m_chargeLimitEnd).toInt();
 
-    if (!file.open(QIODevice::ReadOnly))
-        return -1;
-
-    return file.readAll().trimmed().toInt();
-}
-
-void Battery::readChargeLimit(bool notify)
-{
-    if (m_batteryPath.isEmpty())
-        return;
-
-    const int end = readThreshold(m_batteryPath + QStringLiteral("charge_control_end_threshold"));
-    const int start = readThreshold(m_batteryPath + QStringLiteral("charge_control_start_threshold"));
-
-    const bool supported = end > 0;
-    const int limit = supported ? end : 100;
-    const int resume = limit < 100 ? qMax(start, 0) : 0;
-
-    if (!notify && supported == m_chargeLimitSupported && limit == m_chargeLimit && resume == m_chargeResume)
+    if (supported == m_chargeLimitSupported && enabled == m_chargeLimitEnabled
+        && start == m_chargeLimitStart && end == m_chargeLimitEnd)
         return;
 
     m_chargeLimitSupported = supported;
-    m_chargeLimit = limit;
-    m_chargeResume = resume;
+    m_chargeLimitEnabled = enabled;
+    m_chargeLimitStart = start;
+    m_chargeLimitEnd = end;
     emit chargeLimitChanged();
 }
 
@@ -450,14 +363,6 @@ void Battery::onDevicePropertiesChanged(const QString &ifaceName, const QVariant
 {
     Q_UNUSED(invalidatedProps);
 
-    if (ifaceName != QLatin1String("org.freedesktop.UPower.Device"))
-        return;
-
-    // UPower's own limit writes the same thresholds.
-    if (changedProps.contains("ChargeThresholdEnabled")) {
-        m_upowerLimitEnabled = changedProps.value("ChargeThresholdEnabled").toBool();
-
-        if (!m_chargeLimitBusy)
-            readChargeLimit(false);
-    }
+    if (ifaceName == QLatin1String("org.freedesktop.UPower.Device"))
+        updateChargeLimit(changedProps);
 }
