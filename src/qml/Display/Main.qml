@@ -161,7 +161,10 @@ ItemPage {
 
                                             FishUI.ComboBox {
                                                 Layout.preferredWidth: Math.round(parent.width / 2)
-                                                model: element.resolutions
+                                                model: element.resolutions.map(function (text, index) {
+                                                    return index === element.recommendedResolutionIndex
+                                                            ? qsTr("%1 (Recommended)").arg(text) : text
+                                                })
                                                 currentIndex: element.resolutionIndex !== undefined ?
                                                                   element.resolutionIndex : -1
                                                 onActivated: element.resolutionIndex = currentIndex
@@ -274,58 +277,26 @@ ItemPage {
                                             minimumRowHeight: Metrics.controlRowHeight
                                             text: qsTr("Scale")
 
-                                            // As tall as the combo boxes above it, not the bar's
-                                            // default, which stands out in a row.
-                                            FishUI.SegmentedControl {
-                                                id: scaleBar
-
-                                                readonly property int buttonHeight: 31
+                                            FishUI.ComboBox {
+                                                readonly property var scales: element.supportedScales
 
                                                 Layout.preferredWidth: Math.round(parent.width / 2)
-
-                                                FishUI.TabButton {
-                                                    implicitHeight: scaleBar.buttonHeight
-                                                    text: "100%"
-                                                    onClicked: element.scale = 1.0
-                                                }
-
-                                                FishUI.TabButton {
-                                                    implicitHeight: scaleBar.buttonHeight
-                                                    text: "125%"
-                                                    onClicked: element.scale = 1.25
-                                                }
-
-                                                FishUI.TabButton {
-                                                    implicitHeight: scaleBar.buttonHeight
-                                                    text: "150%"
-                                                    onClicked: element.scale = 1.5
-                                                }
-
-                                                FishUI.TabButton {
-                                                    implicitHeight: scaleBar.buttonHeight
-                                                    text: "175%"
-                                                    onClicked: element.scale = 1.75
-                                                }
-
-                                                FishUI.TabButton {
-                                                    implicitHeight: scaleBar.buttonHeight
-                                                    text: "200%"
-                                                    onClicked: element.scale = 2.0
-                                                }
-
+                                                model: scales.map(function (scale) {
+                                                    var text = Math.round(scale * 100) + "%"
+                                                    return Math.abs(scale - element.recommendedScale) < 0.001
+                                                            ? qsTr("%1 (Recommended)").arg(text) : text
+                                                })
+                                                // The nearest step, for a scale set some other way.
                                                 currentIndex: {
-                                                    var scale = element.scale
-
-                                                    if (scale <= 1.0)
-                                                        return 0
-                                                    else if (scale <= 1.25)
-                                                        return 1
-                                                    else if (scale <= 1.50)
-                                                        return 2
-                                                    else if (scale <= 1.75)
-                                                        return 3
-                                                    return 4
+                                                    var best = 0
+                                                    for (var i = 1; i < scales.length; ++i) {
+                                                        if (Math.abs(scales[i] - element.scale)
+                                                                < Math.abs(scales[best] - element.scale))
+                                                            best = i
+                                                    }
+                                                    return best
                                                 }
+                                                onActivated: element.scale = scales[currentIndex]
                                             }
                                         }
                                     }
