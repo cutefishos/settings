@@ -49,16 +49,6 @@ ItemPage {
         return qsTr("Built-in")
     }
 
-    // A built-in card's node is named after the controller ("Ryzen HD Audio
-    // Controller Analog Stereo"); its active port says what it is ("Speakers").
-    function deviceName(device) {
-        var port = activePort(device)
-        if (port !== null && port.description.length > 0
-                && !device.virtualDevice && device.bus !== "usb" && device.bus !== "bluetooth")
-            return port.description
-        return device.description
-    }
-
     // -1 is all left, 1 all right. Only a device with both front channels has one.
     function balance(device) {
         var left = device.channels.indexOf("FL")
@@ -95,7 +85,7 @@ ItemPage {
         id: deviceRow
         required property var device
         objectName: "device-" + device.index
-        text: page.deviceName(device)
+        text: device.displayName
         checked: device.default
 
         Accessible.role: Accessible.RadioButton
