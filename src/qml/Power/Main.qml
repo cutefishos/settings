@@ -115,7 +115,8 @@ ItemPage {
                 ListRow {
                     interactive: false
                     minimumRowHeight: Metrics.controlRowHeight
-                    text: qsTr("Turn off display when inactive on power adapter")
+                    text: _battery.available ? qsTr("Turn off display when inactive on power adapter")
+                                             : qsTr("Turn off display when inactive")
 
                     FishUI.ComboBox {
                         Layout.preferredWidth: 160
@@ -124,6 +125,20 @@ ItemPage {
                                 qsTr("30 Minutes"), qsTr("Never")]
                         currentIndex: timeoutToIndex(power.acScreenOff)
                         onActivated: power.acScreenOff = timeoutValues[currentIndex]
+                    }
+                }
+
+                ListRow {
+                    interactive: false
+                    text: _battery.available ? qsTr("Prevent automatic sleeping on power adapter when the display is off")
+                                             : qsTr("Prevent automatic sleeping when the display is off")
+
+                    FishUI.Switch {
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                        rightPadding: 0
+                        rightInset: 0
+                        checked: power.acPreventSleep
+                        onToggled: power.acPreventSleep = checked
                     }
                 }
             }

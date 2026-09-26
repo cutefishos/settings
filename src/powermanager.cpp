@@ -79,6 +79,9 @@ PowerManager::PowerManager(QObject *parent)
                                      QStringLiteral("CloseScreenTimeout"), 300);
     m_acScreenOff = readTimeout(settings, QStringLiteral("ACScreenOff"),
                                 QStringLiteral("CloseScreenTimeout"), 1200);
+    settings.beginGroup(QLatin1String(s_powerGroup));
+    m_acPreventSleep = settings.value(QStringLiteral("ACPreventSleep"), false).toBool();
+    settings.endGroup();
 }
 
 int PowerManager::mode() const
@@ -130,4 +133,20 @@ void PowerManager::setACScreenOff(int timeout)
     writePowerSetting(QStringLiteral("ACScreenOff"), timeout);
     callPowerManager(QStringLiteral("setACScreenOff"), timeout);
     emit acScreenOffChanged();
+}
+
+bool PowerManager::acPreventSleep() const
+{
+    return m_acPreventSleep;
+}
+
+void PowerManager::setACPreventSleep(bool prevent)
+{
+    if (m_acPreventSleep == prevent)
+        return;
+
+    m_acPreventSleep = prevent;
+    writePowerSetting(QStringLiteral("ACPreventSleep"), prevent);
+    callPowerManager(QStringLiteral("setACPreventSleep"), prevent);
+    emit acPreventSleepChanged();
 }

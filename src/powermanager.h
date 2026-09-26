@@ -29,6 +29,7 @@ class PowerManager : public QObject
     Q_PROPERTY(int mode READ mode WRITE setMode NOTIFY modeChanged)
     Q_PROPERTY(int batteryScreenOff READ batteryScreenOff WRITE setBatteryScreenOff NOTIFY batteryScreenOffChanged)
     Q_PROPERTY(int acScreenOff READ acScreenOff WRITE setACScreenOff NOTIFY acScreenOffChanged)
+    Q_PROPERTY(bool acPreventSleep READ acPreventSleep WRITE setACPreventSleep NOTIFY acPreventSleepChanged)
 
 public:
     explicit PowerManager(QObject *parent = nullptr);
@@ -42,16 +43,21 @@ public:
     int acScreenOff() const;
     void setACScreenOff(int timeout);
 
+    bool acPreventSleep() const;
+    void setACPreventSleep(bool prevent);
+
 signals:
     void modeChanged();
     void batteryScreenOffChanged();
     void acScreenOffChanged();
+    void acPreventSleepChanged();
 
 private:
     QDBusInterface m_iface;
     int m_mode;
     int m_batteryScreenOff;
     int m_acScreenOff;
+    bool m_acPreventSleep;
 };
 
 #endif // POWERMANAGER_H
