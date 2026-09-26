@@ -658,7 +658,8 @@ Item {
                 FishUI.Label {
                     id: itemTitle
                     text: model.title
-                    color: FishUI.Theme.darkMode ? FishUI.Theme.textColor : "#363636"
+                    color: !rootWindow.active ? FishUI.Theme.disabledTextColor
+                         : FishUI.Theme.darkMode ? FishUI.Theme.textColor : "#363636"
                     font.pointSize: 8
                 }
 
