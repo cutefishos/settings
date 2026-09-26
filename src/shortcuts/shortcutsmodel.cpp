@@ -76,6 +76,7 @@ void ShortcutsModel::reload()
     // The order here is the order on the page, like kAcceleratorLayouts.
     const QString general = tr("General");
     const QString windows = tr("Windows");
+    const QString screenshots = tr("Screenshots and Recording");
     const Layout layouts[] = {
             {"toggle-app-list", general, tr("Open the launcher")},
             {"lock-screen", general, tr("Lock the screen")},
@@ -92,6 +93,14 @@ void ShortcutsModel::reload()
             {"window-cycle-snap-right", windows, tr("Snap the window to the right")},
             {"close-window", windows, tr("Close the window")},
             {"move-active-window-between-displays", windows, tr("Move the window to the next display")},
+
+            {"take-screenshot", screenshots, tr("Save a picture of the screen")},
+            {"take-screenshot-to-clipboard", screenshots, tr("Copy a picture of the screen")},
+            {"take-partial-screenshot", screenshots, tr("Save a picture of the selected area")},
+            {"take-partial-screenshot-to-clipboard", screenshots,
+             tr("Copy a picture of the selected area")},
+            {"start-capture-mode", screenshots, tr("Screenshot and recording options")},
+            {"stop-screen-recording", screenshots, tr("Stop screen recording")},
     };
 
     QHash<QString, QJsonObject> published;
