@@ -11,9 +11,14 @@ ItemPage {
     headerTitle: qsTr("Sound")
     property string operationError: ""
 
+    readonly property bool showInputs: tabs.currentIndex === 1
+    readonly property var outputDevice: outputs.defaultSink
+    readonly property var inputDevice: inputs.defaultSource
+    // Shared by every slider row, so the sliders and the level meter line up.
+    readonly property int sliderWidth: 330
+
     SinkModel { id: outputs }
     SourceModel { id: inputs }
-    CardModel { id: cards }
 
     Connections {
         target: AudioService
@@ -25,126 +30,257 @@ ItemPage {
         }
     }
 
-    component VolumeControl: RowLayout {
-        id: volumeControl
-        required property var device
-        spacing: Metrics.rowSpacing
+    function activePort(device) {
+        var ports = device.ports
+        var index = device.activePortIndex
+        return index >= 0 && index < ports.length ? ports[index] : null
+    }
 
-        FishUI.Slider {
-            objectName: "volume-" + volumeControl.device.index
-            Layout.fillWidth: true
-            from: PipeWire.MinimalVolume
-            to: PipeWire.NormalVolume
-            stepSize: 0.01
-            value: volumeControl.device.muted ? 0 : volumeControl.device.volume
-            enabled: volumeControl.device.volumeWritable
-            Accessible.name: qsTr("Volume for %1").arg(volumeControl.device.description)
-            onMoved: {
-                volumeControl.device.volume = value
-                volumeControl.device.muted = value === 0
-            }
+    function deviceType(device) {
+        if (device.virtualDevice)
+            return qsTr("Virtual")
+        if (device.bus === "bluetooth")
+            return qsTr("Bluetooth")
+        if (device.bus === "usb")
+            return qsTr("USB")
+        var port = activePort(device)
+        if (port !== null && port.name.indexOf("hdmi") === 0)
+            return qsTr("HDMI")
+        return qsTr("Built-in")
+    }
+
+    // A built-in card's node is named after the controller ("Ryzen HD Audio
+    // Controller Analog Stereo"); its active port says what it is ("Speakers").
+    function deviceName(device) {
+        var port = activePort(device)
+        if (port !== null && port.description.length > 0
+                && !device.virtualDevice && device.bus !== "usb" && device.bus !== "bluetooth")
+            return port.description
+        return device.description
+    }
+
+    // -1 is all left, 1 all right. Only a device with both front channels has one.
+    function balance(device) {
+        var left = device.channels.indexOf("FL")
+        var right = device.channels.indexOf("FR")
+        if (left < 0 || right < 0)
+            return 0
+        var volumes = device.channelVolumes
+        var high = Math.max(volumes[left], volumes[right])
+        if (high <= 0)
+            return 0
+        return volumes[left] >= volumes[right] ? volumes[right] / high - 1
+                                               : 1 - volumes[left] / high
+    }
+
+    function setBalance(device, value) {
+        var channels = device.channels
+        var current = device.channelVolumes
+        var volume = device.volume
+        // A copy: assigning into the property's own list writes each element
+        // back at once, and later reads return the device's not yet updated value.
+        var volumes = []
+        for (var i = 0; i < channels.length; ++i) {
+            if (channels[i] === "FL")
+                volumes.push(volume * Math.min(1, 1 - value))
+            else if (channels[i] === "FR")
+                volumes.push(volume * Math.min(1, 1 + value))
+            else
+                volumes.push(current[i])
+        }
+        device.channelVolumes = volumes
+    }
+
+    component DeviceRow: ListRow {
+        id: deviceRow
+        required property var device
+        objectName: "device-" + device.index
+        text: page.deviceName(device)
+        checked: device.default
+
+        Accessible.role: Accessible.RadioButton
+        Accessible.checked: checked
+
+        onClicked: {
+            if (device.default)
+                return
+            page.operationError = ""
+            device.default = true
         }
 
         FishUI.Label {
-            Layout.preferredWidth: 48
-            horizontalAlignment: Text.AlignRight
-            text: qsTr("%1%").arg(volumeControl.device.muted ? 0 : Math.round(volumeControl.device.volume * 100))
+            text: page.deviceType(deviceRow.device)
+            color: FishUI.Theme.disabledTextColor
+        }
+
+        // Keeps the type aligned whether or not the row is checked.
+        Item {
+            Layout.preferredWidth: 18
+            Layout.preferredHeight: 18
+
+            FishUI.Icon {
+                anchors.fill: parent
+                name: "check"
+                color: FishUI.Theme.highlightColor
+                visible: deviceRow.checked
+            }
         }
     }
 
-    component DeviceCard: RoundedItem {
-        id: deviceCard
-        required property var device
-        property bool input: false
-        objectName: "device-" + device.index
+    component SliderRow: ListRow {
+        id: sliderRow
+        property alias sliderName: _slider.objectName
+        property alias from: _slider.from
+        property alias to: _slider.to
+        property alias stepSize: _slider.stepSize
+        property real value
+        property alias sliderEnabled: _slider.enabled
+        // Captions flush with the two ends of the track, each under a tick.
+        property alias leftText: _leftLabel.text
+        property alias rightText: _rightLabel.text
+        // FishUI.Icon names at the two ends, inside the same span as a bare slider.
+        property string leftIcon
+        property string rightIcon
+        // 0 to 1 shows a level meter in place of the slider, on the same track.
+        property real meterLevel: -1
+        readonly property color tickColor: FishUI.Theme.darkMode ? Qt.rgba(1, 1, 1, 0.55)
+                                                                 : Qt.rgba(0, 0, 0, 0.35)
+        signal moved(real value)
+        interactive: false
+        minimumRowHeight: Metrics.controlRowHeight
 
-        RowLayout {
-            Layout.fillWidth: true
-            spacing: Metrics.rowSpacing
+        // A handle drag assigns the slider's value and would break a plain
+        // binding. This one also waits while the handle is held and until the
+        // server has answered the last move, so the old value never flashes back.
+        Binding {
+            target: _slider
+            property: "value"
+            value: sliderRow.value
+            when: !_slider.pressed && !_settle.running
+            restoreMode: Binding.RestoreNone
+        }
 
-            FishUI.Label {
+        Timer {
+            id: _settle
+            interval: 300
+        }
+
+        // The controls span exactly sliderWidth: the icons' outer edges, a bare
+        // slider's track, the meter's dots and the captions all meet its ends.
+        ColumnLayout {
+            // A nested layout fills by default and would split the row with the label.
+            Layout.fillWidth: false
+            Layout.preferredWidth: page.sliderWidth
+            // Room above to match the captions below, so the slider and not the
+            // whole column is centred on the label.
+            Layout.topMargin: _captions.visible ? _captions.implicitHeight : 0
+            spacing: 0
+
+            Item {
                 Layout.fillWidth: true
-                text: deviceCard.device.description
-                textFormat: Text.PlainText
-                wrapMode: Text.Wrap
-            }
+                implicitHeight: _slider.implicitHeight
 
-            FishUI.Button {
-                objectName: "default-" + deviceCard.device.index
-                Layout.preferredWidth: 88
-                Layout.preferredHeight: 28
-                leftPadding: 10
-                rightPadding: 10
-                topPadding: 3
-                bottomPadding: 3
-                font.pixelSize: 12
-                text: deviceCard.device.default ? qsTr("Default") : qsTr("Set default")
-                enabled: !deviceCard.device.default
-                Accessible.name: deviceCard.input ? qsTr("Use as default input") : qsTr("Use as default output")
-                onClicked: {
-                    page.operationError = ""
-                    deviceCard.device.default = true
+                FishUI.Icon {
+                    id: _leftIcon
+                    anchors.left: parent.left
+                    // The speaker glyphs start 1px inside their box but end at its edge.
+                    anchors.leftMargin: -1
+                    anchors.verticalCenter: parent.verticalCenter
+                    visible: sliderRow.leftIcon.length > 0
+                    name: sliderRow.leftIcon
+                }
+
+                FishUI.Icon {
+                    id: _rightIcon
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    visible: sliderRow.rightIcon.length > 0
+                    name: sliderRow.rightIcon
+                }
+
+                FishUI.Slider {
+                    id: _slider
+                    // Where the visible track starts and ends inside the slider.
+                    readonly property real trackInset: (thumbLength - sliderTrackHeight) / 2
+                    anchors.left: _leftIcon.visible ? _leftIcon.right : parent.left
+                    anchors.right: _rightIcon.visible ? _rightIcon.left : parent.right
+                    // Negative: the handle overhangs the track ends by trackInset.
+                    anchors.leftMargin: (_leftIcon.visible ? Metrics.s : 0) - leftPadding - trackInset
+                    anchors.rightMargin: (_rightIcon.visible ? Metrics.s : 0) - rightPadding - trackInset
+                    anchors.verticalCenter: parent.verticalCenter
+                    visible: sliderRow.meterLevel < 0
+                    Accessible.name: sliderRow.text
+                    onMoved: {
+                        _settle.restart()
+                        sliderRow.moved(value)
+                    }
+                }
+
+                Row {
+                    id: _meter
+                    readonly property int segments: 15
+                    readonly property int lit: Math.round(Math.max(0, sliderRow.meterLevel) * segments)
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    spacing: (width - segments * 8) / (segments - 1)
+                    visible: sliderRow.meterLevel >= 0
+                    Accessible.role: Accessible.ProgressBar
+                    Accessible.name: sliderRow.text
+
+                    Repeater {
+                        model: _meter.segments
+                        delegate: Rectangle {
+                            required property int index
+                            width: 8
+                            height: 8
+                            radius: 4
+                            color: index < _meter.lit ? FishUI.Theme.highlightColor
+                                                      : FishUI.Theme.disabledTextColor
+                            opacity: index < _meter.lit ? 1 : 0.3
+                        }
+                    }
                 }
             }
-        }
 
-        VolumeControl {
-            Layout.fillWidth: true
-            device: deviceCard.device
-            visible: deviceCard.device.hasVolume
-        }
-
-        RowLayout {
-            Layout.fillWidth: true
-            visible: deviceCard.device.ports.length > 1
-            spacing: Metrics.rowSpacing
-
-            FishUI.Label {
-                text: qsTr("Port")
-            }
-
-            FishUI.ComboBox {
+            Item {
+                id: _captions
                 Layout.fillWidth: true
-                model: deviceCard.device.ports
-                textRole: "description"
-                currentIndex: deviceCard.device.activePortIndex
-                Accessible.name: qsTr("Port for %1").arg(deviceCard.device.description)
-                onActivated: {
-                    page.operationError = ""
-                    deviceCard.device.activePortIndex = currentIndex
+                implicitHeight: _leftTick.height + Metrics.xxs + _leftLabel.implicitHeight
+                visible: _leftLabel.text.length > 0 || _rightLabel.text.length > 0
+
+                FishUI.RoundedRectangle {
+                    id: _leftTick
+                    x: Math.round(_leftLabel.x + (_leftLabel.width - width) / 2)
+                    width: 1
+                    height: 3
+                    color: sliderRow.tickColor
+                    visible: _leftLabel.text.length > 0
                 }
-                delegate: ItemDelegate {
-                    required property var modelData
-                    width: parent ? parent.width : implicitWidth
-                    text: modelData.description
-                    enabled: modelData.availability !== AudioObject.Unavailable
+
+                FishUI.RoundedRectangle {
+                    x: Math.round(_rightLabel.x + (_rightLabel.width - width) / 2)
+                    width: 1
+                    height: 3
+                    color: sliderRow.tickColor
+                    visible: _rightLabel.text.length > 0
+                }
+
+                FishUI.Label {
+                    id: _leftLabel
+                    y: _leftTick.height + Metrics.xxs
+                    font.pixelSize: 11
+                    color: FishUI.Theme.disabledTextColor
+                }
+
+                FishUI.Label {
+                    id: _rightLabel
+                    x: Math.round(parent.width - width)
+                    y: _leftTick.height + Metrics.xxs
+                    font.pixelSize: 11
+                    color: FishUI.Theme.disabledTextColor
                 }
             }
-        }
-
-        RowLayout {
-            spacing: Metrics.rowSpacing
-            Layout.fillWidth: true
-            visible: deviceCard.input && deviceCard.device.default
-
-            FishUI.Label {
-                text: qsTr("Input level")
-                color: FishUI.Theme.disabledTextColor
-            }
-
-            FishUI.ProgressBar {
-                Layout.fillWidth: true
-                from: 0
-                to: 1
-                value: inputMonitor.volume
-                Accessible.name: qsTr("Microphone input level")
-            }
-        }
-
-        VolumeMonitor {
-            id: inputMonitor
-            target: page.visible && deviceCard.input && deviceCard.device.default
-                    ? deviceCard.device : null
         }
     }
 
@@ -185,103 +321,109 @@ ItemPage {
             }
 
             ColumnLayout {
-                objectName: "output-section"
                 Layout.fillWidth: true
-                spacing: Metrics.sectionLabelSpacing
+                spacing: Metrics.l
 
-                SectionLabel { text: qsTr("Output devices") }
-
-                FishUI.Label {
-                    objectName: "no-outputs"
+                FishUI.SegmentedControl {
+                    id: tabs
+                    objectName: "tabs"
                     Layout.fillWidth: true
-                    visible: AudioService.connected && outputs.count === 0
-                    text: qsTr("No output devices connected")
-                    color: FishUI.Theme.disabledTextColor
-                    wrapMode: Text.Wrap
-                }
 
-                Repeater {
-                    model: outputs
-                    delegate: DeviceCard {
-                        required property var model
-                        device: model.AudioObject
+                    FishUI.TabButton {
+                        objectName: "output-tab"
+                        text: qsTr("Output")
+                    }
+
+                    FishUI.TabButton {
+                        objectName: "input-tab"
+                        text: qsTr("Input")
                     }
                 }
-            }
 
-            ColumnLayout {
-                objectName: "input-section"
-                Layout.fillWidth: true
-                spacing: Metrics.sectionLabelSpacing
-
-                SectionLabel { text: qsTr("Input devices") }
-
-                FishUI.Label {
-                    objectName: "no-inputs"
-                    Layout.fillWidth: true
-                    visible: AudioService.connected && inputs.count === 0
-                    text: qsTr("No input devices connected")
-                    color: FishUI.Theme.disabledTextColor
-                    wrapMode: Text.Wrap
-                }
-
-                Repeater {
-                    model: inputs
-                    delegate: DeviceCard {
-                        required property var model
-                        device: model.AudioObject
-                        input: true
-                    }
-                }
-            }
-
-            ColumnLayout {
-                Layout.fillWidth: true
-                spacing: Metrics.sectionLabelSpacing
-                visible: cards.count > 0
-
-                SectionLabel { text: qsTr("Device profiles") }
-
-                RoundedItem {
+                ListCard {
                     Repeater {
-                        model: cards
-                        delegate: ColumnLayout {
-                            id: profileCard
+                        model: page.showInputs ? inputs : outputs
+                        delegate: DeviceRow {
                             required property var model
-                            required property int index
-                            readonly property var device: model.AudioObject
-                            Layout.fillWidth: true
-                            spacing: Metrics.cardSpacing
-                            visible: device.profiles.length > 0
+                            device: model.AudioObject
+                        }
+                    }
 
-                            FishUI.Label {
-                                Layout.fillWidth: true
-                                text: profileCard.device.description
-                                textFormat: Text.PlainText
-                                wrapMode: Text.Wrap
-                            }
+                    ListRow {
+                        interactive: false
+                        visible: AudioService.connected && (page.showInputs ? inputs.count === 0
+                                                                            : outputs.count === 0)
+                        text: page.showInputs ? qsTr("No input devices") : qsTr("No output devices")
+                        enabled: false
+                    }
+                }
 
-                            FishUI.ComboBox {
-                                Layout.fillWidth: true
-                                model: profileCard.device.profiles
-                                textRole: "description"
-                                currentIndex: profileCard.device.activeProfileIndex
-                                Accessible.name: qsTr("Profile for %1").arg(profileCard.device.description)
-                                onActivated: {
-                                    page.operationError = ""
-                                    profileCard.device.activeProfileIndex = currentIndex
-                                }
-                                delegate: ItemDelegate {
-                                    required property var modelData
-                                    width: parent ? parent.width : implicitWidth
-                                    text: modelData.description
-                                    enabled: modelData.availability !== AudioObject.Unavailable
-                                }
-                            }
+                ListCard {
+                    // Bound to the device, not to the rows: a row's visible is
+                    // false while its card is hidden, so the card could never show.
+                    visible: page.showInputs ? page.inputDevice !== null
+                                             : page.outputDevice !== null && page.outputDevice.hasVolume
 
-                            HorizontalDivider {
-                                visible: profileCard.index < cards.count - 1
-                            }
+                    SliderRow {
+                        text: qsTr("Output volume")
+                        leftIcon: "audio-volume-zero"
+                        rightIcon: "audio-volume-high"
+                        visible: !page.showInputs && page.outputDevice !== null && page.outputDevice.hasVolume
+                        sliderName: page.outputDevice ? "volume-" + page.outputDevice.index : ""
+                        from: PipeWire.MinimalVolume
+                        to: PipeWire.NormalVolume
+                        stepSize: 0.01
+                        // With no mute switch, muting shows as zero here.
+                        value: page.outputDevice && !page.outputDevice.muted ? page.outputDevice.volume : 0
+                        sliderEnabled: page.outputDevice !== null && page.outputDevice.volumeWritable
+                        onMoved: (value) => {
+                            page.outputDevice.volume = value
+                            page.outputDevice.muted = value === 0
+                        }
+                    }
+
+                    SliderRow {
+                        objectName: "balance"
+                        text: qsTr("Balance")
+                        leftText: qsTr("Left")
+                        rightText: qsTr("Right")
+                        visible: !page.showInputs && page.outputDevice !== null
+                                 && page.outputDevice.channels.indexOf("FL") >= 0
+                                 && page.outputDevice.channels.indexOf("FR") >= 0
+                        from: -1
+                        to: 1
+                        stepSize: 0.02
+                        value: page.outputDevice ? page.balance(page.outputDevice) : 0
+                        sliderEnabled: page.outputDevice !== null && page.outputDevice.volumeWritable
+                        onMoved: (value) => page.setBalance(page.outputDevice, value)
+                    }
+
+                    SliderRow {
+                        text: qsTr("Input volume")
+                        visible: page.showInputs && page.inputDevice !== null && page.inputDevice.hasVolume
+                        sliderName: page.inputDevice ? "volume-" + page.inputDevice.index : ""
+                        from: PipeWire.MinimalVolume
+                        to: PipeWire.NormalVolume
+                        stepSize: 0.01
+                        value: page.inputDevice ? page.inputDevice.volume : 0
+                        sliderEnabled: page.inputDevice !== null && page.inputDevice.volumeWritable
+                        onMoved: (value) => {
+                            page.inputDevice.volume = value
+                            page.inputDevice.muted = false
+                        }
+                    }
+
+                    SliderRow {
+                        text: qsTr("Input level")
+                        visible: page.showInputs && page.inputDevice !== null
+                        // Peaks in dB over the bottom 50 dB, so speech fills about half.
+                        meterLevel: inputMonitor.volume > 0
+                                    ? Math.max(0, 1 + Math.log(inputMonitor.volume) / Math.LN10 * 20 / 50)
+                                    : 0
+
+                        VolumeMonitor {
+                            id: inputMonitor
+                            target: page.visible && page.showInputs ? page.inputDevice : null
                         }
                     }
                 }
