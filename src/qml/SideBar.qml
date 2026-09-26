@@ -658,8 +658,9 @@ Item {
                 FishUI.Label {
                     id: itemTitle
                     text: model.title
-                    color: !rootWindow.active ? FishUI.Theme.disabledTextColor
-                         : FishUI.Theme.darkMode ? FishUI.Theme.textColor : "#363636"
+                    // 8pt text reads lighter than its colour, so the inactive grey leans towards textColor.
+                    color: rootWindow.active ? FishUI.Theme.textColor
+                                             : Qt.tint(FishUI.Theme.disabledTextColor, Qt.alpha(FishUI.Theme.textColor, 0.35))
                     font.pointSize: 8
                 }
 
@@ -711,7 +712,10 @@ Item {
 
             // See-through so the field sits on the sidebar's frosted backdrop.
             background: FishUI.RoundedRectangle {
-                readonly property color fill: Qt.alpha(FishUI.Theme.alternateBackgroundColor, 0.6)
+                // Without blur the backdrop is the flat sidebar tint, where the frosted fill washes out;
+                // a neutral text-colour wash keeps the pill visible.
+                readonly property color fill: rootWindow.active ? Qt.alpha(FishUI.Theme.alternateBackgroundColor, 0.6)
+                                                                : Qt.alpha(FishUI.Theme.textColor, FishUI.Theme.darkMode ? 0.06 : 0.04)
 
                 // Pill: radius is always half the height.
                 radius: height / 2
