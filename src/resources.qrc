@@ -13,6 +13,7 @@
         <file>qml/Metrics.qml</file>
         <file>images/logo.svg</file>
         <file>qml/Scrollable.qml</file>
+        <file>qml/SearchField.qml</file>
         <file>images/sensors-voltage-symbolic.svg</file>
         <file>images/dark_mode.svg</file>
         <file>images/light_mode.svg</file>

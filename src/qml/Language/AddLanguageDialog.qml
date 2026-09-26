@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
+import "../"
 
 FishUI.Window {
     id: addDialog
@@ -24,7 +25,8 @@ FishUI.Window {
     contentTopMargin: 0
     windowButtonsTopMargin: Metrics.dialogWindowButtonsMargin
     windowButtonsRightMargin: Metrics.dialogWindowButtonsMargin
-    background.color: FishUI.Theme.secondBackgroundColor
+    // The page colour, so the card stands out as it does on a page.
+    background.color: FishUI.Theme.backgroundColor
 
     property string selectedCode: ""
     property bool adding: false
@@ -35,7 +37,7 @@ FishUI.Window {
             searchField.clear()
             addDialog.language.search("")
             addDialog.language.loadLanguages()
-            availableList.positionViewAtBeginning()
+            availableList.contentY = 0
             searchField.forceActiveFocus()
         }
     }
@@ -74,11 +76,9 @@ FishUI.Window {
             wrapMode: Text.Wrap
         }
 
-        FishUI.TextField {
+        SearchField {
             id: searchField
-            Layout.fillWidth: true
             placeholderText: qsTr("Search languages")
-            selectByMouse: true
             enabled: !addDialog.adding
             onTextChanged: {
                 addDialog.selectedCode = ""
@@ -91,41 +91,53 @@ FishUI.Window {
             interval: 100
             onTriggered: {
                 addDialog.language.search(searchField.text)
-                availableList.positionViewAtBeginning()
+                availableList.contentY = 0
             }
         }
 
-        ListView {
-            id: availableList
-            Layout.fillWidth: true
+        ListCard {
             Layout.fillHeight: true
-            clip: true
-            model: addDialog.language.availableLanguages
-            reuseItems: true
-            cacheBuffer: 120
-            enabled: !addDialog.adding
-            boundsBehavior: Flickable.StopAtBounds
-            FishUI.ScrollBar.vertical: FishUI.ScrollBar {}
-            FishUI.WheelHandler { target: availableList }
 
-            delegate: LanguageRow {
-                required property string code
-                required property string name
-                required description
-                required property int index
-                width: availableList.width
-                selected: addDialog.selectedCode === code
-                languageName: name
-                separatorVisible: index < availableList.count - 1
-                showCheck: selected
-                onClicked: addDialog.selectedCode = code
-            }
+            Flickable {
+                id: availableList
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                clip: true
+                contentWidth: width
+                contentHeight: rows.implicitHeight
+                enabled: !addDialog.adding
+                boundsBehavior: Flickable.StopAtBounds
+                FishUI.ScrollBar.vertical: FishUI.ScrollBar {}
+                FishUI.WheelHandler { target: availableList }
 
-            FishUI.Label {
-                anchors.centerIn: parent
-                visible: availableList.count === 0
-                text: addDialog.language.loading ? qsTr("Loading languages…") : qsTr("No languages found")
-                color: FishUI.Theme.disabledTextColor
+                ColumnLayout {
+                    id: rows
+                    width: availableList.width
+                    spacing: 0
+
+                    Repeater {
+                        id: repeater
+                        model: addDialog.language.availableLanguages
+
+                        delegate: LanguageRow {
+                            required property string code
+                            required property string name
+                            required description
+                            languageName: name
+                            checked: addDialog.selectedCode === code
+                            onClicked: addDialog.selectedCode = code
+                        }
+                    }
+                }
+
+                FishUI.Label {
+                    // Declared children of a Flickable would otherwise scroll with its content.
+                    parent: availableList
+                    anchors.centerIn: parent
+                    visible: repeater.count === 0
+                    text: addDialog.language.loading ? qsTr("Loading languages…") : qsTr("No languages found")
+                    color: FishUI.Theme.disabledTextColor
+                }
             }
         }
 

@@ -35,6 +35,10 @@ Item {
     readonly property bool highlighted: interactive && enabled && _mouseArea.containsMouse
     signal clicked()
 
+    // Set by a ListView delegate to its index: a view's rows are not siblings
+    // in row order, so their edges come from the view instead.
+    property int viewIndex: -1
+
     // The next visible row, whose highlight hides this row's separator.
     property Item _nextRow: null
 
@@ -61,6 +65,13 @@ Item {
     Keys.onEnterPressed: clicked()
 
     function updateEdges() {
+        var view = control.ListView.view
+        if (viewIndex >= 0 && view) {
+            firstItem = viewIndex === 0
+            lastItem = viewIndex === view.count - 1
+            _nextRow = view.itemAtIndex(viewIndex + 1)
+            return
+        }
         if (!parent)
             return
         var rows = []
@@ -77,6 +88,10 @@ Item {
 
     // A row appearing or disappearing changes its neighbours' corners too.
     function refreshSiblings() {
+        if (viewIndex >= 0) {
+            updateEdges()
+            return
+        }
         if (!parent)
             return
         var siblings = parent.children
@@ -88,11 +103,21 @@ Item {
 
     onParentChanged: refreshSiblings()
     onVisibleChanged: refreshSiblings()
+    onViewIndexChanged: updateEdges()
     Component.onCompleted: refreshSiblings()
 
+    // Every row gets this signal, so each updates only itself: refreshing all
+    // siblings from each makes a Repeater of n rows cost n^4.
     Connections {
         target: control.parent
-        function onChildrenChanged() { control.refreshSiblings() }
+        function onChildrenChanged() { control.updateEdges() }
+    }
+
+    Connections {
+        target: control.viewIndex >= 0 ? control.ListView.view : null
+        function onCountChanged() { control.updateEdges() }
+        // Scrolling creates or reuses the delegate for the next row.
+        function onContentYChanged() { control.updateEdges() }
     }
 
     // One shape only: overlapping translucent pieces would darken where they meet.
