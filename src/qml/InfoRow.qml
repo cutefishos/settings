@@ -19,6 +19,9 @@ ListRow {
         text: control.value || ""
         textFormat: Text.PlainText
         color: FishUI.Theme.disabledTextColor
+        horizontalAlignment: Text.AlignRight
+        wrapMode: Text.WordWrap
+        maximumLineCount: 2
         elide: Text.ElideRight
     }
 }

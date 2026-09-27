@@ -31,7 +31,8 @@ FishUI.Window {
     width: 900
     height: 610
 
-    minimumWidth: 900
+    // Half of a 1280-wide screen, so the window can be split beside another.
+    minimumWidth: 640
     minimumHeight: 600
 
     property alias stackView: _stackView

@@ -180,6 +180,10 @@ Item {
             text: control.text
             textFormat: Text.PlainText
             color: control.enabled ? FishUI.Theme.textColor : FishUI.Theme.disabledTextColor
+            // A window as narrow as half a screen wraps a long label beside its
+            // control rather than cutting it.
+            wrapMode: Text.WordWrap
+            maximumLineCount: 2
             elide: Text.ElideRight
         }
     }
