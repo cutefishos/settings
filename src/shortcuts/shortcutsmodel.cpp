@@ -138,9 +138,6 @@ void ShortcutsModel::reload()
         hasCustom = custom.isValid() && custom.value();
         m_commandKeys = m_interface->property("shortcutConvention").toString()
                 == QLatin1String("command");
-        // A compositor that does not say is one whose shortcuts are all editable.
-        const QVariant customizable = m_interface->property("customizable");
-        m_customizable = !customizable.isValid() || customizable.toBool();
     }
 
     beginResetModel();
@@ -323,8 +320,8 @@ QString ShortcutsModel::messageFor(const QString &result, const QString &conflic
     if (result == QLatin1String("maximum-accelerators-reached"))
         return tr("This action already has the maximum of five shortcuts.");
     if (result == QLatin1String("non-meta-accelerator-warning")) {
-        return m_commandKeys ? tr("Shortcuts without Command may be intercepted before "
-                                  "applications see them. Press it again to keep it.")
+        return m_commandKeys ? tr("Shortcuts without both Control and Command may be intercepted "
+                                  "before applications see them. Press it again to keep it.")
                              : tr("Shortcuts without Meta may be intercepted before applications "
                                   "see them. Press it again to keep it.");
     }

@@ -30,11 +30,9 @@ class FakeShortcutsService : public QObject
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "com.cutefish.Shortcuts1")
     Q_PROPERTY(QString shortcutConvention MEMBER convention)
-    Q_PROPERTY(bool customizable MEMBER customizable)
 
 public:
     QString convention = QStringLiteral("pc");
-    bool customizable = true;
     QJsonArray maximize = {accelerator(0x3d, QStringLiteral("equal"), QStringLiteral("="), 4),
                            accelerator(0xff52, QStringLiteral("Up"), QString(), 8)};
     QJsonArray maximizeDefaults = maximize;
@@ -206,11 +204,10 @@ private slots:
         QCOMPARE(model.rowCount(), 0);
     }
 
-    void theMacStyleNamesTheKeysAndIsNotEdited()
+    void theCommandConventionNamesTheKeys()
     {
         FakeShortcutsService service;
         service.convention = QStringLiteral("command");
-        service.customizable = false;
         auto bus = QDBusConnection::sessionBus();
         QVERIFY(bus.registerObject(QStringLiteral("/com/cutefish/Shortcuts1"), &service,
                                    QDBusConnection::ExportAllSlots
@@ -221,7 +218,6 @@ private slots:
         ShortcutsModel model;
         QTRY_VERIFY(model.available());
         QTRY_VERIFY(model.commandKeys());
-        QVERIFY(!model.customizable());
         QCOMPARE(model.modifierParts(ShortcutsModel::ControlDown | ShortcutsModel::AltDown
                                      | ShortcutsModel::MetaDown),
                  QStringList({QStringLiteral("Control"), QStringLiteral("Option"),

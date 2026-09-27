@@ -18,9 +18,8 @@ class ShortcutsModel : public QAbstractListModel
     Q_PROPERTY(bool available READ available NOTIFY availableChanged)
     Q_PROPERTY(bool hasCustomAccelerators READ hasCustomAccelerators NOTIFY acceleratorsChanged)
     Q_PROPERTY(QStringList categories READ categories CONSTANT)
-    // False with Command as the shortcut key, whose shortcuts are shown but
-    // not edited.
-    Q_PROPERTY(bool customizable READ customizable NOTIFY acceleratorsChanged)
+    // Command is the shortcut key: the modifiers go by their Command names.
+    Q_PROPERTY(bool commandKeys READ commandKeys NOTIFY acceleratorsChanged)
 
 public:
     enum Role {
@@ -48,7 +47,6 @@ public:
     bool available() const { return m_available; }
     bool hasCustomAccelerators() const { return m_hasCustomAccelerators; }
     QStringList categories() const;
-    bool customizable() const { return m_customizable; }
     bool commandKeys() const { return m_commandKeys; }
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -118,7 +116,6 @@ private:
     bool m_available = false;
     bool m_hasCustomAccelerators = false;
     bool m_commandKeys = false;
-    bool m_customizable = true;
 };
 
 #endif // SHORTCUTSMODEL_H

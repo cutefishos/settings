@@ -127,7 +127,7 @@ ItemPage {
                 FishUI.Label {
                     Layout.fillWidth: true
                     text: keyboard.shortcutConvention === "command"
-                          ? qsTr("The key next to the space bar works as Command and the one beside it as Option, on any keyboard: Command+C copies, Command+Tab switches windows, Command+Q quits. The shortcuts are fixed.")
+                          ? qsTr("The key next to the space bar works as Command and the one beside it as Option, on any keyboard: Command+C copies, Command+Tab switches windows, Command+Q quits. The shortcuts can be changed in Keyboard Shortcuts.")
                           : qsTr("Ctrl is the shortcut key and Alt switches windows. The shortcuts can be changed in Keyboard Shortcuts.")
                     color: FishUI.Theme.disabledTextColor
                     textFormat: Text.PlainText

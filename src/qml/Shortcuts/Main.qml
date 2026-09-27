@@ -38,9 +38,9 @@ ItemPage {
                 Layout.fillWidth: true
                 Layout.leftMargin: Metrics.cardHorizontalPadding
                 Layout.rightMargin: Metrics.cardHorizontalPadding
-                text: shortcuts.customizable
-                      ? qsTr("Click a system shortcut to change it. Shortcuts with Meta are the safest choice: applications never use them.")
-                      : qsTr("With Command as the shortcut key, the shortcuts are fixed. To change them, choose Ctrl as the shortcut key in Keyboard settings.")
+                text: shortcuts.commandKeys
+                      ? qsTr("Click a system shortcut to change it. Shortcuts with both Control and Command are the safest choice: applications never get them.")
+                      : qsTr("Click a system shortcut to change it. Shortcuts with Meta are the safest choice: applications never use them.")
                 color: FishUI.Theme.disabledTextColor
                 wrapMode: Text.WordWrap
             }
@@ -60,9 +60,6 @@ ItemPage {
                     }
 
                     ListCard {
-                        // With Command as the shortcut key the fixed shortcuts show greyed out.
-                        enabled: shortcuts.customizable
-
                         Repeater {
                             model: shortcuts
 
@@ -76,7 +73,7 @@ ItemPage {
             }
 
             StandardButton {
-                visible: shortcuts.available && shortcuts.customizable
+                visible: shortcuts.available
                 Layout.fillWidth: true
                 text: qsTr("Restore all defaults")
                 enabled: shortcuts.hasCustomAccelerators
