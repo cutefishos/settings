@@ -49,7 +49,7 @@ FishUI.Window {
     blurEnabled: active
     background.color: FishUI.Theme.backgroundColor
     background.opacity: blurEnabled && blurAvailable ? (FishUI.Theme.darkMode ? 0.7 : 0.5) : 1
-    header.height: 40
+    header.height: headerInset
     contentTopMargin: 0
 
     // Room for the header buttons with as much space below them as above;
@@ -116,9 +116,9 @@ FishUI.Window {
             anchors.fill: parent
             anchors.leftMargin: sideBar.width + Metrics.s
             anchors.rightMargin: Metrics.s
-            spacing: Metrics.xxs
+            spacing: rootWindow.windowButtonsSpacing
 
-            readonly property int buttonSize: 31
+            readonly property int buttonSize: rootWindow.header.buttonSize
 
             NavigationButton {
                 Layout.alignment: rootWindow.windowButtonsAlignment
@@ -143,13 +143,14 @@ FishUI.Window {
             FishUI.Label {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                Layout.leftMargin: Metrics.xxs
-                leftPadding: rootWindow.windowButtonsTopMargin
-                topPadding: rootWindow.windowButtonsTopMargin / 2
+                Layout.leftMargin: Metrics.s
+                leftPadding: 0
+                topPadding: 0
+                bottomPadding: 0
                 verticalAlignment: Text.AlignVCenter
                 elide: Text.ElideRight
                 color: rootWindow.active ? FishUI.Theme.textColor : FishUI.Theme.disabledTextColor
-                font.pointSize: 11
+                font.pointSize: Metrics.headerTitlePointSize
                 text: _stackView.currentItem && _stackView.currentItem.headerTitle !== undefined
                       ? _stackView.currentItem.headerTitle : ""
             }

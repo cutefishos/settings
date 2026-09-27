@@ -14,6 +14,8 @@ QtObject {
     readonly property int xl: 24
     readonly property int xxl: 32
 
+    readonly property int headerTitlePointSize: 11
+
     // Page: the scroll area's margins and the rhythm between its sections.
     readonly property int pageMargin: xl
     // Below the floating window header, which already has its own air.

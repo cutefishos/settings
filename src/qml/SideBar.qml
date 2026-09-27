@@ -679,11 +679,12 @@ Item {
         FishUI.Label {
             text: rootWindow.title
             color: rootWindow.active ? FishUI.Theme.textColor : FishUI.Theme.disabledTextColor
-            Layout.preferredHeight: rootWindow.header.height
+            Layout.preferredHeight: rootWindow.header.height + Metrics.m
             leftPadding: Metrics.sidebarMargin + Metrics.sidebarItemPadding
             rightPadding: Metrics.sidebarMargin + Metrics.sidebarItemPadding
-            topPadding: rootWindow.windowButtonsTopMargin
+            topPadding: 0
             bottomPadding: 0
+            verticalAlignment: Text.AlignVCenter
             font.pointSize: 13
         }
 
