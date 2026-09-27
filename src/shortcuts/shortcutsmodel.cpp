@@ -76,6 +76,7 @@ void ShortcutsModel::reload()
     // The order here is the order on the page, like kAcceleratorLayouts.
     const QString general = tr("General");
     const QString windows = tr("Windows");
+    const QString desks = tr("Desks");
     const QString screenshots = tr("Screenshots and Recording");
     const Layout layouts[] = {
             {"toggle-app-list", general, tr("Open the launcher")},
@@ -93,6 +94,22 @@ void ShortcutsModel::reload()
             {"window-cycle-snap-right", windows, tr("Snap the window to the right")},
             {"close-window", windows, tr("Close the window")},
             {"move-active-window-between-displays", windows, tr("Move the window to the next display")},
+
+            {"desks-activate-desk-left", desks, tr("Switch to the desk on the left")},
+            {"desks-activate-desk-right", desks, tr("Switch to the desk on the right")},
+            {"desks-move-active-item-left", desks, tr("Move the window to the desk on the left")},
+            {"desks-move-active-item-right", desks, tr("Move the window to the desk on the right")},
+            {"desks-new-desk", desks, tr("Add a desk")},
+            {"desks-remove-current-desk", desks, tr("Remove the desk")},
+            {"desks-activate-0", desks, tr("Switch to desk 1")},
+            {"desks-activate-1", desks, tr("Switch to desk 2")},
+            {"desks-activate-2", desks, tr("Switch to desk 3")},
+            {"desks-activate-3", desks, tr("Switch to desk 4")},
+            {"desks-activate-4", desks, tr("Switch to desk 5")},
+            {"desks-activate-5", desks, tr("Switch to desk 6")},
+            {"desks-activate-6", desks, tr("Switch to desk 7")},
+            {"desks-activate-7", desks, tr("Switch to desk 8")},
+            {"desks-toggle-assign-to-all-desks", desks, tr("Show the window on every desk")},
 
             {"take-screenshot", screenshots, tr("Save a picture of the screen")},
             {"take-screenshot-to-clipboard", screenshots, tr("Copy a picture of the screen")},
