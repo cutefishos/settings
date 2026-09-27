@@ -238,7 +238,7 @@ Item {
         }
     }
 
-    Rectangle {
+    FishUI.RoundedRectangle {
         z: 2
         visible: control.dragging && control.inside && control.targetIndex !== control.pressedIndex
         x: 3
@@ -247,14 +247,16 @@ Item {
         width: control.width - x
         height: 2
         radius: 1
+        continuousCorners: false
         color: FishUI.Theme.highlightColor
 
-        Rectangle {
+        FishUI.RoundedRectangle {
             x: -3
             anchors.verticalCenter: parent.verticalCenter
             width: 6
             height: 6
             radius: 3
+            continuousCorners: false
             color: FishUI.Theme.highlightColor
         }
     }
@@ -291,10 +293,12 @@ Item {
         spacing: 3
         Repeater {
             model: 3
-            Rectangle {
+            // Snapped: at 150% a plain Rectangle drew these one or two pixels thick.
+            FishUI.RoundedRectangle {
                 width: 14
                 height: 1
                 radius: 0.5
+                continuousCorners: false
                 color: FishUI.Theme.disabledTextColor
             }
         }

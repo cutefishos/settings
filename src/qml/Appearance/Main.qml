@@ -149,11 +149,15 @@ ItemPage {
                                 onClicked: appearance.setAccentColor(index)
                             }
 
-                            Rectangle {
+                            // The dot is a parallel curve of the ring, so both snap to
+                            // the same circle and the gap is even all round.
+                            FishUI.RoundedRectangle {
+                                id: _accentRing
                                 anchors.fill: parent
                                 anchors.margins: FishUI.Units.smallSpacing
                                 color: "transparent"
                                 radius: width / 2
+                                continuousCorners: false
 
                                 border.color: _mouseArea.pressed ? Qt.rgba(currentColor.r,
                                                                            currentColor.g,
@@ -163,11 +167,13 @@ ItemPage {
                                                                            currentColor.b, 0.4)
                                 border.width: checked || _mouseArea.containsMouse ? 3 : 0
 
-                                Rectangle {
+                                FishUI.RoundedRectangle {
                                     anchors.fill: parent
                                     anchors.margins: FishUI.Units.smallSpacing
                                     color: currentColor
-                                    radius: width / 2
+                                    radius: _accentRing.radius
+                                    inset: FishUI.Units.smallSpacing
+                                    continuousCorners: false
 
                                     FishUI.Icon {
                                         name: "check"

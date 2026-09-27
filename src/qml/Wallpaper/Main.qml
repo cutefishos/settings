@@ -141,7 +141,10 @@ ItemPage {
                             }
                         }
 
-                        delegate: Rectangle {
+                        // The swatch is a parallel curve of the ring, so both snap to
+                        // the same circle and the gap is even all round.
+                        delegate: FishUI.RoundedRectangle {
+                            id: _swatchRing
                             readonly property bool selected: background.type === 1 && Qt.colorEqual(background.color, bgColor)
                             readonly property color currentColor: bgColor
 
@@ -149,15 +152,17 @@ ItemPage {
                             height: width
                             color: "transparent"
                             radius: width / 2
+                            continuousCorners: false
                             border.color: colorMouseArea.pressed ? Qt.rgba(currentColor.r, currentColor.g, currentColor.b, 0.6) : Qt.rgba(currentColor.r, currentColor.g, currentColor.b, 0.4)
                             border.width: selected ? 3 : colorMouseArea.containsMouse ? 2 : 0
 
-                            Rectangle {
-                                anchors.centerIn: parent
-                                width: colorView.itemSize
-                                height: width
+                            FishUI.RoundedRectangle {
+                                anchors.fill: parent
+                                anchors.margins: Metrics.m / 2
                                 color: currentColor
-                                radius: width / 2
+                                radius: _swatchRing.radius
+                                inset: Metrics.m / 2
+                                continuousCorners: false
                             }
 
                             MouseArea {

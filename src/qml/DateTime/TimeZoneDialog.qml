@@ -167,18 +167,22 @@ FishUI.Window {
 
                 // FishUI's field in a pill, its fill see-through so it sits
                 // lightly on the window; the text stays fully opaque.
-                background: Rectangle {
+                background: FishUI.RoundedRectangle {
                     readonly property color fill: Qt.alpha(FishUI.Theme.alternateBackgroundColor, 0.6)
 
                     radius: height / 2
+                    continuousCorners: false
                     color: fill
                     border.width: 1
                     border.color: searchField.activeFocus ? FishUI.Theme.highlightColor : fill
 
-                    Rectangle {
+                    FishUI.RoundedRectangle {
                         anchors.fill: parent
                         anchors.margins: -2
-                        radius: height / 2
+                        // The field's radius; inset grows it into a concentric ring.
+                        radius: parent.height / 2
+                        continuousCorners: false
+                        inset: -2
                         color: "transparent"
                         border.width: 2
                         border.color: FishUI.Theme.highlightColor
@@ -431,12 +435,13 @@ FishUI.Window {
                     visible: control.hoveredZone !== "" && control.hoveredZone !== control.selectedZone
                              && mapArea.hoveredPoint.x >= 0
 
-                    Rectangle {
+                    FishUI.RoundedRectangle {
                         x: mapArea.hoveredPoint.x - width / 2
                         y: mapArea.hoveredPoint.y - height / 2
                         width: 12
                         height: 12
                         radius: width / 2
+                        continuousCorners: false
                         color: "transparent"
                         border.width: 2
                         border.color: FishUI.Theme.highlightColor
@@ -516,11 +521,12 @@ FishUI.Window {
                         }
                     }
 
-                    Rectangle {
+                    FishUI.RoundedRectangle {
                         anchors.centerIn: parent
                         width: 14
                         height: 14
                         radius: width / 2
+                        continuousCorners: false
                         color: FishUI.Theme.highlightColor
                         border.width: 2
                         border.color: "white"
