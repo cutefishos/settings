@@ -18,8 +18,8 @@ class ShortcutsModel : public QAbstractListModel
     Q_PROPERTY(bool available READ available NOTIFY availableChanged)
     Q_PROPERTY(bool hasCustomAccelerators READ hasCustomAccelerators NOTIFY acceleratorsChanged)
     Q_PROPERTY(QStringList categories READ categories CONSTANT)
-    // False for the Mac keyboard style, whose shortcuts are shown but not
-    // edited.
+    // False with Command as the shortcut key, whose shortcuts are shown but
+    // not edited.
     Q_PROPERTY(bool customizable READ customizable NOTIFY acceleratorsChanged)
 
 public:

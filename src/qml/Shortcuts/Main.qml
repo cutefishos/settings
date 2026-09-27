@@ -40,7 +40,7 @@ ItemPage {
                 Layout.rightMargin: Metrics.cardHorizontalPadding
                 text: shortcuts.customizable
                       ? qsTr("Click a system shortcut to change it. Shortcuts with Meta are the safest choice: applications never use them.")
-                      : qsTr("The Mac keyboard style has fixed shortcuts. To change them, choose PC as the keyboard style in Keyboard settings.")
+                      : qsTr("With Command as the shortcut key, the shortcuts are fixed. To change them, choose Ctrl as the shortcut key in Keyboard settings.")
                 color: FishUI.Theme.disabledTextColor
                 wrapMode: Text.WordWrap
             }
@@ -60,7 +60,7 @@ ItemPage {
                     }
 
                     ListCard {
-                        // The Mac keyboard style shows its fixed shortcuts greyed out.
+                        // With Command as the shortcut key the fixed shortcuts show greyed out.
                         enabled: shortcuts.customizable
 
                         Repeater {

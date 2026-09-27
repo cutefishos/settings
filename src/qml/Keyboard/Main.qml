@@ -106,14 +106,14 @@ ItemPage {
                 spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel {
-                    text: qsTr("Keyboard style")
+                    text: qsTr("Shortcut key")
                 }
 
                 ListCard {
                     Repeater {
                         model: [
-                            { "id": "pc", "name": qsTr("PC") },
-                            { "id": "command", "name": qsTr("Mac") }
+                            { "id": "pc", "name": qsTr("Ctrl") },
+                            { "id": "command", "name": qsTr("Command") }
                         ]
 
                         delegate: CheckRow {
