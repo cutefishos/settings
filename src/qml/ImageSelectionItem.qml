@@ -23,7 +23,6 @@ Item {
     property real previewHeight: 96
     property real previewInset: 4
     property size sourceSize: Qt.size(preview.width, preview.height)
-    readonly property bool hovered: mouseArea.containsMouse
 
     signal clicked
 
@@ -80,16 +79,6 @@ Item {
                 height: control.iconSize
                 visible: control.useIcon
             }
-
-            FishUI.RoundedRectangle {
-                anchors.fill: parent
-                anchors.margins: control.previewInset
-                visible: control.useIcon || preview.status === Image.Ready
-                radius: FishUI.Theme.bigRadius
-                inset: control.previewInset
-                color: "#FFFFFF"
-                opacity: control.hovered ? 0.08 : 0
-            }
         }
 
         FishUI.Label {
@@ -106,7 +95,6 @@ Item {
 
         anchors.fill: parent
         acceptedButtons: Qt.LeftButton
-        hoverEnabled: true
         onClicked: control.clicked()
     }
 }

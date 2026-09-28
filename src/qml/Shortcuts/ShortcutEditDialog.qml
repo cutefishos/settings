@@ -190,13 +190,13 @@ FishUI.Window {
 
                 FishUI.Label {
                     text: qsTr("Change")
-                    color: changeArea.containsMouse ? FishUI.Theme.highlightColor : FishUI.Theme.textColor
+                    color: FishUI.Theme.highlightColor
+                    opacity: changeArea.pressed ? 0.6 : 1.0
                     visible: !dialog.recording && !modelData.locked
 
                     MouseArea {
                         id: changeArea
                         anchors.fill: parent
-                        hoverEnabled: true
                         cursorShape: Qt.PointingHandCursor
                         onClicked: dialog.startRecording(modelData)
                     }
@@ -204,13 +204,13 @@ FishUI.Window {
 
                 FishUI.Label {
                     text: qsTr("Remove")
-                    color: removeArea.containsMouse ? FishUI.Theme.highlightColor : FishUI.Theme.textColor
+                    color: FishUI.Theme.highlightColor
+                    opacity: removeArea.pressed ? 0.6 : 1.0
                     visible: !dialog.recording && !modelData.locked
 
                     MouseArea {
                         id: removeArea
                         anchors.fill: parent
-                        hoverEnabled: true
                         cursorShape: Qt.PointingHandCursor
                         onClicked: {
                             var result = dialog.shortcutsModel.removeAccelerator(dialog.actionName,
@@ -265,12 +265,12 @@ FishUI.Window {
 
                 FishUI.Label {
                     text: qsTr("Cancel")
-                    color: cancelArea.containsMouse ? FishUI.Theme.highlightColor : FishUI.Theme.textColor
+                    color: FishUI.Theme.highlightColor
+                    opacity: cancelArea.pressed ? 0.6 : 1.0
 
                     MouseArea {
                         id: cancelArea
                         anchors.fill: parent
-                        hoverEnabled: true
                         cursorShape: Qt.PointingHandCursor
                         onClicked: dialog.stopRecording()
                     }

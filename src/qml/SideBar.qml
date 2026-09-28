@@ -608,7 +608,6 @@ Item {
                 MouseArea {
                     id: mouseArea
                     anchors.fill: parent
-                    hoverEnabled: true
                     acceptedButtons: Qt.LeftButton
                     onClicked: sideBar.openRow(item.ListView.view, index)
                 }
@@ -617,10 +616,10 @@ Item {
                 color: mouseArea.pressed ? Qt.rgba(FishUI.Theme.textColor.r,
                                                    FishUI.Theme.textColor.g,
                                                    FishUI.Theme.textColor.b, FishUI.Theme.darkMode ? 0.05 : 0.1) :
-                       mouseArea.containsMouse || isCurrent ? Qt.rgba(FishUI.Theme.textColor.r,
-                                                                      FishUI.Theme.textColor.g,
-                                                                      FishUI.Theme.textColor.b, FishUI.Theme.darkMode ? 0.1 : 0.05) :
-                                                              "transparent"
+                       isCurrent ? Qt.rgba(FishUI.Theme.textColor.r,
+                                           FishUI.Theme.textColor.g,
+                                           FishUI.Theme.textColor.b, FishUI.Theme.darkMode ? 0.1 : 0.05) :
+                                   "transparent"
 
                 smooth: true
             }

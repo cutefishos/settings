@@ -138,14 +138,12 @@ ColumnLayout {
             Layout.alignment: Qt.AlignVCenter
             visible: wallpaperView.count > wallpaperView.columnCount
             text: control.expanded ? qsTr("Show Less") : qsTr("Show All")
-            hoverEnabled: true
             padding: 0
 
             background: Item {}
             contentItem: FishUI.Label {
                 text: showButton.text
                 color: FishUI.Theme.highlightColor
-                font.underline: showButton.hovered
                 opacity: showButton.down ? 0.6 : 1.0
                 verticalAlignment: Text.AlignVCenter
             }
@@ -265,7 +263,6 @@ ColumnLayout {
                     id: addMouseArea
 
                     anchors.fill: parent
-                    hoverEnabled: true
                     onClicked: control.addWallpaperRequested()
                 }
             }
@@ -337,7 +334,6 @@ ColumnLayout {
                         id: closeMouseArea
 
                         anchors.fill: parent
-                        hoverEnabled: true
                         onClicked: control.removeWallpaperRequested(modelData)
                     }
                 }

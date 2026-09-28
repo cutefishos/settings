@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.12
 import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
 
-// One row of a ListCard. The hover background fills the whole row and only
+// One row of a ListCard. The press background fills the whole row and only
 // rounds the corners it shares with the card, which the row
 // finds out by itself from its visible siblings; a separator runs between
 // rows. Content goes into the row's layout after the label; `leading` before
@@ -31,8 +31,7 @@ Item {
     // nor reacts to clicks.
     property bool interactive: true
     property bool separatorVisible: true
-    // A disabled row keeps whatever containsMouse it had, so it is checked too.
-    readonly property bool highlighted: interactive && enabled && _mouseArea.containsMouse
+    readonly property bool highlighted: interactive && enabled && _mouseArea.pressed
     signal clicked()
 
     // Set by a ListView delegate to its index: a view's rows are not siblings
@@ -46,11 +45,8 @@ Item {
     readonly property real rowHeight: Math.max(minimumRowHeight, _row.implicitHeight + Metrics.cardVerticalPadding)
 
     readonly property real horizontalPadding: Metrics.cardHorizontalPadding
-    readonly property color hoverColor: Qt.rgba(FishUI.Theme.textColor.r, FishUI.Theme.textColor.g,
-                                                FishUI.Theme.textColor.b,
-                                                // Light cards are white, so 0.05 would match the page background.
-                                                _mouseArea.pressed ? (FishUI.Theme.darkMode ? 0.05 : 0.15)
-                                                                   : 0.1)
+    readonly property color pressedColor: Qt.rgba(FishUI.Theme.textColor.r, FishUI.Theme.textColor.g,
+                                                  FishUI.Theme.textColor.b, FishUI.Theme.darkMode ? 0.05 : 0.15)
 
     Layout.fillWidth: true
     implicitHeight: rowHeight + _details.implicitHeight
@@ -139,7 +135,7 @@ Item {
             anchors.topMargin: control.firstItem ? 0 : -radius
             anchors.bottomMargin: control.lastItem && !control.expanded ? 0 : -radius
             radius: FishUI.Theme.bigRadius
-            color: control.hoverColor
+            color: control.pressedColor
         }
     }
 
@@ -150,7 +146,6 @@ Item {
         anchors.top: parent.top
         height: control.rowHeight
         enabled: control.interactive
-        hoverEnabled: true
         acceptedButtons: Qt.LeftButton
         onClicked: {
             control.forceActiveFocus()

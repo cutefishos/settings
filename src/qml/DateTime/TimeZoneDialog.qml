@@ -271,11 +271,7 @@ FishUI.Window {
                             FishUI.RoundedRectangle {
                                 anchors.fill: parent
                                 radius: FishUI.Theme.smallRadius
-                                color: current ? FishUI.Theme.highlightColor
-                                     : resultArea.containsMouse
-                                       ? Qt.rgba(FishUI.Theme.textColor.r, FishUI.Theme.textColor.g,
-                                                 FishUI.Theme.textColor.b, 0.08)
-                                       : "transparent"
+                                color: current ? FishUI.Theme.highlightColor : "transparent"
                             }
 
                             RowLayout {
@@ -330,7 +326,6 @@ FishUI.Window {
                             MouseArea {
                                 id: resultArea
                                 anchors.fill: parent
-                                hoverEnabled: true
                                 onClicked: control.pickResult(index)
                             }
                         }
@@ -592,7 +587,7 @@ FishUI.Window {
                                         height: nearbyLabel.implicitHeight + Metrics.xs * 2
                                         radius: height / 2
                                         color: current ? FishUI.Theme.highlightColor
-                                             : nearbyArea.containsMouse
+                                             : nearbyArea.pressed
                                                ? Qt.rgba(FishUI.Theme.textColor.r, FishUI.Theme.textColor.g,
                                                          FishUI.Theme.textColor.b, 0.12)
                                                : Qt.rgba(FishUI.Theme.textColor.r, FishUI.Theme.textColor.g,
@@ -610,7 +605,6 @@ FishUI.Window {
                                         MouseArea {
                                             id: nearbyArea
                                             anchors.fill: parent
-                                            hoverEnabled: true
                                             onClicked: {
                                                 control.animatePin = true
                                                 control.selectedZone = modelData

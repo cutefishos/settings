@@ -145,7 +145,6 @@ ItemPage {
                             MouseArea {
                                 id: _mouseArea
                                 anchors.fill: parent
-                                hoverEnabled: true
                                 onClicked: appearance.setAccentColor(index)
                             }
 
@@ -165,7 +164,7 @@ ItemPage {
                                                                  : Qt.rgba(currentColor.r,
                                                                            currentColor.g,
                                                                            currentColor.b, 0.4)
-                                border.width: checked || _mouseArea.containsMouse ? 3 : 0
+                                border.width: checked || _mouseArea.pressed ? 3 : 0
 
                                 FishUI.RoundedRectangle {
                                     anchors.fill: parent

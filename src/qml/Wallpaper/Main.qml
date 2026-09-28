@@ -154,7 +154,7 @@ ItemPage {
                             radius: width / 2
                             continuousCorners: false
                             border.color: colorMouseArea.pressed ? Qt.rgba(currentColor.r, currentColor.g, currentColor.b, 0.6) : Qt.rgba(currentColor.r, currentColor.g, currentColor.b, 0.4)
-                            border.width: selected ? 3 : colorMouseArea.containsMouse ? 2 : 0
+                            border.width: selected ? 3 : colorMouseArea.pressed ? 2 : 0
 
                             FishUI.RoundedRectangle {
                                 anchors.fill: parent
@@ -169,7 +169,6 @@ ItemPage {
                                 id: colorMouseArea
 
                                 anchors.fill: parent
-                                hoverEnabled: true
                                 onClicked: {
                                     background.type = 1;
                                     background.color = bgColor;
