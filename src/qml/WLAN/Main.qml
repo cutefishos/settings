@@ -99,12 +99,6 @@ ItemPage {
                 sourceModel: rootWindow.mockNetworkData ? mockNetworkModel : connectionModel
             }
 
-            StandardButton {
-                Layout.fillWidth: true
-                text: qsTr("Add other...")
-                onClicked: newNetworkDialog.show()
-            }
-
             // Hotspot
             // 还未完善
 //            RoundedItem {

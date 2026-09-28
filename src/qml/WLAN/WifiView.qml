@@ -121,5 +121,7 @@ ColumnLayout {
         includes: function(item) {
             return !item.uuid && _contentLayout.displayedState(item.connectionState) === NM.Enums.Deactivated
         }
+        footerText: wirelessSwitch.checked ? qsTr("Add other...") : ""
+        onFooterClicked: newNetworkDialog.show()
     }
 }

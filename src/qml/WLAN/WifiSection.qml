@@ -17,10 +17,13 @@ ColumnLayout {
     // (connectionState) -> the state the rows show.
     property var displayedState: function(state) { return state }
     property int shown: 0
+    // A last row that is always there, e.g. for joining a hidden network.
+    property string footerText
+    signal footerClicked()
 
     Layout.fillWidth: true
     spacing: Metrics.sectionLabelSpacing
-    visible: shown > 0
+    visible: shown > 0 || footerText.length > 0
 
     // Counts the rows' own verdicts, not their visibility: while the card is
     // hidden for being empty every row is invisible too.
@@ -50,6 +53,19 @@ ColumnLayout {
                 onIncludedChanged: wifiSection.recount()
                 Component.onCompleted: wifiSection.recount()
                 Component.onDestruction: wifiSection.recount()
+            }
+        }
+
+        // Declared after the Repeater, which inserts its rows before itself.
+        ListRow {
+            visible: wifiSection.footerText.length > 0
+            text: wifiSection.footerText
+            onClicked: wifiSection.footerClicked()
+
+            // Lines the text up with the network names beside their icons.
+            leading: Item {
+                width: 18
+                height: width
             }
         }
     }
