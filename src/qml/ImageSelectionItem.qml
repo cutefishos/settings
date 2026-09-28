@@ -51,7 +51,12 @@ Item {
                 id: preview
 
                 anchors.fill: parent
-                anchors.margins: control.previewInset
+                // The frame snaps up to the next whole device pixel, while a layer starts at the first
+                // pixel centre it covers; 3/8 px down-right makes both round the same way at 125-250%.
+                anchors.leftMargin: control.previewInset + 0.375 / FishUI.Dpi.ratio
+                anchors.topMargin: control.previewInset + 0.375 / FishUI.Dpi.ratio
+                anchors.rightMargin: control.previewInset - 0.375 / FishUI.Dpi.ratio
+                anchors.bottomMargin: control.previewInset - 0.375 / FishUI.Dpi.ratio
                 visible: !control.useIcon
                 sourceSize: control.sourceSize
                 smooth: false
