@@ -114,40 +114,43 @@ FishUI.Window {
         RowLayout {
             id: _headerRow
             anchors.fill: parent
-            anchors.leftMargin: sideBar.width + Metrics.s
-            anchors.rightMargin: Metrics.s
+            anchors.leftMargin: sideBar.width + FishUI.Units.smallSpacing * 1.5
+            anchors.rightMargin: FishUI.Units.smallSpacing
             spacing: rootWindow.windowButtonsSpacing
 
             readonly property int buttonSize: rootWindow.header.buttonSize
+            // The title reads low on the sidebar title's baseline, so it sits
+            // 1px above it; the buttons stay centred on that baseline's capitals.
+            readonly property real titleRaise: 1
+            readonly property real buttonTopMargin: _pageTitle.capCenter + titleRaise - buttonSize / 2
 
             NavigationButton {
-                Layout.alignment: rootWindow.windowButtonsAlignment
-                Layout.topMargin: rootWindow.windowButtonsTopMargin
+                Layout.alignment: Qt.AlignTop
+                Layout.topMargin: _headerRow.buttonTopMargin
                 Layout.preferredWidth: _headerRow.buttonSize
                 Layout.preferredHeight: _headerRow.buttonSize
                 enabled: rootWindow.canGoBack
-                iconName: "chevron-left"
+                iconName: rootWindow.LayoutMirroring.enabled ? "chevron-right" : "chevron-left"
                 onClicked: rootWindow.goBack()
             }
 
             NavigationButton {
-                Layout.alignment: rootWindow.windowButtonsAlignment
-                Layout.topMargin: rootWindow.windowButtonsTopMargin
+                Layout.alignment: Qt.AlignTop
+                Layout.topMargin: _headerRow.buttonTopMargin
                 Layout.preferredWidth: _headerRow.buttonSize
                 Layout.preferredHeight: _headerRow.buttonSize
                 enabled: rootWindow.canGoForward
-                iconName: "chevron-right"
+                iconName: rootWindow.LayoutMirroring.enabled ? "chevron-left" : "chevron-right"
                 onClicked: rootWindow.goForward()
             }
 
-            FishUI.Label {
+            FishUI.AlignedLabel {
+                id: _pageTitle
                 Layout.fillWidth: true
-                Layout.fillHeight: true
-                Layout.leftMargin: Metrics.s
+                Layout.leftMargin: FishUI.Units.smallSpacing
+                // Header and sidebar share the window's top edge.
+                textBaseline: sideBar.titleItem.y + sideBar.titleItem.baselineOffset - _headerRow.titleRaise
                 leftPadding: 0
-                topPadding: 0
-                bottomPadding: 0
-                verticalAlignment: Text.AlignVCenter
                 elide: Text.ElideRight
                 color: rootWindow.active ? FishUI.Theme.textColor : FishUI.Theme.disabledTextColor
                 font.pointSize: Metrics.headerTitlePointSize

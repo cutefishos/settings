@@ -32,6 +32,8 @@ Item {
     property int itemRadiusV: 8
 
     property alias view: listView
+    // The header lines its buttons and page title up with this label's text.
+    property alias titleItem: titleLabel
     property alias model: listModel
     property alias currentIndex: listView.currentIndex
     property bool updatingModel: false
@@ -676,15 +678,18 @@ Item {
         spacing: 0
 
         FishUI.Label {
+            id: titleLabel
             text: rootWindow.title
             color: rootWindow.active ? FishUI.Theme.textColor : FishUI.Theme.disabledTextColor
             Layout.preferredHeight: rootWindow.header.height + Metrics.m
             leftPadding: Metrics.sidebarMargin + Metrics.sidebarItemPadding
             rightPadding: Metrics.sidebarMargin + Metrics.sidebarItemPadding
-            topPadding: 0
-            bottomPadding: 0
+            // Same text line as the file manager's sidebar title: centred
+            // in the header height, pushed down by smallSpacing.
+            topPadding: FishUI.Units.smallSpacing
+            bottomPadding: Metrics.m
             verticalAlignment: Text.AlignVCenter
-            font.pointSize: 13
+            font.pointSize: 12
         }
 
         // Typing lists matching pages in place of the sidebar; Up/Down move

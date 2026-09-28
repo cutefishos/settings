@@ -1,45 +1,10 @@
 import QtQuick 2.12
 import FishUI 1.0 as FishUI
 
-Item {
-    id: control
-    width: 24
-    height: 24
-
-    property alias iconName: _icon.name
-    property color hoveredColor: FishUI.Theme.darkMode ? Qt.lighter(FishUI.Theme.secondBackgroundColor, 1.7)
-                                                   : Qt.darker(FishUI.Theme.secondBackgroundColor, 1.2)
-    property color pressedColor: FishUI.Theme.darkMode ? Qt.lighter(FishUI.Theme.secondBackgroundColor, 1.4)
-                                                     : Qt.darker(FishUI.Theme.secondBackgroundColor, 1.3)
-
-    signal clicked()
-
-    Rectangle {
-        anchors.fill: parent
-        // Same inset as FishUI's window buttons, so both draw the same circle.
-        anchors.margins: Math.round(control.width * 0.1)
-        radius: width / 2
-        color: !control.enabled ? "transparent"
-             : _mouseArea.pressed ? control.pressedColor
-             : _mouseArea.containsMouse ? control.hoveredColor
-             : "transparent"
-    }
-
-    FishUI.Icon {
-        id: _icon
-        anchors.centerIn: parent
-        width: 16
-        height: width
-        mirror: control.LayoutMirroring.enabled
-        opacity: control.enabled ? 1 : 0.35
-    }
-
-    MouseArea {
-        id: _mouseArea
-        anchors.fill: parent
-        enabled: control.enabled
-        hoverEnabled: true
-        acceptedButtons: Qt.LeftButton
-        onClicked: control.clicked()
-    }
+// Same plate as the file manager's header buttons, so both headers line up.
+FishUI.HeaderButton {
+    iconSize: 16
+    backgroundColor: darkMode ? Qt.rgba(1, 1, 1, 0.13) : Qt.rgba(1, 1, 1, 0.6)
+    hoveredColor: Qt.rgba(tint.r, tint.g, tint.b, darkMode ? 0.21 : 0.17)
+    pressedColor: Qt.rgba(tint.r, tint.g, tint.b, darkMode ? 0.15 : 0.26)
 }
