@@ -1389,11 +1389,6 @@
         <translation type="unfinished">Administrator</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <source>Automatic login</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/qml/User/ChangePasswordDialog.qml" line="+12"/>
         <location filename="../src/qml/User/UserDelegateItem.qml" line="+19"/>
         <source>Change password</source>

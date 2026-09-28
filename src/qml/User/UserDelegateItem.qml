@@ -189,24 +189,6 @@ RoundedItem {
                     text: currentUser.accountType === 0 ? qsTr("Standard")
                                                         : qsTr("Administrator")
                 }
-
-                FishUI.Label {
-                    text: qsTr("Automatic login")
-                    Layout.fillWidth: true
-                }
-
-                FishUI.Switch {
-                    id: automaticLoginSwitch
-                    Layout.fillHeight: true
-                    leftPadding: 0
-                    rightPadding: 0
-                    onCheckedChanged: currentUser.automaticLogin = checked
-                    Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-
-                    Component.onCompleted: {
-                        automaticLoginSwitch.checked = currentUser.automaticLogin
-                    }
-                }
             }
 
             StandardButton {
