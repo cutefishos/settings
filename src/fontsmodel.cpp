@@ -101,22 +101,23 @@ void FontsModel::run()
     QStringList general;
     QStringList fixed;
 
-    for (int i = 0; i < fs->nfont; ++i) {
-        char *charset = (char *)FcPatternFormat(fs->fonts[i], (FcChar8 *)"%{charset}");
+    const QByteArray lanCode = m_lanCode.toUtf8();
 
-        if (charset == NULL || strlen(charset) == 0) {
-            free(charset);
+    for (int i = 0; i < fs->nfont; ++i) {
+        FcCharSet *charset = nullptr;
+        if (FcPatternGetCharSet(fs->fonts[i], FC_CHARSET, 0, &charset) != FcResultMatch
+            || FcCharSetCount(charset) == 0)
             continue;
-        }
-        free(charset);
 
         QString family = getFcLangString(fs->fonts[i], FC_FAMILY, FC_FAMILYLANG);
         if (family.isEmpty())
             continue;
 
-        char *lang = (char *)FcPatternFormat(fs->fonts[i], (FcChar8 *)"%{lang}");
-        QString language = QString::fromUtf8(lang);
-        free(lang);
+        // Not FcPatternFormat("%{lang}"): Chrome's bundled fontconfig links its newer
+        // caches as ours, and printing their lang sets indexes past our language table.
+        FcLangSet *langSet = nullptr;
+        bool supportsLanguage = FcPatternGetLangSet(fs->fonts[i], FC_LANG, 0, &langSet) == FcResultMatch
+            && FcLangSetHasLang(langSet, (const FcChar8 *)lanCode.constData()) != FcLangDifferentLang;
 
         int spacing = FC_PROPORTIONAL;
         if (FcPatternGetInteger(fs->fonts[i], FC_SPACING, 0, &spacing) != FcResultMatch)
@@ -126,9 +127,7 @@ void FontsModel::run()
         if (fixedPitch && !fixed.contains(family)) {
             fixed.append(family);
         } else {
-            if (!general.contains(family)
-                && (language.contains(m_lanCode, Qt::CaseInsensitive)
-                    || language.contains(m_lanCode.split('-').first(), Qt::CaseInsensitive)))
+            if (!general.contains(family) && supportsLanguage)
                 general.append(family);
         }
     }
