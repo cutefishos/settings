@@ -40,6 +40,7 @@ FishUI.Window {
     readonly property bool mockNetworkData: Qt.application.arguments.indexOf("--mock-network") >= 0
 
     // Entries are {page, rootPage, properties}; rootPage is the sidebar page a sub page belongs to.
+    readonly property int maxHistoryLength: 50
     property var history: []
     property int historyIndex: -1
     property bool syncingSideBar: false
@@ -213,6 +214,9 @@ FishUI.Window {
             rootPage: rootPage,
             properties: properties
         }])
+        // A long session must not keep every step; the oldest go first.
+        if (history.length > maxHistoryLength)
+            history = history.slice(history.length - maxHistoryLength)
         showHistoryEntry(history.length - 1)
     }
 

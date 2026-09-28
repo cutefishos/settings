@@ -135,9 +135,14 @@ ItemPage {
         property real meterLevel: -1
         readonly property color tickColor: FishUI.Theme.darkMode ? Qt.rgba(1, 1, 1, 0.55)
                                                                  : Qt.rgba(0, 0, 0, 0.35)
-        signal moved(real value)
+        signal moved(real newValue)
         interactive: false
         minimumRowHeight: Metrics.controlRowHeight
+
+        // Set for the 300 ms after a move rather than read off the timer: its
+        // restart stops it first, which would let the binding put the old
+        // value back before the move goes out.
+        property bool settling: false
 
         // A handle drag assigns the slider's value and would break a plain
         // binding. This one also waits while the handle is held and until the
@@ -146,13 +151,14 @@ ItemPage {
             target: _slider
             property: "value"
             value: sliderRow.value
-            when: !_slider.pressed && !_settle.running
+            when: !_slider.pressed && !sliderRow.settling
             restoreMode: Binding.RestoreNone
         }
 
         Timer {
             id: _settle
             interval: 300
+            onTriggered: sliderRow.settling = false
         }
 
         // The controls span exactly sliderWidth: the icons' outer edges, a bare
@@ -201,6 +207,7 @@ ItemPage {
                     visible: sliderRow.meterLevel < 0
                     Accessible.name: sliderRow.text
                     onMoved: {
+                        sliderRow.settling = true
                         _settle.restart()
                         sliderRow.moved(value)
                     }
@@ -366,9 +373,9 @@ ItemPage {
                         // With no mute switch, muting shows as zero here.
                         value: page.outputDevice && !page.outputDevice.muted ? page.outputDevice.volume : 0
                         sliderEnabled: page.outputDevice !== null && page.outputDevice.volumeWritable
-                        onMoved: (value) => {
-                            page.outputDevice.volume = value
-                            page.outputDevice.muted = value === 0
+                        onMoved: (newValue) => {
+                            page.outputDevice.volume = newValue
+                            page.outputDevice.muted = newValue === 0
                         }
                     }
 
@@ -385,7 +392,7 @@ ItemPage {
                         stepSize: 0.02
                         value: page.outputDevice ? page.balance(page.outputDevice) : 0
                         sliderEnabled: page.outputDevice !== null && page.outputDevice.volumeWritable
-                        onMoved: (value) => page.setBalance(page.outputDevice, value)
+                        onMoved: (newValue) => page.setBalance(page.outputDevice, newValue)
                     }
 
                     SliderRow {
@@ -397,8 +404,8 @@ ItemPage {
                         stepSize: 0.01
                         value: page.inputDevice ? page.inputDevice.volume : 0
                         sliderEnabled: page.inputDevice !== null && page.inputDevice.volumeWritable
-                        onMoved: (value) => {
-                            page.inputDevice.volume = value
+                        onMoved: (newValue) => {
+                            page.inputDevice.volume = newValue
                             page.inputDevice.muted = false
                         }
                     }
