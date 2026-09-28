@@ -49,6 +49,8 @@ FishUI.Window {
     minimizeButtonVisible: false
 
     background.color: FishUI.Theme.secondBackgroundColor
+    // The background item reaches a grown window a frame or two after its buffer does.
+    color: background.color
     flags: Qt.Dialog | Qt.FramelessWindowHint
 
     readonly property string security: securitybox.currentValue ?? ""
@@ -99,7 +101,11 @@ FishUI.Window {
 
     ColumnLayout {
         id: _mainLayout
-        anchors.fill: parent
+        // Not filled to the window: the window height follows this layout's implicit
+        // height a polish later, and a filled layout would be spread over the old height.
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
         anchors.margins: Metrics.dialogPadding
         spacing: Metrics.dialogSpacing
 
@@ -115,12 +121,21 @@ FishUI.Window {
         }
 
         GridLayout {
+            id: _form
             Layout.fillWidth: true
             columns: 2
             columnSpacing: Metrics.dialogSpacing
             rowSpacing: Metrics.formRowSpacing
 
+            // Hidden rows leave the grid, so the fields would move as they appear.
+            readonly property real labelWidth: Math.max(_nameLabel.implicitWidth,
+                                                        _securityLabel.implicitWidth,
+                                                        _userNameLabel.implicitWidth,
+                                                        _passwordLabel.implicitWidth)
+
             FishUI.Label {
+                id: _nameLabel
+                Layout.preferredWidth: _form.labelWidth
                 text: qsTr("Name")
             }
 
@@ -134,6 +149,8 @@ FishUI.Window {
             }
 
             FishUI.Label {
+                id: _securityLabel
+                Layout.preferredWidth: _form.labelWidth
                 text: qsTr("Security")
             }
 
@@ -156,6 +173,8 @@ FishUI.Window {
             }
 
             FishUI.Label {
+                id: _userNameLabel
+                Layout.preferredWidth: _form.labelWidth
                 visible: control.enterprise
                 text: qsTr("Username")
             }
@@ -171,6 +190,8 @@ FishUI.Window {
             }
 
             FishUI.Label {
+                id: _passwordLabel
+                Layout.preferredWidth: _form.labelWidth
                 visible: control.security !== "none"
                 text: qsTr("Password")
             }
