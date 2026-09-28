@@ -87,60 +87,18 @@ ItemPage {
                     minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Font Size")
 
-                    FishUI.SegmentedControl {
+                    FishUI.ComboBox {
+                        // ThemeManager's fallback size in cutefish-core.
+                        readonly property int defaultSize: 9
+                        readonly property var sizes: [8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 20]
+
                         Layout.preferredWidth: Math.round(parent.width / 2)
-
-                        FishUI.TabButton {
-                            text: qsTr("Small")
-                        }
-
-                        FishUI.TabButton {
-                            text: qsTr("Medium")
-                        }
-
-                        FishUI.TabButton {
-                            text: qsTr("Large")
-                        }
-
-                        FishUI.TabButton {
-                            text: qsTr("Huge")
-                        }
-
-                        currentIndex: {
-                            var index = 0
-
-                            if (appearance.fontPointSize <= 9)
-                                index = 0
-                            else if (appearance.fontPointSize <= 10)
-                                index = 1
-                            else if (appearance.fontPointSize <= 12)
-                                index = 2
-                            else if (appearance.fontPointSize <= 15)
-                                index = 3
-
-                            return index
-                        }
-
-                        onCurrentIndexChanged: {
-                            var fontSize = 0
-
-                            switch (currentIndex) {
-                            case 0:
-                                fontSize = 9
-                                break;
-                            case 1:
-                                fontSize = 10
-                                break;
-                            case 2:
-                                fontSize = 12
-                                break;
-                            case 3:
-                                fontSize = 15
-                                break;
-                            }
-
-                            appearance.setFontPointSize(fontSize)
-                        }
+                        model: sizes.map(size => size === defaultSize ? qsTr("%1pt (Default)").arg(size)
+                                                                     : qsTr("%1pt").arg(size))
+                        // The menu marks the default; the box shows only the size.
+                        displayText: qsTr("%1pt").arg(currentIndex < 0 ? appearance.fontPointSize : sizes[currentIndex])
+                        currentIndex: sizes.indexOf(appearance.fontPointSize)
+                        onActivated: index => appearance.setFontPointSize(sizes[index])
                     }
                 }
 
