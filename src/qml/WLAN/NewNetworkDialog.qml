@@ -17,9 +17,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.4
-import QtQuick.Controls 2.4
-import QtQuick.Layouts 1.3
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
 import Cutefish.Settings 1.0
 import FishUI 1.0 as FishUI
@@ -44,23 +44,56 @@ FishUI.Window {
     property int contentWidth: 400
     property int contentHeight: _mainLayout.implicitHeight + 32
 
-    title: "Join Network"
+    title: qsTr("Add Other Network")
     visible: false
     minimizeButtonVisible: false
 
     background.color: FishUI.Theme.secondBackgroundColor
     flags: Qt.Dialog | Qt.FramelessWindowHint
 
+    readonly property string security: securitybox.currentValue ?? ""
+    readonly property bool enterprise: security.endsWith("-eap")
+    readonly property bool canJoin: _nameTextField.text.length > 0
+                                    && (!enterprise || _userNameTextField.text.length > 0)
+                                    && passwordValid(_passwordTextField.text)
+
     signal connect(var ssid, var username, var pwd, var type)
+
+    // What NetworkManager accepts for each kind of key.
+    function passwordValid(password) {
+        switch (security) {
+        case "none":
+            return true
+        case "wep":
+            return [5, 10, 13, 26].indexOf(password.length) >= 0
+        case "wpa":
+        case "wpa2-wpa3":
+        case "wpa3":
+            return password.length >= 8 && password.length <= 64
+        default:
+            return password.length > 0
+        }
+    }
+
+    function join() {
+        if (!canJoin)
+            return
+
+        control.connect(_nameTextField.text,
+                        enterprise ? _userNameTextField.text : "",
+                        security === "none" ? "" : _passwordTextField.text,
+                        security)
+        control.close()
+    }
 
     onVisibleChanged: {
         if (visible) {
-            _userNameTextField.forceActiveFocus()
+            _nameTextField.forceActiveFocus()
         } else {
             _nameTextField.clear()
             _userNameTextField.clear()
             _passwordTextField.clear()
-            securitybox.currentIndex = 2
+            securitybox.currentIndex = 3
         }
     }
 
@@ -96,6 +129,8 @@ FishUI.Window {
                 placeholderText: qsTr("Network Name")
                 Layout.fillWidth: true
                 Keys.onEscapePressed: control.close()
+                Keys.onReturnPressed: control.join()
+                Keys.onEnterPressed: control.join()
             }
 
             FishUI.Label {
@@ -105,36 +140,50 @@ FishUI.Window {
             FishUI.ComboBox {
                 id: securitybox
                 Layout.fillWidth: true
-                currentIndex: 2
-                model: [ qsTr("None"), "WEP", "WPA/WPA2", "WPA3" ]
+                currentIndex: 3
+                textRole: "text"
+                valueRole: "value"
+                model: [
+                    { text: qsTr("Open"), value: "none" },
+                    { text: "WEP", value: "wep" },
+                    { text: "WPA", value: "wpa" },
+                    { text: "WPA2/WPA3", value: "wpa2-wpa3" },
+                    { text: "WPA3", value: "wpa3" },
+                    { text: qsTr("WPA Enterprise"), value: "wpa-eap" },
+                    { text: qsTr("WPA2 Enterprise"), value: "wpa2-eap" },
+                    { text: qsTr("WPA3 Enterprise"), value: "wpa3-eap" }
+                ]
             }
 
             FishUI.Label {
-                visible: securitybox.currentIndex === 1
-                text: qsTr("UserName")
+                visible: control.enterprise
+                text: qsTr("Username")
             }
 
             FishUI.TextField {
                 id: _userNameTextField
-                visible: securitybox.currentIndex === 1
-                placeholderText: qsTr("Password")
-                focus: true
+                visible: control.enterprise
+                placeholderText: qsTr("Username")
                 Layout.fillWidth: true
                 Keys.onEscapePressed: control.close()
+                Keys.onReturnPressed: control.join()
+                Keys.onEnterPressed: control.join()
             }
 
             FishUI.Label {
-                visible: securitybox.currentIndex != 0
+                visible: control.security !== "none"
                 text: qsTr("Password")
             }
 
             FishUI.TextField {
-                visible: securitybox.currentIndex != 0
                 id: _passwordTextField
+                visible: control.security !== "none"
                 placeholderText: qsTr("Password")
                 echoMode: TextInput.Password
                 Layout.fillWidth: true
                 Keys.onEscapePressed: control.close()
+                Keys.onReturnPressed: control.join()
+                Keys.onEnterPressed: control.join()
             }
         }
 
@@ -148,23 +197,10 @@ FishUI.Window {
             }
 
             FishUI.ConfirmDialogButton {
-                enabled: _nameTextField.text != ""
-                         & (_passwordTextField.text.length > 7 | securitybox.currentIndex === 0)
+                enabled: control.canJoin
                 primary: true
                 text: qsTr("Join")
-                onClicked: {
-                    var security_type = securitybox.currentText
-
-                    if (security_type.currentIndex === 0)
-                        type = "None"
-
-                    control.connect(_nameTextField.text,
-                                    _userNameTextField.text,
-                                    _passwordTextField.text,
-                                    security_type)
-
-                    control.close()
-                }
+                onClicked: control.join()
             }
         }
     }
