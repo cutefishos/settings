@@ -35,17 +35,24 @@ Item {
         anchors.fill: parent
         spacing: Metrics.s
 
-        FishUI.RoundedRectangle {
+        Item {
             // The size goes through the layout's own hints: an explicit width
             // and height alone are read once, and a thumbnail that is resized
             // after the item was built keeps the stale size until something
             // else invalidates the layout.
             Layout.preferredWidth: control.previewWidth
             Layout.preferredHeight: control.previewHeight
-            radius: FishUI.Theme.bigRadius
-            color: "transparent"
-            border.color: FishUI.Theme.highlightColor
-            border.width: control.checked ? 2 : 0
+
+            // Grown out of the picture's own shape, so its corners stay concentric
+            // with the picture's full radius.
+            FishUI.RoundedRectangle {
+                anchors.fill: parent
+                radius: FishUI.Theme.bigRadius
+                inset: -control.previewInset
+                color: "transparent"
+                border.color: FishUI.Theme.highlightColor
+                border.width: control.checked ? 2 : 0
+            }
 
             Image {
                 id: preview
@@ -70,7 +77,6 @@ Item {
                         FishUI.RoundedRectangle {
                             anchors.fill: parent
                             radius: FishUI.Theme.bigRadius
-                            inset: control.previewInset
                         }
                     }
                 }
