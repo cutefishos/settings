@@ -230,8 +230,8 @@
     </message>
     <message>
         <location line="+51"/>
-        <source>Built on %1</source>
-        <translation>Built on %1</translation>
+        <source>Running on %1</source>
+        <translation>Running on %1</translation>
     </message>
     <message>
         <location line="+12"/>
@@ -262,11 +262,6 @@
         <location line="+5"/>
         <source>Internal Storage</source>
         <translation>Internal Storage</translation>
-    </message>
-    <message>
-        <location line="+12"/>
-        <source>Software Update</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/qml/Appearance/Main.qml" line="+30"/>

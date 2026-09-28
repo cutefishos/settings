@@ -22,8 +22,6 @@
 #include <QFile>
 #include <QStorageInfo>
 #include <QRegularExpression>
-#include <QSettings>
-#include <QProcess>
 
 #ifdef Q_OS_LINUX
 #include <sys/sysinfo.h>
@@ -79,21 +77,8 @@ About::About(QObject *parent)
 {
 }
 
-bool About::isCutefishOS()
-{
-    if (!QFile::exists("/etc/cutefishos"))
-        return false;
-
-    QSettings settings("/etc/cutefishos", QSettings::IniFormat);
-    return settings.value("CutefishOS", false).toBool();
-}
-
 QString About::version()
 {
-    if (this->isCutefishOS()) {
-        QSettings settings("/etc/cutefish", QSettings::IniFormat);
-        return settings.value("Version").toString();
-    }
     return this->prettyProductName();
 }
 
@@ -180,11 +165,6 @@ QString About::cpuInfo()
     }
 
     return QString();
-}
-
-void About::openUpdator()
-{
-    QProcess::startDetached("cutefish-updator", QStringList());
 }
 
 qlonglong About::calculateTotalRam() const

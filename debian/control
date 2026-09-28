@@ -34,4 +34,4 @@ Depends: qml6-module-qtquick-controls,
          fishui,
          ${misc:Depends},
          ${shlibs:Depends}
-Description: CutefishOS Settings
+Description: Cutefish Settings

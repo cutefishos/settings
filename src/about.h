@@ -28,7 +28,6 @@
 class About : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(bool isCutefishOS READ isCutefishOS CONSTANT)
     Q_PROPERTY(QString version READ version CONSTANT)
     Q_PROPERTY(QString osName READ osName CONSTANT)
     Q_PROPERTY(QString architecture READ architecture CONSTANT)
@@ -43,8 +42,6 @@ class About : public QObject
 public:
     explicit About(QObject *parent = nullptr);
 
-    bool isCutefishOS();
-
     QString version();
 
     QString osName();
@@ -58,8 +55,6 @@ public:
     QString prettyProductName();
     QString internalStorage();
     QString cpuInfo();
-
-    Q_INVOKABLE void openUpdator();
 
 private:
     qlonglong calculateTotalRam() const;

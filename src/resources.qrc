@@ -111,7 +111,6 @@
         <file>images/sidebar/dark/keyboard.svg</file>
         <file>images/sidebar/dark/touchpad.svg</file>
         <file>images/sidebar/dark/touchscreen.svg</file>
-        <file>images/logo.png</file>
         <file>qml/Bluetooth/DeviceItem.qml</file>
         <file>qml/Bluetooth/DeviceSection.qml</file>
         <file>qml/Bluetooth/DeviceDetailsDialog.qml</file>

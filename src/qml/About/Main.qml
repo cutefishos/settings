@@ -58,24 +58,12 @@ ItemPage {
                 FishUI.Label {
                     Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
                     text: "<b>Cutefish</b>"
-                    visible: !about.isCutefishOS
                     font.pointSize: 22
                     color: "#3385FF"
                 }
 
-                Image {
-                    Layout.preferredWidth: 167
-                    Layout.preferredHeight: 26
-                    sourceSize: Qt.size(500, 76)
-                    source: "qrc:/images/logo.png"
-                    Layout.alignment: Qt.AlignHCenter
-                    visible: about.isCutefishOS
-                    asynchronous: true
-                }
-
                 FishUI.Label {
-                    text: qsTr("Built on %1").arg(about.prettyProductName)
-                    visible: !about.isCutefishOS
+                    text: qsTr("Running on %1").arg(about.prettyProductName)
                     Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
                     color: FishUI.Theme.disabledTextColor
                 }
@@ -110,15 +98,6 @@ ItemPage {
                 InfoRow {
                     text: qsTr("Internal Storage")
                     value: about.internalStorage
-                }
-            }
-
-            StandardButton {
-                Layout.fillWidth: true
-                visible: about.isCutefishOS
-                text: qsTr("Software Update")
-                onClicked: {
-                    about.openUpdator()
                 }
             }
         }
