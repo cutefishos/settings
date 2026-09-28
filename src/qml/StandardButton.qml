@@ -38,6 +38,8 @@ FishUI.Button {
 
     background: FishUI.RoundedRectangle {
         radius: FishUI.Theme.mediumRadius
-        color: control.pressed ? control.pressedColor : control.hovered ? control.hoveredColor : control.backgroundColor
+        color: control.enabled && control.pressed ? control.pressedColor
+             : control.enabled && control.hovered ? control.hoveredColor
+             : control.backgroundColor
     }
 }
