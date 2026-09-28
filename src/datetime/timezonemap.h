@@ -42,6 +42,7 @@ class TimeZoneMap : public QObject
 
 public:
     explicit TimeZoneMap(QObject *parent = nullptr);
+    ~TimeZoneMap() override;
 
     Q_INVOKABLE void clicked(int x, int y, int width, int height);
     Q_INVOKABLE void setTimeZone(QString value);

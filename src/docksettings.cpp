@@ -24,7 +24,7 @@
 
 DockSettings::DockSettings(QObject *parent)
     : QObject(parent)
-    , m_dockSettings(new QSettings(QSettings::UserScope, "cutefish", "dock"))
+    , m_dockSettings(new QSettings(QSettings::UserScope, "cutefish", "dock", this))
     , m_dockIconSize(0)
     , m_dockDirection(0)
     , m_dockVisibility(0)

@@ -78,9 +78,6 @@ FontsModel::~FontsModel()
 
 void FontsModel::run()
 {
-    m_generalFonts.clear();
-    m_fixedFonts.clear();
-
     FcPattern *pat = FcPatternCreate();
     if (!pat)
         return;
@@ -101,6 +98,9 @@ void FontsModel::run()
         return;
     }
 
+    QStringList general;
+    QStringList fixed;
+
     for (int i = 0; i < fs->nfont; ++i) {
         char *charset = (char *)FcPatternFormat(fs->fonts[i], (FcChar8 *)"%{charset}");
 
@@ -111,31 +111,41 @@ void FontsModel::run()
         free(charset);
 
         QString family = getFcLangString(fs->fonts[i], FC_FAMILY, FC_FAMILYLANG);
-        QString language = (char *)FcPatternFormat(fs->fonts[i], (FcChar8 *)"%{lang}");
+        if (family.isEmpty())
+            continue;
+
+        char *lang = (char *)FcPatternFormat(fs->fonts[i], (FcChar8 *)"%{lang}");
+        QString language = QString::fromUtf8(lang);
+        free(lang);
 
         int spacing = FC_PROPORTIONAL;
         if (FcPatternGetInteger(fs->fonts[i], FC_SPACING, 0, &spacing) != FcResultMatch)
             spacing = FC_PROPORTIONAL;
         bool fixedPitch = spacing >= FC_MONO;
 
-        if (family.isEmpty())
-            continue;
-
-        if (fixedPitch && !m_fixedFonts.contains(family)) {
-            m_fixedFonts.append(family);
+        if (fixedPitch && !fixed.contains(family)) {
+            fixed.append(family);
         } else {
-            if (!m_generalFonts.contains(family)
+            if (!general.contains(family)
                 && (language.contains(m_lanCode, Qt::CaseInsensitive)
                     || language.contains(m_lanCode.split('-').first(), Qt::CaseInsensitive)))
-                m_generalFonts.append(family);
+                general.append(family);
         }
     }
     FcFontSetDestroy(fs);
 
-    std::sort(m_fixedFonts.begin(), m_fixedFonts.end());
-    std::sort(m_generalFonts.begin(), m_generalFonts.end());
+    std::sort(fixed.begin(), fixed.end());
+    std::sort(general.begin(), general.end());
 
-    emit loadFinished();
+    // QML reads the lists on the GUI thread, so they are handed over there. The
+    // pending call is dropped along with the object if the page closes first.
+    QMetaObject::invokeMethod(this,
+            [this, general = std::move(general), fixed = std::move(fixed)] {
+                m_generalFonts = general;
+                m_fixedFonts = fixed;
+                emit loadFinished();
+            },
+            Qt::QueuedConnection);
 }
 
 QStringList FontsModel::generalFonts() const

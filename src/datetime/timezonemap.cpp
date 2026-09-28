@@ -83,6 +83,11 @@ TimeZoneMap::TimeZoneMap(QObject *parent)
     initDatas();
 }
 
+TimeZoneMap::~TimeZoneMap()
+{
+    qDeleteAll(m_list);
+}
+
 int TimeZoneMap::nearestIndex(int x, int y, int width, int height) const
 {
     double minimum_distance = std::numeric_limits<double>::max();
