@@ -29,6 +29,8 @@ FishUI.Window {
     contentTopMargin: header.height
     // The page colour, so the cards stand out as they do on a page.
     background.color: FishUI.Theme.backgroundColor
+    // The background item reaches a grown window a frame or two after its buffer does.
+    color: background.color
 
     headerItem: FishUI.Label {
         anchors.left: parent.left
@@ -48,7 +50,11 @@ FishUI.Window {
 
     ColumnLayout {
         id: detailsLayout
-        anchors.fill: parent
+        // Not filled to the window: the window height follows this layout's implicit
+        // height a polish later, and a filled layout would be spread over the old height.
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
         anchors.margins: Metrics.dialogPadding
         spacing: Metrics.dialogSpacing
 

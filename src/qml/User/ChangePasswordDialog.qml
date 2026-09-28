@@ -20,6 +20,8 @@ FishUI.Window {
     header.height: 44
     contentTopMargin: 0
     background.color: FishUI.Theme.secondBackgroundColor
+    // The background item reaches a grown window a frame or two after its buffer does.
+    color: background.color
 
     width: 400
     height: mainLayout.implicitHeight + 32
@@ -45,7 +47,11 @@ FishUI.Window {
 
     ColumnLayout {
         id: mainLayout
-        anchors.fill: parent
+        // Not filled to the window: the window height follows this layout's implicit
+        // height a polish later, and a filled layout would be spread over the old height.
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
         anchors.margins: Metrics.dialogPadding
         spacing: Metrics.dialogSpacing
 
