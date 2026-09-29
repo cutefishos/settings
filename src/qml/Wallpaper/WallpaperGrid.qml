@@ -158,23 +158,29 @@ ColumnLayout {
     GridView {
         id: wallpaperView
 
-        readonly property int maximumThumbnailWidth: 180
+        readonly property int preferredThumbnailWidth: 160
+        readonly property int minimumThumbnailWidth: 128
         readonly property int horizontalSpacing: Metrics.tileSpacing
         readonly property int verticalSpacing: Metrics.tileSpacing
-        // The thumbnails fill the row with fixed gaps; another column appears
-        // once they would grow past the maximum width.
-        readonly property int columnCount: Math.max(
-                                               Math.ceil((width + horizontalSpacing)
-                                                         / (maximumThumbnailWidth
-                                                            + horizontalSpacing)), 1)
-        readonly property real thumbnailWidth: Math.max((width - (columnCount - 1) * horizontalSpacing)
-                                                        / columnCount, 0)
+        readonly property int baseColumnCount: Math.max(
+                                                   Math.floor((width + horizontalSpacing)
+                                                              / (preferredThumbnailWidth
+                                                                 + horizontalSpacing)), 1)
+        readonly property real additionalColumnWidth: (width
+                                                       - baseColumnCount * horizontalSpacing)
+                                                      / (baseColumnCount + 1)
+        readonly property bool useAdditionalColumn: additionalColumnWidth
+                                                    >= minimumThumbnailWidth
+        readonly property int columnCount: baseColumnCount + (useAdditionalColumn ? 1 : 0)
+        readonly property real thumbnailWidth: useAdditionalColumn
+                                               ? additionalColumnWidth
+                                               : Math.min(preferredThumbnailWidth, width)
         readonly property int thumbnailHeight: Math.round(thumbnailWidth * 0.625)
-        // The thumbnail width follows the window; a source size bound to it
-        // re-requests every image on each resize step. Qt applies the device
-        // pixel ratio to it before asking the provider.
-        readonly property size thumbnailSourceSize: Qt.size(maximumThumbnailWidth,
-                                                            Math.round(maximumThumbnailWidth * 0.625))
+        // The thumbnail width follows the window but never exceeds the preferred
+        // width; a source size bound to it re-requests every image on each resize
+        // step. Qt applies the device pixel ratio to it before asking the provider.
+        readonly property size thumbnailSourceSize: Qt.size(preferredThumbnailWidth,
+                                                            Math.round(preferredThumbnailWidth * 0.625))
         readonly property int rowCount: control.expanded ? Math.ceil(count / columnCount) : Math.min(count, columnCount) > 0 ? 1 : 0
 
         Layout.fillWidth: true
