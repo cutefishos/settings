@@ -21,6 +21,7 @@ ListRow {
     FishUI.Icon {
         Layout.preferredWidth: 16
         Layout.preferredHeight: 16
+        Layout.rightMargin: Metrics.trailingGlyphMargin(name, 16)
         name: "chevron-right"
         mirror: control.LayoutMirroring.enabled
         opacity: 0.6

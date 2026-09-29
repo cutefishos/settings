@@ -96,11 +96,14 @@ ItemPage {
                         Layout.fillWidth: true
                         spacing: Metrics.rowSpacing
 
+                        // The two sliders' captions share widths, so their tracks line up.
                         FishUI.Label {
+                            id: smallLabel
+                            Layout.preferredWidth: Math.max(implicitWidth, clearLabel.implicitWidth)
                             text: qsTr("Small")
                         }
 
-                        FishUI.Slider {
+                        RowSlider {
                             Layout.fillWidth: true
                             // The value is the icon size itself; the dock derives
                             // its paddings from it (54 is the design baseline).
@@ -113,6 +116,9 @@ ItemPage {
                         }
 
                         FishUI.Label {
+                            id: hugeLabel
+                            Layout.preferredWidth: Math.max(implicitWidth, tintedLabel.implicitWidth)
+                            horizontalAlignment: Text.AlignRight
                             text: qsTr("Huge")
                         }
                     }
@@ -134,10 +140,12 @@ ItemPage {
                         spacing: Metrics.rowSpacing
 
                         FishUI.Label {
+                            id: clearLabel
+                            Layout.preferredWidth: Math.max(implicitWidth, smallLabel.implicitWidth)
                             text: qsTr("More Clear")
                         }
 
-                        FishUI.Slider {
+                        RowSlider {
                             Layout.fillWidth: true
                             from: 0
                             to: 1
@@ -146,6 +154,9 @@ ItemPage {
                         }
 
                         FishUI.Label {
+                            id: tintedLabel
+                            Layout.preferredWidth: Math.max(implicitWidth, hugeLabel.implicitWidth)
+                            horizontalAlignment: Text.AlignRight
                             text: qsTr("More Tinted")
                         }
                     }

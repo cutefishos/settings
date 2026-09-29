@@ -116,6 +116,9 @@ ItemPage {
                         id: accentColorView
                         height: itemSize
                         Layout.fillWidth: true
+                        // The ring sits smallSpacing inside its cell; it, like a preview's
+                        // selection ring, starts on the text column.
+                        Layout.leftMargin: -FishUI.Units.smallSpacing
                         cellWidth: height
                         cellHeight: height
                         interactive: false

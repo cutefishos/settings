@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.4
+import QtQuick.Layouts 1.12
 import QtQuick.Window 2.3
 
 import Cutefish.Settings 1.0
@@ -56,6 +57,7 @@ ListRow {
 
     IconButton {
         width: 20
+        Layout.rightMargin: Metrics.trailingGlyphMargin(iconName, width)
         iconName: "info"
         iconColor: FishUI.Theme.highlightColor
         onClicked: {

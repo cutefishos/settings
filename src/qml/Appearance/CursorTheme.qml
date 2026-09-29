@@ -87,7 +87,7 @@ ItemPage {
                     RowLayout {
                         spacing: Metrics.rowSpacing
 
-                        FishUI.Slider {
+                        RowSlider {
                             Layout.fillWidth: true
                             from: 16
                             to: 64

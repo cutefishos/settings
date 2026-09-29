@@ -65,6 +65,7 @@ ListRow {
 
     IconButton {
         width: 20
+        Layout.rightMargin: Metrics.trailingGlyphMargin(iconName, width)
         iconName: "info"
         iconColor: FishUI.Theme.highlightColor
         onClicked: {

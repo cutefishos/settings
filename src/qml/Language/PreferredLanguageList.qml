@@ -187,12 +187,15 @@ Item {
                     objectName: "languageDragHandle_" + row.index
                     Layout.preferredWidth: 32
                     Layout.preferredHeight: 32
+                    // The lines, not the drag area around them, end where a switch does.
+                    Layout.rightMargin: -(Layout.preferredWidth - reorderLines.width) / 2
                     activeFocusOnTab: true
                     Accessible.role: Accessible.Button
                     Accessible.name: qsTr("Reorder %1").arg(row.modelData.name)
                     Keys.onUpPressed: control.language.moveLanguage(row.index, row.index - 1)
                     Keys.onDownPressed: control.language.moveLanguage(row.index, row.index + 1)
                     ReorderHandle {
+                        id: reorderLines
                         anchors.centerIn: parent
                     }
 

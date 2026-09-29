@@ -104,36 +104,54 @@ RoundedItem {
                     anchors.fill: parent
                     spacing: Metrics.rowSpacing
 
-                    Image {
-                        id: _userImage
-
-                        property int iconSize: 48
-
-                        Layout.preferredWidth: iconSize
-                        Layout.preferredHeight: iconSize
-                        sourceSize: String(source).startsWith("image://icontheme/default-user") ? Qt.size(iconSize, iconSize) : undefined
-                        source: iconFileName ? "file:///" + iconFileName
-                                              : "image://icontheme/default-user" + FishUI.Theme.iconThemeQuery
-                        visible: status === Image.Ready
+                    Item {
+                        Layout.preferredWidth: 48
+                        Layout.preferredHeight: 48
                         Layout.alignment: Qt.AlignVCenter
+
+                        // The account's initial, as on the lock screen, for an account with
+                        // no picture: the icon theme has no avatar the size of a picture.
+                        FishUI.RoundedRectangle {
+                            anchors.fill: parent
+                            radius: width / 2
+                            continuousCorners: false
+                            visible: _userImage.status !== Image.Ready
+                            color: Qt.rgba(FishUI.Theme.textColor.r, FishUI.Theme.textColor.g,
+                                           FishUI.Theme.textColor.b, 0.12)
+
+                            FishUI.Label {
+                                anchors.centerIn: parent
+                                text: userName.length > 0 ? userName.charAt(0).toUpperCase() : "?"
+                                font.pixelSize: 22
+                                color: FishUI.Theme.disabledTextColor
+                            }
+                        }
+
+                        Image {
+                            id: _userImage
+
+                            anchors.fill: parent
+                            source: iconFileName ? "file:///" + iconFileName : ""
+                            visible: status === Image.Ready
+
+                            layer.enabled: true
+                            layer.effect: FishUI.OpacityMask {
+                                maskSource: Item {
+                                    width: _userImage.width
+                                    height: width
+
+                                    Rectangle {
+                                        anchors.fill: parent
+                                        radius: width / 2
+                                    }
+                                }
+                            }
+                        }
 
                         MouseArea {
                             anchors.fill: parent
                             onClicked: fileDialog.open()
                             cursorShape: Qt.PointingHandCursor
-                        }
-
-                        layer.enabled: true
-                        layer.effect: FishUI.OpacityMask {
-                            maskSource: Item {
-                                width: _userImage.width
-                                height: width
-
-                                Rectangle {
-                                    anchors.fill: parent
-                                    radius: width / 2
-                                }
-                            }
                         }
                     }
 
@@ -161,6 +179,7 @@ RoundedItem {
                     }
 
                     FishUI.RoundImageButton {
+                        Layout.rightMargin: Metrics.trailingGlyphMargin(iconName, iconSize, iconMargins)
                         iconMargins: FishUI.Units.smallSpacing
                         iconName: additionalSettings.shown ? "chevron-up" : "chevron-down"
                         onClicked: additionalSettings.toggle()

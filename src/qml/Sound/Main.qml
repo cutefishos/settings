@@ -14,8 +14,6 @@ ItemPage {
     readonly property bool showInputs: tabs.currentIndex === 1
     readonly property var outputDevice: outputs.defaultSink
     readonly property var inputDevice: inputs.defaultSource
-    // Shared by every slider row, so the sliders and the level meter line up.
-    readonly property int sliderWidth: 330
 
     SinkModel { id: outputs }
     SourceModel { id: inputs }
@@ -107,6 +105,7 @@ ItemPage {
         Item {
             Layout.preferredWidth: 18
             Layout.preferredHeight: 18
+            Layout.rightMargin: Metrics.trailingGlyphMargin("check", 18)
 
             FishUI.Icon {
                 anchors.fill: parent
@@ -161,12 +160,13 @@ ItemPage {
             onTriggered: sliderRow.settling = false
         }
 
-        // The controls span exactly sliderWidth: the icons' outer edges, a bare
-        // slider's track, the meter's dots and the captions all meet its ends.
+        // The controls span half the row, the column other pages give their
+        // controls: the icons' outer edges, a bare slider's track, the meter's
+        // dots and the captions all meet its ends.
         ColumnLayout {
             // A nested layout fills by default and would split the row with the label.
             Layout.fillWidth: false
-            Layout.preferredWidth: page.sliderWidth
+            Layout.preferredWidth: Math.round(parent.width / 2)
             // Room above to match the captions below, so the slider and not the
             // whole column is centred on the label.
             Layout.topMargin: _captions.visible ? _captions.implicitHeight : 0

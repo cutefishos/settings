@@ -89,10 +89,10 @@ ItemPage {
                     minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Pointer speed")
 
-                    FishUI.Slider {
+                    RowSlider {
                         id: accelerationSlider
                         // The label fills the rest of the row.
-                        Layout.preferredWidth: Math.round(parent.width / 2)
+                        trackWidth: Math.round(parent.width / 2)
 
                         // Ten steps, one per acceleration curve the compositor
                         // has. Speed 0 is the fourth and default; below it a

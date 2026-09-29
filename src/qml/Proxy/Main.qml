@@ -64,6 +64,8 @@ ItemPage {
 
                 FishUI.RadioButton {
                     id: noProxyRadioButton
+                    // The circle, not the button's padding, starts on the text column.
+                    horizontalPadding: 0
                     checked: networkProxy.flag === 0
                     text: qsTr("No Proxy")
                     onClicked: {
@@ -73,6 +75,7 @@ ItemPage {
 
                 FishUI.RadioButton {
                     id: autoScriptProxyRadioButton
+                    horizontalPadding: 0
                     checked: networkProxy.flag === 1
                     text: qsTr("Use proxy auto configuration URL")
                     visible: false
@@ -83,6 +86,7 @@ ItemPage {
 
                 FishUI.RadioButton {
                     id: manualProxyRadioButton
+                    horizontalPadding: 0
                     checked: networkProxy.flag === 2
                     text: qsTr("Use manually specified proxy configuration")
                     onClicked: {

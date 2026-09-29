@@ -138,7 +138,10 @@ ColumnLayout {
             Layout.alignment: Qt.AlignVCenter
             visible: wallpaperView.count > wallpaperView.columnCount
             text: control.expanded ? qsTr("Show Less") : qsTr("Show All")
+            // Button sets its side paddings itself; padding alone would leave them.
             padding: 0
+            leftPadding: 0
+            rightPadding: 0
 
             background: Item {}
             contentItem: FishUI.Label {

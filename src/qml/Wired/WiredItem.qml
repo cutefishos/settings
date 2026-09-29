@@ -29,6 +29,7 @@ ListRow {
     }
 
     FishUI.Icon {
+        Layout.rightMargin: Metrics.trailingGlyphMargin(name, width)
         name: "check"
         color: FishUI.Theme.highlightColor
         visible: control.checked

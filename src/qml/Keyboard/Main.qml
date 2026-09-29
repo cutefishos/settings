@@ -173,9 +173,9 @@ ItemPage {
                     minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Delay until repeat")
 
-                    FishUI.Slider {
+                    RowSlider {
                         // The label fills the rest of the row.
-                        Layout.preferredWidth: Math.round(parent.width / 2)
+                        trackWidth: Math.round(parent.width / 2)
                         from: 0
                         to: page.repeatDelays.length - 1
                         stepSize: 1
@@ -190,9 +190,9 @@ ItemPage {
                     minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Repeat rate")
 
-                    FishUI.Slider {
+                    RowSlider {
                         // The label fills the rest of the row.
-                        Layout.preferredWidth: Math.round(parent.width / 2)
+                        trackWidth: Math.round(parent.width / 2)
                         from: 0
                         to: page.repeatIntervals.length - 1
                         stepSize: 1

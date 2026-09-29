@@ -151,9 +151,9 @@ ItemPage {
                     minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Pointer speed")
 
-                    FishUI.Slider {
+                    RowSlider {
                         // The label fills the rest of the row.
-                        Layout.preferredWidth: Math.round(parent.width / 2)
+                        trackWidth: Math.round(parent.width / 2)
 
                         // libinput's speed runs from -1 to 1; eleven steps
                         // put its default in the middle.
@@ -172,9 +172,9 @@ ItemPage {
                     minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Scroll speed")
 
-                    FishUI.Slider {
+                    RowSlider {
                         // The label fills the rest of the row.
-                        Layout.preferredWidth: Math.round(parent.width / 2)
+                        trackWidth: Math.round(parent.width / 2)
 
                         // Ten steps doubling every third, from a quarter to
                         // twice libinput's speed; the default half is step 4.
