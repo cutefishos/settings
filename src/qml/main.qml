@@ -47,9 +47,11 @@ FishUI.Window {
     readonly property bool canGoBack: historyStep(-1) >= 0
     readonly property bool canGoForward: historyStep(1) >= 0
 
-    blurEnabled: active
     background.color: FishUI.Theme.backgroundColor
-    background.opacity: blurEnabled && blurAvailable ? (FishUI.Theme.darkMode ? 0.7 : 0.5) : 1
+    // Inactive windows keep the blur and halve the see-through instead of going opaque.
+    background.opacity: !blurAvailable ? 1
+                        : FishUI.Theme.darkMode ? (active ? 0.7 : 0.85)
+                                                : (active ? 0.5 : 0.75)
     header.height: headerInset
     contentTopMargin: 0
 
