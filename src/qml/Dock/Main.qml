@@ -82,84 +82,28 @@ ItemPage {
                 }
             }
 
-            // Dock Size
-            ColumnLayout {
-                Layout.fillWidth: true
-                spacing: Metrics.sectionLabelSpacing
-
-                SectionLabel {
+            ListCard {
+                SliderRow {
                     text: qsTr("Size")
+                    leftText: qsTr("Small")
+                    rightText: qsTr("Huge")
+                    // The value is the icon size itself; the dock derives
+                    // its paddings from it (54 is the design baseline).
+                    from: 32
+                    to: 128
+                    stepSize: 1
+                    value: dockSettings.dockIconSize
+                    onMoved: (newValue) => dockSettings.setDockIconSize(Math.round(newValue))
                 }
 
-                RoundedItem {
-                    RowLayout {
-                        Layout.fillWidth: true
-                        spacing: Metrics.rowSpacing
-
-                        // The two sliders' captions share widths, so their tracks line up.
-                        FishUI.Label {
-                            id: smallLabel
-                            Layout.preferredWidth: Math.max(implicitWidth, clearLabel.implicitWidth)
-                            text: qsTr("Small")
-                        }
-
-                        RowSlider {
-                            Layout.fillWidth: true
-                            // The value is the icon size itself; the dock derives
-                            // its paddings from it (54 is the design baseline).
-                            // Read the setting once: a live binding would drag the
-                            // handle back to the rounded value on every move.
-                            from: 32
-                            to: 128
-                            Component.onCompleted: value = dockSettings.dockIconSize
-                            onMoved: dockSettings.setDockIconSize(Math.round(value))
-                        }
-
-                        FishUI.Label {
-                            id: hugeLabel
-                            Layout.preferredWidth: Math.max(implicitWidth, tintedLabel.implicitWidth)
-                            horizontalAlignment: Text.AlignRight
-                            text: qsTr("Huge")
-                        }
-                    }
-                }
-            }
-
-            // Glass effect
-            ColumnLayout {
-                Layout.fillWidth: true
-                spacing: Metrics.sectionLabelSpacing
-
-                SectionLabel {
+                SliderRow {
                     text: qsTr("Glass Effect")
-                }
-
-                RoundedItem {
-                    RowLayout {
-                        Layout.fillWidth: true
-                        spacing: Metrics.rowSpacing
-
-                        FishUI.Label {
-                            id: clearLabel
-                            Layout.preferredWidth: Math.max(implicitWidth, smallLabel.implicitWidth)
-                            text: qsTr("More Clear")
-                        }
-
-                        RowSlider {
-                            Layout.fillWidth: true
-                            from: 0
-                            to: 1
-                            value: dockSettings.dockGlassTint
-                            onMoved: dockSettings.setDockGlassTint(value)
-                        }
-
-                        FishUI.Label {
-                            id: tintedLabel
-                            Layout.preferredWidth: Math.max(implicitWidth, hugeLabel.implicitWidth)
-                            horizontalAlignment: Text.AlignRight
-                            text: qsTr("More Tinted")
-                        }
-                    }
+                    leftText: qsTr("More Clear")
+                    rightText: qsTr("More Tinted")
+                    from: 0
+                    to: 1
+                    value: dockSettings.dockGlassTint
+                    onMoved: (newValue) => dockSettings.setDockGlassTint(newValue)
                 }
             }
 

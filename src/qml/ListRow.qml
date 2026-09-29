@@ -31,6 +31,8 @@ Item {
     // nor reacts to clicks.
     property bool interactive: true
     property bool separatorVisible: true
+    // Lifts the label by half this, onto a control with captions hanging below it.
+    property real labelBottomMargin: 0
     readonly property bool highlighted: interactive && enabled && _mouseArea.pressed
     signal clicked()
 
@@ -171,6 +173,7 @@ Item {
 
         FishUI.Label {
             Layout.fillWidth: true
+            Layout.bottomMargin: control.labelBottomMargin
             visible: control.text.length > 0
             text: control.text
             textFormat: Text.PlainText

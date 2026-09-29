@@ -9,6 +9,8 @@
         <file>qml/ListCard.qml</file>
         <file>qml/ListRow.qml</file>
         <file>qml/RowSlider.qml</file>
+        <file>qml/SliderCaptions.qml</file>
+        <file>qml/SliderRow.qml</file>
         <file>qml/InfoRow.qml</file>
         <file>qml/SectionLabel.qml</file>
         <file>qml/Metrics.qml</file>
