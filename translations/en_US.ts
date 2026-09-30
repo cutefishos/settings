@@ -545,27 +545,57 @@
     </message>
     <message>
         <location filename="../src/qml/Display/Main.qml" line="+124"/>
-        <location filename="../src/qml/Power/Main.qml" line="+31"/>
+        <location filename="../src/qml/Power/Main.qml" line="+32"/>
         <source>Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/Power/Main.qml" line="+12"/>
+        <location filename="../src/qml/Power/Main.qml" line="+10"/>
         <source>Power Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+10"/>
+        <source>Balanced</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
         <source>Performance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
-        <source>Performance mode: CPU and GPU frequencies will be increased, while power consumption and heat generation will be increased.</source>
+        <location line="+19"/>
+        <source>Reduces performance and power consumption.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+2"/>
+        <source>Standard performance and power consumption.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Higher performance, with more power consumption and heat.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Performance is limited because the computer is on your lap.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Performance is limited because the computer is too hot.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Performance is currently limited.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
         <source>Turn off display when inactive on battery</source>
         <translation type="unfinished"></translation>
     </message>

@@ -56,6 +56,7 @@ ItemPage {
             ColumnLayout {
                 Layout.fillWidth: true
                 spacing: Metrics.sectionLabelSpacing
+                visible: power.profiles.length > 0
 
                 SectionLabel {
                     text: qsTr("Mode")
@@ -70,8 +71,19 @@ ItemPage {
                             text: qsTr("Power Save")
                             previewWidth: 80
                             previewHeight: 80
-                            checked: power.mode === 0
-                            onClicked: power.mode = 0
+                            visible: power.profiles.indexOf("power-saver") >= 0
+                            checked: power.profile === "power-saver"
+                            onClicked: power.profile = "power-saver"
+                        }
+
+                        ImageSelectionItem {
+                            source: "qrc:/images/balanced.svg"
+                            text: qsTr("Balanced")
+                            previewWidth: 80
+                            previewHeight: 80
+                            visible: power.profiles.indexOf("balanced") >= 0
+                            checked: power.profile === "balanced"
+                            onClicked: power.profile = "balanced"
                         }
 
                         ImageSelectionItem {
@@ -79,8 +91,9 @@ ItemPage {
                             text: qsTr("Performance")
                             previewWidth: 80
                             previewHeight: 80
-                            checked: power.mode === 1
-                            onClicked: power.mode = 1
+                            visible: power.profiles.indexOf("performance") >= 0
+                            checked: power.profile === "performance"
+                            onClicked: power.profile = "performance"
                         }
                     }
                 }
@@ -91,7 +104,32 @@ ItemPage {
                     rightPadding: Metrics.cardHorizontalPadding
                     Layout.fillWidth: true
                     wrapMode: Text.WordWrap
-                    text: qsTr("Performance mode: CPU and GPU frequencies will be increased, while power consumption and heat generation will be increased.")
+                    visible: text !== ""
+                    text: {
+                        if (power.profile === "power-saver")
+                            return qsTr("Reduces performance and power consumption.")
+                        if (power.profile === "balanced")
+                            return qsTr("Standard performance and power consumption.")
+                        if (power.profile === "performance")
+                            return qsTr("Higher performance, with more power consumption and heat.")
+                        return ""
+                    }
+                }
+
+                FishUI.Label {
+                    color: FishUI.Theme.disabledTextColor
+                    leftPadding: Metrics.cardHorizontalPadding
+                    rightPadding: Metrics.cardHorizontalPadding
+                    Layout.fillWidth: true
+                    wrapMode: Text.WordWrap
+                    visible: power.profile === "performance" && power.performanceDegraded !== ""
+                    text: {
+                        if (power.performanceDegraded.indexOf("lap-detected") >= 0)
+                            return qsTr("Performance is limited because the computer is on your lap.")
+                        if (power.performanceDegraded.indexOf("high-operating-temperature") >= 0)
+                            return qsTr("Performance is limited because the computer is too hot.")
+                        return qsTr("Performance is currently limited.")
+                    }
                 }
             }
 

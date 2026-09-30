@@ -63,6 +63,7 @@
         <file>images/sidebar/light/wallpaper.svg</file>
         <file>qml/RoundedItem.qml</file>
         <file>images/powersave.svg</file>
+        <file>images/balanced.svg</file>
         <file>images/performance.svg</file>
         <file>qml/Power/Main.qml</file>
         <file>qml/About/Main.qml</file>
