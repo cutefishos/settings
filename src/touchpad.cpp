@@ -160,7 +160,7 @@ void Touchpad::setTapDragging(bool enabled)
 
 bool Touchpad::naturalScroll() const
 {
-    return flag("naturalScroll", false);
+    return flag("naturalScroll", true);
 }
 
 void Touchpad::setNaturalScroll(bool enabled)

@@ -39,7 +39,7 @@ private slots:
         speed.clear();
 
         first.setLeftHanded(true);
-        first.setNaturalScroll(true);
+        first.setNaturalScroll(false);
         first.setAcceleration(false);
         first.setPointerAcceleration(0.6);
         QTRY_VERIFY(!handedness.isEmpty());
@@ -47,7 +47,7 @@ private slots:
         QTRY_VERIFY(!acceleration.isEmpty());
         QTRY_VERIFY(!speed.isEmpty());
         QVERIFY(second.leftHanded());
-        QVERIFY(second.naturalScroll());
+        QVERIFY(!second.naturalScroll());
         QVERIFY(!second.acceleration());
         QCOMPARE(second.pointerAcceleration(), 0.6);
 
@@ -60,7 +60,7 @@ private slots:
         QTRY_VERIFY(first.available());
         QTRY_VERIFY(second.available());
         QVERIFY(first.leftHanded());
-        QVERIFY(first.naturalScroll());
+        QVERIFY(!first.naturalScroll());
         QVERIFY(!first.acceleration());
         QCOMPARE(first.pointerAcceleration(), 0.6);
 
