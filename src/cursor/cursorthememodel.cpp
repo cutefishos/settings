@@ -29,10 +29,13 @@
 #include <QFileInfo>
 #include <QStandardPaths>
 
+#include <preferences.h>
+
 CursorThemeModel::CursorThemeModel(QObject *parent)
     : QAbstractListModel(parent)
-    , m_settings("cutefish", "theme")
+    , m_settings(Preferences::file(QStringLiteral("services")), QSettings::IniFormat)
 {
+    m_settings.beginGroup(QStringLiteral("Appearance"));
     initThemes();
 
     m_currentTheme = m_settings.value("CursorTheme", "default").toString();

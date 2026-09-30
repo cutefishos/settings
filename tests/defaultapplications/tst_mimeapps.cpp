@@ -61,6 +61,8 @@ private slots:
         QFile file(path);
         QVERIFY(file.open(QIODevice::ReadOnly));
         QVERIFY(file.readAll().contains("x-scheme-handler/http=browser.desktop;"));
+        QCOMPARE(MimeApps::defaultTerminal(dir.filePath("xdg-terminals.list")),
+                 QStringLiteral("terminal.desktop"));
         DefaultApplications reopened;
         QCOMPARE(reopened.browserIndex(), 0);
         QCOMPARE(reopened.emailIndex(), 0);
@@ -94,6 +96,23 @@ private slots:
         QVERIFY(!contents.contains("text%2Fplain"));
         QVERIFY(!MimeApps::setDefault(path, "text/plain", "bad;entry.desktop"));
         QVERIFY(!MimeApps::setDefault(dir.path(), "text/plain", "new.desktop"));
+    }
+
+    void terminalListPrependsTheDefault()
+    {
+        QTemporaryDir dir;
+        const QString path = dir.filePath("xdg-terminals.list");
+        QFile file(path);
+        QVERIFY(file.open(QIODevice::WriteOnly));
+        file.write("# Keep this comment\n-blocked.desktop\nfirst.desktop\n+new.desktop:new-window\n");
+        file.close();
+        QCOMPARE(MimeApps::defaultTerminal(path), QStringLiteral("first.desktop"));
+        QVERIFY(MimeApps::setDefaultTerminal(path, "new.desktop"));
+        QCOMPARE(MimeApps::defaultTerminal(path), QStringLiteral("new.desktop"));
+        QVERIFY(file.open(QIODevice::ReadOnly));
+        QCOMPARE(file.readAll(), QByteArray("new.desktop\n# Keep this comment\n-blocked.desktop\n"
+                                            "first.desktop\n"));
+        QVERIFY(!MimeApps::setDefaultTerminal(path, "bad\nentry.desktop"));
     }
 };
 QTEST_GUILESS_MAIN(MimeAppsTest)

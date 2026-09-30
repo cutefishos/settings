@@ -7,7 +7,6 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(FontConfig REQUIRED IMPORTED_TARGET fontconfig)
 add_executable(lifetime_test lifetime_test.cpp
     ../../src/fontsmodel.cpp
-    ../../src/docksettings.cpp
     ../../src/datetime/timezonemap.cpp
     ../../src/datetime/timedated_interface.cpp)
 target_include_directories(lifetime_test PRIVATE ../../src)

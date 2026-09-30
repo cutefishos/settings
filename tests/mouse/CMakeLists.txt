@@ -8,7 +8,8 @@ set(COMPOSITOR_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../cutefish-compositor" CA
     "Compositor source tree")
 add_executable(mouse_integration_test mouse_integration_test.cpp
     ../../src/cursor/mouse.cpp
-    ${COMPOSITOR_DIR}/src/input/mouse_settings.cpp)
+    ${COMPOSITOR_DIR}/src/input/mouse_settings.cpp
+    ${COMPOSITOR_DIR}/src/core/preferences.cpp)
 target_include_directories(mouse_integration_test PRIVATE ../../src ${COMPOSITOR_DIR}/src)
 target_link_libraries(mouse_integration_test PRIVATE Qt6::Core Qt6::DBus Qt6::Test)
 enable_testing()

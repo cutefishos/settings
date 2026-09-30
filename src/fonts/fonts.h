@@ -22,7 +22,6 @@
 
 #include <QObject>
 #include <QStandardItemModel>
-#include <QSettings>
 
 #include <appearance.h>
 
@@ -64,7 +63,6 @@ signals:
 
 private:
     Appearance m_appearance;
-    QSettings m_settings;
     bool m_antiAliasing;
     QStandardItemModel *m_hintingModel;
     Hinting m_hinting;

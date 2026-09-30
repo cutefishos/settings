@@ -6,6 +6,8 @@
 #include <QTemporaryDir>
 #include <QTest>
 
+#include <preferences.h>
+
 class LanguageTest : public QObject
 {
     Q_OBJECT
@@ -15,7 +17,8 @@ private slots:
     {
         QVERIFY(m_config.isValid());
         qputenv("XDG_CONFIG_HOME", m_config.path().toUtf8());
-        QSettings settings("cutefish", "language");
+        QSettings settings(Preferences::file("services"), QSettings::IniFormat);
+        settings.beginGroup("Language");
         settings.setValue("language", "en_US");
         settings.setValue("preferredLanguages", QStringList{"en_US", "zh_Hans_CN"});
     }

@@ -28,6 +28,8 @@
 #include <QDBusVariant>
 #include <QSettings>
 
+#include <preferences.h>
+
 namespace {
 constexpr auto s_powerGroup = "Power";
 
@@ -40,29 +42,9 @@ int normalizedTimeout(int timeout)
     return timeout < 0 ? -1 : qMax(1, timeout);
 }
 
-int readTimeout(QSettings &settings, const QString &key, const QString &legacyKey, int fallback)
+int readTimeout(QSettings &settings, const QString &key, int fallback)
 {
-    settings.beginGroup(QLatin1String(s_powerGroup));
-    const bool hasValue = settings.contains(key);
-    const int value = hasValue ? settings.value(key).toInt() : fallback;
-    settings.endGroup();
-
-    if (hasValue)
-        return normalizedTimeout(value);
-
-    if (!legacyKey.isEmpty() && settings.contains(legacyKey))
-        return normalizedTimeout(settings.value(legacyKey).toInt());
-
-    return fallback;
-}
-
-void writePowerSetting(const QString &key, const QVariant &value)
-{
-    QSettings settings(QSettings::UserScope, "cutefish", "power");
-    settings.beginGroup(QLatin1String(s_powerGroup));
-    settings.setValue(key, value);
-    settings.endGroup();
-    settings.sync();
+    return settings.contains(key) ? normalizedTimeout(settings.value(key).toInt()) : fallback;
 }
 
 void callPowerManager(const QString &method, const QVariant &value)
@@ -83,14 +65,11 @@ PowerManager::PowerManager(QObject *parent)
                                          SLOT(onProfilePropertiesChanged(QString, QVariantMap, QStringList)));
     loadProfileProperties();
 
-    QSettings settings(QSettings::UserScope, "cutefish", "power");
-    m_batteryScreenOff = readTimeout(settings, QStringLiteral("BatteryScreenOff"),
-                                     QStringLiteral("CloseScreenTimeout"), 300);
-    m_acScreenOff = readTimeout(settings, QStringLiteral("ACScreenOff"),
-                                QStringLiteral("CloseScreenTimeout"), 1200);
+    QSettings settings(Preferences::file(QStringLiteral("services")), QSettings::IniFormat);
     settings.beginGroup(QLatin1String(s_powerGroup));
+    m_batteryScreenOff = readTimeout(settings, QStringLiteral("BatteryScreenOff"), 300);
+    m_acScreenOff = readTimeout(settings, QStringLiteral("ACScreenOff"), 1200);
     m_acPreventSleep = settings.value(QStringLiteral("ACPreventSleep"), false).toBool();
-    settings.endGroup();
 }
 
 QString PowerManager::profile() const
@@ -202,7 +181,6 @@ void PowerManager::setBatteryScreenOff(int timeout)
         return;
 
     m_batteryScreenOff = timeout;
-    writePowerSetting(QStringLiteral("BatteryScreenOff"), timeout);
     callPowerManager(QStringLiteral("setBatteryScreenOff"), timeout);
     emit batteryScreenOffChanged();
 }
@@ -219,7 +197,6 @@ void PowerManager::setACScreenOff(int timeout)
         return;
 
     m_acScreenOff = timeout;
-    writePowerSetting(QStringLiteral("ACScreenOff"), timeout);
     callPowerManager(QStringLiteral("setACScreenOff"), timeout);
     emit acScreenOffChanged();
 }
@@ -235,7 +212,6 @@ void PowerManager::setACPreventSleep(bool prevent)
         return;
 
     m_acPreventSleep = prevent;
-    writePowerSetting(QStringLiteral("ACPreventSleep"), prevent);
     callPowerManager(QStringLiteral("setACPreventSleep"), prevent);
     emit acPreventSleepChanged();
 }

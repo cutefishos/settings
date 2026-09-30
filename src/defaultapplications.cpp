@@ -24,7 +24,6 @@
 
 #include <QDebug>
 #include <QFileInfo>
-#include <QSettings>
 #include <QStandardPaths>
 
 DefaultApplications::DefaultApplications(QObject *parent)
@@ -66,15 +65,13 @@ void DefaultApplications::loadApps()
         }
     }
 
-    QSettings settings("cutefish", "defaultapps");
-
     const QString defaultBrowser =
             MimeApps::associations(mimeAppsListFilePath(), "Default Applications",
                                    "x-scheme-handler/http").value(0);
     const QString defaultEMail =
             MimeApps::associations(mimeAppsListFilePath(), "Default Applications",
                                    "x-scheme-handler/mailto").value(0);
-    QString defaultTerminal = settings.value("terminal").toString();
+    const QString defaultTerminal = MimeApps::defaultTerminal(terminalsListFilePath());
 
     // Init indexes.
     for (int i = 0; i < m_browserList.size(); ++i) {
@@ -187,12 +184,11 @@ void DefaultApplications::setDefaultTerminal(int index)
     if (index < 0 || index >= m_terminalList.size())
         return;
 
-    const QString desktop = m_terminalList.at(index).fileName;
-
-    qDebug() << index << desktop;
-
-    QSettings settings("cutefish", "defaultapps");
-    settings.setValue("terminal", desktop);
+    if (!MimeApps::setDefaultTerminal(terminalsListFilePath(), m_terminalList.at(index).fileName)) {
+        qWarning() << "Failed to save the default terminal";
+        return;
+    }
+    loadApps();
 }
 
 void DefaultApplications::setDefaultApp(const QString &mimeType, const QString &path)
@@ -208,4 +204,10 @@ QString DefaultApplications::mimeAppsListFilePath() const
 {
     return QStandardPaths::writableLocation(QStandardPaths::ConfigLocation)
             + QLatin1String("/mimeapps.list");
+}
+
+QString DefaultApplications::terminalsListFilePath() const
+{
+    return QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation)
+            + QLatin1String("/xdg-terminals.list");
 }

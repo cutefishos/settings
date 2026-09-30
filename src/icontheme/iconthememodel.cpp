@@ -11,6 +11,8 @@
 #include <QPainter>
 #include <QStandardPaths>
 
+#include <preferences.h>
+
 namespace {
 // Rendered at 2x so the preview stays crisp on hiDPI; IconItem scales it to fit.
 constexpr int PreviewCell = 22;
@@ -44,8 +46,9 @@ QString indexFile(const QStringList &basePaths, const QString &themeId)
 IconThemeModel::IconThemeModel(QObject *parent)
     : QAbstractListModel(parent)
     , m_basePaths(iconBasePaths())
-    , m_settings("cutefish", "theme")
+    , m_settings(Preferences::file(QStringLiteral("services")), QSettings::IniFormat)
 {
+    m_settings.beginGroup(QStringLiteral("Appearance"));
     initThemes();
 
     m_currentTheme = m_settings.value("IconTheme", "Cutefish").toString();

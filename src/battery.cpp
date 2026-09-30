@@ -31,6 +31,8 @@
 #include <QSettings>
 #include <QTimer>
 
+#include <preferences.h>
+
 static const QString s_sServer = "com.cutefish.Services";
 static const QString s_sPath = "/com/cutefish/Services/Battery";
 static const QString s_sInterface = "com.cutefish.Services.Battery";
@@ -246,8 +248,8 @@ bool Battery::showPercent()
     if (mockBatteryEnabled())
         return true;
 
-    QSettings settings(QSettings::UserScope, "cutefish", "battery");
-    return settings.value("BatteryPercentage", false).toBool();
+    QSettings settings(Preferences::file(QStringLiteral("shell")), QSettings::IniFormat);
+    return settings.value("Statusbar/BatteryPercentage", false).toBool();
 }
 
 void Battery::setPercentEnabled(bool value)

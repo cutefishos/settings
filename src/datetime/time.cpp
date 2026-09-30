@@ -23,11 +23,13 @@
 #include <QDateTime>
 #include <QSettings>
 
+#include <preferences.h>
+
 Time::Time(QObject *parent)
     : QObject(parent)
-    , m_settings("cutefish", "language")
 {
-    m_twentyFour = m_settings.value("twentyFour", false).toBool();
+    QSettings settings(Preferences::file(QStringLiteral("shell")), QSettings::IniFormat);
+    m_twentyFour = settings.value("Statusbar/TwentyFourTime", false).toBool();
 
     OrgFreedesktopTimedate1Interface iface(QStringLiteral("org.freedesktop.timedate1"),
                                            QStringLiteral("/org/freedesktop/timedate1"),
@@ -109,8 +111,6 @@ void Time::setTwentyFour(bool t)
 {
     if (m_twentyFour != t) {
         m_twentyFour = t;
-        m_settings.setValue("twentyFour", m_twentyFour);
-
         QDBusInterface("com.cutefish.Statusbar", "/Statusbar")
                 .call("setTwentyFourTime", m_twentyFour);
 

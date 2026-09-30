@@ -21,22 +21,23 @@
 
 #include <QDBusConnection>
 #include <QDBusInterface>
+#include <QSettings>
+
+#include <preferences.h>
 
 DockSettings::DockSettings(QObject *parent)
     : QObject(parent)
-    , m_dockSettings(new QSettings(QSettings::UserScope, "cutefish", "dock", this))
     , m_dockIconSize(0)
     , m_dockDirection(0)
     , m_dockVisibility(0)
     , m_dockGlassTint(0.5)
 {
-    m_dockIconSize = m_dockSettings->value("IconSize").toInt();
-    m_dockDirection = m_dockSettings->value("Direction").toInt();
-    m_dockVisibility = m_dockSettings->value("Visibility").toInt();
-    m_dockRoundedWindow = m_dockSettings->value("RoundedWindow").toBool();
-    m_dockGlassTint = qBound(0.0, m_dockSettings->value("GlassTint", 0.5).toDouble(), 1.0);
-    // Dock only supports the centered style. Migrate old Full style settings.
-    m_dockSettings->setValue("Style", 0);
+    QSettings settings(Preferences::file(QStringLiteral("shell")), QSettings::IniFormat);
+    settings.beginGroup(QStringLiteral("Dock"));
+    m_dockIconSize = settings.value("IconSize").toInt();
+    m_dockDirection = settings.value("Direction").toInt();
+    m_dockVisibility = settings.value("Visibility").toInt();
+    m_dockGlassTint = qBound(0.0, settings.value("GlassTint", 0.5).toDouble(), 1.0);
 }
 
 int DockSettings::dockIconSize() const
@@ -96,20 +97,6 @@ void DockSettings::setDockVisibility(int visibility)
 
         emit dockVisibilityChanged();
     }
-}
-
-int DockSettings::dockRoundedWindow() const
-{
-    return m_dockRoundedWindow;
-}
-
-void DockSettings::setDockRoundedWindow(bool enable)
-{
-    if (m_dockRoundedWindow == enable)
-        return;
-
-    m_dockRoundedWindow = enable;
-    m_dockSettings->setValue("RoundedWindow", m_dockRoundedWindow);
 }
 
 qreal DockSettings::dockGlassTint() const

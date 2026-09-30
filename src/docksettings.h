@@ -21,7 +21,6 @@
 #define DOCKSETTINGS_H
 
 #include <QObject>
-#include <QSettings>
 
 class DockSettings : public QObject
 {
@@ -31,8 +30,6 @@ class DockSettings : public QObject
             int dockDirection READ dockDirection WRITE setDockDirection NOTIFY dockDirectionChanged)
     Q_PROPERTY(int dockVisibility READ dockVisibility WRITE setDockVisibility NOTIFY
                        dockVisibilityChanged)
-    Q_PROPERTY(bool dockRoundedWindow READ dockRoundedWindow WRITE setDockRoundedWindow NOTIFY
-                       dockRoundedWindowChanged)
     Q_PROPERTY(qreal dockGlassTint READ dockGlassTint WRITE setDockGlassTint NOTIFY
                        dockGlassTintChanged)
 
@@ -48,9 +45,6 @@ public:
     int dockVisibility() const;
     Q_INVOKABLE void setDockVisibility(int visibility);
 
-    int dockRoundedWindow() const;
-    Q_INVOKABLE void setDockRoundedWindow(bool enable);
-
     qreal dockGlassTint() const;
     Q_INVOKABLE void setDockGlassTint(qreal tint);
 
@@ -58,13 +52,9 @@ signals:
     void dockIconSizeChanged();
     void dockDirectionChanged();
     void dockVisibilityChanged();
-    void dockRoundedWindowChanged();
     void dockGlassTintChanged();
 
 private:
-    QSettings *m_dockSettings;
-    bool m_dockRoundedWindow;
-
     int m_dockIconSize;
     int m_dockDirection;
     int m_dockVisibility;

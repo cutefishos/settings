@@ -10,6 +10,8 @@
 #include <QTemporaryDir>
 #include <QTest>
 
+#include <preferences.h>
+
 class AppearanceService : public QObject
 {
     Q_OBJECT
@@ -18,7 +20,8 @@ public slots:
 
     void setCursorTheme(const QString &theme)
     {
-        QSettings settings("cutefish", "theme");
+        QSettings settings(Preferences::file("services"), QSettings::IniFormat);
+        settings.beginGroup("Appearance");
         settings.setValue("CursorTheme", theme);
         settings.sync();
         emit cursorThemeChanged();
@@ -26,7 +29,8 @@ public slots:
 
     void setCursorSize(int size)
     {
-        QSettings settings("cutefish", "theme");
+        QSettings settings(Preferences::file("services"), QSettings::IniFormat);
+        settings.beginGroup("Appearance");
         settings.setValue("CursorSize", size);
         settings.sync();
         emit cursorSizeChanged();
@@ -47,7 +51,7 @@ private slots:
         QTemporaryDir directory;
         QVERIFY(directory.isValid());
         qputenv("XCURSOR_PATH", directory.path().toUtf8());
-        QSettings::setPath(QSettings::NativeFormat, QSettings::UserScope, directory.path());
+        qputenv("XDG_CONFIG_HOME", directory.path().toUtf8());
         QVERIFY(QDir(directory.path()).mkpath("TestTheme/cursors"));
         QFile index(directory.filePath("TestTheme/index.theme"));
         QVERIFY(index.open(QIODevice::WriteOnly));

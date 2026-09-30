@@ -2,14 +2,9 @@
 // Built with AddressSanitizer, so memory one leaves behind fails the run at exit.
 
 #include "datetime/timezonemap.h"
-#include "docksettings.h"
 #include "fontsmodel.h"
 
 #include <QCoreApplication>
-#include <QDir>
-#include <QFile>
-#include <QSettings>
-#include <QTemporaryDir>
 #include <QTest>
 #include <QThread>
 
@@ -59,25 +54,6 @@ private slots:
 
         // The queued hand-off must go with the model.
         QCoreApplication::processEvents();
-    }
-
-    void dockSettingsWritesOutWhenDestroyed()
-    {
-        QTemporaryDir directory;
-        QVERIFY(directory.isValid());
-        QSettings::setPath(QSettings::NativeFormat, QSettings::UserScope, directory.path());
-        QVERIFY(QDir(directory.path()).mkpath("cutefish"));
-        QFile file(directory.filePath("cutefish/dock.conf"));
-        QVERIFY(file.open(QIODevice::WriteOnly));
-        file.write("[General]\nStyle=1\n");
-        file.close();
-
-        // Its settings object goes with it and writes the Style migration out.
-        auto *dock = new DockSettings;
-        delete dock;
-
-        QVERIFY(file.open(QIODevice::ReadOnly));
-        QVERIFY(file.readAll().contains("Style=0"));
     }
 
     void timeZoneMapFindsAZoneAtItsOwnSpot()

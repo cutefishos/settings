@@ -23,7 +23,6 @@
 #include <QObject>
 #include <QTime>
 #include <QDate>
-#include <QSettings>
 
 class Time : public QObject
 {
@@ -64,7 +63,6 @@ private:
     bool m_twentyFour;
     QTime m_currentTime;
     QDate m_currentDate;
-    QSettings m_settings;
 };
 
 #endif // TIME_H

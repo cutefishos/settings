@@ -25,8 +25,9 @@
 #include <QDBusPendingReply>
 #include <QFutureWatcher>
 #include <QLocale>
-#include <QSettings>
 #include <QtConcurrent>
+
+#include <languageenvironment.h>
 
 #include <algorithm>
 #include <unicode/locid.h>
@@ -217,12 +218,7 @@ void Language::search(const QString &text)
 
 void Language::reload()
 {
-    QSettings settings("cutefish", "language");
-    QString primary = settings.value("language", QLocale::system().name()).toString();
-    QStringList codes = settings.value("preferredLanguages").toStringList();
-    codes.removeAll(primary);
-    codes.prepend(primary);
-    codes.removeDuplicates();
+    const QStringList codes = LanguageEnvironment::preferredLanguages();
     if (codes == m_preferredCodes)
         return;
     m_preferredCodes = codes;

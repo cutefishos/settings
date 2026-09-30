@@ -19,6 +19,10 @@
 
 #include "fonts.h"
 
+#include <QSettings>
+
+#include <preferences.h>
+
 namespace {
 Fonts::Hinting hintingFromString(const QString &value)
 {
@@ -49,12 +53,13 @@ QString hintingToString(Fonts::Hinting hinting)
 
 Fonts::Fonts(QObject *parent)
     : QObject(parent)
-    , m_settings("cutefish", "theme")
     , m_antiAliasing(false)
     , m_hintingModel(new QStandardItemModel(this))
 {
-    m_antiAliasing = m_settings.value("FontAntialias", true).toBool();
-    m_hinting = hintingFromString(m_settings.value("FontHintStyle", "hintslight").toString());
+    QSettings settings(Preferences::file(QStringLiteral("services")), QSettings::IniFormat);
+    settings.beginGroup(QStringLiteral("Appearance"));
+    m_antiAliasing = settings.value("FontAntialias", true).toBool();
+    m_hinting = hintingFromString(settings.value("FontHintStyle", "hintslight").toString());
 
     const QStringList descriptions = {tr("None"), tr("Slight"), tr("Medium"), tr("Full")};
     for (const QString &description : descriptions) {
@@ -110,9 +115,5 @@ QStandardItemModel *Fonts::hintingModel()
 
 void Fonts::save()
 {
-    m_settings.setValue("FontAntialias", m_antiAliasing);
-    m_settings.setValue("FontHintStyle", hintingToString(m_hinting));
-    m_settings.sync();
-
-    m_appearance.applyFontSettings();
+    m_appearance.setFontRendering(m_antiAliasing, hintingToString(m_hinting));
 }

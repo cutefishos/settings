@@ -4,9 +4,11 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD 17)
 find_package(Qt6 REQUIRED COMPONENTS Core Concurrent DBus Test)
 find_package(ICU REQUIRED COMPONENTS i18n uc)
+find_package(CutefishFramework REQUIRED COMPONENTS Application)
 add_executable(language_test language_test.cpp ../../src/language.cpp)
 target_include_directories(language_test PRIVATE ../../src)
-target_link_libraries(language_test PRIVATE Qt6::Core Qt6::Concurrent Qt6::DBus Qt6::Test ICU::i18n ICU::uc)
+target_link_libraries(language_test PRIVATE Qt6::Core Qt6::Concurrent Qt6::DBus Qt6::Test ICU::i18n ICU::uc
+    Cutefish::Application)
 enable_testing()
 add_test(NAME language_test COMMAND language_test)
 
