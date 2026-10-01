@@ -33,14 +33,12 @@
         <file>images/dark/network-wired.svg</file>
         <file>qml/IconButton.qml</file>
         <file>qml/Hideable.qml</file>
-        <file>qml/BluetoothPage.qml</file>
         <file>images/dock_right.svg</file>
         <file>qml/User/UserDelegateItem.qml</file>
         <file>qml/User/AddUserDialog.qml</file>
         <file>qml/User/ChangePasswordDialog.qml</file>
         <file>qml/Wallpaper/Main.qml</file>
         <file>qml/Wallpaper/WallpaperGrid.qml</file>
-        <file>qml/Wallpaper/DesktopPreview.qml</file>
         <file>images/sidebar/dark/about.svg</file>
         <file>images/sidebar/dark/accounts.svg</file>
         <file>images/sidebar/dark/appearance.svg</file>
@@ -127,20 +125,6 @@
         <file>images/sidebar/dark/proxy.svg</file>
         <file>qml/Sound/Main.qml</file>
         <file>images/sidebar/dark/sound.svg</file>
-        <file>images/light/audio-volume-high-symbolic.svg</file>
-        <file>images/light/audio-volume-low-symbolic.svg</file>
-        <file>images/light/audio-volume-medium-symbolic.svg</file>
-        <file>images/light/audio-volume-muted-symbolic.svg</file>
-        <file>images/dark/audio-volume-high-symbolic.svg</file>
-        <file>images/dark/audio-volume-low-symbolic.svg</file>
-        <file>images/dark/audio-volume-medium-symbolic.svg</file>
-        <file>images/dark/audio-volume-muted-symbolic.svg</file>
-        <file>images/light/audio-input-microphone-high-symbolic.svg</file>
-        <file>images/light/audio-input-microphone-low-symbolic.svg</file>
-        <file>images/light/audio-input-microphone-medium-symbolic.svg</file>
-        <file>images/dark/audio-input-microphone-high-symbolic.svg</file>
-        <file>images/dark/audio-input-microphone-low-symbolic.svg</file>
-        <file>images/dark/audio-input-microphone-medium-symbolic.svg</file>
         <file>qml/DefaultApp/Main.qml</file>
         <file>images/sidebar/dark/defaultapps.svg</file>
         <file>qml/Notification/Main.qml</file>
