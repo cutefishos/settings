@@ -18,12 +18,13 @@ Rectangle {
         GradientStop { position: 1.0; color: control.tint }
     }
 
-    Image {
+    FishUI.IconItem {
         anchors.centerIn: parent
         width: 16
         height: width
-        source: "qrc:/images/sidebar/dark/" + control.source
-        antialiasing: false
-        smooth: false
+        source: control.source.startsWith("qrc:") ? control.source
+                                                  : "qrc:/images/sidebar/dark/" + control.source
+        // The sidebar's own glyphs are white already; FishUI's shared ones need tinting.
+        color: "white"
     }
 }

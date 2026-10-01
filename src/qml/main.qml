@@ -246,12 +246,25 @@ FishUI.Window {
 
     function switchPageFromName(pageName) {
         // Hardware entries may join the sidebar after the request arrives.
-        pendingPageName = pageName === "bluetooth" || pageName === "ethernet" || pageName === "hotspot" ? pageName : ""
+        pendingPageName = pageName === "bluetooth" || pageName === "ethernet" ? pageName : ""
         for (var i = 0; i < sideBar.model.count; ++i) {
             if (pageName === sideBar.model.get(i).name) {
                 switchPageFromIndex(i)
             }
         }
+
+        // A sub page opens under its sidebar page, as if reached from there.
+        sideBar.subPages.forEach(function(subPage) {
+            if (subPage.name !== pageName)
+                return
+            for (var j = 0; j < sideBar.model.count; ++j) {
+                var parentPage = sideBar.model.get(j)
+                if (parentPage.name === subPage.parentName) {
+                    pendingPageName = ""
+                    navigate(subPage.page, parentPage.page, {})
+                }
+            }
+        })
 
         // If the window is minimized, it needs to be displayed again.
         rootWindow.show()

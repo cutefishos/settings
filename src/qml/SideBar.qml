@@ -28,15 +28,6 @@ Item {
     // Entries that come and go with the hardware, in sidebar order.
     readonly property var hardwareItems: [
         {
-            title: qsTr("Hotspot"),
-            name: "hotspot",
-            page: "qrc:/qml/Hotspot/Main.qml",
-            iconSource: "qrc:/fishui/kit/images/icons/network-wireless-hotspot.svg",
-            iconColor: "#0067FF",
-            category: qsTr("Network"),
-            keywords: qsTr("tethering, share internet, access point, Wi-Fi, wireless")
-        },
-        {
             title: qsTr("Ethernet"),
             name: "ethernet",
             page: "qrc:/qml/Wired/Main.qml",
@@ -58,6 +49,25 @@ Item {
 
     // Pages opened from inside a sidebar page; search lists them after it.
     readonly property var subPages: [
+        {
+            title: qsTr("VPN"),
+            name: "vpn",
+            page: "qrc:/qml/VPN/Main.qml",
+            parentName: "network",
+            iconSource: "qrc:/fishui/kit/images/icons/network-vpn.svg",
+            iconColor: "#48484C",
+            keywords: qsTr("VPN, WireGuard, OpenVPN, tunnel, network")
+        },
+        {
+            title: qsTr("Hotspot"),
+            name: "hotspot",
+            page: "qrc:/qml/Hotspot/Main.qml",
+            parentName: "network",
+            iconSource: "qrc:/fishui/kit/images/icons/network-wireless-hotspot.svg",
+            iconColor: "#2EBC6B",
+            keywords: qsTr("tethering, share internet, access point, Wi-Fi, wireless"),
+            available: hotspotHandler.hotspotCapable
+        },
         {
             title: qsTr("Fonts"),
             page: "qrc:/qml/Appearance/Fonts.qml",
@@ -101,14 +111,13 @@ Item {
     ]
 
     Component.onCompleted: {
-        syncHotspotItem()
         syncEthernetItem()
         syncBluetoothItem()
     }
 
+    // Search offers the Hotspot page only where the Network page shows it.
     NM.Handler {
         id: hotspotHandler
-        onHotspotSupportedChanged: Qt.callLater(sideBar.syncHotspotItem)
     }
 
     Connections {
@@ -139,10 +148,6 @@ Item {
     }
 
     // Separate functions: Qt.callLater folds calls to one function into one.
-    function syncHotspotItem() {
-        syncItem("hotspot", hotspotHandler.hotspotCapable)
-    }
-
     function syncEthernetItem() {
         syncItem("ethernet", wiredConnections.count > 0)
     }
@@ -219,13 +224,13 @@ Item {
         }
 
         ListElement {
-            title: qsTr("VPN")
-            name: "vpn"
-            page: "qrc:/qml/VPN/Main.qml"
-            iconSource: "qrc:/fishui/kit/images/icons/network-vpn.svg"
+            title: qsTr("Network")
+            name: "network"
+            page: "qrc:/qml/Network/Main.qml"
+            iconSource: "globe.svg"
             iconColor: "#0067FF"
             category: qsTr("Network")
-            keywords: qsTr("VPN, WireGuard, OpenVPN, tunnel, network")
+            keywords: qsTr("VPN, hotspot, tethering, internet")
         }
 
         ListElement {
@@ -482,7 +487,7 @@ Item {
                 })
             }
             subPages.forEach(function(subPage) {
-                if (subPage.parentName !== item.name
+                if (subPage.parentName !== item.name || subPage.available === false
                         || !matches([subPage.title, item.title, item.category, subPage.keywords]))
                     return
                 results.push({
