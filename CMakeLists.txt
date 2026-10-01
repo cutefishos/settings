@@ -14,7 +14,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-set(QT Core Gui Widgets Quick QuickControls2 DBus Xml Concurrent LinguistTools)
+set(QT Core Gui Quick QuickControls2 DBus Xml Concurrent LinguistTools)
 find_package(Qt6 REQUIRED ${QT})
 find_package(Freetype REQUIRED)
 find_package(PkgConfig REQUIRED)
@@ -78,7 +78,6 @@ target_link_libraries(${PROJECT_NAME}
         Cutefish::IO
         Cutefish::Power
         Qt6::Core
-        Qt6::Widgets
         Qt6::Quick
         Qt6::QuickControls2
         Qt6::DBus

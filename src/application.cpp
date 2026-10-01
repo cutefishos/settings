@@ -45,7 +45,7 @@ static QObject *passwordSingleton(QQmlEngine *engine, QJSEngine *scriptEngine)
 }
 
 Application::Application(int &argc, char **argv)
-    : QApplication(argc, argv)
+    : QGuiApplication(argc, argv)
 {
     Cutefish::Application::prepare();
     setWindowIcon(QIcon::fromTheme("preferences-system"));
@@ -112,9 +112,9 @@ Application::Application(int &argc, char **argv)
                                  .arg("/usr/share/cutefish-settings/translations/")
                                  .arg(locale.name());
     if (QFile::exists(qmFilePath)) {
-        QTranslator *translator = new QTranslator(QApplication::instance());
+        QTranslator *translator = new QTranslator(QGuiApplication::instance());
         if (translator->load(qmFilePath)) {
-            QApplication::installTranslator(translator);
+            QGuiApplication::installTranslator(translator);
         } else {
             translator->deleteLater();
         }
@@ -127,7 +127,7 @@ Application::Application(int &argc, char **argv)
         switchToPage(module);
     }
 
-    QApplication::exec();
+    QGuiApplication::exec();
 }
 
 void Application::switchToPage(const QString &name)
