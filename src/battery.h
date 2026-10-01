@@ -5,11 +5,15 @@
 #define BATTERY_H
 
 #include <QObject>
-#include <QDBusInterface>
+#include <QVariantMap>
 
+class BatteryStatus;
+
+// The battery page's view of cutefish-services' battery, plus UPower's charge limit.
 class Battery : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(bool ready READ ready NOTIFY readyChanged)
     Q_PROPERTY(bool available READ available NOTIFY validChanged)
     Q_PROPERTY(int chargeState READ chargeState NOTIFY chargeStateChanged)
     Q_PROPERTY(int chargePercent READ chargePercent NOTIFY chargePercentChanged)
@@ -29,11 +33,9 @@ class Battery : public QObject
 public:
     explicit Battery(QObject *parent = nullptr);
 
+    bool ready() const;
     bool available() const;
     bool onBattery() const;
-
-    Q_INVOKABLE void refresh();
-    Q_INVOKABLE QVariantList getHistory(const int timespan, const int resolution);
 
     int chargeState() const;
     int chargePercent() const;
@@ -58,25 +60,24 @@ public:
     QString udi() const;
 
 signals:
+    void readyChanged();
     void validChanged();
-    void chargeStateChanged(int);
-    void chargePercentChanged(int);
-    void capacityChanged(int);
-    void remainingTimeChanged(qlonglong time);
+    void chargeStateChanged();
+    void chargePercentChanged();
+    void capacityChanged();
+    void remainingTimeChanged();
     void onBatteryChanged();
     void lastChargedPercentChanged();
     void udiChanged();
     void chargeLimitChanged();
 
 private slots:
-    void onPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps);
     void onDevicePropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps);
 
 private:
-    QDBusInterface m_upowerInterface;
-    QDBusInterface m_interface;
-    bool m_available;
-    bool m_onBattery;
+    void watchDevice();
+
+    BatteryStatus *m_status;
     QString m_udi;
 
     bool m_chargeLimitSupported = false;

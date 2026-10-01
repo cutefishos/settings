@@ -3,11 +3,11 @@
 
 #include "battery.h"
 #include <QCoreApplication>
-#include <QDBusArgument>
+#include <QDBusConnection>
+#include <QDBusInterface>
 #include <QDBusMessage>
 #include <QDBusPendingCallWatcher>
 #include <QDBusPendingReply>
-#include <QDBusReply>
 #include <QDateTime>
 #include <QDebug>
 #include <QFile>
@@ -15,52 +15,19 @@
 #include <QSettings>
 #include <QTimer>
 
+#include <batterystatus.h>
 #include <preferences.h>
-
-static const QString s_sServer = "com.cutefish.Services";
-static const QString s_sPath = "/com/cutefish/Services/Battery";
-static const QString s_sInterface = "com.cutefish.Services.Battery";
 
 static bool mockBatteryEnabled()
 {
     return QCoreApplication::arguments().contains(QStringLiteral("--mock-battery"));
 }
 
-// DBus Battery Info Structure
-struct BatteryInfo {
-    uint time, state;
-    double value;
-};
-Q_DECLARE_METATYPE(BatteryInfo)
-
-const QDBusArgument &operator<<(QDBusArgument &argument, const BatteryInfo &info)
-{
-    argument.beginStructure();
-    argument << info.time << info.value << info.state;
-    argument.endStructure();
-    return argument;
-}
-
-const QDBusArgument &operator>>(const QDBusArgument &argument, BatteryInfo &info)
-{
-    argument.beginStructure();
-    argument >> info.time >> info.value >> info.state;
-    argument.endStructure();
-    return argument;
-}
-
 Battery::Battery(QObject *parent)
     : QObject(parent)
-    , m_upowerInterface("org.freedesktop.UPower", "/org/freedesktop/UPower",
-                        "org.freedesktop.UPower", QDBusConnection::systemBus())
-    , m_interface("com.cutefish.Services", "/com/cutefish/Services/Battery",
-                  "com.cutefish.Services.Battery", QDBusConnection::sessionBus())
-    , m_available(false)
-    , m_onBattery(false)
+    , m_status(BatteryStatus::instance())
 {
     if (mockBatteryEnabled()) {
-        m_available = true;
-        m_onBattery = true;
         m_udi = QStringLiteral("mock-battery");
         m_chargeLimitSupported = true;
         m_chargeLimitStart = 75;
@@ -68,100 +35,56 @@ Battery::Battery(QObject *parent)
         return;
     }
 
-    m_available = m_interface.isValid() && !m_interface.lastError().isValid();
+    connect(m_status, &BatteryStatus::readyChanged, this, &Battery::readyChanged);
+    connect(m_status, &BatteryStatus::availableChanged, this, &Battery::validChanged);
+    connect(m_status, &BatteryStatus::onBatteryChanged, this, &Battery::onBatteryChanged);
+    connect(m_status, &BatteryStatus::chargeStateChanged, this, &Battery::chargeStateChanged);
+    connect(m_status, &BatteryStatus::chargePercentChanged, this, &Battery::chargePercentChanged);
+    connect(m_status, &BatteryStatus::capacityChanged, this, &Battery::capacityChanged);
+    connect(m_status, &BatteryStatus::statusStringChanged, this, &Battery::remainingTimeChanged);
+    connect(m_status, &BatteryStatus::lastChargedChanged, this,
+            &Battery::lastChargedPercentChanged);
+    connect(m_status, &BatteryStatus::udiChanged, this, &Battery::watchDevice);
 
-    if (m_available) {
-        QDBusConnection::sessionBus().connect(s_sServer, s_sPath, s_sInterface,
-                                              "chargeStateChanged", this,
-                                              SLOT(chargeStateChanged(int)));
-        QDBusConnection::sessionBus().connect(s_sServer, s_sPath, s_sInterface,
-                                              "chargePercentChanged", this,
-                                              SLOT(chargePercentChanged(int)));
-        QDBusConnection::sessionBus().connect(s_sServer, s_sPath, s_sInterface,
-                                              "lastChargedPercentChanged", this,
-                                              SLOT(lastChargedPercentChanged()));
-        QDBusConnection::sessionBus().connect(s_sServer, s_sPath, s_sInterface, "capacityChanged",
-                                              this, SLOT(capacityChanged(int)));
-        QDBusConnection::sessionBus().connect(s_sServer, s_sPath, s_sInterface,
-                                              "remainingTimeChanged", this,
-                                              SLOT(remainingTimeChanged(qlonglong)));
+    watchDevice();
+}
 
-        QDBusInterface interface("org.freedesktop.UPower", "/org/freedesktop/UPower",
-                                 "org.freedesktop.UPower", QDBusConnection::systemBus());
+void Battery::watchDevice()
+{
+    if (m_status->udi() == m_udi)
+        return;
 
-        QDBusConnection::systemBus().connect(
-                "org.freedesktop.UPower", "/org/freedesktop/UPower",
-                "org.freedesktop.DBus.Properties", "PropertiesChanged", this,
-                SLOT(onPropertiesChanged(QString, QVariantMap, QStringList)));
+    QDBusConnection bus = QDBusConnection::systemBus();
+    if (!m_udi.isEmpty())
+        bus.disconnect("org.freedesktop.UPower", m_udi, "org.freedesktop.DBus.Properties",
+                       "PropertiesChanged", this,
+                       SLOT(onDevicePropertiesChanged(QString, QVariantMap, QStringList)));
 
-        if (interface.isValid()) {
-            m_onBattery = interface.property("OnBattery").toBool();
-        }
+    m_udi = m_status->udi();
 
-        m_udi = m_interface.property("udi").toString();
-
-        if (!m_udi.isEmpty()) {
-            QDBusConnection::systemBus().connect(
-                    "org.freedesktop.UPower", m_udi, "org.freedesktop.DBus.Properties",
+    if (!m_udi.isEmpty()) {
+        bus.connect("org.freedesktop.UPower", m_udi, "org.freedesktop.DBus.Properties",
                     "PropertiesChanged", this,
                     SLOT(onDevicePropertiesChanged(QString, QVariantMap, QStringList)));
-            loadChargeLimit();
-        }
-
-        emit udiChanged();
-        emit validChanged();
+        loadChargeLimit();
     }
+
+    emit udiChanged();
+}
+
+bool Battery::ready() const
+{
+    return mockBatteryEnabled() || m_status->ready();
 }
 
 bool Battery::available() const
 {
-    return m_available;
+    return mockBatteryEnabled() || m_status->available();
 }
 
 bool Battery::onBattery() const
 {
-    return m_onBattery;
-}
-
-void Battery::refresh()
-{
-    if (mockBatteryEnabled())
-        return;
-
-    m_interface.call("refresh");
-}
-
-QVariantList Battery::getHistory(const int timespan, const int resolution)
-{
-    QVariantList listValues;
-    QVariantMap listItem;
-
-    QDBusMessage historyMessage = QDBusMessage::createMethodCall(
-            "org.freedesktop.UPower", m_udi, "org.freedesktop.UPower.Device", "GetHistory");
-    QVariantList historyMessageArguments;
-    historyMessageArguments.append("charge");
-    historyMessageArguments.append((uint)timespan);
-    historyMessageArguments.append((uint)resolution);
-    historyMessage.setArguments(historyMessageArguments);
-
-    quint64 offset = QDateTime::currentDateTime().toSecsSinceEpoch();
-
-    QDBusReply<QDBusArgument> historyArgument = QDBusConnection::systemBus().call(historyMessage);
-    if (historyArgument.isValid()) {
-        QDBusArgument arrayArgument = historyArgument.value();
-        arrayArgument.beginArray();
-        while (!arrayArgument.atEnd()) {
-            BatteryInfo info;
-            arrayArgument >> info;
-            listItem.insert("time", offset - info.time);
-            listItem.insert("value", info.value);
-
-            if (info.value > 0)
-                listValues += listItem;
-        }
-    }
-
-    return listValues;
+    return mockBatteryEnabled() || m_status->onBattery();
 }
 
 int Battery::chargeState() const
@@ -169,7 +92,7 @@ int Battery::chargeState() const
     if (mockBatteryEnabled())
         return 2;
 
-    return m_interface.property("chargeState").toInt();
+    return m_status->chargeState();
 }
 
 int Battery::chargePercent() const
@@ -177,7 +100,7 @@ int Battery::chargePercent() const
     if (mockBatteryEnabled())
         return 78;
 
-    return m_interface.property("chargePercent").toInt();
+    return m_status->chargePercent();
 }
 
 int Battery::lastChargedPercent() const
@@ -185,7 +108,7 @@ int Battery::lastChargedPercent() const
     if (mockBatteryEnabled())
         return 100;
 
-    return m_interface.property("lastChargedPercent").toInt();
+    return m_status->lastChargedPercent();
 }
 
 int Battery::capacity() const
@@ -193,7 +116,7 @@ int Battery::capacity() const
     if (mockBatteryEnabled())
         return 94;
 
-    return m_interface.property("capacity").toInt();
+    return m_status->capacity();
 }
 
 QString Battery::statusString() const
@@ -201,13 +124,13 @@ QString Battery::statusString() const
     if (mockBatteryEnabled())
         return tr("Discharging · 3 hours 24 minutes remaining");
 
-    return m_interface.property("statusString").toString();
+    return m_status->statusString();
 }
 
 QString Battery::lastChargedTime() const
 {
     const qint64 secs = mockBatteryEnabled() ? QDateTime::currentSecsSinceEpoch() - 2 * 3600
-                                             : m_interface.property("lastChargedSecs").toLongLong();
+                                             : m_status->lastChargedSecs();
 
     if (secs <= 0)
         return QString();
@@ -367,21 +290,6 @@ void Battery::updateChargeLimit(const QVariantMap &props)
     // without UPower or the kernel announcing it.
     if (turnedOn)
         QTimer::singleShot(5000, this, &Battery::readKernelChargeLimit);
-}
-
-void Battery::onPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps,
-                                  const QStringList &invalidatedProps)
-{
-    Q_UNUSED(ifaceName);
-    Q_UNUSED(changedProps);
-    Q_UNUSED(invalidatedProps);
-
-    bool onBattery = m_upowerInterface.property("OnBattery").toBool();
-    if (onBattery != m_onBattery) {
-        m_onBattery = onBattery;
-        m_interface.call("refresh");
-        emit onBatteryChanged();
-    }
 }
 
 void Battery::onDevicePropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps,

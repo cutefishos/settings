@@ -22,7 +22,7 @@ pkg_check_modules(Xcursor REQUIRED IMPORTED_TARGET xcursor)
 find_package(Libcrypt REQUIRED)
 
 
-find_package(CutefishFramework REQUIRED COMPONENTS Application Appearance IO)
+find_package(CutefishFramework REQUIRED COMPONENTS Application Appearance IO Power)
 
 pkg_search_module(FontConfig REQUIRED fontconfig IMPORTED_TARGET)
 pkg_search_module(ICU REQUIRED icu-i18n)
@@ -56,7 +56,6 @@ set(SRCS
     src/shortcuts/shortcutsmodel.cpp
     src/networkproxy.cpp
     src/defaultapplications.cpp
-    src/mimeapps.cpp
     src/inputmethod.cpp
     src/keyboard.cpp
     src/mock/networkmockmodel.cpp
@@ -77,6 +76,7 @@ target_link_libraries(${PROJECT_NAME}
         Cutefish::Application
         Cutefish::Appearance
         Cutefish::IO
+        Cutefish::Power
         Qt6::Core
         Qt6::Widgets
         Qt6::Quick

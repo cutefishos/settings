@@ -46,8 +46,6 @@ public:
 
 private:
     void setDefaultApp(const QString &mimeType, const QString &path);
-    QString mimeAppsListFilePath() const;
-    QString terminalsListFilePath() const;
 
 signals:
     void loadFinished();

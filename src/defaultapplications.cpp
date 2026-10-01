@@ -8,7 +8,6 @@
 
 #include <QDebug>
 #include <QFileInfo>
-#include <QStandardPaths>
 
 DefaultApplications::DefaultApplications(QObject *parent)
     : QObject(parent)
@@ -50,12 +49,12 @@ void DefaultApplications::loadApps()
     }
 
     const QString defaultBrowser =
-            MimeApps::associations(mimeAppsListFilePath(), "Default Applications",
+            MimeApps::associations(MimeApps::userListPath(), "Default Applications",
                                    "x-scheme-handler/http").value(0);
     const QString defaultEMail =
-            MimeApps::associations(mimeAppsListFilePath(), "Default Applications",
+            MimeApps::associations(MimeApps::userListPath(), "Default Applications",
                                    "x-scheme-handler/mailto").value(0);
-    const QString defaultTerminal = MimeApps::defaultTerminal(terminalsListFilePath());
+    const QString defaultTerminal = MimeApps::defaultTerminal(MimeApps::userTerminalsListPath());
 
     // Init indexes.
     for (int i = 0; i < m_browserList.size(); ++i) {
@@ -168,7 +167,8 @@ void DefaultApplications::setDefaultTerminal(int index)
     if (index < 0 || index >= m_terminalList.size())
         return;
 
-    if (!MimeApps::setDefaultTerminal(terminalsListFilePath(), m_terminalList.at(index).fileName)) {
+    if (!MimeApps::setDefaultTerminal(MimeApps::userTerminalsListPath(),
+                                      m_terminalList.at(index).fileName)) {
         qWarning() << "Failed to save the default terminal";
         return;
     }
@@ -177,21 +177,9 @@ void DefaultApplications::setDefaultTerminal(int index)
 
 void DefaultApplications::setDefaultApp(const QString &mimeType, const QString &path)
 {
-    if (!MimeApps::setDefault(mimeAppsListFilePath(), mimeType, path)) {
+    if (!MimeApps::setDefault(MimeApps::userListPath(), mimeType, path)) {
         qWarning() << "Failed to save default application for" << mimeType;
         return;
     }
     loadApps();
-}
-
-QString DefaultApplications::mimeAppsListFilePath() const
-{
-    return QStandardPaths::writableLocation(QStandardPaths::ConfigLocation)
-            + QLatin1String("/mimeapps.list");
-}
-
-QString DefaultApplications::terminalsListFilePath() const
-{
-    return QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation)
-            + QLatin1String("/xdg-terminals.list");
 }

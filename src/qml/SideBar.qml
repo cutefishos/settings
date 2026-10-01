@@ -896,10 +896,14 @@ Item {
     Battery {
         id: _battery
 
-        Component.onCompleted: {
-            if (!_battery.available)
+        // The service is read in the background; until then there is no battery either way.
+        function syncBattery() {
+            if (ready && !available)
                 removeItem("battery")
         }
+
+        onReadyChanged: syncBattery()
+        Component.onCompleted: syncBattery()
     }
 
     Touchpad {
