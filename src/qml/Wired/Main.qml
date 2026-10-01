@@ -41,10 +41,6 @@ ItemPage {
         id: wifiSettings
     }
 
-    NM.NetworkModel {
-        id: networkModel
-    }
-
     NetworkMockModel {
         id: mockNetworkModel
     }
@@ -53,7 +49,7 @@ ItemPage {
         id: enabledConnections
     }
 
-    NM.IdentityModel {
+    NM.NetworkModel {
         id: connectionModel
     }
 

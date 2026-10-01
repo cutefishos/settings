@@ -42,10 +42,6 @@ ItemPage {
         id: wifiSettings
     }
 
-    NM.NetworkModel {
-        id: networkModel
-    }
-
     NetworkMockModel {
         id: mockNetworkModel
     }
@@ -54,7 +50,7 @@ ItemPage {
         id: enabledConnections
     }
 
-    NM.IdentityModel {
+    NM.NetworkModel {
         id: connectionModel
     }
 
@@ -100,7 +96,7 @@ ItemPage {
             }
 
             // Hotspot
-            // 还未完善
+            // Not finished yet.
 //            RoundedItem {
 //                id: hotspotItem
 //                visible: handler.hotspotSupported

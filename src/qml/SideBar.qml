@@ -898,10 +898,14 @@ Item {
     NM.EnabledConnections {
         id: nmEnabledConnections
 
-        Component.onCompleted: {
-            if (!nmEnabledConnections.wirelessHwEnabled && !rootWindow.mockNetworkData)
+        // NetworkManager is read in the background; until then every switch reads off.
+        function syncWireless() {
+            if (ready && !wirelessHwEnabled && !rootWindow.mockNetworkData)
                 removeItem("wlan")
         }
+
+        onReadyChanged: syncWireless()
+        Component.onCompleted: syncWireless()
     }
 
     Battery {

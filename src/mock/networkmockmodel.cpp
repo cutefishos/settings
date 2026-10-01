@@ -10,8 +10,8 @@ constexpr int availableAccessPoint = 2;
 constexpr int wiredType = 13;
 constexpr int wirelessType = 14;
 constexpr int noSecurity = 0;
-constexpr int wpa2Psk = 7;
-constexpr int sae = 9;
+constexpr int wpa2Psk = 6;
+constexpr int sae = 8;
 }
 
 NetworkMockModel::NetworkMockModel(QObject *parent)
