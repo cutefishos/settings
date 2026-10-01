@@ -80,6 +80,32 @@ ColumnLayout {
                 Component.onDestruction: _contentLayout.recountActivating()
             }
         }
+
+        // The adapter serves the hotspot instead of joining networks, so there is nothing to list.
+        ListRow {
+            visible: handler.hotspotActive
+            text: configuration.hotspotName
+            onClicked: rootWindow.switchPageFromName("hotspot")
+
+            leading: FishUI.Icon {
+                width: 18
+                height: width
+                name: "network-wireless-hotspot"
+            }
+
+            FishUI.Label {
+                text: qsTr("Hotspot")
+                color: FishUI.Theme.disabledTextColor
+            }
+
+            FishUI.Icon {
+                width: 16
+                height: width
+                Layout.rightMargin: Metrics.trailingGlyphMargin(name, width)
+                name: "chevron-right"
+                color: FishUI.Theme.disabledTextColor
+            }
+        }
     }
 
     NM.AppletProxyModel {
@@ -89,6 +115,7 @@ ColumnLayout {
     }
 
     WifiSection {
+        visible: !handler.hotspotActive && (shown > 0 || footerText.length > 0)
         title: qsTr("Known Networks")
         model: wirelessModel
         displayedState: _contentLayout.displayedState
@@ -99,6 +126,7 @@ ColumnLayout {
     }
 
     WifiSection {
+        visible: !handler.hotspotActive && (shown > 0 || footerText.length > 0)
         title: qsTr("Other Networks")
         model: wirelessModel
         displayedState: _contentLayout.displayedState

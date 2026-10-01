@@ -246,7 +246,7 @@ FishUI.Window {
 
     function switchPageFromName(pageName) {
         // Hardware entries may join the sidebar after the request arrives.
-        pendingPageName = pageName === "bluetooth" || pageName === "ethernet" ? pageName : ""
+        pendingPageName = pageName === "bluetooth" || pageName === "ethernet" || pageName === "hotspot" ? pageName : ""
         for (var i = 0; i < sideBar.model.count; ++i) {
             if (pageName === sideBar.model.get(i).name) {
                 switchPageFromIndex(i)

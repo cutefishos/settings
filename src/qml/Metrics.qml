@@ -54,7 +54,7 @@ QtObject {
 
     // How far each trailing glyph's drawing stops short of its box's end, as a share of the box.
     readonly property var glyphEndInsets: ({ "check": 1 / 6, "info": 1 / 8, "chevron-right": 5 / 16,
-                                             "chevron-down": 3 / 16, "chevron-up": 3 / 16 })
+                                             "chevron-down": 3 / 16, "chevron-up": 3 / 16, "refresh": 1 / 6 })
     //! A row's last glyph takes this margin so its drawing, not its box, ends where a switch does.
     function trailingGlyphMargin(name, boxWidth, padding) {
         return -Math.round((glyphEndInsets[name] || 0) * boxWidth + (padding || 0))

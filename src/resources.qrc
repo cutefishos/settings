@@ -88,7 +88,6 @@
         <file>qml/Bluetooth/Main.qml</file>
         <file>qml/StandardButton.qml</file>
         <file>qml/Hotspot/Main.qml</file>
-        <file>images/sidebar/dark/hotspot.svg</file>
         <file>qml/Application/Main.qml</file>
         <file>qml/Cursor/Main.qml</file>
         <file>qml/Keyboard/Main.qml</file>

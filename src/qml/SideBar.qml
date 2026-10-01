@@ -28,6 +28,15 @@ Item {
     // Entries that come and go with the hardware, in sidebar order.
     readonly property var hardwareItems: [
         {
+            title: qsTr("Hotspot"),
+            name: "hotspot",
+            page: "qrc:/qml/Hotspot/Main.qml",
+            iconSource: "qrc:/fishui/kit/images/icons/network-wireless-hotspot.svg",
+            iconColor: "#0067FF",
+            category: qsTr("Network"),
+            keywords: qsTr("tethering, share internet, access point, Wi-Fi, wireless")
+        },
+        {
             title: qsTr("Ethernet"),
             name: "ethernet",
             page: "qrc:/qml/Wired/Main.qml",
@@ -92,8 +101,14 @@ Item {
     ]
 
     Component.onCompleted: {
+        syncHotspotItem()
         syncEthernetItem()
         syncBluetoothItem()
+    }
+
+    NM.Handler {
+        id: hotspotHandler
+        onHotspotSupportedChanged: Qt.callLater(sideBar.syncHotspotItem)
     }
 
     Connections {
@@ -124,6 +139,10 @@ Item {
     }
 
     // Separate functions: Qt.callLater folds calls to one function into one.
+    function syncHotspotItem() {
+        syncItem("hotspot", hotspotHandler.hotspotCapable)
+    }
+
     function syncEthernetItem() {
         syncItem("ethernet", wiredConnections.count > 0)
     }
@@ -196,17 +215,8 @@ Item {
             iconSource: "qrc:/fishui/kit/images/icons/network-wireless-connected-100.svg"
             iconColor: "#0067FF"
             category: qsTr("Network")
-            keywords: qsTr("wireless, WLAN, network, internet, password, hotspot, DNS, IP address")
+            keywords: qsTr("wireless, WLAN, network, internet, password, DNS, IP address")
         }
-
-//        ListElement {
-//            title: qsTr("Hotspot")
-//            name: "hotspot"
-//            page: "qrc:/qml/Hotspot/Main.qml"
-//            iconSource: "hotspot.svg"
-//            iconColor: "#0067FF"
-//            category: qsTr("Network")
-//        }
 
         ListElement {
             title: qsTr("VPN")

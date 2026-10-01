@@ -78,54 +78,6 @@ ItemPage {
                 visible: enabledConnections.wirelessHwEnabled || rootWindow.mockNetworkData
                 sourceModel: rootWindow.mockNetworkData ? mockNetworkModel : connectionModel
             }
-
-            // Hotspot
-            // Not finished yet.
-//            RoundedItem {
-//                id: hotspotItem
-//                visible: handler.hotspotSupported
-
-//                RowLayout {
-//                    Label {
-//                        text: qsTr("Hotspot")
-//                        color: FishUI.Theme.disabledTextColor
-//                    }
-
-//                    Item {
-//                        Layout.fillWidth: true
-//                    }
-
-//                    Switch {
-//                        Layout.fillHeight: true
-//                        rightPadding: 0
-
-//                        onToggled: {
-//                            if (checked) {
-//                                handler.createHotspot()
-//                            } else {
-//                                handler.stopHotspot()
-//                            }
-//                        }
-//                    }
-//                }
-
-//                Item {
-//                    height: FishUI.Units.largeSpacing
-//                }
-
-//                TextField {
-//                    id: ssidName
-//                    text: configuration.hotspotName
-//                    placeholderText: qsTr("SSID")
-//                }
-
-//                TextField {
-//                    id: hotspotPassword
-//                    placeholderText: qsTr("Password")
-//                    text: configuration.hotspotPassword
-//                }
-//            }
-
         }
     }
 }
