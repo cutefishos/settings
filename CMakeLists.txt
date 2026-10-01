@@ -54,10 +54,6 @@ set(SRCS
     src/touchpad.cpp
     src/touchscreen.cpp
     src/shortcuts/shortcutsmodel.cpp
-    src/vpn/vpn.cpp
-    src/vpn/nm-l2tp-service.h
-    src/vpn/nm-openvpn-service.h
-    src/vpn/nm-pptp-service.h
     src/networkproxy.cpp
     src/defaultapplications.cpp
     src/mimeapps.cpp

@@ -224,14 +224,15 @@ Item {
 //            category: qsTr("Network")
 //        }
 
-//        ListElement {
-//            title: qsTr("VPN")
-//            name: "vpn"
-//            page: "qrc:/qml/VPN/Main.qml"
-//            iconSource: "bluetooth.svg"
-//            iconColor: "#0067FF"
-//            category: qsTr("Network")
-//        }
+        ListElement {
+            title: qsTr("VPN")
+            name: "vpn"
+            page: "qrc:/qml/VPN/Main.qml"
+            iconSource: "qrc:/fishui/kit/images/icons/network-vpn.svg"
+            iconColor: "#0067FF"
+            category: qsTr("Network")
+            keywords: qsTr("VPN, WireGuard, OpenVPN, tunnel, network")
+        }
 
         ListElement {
             title: qsTr("Proxy")

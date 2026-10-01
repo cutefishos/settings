@@ -1,39 +1,60 @@
-/*
- * Copyright (C) 2021 CutefishOS Team.
- *
- * Author:     revenmartin <revenmartin@gmail.com>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Dialogs
+import QtQuick.Layouts
 import FishUI 1.0 as FishUI
 import Cutefish.Settings 1.0
+import Cutefish.Network 1.0 as NM
 import "../"
 
+// The VPNs set up on this machine, each with its own switch, and ways to add one: by
+// hand, or from the configuration file a VPN provider hands out.
 ItemPage {
+    id: control
     headerTitle: qsTr("VPN")
 
-    property bool vpnConnected: false
+    property bool importing: false
+    property string importError
 
-    function switchVPN(enabled) {
-        if (enabled) {
-            vpnConnected = true
-        } else {
-            vpnConnected = false
+    NM.Handler {
+        id: handler
+
+        onVpnAdded: {
+            control.importing = false
+            control.importError = ""
+        }
+        onVpnAddFailed: (message) => {
+            // The Add VPN dialog shows its own failures.
+            if (!control.importing)
+                return
+            control.importing = false
+            control.importError = message
+        }
+    }
+
+    AddVpnDialog {
+        id: addDialog
+        handler: handler
+    }
+
+    NM.NetworkModel {
+        id: networkModel
+    }
+
+    NM.AppletProxyModel {
+        id: vpnModel
+        type: NM.AppletProxyModel.VpnType
+        sourceModel: networkModel
+    }
+
+    FileDialog {
+        id: fileDialog
+        title: qsTr("Import VPN Configuration")
+        nameFilters: [qsTr("VPN configurations (*.ovpn *.conf *.pcf)"), qsTr("All files (*)")]
+        onAccepted: {
+            control.importing = true
+            control.importError = ""
+            handler.importVpn(selectedFile)
         }
     }
 
@@ -44,32 +65,39 @@ ItemPage {
         ColumnLayout {
             id: layout
             anchors.fill: parent
-            spacing: Metrics.sectionSpacing
+            spacing: Metrics.sectionLabelSpacing
 
-            RoundedItem {
-                id: mainItem
+            ListCard {
+                Repeater {
+                    model: vpnModel
+                    delegate: VpnItem {}
+                }
 
-                RowLayout {
-                    spacing: Metrics.rowSpacing
+                // Declared after the Repeater, which inserts its rows before itself.
+                ListRow {
+                    text: qsTr("Add VPN…")
+                    enabled: !control.importing
+                    onClicked: addDialog.show()
+                }
 
-                    FishUI.Label {
-                        text: qsTr("VPN")
-                        color: FishUI.Theme.disabledTextColor
-                    }
-
-                    Item {
-                        Layout.fillWidth: true
-                    }
-
-                    FishUI.Switch {
-                        id: vpnSwitch
-                        Layout.fillHeight: true
-                        rightPadding: 0
-                        onCheckedChanged: {}
-                    }
+                ListRow {
+                    text: control.importing ? qsTr("Importing…") : qsTr("Import from File…")
+                    enabled: !control.importing
+                    onClicked: fileDialog.open()
                 }
             }
 
+            FishUI.Label {
+                Layout.fillWidth: true
+                Layout.leftMargin: Metrics.cardHorizontalPadding
+                Layout.rightMargin: Metrics.cardHorizontalPadding
+                text: control.importError.length > 0
+                      ? control.importError
+                      : qsTr("Import the configuration file your VPN provider gives you, such as an OpenVPN .ovpn or a WireGuard .conf file.")
+                textFormat: Text.PlainText
+                color: control.importError.length > 0 ? FishUI.Theme.redColor : FishUI.Theme.disabledTextColor
+                wrapMode: Text.Wrap
+            }
         }
     }
 }
