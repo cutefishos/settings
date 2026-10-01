@@ -12,8 +12,26 @@ import "../"
 ItemPage {
     headerTitle: qsTr("Display")
 
+    // A time of day, in half-hour steps; a time set some other way shows as the nearest.
+    component TimeComboBox: FishUI.ComboBox {
+        // Minutes after midnight.
+        property int minutes
+        signal picked(int minutes)
+        readonly property var steps: Array.from({length: 48}, (_, index) => index * 30)
+
+        Layout.preferredWidth: Math.round(parent.width / 2)
+        model: steps.map(step => new Date(2000, 0, 1, Math.floor(step / 60), step % 60)
+                                 .toLocaleTimeString(Qt.locale(), Locale.ShortFormat))
+        currentIndex: Math.round(minutes / 30) % steps.length
+        onActivated: picked(steps[currentIndex])
+    }
+
     CS.Screen {
         id: screen
+    }
+
+    CS.NightLight {
+        id: nightLight
     }
 
     Scrollable {
@@ -296,6 +314,81 @@ ItemPage {
                 text: qsTr("Identify Displays")
                 enabled: screen.available
                 onClicked: screen.identify()
+            }
+
+            ListCard {
+                visible: nightLight.available
+                enabled: nightLight.loaded
+
+                ListRow {
+                    interactive: false
+                    text: qsTr("Night Light")
+
+                    FishUI.Switch {
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                        rightPadding: 0
+                        rightInset: 0
+                        checked: nightLight.enabled
+                        onToggled: nightLight.enabled = checked
+                    }
+                }
+
+                Timer {
+                    id: temperatureTimer
+                    property real pending
+                    interval: 100
+                    onTriggered: nightLight.temperature = pending
+                }
+
+                SliderRow {
+                    text: qsTr("Color Temperature")
+                    leftText: qsTr("Less Warm")
+                    rightText: qsTr("More Warm")
+                    from: 0
+                    to: 1
+                    value: nightLight.temperature
+                    onMoved: (newValue) => {
+                        temperatureTimer.pending = newValue
+                        temperatureTimer.start()
+                    }
+                }
+
+                ListRow {
+                    interactive: false
+                    minimumRowHeight: Metrics.controlRowHeight
+                    text: qsTr("Schedule")
+
+                    FishUI.ComboBox {
+                        Layout.preferredWidth: Math.round(parent.width / 2)
+                        model: [qsTr("Never"), qsTr("Sunset to Sunrise"), qsTr("Custom")]
+                        currentIndex: nightLight.schedule
+                        onActivated: nightLight.schedule = currentIndex
+                    }
+                }
+
+                ListRow {
+                    interactive: false
+                    minimumRowHeight: Metrics.controlRowHeight
+                    visible: nightLight.schedule === CS.NightLight.Custom
+                    text: qsTr("From")
+
+                    TimeComboBox {
+                        minutes: nightLight.customStart
+                        onPicked: (minutes) => nightLight.customStart = minutes
+                    }
+                }
+
+                ListRow {
+                    interactive: false
+                    minimumRowHeight: Metrics.controlRowHeight
+                    visible: nightLight.schedule === CS.NightLight.Custom
+                    text: qsTr("To")
+
+                    TimeComboBox {
+                        minutes: nightLight.customEnd
+                        onPicked: (minutes) => nightLight.customEnd = minutes
+                    }
+                }
             }
         }
     }
