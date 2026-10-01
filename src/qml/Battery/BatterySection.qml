@@ -20,11 +20,16 @@ ColumnLayout {
 
     readonly property int chargePercent: battery.chargePercent
 
+    // Set from and to here: the handler runs before a binding on chargePercent would update.
     onChargePercentChanged: {
+        valueAnimation.from = percentLabel.value
+        valueAnimation.to = chargePercent
         valueAnimation.restart()
     }
 
+    // BatteryStatus is shared and may be ready before the page exists, so no change follows.
     Component.onCompleted: {
+        percentLabel.value = battery.chargePercent
         batteryBackground.value = battery.chargePercent
     }
 
@@ -32,8 +37,6 @@ ColumnLayout {
         id: valueAnimation
         target: percentLabel
         property: "value"
-        from: percentLabel.value
-        to: section.chargePercent
         duration: 500
     }
 
