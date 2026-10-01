@@ -21,6 +21,8 @@ Item {
     property alias model: listModel
     property alias currentIndex: listView.currentIndex
     property bool updatingModel: false
+    // Every service that adds or drops an entry has answered.
+    readonly property bool ready: Bluetooth.Manager.ready && nmEnabledConnections.ready && _battery.ready
     readonly property bool searching: searchField.text.trim().length > 0
     signal currentPageRemoved()
     signal itemAdded(string name)

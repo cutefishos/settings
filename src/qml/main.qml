@@ -11,7 +11,8 @@ import FishUI 1.0 as FishUI
 FishUI.Window {
     id: rootWindow
     title: qsTr("Settings")
-    visible: true
+    // Shown once the sidebar's hardware entries have settled; see revealTimer.
+    visible: false
     width: 900
     height: 610
 
@@ -21,6 +22,7 @@ FishUI.Window {
 
     property alias stackView: _stackView
     property string pendingPageName: ""
+    property bool revealed: false
     readonly property bool mockNetworkData: Qt.application.arguments.indexOf("--mock-network") >= 0
 
     // Entries are {page, rootPage, properties}; rootPage is the sidebar page a sub page belongs to.
@@ -157,6 +159,33 @@ FishUI.Window {
         onActivated: rootWindow.goForward()
     }
 
+    // Entries that come with hardware are known only once their services answer; shown
+    // before that, the first frames lack them and the entries below jump when they arrive.
+    // A service that never answers holds the window no longer than this.
+    Timer {
+        id: revealTimer
+        interval: 500
+        running: true
+        onTriggered: rootWindow.reveal()
+    }
+
+    Connections {
+        target: sideBar
+        function onReadyChanged() {
+            if (sideBar.ready)
+                Qt.callLater(rootWindow.reveal)
+        }
+    }
+
+    function reveal() {
+        if (revealed)
+            return
+        revealed = true
+        revealTimer.stop()
+        show()
+        raise()
+    }
+
     Shortcut {
         sequences: [StandardKey.Find]
         onActivated: sideBar.focusSearch()
@@ -164,6 +193,9 @@ FishUI.Window {
 
     // Deferred: sidebar items drop unavailable pages in their own onCompleted handlers.
     Component.onCompleted: Qt.callLater(function() {
+        // The sidebar entries' own handlers run first, through Qt.callLater too.
+        if (sideBar.ready)
+            Qt.callLater(rootWindow.reveal)
         if (historyIndex < 0) {
             // A page asked for by name may still be waiting for its hardware entry.
             var pending = pendingPageName
@@ -267,7 +299,9 @@ FishUI.Window {
         })
 
         // If the window is minimized, it needs to be displayed again.
-        rootWindow.show()
-        rootWindow.raise()
+        if (rootWindow.revealed) {
+            rootWindow.show()
+            rootWindow.raise()
+        }
     }
 }
