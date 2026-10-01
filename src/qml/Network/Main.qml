@@ -17,6 +17,10 @@ ItemPage {
         id: handler
     }
 
+    NM.EnabledConnections {
+        id: enabledConnections
+    }
+
     Scrollable {
         anchors.fill: parent
         contentHeight: layout.implicitHeight
@@ -37,7 +41,8 @@ ItemPage {
                 }
 
                 NavigationItem {
-                    visible: handler.hotspotCapable
+                    // Shown until NetworkManager has been read, so the row doesn't pop in late.
+                    visible: !enabledConnections.ready || handler.hotspotCapable
                     text: qsTr("Hotspot")
                     leading: RowIcon {
                         source: "qrc:/fishui/kit/images/icons/network-wireless-hotspot.svg"

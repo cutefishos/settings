@@ -18,6 +18,7 @@ ItemPage {
     headerTitle: qsTr("Hotspot")
 
     property string errorMessage
+    readonly property string description: qsTr("Share this computer's internet connection by creating a Wi-Fi network other devices can join. The connection to share must come from a source other than Wi-Fi.")
 
     readonly property bool nameValid: configuration.hotspotNameValid(nameField.text)
     readonly property bool passwordValid: configuration.hotspotPasswordValid(passwordField.text)
@@ -108,11 +109,12 @@ ItemPage {
                 Layout.leftMargin: Metrics.cardHorizontalPadding
                 Layout.rightMargin: Metrics.cardHorizontalPadding
                 text: control.errorMessage.length > 0 ? control.errorMessage
+                      : !enabledConnections.ready ? control.description
                       : !enabledConnections.wirelessEnabled ? qsTr("Turn on Wi-Fi to use the hotspot.")
                       : !handler.hotspotAllowed ? qsTr("System policy prohibits use as a hotspot.")
                       : handler.hotspotActive ? qsTr("Other devices can join “%1” with the password below. Turn off the hotspot to use Wi-Fi on this computer.")
                                                 .arg(configuration.hotspotName)
-                      : qsTr("Share this computer's internet connection by creating a Wi-Fi network other devices can join. The connection to share must come from a source other than Wi-Fi.")
+                      : control.description
                 textFormat: Text.PlainText
                 color: control.errorMessage.length > 0 ? FishUI.Theme.redColor : FishUI.Theme.disabledTextColor
                 wrapMode: Text.Wrap
