@@ -37,11 +37,7 @@ Battery::Battery(QObject *parent)
 
     connect(m_status, &BatteryStatus::readyChanged, this, &Battery::readyChanged);
     connect(m_status, &BatteryStatus::availableChanged, this, &Battery::validChanged);
-    connect(m_status, &BatteryStatus::onBatteryChanged, this, &Battery::onBatteryChanged);
-    connect(m_status, &BatteryStatus::chargeStateChanged, this, &Battery::chargeStateChanged);
-    connect(m_status, &BatteryStatus::chargePercentChanged, this, &Battery::chargePercentChanged);
     connect(m_status, &BatteryStatus::capacityChanged, this, &Battery::capacityChanged);
-    connect(m_status, &BatteryStatus::statusStringChanged, this, &Battery::remainingTimeChanged);
     connect(m_status, &BatteryStatus::lastChargedChanged, this,
             &Battery::lastChargedPercentChanged);
     connect(m_status, &BatteryStatus::udiChanged, this, &Battery::watchDevice);
@@ -82,27 +78,6 @@ bool Battery::available() const
     return mockBatteryEnabled() || m_status->available();
 }
 
-bool Battery::onBattery() const
-{
-    return mockBatteryEnabled() || m_status->onBattery();
-}
-
-int Battery::chargeState() const
-{
-    if (mockBatteryEnabled())
-        return 2;
-
-    return m_status->chargeState();
-}
-
-int Battery::chargePercent() const
-{
-    if (mockBatteryEnabled())
-        return 78;
-
-    return m_status->chargePercent();
-}
-
 int Battery::lastChargedPercent() const
 {
     if (mockBatteryEnabled())
@@ -117,14 +92,6 @@ int Battery::capacity() const
         return 94;
 
     return m_status->capacity();
-}
-
-QString Battery::statusString() const
-{
-    if (mockBatteryEnabled())
-        return tr("Discharging · 3 hours 24 minutes remaining");
-
-    return m_status->statusString();
 }
 
 QString Battery::lastChargedTime() const

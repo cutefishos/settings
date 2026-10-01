@@ -15,13 +15,9 @@ class Battery : public QObject
     Q_OBJECT
     Q_PROPERTY(bool ready READ ready NOTIFY readyChanged)
     Q_PROPERTY(bool available READ available NOTIFY validChanged)
-    Q_PROPERTY(int chargeState READ chargeState NOTIFY chargeStateChanged)
-    Q_PROPERTY(int chargePercent READ chargePercent NOTIFY chargePercentChanged)
     Q_PROPERTY(int lastChargedPercent READ lastChargedPercent NOTIFY lastChargedPercentChanged)
     Q_PROPERTY(QString lastChargedTime READ lastChargedTime NOTIFY lastChargedPercentChanged)
     Q_PROPERTY(int capacity READ capacity NOTIFY capacityChanged)
-    Q_PROPERTY(QString statusString READ statusString NOTIFY remainingTimeChanged)
-    Q_PROPERTY(bool onBattery READ onBattery NOTIFY onBatteryChanged)
     Q_PROPERTY(QString udi READ udi NOTIFY udiChanged)
     Q_PROPERTY(bool showPercent READ showPercent CONSTANT)
     Q_PROPERTY(bool chargeLimitSupported READ chargeLimitSupported NOTIFY chargeLimitChanged)
@@ -35,13 +31,9 @@ public:
 
     bool ready() const;
     bool available() const;
-    bool onBattery() const;
 
-    int chargeState() const;
-    int chargePercent() const;
     int lastChargedPercent() const;
     int capacity() const;
-    QString statusString() const;
     QString lastChargedTime() const;
 
     bool showPercent();
@@ -62,11 +54,7 @@ public:
 signals:
     void readyChanged();
     void validChanged();
-    void chargeStateChanged();
-    void chargePercentChanged();
     void capacityChanged();
-    void remainingTimeChanged();
-    void onBatteryChanged();
     void lastChargedPercentChanged();
     void udiChanged();
     void chargeLimitChanged();

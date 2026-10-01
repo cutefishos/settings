@@ -17,7 +17,6 @@
         <file>images/logo.svg</file>
         <file>qml/Scrollable.qml</file>
         <file>qml/SearchField.qml</file>
-        <file>images/sensors-voltage-symbolic.svg</file>
         <file>images/dark_mode.svg</file>
         <file>images/light_mode.svg</file>
         <file>images/dock_bottom.svg</file>
@@ -73,7 +72,6 @@
         <file>qml/Display/Main.qml</file>
         <file>qml/Battery/Main.qml</file>
         <file>qml/Battery/BatterySection.qml</file>
-        <file>qml/Battery/BatteryItem.qml</file>
         <file>qml/Battery/HistoryGraph.qml</file>
         <file>qml/Dock/Main.qml</file>
         <file>images/sidebar/light/power.svg</file>

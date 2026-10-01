@@ -18,28 +18,6 @@ ColumnLayout {
     readonly property var timespanComboChoices: [qsTr("Last hour"),qsTr("Last 2 hours"),qsTr("Last 12 hours"),qsTr("Last 24 hours"),qsTr("Last 48 hours"), qsTr("Last 7 days")]
     readonly property var timespanComboDurations: [3600, 7200, 43200, 86400, 172800, 604800]
 
-    readonly property int chargePercent: battery.chargePercent
-
-    // Set from and to here: the handler runs before a binding on chargePercent would update.
-    onChargePercentChanged: {
-        valueAnimation.from = percentLabel.value
-        valueAnimation.to = chargePercent
-        valueAnimation.restart()
-    }
-
-    // BatteryStatus is shared and may be ready before the page exists, so no change follows.
-    Component.onCompleted: {
-        percentLabel.value = battery.chargePercent
-        batteryBackground.value = battery.chargePercent
-    }
-
-    NumberAnimation {
-        id: valueAnimation
-        target: percentLabel
-        property: "value"
-        duration: 500
-    }
-
     BatteryHistoryModel {
         id: history
         duration: timespanComboDurations[3]
@@ -59,69 +37,6 @@ ColumnLayout {
         onRunningChanged: {
             if (running && history.count > 0)
                 history.refresh()
-        }
-    }
-
-    Connections {
-        target: battery
-
-        function onChargePercentChanged(value) {
-            batteryBackground.value = battery.chargePercent
-        }
-    }
-
-    // Battery Info
-    BatteryItem {
-        id: batteryBackground
-        Layout.fillWidth: true
-        // chargeState follows the service enum: NoCharge, Charging, Discharging, FullyCharged
-        enableAnimation: battery.chargeState === 1 && battery.chargePercent < 100
-        height: 150
-
-        ColumnLayout {
-            anchors.fill: parent
-            anchors.leftMargin: Metrics.cardHorizontalPadding
-
-            Item {
-                Layout.fillHeight: true
-            }
-
-            RowLayout {
-                FishUI.Label {
-                    property int value: 0
-
-                    id: percentLabel
-                    text: value
-                    color: "white"
-                    font.pointSize: 40
-                    font.weight: Font.DemiBold
-                }
-
-                FishUI.Label {
-                    text: "%"
-                    color: "white"
-                    font.pointSize: 12
-                    Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-                }
-
-                Image {
-                    id: sensorsVoltage
-                    width: 30
-                    height: width
-                    sourceSize: Qt.size(width, height)
-                    source: "qrc:/images/sensors-voltage-symbolic.svg"
-                    visible: !battery.onBattery
-                }
-            }
-
-            FishUI.Label {
-                text: battery.statusString
-                color: "white"
-            }
-
-            Item {
-                Layout.fillHeight: true
-            }
         }
     }
 
