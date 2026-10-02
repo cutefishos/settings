@@ -12,6 +12,7 @@ ListRow {
     property alias stepSize: _slider.stepSize
     property real value
     property alias sliderEnabled: _slider.enabled
+    readonly property alias pressed: _slider.pressed
     // Captions flush with the two ends of the track, each under a tick.
     property alias leftText: _captions.leftText
     property alias rightText: _captions.rightText

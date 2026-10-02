@@ -351,6 +351,14 @@ ItemPage {
                         temperatureTimer.pending = newValue
                         temperatureTimer.start()
                     }
+                    onPressedChanged: {
+                        // The last move goes out before the preview ends, or it would only be saved.
+                        if (!pressed && temperatureTimer.running) {
+                            temperatureTimer.stop()
+                            nightLight.temperature = temperatureTimer.pending
+                        }
+                        nightLight.preview = pressed
+                    }
                 }
 
                 ListRow {
