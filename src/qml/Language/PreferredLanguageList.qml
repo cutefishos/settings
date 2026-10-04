@@ -86,7 +86,8 @@ Item {
         interactive: control.pressedIndex < 0
         enabled: !control.language.saving
         boundsBehavior: Flickable.StopAtBounds
-        FishUI.ScrollBar.vertical: FishUI.ScrollBar {}
+        // Below the rows: the drag handles reach into the bar's strip and must take the press.
+        FishUI.ScrollBar.vertical: FishUI.ScrollBar { z: -1 }
         FishUI.WheelHandler { target: list }
 
         delegate: Item {
