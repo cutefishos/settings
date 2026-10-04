@@ -63,6 +63,7 @@ ItemPage {
                         // The label fills the rest of the row.
                         Layout.preferredWidth: Math.round(parent.width / 2)
                         model: fontsModel.generalFonts
+                        fontPreview: true
                         onActivated: appearance.setFontFamily(currentText)
                     }
                 }
@@ -77,6 +78,7 @@ ItemPage {
                         id: fixedFontComboBox
                         Layout.preferredWidth: Math.round(parent.width / 2)
                         model: fontsModel.fixedFonts
+                        fontPreview: true
                         onActivated: appearance.setFixedFontFamily(currentText)
                     }
                 }
