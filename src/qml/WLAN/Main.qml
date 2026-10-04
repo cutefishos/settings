@@ -48,11 +48,36 @@ ItemPage {
         onConnect: {
             wifiSettings.addOtherConnection(ssid, username, pwd, type)
         }
+        onJoinNetwork: {
+            handler.addAndActivateEnterprise(device, accessPoint, username, pwd)
+        }
     }
 
     Component.onCompleted: {
         if (!rootWindow.mockNetworkData)
             handler.requestScan()
+        joinRequestedNetwork()
+    }
+
+    // The status bar sends enterprise networks here. The window and NetworkManager's
+    // objects may not be there yet when the request arrives.
+    function joinRequestedNetwork() {
+        if (!rootWindow.pendingWifiJoin || !rootWindow.revealed || !enabledConnections.ready)
+            return
+        var accessPoint = rootWindow.pendingWifiJoin
+        rootWindow.pendingWifiJoin = ""
+        newNetworkDialog.openNetwork(accessPoint, handler.wirelessNetwork(accessPoint))
+    }
+
+    Connections {
+        target: rootWindow
+        function onPendingWifiJoinChanged() { control.joinRequestedNetwork() }
+        function onRevealedChanged() { control.joinRequestedNetwork() }
+    }
+
+    Connections {
+        target: enabledConnections
+        function onReadyChanged() { control.joinRequestedNetwork() }
     }
 
     Timer {

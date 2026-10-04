@@ -56,17 +56,25 @@ Application::Application(int &argc, char **argv)
 
     QCommandLineOption moduleOption("m", "Switch to module", "module");
     parser.addOption(moduleOption);
+    // The status bar's way to an enterprise network: the user name is asked for here.
+    QCommandLineOption joinWifiOption("join-wifi", "Join the Wi-Fi network of an access point", "access point");
+    parser.addOption(joinWifiOption);
     parser.addOption(QCommandLineOption("mock-network", "Show sample network data"));
     parser.addOption(QCommandLineOption("mock-battery", "Show sample battery data"));
     parser.process(*this);
 
     const QString module = parser.value(moduleOption);
+    const QString accessPoint = parser.value(joinWifiOption);
 
     if (!QDBusConnection::sessionBus().registerService("com.cutefish.SettingsUI")) {
         QDBusInterface iface("com.cutefish.SettingsUI", "/SettingsUI", "com.cutefish.SettingsUI",
                              QDBusConnection::sessionBus());
-        if (iface.isValid())
-            iface.call("switchToPage", module);
+        if (iface.isValid()) {
+            if (!accessPoint.isEmpty())
+                iface.call("joinWifi", accessPoint);
+            else
+                iface.call("switchToPage", module);
+        }
         return;
     }
 
@@ -123,7 +131,9 @@ Application::Application(int &argc, char **argv)
     m_engine.addImportPath(QStringLiteral("qrc:/"));
     m_engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
 
-    if (!module.isEmpty()) {
+    if (!accessPoint.isEmpty()) {
+        joinWifi(accessPoint);
+    } else if (!module.isEmpty()) {
         switchToPage(module);
     }
 
@@ -136,5 +146,14 @@ void Application::switchToPage(const QString &name)
 
     if (mainObject) {
         QMetaObject::invokeMethod(mainObject, "switchPageFromName", Q_ARG(QVariant, name));
+    }
+}
+
+void Application::joinWifi(const QString &accessPoint)
+{
+    QObject *mainObject = m_engine.rootObjects().first();
+
+    if (mainObject) {
+        QMetaObject::invokeMethod(mainObject, "joinWifi", Q_ARG(QVariant, accessPoint));
     }
 }

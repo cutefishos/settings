@@ -16,6 +16,10 @@ ListRow {
 
     // The state the row shows, which may lag behind NetworkManager's.
     property int displayedState: model.connectionState
+    // Joined with a user name, which the join window asks for.
+    readonly property bool enterprise: model.securityType === NM.Enums.WpaEap
+                                       || model.securityType === NM.Enums.Wpa2Eap
+                                       || model.securityType === NM.Enums.Wpa3SuiteB192
 
     text: model.itemUniqueName
     checked: model.connectionState === NM.Enums.Activated
@@ -74,6 +78,8 @@ ListRow {
     function connectNetwork() {
         if (model.uuid)
             handler.activateConnection(model.connectionPath, model.devicePath, model.specificPath)
+        else if (enterprise)
+            newNetworkDialog.openNetwork(model.specificPath, handler.wirelessNetwork(model.specificPath))
         else
             handler.addAndActivateConnection(model.devicePath, model.specificPath)
     }

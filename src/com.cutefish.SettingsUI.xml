@@ -4,5 +4,8 @@
     <method name="switchToPage">
         <arg name="name" type="s" direction="in"/>
     </method>
+    <method name="joinWifi">
+        <arg name="accessPoint" type="s" direction="in"/>
+    </method>
   </interface>
 </node>

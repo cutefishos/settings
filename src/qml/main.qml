@@ -22,6 +22,8 @@ FishUI.Window {
 
     property alias stackView: _stackView
     property string pendingPageName: ""
+    // An access point whose enterprise network the Wi-Fi page asks to join; see joinWifi().
+    property string pendingWifiJoin: ""
     property bool revealed: false
     readonly property bool mockNetworkData: Qt.application.arguments.indexOf("--mock-network") >= 0
 
@@ -274,6 +276,11 @@ FishUI.Window {
         pendingPageName = ""
         var page = sideBar.model.get(index).page
         navigate(page, page, {})
+    }
+
+    function joinWifi(accessPoint) {
+        pendingWifiJoin = accessPoint
+        switchPageFromName("wlan")
     }
 
     function switchPageFromName(pageName) {

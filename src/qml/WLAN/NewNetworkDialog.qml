@@ -28,7 +28,7 @@ FishUI.Window {
     property int contentWidth: 400
     property int contentHeight: _mainLayout.implicitHeight + 32
 
-    title: qsTr("Add Other Network")
+    title: accessPoint ? qsTr("Join “%1”").arg(networkName) : qsTr("Add Other Network")
     visible: false
     minimizeButtonVisible: false
 
@@ -37,13 +37,40 @@ FishUI.Window {
     color: background.color
     flags: Qt.Dialog | Qt.FramelessWindowHint
 
+    // A network in range, joined by its access point; otherwise a hidden one by its name.
+    property string accessPoint
+    property string device
+    property string networkName
+    // 192-bit networks sign in with EAP-TLS, which needs certificates no field asks for.
+    property bool needsCertificate: false
+
     readonly property string security: securitybox.currentValue ?? ""
     readonly property bool enterprise: security.endsWith("-eap")
-    readonly property bool canJoin: _nameTextField.text.length > 0
+    readonly property bool canJoin: !needsCertificate
+                                    && (accessPoint || _nameTextField.text.length > 0)
                                     && (!enterprise || _userNameTextField.text.length > 0)
                                     && passwordValid(_passwordTextField.text)
 
     signal connect(var ssid, var username, var pwd, var type)
+    signal joinNetwork(var device, var accessPoint, var username, var pwd)
+
+    // Asks for the user name and password of an enterprise network in range; `network`
+    // is Handler.wirelessNetwork().
+    function openNetwork(accessPoint, network) {
+        if (!network.device)
+            return
+
+        control.accessPoint = accessPoint
+        control.device = network.device
+        control.networkName = network.name
+        control.needsCertificate = network.security === NM.Enums.Wpa3SuiteB192
+        securitybox.currentIndex = securitybox.indexOfValue(network.security === NM.Enums.WpaEap ? "wpa-eap"
+                                                            : network.security === NM.Enums.Wpa2Eap ? "wpa2-eap"
+                                                            : "wpa3-eap")
+        show()
+        raise()
+        requestActivate()
+    }
 
     // What NetworkManager accepts for each kind of key.
     function passwordValid(password) {
@@ -65,17 +92,28 @@ FishUI.Window {
         if (!canJoin)
             return
 
-        control.connect(_nameTextField.text,
-                        enterprise ? _userNameTextField.text : "",
-                        security === "none" ? "" : _passwordTextField.text,
-                        security)
+        if (accessPoint) {
+            control.joinNetwork(device, accessPoint, _userNameTextField.text, _passwordTextField.text)
+        } else {
+            control.connect(_nameTextField.text,
+                            enterprise ? _userNameTextField.text : "",
+                            security === "none" ? "" : _passwordTextField.text,
+                            security)
+        }
         control.close()
     }
 
     onVisibleChanged: {
         if (visible) {
-            _nameTextField.forceActiveFocus()
+            if (accessPoint)
+                _userNameTextField.forceActiveFocus()
+            else
+                _nameTextField.forceActiveFocus()
         } else {
+            accessPoint = ""
+            device = ""
+            networkName = ""
+            needsCertificate = false
             _nameTextField.clear()
             _userNameTextField.clear()
             _passwordTextField.clear()
@@ -120,11 +158,13 @@ FishUI.Window {
             FishUI.Label {
                 id: _nameLabel
                 Layout.preferredWidth: _form.labelWidth
+                visible: !control.accessPoint
                 text: qsTr("Name")
             }
 
             FishUI.TextField {
                 id: _nameTextField
+                visible: !control.accessPoint
                 placeholderText: qsTr("Network Name")
                 Layout.fillWidth: true
                 Keys.onEscapePressed: control.close()
@@ -135,11 +175,13 @@ FishUI.Window {
             FishUI.Label {
                 id: _securityLabel
                 Layout.preferredWidth: _form.labelWidth
+                visible: !control.accessPoint
                 text: qsTr("Security")
             }
 
             FishUI.ComboBox {
                 id: securitybox
+                visible: !control.accessPoint
                 Layout.fillWidth: true
                 currentIndex: 3
                 textRole: "text"
@@ -159,13 +201,13 @@ FishUI.Window {
             FishUI.Label {
                 id: _userNameLabel
                 Layout.preferredWidth: _form.labelWidth
-                visible: control.enterprise
+                visible: control.enterprise && !control.needsCertificate
                 text: qsTr("Username")
             }
 
             FishUI.TextField {
                 id: _userNameTextField
-                visible: control.enterprise
+                visible: control.enterprise && !control.needsCertificate
                 placeholderText: qsTr("Username")
                 Layout.fillWidth: true
                 Keys.onEscapePressed: control.close()
@@ -176,13 +218,13 @@ FishUI.Window {
             FishUI.Label {
                 id: _passwordLabel
                 Layout.preferredWidth: _form.labelWidth
-                visible: control.security !== "none"
+                visible: control.security !== "none" && !control.needsCertificate
                 text: qsTr("Password")
             }
 
             FishUI.TextField {
                 id: _passwordTextField
-                visible: control.security !== "none"
+                visible: control.security !== "none" && !control.needsCertificate
                 placeholderText: qsTr("Password")
                 echoMode: TextInput.Password
                 Layout.fillWidth: true
@@ -190,6 +232,13 @@ FishUI.Window {
                 Keys.onReturnPressed: control.join()
                 Keys.onEnterPressed: control.join()
             }
+        }
+
+        FishUI.Label {
+            Layout.fillWidth: true
+            visible: control.needsCertificate
+            text: qsTr("This network signs in with a certificate, which can't be set up here yet.")
+            wrapMode: Text.Wrap
         }
 
         RowLayout {

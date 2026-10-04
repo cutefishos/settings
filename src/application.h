@@ -14,6 +14,7 @@ public:
     explicit Application(int &argc, char **argv);
 
     void switchToPage(const QString &name);
+    void joinWifi(const QString &accessPoint);
 
 private:
     QQmlApplicationEngine m_engine;
