@@ -66,29 +66,14 @@ QString About::version()
     return this->prettyProductName();
 }
 
-QString About::osName()
-{
-    return QSysInfo::prettyProductName();
-}
-
 QString About::architecture()
 {
     return QSysInfo::currentCpuArchitecture();
 }
 
-QString About::kernelType()
-{
-    return QSysInfo::kernelType();
-}
-
 QString About::kernelVersion()
 {
     return QSysInfo::kernelVersion();
-}
-
-QString About::hostname()
-{
-    return QSysInfo::machineHostName();
 }
 
 QString About::userName()

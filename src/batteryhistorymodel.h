@@ -47,7 +47,6 @@ class BatteryHistoryModel : public QObject, public QQmlParserStatus
 
     Q_PROPERTY(QVariantList points READ asPoints NOTIFY dataChanged)
     Q_PROPERTY(int count READ count NOTIFY dataChanged)
-    Q_PROPERTY(int firstDataPointTime READ firstDataPointTime NOTIFY dataChanged)
     Q_PROPERTY(int lastDataPointTime READ lastDataPointTime NOTIFY dataChanged)
     Q_PROPERTY(int largestValue READ largestValue NOTIFY dataChanged)
 
@@ -77,7 +76,6 @@ public:
     QVariantList asPoints() const;
     int count() const;
 
-    int firstDataPointTime() const;
     int lastDataPointTime() const;
     int largestValue() const;
 

@@ -13,10 +13,8 @@ class About : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString version READ version CONSTANT)
-    Q_PROPERTY(QString osName READ osName CONSTANT)
     Q_PROPERTY(QString architecture READ architecture CONSTANT)
     Q_PROPERTY(QString kernelVersion READ kernelVersion CONSTANT)
-    Q_PROPERTY(QString hostname READ hostname CONSTANT)
     Q_PROPERTY(QString userName READ userName CONSTANT)
     Q_PROPERTY(QString memorySize READ memorySize CONSTANT)
     Q_PROPERTY(QString prettyProductName READ prettyProductName CONSTANT)
@@ -28,13 +26,9 @@ public:
 
     QString version();
 
-    QString osName();
     QString architecture();
-    QString kernelType();
     QString kernelVersion();
-    QString hostname();
     QString userName();
-    QString settingsVersion();
     QString memorySize();
     QString prettyProductName();
     QString internalStorage();

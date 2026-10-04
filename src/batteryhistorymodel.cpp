@@ -119,15 +119,6 @@ int BatteryHistoryModel::count() const
     return m_values.count();
 }
 
-int BatteryHistoryModel::firstDataPointTime() const
-{
-    if (m_values.isEmpty()) {
-        return 0;
-    }
-
-    return m_values.first().time;
-}
-
 int BatteryHistoryModel::lastDataPointTime() const
 {
     if (m_values.isEmpty()) {

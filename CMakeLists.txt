@@ -7,14 +7,13 @@ project(cutefish-settings
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src")
-set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-set(QT Core Gui Quick QuickControls2 DBus Xml Concurrent LinguistTools)
+set(QT Core Gui Quick QuickControls2 DBus Concurrent LinguistTools)
 find_package(Qt6 REQUIRED ${QT})
 find_package(Freetype REQUIRED)
 find_package(PkgConfig REQUIRED)
@@ -48,7 +47,6 @@ set(SRCS
     src/cursor/cursortheme.cpp
     src/cursor/mouse.cpp
     src/datetime/time.cpp
-    src/datetime/timezonedata.h
     src/datetime/timezonemap.cpp
     src/datetime/timedated_interface.cpp
     src/touchpad.cpp
@@ -81,9 +79,7 @@ target_link_libraries(${PROJECT_NAME}
         Qt6::Quick
         Qt6::QuickControls2
         Qt6::DBus
-        Qt6::Xml
         Qt6::Concurrent
-        # FishUI
 
         PkgConfig::FontConfig
         ${FREETYPE_LIBRARIES}
