@@ -2,9 +2,9 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import Cutefish.Settings 1.0
-import FishUI 1.0 as FishUI
-import Cutefish.Network 1.0 as NM
+import Cutefish.Settings
+import FishUI as FishUI
+import Cutefish.Network as NM
 
 // Sets up a VPN from what the provider or the network's administrator hands out: the
 // server and how to sign in. A password left empty is asked for when connecting.

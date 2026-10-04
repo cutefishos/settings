@@ -5,11 +5,14 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(Qt6 REQUIRED COMPONENTS Core Gui DBus Test)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(FontConfig REQUIRED IMPORTED_TARGET fontconfig)
+qt6_add_dbus_interface(TIMEDATED_SOURCES
+    ../../src/datetime/org.freedesktop.timedate1.xml
+    timedated_interface)
 add_executable(lifetime_test lifetime_test.cpp
     ../../src/fontsmodel.cpp
     ../../src/datetime/timezonemap.cpp
-    ../../src/datetime/timedated_interface.cpp)
-target_include_directories(lifetime_test PRIVATE ../../src)
+    ${TIMEDATED_SOURCES})
+target_include_directories(lifetime_test PRIVATE ../../src ${CMAKE_CURRENT_BINARY_DIR})
 # LeakSanitizer fails the run at exit when a backend leaves memory behind.
 target_compile_options(lifetime_test PRIVATE -fsanitize=address -fno-omit-frame-pointer)
 target_link_options(lifetime_test PRIVATE -fsanitize=address)

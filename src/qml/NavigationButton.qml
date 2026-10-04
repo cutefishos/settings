@@ -1,5 +1,5 @@
-import QtQuick 2.12
-import FishUI 1.0 as FishUI
+import QtQuick
+import FishUI as FishUI
 
 // Same plate as the file manager's header buttons, so both headers line up.
 FishUI.HeaderButton {

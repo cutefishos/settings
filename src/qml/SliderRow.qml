@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
-import Cutefish.Settings 1.0
-import FishUI 1.0 as FishUI
+import Cutefish.Settings
+import FishUI as FishUI
 
 // A labelled slider row for a ListCard, with optional end icons, captions or a level meter.
 ListRow {

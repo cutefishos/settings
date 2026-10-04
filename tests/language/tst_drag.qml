@@ -1,6 +1,6 @@
 import QtQuick
 import QtTest
-import FishUI 1.0 as FishUI
+import FishUI as FishUI
 import "../../src/qml/Language" as LanguageUI
 
 TestCase {

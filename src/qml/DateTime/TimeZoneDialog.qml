@@ -2,12 +2,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Window 2.12
-import QtQuick.Layouts 1.12
-import Cutefish.Settings 1.0
-import FishUI 1.0 as FishUI
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Window
+import QtQuick.Layouts
+import Cutefish.Settings
+import FishUI as FishUI
 
 FishUI.Window {
     id: control

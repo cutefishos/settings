@@ -1,9 +1,9 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import FishUI 1.0 as FishUI
-import Cutefish.Settings 1.0
-import Cutefish.Network 1.0 as NM
+import FishUI as FishUI
+import Cutefish.Settings
+import Cutefish.Network as NM
 import "../"
 
 // One VPN: its switch connects and disconnects it; below its name, its type, or why it

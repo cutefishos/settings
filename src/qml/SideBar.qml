@@ -1,13 +1,13 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-import QtQuick 2.15
-import QtQuick.Controls 2.4
-import QtQuick.Layouts 1.3
-import FishUI 1.0 as FishUI
-import Cutefish.Settings 1.0
-import Cutefish.Network 1.0 as NM
-import Cutefish.Bluetooth 1.0 as Bluetooth
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import FishUI as FishUI
+import Cutefish.Settings
+import Cutefish.Network as NM
+import Cutefish.Bluetooth as Bluetooth
 
 Item {
     id: sideBar

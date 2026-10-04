@@ -1,9 +1,9 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
-import Cutefish.Settings 1.0
-import FishUI 1.0 as FishUI
+import Cutefish.Settings
+import FishUI as FishUI
 
 FishUI.Window {
     id: control

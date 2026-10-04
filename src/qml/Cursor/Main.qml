@@ -1,13 +1,13 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
-import FishUI 1.0 as FishUI
-import Cutefish.Settings 1.0
-import Cutefish.Accounts 1.0
+import FishUI as FishUI
+import Cutefish.Settings
+import Cutefish.Accounts
 import "../"
 
 ItemPage {

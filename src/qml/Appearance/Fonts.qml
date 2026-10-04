@@ -1,10 +1,10 @@
-import QtQuick 2.4
-import QtQuick.Controls 2.4
-import QtQuick.Layouts 1.3
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
-import Cutefish.Settings 1.0
-import Cutefish.Appearance 1.0 as FrameworkAppearance
-import FishUI 1.0 as FishUI
+import Cutefish.Settings
+import Cutefish.Appearance as FrameworkAppearance
+import FishUI as FishUI
 import "../"
 
 ItemPage {

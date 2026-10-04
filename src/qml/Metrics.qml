@@ -1,6 +1,6 @@
 pragma Singleton
 
-import QtQuick 2.12
+import QtQuick
 
 // Spacing tokens for every page, on a 4 px grid. Pages use the semantic
 // names; retune the look here rather than at the use sites.

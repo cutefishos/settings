@@ -2,9 +2,9 @@ import QtQuick
 import QtQuick.Window
 import QtQuick.Controls
 import QtQuick.Layouts
-import Cutefish.Settings 1.0
-import FishUI 1.0 as FishUI
-import Cutefish.Network 1.0 as NM
+import Cutefish.Settings
+import FishUI as FishUI
+import Cutefish.Network as NM
 import "../"
 
 // One VPN's type and state, and the way to remove it.

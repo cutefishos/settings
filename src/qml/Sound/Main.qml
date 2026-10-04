@@ -1,9 +1,9 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import Cutefish.Settings 1.0
-import FishUI 1.0 as FishUI
-import Cutefish.Audio 1.0
+import Cutefish.Settings
+import FishUI as FishUI
+import Cutefish.Audio
 import "../"
 
 ItemPage {

@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
-import FishUI 1.0 as FishUI
+import FishUI as FishUI
 
 // A search field above a ListCard, on the page colour.
 FishUI.TextField {

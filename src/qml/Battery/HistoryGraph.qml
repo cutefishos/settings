@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Shapes
-import FishUI 1.0 as FishUI
-import Cutefish.Settings 1.0
+import FishUI as FishUI
+import Cutefish.Settings
 
 // Plots history samples over the `duration` seconds up to `end` as a smooth
 // curve. Labels are native text and grid lines sit on the device pixel grid,

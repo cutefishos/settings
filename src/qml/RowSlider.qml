@@ -1,6 +1,6 @@
-import QtQuick 2.12
-import QtQuick.Layouts 1.12
-import FishUI 1.0 as FishUI
+import QtQuick
+import QtQuick.Layouts
+import FishUI as FishUI
 
 // A slider whose visible track, not its handle's travel, spans its place in a
 // row, as on the Sound page: the track ends where switches and combo boxes do,

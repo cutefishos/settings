@@ -1,8 +1,8 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import FishUI 1.0 as FishUI
-import Cutefish.Settings 1.0
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import FishUI as FishUI
+import Cutefish.Settings
 
 // Edits the shortcuts of one action: remove any of them, add another by
 // pressing it, or go back to the defaults. Adding is confirm-by-repeat, as in

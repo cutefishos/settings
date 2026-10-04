@@ -2,9 +2,9 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import FishUI 1.0 as FishUI
-import Cutefish.Settings 1.0
-import Cutefish.Network 1.0 as NM
+import FishUI as FishUI
+import Cutefish.Settings
+import Cutefish.Network as NM
 import "../"
 
 // The VPNs set up on this machine, each with its own switch, and ways to add one: by

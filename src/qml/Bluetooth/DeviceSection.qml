@@ -1,8 +1,8 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import Cutefish.Settings 1.0
-import FishUI 1.0 as FishUI
+import Cutefish.Settings
+import FishUI as FishUI
 import "../"
 
 // A titled card of the devices in `model`. Empty, it hides, or shows

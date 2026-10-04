@@ -1,5 +1,5 @@
-import QtQuick 2.12
-import FishUI 1.0 as FishUI
+import QtQuick
+import FishUI as FishUI
 
 // The sidebar's tile: a coloured rounded square with a white glyph, for a
 // ListRow's leading slot.

@@ -5,8 +5,8 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import FishUI 1.0 as FishUI
-import Cutefish.Settings 1.0 as Settings
+import FishUI as FishUI
+import Cutefish.Settings as Settings
 import "../"
 
 ItemPage {

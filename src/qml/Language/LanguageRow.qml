@@ -1,8 +1,8 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import Cutefish.Settings 1.0
-import FishUI 1.0 as FishUI
+import Cutefish.Settings
+import FishUI as FishUI
 import "../"
 
 // A language to pick: its own name, its name in the system language, and a

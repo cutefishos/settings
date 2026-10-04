@@ -4,9 +4,9 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import Cutefish.Settings 1.0
-import FishUI 1.0 as FishUI
-import Cutefish.Bluetooth 1.0 as Bluetooth
+import Cutefish.Settings
+import FishUI as FishUI
+import Cutefish.Bluetooth as Bluetooth
 import "../"
 
 ItemPage {

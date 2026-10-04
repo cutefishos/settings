@@ -1,6 +1,6 @@
-import QtQuick 2.12
-import QtQuick.Layouts 1.12
-import FishUI 1.0 as FishUI
+import QtQuick
+import QtQuick.Layouts
+import FishUI as FishUI
 
 // A read-only ListRow: the label, then its value in secondary text. Hidden
 // while there is no value.

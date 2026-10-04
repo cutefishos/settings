@@ -1,11 +1,11 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.4
-import QtQuick.Layouts 1.12
-import QtQuick.Window 2.3
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtQuick.Window
 
-import Cutefish.Settings 1.0
-import FishUI 1.0 as FishUI
-import Cutefish.Network 1.0 as NM
+import Cutefish.Settings
+import FishUI as FishUI
+import Cutefish.Network as NM
 import "../"
 
 // One wireless network. Clicking connects; the current connection is managed

@@ -1,5 +1,5 @@
 import QtQuick
-import FishUI 1.0 as FishUI
+import FishUI as FishUI
 
 // One device pixel at any scale. RoundedRectangle snaps it to the pixel grid;
 // a plain Rectangle at 150% would be one or two pixels depending on where it lands.

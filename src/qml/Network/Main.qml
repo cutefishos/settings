@@ -1,12 +1,12 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.3
+import QtQuick
+import QtQuick.Layouts
 
-import Cutefish.Settings 1.0
-import FishUI 1.0 as FishUI
-import Cutefish.Network 1.0 as NM
+import Cutefish.Settings
+import FishUI as FishUI
+import Cutefish.Network as NM
 import "../"
 
 // Network services that aren't a device of their own, each on a page of its own.

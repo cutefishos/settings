@@ -48,7 +48,6 @@ set(SRCS
     src/cursor/mouse.cpp
     src/datetime/time.cpp
     src/datetime/timezonemap.cpp
-    src/datetime/timedated_interface.cpp
     src/touchpad.cpp
     src/touchscreen.cpp
     src/shortcuts/shortcutsmodel.cpp
@@ -67,6 +66,10 @@ qt6_add_dbus_adaptor(DBUS_SOURCES
                      src/com.cutefish.SettingsUI.xml
                      src/application.h Application)
 set_source_files_properties(${DBUS_SOURCES} PROPERTIES SKIP_AUTOGEN ON)
+
+qt6_add_dbus_interface(SRCS
+                       src/datetime/org.freedesktop.timedate1.xml
+                       timedated_interface)
 
 add_executable(${PROJECT_NAME} ${DBUS_SOURCES} ${SRCS} ${RESOURCES})
 target_link_libraries(${PROJECT_NAME}
