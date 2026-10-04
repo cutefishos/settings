@@ -308,14 +308,6 @@ ItemPage {
                 }
             }
 
-            StandardButton {
-                Layout.fillWidth: true
-                visible: _screenView.count > 1
-                text: qsTr("Identify Displays")
-                enabled: screen.available
-                onClicked: screen.identify()
-            }
-
             ListCard {
                 visible: nightLight.available
                 enabled: nightLight.loaded
