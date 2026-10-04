@@ -36,8 +36,8 @@ FishUI.Window {
     background.color: FishUI.Theme.backgroundColor
     // Inactive windows keep the blur and halve the see-through instead of going opaque.
     background.opacity: !blurAvailable ? 1
-                        : FishUI.Theme.darkMode ? (active ? 0.7 : 0.85)
-                                                : (active ? 0.5 : 0.75)
+                        : FishUI.Theme.darkMode ? (active ? 0.85 : 0.92)
+                                                : (active ? 0.8 : 0.9)
     header.height: headerInset
     contentTopMargin: 0
 
