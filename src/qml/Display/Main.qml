@@ -13,13 +13,12 @@ ItemPage {
     headerTitle: qsTr("Display")
 
     // A time of day, in half-hour steps; a time set some other way shows as the nearest.
-    component TimeComboBox: FishUI.ComboBox {
+    component TimeComboBox: RowComboBox {
         // Minutes after midnight.
         property int minutes
         signal picked(int minutes)
         readonly property var steps: Array.from({length: 48}, (_, index) => index * 30)
 
-        Layout.preferredWidth: Math.round(parent.width / 2)
         model: steps.map(step => new Date(2000, 0, 1, Math.floor(step / 60), step % 60)
                                  .toLocaleTimeString(Qt.locale(), Locale.ShortFormat))
         currentIndex: Math.round(minutes / 30) % steps.length
@@ -137,8 +136,7 @@ ItemPage {
                                     minimumRowHeight: Metrics.controlRowHeight
                                     text: qsTr("Resolution")
 
-                                    FishUI.ComboBox {
-                                        Layout.preferredWidth: Math.round(parent.width / 2)
+                                    RowComboBox {
                                         // "Recommended" is only a hint while choosing.
                                         model: element.resolutions.map(function (text, index) {
                                             return index === element.recommendedResolutionIndex
@@ -157,8 +155,7 @@ ItemPage {
                                     minimumRowHeight: Metrics.controlRowHeight
                                     text: qsTr("Refresh rate")
 
-                                    FishUI.ComboBox {
-                                        Layout.preferredWidth: Math.round(parent.width / 2)
+                                    RowComboBox {
                                         model: element.refreshRates
                                         currentIndex: element.refreshRateIndex ?
                                                           element.refreshRateIndex : 0
@@ -171,10 +168,9 @@ ItemPage {
                                     minimumRowHeight: Metrics.controlRowHeight
                                     text: qsTr("Scale")
 
-                                    FishUI.ComboBox {
+                                    RowComboBox {
                                         readonly property var scales: element.supportedScales
 
-                                        Layout.preferredWidth: Math.round(parent.width / 2)
                                         model: scales.map(function (scale) {
                                             var text = Math.round(scale * 100) + "%"
                                             return Math.abs(scale - element.recommendedScale) < 0.001
@@ -201,12 +197,11 @@ ItemPage {
                                     minimumRowHeight: Metrics.controlRowHeight
                                     text: qsTr("Rotation")
 
-                                    FishUI.ComboBox {
+                                    RowComboBox {
                                         // Paired with the labels as the old rotation pictures were.
                                         readonly property var rotations: [CS.Output.None, CS.Output.Left,
                                                                           CS.Output.Inverted, CS.Output.Right]
 
-                                        Layout.preferredWidth: Math.round(parent.width / 2)
                                         model: [qsTr("Normal"), "90°", "180°", "270°"]
                                         currentIndex: Math.max(0, rotations.indexOf(element.rotation))
                                         onActivated: element.rotation = rotations[currentIndex]
@@ -253,8 +248,7 @@ ItemPage {
                                     visible: (element.capabilities & 4) !== 0
                                     text: qsTr("Mode")
 
-                                    FishUI.ComboBox {
-                                        Layout.preferredWidth: Math.round(parent.width / 2)
+                                    RowComboBox {
                                         model: element.replicationSourceModel
                                         currentIndex: element.replicationSourceIndex
                                         onActivated: element.replicationSourceIndex = currentIndex
@@ -358,8 +352,7 @@ ItemPage {
                     minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Schedule")
 
-                    FishUI.ComboBox {
-                        Layout.preferredWidth: Math.round(parent.width / 2)
+                    RowComboBox {
                         model: [qsTr("Never"), qsTr("Sunset to Sunrise"), qsTr("Custom")]
                         currentIndex: nightLight.schedule
                         onActivated: nightLight.schedule = currentIndex

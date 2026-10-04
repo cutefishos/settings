@@ -32,10 +32,9 @@ ItemPage {
                     text: qsTr("Web Browser")
                     enabled: browserComboBox.count !== 0
 
-                    FishUI.ComboBox {
+                    RowComboBox {
                         id: browserComboBox
-                        // The label fills the rest of the row.
-                        Layout.preferredWidth: Math.round(parent.width / 2)
+                        displayText: count !== 0 ? currentText : qsTr("None")
                         textRole: "name"
                         iconRole: "icon"
                         model: defaultApps.browserList
@@ -52,10 +51,9 @@ ItemPage {
                     text: qsTr("Email Client")
                     enabled: emailComboBox.count !== 0
 
-                    FishUI.ComboBox {
+                    RowComboBox {
                         id: emailComboBox
-                        // The label fills the rest of the row.
-                        Layout.preferredWidth: Math.round(parent.width / 2)
+                        displayText: count !== 0 ? currentText : qsTr("None")
                         textRole: "name"
                         iconRole: "icon"
                         model: defaultApps.emailList
@@ -72,10 +70,9 @@ ItemPage {
                     text: qsTr("Terminal")
                     enabled: terminalComboBox.count !== 0
 
-                    FishUI.ComboBox {
+                    RowComboBox {
                         id: terminalComboBox
-                        // The label fills the rest of the row.
-                        Layout.preferredWidth: Math.round(parent.width / 2)
+                        displayText: count !== 0 ? currentText : qsTr("None")
                         textRole: "name"
                         iconRole: "icon"
                         model: defaultApps.terminalList

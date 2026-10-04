@@ -8,6 +8,7 @@
         <file>qml/RowIcon.qml</file>
         <file>qml/ListCard.qml</file>
         <file>qml/ListRow.qml</file>
+        <file>qml/RowComboBox.qml</file>
         <file>qml/RowSlider.qml</file>
         <file>qml/SliderCaptions.qml</file>
         <file>qml/SliderRow.qml</file>

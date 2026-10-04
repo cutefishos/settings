@@ -77,8 +77,7 @@ ItemPage {
                             }
 
                             // Indexes follow Notifications.ApplicationMode.
-                            FishUI.ComboBox {
-                                Layout.preferredWidth: 200
+                            RowComboBox {
                                 model: [qsTr("Banners"), qsTr("Notification Center only"), qsTr("Off")]
                                 currentIndex: modelData.mode
                                 Accessible.name: qsTr("Notifications from %1").arg(modelData.name)

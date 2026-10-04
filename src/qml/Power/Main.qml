@@ -124,8 +124,7 @@ ItemPage {
                     minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Turn off display when inactive on battery")
 
-                    FishUI.ComboBox {
-                        Layout.preferredWidth: 160
+                    RowComboBox {
                         model: [qsTr("1 Minute"), qsTr("2 Minutes"), qsTr("5 Minutes"),
                                 qsTr("10 Minutes"), qsTr("15 Minutes"), qsTr("20 Minutes"),
                                 qsTr("30 Minutes"), qsTr("Never")]
@@ -140,8 +139,7 @@ ItemPage {
                     text: _battery.available ? qsTr("Turn off display when inactive on power adapter")
                                              : qsTr("Turn off display when inactive")
 
-                    FishUI.ComboBox {
-                        Layout.preferredWidth: 160
+                    RowComboBox {
                         model: [qsTr("1 Minute"), qsTr("2 Minutes"), qsTr("5 Minutes"),
                                 qsTr("10 Minutes"), qsTr("15 Minutes"), qsTr("20 Minutes"),
                                 qsTr("30 Minutes"), qsTr("Never")]
