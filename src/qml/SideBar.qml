@@ -581,6 +581,7 @@ Item {
                 anchors.rightMargin: Metrics.sidebarItemPadding
                 anchors.topMargin: Metrics.sidebarCategorySpacing
                 color: FishUI.Theme.disabledTextColor
+                font.family: FishUI.Theme.fontFamily
                 font.pointSize: 8
                 text: section
             }
