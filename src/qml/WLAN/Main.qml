@@ -45,10 +45,10 @@ ItemPage {
     NewNetworkDialog {
         id: newNetworkDialog
 
-        onConnect: {
+        onConnect: function(ssid, username, pwd, type) {
             wifiSettings.addOtherConnection(ssid, username, pwd, type)
         }
-        onJoinNetwork: {
+        onJoinNetwork: function(device, accessPoint, username, pwd) {
             handler.addAndActivateEnterprise(device, accessPoint, username, pwd)
         }
     }
