@@ -55,7 +55,6 @@ ItemPage {
                 ListRow {
                     interactive: false
                     separatorVisible: false
-                    minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("General Font")
 
                     RowComboBox {
@@ -69,7 +68,6 @@ ItemPage {
                 ListRow {
                     interactive: false
                     separatorVisible: false
-                    minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Fixed Font")
 
                     RowComboBox {
@@ -83,7 +81,6 @@ ItemPage {
                 ListRow {
                     interactive: false
                     separatorVisible: false
-                    minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Font Size")
 
                     RowComboBox {
@@ -103,7 +100,6 @@ ItemPage {
                 ListRow {
                     interactive: false
                     separatorVisible: false
-                    minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Hinting")
 
                     RowComboBox {

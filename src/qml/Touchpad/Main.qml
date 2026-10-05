@@ -105,7 +105,6 @@ ItemPage {
                     // have no choice to make.
                     visible: touchpad.secondaryClickConfigurable
                     interactive: false
-                    minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Secondary click")
 
                     RowComboBox {

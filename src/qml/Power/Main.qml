@@ -121,7 +121,6 @@ ItemPage {
                 ListRow {
                     interactive: false
                     visible: _battery.available
-                    minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Turn off display when inactive on battery")
 
                     RowComboBox {
@@ -135,7 +134,6 @@ ItemPage {
 
                 ListRow {
                     interactive: false
-                    minimumRowHeight: Metrics.controlRowHeight
                     text: _battery.available ? qsTr("Turn off display when inactive on power adapter")
                                              : qsTr("Turn off display when inactive")
 

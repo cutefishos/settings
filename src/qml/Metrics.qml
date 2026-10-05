@@ -33,7 +33,7 @@ QtObject {
 
     // Row inside a card.
     readonly property int rowHeight: 44
-    // For a row holding a slider, a combo box or another control taller than a
+    // For a row holding a slider or another control taller than a
     // switch: the extra height keeps the control from crowding the row's edges.
     readonly property int controlRowHeight: 52
     readonly property int rowSpacing: m

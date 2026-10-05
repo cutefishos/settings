@@ -133,7 +133,6 @@ ItemPage {
 
                                 ListRow {
                                     interactive: false
-                                    minimumRowHeight: Metrics.controlRowHeight
                                     text: qsTr("Resolution")
 
                                     RowComboBox {
@@ -152,7 +151,6 @@ ItemPage {
 
                                 ListRow {
                                     interactive: false
-                                    minimumRowHeight: Metrics.controlRowHeight
                                     text: qsTr("Refresh rate")
 
                                     RowComboBox {
@@ -165,7 +163,6 @@ ItemPage {
 
                                 ListRow {
                                     interactive: false
-                                    minimumRowHeight: Metrics.controlRowHeight
                                     text: qsTr("Scale")
 
                                     RowComboBox {
@@ -194,7 +191,6 @@ ItemPage {
 
                                 ListRow {
                                     interactive: false
-                                    minimumRowHeight: Metrics.controlRowHeight
                                     text: qsTr("Rotation")
 
                                     RowComboBox {
@@ -244,7 +240,6 @@ ItemPage {
 
                                 ListRow {
                                     interactive: false
-                                    minimumRowHeight: Metrics.controlRowHeight
                                     visible: (element.capabilities & 4) !== 0
                                     text: qsTr("Mode")
 
@@ -349,7 +344,6 @@ ItemPage {
 
                 ListRow {
                     interactive: false
-                    minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Schedule")
 
                     RowComboBox {
@@ -361,7 +355,6 @@ ItemPage {
 
                 ListRow {
                     interactive: false
-                    minimumRowHeight: Metrics.controlRowHeight
                     visible: nightLight.schedule === CS.NightLight.Custom
                     text: qsTr("From")
 
@@ -373,7 +366,6 @@ ItemPage {
 
                 ListRow {
                     interactive: false
-                    minimumRowHeight: Metrics.controlRowHeight
                     visible: nightLight.schedule === CS.NightLight.Custom
                     text: qsTr("To")
 

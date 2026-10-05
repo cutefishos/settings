@@ -28,7 +28,6 @@ ItemPage {
             ListCard {
                 ListRow {
                     interactive: false
-                    minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Web Browser")
                     enabled: browserComboBox.count !== 0
 
@@ -47,7 +46,6 @@ ItemPage {
 
                 ListRow {
                     interactive: false
-                    minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Email Client")
                     enabled: emailComboBox.count !== 0
 
@@ -66,7 +64,6 @@ ItemPage {
 
                 ListRow {
                     interactive: false
-                    minimumRowHeight: Metrics.controlRowHeight
                     text: qsTr("Terminal")
                     enabled: terminalComboBox.count !== 0
 
