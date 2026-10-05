@@ -61,6 +61,15 @@ Item {
             keywords: qsTr("VPN, WireGuard, OpenVPN, tunnel, network")
         },
         {
+            title: qsTr("Proxy"),
+            name: "proxy",
+            page: "qrc:/qml/Proxy/Main.qml",
+            parentName: "network",
+            iconSource: "proxy.svg",
+            iconColor: "#0067FF",
+            keywords: qsTr("HTTP, HTTPS, SOCKS, FTP, PAC, network")
+        },
+        {
             title: qsTr("Hotspot"),
             name: "hotspot",
             page: "qrc:/qml/Hotspot/Main.qml",
@@ -232,17 +241,7 @@ Item {
             iconSource: "globe.svg"
             iconColor: "#0067FF"
             category: qsTr("Network")
-            keywords: qsTr("VPN, hotspot, tethering, internet")
-        }
-
-        ListElement {
-            title: qsTr("Proxy")
-            name: "proxy"
-            page: "qrc:/qml/Proxy/Main.qml"
-            iconSource: "proxy.svg"
-            iconColor: "#0067FF"
-            category: qsTr("Network")
-            keywords: qsTr("HTTP, HTTPS, SOCKS, FTP, PAC, network")
+            keywords: qsTr("VPN, proxy, hotspot, tethering, internet")
         }
 
         ListElement {

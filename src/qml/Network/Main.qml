@@ -41,6 +41,15 @@ ItemPage {
                 }
 
                 NavigationItem {
+                    text: qsTr("Proxy")
+                    leading: RowIcon {
+                        source: "proxy.svg"
+                        tint: "#0067FF"
+                    }
+                    onClicked: rootWindow.pushPage("qrc:/qml/Proxy/Main.qml")
+                }
+
+                NavigationItem {
                     // Shown until NetworkManager has been read, so the row doesn't pop in late.
                     visible: !enabledConnections.ready || handler.hotspotCapable
                     text: qsTr("Hotspot")
