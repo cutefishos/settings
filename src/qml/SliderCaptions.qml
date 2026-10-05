@@ -4,6 +4,7 @@ import Cutefish.Settings
 import FishUI as FishUI
 
 // Captions under a slider, flush with the two ends of its track, each under a tick.
+// A caption longer than Left or Right keeps its tick where theirs sits.
 Item {
     id: captions
     property alias leftText: _leftLabel.text
@@ -15,9 +16,22 @@ Item {
     implicitHeight: _leftTick.height + Metrics.xxs + _leftLabel.implicitHeight
     visible: _leftLabel.text.length > 0 || _rightLabel.text.length > 0
 
+    TextMetrics {
+        id: _leftReference
+        font: _leftLabel.font
+        text: "Left"
+    }
+
+    TextMetrics {
+        id: _rightReference
+        font: _rightLabel.font
+        text: "Right"
+    }
+
     FishUI.RoundedRectangle {
         id: _leftTick
-        x: Math.round(_leftLabel.x + (_leftLabel.width - width) / 2)
+        readonly property real span: Math.min(_leftLabel.width, _leftReference.advanceWidth)
+        x: Math.round((span - width) / 2)
         width: 1
         height: 6
         color: captions.tickColor
@@ -25,7 +39,8 @@ Item {
     }
 
     FishUI.RoundedRectangle {
-        x: Math.round(_rightLabel.x + (_rightLabel.width - width) / 2)
+        readonly property real span: Math.min(_rightLabel.width, _rightReference.advanceWidth)
+        x: Math.round(Math.round(parent.width - span) + (span - width) / 2)
         width: 1
         height: 6
         color: captions.tickColor
