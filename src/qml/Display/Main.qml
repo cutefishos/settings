@@ -33,6 +33,11 @@ ItemPage {
         id: nightLight
     }
 
+    function timeOfDay(minutes) {
+        return new Date(2000, 0, 1, Math.floor(minutes / 60), minutes % 60)
+               .toLocaleTimeString(Qt.locale(), Locale.ShortFormat)
+    }
+
     Scrollable {
         anchors.fill: parent
         contentHeight: layout.implicitHeight
@@ -350,6 +355,28 @@ ItemPage {
                         model: [qsTr("Never"), qsTr("Sunset to sunrise"), qsTr("Custom")]
                         currentIndex: nightLight.schedule
                         onActivated: nightLight.schedule = currentIndex
+                    }
+                }
+
+                ListRow {
+                    interactive: false
+                    visible: nightLight.schedule === CS.NightLight.SunsetToSunrise
+                    text: qsTr("Sunset")
+
+                    FishUI.Label {
+                        text: timeOfDay(nightLight.sunset)
+                        color: FishUI.Theme.disabledTextColor
+                    }
+                }
+
+                ListRow {
+                    interactive: false
+                    visible: nightLight.schedule === CS.NightLight.SunsetToSunrise
+                    text: qsTr("Sunrise")
+
+                    FishUI.Label {
+                        text: timeOfDay(nightLight.sunrise)
+                        color: FishUI.Theme.disabledTextColor
                     }
                 }
 
