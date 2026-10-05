@@ -687,85 +687,19 @@ Item {
 
         // Typing lists matching pages in place of the sidebar; Up/Down move
         // through them, Enter opens one, Escape clears the search.
-        FishUI.TextField {
+        SearchField {
             id: searchField
 
-            readonly property bool mirrored: Qt.application.layoutDirection === Qt.RightToLeft
-            readonly property real iconPadding: Metrics.s + searchIcon.width + Metrics.xs
-            readonly property real clearPadding: clearButton.visible ? Metrics.xs + clearButton.width + Metrics.s
-                                                                     : Metrics.s
-
-            Layout.fillWidth: true
-            Layout.preferredHeight: 28
             Layout.topMargin: Metrics.xs
             Layout.leftMargin: Metrics.sidebarMargin
             Layout.rightMargin: Metrics.sidebarMargin
-            leftPadding: mirrored ? clearPadding : iconPadding
-            rightPadding: mirrored ? iconPadding : clearPadding
-            topPadding: 0
-            bottomPadding: 0
+            // See-through so the field sits on the sidebar's frosted backdrop. Without
+            // blur the backdrop is the flat sidebar tint, where the frosted fill washes
+            // out; a neutral text-colour wash keeps the pill visible.
+            fill: rootWindow.active ? Qt.alpha(FishUI.Theme.alternateBackgroundColor, 0.6)
+                                    : Qt.alpha(FishUI.Theme.textColor, FishUI.Theme.darkMode ? 0.06 : 0.04)
             placeholderText: qsTr("Search")
-            selectByMouse: true
             Accessible.name: qsTr("Search settings")
-
-            // See-through so the field sits on the sidebar's frosted backdrop.
-            background: FishUI.RoundedRectangle {
-                // Without blur the backdrop is the flat sidebar tint, where the frosted fill washes out;
-                // a neutral text-colour wash keeps the pill visible.
-                readonly property color fill: rootWindow.active ? Qt.alpha(FishUI.Theme.alternateBackgroundColor, 0.6)
-                                                                : Qt.alpha(FishUI.Theme.textColor, FishUI.Theme.darkMode ? 0.06 : 0.04)
-
-                // Pill: radius is always half the height.
-                radius: height / 2
-                continuousCorners: false
-                color: fill
-                border.width: 1
-                border.color: searchField.activeFocus ? FishUI.Theme.highlightColor : fill
-
-                FishUI.RoundedRectangle {
-                    anchors.fill: parent
-                    anchors.margins: -2
-                    // The field's radius; inset grows it into a concentric ring.
-                    radius: parent.height / 2
-                    continuousCorners: false
-                    inset: -2
-                    color: "transparent"
-                    border.width: 2
-                    border.color: FishUI.Theme.highlightColor
-                    opacity: 0.25
-                    visible: searchField.activeFocus
-                }
-            }
-
-            FishUI.Icon {
-                id: searchIcon
-                anchors.left: parent.left
-                anchors.leftMargin: Metrics.s
-                anchors.verticalCenter: parent.verticalCenter
-                width: 14
-                height: 14
-                name: "search"
-                color: FishUI.Theme.disabledTextColor
-            }
-
-            FishUI.Icon {
-                id: clearButton
-                anchors.right: parent.right
-                anchors.rightMargin: Metrics.s
-                anchors.verticalCenter: parent.verticalCenter
-                width: 14
-                height: 14
-                visible: searchField.length > 0
-                name: "clear"
-                color: FishUI.Theme.disabledTextColor
-
-                MouseArea {
-                    anchors.fill: parent
-                    // Easier to hit than the glyph alone.
-                    anchors.margins: -Metrics.xs
-                    onClicked: searchField.clear()
-                }
-            }
 
             onTextChanged: {
                 if (text.trim().length > 0)
