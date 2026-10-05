@@ -30,6 +30,9 @@
 #include <QDBusMetaType> // qDBusRegisterMetaType
 #include <QDBusPendingReply>
 
+#include <limits>
+#include <memory>
+
 const QDBusArgument &operator<<(QDBusArgument &argument, const HistoryReply &data)
 {
     argument.beginStructure();
@@ -174,34 +177,75 @@ void BatteryHistoryModel::load()
         return;
     }
 
-    auto msg = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.UPower"),
-                                              m_device,
-                                              QStringLiteral("org.freedesktop.UPower.Device"),
-                                              QStringLiteral("GetHistory"));
-    if (m_type == RateType) {
-        msg << QLatin1String("rate");
-    } else { // m_type must = ChargeType
-        msg << QLatin1String("charge");
-    }
+    const auto historyCall = [this](uint timespan, uint resolution) {
+        auto msg = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.UPower"),
+                                                  m_device,
+                                                  QStringLiteral("org.freedesktop.UPower.Device"),
+                                                  QStringLiteral("GetHistory"));
+        if (m_type == RateType) {
+            msg << QLatin1String("rate");
+        } else { // m_type must = ChargeType
+            msg << QLatin1String("charge");
+        }
 
-    uint resolution = 100;
-    msg << m_duration << resolution;
+        msg << timespan << resolution;
+        return QDBusConnection::systemBus().asyncCall(msg);
+    };
 
-    QDBusPendingReply<QList<HistoryReply>> reply = QDBusConnection::systemBus().asyncCall(msg);
+    const QDBusPendingReply<QList<HistoryReply>> window = historyCall(m_duration, 100);
 
-    auto *watcher = new QDBusPendingCallWatcher(reply, this);
-    QObject::connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-        QDBusPendingReply<QList<HistoryReply>> reply = *watcher;
+    // UPower returns only the samples inside the timespan and records one only
+    // when the value changes, so the value at the window's start is the newest
+    // sample before it, found in the whole history.
+    const QDBusPendingReply<QList<HistoryReply>> all = historyCall(std::numeric_limits<uint>::max(),
+                                                                    std::numeric_limits<uint>::max());
+
+    auto pending = std::make_shared<int>(2);
+
+    const auto finished = [this, window, all, pending](QDBusPendingCallWatcher *watcher) {
         watcher->deleteLater();
+
+        if (--*pending > 0) {
+            return;
+        }
+
         m_values.clear();
 
-        if (reply.isError()) {
-            qWarning() << "Failed to get device history from UPower" << reply.error().message();
+        if (window.isError()) {
+            qWarning() << "Failed to get device history from UPower" << window.error().message();
             return;
         }
 
         const uint now = QDateTime::currentSecsSinceEpoch();
-        const QList<HistoryReply> history = reply.value();
+        const uint start = now > m_duration ? now - m_duration : 0;
+        const QList<HistoryReply> history = window.value();
+
+        // The sample in force at the start, unless UPower restarted after it:
+        // what came in between is unknown.
+        if (!all.isError()) {
+            const QList<HistoryReply> everything = all.value();
+            HistoryReply before;
+
+            for (auto it = everything.crbegin(); it != everything.crend(); ++it) {
+                if (it->time < before.time) {
+                    continue;
+                }
+
+                if (it->time > start) {
+                    if (it->value <= 0) {
+                        before = HistoryReply();
+                    }
+                    break;
+                }
+
+                before = *it;
+            }
+
+            if (before.value > 0) {
+                before.time = start;
+                m_values.append(before);
+            }
+        }
 
         // UPower returns the newest sample first, in the order it recorded them.
         // A sample older than the one recorded before it was stamped while the
@@ -234,5 +278,8 @@ void BatteryHistoryModel::load()
         }
 
         Q_EMIT dataChanged();
-    });
+    };
+
+    connect(new QDBusPendingCallWatcher(window, this), &QDBusPendingCallWatcher::finished, this, finished);
+    connect(new QDBusPendingCallWatcher(all, this), &QDBusPendingCallWatcher::finished, this, finished);
 }
