@@ -119,7 +119,7 @@ ColumnLayout {
 
             ListRow {
                 interactive: false
-                text: qsTr("Maximum Capacity")
+                text: qsTr("Maximum capacity")
 
                 FishUI.Label {
                     text: battery.capacity + "%"
@@ -130,7 +130,7 @@ ColumnLayout {
             ListRow {
                 interactive: false
                 visible: battery.lastChargedPercent !== 0
-                text: qsTr("Last Charged to") + " " + battery.lastChargedPercent + "%"
+                text: qsTr("Last charged to") + " " + battery.lastChargedPercent + "%"
 
                 FishUI.Label {
                     text: battery.lastChargedTime

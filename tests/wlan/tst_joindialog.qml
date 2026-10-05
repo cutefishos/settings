@@ -70,7 +70,7 @@ TestCase {
         compare(dialog.security, "wpa2-eap")
 
         // The network is known; only the sign-in is asked for, user name first.
-        verify(!field("Network Name").visible)
+        verify(!field("Network name").visible)
         verify(!securityBox().visible)
         verify(field("Username").visible)
         verify(field("Password").visible)
@@ -134,9 +134,9 @@ TestCase {
 
         dialog.show()
         tryCompare(dialog, "visible", true)
-        verify(field("Network Name").visible)
+        verify(field("Network name").visible)
         verify(securityBox().visible)
-        field("Network Name").text = "Garden"
+        field("Network name").text = "Garden"
         field("Password").text = "garden pass"
         dialog.join()
         compare(connectSpy.count, 1)

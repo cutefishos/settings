@@ -227,7 +227,7 @@ Item {
                 id: actions
 
                 FishUI.MenuItem {
-                    text: qsTr("Remove Language")
+                    text: qsTr("Remove language")
                     enabled: list.count > 1
                     onTriggered: control.language.removeLanguage(row.index)
                 }

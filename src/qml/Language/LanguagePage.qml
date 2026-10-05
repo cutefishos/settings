@@ -54,7 +54,7 @@ ItemPage {
             }
 
             StandardButton {
-                text: qsTr("Add Language…")
+                text: qsTr("Add language…")
                 Layout.fillWidth: true
                 enabled: !languageSettings.saving
                 onClicked: {

@@ -119,7 +119,7 @@ FishUI.Window {
             FishUI.ConfirmDialogButton {
                 visible: !!control.device && control.device.paired
                 enabled: !!control.device && !control.device.busy
-                text: qsTr("Forget This Device")
+                text: qsTr("Forget this device")
                 primary: true
                 destructive: true
                 onClicked: {

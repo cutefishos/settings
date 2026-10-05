@@ -51,7 +51,7 @@ ItemPage {
                     // The circle, not the button's padding, starts on the text column.
                     horizontalPadding: 0
                     checked: networkProxy.flag === 0
-                    text: qsTr("No Proxy")
+                    text: qsTr("No proxy")
                     onClicked: {
                         networkProxy.flag = 0
                     }
@@ -118,7 +118,7 @@ ItemPage {
                     rowSpacing: Metrics.formRowSpacing
 
                     FishUI.Label {
-                        text: qsTr("HTTP Proxy")
+                        text: qsTr("HTTP proxy")
                     }
 
                     FishUI.TextField {
@@ -173,7 +173,7 @@ ItemPage {
 
                     // FTP
                     FishUI.Label {
-                        text: qsTr("FTP Proxy")
+                        text: qsTr("FTP proxy")
                     }
 
                     FishUI.TextField {
@@ -207,7 +207,7 @@ ItemPage {
 
                     // SOCKS
                     FishUI.Label {
-                        text: qsTr("SOCKS Proxy")
+                        text: qsTr("SOCKS proxy")
                     }
 
                     FishUI.TextField {

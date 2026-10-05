@@ -55,7 +55,7 @@ ItemPage {
                 ListRow {
                     interactive: false
                     separatorVisible: false
-                    text: qsTr("General Font")
+                    text: qsTr("General font")
 
                     RowComboBox {
                         id: generalFontComboBox
@@ -68,7 +68,7 @@ ItemPage {
                 ListRow {
                     interactive: false
                     separatorVisible: false
-                    text: qsTr("Fixed Font")
+                    text: qsTr("Fixed font")
 
                     RowComboBox {
                         id: fixedFontComboBox
@@ -81,7 +81,7 @@ ItemPage {
                 ListRow {
                     interactive: false
                     separatorVisible: false
-                    text: qsTr("Font Size")
+                    text: qsTr("Font size")
 
                     RowComboBox {
                         // ThemeManager's fallback size in cutefish-core.

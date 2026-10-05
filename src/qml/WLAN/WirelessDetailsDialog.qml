@@ -112,17 +112,17 @@ FishUI.Window {
             }
 
             InfoRow {
-                text: qsTr("IPv4 Address")
+                text: qsTr("IPv4 address")
                 value: model.ipAddress
             }
 
             InfoRow {
-                text: qsTr("IPv6 Address")
+                text: qsTr("IPv6 address")
                 value: model.ipV6Address
             }
 
             InfoRow {
-                text: qsTr("MAC Address")
+                text: qsTr("MAC address")
                 value: model.macAddress
             }
 

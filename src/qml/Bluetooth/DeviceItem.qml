@@ -55,7 +55,7 @@ ListRow {
         text: {
             var status = control.device.blocked ? qsTr("Blocked")
                        : control.device.connected ? qsTr("Connected")
-                       : control.device.paired ? qsTr("Not Connected")
+                       : control.device.paired ? qsTr("Not connected")
                        : control.device.busy ? qsTr("Pairing…") : ""
             if (control.device.connected && control.device.batteryPercentage >= 0)
                 status += " · " + qsTr("%1%").arg(control.device.batteryPercentage)
@@ -95,7 +95,7 @@ ListRow {
 
             FishUI.Button {
                 visible: control.device.busy && !control.device.paired
-                text: qsTr("Cancel Pairing")
+                text: qsTr("Cancel pairing")
                 onClicked: control.device.cancelPairing()
             }
         },

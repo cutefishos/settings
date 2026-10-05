@@ -41,7 +41,7 @@ ItemPage {
                         // Greyed out, with the note below, when no NTP service is installed.
                         enabled: time.canNTP
                         interactive: false
-                        text: qsTr("Auto Sync")
+                        text: qsTr("Auto sync")
 
                         FishUI.Switch {
                             Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
@@ -54,7 +54,7 @@ ItemPage {
 
                     ListRow {
                         interactive: false
-                        text: qsTr("24-Hour Time")
+                        text: qsTr("24-hour time")
 
                         FishUI.Switch {
                             Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
@@ -66,7 +66,7 @@ ItemPage {
                     }
 
                     NavigationItem {
-                        text: qsTr("Time Zone")
+                        text: qsTr("Time zone")
                         value: timeZoneMap.currentTimeZone
                         onClicked: timeZoneDialog.show()
                     }
@@ -76,7 +76,7 @@ ItemPage {
                     Layout.fillWidth: true
                     leftPadding: Metrics.cardHorizontalPadding
                     rightPadding: Metrics.cardHorizontalPadding
-                    text: qsTr("Unable to use Auto Sync. Please ensure your NTP service is installed.")
+                    text: qsTr("Unable to use auto sync. Please ensure your NTP service is installed.")
                     color: FishUI.Theme.disabledTextColor
                     wrapMode: Text.WordWrap
                     visible: !time.canNTP

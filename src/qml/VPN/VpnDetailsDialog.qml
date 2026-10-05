@@ -73,7 +73,7 @@ FishUI.Window {
 
             ListRow {
                 interactive: false
-                text: qsTr("User Name")
+                text: qsTr("User name")
 
                 FishUI.TextField {
                     id: userNameField
@@ -102,7 +102,7 @@ FishUI.Window {
 
             InfoRow {
                 visible: model.connectionState === NM.Enums.Activated && model.ipAddress.length > 0
-                text: qsTr("IPv4 Address")
+                text: qsTr("IPv4 address")
                 value: model.ipAddress
             }
         }

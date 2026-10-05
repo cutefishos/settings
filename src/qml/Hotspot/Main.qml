@@ -63,7 +63,7 @@ ItemPage {
             text: qsTr("Turning on the hotspot will disconnect from “%1”, and you will not have access to the internet it provides.")
                   .arg(handler.hotspotReplaces)
             cancelText: qsTr("Cancel")
-            confirmText: qsTr("Turn On")
+            confirmText: qsTr("Turn on")
             onAccepted: control.start()
             onClosing: destroy()
         }
@@ -81,7 +81,7 @@ ItemPage {
             ListCard {
                 ListRow {
                     interactive: false
-                    text: qsTr("Wi-Fi Hotspot")
+                    text: qsTr("Wi-Fi hotspot")
 
                     FishUI.Switch {
                         id: hotspotSwitch
@@ -91,7 +91,7 @@ ItemPage {
                         enabled: handler.hotspotActive
                                  || (handler.hotspotSupported && control.nameValid && control.passwordValid)
                         checked: handler.hotspotActive
-                        Accessible.name: qsTr("Wi-Fi Hotspot")
+                        Accessible.name: qsTr("Wi-Fi hotspot")
                         onToggled: {
                             if (checked)
                                 control.requestStart()
@@ -126,7 +126,7 @@ ItemPage {
                 ListRow {
                     interactive: false
                     minimumRowHeight: Metrics.controlRowHeight
-                    text: qsTr("Network Name")
+                    text: qsTr("Network name")
 
                     FishUI.TextField {
                         id: nameField
@@ -170,7 +170,7 @@ ItemPage {
                             anchors.verticalCenter: parent.verticalCenter
                             iconName: "refresh"
                             iconColor: FishUI.Theme.highlightColor
-                            Accessible.name: qsTr("Generate Password")
+                            Accessible.name: qsTr("Generate password")
                             onClicked: {
                                 passwordField.text = configuration.generatePassword()
                                 configuration.hotspotPassword = passwordField.text

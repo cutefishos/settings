@@ -807,7 +807,7 @@ Item {
                 anchors.top: parent.top
                 anchors.topMargin: Metrics.sidebarCategorySpacing
                 visible: resultsView.visible && resultsView.count === 0
-                text: qsTr("No Results")
+                text: qsTr("No results")
                 color: FishUI.Theme.disabledTextColor
             }
         }

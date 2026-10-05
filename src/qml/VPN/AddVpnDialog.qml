@@ -273,7 +273,7 @@ FishUI.Window {
                 id: _authenticationLabel
                 Layout.preferredWidth: _form.labelWidth
                 visible: control.installed && control.kind === "openvpn"
-                text: qsTr("Sign In With")
+                text: qsTr("Sign in with")
             }
 
             FishUI.ComboBox {
@@ -283,7 +283,7 @@ FishUI.Window {
                 textRole: "text"
                 valueRole: "value"
                 model: [
-                    { text: qsTr("User Name and Password"), value: "password" },
+                    { text: qsTr("User name and password"), value: "password" },
                     { text: qsTr("Certificate"), value: "certificates" }
                 ]
             }
@@ -292,7 +292,7 @@ FishUI.Window {
                 id: _userNameLabel
                 Layout.preferredWidth: _form.labelWidth
                 visible: control.usesUserName
-                text: qsTr("User Name")
+                text: qsTr("User name")
             }
 
             FishUI.TextField {
@@ -325,7 +325,7 @@ FishUI.Window {
                 id: _presharedKeyLabel
                 Layout.preferredWidth: _form.labelWidth
                 visible: control.installed && control.kind === "l2tp"
-                text: qsTr("Pre-shared Key")
+                text: qsTr("Pre-shared key")
             }
 
             FishUI.TextField {
@@ -357,7 +357,7 @@ FishUI.Window {
                 id: _keyLabel
                 Layout.preferredWidth: _form.labelWidth
                 visible: control.certificates
-                text: qsTr("Private Key")
+                text: qsTr("Private key")
             }
 
             FileField {
@@ -372,7 +372,7 @@ FishUI.Window {
                 id: _keyPasswordLabel
                 Layout.preferredWidth: _form.labelWidth
                 visible: control.certificates
-                text: qsTr("Key Password")
+                text: qsTr("Key password")
             }
 
             FishUI.TextField {
@@ -389,7 +389,7 @@ FishUI.Window {
                 id: _caLabel
                 Layout.preferredWidth: _form.labelWidth
                 visible: control.installed && control.kind === "openvpn"
-                text: qsTr("CA Certificate")
+                text: qsTr("CA certificate")
             }
 
             FileField {
@@ -404,7 +404,7 @@ FishUI.Window {
                 id: _publicKeyLabel
                 Layout.preferredWidth: _form.labelWidth
                 visible: control.wireGuard
-                text: qsTr("Server Public Key")
+                text: qsTr("Server public key")
             }
 
             FishUI.TextField {
@@ -420,7 +420,7 @@ FishUI.Window {
                 id: _privateKeyLabel
                 Layout.preferredWidth: _form.labelWidth
                 visible: control.wireGuard
-                text: qsTr("Private Key")
+                text: qsTr("Private key")
             }
 
             FishUI.TextField {

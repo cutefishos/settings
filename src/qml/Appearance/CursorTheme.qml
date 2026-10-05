@@ -27,7 +27,7 @@ ItemPage {
                 spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel {
-                    text: qsTr("Cursor Theme")
+                    text: qsTr("Cursor theme")
                 }
 
                 RoundedItem {
@@ -80,7 +80,7 @@ ItemPage {
                 spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel {
-                    text: qsTr("Cursor Size")
+                    text: qsTr("Cursor size")
                 }
 
                 RoundedItem {

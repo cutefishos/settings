@@ -165,7 +165,7 @@ FishUI.Window {
             FishUI.TextField {
                 id: _nameTextField
                 visible: !control.accessPoint
-                placeholderText: qsTr("Network Name")
+                placeholderText: qsTr("Network name")
                 Layout.fillWidth: true
                 Keys.onEscapePressed: control.close()
                 Keys.onReturnPressed: control.join()

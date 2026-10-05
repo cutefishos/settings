@@ -81,7 +81,7 @@ ItemPage {
                 }
 
                 ListRow {
-                    text: control.importing ? qsTr("Importing…") : qsTr("Import from File…")
+                    text: control.importing ? qsTr("Importing…") : qsTr("Import from file…")
                     enabled: !control.importing
                     onClicked: fileDialog.open()
                 }

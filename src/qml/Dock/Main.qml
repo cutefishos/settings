@@ -81,9 +81,9 @@ ItemPage {
                 }
 
                 SliderRow {
-                    text: qsTr("Glass Effect")
-                    leftText: qsTr("More Clear")
-                    rightText: qsTr("More Tinted")
+                    text: qsTr("Glass effect")
+                    leftText: qsTr("More clear")
+                    rightText: qsTr("More tinted")
                     from: 0
                     to: 1
                     value: dockSettings.dockGlassTint

@@ -52,7 +52,7 @@ ItemPage {
 
                         ImageSelectionItem {
                             source: "qrc:/images/powersave.svg"
-                            text: qsTr("Power Save")
+                            text: qsTr("Power save")
                             previewWidth: 80
                             previewHeight: 80
                             visible: power.profiles.indexOf("power-saver") >= 0
@@ -124,9 +124,9 @@ ItemPage {
                     text: qsTr("Turn off display when inactive on battery")
 
                     RowComboBox {
-                        model: [qsTr("1 Minute"), qsTr("2 Minutes"), qsTr("5 Minutes"),
-                                qsTr("10 Minutes"), qsTr("15 Minutes"), qsTr("20 Minutes"),
-                                qsTr("30 Minutes"), qsTr("Never")]
+                        model: [qsTr("1 minute"), qsTr("2 minutes"), qsTr("5 minutes"),
+                                qsTr("10 minutes"), qsTr("15 minutes"), qsTr("20 minutes"),
+                                qsTr("30 minutes"), qsTr("Never")]
                         currentIndex: timeoutToIndex(power.batteryScreenOff)
                         onActivated: power.batteryScreenOff = timeoutValues[currentIndex]
                     }
@@ -138,9 +138,9 @@ ItemPage {
                                              : qsTr("Turn off display when inactive")
 
                     RowComboBox {
-                        model: [qsTr("1 Minute"), qsTr("2 Minutes"), qsTr("5 Minutes"),
-                                qsTr("10 Minutes"), qsTr("15 Minutes"), qsTr("20 Minutes"),
-                                qsTr("30 Minutes"), qsTr("Never")]
+                        model: [qsTr("1 minute"), qsTr("2 minutes"), qsTr("5 minutes"),
+                                qsTr("10 minutes"), qsTr("15 minutes"), qsTr("20 minutes"),
+                                qsTr("30 minutes"), qsTr("Never")]
                         currentIndex: timeoutToIndex(power.acScreenOff)
                         onActivated: power.acScreenOff = timeoutValues[currentIndex]
                     }

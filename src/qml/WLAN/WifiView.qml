@@ -116,7 +116,7 @@ ColumnLayout {
 
     WifiSection {
         visible: !handler.hotspotActive && (shown > 0 || footerText.length > 0)
-        title: qsTr("Known Networks")
+        title: qsTr("Known networks")
         model: wirelessModel
         displayedState: _contentLayout.displayedState
         // A saved connection that is not the one in use.
@@ -127,13 +127,13 @@ ColumnLayout {
 
     WifiSection {
         visible: !handler.hotspotActive && (shown > 0 || footerText.length > 0)
-        title: qsTr("Other Networks")
+        title: qsTr("Other networks")
         model: wirelessModel
         displayedState: _contentLayout.displayedState
         includes: function(item) {
             return !item.uuid && _contentLayout.displayedState(item.connectionState) === NM.Enums.Deactivated
         }
-        footerText: wirelessSwitch.checked ? qsTr("Add other...") : ""
+        footerText: wirelessSwitch.checked ? qsTr("Add other…") : ""
         onFooterClicked: newNetworkDialog.show()
     }
 }

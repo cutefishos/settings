@@ -29,7 +29,7 @@ ItemPage {
                 spacing: Metrics.sectionSpacing
 
                 WallpaperGrid {
-                    title: qsTr("Your Wallpapers")
+                    title: qsTr("Your wallpapers")
                     wallpapers: background.userWallpapers
                     currentWallpaper: background.path
                     imageSelected: background.type === 0
@@ -186,12 +186,12 @@ ItemPage {
         id: addMenu
 
         FishUI.MenuItem {
-            text: qsTr("Choose File...")
+            text: qsTr("Choose file…")
             onTriggered: wallpaperDialog.open()
         }
 
         FishUI.MenuItem {
-            text: qsTr("Choose Folder...")
+            text: qsTr("Choose folder…")
             onTriggered: folderDialog.open()
         }
     }
@@ -199,7 +199,7 @@ ItemPage {
     FileDialog {
         id: wallpaperDialog
 
-        title: qsTr("Add Wallpaper")
+        title: qsTr("Add wallpaper")
         nameFilters: [qsTr("Image files (*.jpg *.jpeg *.png *.webp *.bmp *.tif *.tiff *.avif)")]
 
         onAccepted: {

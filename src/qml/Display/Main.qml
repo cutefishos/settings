@@ -322,9 +322,9 @@ ItemPage {
                 }
 
                 SliderRow {
-                    text: qsTr("Color Temperature")
-                    leftText: qsTr("Less Warm")
-                    rightText: qsTr("More Warm")
+                    text: qsTr("Color temperature")
+                    leftText: qsTr("Less warm")
+                    rightText: qsTr("More warm")
                     from: 0
                     to: 1
                     value: nightLight.temperature
@@ -347,7 +347,7 @@ ItemPage {
                     text: qsTr("Schedule")
 
                     RowComboBox {
-                        model: [qsTr("Never"), qsTr("Sunset to Sunrise"), qsTr("Custom")]
+                        model: [qsTr("Never"), qsTr("Sunset to sunrise"), qsTr("Custom")]
                         currentIndex: nightLight.schedule
                         onActivated: nightLight.schedule = currentIndex
                     }

@@ -28,7 +28,7 @@ ItemPage {
             ListCard {
                 ListRow {
                     interactive: false
-                    text: qsTr("Web Browser")
+                    text: qsTr("Web browser")
                     enabled: browserComboBox.count !== 0
 
                     RowComboBox {
@@ -46,7 +46,7 @@ ItemPage {
 
                 ListRow {
                     interactive: false
-                    text: qsTr("Email Client")
+                    text: qsTr("Email client")
                     enabled: emailComboBox.count !== 0
 
                     RowComboBox {

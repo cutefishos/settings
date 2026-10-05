@@ -27,7 +27,7 @@ ItemPage {
                 spacing: Metrics.sectionLabelSpacing
 
                 SectionLabel {
-                    text: qsTr("Icon Theme")
+                    text: qsTr("Icon theme")
                 }
 
                 RoundedItem {

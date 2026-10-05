@@ -55,17 +55,17 @@ ItemPage {
 
             ListCard {
                 InfoRow {
-                    text: qsTr("System Version")
+                    text: qsTr("System version")
                     value: about.version
                 }
 
                 InfoRow {
-                    text: qsTr("System Type")
+                    text: qsTr("System type")
                     value: about.architecture
                 }
 
                 InfoRow {
-                    text: qsTr("Kernel Version")
+                    text: qsTr("Kernel version")
                     value: about.kernelVersion
                 }
 
@@ -80,7 +80,7 @@ ItemPage {
                 }
 
                 InfoRow {
-                    text: qsTr("Internal Storage")
+                    text: qsTr("Internal storage")
                     value: about.internalStorage
                 }
             }

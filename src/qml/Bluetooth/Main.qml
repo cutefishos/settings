@@ -95,7 +95,7 @@ ItemPage {
 
                             FishUI.Label {
                                 color: FishUI.Theme.disabledTextColor
-                                text: modelData.discoverable ? qsTr("Discoverable") : qsTr("Not Discoverable")
+                                text: modelData.discoverable ? qsTr("Discoverable") : qsTr("Not discoverable")
                             }
 
                             IconButton {
@@ -127,12 +127,12 @@ ItemPage {
                 visible: control.bluetoothEnabled
 
                 DeviceSection {
-                    title: qsTr("My Devices")
+                    title: qsTr("My devices")
                     model: pairedDevices
                 }
 
                 DeviceSection {
-                    title: qsTr("Other Devices")
+                    title: qsTr("Other devices")
                     model: otherDevices
                     busy: Bluetooth.Manager.scanning
                     placeholderText: Bluetooth.Manager.scanning ? qsTr("Searching for devices…")

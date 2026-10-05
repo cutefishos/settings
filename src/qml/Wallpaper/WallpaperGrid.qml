@@ -137,7 +137,7 @@ ColumnLayout {
 
             Layout.alignment: Qt.AlignVCenter
             visible: wallpaperView.count > wallpaperView.columnCount
-            text: control.expanded ? qsTr("Show Less") : qsTr("Show All")
+            text: control.expanded ? qsTr("Show less") : qsTr("Show all")
             // Button sets its side paddings itself; padding alone would leave them.
             padding: 0
             leftPadding: 0
@@ -262,7 +262,7 @@ ColumnLayout {
                     }
 
                     FishUI.Label {
-                        text: qsTr("Add Wallpaper")
+                        text: qsTr("Add wallpaper")
                         color: FishUI.Theme.textColor
                         font.pointSize: Math.max(FishUI.Theme.fontSize - 1, 7)
                     }

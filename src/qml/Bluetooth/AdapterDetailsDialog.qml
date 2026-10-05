@@ -102,7 +102,7 @@ FishUI.Window {
 
             ListRow {
                 interactive: false
-                text: qsTr("Visible to Other Devices")
+                text: qsTr("Visible to other devices")
 
                 FishUI.Switch {
                     Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
@@ -116,7 +116,7 @@ FishUI.Window {
 
             ListRow {
                 interactive: false
-                text: qsTr("Allow Incoming Pairing")
+                text: qsTr("Allow incoming pairing")
 
                 FishUI.Switch {
                     Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
