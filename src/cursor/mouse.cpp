@@ -8,10 +8,8 @@
 #include <QDBusServiceWatcher>
 #include <QDebug>
 
-namespace {
-constexpr auto service = "com.cutefish.Mouse1";
-constexpr auto path = "/com/cutefish/Mouse1";
-} // namespace
+static constexpr auto service = "com.cutefish.Mouse1";
+static constexpr auto path = "/com/cutefish/Mouse1";
 
 Mouse::Mouse(QObject *parent)
     : QObject(parent)

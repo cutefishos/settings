@@ -14,32 +14,29 @@
 
 #include <preferences.h>
 
-namespace {
-constexpr auto s_powerGroup = "Power";
+static constexpr auto s_powerGroup = "Power";
 
-const QString s_profilesService = QStringLiteral("org.freedesktop.UPower.PowerProfiles");
-const QString s_profilesPath = QStringLiteral("/org/freedesktop/UPower/PowerProfiles");
-const QString s_propertiesInterface = QStringLiteral("org.freedesktop.DBus.Properties");
+static const QString s_profilesService = QStringLiteral("org.freedesktop.UPower.PowerProfiles");
+static const QString s_profilesPath = QStringLiteral("/org/freedesktop/UPower/PowerProfiles");
+static const QString s_propertiesInterface = QStringLiteral("org.freedesktop.DBus.Properties");
 
-int normalizedTimeout(int timeout)
+static int normalizedTimeout(int timeout)
 {
     return timeout < 0 ? -1 : qMax(1, timeout);
 }
 
-int readTimeout(QSettings &settings, const QString &key, int fallback)
+static int readTimeout(QSettings &settings, const QString &key, int fallback)
 {
     return settings.contains(key) ? normalizedTimeout(settings.value(key).toInt()) : fallback;
 }
 
-void callPowerManager(const QString &method, const QVariant &value)
+static void callPowerManager(const QString &method, const QVariant &value)
 {
     QDBusInterface iface("com.cutefish.Services", "/com/cutefish/Services/Power",
                          "com.cutefish.Services.Power", QDBusConnection::sessionBus());
     if (iface.isValid())
         iface.asyncCall(method, value);
 }
-
-} // namespace
 
 PowerManager::PowerManager(QObject *parent)
     : QObject(parent)

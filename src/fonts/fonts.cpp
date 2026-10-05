@@ -7,8 +7,7 @@
 
 #include <preferences.h>
 
-namespace {
-Fonts::Hinting hintingFromString(const QString &value)
+static Fonts::Hinting hintingFromString(const QString &value)
 {
     if (value == QLatin1String("hintmedium"))
         return Fonts::Hinting::Medium;
@@ -19,7 +18,7 @@ Fonts::Hinting hintingFromString(const QString &value)
     return Fonts::Hinting::None;
 }
 
-QString hintingToString(Fonts::Hinting hinting)
+static QString hintingToString(Fonts::Hinting hinting)
 {
     switch (hinting) {
     case Fonts::Hinting::Slight:
@@ -33,7 +32,6 @@ QString hintingToString(Fonts::Hinting hinting)
     }
     return QStringLiteral("hintnone");
 }
-} // namespace
 
 Fonts::Fonts(QObject *parent)
     : QObject(parent)

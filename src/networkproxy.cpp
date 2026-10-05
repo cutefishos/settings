@@ -6,24 +6,21 @@
 #include <QFileInfo>
 #include <QUrl>
 
-namespace
-{
-QString portText(const ProxySettings::Server &server)
+static QString portText(const ProxySettings::Server &server)
 {
     return server.host.isEmpty() || server.port <= 0 ? QString() : QString::number(server.port);
 }
 
-int portValue(const QString &text)
+static int portValue(const QString &text)
 {
     bool ok = false;
     const int port = text.toInt(&ok);
     return ok && port > 0 && port < 65536 ? port : 0;
 }
 
-bool sameServer(const ProxySettings &settings)
+static bool sameServer(const ProxySettings &settings)
 {
     return !settings.http.host.isEmpty() && settings.ftp == settings.http;
-}
 }
 
 NetworkProxy::NetworkProxy(QObject *parent)

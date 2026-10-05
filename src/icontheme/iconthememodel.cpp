@@ -13,15 +13,14 @@
 
 #include <preferences.h>
 
-namespace {
 // Rendered at 2x so the preview stays crisp on hiDPI; IconItem scales it to fit.
-constexpr int PreviewCell = 22;
-constexpr int PreviewGap = 6;
-constexpr int PreviewScale = 2;
-const QStringList PreviewIcons = {QStringLiteral("folder"), QStringLiteral("text-x-generic"),
-                                  QStringLiteral("image-x-generic"), QStringLiteral("user-trash")};
+static constexpr int PreviewCell = 22;
+static constexpr int PreviewGap = 6;
+static constexpr int PreviewScale = 2;
+static const QStringList PreviewIcons = {QStringLiteral("folder"), QStringLiteral("text-x-generic"),
+                                         QStringLiteral("image-x-generic"), QStringLiteral("user-trash")};
 
-QStringList iconBasePaths()
+static QStringList iconBasePaths()
 {
     QStringList paths;
     paths << QDir::homePath() + QStringLiteral("/.icons");
@@ -32,7 +31,7 @@ QStringList iconBasePaths()
     return paths;
 }
 
-QString indexFile(const QStringList &basePaths, const QString &themeId)
+static QString indexFile(const QStringList &basePaths, const QString &themeId)
 {
     for (const QString &base : basePaths) {
         const QString path = base + QLatin1Char('/') + themeId + QStringLiteral("/index.theme");
@@ -41,7 +40,6 @@ QString indexFile(const QStringList &basePaths, const QString &themeId)
     }
     return QString();
 }
-} // namespace
 
 IconThemeModel::IconThemeModel(QObject *parent)
     : QAbstractListModel(parent)

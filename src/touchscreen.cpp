@@ -5,10 +5,8 @@
 #include <QDBusServiceWatcher>
 #include <QDebug>
 
-namespace {
-constexpr auto service = "com.cutefish.Touchscreen1";
-constexpr auto path = "/com/cutefish/Touchscreen1";
-} // namespace
+static constexpr auto service = "com.cutefish.Touchscreen1";
+static constexpr auto path = "/com/cutefish/Touchscreen1";
 
 Touchscreen::Touchscreen(QObject *parent)
     : QObject(parent)

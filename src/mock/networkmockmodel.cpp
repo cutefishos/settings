@@ -2,17 +2,15 @@
 
 #include <QDateTime>
 
-namespace {
-constexpr int activated = 2;
-constexpr int deactivated = 4;
-constexpr int availableConnection = 1;
-constexpr int availableAccessPoint = 2;
-constexpr int wiredType = 13;
-constexpr int wirelessType = 14;
-constexpr int noSecurity = 0;
-constexpr int wpa2Psk = 6;
-constexpr int sae = 8;
-}
+static constexpr int activated = 2;
+static constexpr int deactivated = 4;
+static constexpr int availableConnection = 1;
+static constexpr int availableAccessPoint = 2;
+static constexpr int wiredType = 13;
+static constexpr int wirelessType = 14;
+static constexpr int noSecurity = 0;
+static constexpr int wpa2Psk = 6;
+static constexpr int sae = 8;
 
 NetworkMockModel::NetworkMockModel(QObject *parent)
     : QAbstractListModel(parent)

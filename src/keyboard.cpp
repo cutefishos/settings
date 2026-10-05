@@ -11,17 +11,16 @@
 #include <algorithm>
 #include <libintl.h>
 
-namespace {
-constexpr auto service = "com.cutefish.Keyboard1";
-constexpr auto path = "/com/cutefish/Keyboard1";
-constexpr auto rulesFile = "/usr/share/X11/xkb/rules/evdev.xml";
+static constexpr auto service = "com.cutefish.Keyboard1";
+static constexpr auto path = "/com/cutefish/Keyboard1";
+static constexpr auto rulesFile = "/usr/share/X11/xkb/rules/evdev.xml";
 
-QString translate(const QString &description)
+static QString translate(const QString &description)
 {
     return QString::fromUtf8(dgettext("xkeyboard-config", description.toUtf8().constData()));
 }
 
-QVariantList readLayouts()
+static QVariantList readLayouts()
 {
     QFile file(QString::fromLatin1(rulesFile));
     if (!file.open(QIODevice::ReadOnly)) {
@@ -83,7 +82,6 @@ QVariantList readLayouts()
     });
     return layouts;
 }
-} // namespace
 
 Keyboard::Keyboard(QObject *parent)
     : QObject(parent)

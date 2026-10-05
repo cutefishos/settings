@@ -7,11 +7,9 @@
 #include <QDBusPendingCall>
 #include <QDBusReply>
 
-namespace {
-const QString Service = QStringLiteral("com.cutefish.Services");
-const QString Path = QStringLiteral("/com/cutefish/Services/Brightness");
-const QString Interface = QStringLiteral("com.cutefish.Services.Brightness");
-} // namespace
+static const QString Service = QStringLiteral("com.cutefish.Services");
+static const QString Path = QStringLiteral("/com/cutefish/Services/Brightness");
+static const QString Interface = QStringLiteral("com.cutefish.Services.Brightness");
 
 Brightness::Brightness(QObject *parent)
     : QObject(parent)

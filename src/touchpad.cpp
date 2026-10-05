@@ -8,10 +8,8 @@
 #include <QDBusServiceWatcher>
 #include <QDebug>
 
-namespace {
-constexpr auto service = "com.cutefish.Touchpad1";
-constexpr auto path = "/com/cutefish/Touchpad1";
-} // namespace
+static constexpr auto service = "com.cutefish.Touchpad1";
+static constexpr auto path = "/com/cutefish/Touchpad1";
 
 Touchpad::Touchpad(QObject *parent)
     : QObject(parent)

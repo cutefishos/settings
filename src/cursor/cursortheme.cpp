@@ -8,9 +8,7 @@
 #include <QSettings>
 #include <X11/Xcursor/Xcursor.h>
 
-namespace {
-
-QImage centeredCursorImage(const QImage &image)
+static QImage centeredCursorImage(const QImage &image)
 {
     int left = image.width();
     int top = image.height();
@@ -45,8 +43,6 @@ QImage centeredCursorImage(const QImage &image)
                       (extent - contentBounds.height()) / 2, image, contentBounds.x(),
                       contentBounds.y(), contentBounds.width(), contentBounds.height());
     return centered;
-}
-
 }
 
 CursorTheme::CursorTheme(const QDir &dir, QObject *parent)

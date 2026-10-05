@@ -7,9 +7,10 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 
+static constexpr auto service = "com.cutefish.Shortcuts1";
+static constexpr auto path = "/com/cutefish/Shortcuts1";
+
 namespace {
-constexpr auto service = "com.cutefish.Shortcuts1";
-constexpr auto path = "/com/cutefish/Shortcuts1";
 
 // Qt's key codes for the keys that are not printable characters, and the xkb
 // keysyms the compositor knows them by. Only used when the toolkit reports no
@@ -19,7 +20,9 @@ struct QtKeysym {
     int keysym;
 };
 
-const QtKeysym kQtKeysyms[] = {
+} // namespace
+
+static const QtKeysym kQtKeysyms[] = {
         {Qt::Key_Escape, 0xff1b},   {Qt::Key_Tab, 0xff09},      {Qt::Key_Backtab, 0xfe20},
         {Qt::Key_Backspace, 0xff08}, {Qt::Key_Return, 0xff0d},  {Qt::Key_Enter, 0xff8d},
         {Qt::Key_Insert, 0xff63},   {Qt::Key_Delete, 0xffff},   {Qt::Key_Pause, 0xff13},
@@ -34,7 +37,6 @@ const QtKeysym kQtKeysyms[] = {
         {Qt::Key_MediaNext, 0x1008ff17}, {Qt::Key_MonBrightnessUp, 0x1008ff02},
         {Qt::Key_MonBrightnessDown, 0x1008ff03}, {Qt::Key_Calculator, 0x1008ff1d},
 };
-} // namespace
 
 ShortcutsModel::ShortcutsModel(QObject *parent)
     : QAbstractListModel(parent)

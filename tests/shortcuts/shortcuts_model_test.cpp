@@ -11,10 +11,8 @@
 #include <QSignalSpy>
 #include <QTest>
 
-namespace {
-
-QJsonObject accelerator(int keysym, const QString &keyName, const QString &keyText, int modifiers,
-                        const QString &type = QStringLiteral("default"))
+static QJsonObject accelerator(int keysym, const QString &keyName, const QString &keyText, int modifiers,
+                               const QString &type = QStringLiteral("default"))
 {
     return {{QStringLiteral("keysym"), keysym},
             {QStringLiteral("keyName"), keyName},
@@ -24,6 +22,8 @@ QJsonObject accelerator(int keysym, const QString &keyName, const QString &keyTe
             {QStringLiteral("type"), type},
             {QStringLiteral("locked"), false}};
 }
+
+namespace {
 
 class FakeShortcutsService : public QObject
 {

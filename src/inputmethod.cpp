@@ -10,11 +10,10 @@
 #include <QFile>
 #include <QStandardPaths>
 
-namespace {
-constexpr auto service = "com.cutefish.InputMethod1";
-constexpr auto path = "/com/cutefish/InputMethod1";
+static constexpr auto service = "com.cutefish.InputMethod1";
+static constexpr auto path = "/com/cutefish/InputMethod1";
 
-QVariantMap describe(const QString &id)
+static QVariantMap describe(const QString &id)
 {
     QVariantMap method {{QStringLiteral("id"), id}, {QStringLiteral("name"), id}};
     const QString file = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, id);
@@ -28,7 +27,6 @@ QVariantMap describe(const QString &id)
     }
     return method;
 }
-} // namespace
 
 InputMethod::InputMethod(QObject *parent)
     : QObject(parent)
