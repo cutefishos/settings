@@ -141,8 +141,8 @@ RoundedItem {
 
                     FishUI.Label {
                         Layout.alignment: Qt.AlignVCenter
-                        font.pixelSize: 15
-                        text: "<b>%1</b>".arg(userName)
+                        text: userName
+                        textFormat: Text.PlainText
                     }
 
                     FishUI.Label {
@@ -157,14 +157,20 @@ RoundedItem {
                     }
 
                     FishUI.Label {
-                        text: qsTr("Currently logged")
+                        text: qsTr("Logged in")
                         Layout.alignment: Qt.AlignVCenter
+                        // As close to the arrow as a row choice's value is to its arrow.
+                        Layout.rightMargin: FishUI.Units.mediumSpacing - Metrics.rowSpacing - _disclosure.iconMargins
+                        color: FishUI.Theme.disabledTextColor
                         visible: currentUser.userId === loggedUser.userId
                     }
 
                     FishUI.RoundImageButton {
+                        id: _disclosure
                         Layout.rightMargin: Metrics.trailingGlyphMargin(iconName, iconSize, iconMargins)
-                        iconMargins: FishUI.Units.smallSpacing
+                        // A navigation row's chevron size; the hover circle stays short of the card's edge.
+                        size: 26
+                        iconMargins: 5
                         iconName: additionalSettings.shown ? "chevron-up" : "chevron-down"
                         onClicked: additionalSettings.toggle()
                         Layout.alignment: Qt.AlignVCenter
