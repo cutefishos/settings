@@ -4,7 +4,9 @@
 #ifndef DEFAULTAPPLICATIONS_H
 #define DEFAULTAPPLICATIONS_H
 
+#include <QFileSystemWatcher>
 #include <QObject>
+#include <QTimer>
 #include <QVariantList>
 
 class AppItem {
@@ -51,6 +53,7 @@ public:
 
 private:
     void setDefaultApp(const QString &mimeType, const QString &path);
+    void watchLists();
 
 signals:
     void loadFinished();
@@ -65,6 +68,9 @@ private:
     int m_emailIndex = -1;
     int m_terminalIndex = -1;
     int m_videoPlayerIndex = -1;
+
+    QFileSystemWatcher m_watcher;
+    QTimer m_reloadTimer;
 };
 
 #endif // DEFAULTAPPLICATIONS_H

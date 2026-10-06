@@ -8,6 +8,7 @@
 
 #include <QDebug>
 #include <QFileInfo>
+#include <QMimeDatabase>
 
 static bool playsVideo(const DesktopEntry *entry)
 {
@@ -28,6 +29,26 @@ DefaultApplications::DefaultApplications(QObject *parent)
             &DefaultApplications::loadApps);
     if (!registry->loading())
         loadApps();
+
+    // Other programs, the file manager among them, choose defaults too.
+    m_reloadTimer.setSingleShot(true);
+    m_reloadTimer.setInterval(100);
+    connect(&m_reloadTimer, &QTimer::timeout, this, &DefaultApplications::loadApps);
+    connect(&m_watcher, &QFileSystemWatcher::fileChanged, &m_reloadTimer, qOverload<>(&QTimer::start));
+    connect(&m_watcher, &QFileSystemWatcher::directoryChanged, &m_reloadTimer, qOverload<>(&QTimer::start));
+    watchLists();
+}
+
+void DefaultApplications::watchLists()
+{
+    // Lists are saved by replacing the file, which drops its watch; the folder sees them come back.
+    for (const QString &path : {MimeApps::userListPath(), MimeApps::userTerminalsListPath()}) {
+        if (QFileInfo::exists(path) && !m_watcher.files().contains(path))
+            m_watcher.addPath(path);
+    }
+    const QString folder = QFileInfo(MimeApps::userListPath()).absolutePath();
+    if (QFileInfo::exists(folder) && !m_watcher.directories().contains(folder))
+        m_watcher.addPath(folder);
 }
 
 void DefaultApplications::loadApps()
@@ -40,6 +61,7 @@ void DefaultApplications::loadApps()
     m_emailIndex = -1;
     m_terminalIndex = -1;
     m_videoPlayerIndex = -1;
+    watchLists();
 
     for (DesktopEntry *entry : ApplicationRegistry::instance()->applicationEntries()) {
         AppItem item;
@@ -71,9 +93,9 @@ void DefaultApplications::loadApps()
                                    "x-scheme-handler/mailto").value(0);
     const QString defaultTerminal = MimeApps::defaultTerminal(MimeApps::userTerminalsListPath());
     // Players differ in the video types they list; the commonest one stands for all.
-    const QString defaultVideoPlayer =
-            MimeApps::associations(MimeApps::userListPath(), "Default Applications",
-                                   "video/mp4").value(0);
+    // Without a choice, this is what the file manager opens videos with.
+    const QString defaultVideoPlayer = MimeApps::defaultApplication(
+            MimeApps::userListPath(), QMimeDatabase().mimeTypeForName(QStringLiteral("video/mp4")));
 
     // Init indexes.
     for (int i = 0; i < m_browserList.size(); ++i) {
@@ -98,7 +120,7 @@ void DefaultApplications::loadApps()
     }
 
     for (int i = 0; i < m_videoPlayerList.size(); ++i) {
-        if (defaultVideoPlayer == m_videoPlayerList.at(i).fileName) {
+        if (defaultVideoPlayer == m_videoPlayerList.at(i).path) {
             m_videoPlayerIndex = i;
             break;
         }
