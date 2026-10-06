@@ -91,7 +91,11 @@ ListRow {
     function openDetails() {
         var component = Qt.createComponent("VpnDetailsDialog.qml")
         if (component.status === Component.Ready) {
-            var dialog = component.createObject(rootWindow, { "parentWindow": rootWindow })
+            var dialog = component.createObject(rootWindow, {
+                "parentWindow": rootWindow,
+                "listModel": vpnModel,
+                "connectionPath": model.connectionPath
+            })
             dialog.show()
             dialog.raise()
             dialog.requestActivate()

@@ -10,7 +10,7 @@ import "../"
 // One VPN's type and state, and the way to remove it.
 FishUI.Window {
     id: control
-    title: model.name
+    title: row.name || ""
 
     parentWindow: rootWindow
     x: parentWindow ? parentWindow.x + Math.round((parentWindow.width - width) / 2) : 0
@@ -46,16 +46,34 @@ FishUI.Window {
         elide: Text.ElideRight
     }
 
-    // Created per click, so each one goes away with its window.
-    onClosing: {
-        if (model.vpnUsesUserName)
-            handler.setVpnUserName(model.connectionPath, userNameField.text)
-        destroy()
+    // The VPN shown, found by its connection while the list changes around it.
+    property alias listModel: tracker.model
+    property alias connectionPath: tracker.value
+    readonly property var row: tracker.row || ({})
+
+    TrackedRow {
+        id: tracker
+        role: "connectionPath"
+        property bool found: false
+
+        onRowChanged: {
+            if (!row) {
+                if (found)
+                    control.close()
+                return
+            }
+
+            if (!found && row.vpnUsesUserName && row.vpnUserName.length === 0)
+                Qt.callLater(userNameField.forceActiveFocus)
+            found = true
+        }
     }
 
-    Component.onCompleted: {
-        if (model.vpnUsesUserName && model.vpnUserName.length === 0)
-            Qt.callLater(userNameField.forceActiveFocus)
+    // Created per click, so each one goes away with its window.
+    onClosing: {
+        if (row.vpnUsesUserName)
+            handler.setVpnUserName(control.connectionPath, userNameField.text)
+        destroy()
     }
 
     ColumnLayout {
@@ -69,7 +87,7 @@ FishUI.Window {
         spacing: Metrics.dialogSpacing
 
         ListCard {
-            visible: model.vpnUsesUserName
+            visible: !!row.vpnUsesUserName
 
             ListRow {
                 interactive: false
@@ -79,7 +97,7 @@ FishUI.Window {
                     id: userNameField
                     Layout.preferredWidth: 200
                     Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                    text: model.vpnUserName
+                    text: row.vpnUserName || ""
                     placeholderText: qsTr("Required")
                     inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhNoAutoUppercase
                     onAccepted: control.close()
@@ -90,27 +108,27 @@ FishUI.Window {
         ListCard {
             InfoRow {
                 text: qsTr("Type")
-                value: model.vpnType
+                value: row.vpnType
             }
 
             InfoRow {
                 text: qsTr("Status")
-                value: model.connectionState === NM.Enums.Activated ? qsTr("Connected")
-                       : model.connectionState === NM.Enums.Activating ? qsTr("Connecting…")
+                value: row.connectionState === NM.Enums.Activated ? qsTr("Connected")
+                       : row.connectionState === NM.Enums.Activating ? qsTr("Connecting…")
                        : qsTr("Not connected")
             }
 
             InfoRow {
-                visible: model.connectionState === NM.Enums.Activated && model.ipAddress.length > 0
+                visible: row.connectionState === NM.Enums.Activated && !!row.ipAddress
                 text: qsTr("IPv4 address")
-                value: model.ipAddress
+                value: row.ipAddress
             }
         }
 
         FishUI.Label {
             Layout.fillWidth: true
-            visible: model.statusMessage.length > 0
-            text: model.statusMessage
+            visible: !!row.statusMessage
+            text: row.statusMessage || ""
             textFormat: Text.PlainText
             color: FishUI.Theme.disabledTextColor
             wrapMode: Text.Wrap
@@ -130,7 +148,7 @@ FishUI.Window {
                 primary: true
                 destructive: true
                 onClicked: {
-                    handler.removeConnection(model.connectionPath)
+                    handler.removeConnection(control.connectionPath)
                     control.close()
                 }
             }

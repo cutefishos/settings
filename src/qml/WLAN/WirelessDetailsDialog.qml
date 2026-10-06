@@ -12,7 +12,7 @@ import "../"
 
 FishUI.Window {
     id: control
-    title: model.itemUniqueName
+    title: row.itemUniqueName || ""
 
     parentWindow: rootWindow
     x: parentWindow ? parentWindow.x + Math.round((parentWindow.width - width) / 2) : 0
@@ -48,22 +48,40 @@ FishUI.Window {
         elide: Text.ElideRight
     }
 
+    // The network shown, found by a role that its row keeps while the list re-sorts.
+    property alias listModel: tracker.model
+    property alias trackedRole: tracker.role
+    property alias trackedValue: tracker.value
+    readonly property var row: tracker.row || ({})
+
     // Only a saved network has settings to auto-join with or forget.
-    readonly property bool saved: !!model.connectionPath
+    readonly property bool saved: !!row.connectionPath
 
     signal forgetBtnClicked()
+
+    TrackedRow {
+        id: tracker
+        property bool found: false
+
+        onRowChanged: {
+            if (row)
+                found = true
+            else if (found)
+                control.close()
+        }
+    }
 
     NM.WirelessItemSettings {
         id: settings
     }
 
-    Component.onCompleted: {
+    onSavedChanged: {
         if (!control.saved)
             return
 
         // The sample networks have no NetworkManager connection behind them.
         if (!rootWindow.mockNetworkData)
-            settings.path = model.connectionPath
+            settings.path = row.connectionPath
         autoJoinSwitch.checked = rootWindow.mockNetworkData || settings.autoConnect
     }
 
@@ -103,37 +121,37 @@ FishUI.Window {
         ListCard {
             InfoRow {
                 text: qsTr("Security")
-                value: model.securityTypeString
+                value: row.securityTypeString
             }
 
             InfoRow {
                 text: qsTr("Signal")
-                value: qsTr("%1%").arg(model.signal)
+                value: row.signal !== undefined ? qsTr("%1%").arg(row.signal) : ""
             }
 
             InfoRow {
                 text: qsTr("IPv4 address")
-                value: model.ipAddress
+                value: row.ipAddress
             }
 
             InfoRow {
                 text: qsTr("IPv6 address")
-                value: model.ipV6Address
+                value: row.ipV6Address
             }
 
             InfoRow {
                 text: qsTr("MAC address")
-                value: model.macAddress
+                value: row.macAddress
             }
 
             InfoRow {
                 text: qsTr("Gateway")
-                value: model.gateWay
+                value: row.gateWay
             }
 
             InfoRow {
                 text: qsTr("DNS")
-                value: model.nameServer
+                value: row.nameServer
             }
         }
 
@@ -154,7 +172,7 @@ FishUI.Window {
                 destructive: true
                 onClicked: {
                     if (!rootWindow.mockNetworkData)
-                        handler.removeConnection(model.connectionPath)
+                        handler.removeConnection(row.connectionPath)
                     control.close()
                 }
             }

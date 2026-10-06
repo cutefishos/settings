@@ -14,6 +14,9 @@ import "../"
 ListRow {
     id: control
 
+    // The model this row is a delegate of, for the details dialog.
+    property var listModel
+
     // The state the row shows, which may lag behind NetworkManager's.
     property int displayedState: model.connectionState
     // Joined with a user name, which the join window asks for.
@@ -67,7 +70,14 @@ ListRow {
         onClicked: {
             var component = Qt.createComponent("WirelessDetailsDialog.qml")
             if (component.status === Component.Ready) {
-                var dialog = component.createObject(rootWindow, { "parentWindow": rootWindow })
+                // A saved network by its connection, others by name.
+                var saved = !!model.connectionPath
+                var dialog = component.createObject(rootWindow, {
+                    "parentWindow": rootWindow,
+                    "listModel": control.listModel,
+                    "trackedRole": saved ? "connectionPath" : "ssid",
+                    "trackedValue": saved ? model.connectionPath : model.ssid
+                })
                 dialog.show()
                 dialog.raise()
                 dialog.requestActivate()

@@ -47,6 +47,7 @@ ColumnLayout {
             model: wifiSection.model
 
             delegate: WifiItem {
+                listModel: repeater.model
                 readonly property bool included: wifiSection.includes(model)
                 displayedState: wifiSection.displayedState(model.connectionState)
                 visible: included

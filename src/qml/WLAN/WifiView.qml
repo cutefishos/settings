@@ -72,6 +72,7 @@ ColumnLayout {
             model: wirelessModel
 
             delegate: WifiItem {
+                listModel: currentRepeater.model
                 readonly property bool activating: model.connectionState === NM.Enums.Activating
                 displayedState: _contentLayout.displayedState(model.connectionState)
                 visible: displayedState !== NM.Enums.Deactivated
