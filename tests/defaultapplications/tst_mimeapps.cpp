@@ -30,6 +30,8 @@ private slots:
         DesktopEntryData browser;
         DesktopEntryData email;
         DesktopEntryData terminal;
+        DesktopEntryData player;
+        DesktopEntryData editor;
         QVERIFY(DesktopEntry::parse(
                 "browser", "/applications/browser.desktop",
                 "[Desktop Entry]\nType=Application\nName=Browser\nExec=browser %U\n"
@@ -42,14 +44,26 @@ private slots:
                 "terminal", "/applications/terminal.desktop",
                 "[Desktop Entry]\nType=Application\nName=Terminal\nExec=terminal\n"
                 "Categories=TerminalEmulator;\n", &terminal));
-        registry->applyScan({browser, email, terminal});
+        QVERIFY(DesktopEntry::parse(
+                "player", "/applications/player.desktop",
+                "[Desktop Entry]\nType=Application\nName=Player\nExec=player %U\n"
+                "Categories=AudioVideo;Video;Player;\n"
+                "MimeType=video/mp4;video/webm;application/ogg;\n", &player));
+        QVERIFY(DesktopEntry::parse(
+                "editor", "/applications/editor.desktop",
+                "[Desktop Entry]\nType=Application\nName=Editor\nExec=editor %U\n"
+                "Categories=Graphics;\nMimeType=video/mp4;\n", &editor));
+        registry->applyScan({browser, email, terminal, player, editor});
         DefaultApplications settings;
         QCOMPARE(settings.browserList().size(), 1);
         QCOMPARE(settings.emailList().size(), 1);
         QCOMPARE(settings.terminalList().size(), 1);
+        QCOMPARE(settings.videoPlayerList().size(), 1);
+        QCOMPARE(settings.videoPlayerIndex(), -1);
         settings.setDefaultBrowser(0);
         settings.setDefaultEMail(0);
         settings.setDefaultTerminal(0);
+        settings.setDefaultVideoPlayer(0);
         QCOMPARE(settings.browserIndex(), 0);
         QCOMPARE(settings.emailIndex(), 0);
         QCOMPARE(MimeApps::associations(path, "Default Applications", "x-scheme-handler/http"),
@@ -58,6 +72,11 @@ private slots:
                  QStringList {"browser.desktop"});
         QCOMPARE(MimeApps::associations(path, "Default Applications", "x-scheme-handler/mailto"),
                  QStringList {"email.desktop"});
+        QCOMPARE(MimeApps::associations(path, "Default Applications", "video/mp4"),
+                 QStringList {"player.desktop"});
+        QCOMPARE(MimeApps::associations(path, "Default Applications", "video/webm"),
+                 QStringList {"player.desktop"});
+        QVERIFY(MimeApps::associations(path, "Default Applications", "application/ogg").isEmpty());
         QFile file(path);
         QVERIFY(file.open(QIODevice::ReadOnly));
         QVERIFY(file.readAll().contains("x-scheme-handler/http=browser.desktop;"));
@@ -67,6 +86,7 @@ private slots:
         QCOMPARE(reopened.browserIndex(), 0);
         QCOMPARE(reopened.emailIndex(), 0);
         QCOMPARE(reopened.terminalIndex(), 0);
+        QCOMPARE(reopened.videoPlayerIndex(), 0);
     }
 };
 QTEST_GUILESS_MAIN(MimeAppsTest)

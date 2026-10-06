@@ -79,6 +79,24 @@ ItemPage {
                         onActivated: defaultApps.setDefaultTerminal(terminalComboBox.currentIndex)
                     }
                 }
+
+                ListRow {
+                    interactive: false
+                    text: qsTr("Video player")
+                    enabled: videoPlayerComboBox.count !== 0
+
+                    RowComboBox {
+                        id: videoPlayerComboBox
+                        displayText: count !== 0 ? currentText : qsTr("None")
+                        textRole: "name"
+                        iconRole: "icon"
+                        model: defaultApps.videoPlayerList
+                        currentIndex: defaultApps.videoPlayerIndex >= 0
+                                      ? defaultApps.videoPlayerIndex
+                                      : (defaultApps.videoPlayerList.length > 0 ? 0 : -1)
+                        onActivated: defaultApps.setDefaultVideoPlayer(videoPlayerComboBox.currentIndex)
+                    }
+                }
             }
         }
     }

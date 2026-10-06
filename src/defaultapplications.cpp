@@ -9,6 +9,17 @@
 #include <QDebug>
 #include <QFileInfo>
 
+static bool playsVideo(const DesktopEntry *entry)
+{
+    if (!entry->categories().contains(QStringLiteral("AudioVideo")))
+        return false;
+    for (const QString &mimeType : entry->mimeTypes()) {
+        if (mimeType.startsWith(QLatin1String("video/")))
+            return true;
+    }
+    return false;
+}
+
 DefaultApplications::DefaultApplications(QObject *parent)
     : QObject(parent)
 {
@@ -24,9 +35,11 @@ void DefaultApplications::loadApps()
     m_browserList.clear();
     m_emailList.clear();
     m_terminalList.clear();
+    m_videoPlayerList.clear();
     m_browserIndex = -1;
     m_emailIndex = -1;
     m_terminalIndex = -1;
+    m_videoPlayerIndex = -1;
 
     for (DesktopEntry *entry : ApplicationRegistry::instance()->applicationEntries()) {
         AppItem item;
@@ -45,6 +58,8 @@ void DefaultApplications::loadApps()
             m_emailList.append(item);
         } else if (entry->categories().contains(QStringLiteral("TerminalEmulator"))) {
             m_terminalList.append(item);
+        } else if (playsVideo(entry)) {
+            m_videoPlayerList.append(item);
         }
     }
 
@@ -55,6 +70,10 @@ void DefaultApplications::loadApps()
             MimeApps::associations(MimeApps::userListPath(), "Default Applications",
                                    "x-scheme-handler/mailto").value(0);
     const QString defaultTerminal = MimeApps::defaultTerminal(MimeApps::userTerminalsListPath());
+    // Players differ in the video types they list; the commonest one stands for all.
+    const QString defaultVideoPlayer =
+            MimeApps::associations(MimeApps::userListPath(), "Default Applications",
+                                   "video/mp4").value(0);
 
     // Init indexes.
     for (int i = 0; i < m_browserList.size(); ++i) {
@@ -74,6 +93,13 @@ void DefaultApplications::loadApps()
     for (int i = 0; i < m_terminalList.size(); ++i) {
         if (defaultTerminal == m_terminalList.at(i).fileName) {
             m_terminalIndex = i;
+            break;
+        }
+    }
+
+    for (int i = 0; i < m_videoPlayerList.size(); ++i) {
+        if (defaultVideoPlayer == m_videoPlayerList.at(i).fileName) {
+            m_videoPlayerIndex = i;
             break;
         }
     }
@@ -126,6 +152,21 @@ QVariantList DefaultApplications::terminalList()
     return list;
 }
 
+QVariantList DefaultApplications::videoPlayerList()
+{
+    QVariantList list;
+
+    for (const AppItem &item : m_videoPlayerList) {
+        QVariantMap map;
+        map["name"] = item.name;
+        map["icon"] = item.icon;
+        map["path"] = item.path;
+        list << map;
+    }
+
+    return list;
+}
+
 int DefaultApplications::browserIndex()
 {
     return m_browserIndex;
@@ -139,6 +180,11 @@ int DefaultApplications::emailIndex()
 int DefaultApplications::terminalIndex()
 {
     return m_terminalIndex;
+}
+
+int DefaultApplications::videoPlayerIndex()
+{
+    return m_videoPlayerIndex;
 }
 
 void DefaultApplications::setDefaultBrowser(int index)
@@ -171,6 +217,24 @@ void DefaultApplications::setDefaultTerminal(int index)
                                       m_terminalList.at(index).fileName)) {
         qWarning() << "Failed to save the default terminal";
         return;
+    }
+    loadApps();
+}
+
+void DefaultApplications::setDefaultVideoPlayer(int index)
+{
+    if (index < 0 || index >= m_videoPlayerList.size())
+        return;
+
+    const AppItem &item = m_videoPlayerList.at(index);
+    const QStringList mimeTypes = item.mimeType.split(QLatin1Char(';'), Qt::SkipEmptyParts);
+    const QString desktop = item.fileName;
+
+    for (const QString &mimeType : mimeTypes) {
+        if (!mimeType.startsWith(QLatin1String("video/")))
+            continue;
+        if (!MimeApps::setDefault(MimeApps::userListPath(), mimeType, desktop))
+            qWarning() << "Failed to save default application for" << mimeType;
     }
     loadApps();
 }
