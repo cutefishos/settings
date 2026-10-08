@@ -101,6 +101,17 @@ QVariantList BatteryHistoryModel::asPoints() const
     return points;
 }
 
+QVariantList BatteryHistoryModel::states() const
+{
+    QVariantList states;
+    states.reserve(m_values.count());
+    for (const HistoryReply &h : m_values) {
+        states.append(h.charging);
+    }
+
+    return states;
+}
+
 int BatteryHistoryModel::count() const
 {
     return m_values.count();
@@ -144,16 +155,21 @@ void BatteryHistoryModel::load()
     if (QCoreApplication::arguments().contains(QStringLiteral("--mock-battery"))) {
         m_values.clear();
         const uint now = QDateTime::currentSecsSinceEpoch();
-        const QList<double> chargeValues { 96, 92, 88, 83, 77, 71, 64, 59, 65, 70, 74, 78 };
-        const QList<double> rateValues { 8.2, 7.6, 7.1, 6.8, 6.4, 5.9, 6.3, 7.0, 6.5, 6.1, 5.8, 5.5 };
+        // A day on battery, a charge held at 80% by the charge limit, then unplugged.
+        const QList<double> chargeValues { 96, 92, 88, 83, 77, 70, 62, 55, 47, 40, 33,
+                                           41, 52, 63, 72, 79, 80, 80, 78, 74, 69, 65 };
+        const QList<double> rateValues { 8.2, 7.6, 7.1, 6.8, 6.4, 5.9, 6.3, 7.0, 6.5, 6.1, 5.8,
+                                         9.4, 12.1, 11.6, 10.2, 8.8, 4.1, 4.0, 5.2, 5.9, 6.3, 5.5 };
+        const QList<uint> states { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+                                   1, 1, 1, 1, 1, 5, 5, 2, 2, 2, 2 };
         const auto &values = m_type == RateType ? rateValues : chargeValues;
-        const uint interval = m_duration / values.size();
+        const uint interval = m_duration / (values.size() - 1);
 
         for (int i = 0; i < values.size(); ++i) {
             HistoryReply reply;
             reply.time = now - m_duration + interval * i;
             reply.value = values.at(i);
-            reply.charging = 0;
+            reply.charging = states.at(i);
             m_values.append(reply);
         }
 

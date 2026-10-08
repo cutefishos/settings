@@ -30,6 +30,8 @@ class BatteryHistoryModel : public QObject, public QQmlParserStatus
     Q_PROPERTY(HistoryType type MEMBER m_type WRITE setType NOTIFY typeChanged)
 
     Q_PROPERTY(QVariantList points READ asPoints NOTIFY dataChanged)
+    // UPower's device state when each point was recorded, e.g. 1 for charging.
+    Q_PROPERTY(QVariantList states READ states NOTIFY dataChanged)
     Q_PROPERTY(int count READ count NOTIFY dataChanged)
     Q_PROPERTY(int lastDataPointTime READ lastDataPointTime NOTIFY dataChanged)
     Q_PROPERTY(int largestValue READ largestValue NOTIFY dataChanged)
@@ -58,6 +60,7 @@ public:
     void componentComplete() override;
 
     QVariantList asPoints() const;
+    QVariantList states() const;
     int count() const;
 
     int lastDataPointTime() const;

@@ -57,6 +57,7 @@ ColumnLayout {
                 height: 240
 
                 points: history.points
+                pointStates: history.states
                 end: history.lastDataPointTime
                 duration: history.duration
                 yUnits: section.historyType === BatteryHistoryModel.RateType ? qsTr("W") : "%"
@@ -71,7 +72,8 @@ ColumnLayout {
                         return 100;
                     }
                 }
-                yStep: section.historyType === BatteryHistoryModel.RateType ? 10 : 20
+                yStep: section.historyType === BatteryHistoryModel.RateType ? 10 : 25
+                decimals: section.historyType === BatteryHistoryModel.RateType ? 1 : 0
             }
         }
     }
