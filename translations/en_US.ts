@@ -284,11 +284,6 @@
         <translation>Dark</translation>
     </message>
     <message>
-        <location line="+15"/>
-        <source>Dim the wallpaper in dark theme</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+25"/>
         <source>Accent color</source>
         <translation type="unfinished"></translation>

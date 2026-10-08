@@ -83,7 +83,8 @@ private slots:
             return -1;
         };
         const QMimeType mp4 = QMimeDatabase().mimeTypeForName("video/mp4");
-        QCOMPARE(settings.videoPlayerIndex(), videoPlayerIndex(MimeApps::applications(mp4).value(0)));
+        QCOMPARE(settings.videoPlayerIndex(),
+                 videoPlayerIndex(MimeApps::applications(mp4, MimeApps::listPaths()).value(0)));
         const int chosen = videoPlayerIndex("/applications/player.desktop");
         const int other = videoPlayerIndex("/applications/other-player.desktop");
         settings.setDefaultBrowser(0);

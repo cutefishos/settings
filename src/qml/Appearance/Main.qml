@@ -59,31 +59,6 @@ ItemPage {
                             onClicked: appearance.switchDarkMode(true)
                         }
                     }
-
-                    HorizontalDivider {}
-
-                    RowLayout {
-                        spacing: Metrics.rowSpacing
-
-                        FishUI.Label {
-                            id: dimsTipsLabel
-                            text: qsTr("Dim the wallpaper in dark theme")
-                            Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
-                        }
-
-                        Item {
-                            Layout.fillWidth: true
-                        }
-
-                        FishUI.Switch {
-                            checked: appearance.dimsWallpaper
-                            height: dimsTipsLabel.height
-                            Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                            onCheckedChanged: appearance.setDimsWallpaper(checked)
-                            rightPadding: 0
-                            rightInset: 0
-                        }
-                    }
                 }
             }
 

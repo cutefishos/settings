@@ -95,7 +95,7 @@ void DefaultApplications::loadApps()
     // Players differ in the video types they list; the commonest one stands for all.
     // Without a choice, this is what the file manager opens videos with.
     const QString defaultVideoPlayer = MimeApps::defaultApplication(
-            MimeApps::userListPath(), QMimeDatabase().mimeTypeForName(QStringLiteral("video/mp4")));
+            MimeApps::listPaths(), QMimeDatabase().mimeTypeForName(QStringLiteral("video/mp4")));
 
     // Init indexes.
     for (int i = 0; i < m_browserList.size(); ++i) {
