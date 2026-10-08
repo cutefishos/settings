@@ -109,6 +109,9 @@
         <file>qml/VPN/AddVpnDialog.qml</file>
         <file>qml/VPN/VpnItem.qml</file>
         <file>qml/VPN/VpnDetailsDialog.qml</file>
+        <file>qml/VPN/VpnEditor.qml</file>
+        <file>qml/VPN/VpnForm.qml</file>
+        <file>qml/VPN/WireGuardForm.qml</file>
         <file>qml/Proxy/Main.qml</file>
         <file>images/sidebar/dark/proxy.svg</file>
         <file>qml/Sound/Main.qml</file>

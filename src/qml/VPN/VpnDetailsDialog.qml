@@ -1,13 +1,15 @@
 import QtQuick
 import QtQuick.Window
 import QtQuick.Controls
+import QtQuick.Dialogs
 import QtQuick.Layouts
 import Cutefish.Settings
 import FishUI as FishUI
 import Cutefish.Network as NM
 import "../"
 
-// One VPN's type and state, and the way to remove it.
+// One VPN's settings, state, and the ways to export or remove it. Changes are kept
+// with Save; a password shown empty is one that is asked for when connecting.
 FishUI.Window {
     id: control
     title: row.name || ""
@@ -15,8 +17,8 @@ FishUI.Window {
     parentWindow: rootWindow
     x: parentWindow ? parentWindow.x + Math.round((parentWindow.width - width) / 2) : 0
     y: parentWindow ? parentWindow.y + Math.round((parentWindow.height - height) / 2) : 0
-    width: 400
-    property int contentHeight: detailsLayout.implicitHeight + header.height + 32
+    width: 460
+    property int contentHeight: detailsLayout.implicitHeight + header.height + 2 * Metrics.dialogPadding
     height: contentHeight
     minimumWidth: width
     maximumWidth: width
@@ -32,6 +34,12 @@ FishUI.Window {
     background.color: FishUI.Theme.backgroundColor
     // The background item reaches a grown window a frame or two after its buffer does.
     color: background.color
+
+    // A long form scrolls instead of outgrowing the main window.
+    readonly property int maxFormHeight: (parentWindow ? parentWindow.height : 600) - 2 * Metrics.xxl - header.height
+                                         - 2 * Metrics.dialogPadding - _statusCard.implicitHeight - _buttons.implicitHeight
+                                         - (_messageLabel.visible ? _messageLabel.implicitHeight + Metrics.dialogSpacing : 0)
+                                         - 2 * Metrics.dialogSpacing
 
     headerItem: FishUI.Label {
         anchors.left: parent.left
@@ -51,29 +59,79 @@ FishUI.Window {
     property alias connectionPath: tracker.value
     readonly property var row: tracker.row || ({})
 
+    property bool saving: false
+    property string error
+
     TrackedRow {
         id: tracker
         role: "connectionPath"
         property bool found: false
 
         onRowChanged: {
-            if (!row) {
-                if (found)
-                    control.close()
-                return
-            }
-
-            if (!found && row.vpnUsesUserName && row.vpnUserName.length === 0)
-                Qt.callLater(userNameField.forceActiveFocus)
-            found = true
+            if (row)
+                found = true
+            else if (found)
+                control.close()
         }
     }
 
+    Component.onCompleted: {
+        _editor.load(handler.vpnForm("", connectionPath))
+        handler.loadVpnSecrets(connectionPath)
+    }
+
     // Created per click, so each one goes away with its window.
-    onClosing: {
-        if (row.vpnUsesUserName)
-            handler.setVpnUserName(control.connectionPath, userNameField.text)
-        destroy()
+    onClosing: destroy()
+
+    function save() {
+        if (saving || !_editor.complete)
+            return
+        saving = true
+        error = ""
+        handler.saveVpn(connectionPath, _editor.collect())
+    }
+
+    Connections {
+        target: handler
+
+        function onVpnSecretsLoaded(connection, secrets) {
+            if (connection === control.connectionPath)
+                _editor.setSecrets(secrets)
+        }
+
+        function onVpnSaved(connection) {
+            if (connection !== control.connectionPath || !control.saving)
+                return
+            control.saving = false
+            control.close()
+        }
+
+        function onVpnSaveFailed(message) {
+            if (!control.saving)
+                return
+            control.saving = false
+            control.error = message
+        }
+
+        function onVpnExportFailed(message) {
+            control.error = message
+        }
+    }
+
+    FileDialog {
+        id: exportDialog
+        title: qsTr("Export VPN Configuration")
+        fileMode: FileDialog.SaveFile
+        nameFilters: [qsTr("VPN configurations (%1)").arg((_editor.form.exportPatterns ?? []).join(" ")), qsTr("All files (*)")]
+        onAccepted: {
+            control.error = ""
+            handler.exportVpn(control.connectionPath, selectedFile)
+        }
+    }
+
+    Shortcut {
+        sequence: "Escape"
+        onActivated: control.close()
     }
 
     ColumnLayout {
@@ -86,26 +144,35 @@ FishUI.Window {
         anchors.margins: Metrics.dialogPadding
         spacing: Metrics.dialogSpacing
 
-        ListCard {
-            visible: !!row.vpnUsesUserName
+        RoundedItem {
+            verticalPadding: Metrics.cardHorizontalPadding
 
-            ListRow {
-                interactive: false
-                text: qsTr("User name")
+            Flickable {
+                id: _form
+                Layout.fillWidth: true
+                // Spans the padding so the bar runs along the card's edge, not the fields'.
+                Layout.leftMargin: -Metrics.cardHorizontalPadding
+                Layout.rightMargin: -Metrics.cardHorizontalPadding
+                Layout.preferredHeight: Math.min(_editor.implicitHeight, control.maxFormHeight)
+                clip: true
+                contentWidth: width
+                contentHeight: _editor.implicitHeight
+                boundsBehavior: Flickable.StopAtBounds
+                FishUI.ScrollBar.vertical: FishUI.ScrollBar {}
+                FishUI.WheelHandler { target: _form }
 
-                FishUI.TextField {
-                    id: userNameField
-                    Layout.preferredWidth: 200
-                    Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                    text: row.vpnUserName || ""
-                    placeholderText: qsTr("Required")
-                    inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhNoAutoUppercase
-                    onAccepted: control.close()
+                VpnEditor {
+                    id: _editor
+                    x: Metrics.cardHorizontalPadding
+                    width: _form.width - 2 * Metrics.cardHorizontalPadding
+                    onAccepted: control.save()
                 }
             }
         }
 
         ListCard {
+            id: _statusCard
+
             InfoRow {
                 text: qsTr("Type")
                 value: row.vpnType
@@ -123,34 +190,50 @@ FishUI.Window {
                 text: qsTr("IPv4 address")
                 value: row.ipAddress
             }
+
+            ListRow {
+                visible: !!_editor.form.exportable
+                text: qsTr("Export to file…")
+                onClicked: exportDialog.open()
+            }
         }
 
         FishUI.Label {
+            id: _messageLabel
             Layout.fillWidth: true
-            visible: !!row.statusMessage
-            text: row.statusMessage || ""
+            visible: control.error.length > 0 || !!row.statusMessage
+            text: control.error.length > 0 ? control.error : (row.statusMessage || "")
             textFormat: Text.PlainText
-            color: FishUI.Theme.disabledTextColor
+            color: control.error.length > 0 ? FishUI.Theme.redColor : FishUI.Theme.disabledTextColor
             wrapMode: Text.Wrap
         }
 
         RowLayout {
+            id: _buttons
             spacing: Metrics.dialogButtonSpacing
             Layout.alignment: Qt.AlignRight
 
             FishUI.ConfirmDialogButton {
-                text: qsTr("Close")
-                onClicked: control.close()
-            }
-
-            FishUI.ConfirmDialogButton {
                 text: qsTr("Remove VPN")
-                primary: true
                 destructive: true
                 onClicked: {
                     handler.removeConnection(control.connectionPath)
                     control.close()
                 }
+            }
+
+            Item { Layout.fillWidth: true }
+
+            FishUI.ConfirmDialogButton {
+                text: qsTr("Cancel")
+                onClicked: control.close()
+            }
+
+            FishUI.ConfirmDialogButton {
+                text: control.saving ? qsTr("Saving…") : qsTr("Save")
+                primary: true
+                enabled: !control.saving && _editor.complete
+                onClicked: control.save()
             }
         }
     }
