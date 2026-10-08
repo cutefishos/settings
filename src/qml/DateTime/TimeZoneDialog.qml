@@ -217,12 +217,13 @@ FishUI.Window {
                     width: 360
                     height: resultsView.count > 0 ? Math.min(resultsView.contentHeight + padding * 2, 360)
                                                   : emptyLabel.implicitHeight + Metrics.l * 2
-                    padding: Metrics.xs
+                    // As far in as a menu's rows, with a menu's corners.
+                    padding: 6
                     focus: false
                     closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
 
                     background: FishUI.RoundedRectangle {
-                        radius: FishUI.Theme.mediumRadius
+                        radius: FishUI.Theme.windowRadius
                         color: FishUI.Theme.secondBackgroundColor
                         border.width: 1
                         border.color: Qt.rgba(FishUI.Theme.textColor.r, FishUI.Theme.textColor.g,
@@ -254,7 +255,8 @@ FishUI.Window {
 
                             FishUI.RoundedRectangle {
                                 anchors.fill: parent
-                                radius: FishUI.Theme.smallRadius
+                                // Concentric with the popup's corners.
+                                radius: FishUI.Theme.windowRadius - resultsPopup.padding
                                 color: current ? FishUI.Theme.highlightColor : "transparent"
                             }
 
