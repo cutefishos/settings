@@ -33,6 +33,24 @@ ItemPage {
         id: nightLight
     }
 
+    // The compositor reverts the previewed mode on its own deadline; the
+    // dialog only relays it and goes away with the preview.
+    Loader {
+        id: confirmation
+        // Inside the dialog window `screen` is the window's own screen info.
+        readonly property CS.Screen display: screen
+        active: screen.pendingConfirmation
+        sourceComponent: FishUI.ConfirmDialog {
+            title: qsTr("Keep these display settings?")
+            text: qsTr("The previous settings come back in %n second(s).", "",
+                       confirmation.display.confirmationSeconds)
+            cancelText: qsTr("Revert")
+            confirmText: qsTr("Keep")
+            onAccepted: confirmation.display.keep()
+            onRejected: confirmation.display.revert()
+        }
+    }
+
     function timeOfDay(minutes) {
         return new Date(2000, 0, 1, Math.floor(minutes / 60), minutes % 60)
                .toLocaleTimeString(Qt.locale(), Locale.ShortFormat)
@@ -97,7 +115,7 @@ ItemPage {
                             id: _mainLayout
                             anchors.left: parent.left
                             anchors.right: parent.right
-                            enabled: screen.available && !screen.busy
+                            enabled: screen.available && !screen.busy && !screen.pendingConfirmation
                             spacing: Metrics.cardSpacing
 
                             Brightness {
