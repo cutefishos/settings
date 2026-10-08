@@ -26,17 +26,22 @@ Item {
     // stale start when `end` first arrives, and ask the Repeater for 100000 ticks.
     readonly property var ticks: {
         const steps = [600, 1800, 3600, 7200, 14400, 21600, 43200, 86400]
-        // Six steps at most, and fewer where the labels would run together.
-        const fit = Math.floor(plot.width / (timeLabelMetrics.advanceWidth + Metrics.l))
-        const most = Math.max(1, Math.min(6, fit))
-        let step = Math.ceil(duration / most / 86400) * 86400
+        let step = 0
 
-        // The smallest whole step that leaves that many ticks or fewer.
-        for (let i = 0; i < steps.length; ++i) {
-            if (duration / steps[i] <= most) {
+        // The smallest whole step that leaves seven ticks or fewer, with room
+        // for their labels: a time, or a weekday where every tick starts a day.
+        for (let i = 0; i < steps.length && step === 0; ++i) {
+            const count = duration / steps[i]
+            const label = steps[i] % 86400 === 0 ? dayLabelMetrics.advanceWidth
+                                                 : timeLabelMetrics.advanceWidth
+
+            if (count <= 7 && count * (label + Metrics.l) <= plot.width)
                 step = steps[i]
-                break
-            }
+        }
+
+        if (step === 0) {
+            const fit = Math.floor(plot.width / (dayLabelMetrics.advanceWidth + Metrics.l))
+            step = Math.ceil(duration / Math.max(1, Math.min(7, fit)) / 86400) * 86400
         }
 
         // On a whole local multiple of the step, e.g. midnight for every 4 hours.
@@ -221,6 +226,15 @@ Item {
             revealAnimation.start()
     }
 
+    // A new range draws in again.
+    onDurationChanged: {
+        revealAnimation.stop()
+        reveal = 0
+
+        if (curve.count > 1)
+            revealAnimation.start()
+    }
+
     NumberAnimation {
         id: revealAnimation
         target: control
@@ -279,6 +293,12 @@ Item {
         id: timeLabelMetrics
         font: control.labelFont
         text: new Date(2000, 0, 1, 12, 0).toLocaleTimeString(Qt.locale(), Locale.ShortFormat)
+    }
+
+    TextMetrics {
+        id: dayLabelMetrics
+        font: control.labelFont
+        text: Qt.locale().dayName(3, Locale.ShortFormat)
     }
 
     TextMetrics {
@@ -497,11 +517,22 @@ Item {
             id: hover
         }
 
-        // Follows the pointer along the curve.
+        // A finger reads the curve by sliding along it; a vertical swipe still
+        // scrolls the page.
+        DragHandler {
+            id: scrub
+            target: null
+            acceptedDevices: PointerDevice.TouchScreen
+            yAxis.enabled: false
+        }
+
+        // Follows the pointer or finger along the curve.
         Item {
             id: probe
 
-            readonly property var point: hover.hovered ? control.pointAt(hover.point.position.x) : null
+            readonly property var point: scrub.active ? control.pointAt(scrub.centroid.position.x)
+                                       : hover.hovered ? control.pointAt(hover.point.position.x)
+                                       : null
 
             anchors.fill: parent
             visible: point !== null && control.reveal >= 1

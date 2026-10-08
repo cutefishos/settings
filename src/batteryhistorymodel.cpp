@@ -14,6 +14,7 @@
 #include <QDBusMetaType> // qDBusRegisterMetaType
 #include <QDBusPendingReply>
 
+#include <algorithm>
 #include <limits>
 #include <memory>
 
@@ -155,23 +156,38 @@ void BatteryHistoryModel::load()
     if (QCoreApplication::arguments().contains(QStringLiteral("--mock-battery"))) {
         m_values.clear();
         const uint now = QDateTime::currentSecsSinceEpoch();
-        // A day on battery, a charge held at 80% by the charge limit, then unplugged.
-        const QList<double> chargeValues { 96, 92, 88, 83, 77, 70, 62, 55, 47, 40, 33,
-                                           41, 52, 63, 72, 79, 80, 80, 78, 74, 69, 65 };
-        const QList<double> rateValues { 8.2, 7.6, 7.1, 6.8, 6.4, 5.9, 6.3, 7.0, 6.5, 6.1, 5.8,
-                                         9.4, 12.1, 11.6, 10.2, 8.8, 4.1, 4.0, 5.2, 5.9, 6.3, 5.5 };
-        const QList<uint> states { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-                                   1, 1, 1, 1, 1, 5, 5, 2, 2, 2, 2 };
+        // Each day drains on battery, charges, is held at 90% by the charge
+        // limit and is unplugged again, ending where the next day starts.
+        const QList<double> chargeValues { 72, 66, 59, 52, 45, 38, 32, 44, 57,
+                                           69, 80, 88, 90, 90, 86, 81, 77, 72 };
+        const QList<double> rateValues { 7.2, 6.8, 7.5, 6.9, 7.1, 6.4, 6.0, 11.8, 12.4,
+                                         11.1, 9.6, 7.2, 4.1, 3.9, 6.8, 7.4, 6.9, 6.6 };
+        const QList<uint> states { 2, 2, 2, 2, 2, 2, 2, 1, 1,
+                                   1, 1, 1, 1, 5, 2, 2, 2, 2 };
+        // Days drain a little deeper or shallower than one another.
+        const QList<double> depths { 0, -6, 4, -3, 6, -4, 2 };
         const auto &values = m_type == RateType ? rateValues : chargeValues;
-        const uint interval = m_duration / (values.size() - 1);
+        const uint days = std::max(1u, m_duration / 86400);
+        const uint interval = m_duration / days / values.size();
 
-        for (int i = 0; i < values.size(); ++i) {
-            HistoryReply reply;
-            reply.time = now - m_duration + interval * i;
-            reply.value = values.at(i);
-            reply.charging = states.at(i);
-            m_values.append(reply);
+        for (uint day = 0; day < days; ++day) {
+            for (int i = 0; i < values.size(); ++i) {
+                HistoryReply reply;
+                reply.time = now - m_duration + (day * values.size() + i) * interval;
+                reply.value = values.at(i);
+                reply.charging = states.at(i);
+
+                if (m_type == ChargeType && i >= 3 && i <= 8) {
+                    reply.value += depths.at((days - 1 - day) % depths.size());
+                }
+
+                m_values.append(reply);
+            }
         }
+
+        HistoryReply current = m_values.last();
+        current.time = now;
+        m_values.append(current);
 
         Q_EMIT dataChanged();
         return;

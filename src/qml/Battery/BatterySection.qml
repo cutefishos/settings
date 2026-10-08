@@ -15,14 +15,17 @@ ColumnLayout {
     required property Battery battery
 
     property int historyType: BatteryHistoryModel.ChargeType
-    readonly property var timespanComboChoices: [qsTr("Last hour"),qsTr("Last 2 hours"),qsTr("Last 12 hours"),qsTr("Last 24 hours"),qsTr("Last 48 hours"), qsTr("Last 7 days")]
-    readonly property var timespanComboDurations: [3600, 7200, 43200, 86400, 172800, 604800]
+    readonly property var historyDurations: [86400, 7 * 86400]
+    // The range the plotted samples cover. It follows the picker only once
+    // they arrive, so the old samples are never drawn across the new range.
+    property real plottedDuration: historyDurations[0]
 
     BatteryHistoryModel {
         id: history
-        duration: timespanComboDurations[3]
+        duration: section.historyDurations[rangePicker.currentIndex]
         device: battery.udi
         type: BatteryHistoryModel.ChargeType
+        onDataChanged: section.plottedDuration = duration
     }
 
     // Picks up new samples and moves the plot's right edge along with the clock,
@@ -45,8 +48,33 @@ ColumnLayout {
         spacing: Metrics.sectionLabelSpacing
         visible: history.count > 2
 
-        SectionLabel {
-            text: qsTr("History")
+        RowLayout {
+            Layout.fillWidth: true
+            spacing: Metrics.m
+
+            SectionLabel {
+                text: qsTr("History")
+            }
+
+            FishUI.SegmentedControl {
+                id: rangePicker
+                // Two equal segments, each wide enough for the longer label. A whole
+                // width, as the layout rounds the position and the right edge must meet the card's.
+                Layout.preferredWidth: Math.ceil(Math.max(dayButton.implicitWidth, weekButton.implicitWidth) * 2
+                                                 + Metrics.l * 4 + leftPadding + rightPadding)
+                // Compact, to sit in the title row.
+                contentHeight: 28
+
+                FishUI.TabButton {
+                    id: dayButton
+                    text: qsTr("24 hours")
+                }
+
+                FishUI.TabButton {
+                    id: weekButton
+                    text: qsTr("7 days")
+                }
+            }
         }
 
         RoundedItem {
@@ -59,7 +87,7 @@ ColumnLayout {
                 points: history.points
                 pointStates: history.states
                 end: history.lastDataPointTime
-                duration: history.duration
+                duration: section.plottedDuration
                 yUnits: section.historyType === BatteryHistoryModel.RateType ? qsTr("W") : "%"
                 yMax: {
                     if (section.historyType === BatteryHistoryModel.RateType) {
