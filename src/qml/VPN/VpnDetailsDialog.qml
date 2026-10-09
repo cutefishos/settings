@@ -10,26 +10,13 @@ import "../"
 
 // One VPN's settings, state, and the ways to export or remove it. Changes are kept
 // with Save; a password shown empty is one that is asked for when connecting.
-FishUI.Window {
+FishUI.DialogWindow {
     id: control
     title: row.name || ""
 
     parentWindow: rootWindow
-    x: parentWindow ? parentWindow.x + Math.round((parentWindow.width - width) / 2) : 0
-    y: parentWindow ? parentWindow.y + Math.round((parentWindow.height - height) / 2) : 0
     width: 460
-    property int contentHeight: detailsLayout.implicitHeight + header.height + 2 * Metrics.dialogPadding
-    height: contentHeight
-    minimumWidth: width
-    maximumWidth: width
-    minimumHeight: contentHeight
-    maximumHeight: contentHeight
-    flags: Qt.Dialog | Qt.FramelessWindowHint
-    modality: Qt.WindowModal
-    visible: false
-    minimizeButtonVisible: false
-    header.height: 44
-    contentTopMargin: header.height
+    contentHeight: detailsLayout.implicitHeight + 2 * Metrics.dialogPadding
     // The page colour, so the cards stand out as they do on a page.
     background.color: FishUI.Theme.backgroundColor
     // The background item reaches a grown window a frame or two after its buffer does.
@@ -40,19 +27,6 @@ FishUI.Window {
                                          - 2 * Metrics.dialogPadding - _statusCard.implicitHeight - _buttons.implicitHeight
                                          - (_messageLabel.visible ? _messageLabel.implicitHeight + Metrics.dialogSpacing : 0)
                                          - 2 * Metrics.dialogSpacing
-
-    headerItem: FishUI.Label {
-        anchors.left: parent.left
-        anchors.leftMargin: Metrics.dialogPadding
-        anchors.verticalCenter: parent.verticalCenter
-        width: parent.width - 64
-        text: control.title
-        textFormat: Text.PlainText
-        font.pixelSize: 14
-        font.weight: Font.DemiBold
-        color: FishUI.Theme.textColor
-        elide: Text.ElideRight
-    }
 
     // The VPN shown, found by its connection while the list changes around it.
     property alias listModel: tracker.model

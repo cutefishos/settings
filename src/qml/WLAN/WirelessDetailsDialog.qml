@@ -11,27 +11,13 @@ import Cutefish.Network as NM
 import "../"
 import "../Network"
 
-FishUI.Window {
+FishUI.DialogWindow {
     id: control
     title: ipSettingsShown ? qsTr("IP Settings") : (row.itemUniqueName || "")
 
     parentWindow: rootWindow
-    x: parentWindow ? parentWindow.x + Math.round((parentWindow.width - width) / 2) : 0
-    y: parentWindow ? parentWindow.y + Math.round((parentWindow.height - height) / 2) : 0
     width: 400
-    property int contentHeight: (ipSettingsShown ? ipSettingsLoader.implicitHeight : detailsLayout.implicitHeight)
-                                + header.height + 32
-    height: contentHeight
-    minimumWidth: width
-    maximumWidth: width
-    minimumHeight: contentHeight
-    maximumHeight: contentHeight
-    flags: Qt.Dialog | Qt.FramelessWindowHint
-    modality: Qt.WindowModal
-    visible: false
-    minimizeButtonVisible: false
-    header.height: 44
-    contentTopMargin: header.height
+    contentHeight: (ipSettingsShown ? ipSettingsLoader.implicitHeight : detailsLayout.implicitHeight) + 32
     // The page colour, so the cards stand out as they do on a page.
     background.color: FishUI.Theme.backgroundColor
     // The background item reaches a grown window a frame or two after its buffer does.
@@ -39,35 +25,8 @@ FishUI.Window {
 
     // The IP settings take the details' place, with a way back in the title bar.
     property bool ipSettingsShown: false
-
-    headerItem: Item {
-        // Mirrors the close button: the same size and the same inset from its corner.
-        NavigationButton {
-            id: backButton
-            x: control.windowButtonsRightMargin
-            y: control.windowButtonsTopMargin
-            width: control.header.buttonSize
-            height: width
-            visible: control.ipSettingsShown
-            iconName: "chevron-left"
-            onClicked: control.ipSettingsShown = false
-        }
-
-        // Placed by its capitals, centred on the window buttons: a centred line box sits low.
-        FishUI.AlignedLabel {
-            anchors.left: backButton.visible ? backButton.right : parent.left
-            anchors.leftMargin: backButton.visible ? FishUI.Units.smallSpacing : Metrics.dialogPadding
-            anchors.right: parent.right
-            y: snap(textBaseline - baselineOffset)
-            textBaseline: backButton.y + backButton.height / 2 + capHeight / 2
-            text: control.title
-            textFormat: Text.PlainText
-            font.pixelSize: 14
-            font.weight: Font.DemiBold
-            color: FishUI.Theme.textColor
-            elide: Text.ElideRight
-        }
-    }
+    backButtonVisible: ipSettingsShown
+    onBackClicked: ipSettingsShown = false
 
     // The network shown, found by a role that its row keeps while the list re-sorts.
     property alias listModel: tracker.model

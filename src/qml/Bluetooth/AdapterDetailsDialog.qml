@@ -5,45 +5,19 @@ import Cutefish.Settings
 import FishUI as FishUI
 import "../"
 
-FishUI.Window {
+FishUI.DialogWindow {
     id: control
 
     property var adapter
 
     title: adapter ? adapter.name : ""
 
-    x: parentWindow ? parentWindow.x + Math.round((parentWindow.width - width) / 2) : 0
-    y: parentWindow ? parentWindow.y + Math.round((parentWindow.height - height) / 2) : 0
     width: 400
-    property int contentHeight: detailsLayout.implicitHeight + header.height + 32
-    height: contentHeight
-    minimumWidth: width
-    maximumWidth: width
-    minimumHeight: contentHeight
-    maximumHeight: contentHeight
-    flags: Qt.Dialog | Qt.FramelessWindowHint
-    modality: Qt.WindowModal
-    visible: false
-    minimizeButtonVisible: false
-    header.height: 44
-    contentTopMargin: header.height
+    contentHeight: detailsLayout.implicitHeight + 32
     // The page colour, so the cards stand out as they do on a page.
     background.color: FishUI.Theme.backgroundColor
     // The background item reaches a grown window a frame or two after its buffer does.
     color: background.color
-
-    headerItem: FishUI.Label {
-        anchors.left: parent.left
-        anchors.leftMargin: Metrics.dialogPadding
-        anchors.verticalCenter: parent.verticalCenter
-        width: parent.width - 64
-        text: control.title
-        textFormat: Text.PlainText
-        font.pixelSize: 14
-        font.weight: Font.DemiBold
-        color: FishUI.Theme.textColor
-        elide: Text.ElideRight
-    }
 
     // Created per click, so each one goes away with its window.
     onClosing: destroy()
