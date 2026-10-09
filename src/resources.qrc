@@ -70,6 +70,7 @@
         <file>qml/WLAN/Main.qml</file>
         <file>qml/Wired/Main.qml</file>
         <file>qml/Wired/WiredItem.qml</file>
+        <file>qml/Wired/WiredDetailsDialog.qml</file>
         <file>qml/WLAN/WifiItem.qml</file>
         <file>qml/WLAN/WifiSection.qml</file>
         <file>qml/WLAN/WifiView.qml</file>
@@ -78,6 +79,7 @@
         <file>qml/StandardButton.qml</file>
         <file>qml/Hotspot/Main.qml</file>
         <file>qml/Network/Main.qml</file>
+        <file>qml/Network/IpSettingsView.qml</file>
         <file>qml/Cursor/Main.qml</file>
         <file>qml/Keyboard/Main.qml</file>
         <file>qml/Keyboard/InputMethodRow.qml</file>

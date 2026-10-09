@@ -72,11 +72,13 @@ ItemPage {
 
                 Repeater {
                     model: NM.AppletProxyModel {
+                        id: wiredModel
                         type: NM.AppletProxyModel.WiredType
                         sourceModel: rootWindow.mockNetworkData ? mockNetworkModel : connectionModel
                     }
 
                     delegate: WiredItem {
+                        listModel: wiredModel
                         visible: rootWindow.mockNetworkData || enabledConnections.wiredEnabled
                     }
                 }

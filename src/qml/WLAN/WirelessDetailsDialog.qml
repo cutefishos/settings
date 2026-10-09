@@ -9,16 +9,18 @@ import Cutefish.Settings
 import FishUI as FishUI
 import Cutefish.Network as NM
 import "../"
+import "../Network"
 
 FishUI.Window {
     id: control
-    title: row.itemUniqueName || ""
+    title: ipSettingsShown ? qsTr("IP Settings") : (row.itemUniqueName || "")
 
     parentWindow: rootWindow
     x: parentWindow ? parentWindow.x + Math.round((parentWindow.width - width) / 2) : 0
     y: parentWindow ? parentWindow.y + Math.round((parentWindow.height - height) / 2) : 0
     width: 400
-    property int contentHeight: detailsLayout.implicitHeight + header.height + 32
+    property int contentHeight: (ipSettingsShown ? ipSettingsLoader.implicitHeight : detailsLayout.implicitHeight)
+                                + header.height + 32
     height: contentHeight
     minimumWidth: width
     maximumWidth: width
@@ -35,17 +37,36 @@ FishUI.Window {
     // The background item reaches a grown window a frame or two after its buffer does.
     color: background.color
 
-    headerItem: FishUI.Label {
-        anchors.left: parent.left
-        anchors.leftMargin: Metrics.dialogPadding
-        anchors.verticalCenter: parent.verticalCenter
-        width: parent.width - 64
-        text: control.title
-        textFormat: Text.PlainText
-        font.pixelSize: 14
-        font.weight: Font.DemiBold
-        color: FishUI.Theme.textColor
-        elide: Text.ElideRight
+    // The IP settings take the details' place, with a way back in the title bar.
+    property bool ipSettingsShown: false
+
+    headerItem: Item {
+        // Mirrors the close button: the same size and the same inset from its corner.
+        NavigationButton {
+            id: backButton
+            x: control.windowButtonsRightMargin
+            y: control.windowButtonsTopMargin
+            width: control.header.buttonSize
+            height: width
+            visible: control.ipSettingsShown
+            iconName: "chevron-left"
+            onClicked: control.ipSettingsShown = false
+        }
+
+        // Placed by its capitals, centred on the window buttons: a centred line box sits low.
+        FishUI.AlignedLabel {
+            anchors.left: backButton.visible ? backButton.right : parent.left
+            anchors.leftMargin: backButton.visible ? FishUI.Units.smallSpacing : Metrics.dialogPadding
+            anchors.right: parent.right
+            y: snap(textBaseline - baselineOffset)
+            textBaseline: backButton.y + backButton.height / 2 + capHeight / 2
+            text: control.title
+            textFormat: Text.PlainText
+            font.pixelSize: 14
+            font.weight: Font.DemiBold
+            color: FishUI.Theme.textColor
+            elide: Text.ElideRight
+        }
     }
 
     // The network shown, found by a role that its row keeps while the list re-sorts.
@@ -88,8 +109,19 @@ FishUI.Window {
     // Created per click, so each one goes away with its window.
     onClosing: destroy()
 
+    Shortcut {
+        sequence: "Escape"
+        onActivated: {
+            if (control.ipSettingsShown)
+                control.ipSettingsShown = false
+            else
+                control.close()
+        }
+    }
+
     ColumnLayout {
         id: detailsLayout
+        visible: !control.ipSettingsShown
         // Not filled to the window: the window height follows this layout's implicit
         // height a polish later, and a filled layout would be spread over the old height.
         anchors.left: parent.left
@@ -115,6 +147,12 @@ FishUI.Window {
                             settings.autoConnect = checked
                     }
                 }
+            }
+
+            NavigationItem {
+                text: qsTr("IP Settings")
+                enabled: !rootWindow.mockNetworkData
+                onClicked: control.ipSettingsShown = true
             }
         }
 
@@ -176,6 +214,21 @@ FishUI.Window {
                     control.close()
                 }
             }
+        }
+    }
+
+    // Made each time it is shown, so it starts from the saved profile.
+    Loader {
+        id: ipSettingsLoader
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.margins: Metrics.dialogPadding
+        active: control.ipSettingsShown
+
+        sourceComponent: IpSettingsView {
+            connectionPath: row.connectionPath
+            onFinished: control.ipSettingsShown = false
         }
     }
 }
