@@ -24,6 +24,8 @@ Instantiator {
     onObjectAdded: update()
     onObjectRemoved: update()
     onValueChanged: update()
+    // Found at once, so a dialog fills in its switches before it is shown, not animated after.
+    Component.onCompleted: find()
 
     function update() {
         Qt.callLater(control.find)
