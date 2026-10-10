@@ -13,7 +13,6 @@
 
 #include <limits>
 #include <math.h>
-#include <locale.h>
 
 // gnome-control-center: cc-timezone-map.c
 static double radians(double degrees) {
@@ -331,10 +330,7 @@ QStringList TimeZoneMap::availableList()
 
 QString TimeZoneMap::localeTimeZoneName(const QString &timeZone) const
 {
-    const QString locale = QLocale::system().name();
-    setlocale(LC_ALL, QString(locale + ".UTF-8").toStdString().c_str());
-    int index = timeZone.lastIndexOf('/');
-    setlocale(LC_ALL, "en_US.UTF-8");
+    const int index = timeZone.lastIndexOf('/');
     const QString city = (index > -1) ? timeZone.mid(index + 1) : timeZone;
     // "Los_Angeles" is written that way in the database only.
     return QString(city).replace(QLatin1Char('_'), QLatin1Char(' '));
