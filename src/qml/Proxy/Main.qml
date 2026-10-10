@@ -26,6 +26,12 @@ ItemPage {
         id: networkProxy
     }
 
+    // Empty or 1 to 65535; a larger number cannot be typed at all.
+    RegularExpressionValidator {
+        id: portValidator
+        regularExpression: /|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5]/
+    }
+
     Binding {
         target: ftpProxyPortField
         property: "text"
@@ -142,7 +148,7 @@ ItemPage {
 
                         text: networkProxy.httpProxyPort
 
-                        validator: IntValidator { bottom: 0; top: 999999}
+                        validator: portValidator
 
                         onTextChanged: {
                             proxyItem.needSave = true
@@ -198,7 +204,7 @@ ItemPage {
                         enabled: !forFtpCheckBox.checked
 
                         text: networkProxy.ftpProxyPort
-                        validator: IntValidator { bottom: 0; top: 999999}
+                        validator: portValidator
 
                         onTextChanged: {
                             proxyItem.needSave = true
@@ -231,7 +237,7 @@ ItemPage {
                         Layout.preferredWidth: 80
 
                         text: networkProxy.socksProxyPort
-                        validator: IntValidator { bottom: 0; top: 999999}
+                        validator: portValidator
 
                         onTextChanged: {
                             proxyItem.needSave = true
