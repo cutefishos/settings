@@ -65,8 +65,13 @@ signals:
     void availableListChanged();
     void currentTimeZoneChanged();
 
+private slots:
+    void onPropertiesChanged(const QString &interface, const QVariantMap &changed,
+                             const QStringList &invalidated);
+
 private:
     void initDatas();
+    void setCurrentTimeZone(const QString &value);
     int nearestIndex(int x, int y, int width, int height) const;
 
 private:

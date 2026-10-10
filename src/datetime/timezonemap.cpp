@@ -5,6 +5,7 @@
 #include "timedated_interface.h"
 
 #include <QFile>
+#include <QDBusPendingCallWatcher>
 #include <QDebug>
 #include <QDateTime>
 #include <QLocale>
@@ -65,6 +66,12 @@ TimeZoneMap::TimeZoneMap(QObject *parent)
     : QObject(parent)
 {
     initDatas();
+
+    QDBusConnection::systemBus().connect(QStringLiteral("org.freedesktop.timedate1"),
+                                         QStringLiteral("/org/freedesktop/timedate1"),
+                                         QStringLiteral("org.freedesktop.DBus.Properties"),
+                                         QStringLiteral("PropertiesChanged"), this,
+                                         SLOT(onPropertiesChanged(QString, QVariantMap, QStringList)));
 }
 
 TimeZoneMap::~TimeZoneMap()
@@ -130,16 +137,43 @@ void TimeZoneMap::setTimeZone(QString value)
                                                    QStringLiteral("/org/freedesktop/timedate1"),
                                                    QDBusConnection::systemBus());
 
-    auto reply = iface.SetTimezone(value, true);
-    reply.waitForFinished();
+    // timedated only asks the polkit agent when the message itself allows it.
+    iface.setInteractiveAuthorizationAllowed(true);
+    // The reply waits for the password; PropertiesChanged still corrects a late answer.
+    iface.setTimeout(120000);
+    auto *watcher = new QDBusPendingCallWatcher(iface.SetTimezone(value, true), this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, value](QDBusPendingCallWatcher *watcher) {
+        QDBusPendingReply<> reply = *watcher;
+        watcher->deleteLater();
 
-    if (reply.isError()) {
-        qWarning() << "Failed to set timezone" << reply.error().message();
+        if (reply.isError()) {
+            qWarning() << "Failed to set timezone" << reply.error().message();
+            return;
+        }
+
+        setCurrentTimeZone(value);
+    });
+}
+
+void TimeZoneMap::setCurrentTimeZone(const QString &value)
+{
+    const QString id = QTimeZone(value.toLatin1()).id();
+    if (id.isEmpty() || id == m_currentTimeZone)
         return;
-    }
 
-    m_currentTimeZone = QTimeZone(value.toLatin1()).id();
+    m_currentTimeZone = id;
     emit currentTimeZoneChanged();
+}
+
+void TimeZoneMap::onPropertiesChanged(const QString &interface, const QVariantMap &changed,
+                                      const QStringList &invalidated)
+{
+    Q_UNUSED(invalidated);
+
+    if (interface != QLatin1String("org.freedesktop.timedate1") || !changed.contains(QStringLiteral("Timezone")))
+        return;
+
+    setCurrentTimeZone(changed.value(QStringLiteral("Timezone")).toString());
 }
 
 void TimeZoneMap::select(const QString &timeZone)
