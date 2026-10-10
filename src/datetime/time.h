@@ -5,6 +5,7 @@
 #define TIME_H
 
 #include <QObject>
+#include <QVariantMap>
 
 class Time : public QObject
 {
@@ -26,6 +27,10 @@ public:
 signals:
     void useNtpChanged();
     void twentyFourChanged();
+
+private slots:
+    void onPropertiesChanged(const QString &interface, const QVariantMap &changed,
+                             const QStringList &invalidated);
 
 private:
     bool m_canNTP;

@@ -4,6 +4,8 @@
 #include "time.h"
 #include "timedated_interface.h"
 
+#include <QDBusPendingCallWatcher>
+#include <QDebug>
 #include <QSettings>
 
 #include <preferences.h>
@@ -20,6 +22,12 @@ Time::Time(QObject *parent)
 
     m_canNTP = iface.canNTP();
     m_useNtp = iface.nTP();
+
+    QDBusConnection::systemBus().connect(QStringLiteral("org.freedesktop.timedate1"),
+                                         QStringLiteral("/org/freedesktop/timedate1"),
+                                         QStringLiteral("org.freedesktop.DBus.Properties"),
+                                         QStringLiteral("PropertiesChanged"), this,
+                                         SLOT(onPropertiesChanged(QString, QVariantMap, QStringList)));
 }
 
 bool Time::useNtp() const
@@ -40,8 +48,38 @@ void Time::setUseNtp(bool enabled)
         OrgFreedesktopTimedate1Interface iface(QStringLiteral("org.freedesktop.timedate1"),
                                                QStringLiteral("/org/freedesktop/timedate1"),
                                                QDBusConnection::systemBus());
-        iface.SetNTP(m_useNtp, true);
+        // timedated only asks the polkit agent when the message itself allows it.
+        iface.setInteractiveAuthorizationAllowed(true);
+        // The reply waits for the password; PropertiesChanged still corrects a late answer.
+        iface.setTimeout(120000);
+        auto *watcher = new QDBusPendingCallWatcher(iface.SetNTP(m_useNtp, true), this);
+        connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, enabled](QDBusPendingCallWatcher *watcher) {
+            QDBusPendingReply<> reply = *watcher;
+            watcher->deleteLater();
 
+            // A cancelled or failed polkit prompt leaves timedated as it was.
+            if (reply.isError() && m_useNtp == enabled) {
+                qWarning() << "Failed to change automatic time sync" << reply.error().message();
+                m_useNtp = !enabled;
+                emit useNtpChanged();
+            }
+        });
+
+        emit useNtpChanged();
+    }
+}
+
+void Time::onPropertiesChanged(const QString &interface, const QVariantMap &changed,
+                               const QStringList &invalidated)
+{
+    Q_UNUSED(invalidated);
+
+    if (interface != QLatin1String("org.freedesktop.timedate1") || !changed.contains(QStringLiteral("NTP")))
+        return;
+
+    const bool useNtp = changed.value(QStringLiteral("NTP")).toBool();
+    if (m_useNtp != useNtp) {
+        m_useNtp = useNtp;
         emit useNtpChanged();
     }
 }
