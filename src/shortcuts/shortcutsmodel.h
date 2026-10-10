@@ -28,7 +28,6 @@ public:
         CategoryRole,
         AcceleratorsRole,
         IsDefaultRole,
-        LockedRole,
     };
     Q_ENUM(Role)
 
@@ -101,7 +100,6 @@ private:
         QString description;
         QVariantList accelerators;
         QVariantList defaults;
-        bool locked = false;
     };
 
     void refreshInterface();

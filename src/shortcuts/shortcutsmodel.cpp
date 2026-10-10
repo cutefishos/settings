@@ -251,8 +251,6 @@ QVariant ShortcutsModel::data(const QModelIndex &index, int role) const
         return action.accelerators;
     case IsDefaultRole:
         return action.accelerators == action.defaults;
-    case LockedRole:
-        return action.locked;
     }
     return QVariant();
 }
@@ -265,7 +263,6 @@ QHash<int, QByteArray> ShortcutsModel::roleNames() const
             {CategoryRole, "category"},
             {AcceleratorsRole, "accelerators"},
             {IsDefaultRole, "isDefault"},
-            {LockedRole, "locked"},
     };
 }
 
