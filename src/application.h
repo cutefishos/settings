@@ -1,17 +1,19 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include <QGuiApplication>
+#include <QObject>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QDBusConnection>
 
-class Application : public QGuiApplication
+class Application : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit Application(int &argc, char **argv);
+    explicit Application(QObject *parent = nullptr);
+
+    int run();
 
     void switchToPage(const QString &name);
     void joinWifi(const QString &accessPoint);

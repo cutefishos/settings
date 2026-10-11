@@ -2,14 +2,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "application.h"
-#include <QDebug>
-#include <QIcon>
+#include "cutefishapplication.h"
 
-int main(int argc, char *argv[])
+int cutefish_application_main(int argc, char *argv[])
 {
-    Application app(argc, argv);
+    Q_UNUSED(argc);
+    Q_UNUSED(argv);
 
-    app.setWindowIcon(QIcon::fromTheme("cutefish-settings"));
-
-    return 0;
+    Application app;
+    return app.run();
 }

@@ -2,6 +2,7 @@
 #include "cutefishapplication.h"
 #include <QCommandLineParser>
 #include <QDBusPendingCall>
+#include <QGuiApplication>
 #include <QIcon>
 #include <QLocale>
 #include <QTranslator>
@@ -44,11 +45,14 @@ static QObject *passwordSingleton(QQmlEngine *engine, QJSEngine *scriptEngine)
     return object;
 }
 
-Application::Application(int &argc, char **argv)
-    : QGuiApplication(argc, argv)
+Application::Application(QObject *parent)
+    : QObject(parent)
 {
-    Cutefish::Application::prepare();
-    setWindowIcon(QIcon::fromTheme("preferences-system"));
+}
+
+int Application::run()
+{
+    QGuiApplication::setWindowIcon(QIcon::fromTheme("preferences-system"));
 
     QCommandLineParser parser;
     parser.setApplicationDescription(QStringLiteral("Cutefish Settings"));
@@ -61,7 +65,7 @@ Application::Application(int &argc, char **argv)
     parser.addOption(joinWifiOption);
     parser.addOption(QCommandLineOption("mock-network", "Show sample network data"));
     parser.addOption(QCommandLineOption("mock-battery", "Show sample battery data"));
-    parser.process(*this);
+    parser.process(*qApp);
 
     const QString module = parser.value(moduleOption);
     const QString accessPoint = parser.value(joinWifiOption);
@@ -75,7 +79,7 @@ Application::Application(int &argc, char **argv)
             else
                 iface.call("switchToPage", module);
         }
-        return;
+        return 0;
     }
 
     new SettingsUIAdaptor(this);
@@ -137,7 +141,7 @@ Application::Application(int &argc, char **argv)
         switchToPage(module);
     }
 
-    QGuiApplication::exec();
+    return QGuiApplication::exec();
 }
 
 void Application::switchToPage(const QString &name)

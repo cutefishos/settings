@@ -71,10 +71,9 @@ qt6_add_dbus_interface(SRCS
                        src/datetime/org.freedesktop.timedate1.xml
                        timedated_interface)
 
-add_executable(${PROJECT_NAME} ${DBUS_SOURCES} ${SRCS} ${RESOURCES})
-target_link_libraries(${PROJECT_NAME}
+cutefish_add_application(${PROJECT_NAME} SOURCES ${DBUS_SOURCES} ${SRCS} ${RESOURCES})
+target_link_libraries(${PROJECT_NAME}-module PRIVATE
         PkgConfig::Xcursor
-        Cutefish::Application
         Cutefish::Appearance
         Cutefish::IO
         Cutefish::Power
@@ -95,8 +94,6 @@ file(GLOB TS_FILES translations/*.ts)
 qt6_add_translation(QM_FILES ${TS_FILES})
 add_custom_target(translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
 add_dependencies(${PROJECT_NAME} translations)
-
-install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 install(FILES
     cutefish-settings.desktop
