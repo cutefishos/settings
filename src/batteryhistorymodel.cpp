@@ -236,22 +236,19 @@ void BatteryHistoryModel::load()
         const uint start = now > m_duration ? now - m_duration : 0;
         const QList<HistoryReply> history = window.value();
 
-        // The sample in force at the start, unless UPower restarted after it:
-        // what came in between is unknown.
+        // The sample in force at the start. Restart markers are skipped here as
+        // they are inside the window, or the start goes blank once one follows it.
         if (!all.isError()) {
             const QList<HistoryReply> everything = all.value();
             HistoryReply before;
 
             for (auto it = everything.crbegin(); it != everything.crend(); ++it) {
-                if (it->time < before.time) {
-                    continue;
+                if (it->time > start) {
+                    break;
                 }
 
-                if (it->time > start) {
-                    if (it->value <= 0) {
-                        before = HistoryReply();
-                    }
-                    break;
+                if (it->value <= 0 || it->time < before.time) {
+                    continue;
                 }
 
                 before = *it;
