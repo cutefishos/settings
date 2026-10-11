@@ -119,6 +119,21 @@ ItemPage {
                 }
             }
 
+            ListCard {
+                ListRow {
+                    interactive: false
+                    text: qsTr("Minimized windows area")
+
+                    FishUI.Switch {
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                        checked: dockSettings.minimizedArea
+                        rightPadding: 0
+                        rightInset: 0
+                        onToggled: dockSettings.setMinimizedArea(checked)
+                    }
+                }
+            }
+
             Item {
                 Layout.fillHeight: true
             }

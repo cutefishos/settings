@@ -15,6 +15,7 @@ DockSettings::DockSettings(QObject *parent)
     , m_dockDirection(0)
     , m_dockVisibility(0)
     , m_dockGlassTint(0.5)
+    , m_minimizedArea(true)
 {
     QSettings settings(Preferences::file(QStringLiteral("shell")), QSettings::IniFormat);
     settings.beginGroup(QStringLiteral("Dock"));
@@ -22,6 +23,7 @@ DockSettings::DockSettings(QObject *parent)
     m_dockDirection = settings.value("Direction").toInt();
     m_dockVisibility = settings.value("Visibility").toInt();
     m_dockGlassTint = qBound(0.0, settings.value("GlassTint", 0.5).toDouble(), 1.0);
+    m_minimizedArea = settings.value("MinimizedArea", true).toBool();
 }
 
 int DockSettings::dockIconSize() const
@@ -102,4 +104,23 @@ void DockSettings::setDockGlassTint(qreal tint)
 
     m_dockGlassTint = tint;
     emit dockGlassTintChanged();
+}
+
+bool DockSettings::minimizedArea() const
+{
+    return m_minimizedArea;
+}
+
+void DockSettings::setMinimizedArea(bool enabled)
+{
+    if (m_minimizedArea == enabled)
+        return;
+
+    QDBusInterface iface("com.cutefish.Dock", "/Dock", "com.cutefish.Dock",
+                         QDBusConnection::sessionBus());
+    if (iface.isValid())
+        iface.asyncCall("setMinimizedArea", enabled);
+
+    m_minimizedArea = enabled;
+    emit minimizedAreaChanged();
 }

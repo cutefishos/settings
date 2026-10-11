@@ -16,6 +16,8 @@ class DockSettings : public QObject
                        dockVisibilityChanged)
     Q_PROPERTY(qreal dockGlassTint READ dockGlassTint WRITE setDockGlassTint NOTIFY
                        dockGlassTintChanged)
+    Q_PROPERTY(bool minimizedArea READ minimizedArea WRITE setMinimizedArea NOTIFY
+                       minimizedAreaChanged)
 
 public:
     explicit DockSettings(QObject *parent = nullptr);
@@ -32,17 +34,22 @@ public:
     qreal dockGlassTint() const;
     Q_INVOKABLE void setDockGlassTint(qreal tint);
 
+    bool minimizedArea() const;
+    Q_INVOKABLE void setMinimizedArea(bool enabled);
+
 signals:
     void dockIconSizeChanged();
     void dockDirectionChanged();
     void dockVisibilityChanged();
     void dockGlassTintChanged();
+    void minimizedAreaChanged();
 
 private:
     int m_dockIconSize;
     int m_dockDirection;
     int m_dockVisibility;
     qreal m_dockGlassTint;
+    bool m_minimizedArea;
 };
 
 #endif // DOCKSETTINGS_H
