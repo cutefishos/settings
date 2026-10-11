@@ -120,30 +120,11 @@ ColumnLayout {
                 interactive: false
                 text: qsTr("Condition")
 
-                // Only the current condition, tinted in its own colour.
-                Item {
-                    readonly property color tint: battery.capacity >= 90 ? "#00CD23"
-                                                  : battery.capacity >= 80 ? "#3385FF"
-                                                  : "#FF8738"
-
-                    implicitWidth: _conditionLabel.implicitWidth + Metrics.l
-                    implicitHeight: _conditionLabel.implicitHeight + Metrics.s
-
-                    FishUI.RoundedRectangle {
-                        anchors.fill: parent
-                        color: parent.tint
-                        radius: FishUI.Theme.mediumRadius
-                        opacity: 0.1
-                    }
-
-                    FishUI.Label {
-                        id: _conditionLabel
-                        anchors.centerIn: parent
-                        text: battery.capacity >= 90 ? qsTr("Excellent")
-                              : battery.capacity >= 80 ? qsTr("Normal")
-                              : qsTr("Poor")
-                        color: parent.tint
-                    }
+                FishUI.Label {
+                    text: battery.capacity >= 90 ? qsTr("Excellent")
+                          : battery.capacity >= 80 ? qsTr("Normal")
+                          : qsTr("Poor")
+                    color: FishUI.Theme.disabledTextColor
                 }
             }
 
