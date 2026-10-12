@@ -6,7 +6,8 @@ import FishUI as FishUI
 import "../"
 
 // A titled card of the devices in `model`. Empty, it hides, or shows
-// `placeholderText` in the card's place when one is set.
+// `placeholderText` in the card's place when one is set; while `busy` only
+// the title and its indicator show.
 ColumnLayout {
     id: deviceSection
 
@@ -18,7 +19,7 @@ ColumnLayout {
 
     Layout.fillWidth: true
     spacing: Metrics.sectionLabelSpacing
-    visible: shown > 0 || placeholderText.length > 0
+    visible: shown > 0 || busy || placeholderText.length > 0
 
     RowLayout {
         Layout.fillWidth: true
@@ -47,7 +48,7 @@ ColumnLayout {
         Layout.fillWidth: true
         leftPadding: Metrics.cardHorizontalPadding
         rightPadding: Metrics.cardHorizontalPadding
-        visible: deviceSection.shown === 0
+        visible: deviceSection.shown === 0 && text.length > 0
         text: deviceSection.placeholderText
         color: FishUI.Theme.disabledTextColor
         wrapMode: Text.Wrap

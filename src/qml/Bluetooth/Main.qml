@@ -135,7 +135,7 @@ ItemPage {
                     title: qsTr("Other devices")
                     model: otherDevices
                     busy: Bluetooth.Manager.scanning
-                    placeholderText: Bluetooth.Manager.scanning ? qsTr("Searching for devices…")
+                    placeholderText: Bluetooth.Manager.scanning ? ""
                                      : qsTr("No devices found. Make sure your device is discoverable.")
                 }
             }
