@@ -102,3 +102,9 @@ install(FILES
 )
 
 install(FILES ${QM_FILES} DESTINATION /usr/share/${PROJECT_NAME}/translations)
+
+install(FILES
+    src/datetime/60-cutefish-datetime.rules
+    DESTINATION /usr/share/polkit-1/rules.d/
+    COMPONENT Runtime
+)
