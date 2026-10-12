@@ -12,11 +12,16 @@ ListRow {
 
     required property var device
 
+    // BlueZ reports Connected as soon as the link for pairing is up, before
+    // authentication finishes.
+    readonly property bool pairing: device.busy && !device.paired
+    readonly property bool linked: device.connected && !pairing
+
     text: device.name
-    checked: device.connected
+    checked: linked
 
     onClicked: {
-        if (device.connected || (device.busy && !device.paired)) {
+        if (linked || pairing) {
             expanded = !expanded
         } else if (device.busy) {
             return
@@ -30,7 +35,7 @@ ListRow {
     Connections {
         target: control.device
         function onChanged() {
-            if (!control.device.connected && !(control.device.busy && !control.device.paired))
+            if (!control.linked && !control.pairing)
                 control.expanded = false
         }
     }
@@ -54,10 +59,9 @@ ListRow {
         color: FishUI.Theme.disabledTextColor
         text: {
             var status = control.device.blocked ? qsTr("Blocked")
-                       : control.device.connected ? qsTr("Connected")
-                       : control.device.paired ? qsTr("Not connected")
-                       : control.device.busy ? qsTr("Pairing…") : ""
-            if (control.device.connected && control.device.batteryPercentage >= 0)
+                       : control.linked ? qsTr("Connected")
+                       : control.device.paired ? qsTr("Not connected") : ""
+            if (control.linked && control.device.batteryPercentage >= 0)
                 status += " · " + qsTr("%1%").arg(control.device.batteryPercentage)
             return status
         }
@@ -87,14 +91,14 @@ ListRow {
             spacing: Metrics.controlSpacing
 
             FishUI.Button {
-                visible: control.device.connected
+                visible: control.linked
                 enabled: !control.device.busy
                 text: qsTr("Disconnect")
                 onClicked: control.device.disconnectFromDevice()
             }
 
             FishUI.Button {
-                visible: control.device.busy && !control.device.paired
+                visible: control.pairing
                 text: qsTr("Cancel pairing")
                 onClicked: control.device.cancelPairing()
             }
