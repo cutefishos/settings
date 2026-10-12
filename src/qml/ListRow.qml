@@ -30,10 +30,12 @@ Item {
     // A row that only holds a control, such as a switch, neither highlights
     // nor reacts to clicks.
     property bool interactive: true
+    // Off for a row whose actions are buttons inside it.
+    property bool highlightOnPress: true
     property bool separatorVisible: true
     // Lifts the label by half this, onto a control with captions hanging below it.
     property real labelBottomMargin: 0
-    readonly property bool highlighted: interactive && enabled && _mouseArea.pressed
+    readonly property bool highlighted: interactive && highlightOnPress && enabled && _mouseArea.pressed
     signal clicked()
 
     // Set by a ListView delegate to its index: a view's rows are not siblings

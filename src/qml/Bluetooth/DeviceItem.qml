@@ -20,6 +20,7 @@ ListRow {
 
     Accessible.name: device.name
     checked: linked
+    highlightOnPress: false
     minimumRowHeight: statusLabel.visible ? Metrics.twoLineRowHeight : Metrics.rowHeight
 
     onClicked: revealed = true
