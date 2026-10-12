@@ -9,6 +9,8 @@ FishUI.DialogWindow {
     id: control
 
     property var device
+    // The Device Information service shows up once the device's services resolve.
+    readonly property bool servicesResolved: !!device && device.servicesResolved
 
     title: device ? device.name : ""
 
@@ -22,6 +24,39 @@ FishUI.DialogWindow {
     // Created per click, so each one goes away with its window.
     onClosing: destroy()
 
+    onServicesResolvedChanged: {
+        if (servicesResolved)
+            device.readDeviceInformation()
+    }
+    Component.onCompleted: {
+        if (device)
+            device.readDeviceInformation()
+    }
+
+    // The kind of device behind each icon name BlueZ reports.
+    function deviceType(icon) {
+        var types = {
+            "audio-card": qsTr("Audio device"),
+            "audio-headphones": qsTr("Headphones"),
+            "audio-headset": qsTr("Headset"),
+            "camera-photo": qsTr("Camera"),
+            "camera-video": qsTr("Video camera"),
+            "computer": qsTr("Computer"),
+            "input-gaming": qsTr("Game controller"),
+            "input-keyboard": qsTr("Keyboard"),
+            "input-mouse": qsTr("Mouse"),
+            "input-tablet": qsTr("Drawing tablet"),
+            "modem": qsTr("Modem"),
+            "multimedia-player": qsTr("Media player"),
+            "network-wireless": qsTr("Network device"),
+            "phone": qsTr("Phone"),
+            "printer": qsTr("Printer"),
+            "scanner": qsTr("Scanner"),
+            "video-display": qsTr("Display")
+        }
+        return types[icon] || ""
+    }
+
     ColumnLayout {
         id: detailsLayout
         // Not filled to the window: the window height follows this layout's implicit
@@ -34,19 +69,23 @@ FishUI.DialogWindow {
 
         ListCard {
             InfoRow {
+                text: qsTr("Device type")
+                value: control.device ? control.deviceType(control.device.icon) : ""
+            }
+
+            InfoRow {
+                text: qsTr("Model number")
+                value: control.device ? control.device.modelNumber : ""
+            }
+
+            InfoRow {
+                text: qsTr("Version")
+                value: control.device ? control.device.firmwareRevision : ""
+            }
+
+            InfoRow {
                 text: qsTr("Address")
                 value: control.device ? control.device.address : ""
-            }
-
-            InfoRow {
-                text: qsTr("Adapter")
-                value: control.device ? control.device.adapterPath.split("/").pop() : ""
-            }
-
-            InfoRow {
-                text: qsTr("Battery")
-                value: !!control.device && control.device.batteryPercentage >= 0
-                       ? qsTr("%1%").arg(control.device.batteryPercentage) : ""
             }
         }
 
