@@ -79,10 +79,10 @@ ListRow {
         running: visible
     }
 
-    // Pairing can always be cancelled; anything else waits for the device.
+    // The busy indicator stands in for the action, except that pairing can be cancelled.
     FishUI.Button {
-        visible: !control.device.blocked && (hoverHandler.hovered || control.revealed)
-        enabled: control.pairing || !control.device.busy
+        visible: !control.device.blocked && (control.pairing || !control.device.busy)
+                 && (hoverHandler.hovered || control.revealed)
         focusPolicy: Qt.NoFocus
         text: control.pairing ? qsTr("Cancel pairing")
               : control.linked ? qsTr("Disconnect")
@@ -100,6 +100,7 @@ ListRow {
     }
 
     IconButton {
+        visible: control.device.paired
         width: 20
         Layout.rightMargin: Metrics.trailingGlyphMargin(iconName, width)
         iconName: "info"
