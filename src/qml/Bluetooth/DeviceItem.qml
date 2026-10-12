@@ -5,8 +5,8 @@ import Cutefish.Settings
 import FishUI as FishUI
 import "../"
 
-// One Bluetooth device. Clicking pairs or connects; on a connected device, or
-// one still pairing, it unfolds the disconnect or cancel control instead.
+// One Bluetooth device. Its action shows on the right while the row is
+// hovered, or after a tap where there is no hover; the row itself does nothing.
 ListRow {
     id: control
 
@@ -16,27 +16,19 @@ ListRow {
     // authentication finishes.
     readonly property bool pairing: device.busy && !device.paired
     readonly property bool linked: device.connected && !pairing
+    property bool revealed: false
 
-    text: device.name
+    Accessible.name: device.name
     checked: linked
+    minimumRowHeight: statusLabel.visible ? Metrics.twoLineRowHeight : Metrics.rowHeight
 
-    onClicked: {
-        if (linked || pairing) {
-            expanded = !expanded
-        } else if (device.busy) {
-            return
-        } else if (device.paired) {
-            device.connectToDevice()
-        } else {
-            device.pair()
-        }
-    }
+    onClicked: revealed = true
 
-    Connections {
-        target: control.device
-        function onChanged() {
-            if (!control.linked && !control.pairing)
-                control.expanded = false
+    HoverHandler {
+        id: hoverHandler
+        onHoveredChanged: {
+            if (!hovered)
+                control.revealed = false
         }
     }
 
@@ -47,6 +39,39 @@ ListRow {
         source: "image://icontheme/" + (control.device.icon || "bluetooth") + FishUI.Theme.iconThemeQuery
     }
 
+    ColumnLayout {
+        Layout.fillWidth: true
+        Layout.alignment: Qt.AlignVCenter
+        spacing: Metrics.textSpacing
+
+        FishUI.Label {
+            id: primaryLabel
+            Layout.fillWidth: true
+            text: control.device.name
+            textFormat: Text.PlainText
+            color: control.enabled ? FishUI.Theme.textColor : FishUI.Theme.disabledTextColor
+            elide: Text.ElideRight
+        }
+
+        FishUI.Label {
+            id: statusLabel
+            Layout.fillWidth: true
+            visible: text.length > 0
+            text: {
+                var status = control.device.blocked ? qsTr("Blocked")
+                           : control.linked ? qsTr("Connected")
+                           : control.device.paired ? qsTr("Not connected") : ""
+                if (control.linked && control.device.batteryPercentage >= 0)
+                    status += " · " + qsTr("%1%").arg(control.device.batteryPercentage)
+                return status
+            }
+            textFormat: Text.PlainText
+            color: FishUI.Theme.disabledTextColor
+            font.pixelSize: Math.max(1, primaryLabel.font.pixelSize - 1)
+            elide: Text.ElideRight
+        }
+    }
+
     FishUI.BusyIndicator {
         width: 18
         height: width
@@ -54,16 +79,23 @@ ListRow {
         running: visible
     }
 
-    FishUI.Label {
-        visible: text.length > 0
-        color: FishUI.Theme.disabledTextColor
-        text: {
-            var status = control.device.blocked ? qsTr("Blocked")
-                       : control.linked ? qsTr("Connected")
-                       : control.device.paired ? qsTr("Not connected") : ""
-            if (control.linked && control.device.batteryPercentage >= 0)
-                status += " · " + qsTr("%1%").arg(control.device.batteryPercentage)
-            return status
+    // Pairing can always be cancelled; anything else waits for the device.
+    FishUI.Button {
+        visible: !control.device.blocked && (hoverHandler.hovered || control.revealed)
+        enabled: control.pairing || !control.device.busy
+        focusPolicy: Qt.NoFocus
+        text: control.pairing ? qsTr("Cancel pairing")
+              : control.linked ? qsTr("Disconnect")
+              : qsTr("Connect")
+        onClicked: {
+            if (control.pairing)
+                control.device.cancelPairing()
+            else if (control.linked)
+                control.device.disconnectFromDevice()
+            else if (control.device.paired)
+                control.device.connectToDevice()
+            else
+                control.device.pair()
         }
     }
 
@@ -85,27 +117,4 @@ ListRow {
             }
         }
     }
-
-    details: [
-        RowLayout {
-            spacing: Metrics.controlSpacing
-
-            FishUI.Button {
-                visible: control.linked
-                enabled: !control.device.busy
-                text: qsTr("Disconnect")
-                onClicked: control.device.disconnectFromDevice()
-            }
-
-            FishUI.Button {
-                visible: control.pairing
-                text: qsTr("Cancel pairing")
-                onClicked: control.device.cancelPairing()
-            }
-        },
-
-        Item {
-            Layout.preferredHeight: Metrics.cardVerticalPadding
-        }
-    ]
 }

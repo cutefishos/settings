@@ -36,6 +36,8 @@ QtObject {
     // For a row holding a slider or another control taller than a
     // switch: the extra height keeps the control from crowding the row's edges.
     readonly property int controlRowHeight: 52
+    // For a row with a second line of text below its label.
+    readonly property int twoLineRowHeight: 56
     readonly property int rowSpacing: m
 
     // A full-width button standing alone between cards.
