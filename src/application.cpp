@@ -31,6 +31,7 @@
 
 #include "cursor/cursorthememodel.h"
 #include "cursor/mouse.h"
+#include "hotcorners/hotcorners.h"
 #include "icontheme/iconthememodel.h"
 
 #include "datetime/time.h"
@@ -103,6 +104,7 @@ int Application::run()
     qmlRegisterType<Fonts>(uri, 1, 0, "Fonts");
     qmlRegisterType<PowerManager>(uri, 1, 0, "PowerManager");
     qmlRegisterType<Mouse>(uri, 1, 0, "Mouse");
+    qmlRegisterType<HotCorners>(uri, 1, 0, "HotCorners");
     qmlRegisterType<Time>(uri, 1, 0, "Time");
     qmlRegisterType<TimeZoneMap>(uri, 1, 0, "TimeZoneMap");
     qmlRegisterType<Touchpad>(uri, 1, 0, "Touchpad");

@@ -46,6 +46,7 @@ set(SRCS
     src/cursor/cursorthememodel.cpp
     src/cursor/cursortheme.cpp
     src/cursor/mouse.cpp
+    src/hotcorners/hotcorners.cpp
     src/datetime/time.cpp
     src/datetime/timezonemap.cpp
     src/touchpad.cpp

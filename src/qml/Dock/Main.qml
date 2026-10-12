@@ -120,6 +120,13 @@ ItemPage {
             }
 
             ListCard {
+                NavigationItem {
+                    text: qsTr("Hot Corners")
+                    onClicked: rootWindow.pushPage("qrc:/qml/HotCorners/Main.qml")
+                }
+            }
+
+            ListCard {
                 ListRow {
                     interactive: false
                     text: qsTr("Minimized windows area")

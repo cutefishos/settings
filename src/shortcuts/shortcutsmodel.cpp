@@ -87,6 +87,7 @@ void ShortcutsModel::reload()
             {"cycle-forward-mru", windows, tr("Switch to the next window")},
             {"cycle-backward-mru", windows, tr("Switch to the previous window")},
             {"toggle-overview", windows, tr("Show all windows")},
+            {"toggle-show-desktop", windows, tr("Show the desktop")},
             {"toggle-maximized", windows, tr("Maximize or restore the window")},
             {"window-minimize", windows, tr("Minimize the window")},
             {"quit-application", windows, tr("Quit the application")},

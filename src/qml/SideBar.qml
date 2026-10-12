@@ -112,6 +112,15 @@ Item {
             keywords: qsTr("input source")
         },
         {
+            title: qsTr("Hot Corners"),
+            name: "hotcorners",
+            page: "qrc:/qml/HotCorners/Main.qml",
+            parentName: "dock",
+            iconSource: "dock.svg",
+            iconColor: "#8585FC",
+            keywords: qsTr("screen corners, show desktop, show all windows")
+        },
+        {
             title: qsTr("Keyboard Shortcuts"),
             page: "qrc:/qml/Shortcuts/Main.qml",
             parentName: "keyboard",
