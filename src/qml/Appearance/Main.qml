@@ -13,6 +13,13 @@ import "../"
 ItemPage {
     headerTitle: qsTr("Appearance")
 
+    readonly property bool autoDarkMode: appearance.darkModeSchedule === FrameworkAppearance.Appearance.SunsetToSunrise
+
+    function chooseDarkMode(dark) {
+        appearance.setDarkModeSchedule(FrameworkAppearance.Appearance.Never)
+        appearance.switchDarkMode(dark)
+    }
+
     FrameworkAppearance.Appearance {
         id: appearance
     }
@@ -35,7 +42,7 @@ ItemPage {
                 }
 
                 RoundedItem {
-                    // Light Mode and Dark Mode
+                    // Light Mode, Dark Mode and Auto
                     RowLayout {
                         spacing: Metrics.tileSpacing
 
@@ -46,8 +53,8 @@ ItemPage {
                             // SVG loader letterboxes any other aspect with transparent bars.
                             previewWidth: 108
                             previewHeight: 76
-                            checked: !FishUI.Theme.darkMode
-                            onClicked: appearance.switchDarkMode(false)
+                            checked: !autoDarkMode && !FishUI.Theme.darkMode
+                            onClicked: chooseDarkMode(false)
                         }
 
                         ImageSelectionItem {
@@ -55,12 +62,22 @@ ItemPage {
                             text: qsTr("Dark")
                             previewWidth: 108
                             previewHeight: 76
-                            checked: FishUI.Theme.darkMode
-                            onClicked: appearance.switchDarkMode(true)
+                            checked: !autoDarkMode && FishUI.Theme.darkMode
+                            onClicked: chooseDarkMode(true)
+                        }
+
+                        ImageSelectionItem {
+                            source: "qrc:/images/auto_mode.svg"
+                            text: qsTr("Auto")
+                            previewWidth: 108
+                            previewHeight: 76
+                            checked: autoDarkMode
+                            onClicked: appearance.setDarkModeSchedule(FrameworkAppearance.Appearance.SunsetToSunrise)
                         }
                     }
                 }
             }
+
 
             ColumnLayout {
                 Layout.fillWidth: true

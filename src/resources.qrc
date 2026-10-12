@@ -19,6 +19,7 @@
         <file>images/logo.svg</file>
         <file>qml/Scrollable.qml</file>
         <file>qml/SearchField.qml</file>
+        <file>images/auto_mode.svg</file>
         <file>images/dark_mode.svg</file>
         <file>images/light_mode.svg</file>
         <file>images/dock_bottom.svg</file>
