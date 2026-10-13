@@ -41,7 +41,7 @@ Fonts::Fonts(QObject *parent)
     QSettings settings(Preferences::file(QStringLiteral("services")), QSettings::IniFormat);
     settings.beginGroup(QStringLiteral("Appearance"));
     m_antiAliasing = settings.value("FontAntialias", true).toBool();
-    m_hinting = hintingFromString(settings.value("FontHintStyle", "hintslight").toString());
+    m_hinting = hintingFromString(settings.value("FontHintStyle", "hintfull").toString());
 
     const QStringList descriptions = {tr("None"), tr("Slight"), tr("Medium"), tr("Full")};
     for (const QString &description : descriptions) {
