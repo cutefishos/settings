@@ -83,6 +83,7 @@ void ShortcutsModel::reload()
     const Layout layouts[] = {
             {"toggle-app-list", general, tr("Open the launcher")},
             {"lock-screen", general, tr("Lock the screen")},
+            {"toggle-clipboard-history", general, tr("Show the clipboard history")},
 
             {"cycle-forward-mru", windows, tr("Switch to the next window")},
             {"cycle-backward-mru", windows, tr("Switch to the previous window")},
