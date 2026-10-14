@@ -5,8 +5,9 @@ import Cutefish.Settings
 import FishUI as FishUI
 import "../"
 
-// One Bluetooth device. Its action shows on the right while the row is
-// hovered, or after a tap where there is no hover; the row itself does nothing.
+// One Bluetooth device. Clicking pairs or connects; on a connected device, or
+// one still pairing, the disconnect or cancel action shows on the right while
+// the row is hovered, or after a tap where there is no hover.
 ListRow {
     id: control
 
@@ -16,14 +17,24 @@ ListRow {
     // authentication finishes.
     readonly property bool pairing: device.busy && !device.paired
     readonly property bool linked: device.connected && !pairing
+    readonly property bool connectable: !linked && !pairing && !device.busy && !device.blocked
     property bool revealed: false
 
     Accessible.name: device.name
     checked: linked
-    highlightOnPress: false
+    highlightOnPress: connectable
     minimumRowHeight: statusLabel.visible ? Metrics.twoLineRowHeight : Metrics.rowHeight
 
-    onClicked: revealed = true
+    onClicked: {
+        if (connectable) {
+            if (device.paired)
+                device.connectToDevice()
+            else
+                device.pair()
+        } else {
+            revealed = true
+        }
+    }
 
     HoverHandler {
         id: hoverHandler
@@ -82,21 +93,15 @@ ListRow {
 
     // The busy indicator stands in for the action, except that pairing can be cancelled.
     FishUI.Button {
-        visible: !control.device.blocked && (control.pairing || !control.device.busy)
+        visible: !control.device.blocked && (control.pairing || (control.linked && !control.device.busy))
                  && (hoverHandler.hovered || control.revealed)
         focusPolicy: Qt.NoFocus
-        text: control.pairing ? qsTr("Cancel pairing")
-              : control.linked ? qsTr("Disconnect")
-              : qsTr("Connect")
+        text: control.pairing ? qsTr("Cancel pairing") : qsTr("Disconnect")
         onClicked: {
             if (control.pairing)
                 control.device.cancelPairing()
-            else if (control.linked)
-                control.device.disconnectFromDevice()
-            else if (control.device.paired)
-                control.device.connectToDevice()
             else
-                control.device.pair()
+                control.device.disconnectFromDevice()
         }
     }
 
