@@ -5,107 +5,85 @@ project(cutefish-settings
     LANGUAGES CXX
 )
 
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src")
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-set(QT Core Gui Quick QuickControls2 DBus Concurrent LinguistTools)
-find_package(Qt6 REQUIRED ${QT})
-find_package(Freetype REQUIRED)
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(Xcursor REQUIRED IMPORTED_TARGET xcursor)
-find_package(Libcrypt REQUIRED)
+include(GNUInstallDirs)
+include(CTest)
 
+find_package(CutefishToolkit REQUIRED)
 
-find_package(CutefishFramework REQUIRED COMPONENTS Application Appearance IO Power)
+# Where the pictures are looked up; a scratch build that is never installed
+# can point it at src/ instead.
+set(SETTINGS_DATA_DIR ${CMAKE_INSTALL_FULL_DATADIR}/cutefish-settings CACHE PATH "Settings' installed data")
 
-pkg_search_module(FontConfig REQUIRED fontconfig IMPORTED_TARGET)
-pkg_search_module(ICU REQUIRED icu-i18n)
+# Each page lives in src/pages/<page>/ and registers itself, so pages are
+# added without touching this file. A build may take some of them only.
+set(SETTINGS_PAGES "all" CACHE STRING "The src/pages directories to build: all, or a list of their names")
+file(GLOB page_directories LIST_DIRECTORIES true ${PROJECT_SOURCE_DIR}/src/pages/*)
+set(SETTINGS_BUILT_PAGES)
+set(SETTINGS_PAGE_SOURCES)
+foreach(directory ${page_directories})
+    get_filename_component(page ${directory} NAME)
+    if(IS_DIRECTORY ${directory} AND (SETTINGS_PAGES STREQUAL "all" OR page IN_LIST SETTINGS_PAGES))
+        list(APPEND SETTINGS_BUILT_PAGES ${page})
+        file(GLOB_RECURSE sources CONFIGURE_DEPENDS ${directory}/*.cpp)
+        list(APPEND SETTINGS_PAGE_SOURCES ${sources})
+    endif()
+endforeach()
 
-include_directories(${ICU_INCLUDE_DIRS})
-
-set(SRCS
-    src/application.cpp
-    src/main.cpp
-    src/docksettings.cpp
-    src/battery.cpp
-    src/brightness.cpp
-    src/fontsmodel.cpp
-    src/language.cpp
-    src/about.cpp
-    src/notifications.cpp
-    src/password.cpp
-    src/batteryhistorymodel.cpp
-    src/icontheme/iconthememodel.cpp
-    src/fonts/fonts.cpp
-    src/powermanager.cpp
-    src/cursor/cursorthememodel.cpp
-    src/cursor/cursortheme.cpp
-    src/cursor/mouse.cpp
-    src/hotcorners/hotcorners.cpp
-    src/datetime/time.cpp
-    src/datetime/timezonemap.cpp
-    src/touchpad.cpp
-    src/touchscreen.cpp
-    src/shortcuts/shortcutsmodel.cpp
-    src/networkproxy.cpp
-    src/defaultapplications.cpp
-    src/inputmethod.cpp
-    src/keyboard.cpp
-    src/mock/networkmockmodel.cpp
+# Objects rather than an archive: a page is only referenced by its static
+# registration, which a linker would drop from an archive.
+add_library(settings-ui OBJECT
+    src/widgets/card.cpp
+    src/widgets/formdialog.cpp
+    src/widgets/iconbutton.cpp
+    src/widgets/imageselectionitem.cpp
+    src/widgets/listrow.cpp
+    src/widgets/metrics.cpp
+    src/widgets/picture.cpp
+    src/widgets/rowcombobox.cpp
+    src/widgets/rowicon.cpp
+    src/widgets/searchfield.cpp
+    src/widgets/sections.cpp
+    src/widgets/sliderrow.cpp
+    src/widgets/standardbutton.cpp
+    src/widgets/tilegrid.cpp
+    src/window/options.cpp
+    src/window/page.cpp
+    src/window/pagelist.cpp
+    src/window/settingswindow.cpp
+    src/window/sidebar.cpp
+    ${SETTINGS_PAGE_SOURCES}
 )
+target_include_directories(settings-ui PUBLIC src)
+target_compile_definitions(settings-ui PUBLIC SETTINGS_DATA_DIR="${SETTINGS_DATA_DIR}")
+target_link_libraries(settings-ui PUBLIC Cutefish::Toolkit)
 
-set(RESOURCES
-    src/resources.qrc
-)
+# A page's own dependencies: src/pages/<page>/page.cmake finds and links
+# them to settings-ui.
+foreach(page ${SETTINGS_BUILT_PAGES})
+    if(EXISTS ${PROJECT_SOURCE_DIR}/src/pages/${page}/page.cmake)
+        include(${PROJECT_SOURCE_DIR}/src/pages/${page}/page.cmake)
+    endif()
+endforeach()
 
-qt6_add_dbus_adaptor(DBUS_SOURCES
-                     src/com.cutefish.SettingsUI.xml
-                     src/application.h Application)
-set_source_files_properties(${DBUS_SOURCES} PROPERTIES SKIP_AUTOGEN ON)
+add_executable(${PROJECT_NAME} src/main.cpp)
+target_link_libraries(${PROJECT_NAME} PRIVATE settings-ui)
 
-qt6_add_dbus_interface(SRCS
-                       src/datetime/org.freedesktop.timedate1.xml
-                       timedated_interface)
-
-cutefish_add_application(${PROJECT_NAME} SOURCES ${DBUS_SOURCES} ${SRCS} ${RESOURCES})
-target_link_libraries(${PROJECT_NAME}-module PRIVATE
-        PkgConfig::Xcursor
-        Cutefish::Appearance
-        Cutefish::IO
-        Cutefish::Power
-        Qt6::Core
-        Qt6::Quick
-        Qt6::QuickControls2
-        Qt6::DBus
-        Qt6::Concurrent
-
-        PkgConfig::FontConfig
-        ${FREETYPE_LIBRARIES}
-        ${ICU_LDFLAGS}
-        Libcrypt::Libcrypt
-
-)
-
-file(GLOB TS_FILES translations/*.ts)
-qt6_add_translation(QM_FILES ${TS_FILES})
-add_custom_target(translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
-add_dependencies(${PROJECT_NAME} translations)
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(DIRECTORY src/images/ DESTINATION ${SETTINGS_DATA_DIR}/images)
 
 install(FILES
     cutefish-settings.desktop
-    DESTINATION /usr/share/applications/
-    COMPONENT Runtime
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/applications
 )
-
-install(FILES ${QM_FILES} DESTINATION /usr/share/${PROJECT_NAME}/translations)
 
 install(FILES
     src/datetime/60-cutefish-datetime.rules
-    DESTINATION /usr/share/polkit-1/rules.d/
-    COMPONENT Runtime
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/polkit-1/rules.d
 )
+
+if(BUILD_TESTING)
+    add_subdirectory(tests/ui)
+endif()

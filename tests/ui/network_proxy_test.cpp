@@ -1,0 +1,105 @@
+// SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+#include <gtest/gtest.h>
+
+#include <cstdlib>
+#include <filesystem>
+#include <fstream>
+#include <sstream>
+#include <string>
+
+#include "pages/network/common/textchecks.h"
+#include "pages/network/proxy/proxysettings.h"
+
+using namespace settings::network;
+
+namespace {
+
+struct KeyFile : testing::Test
+{
+    void SetUp() override
+    {
+        char pattern[] = "/tmp/proxy-test-XXXXXX";
+        directory = mkdtemp(pattern);
+        path = directory + "/keyfile";
+    }
+
+    void TearDown() override { std::filesystem::remove_all(directory); }
+
+    void write(const std::string& contents)
+    {
+        std::ofstream file(path);
+        file << contents;
+    }
+
+    std::string contents() const
+    {
+        std::ifstream file(path);
+        std::stringstream text;
+        text << file.rdbuf();
+        return text.str();
+    }
+
+    std::string directory;
+    std::string path;
+};
+
+} // namespace
+
+TEST_F(KeyFile, ReadsGroupsAndKeys)
+{
+    write("# comment\n[system/proxy]\nmode='manual'\n\n[system/proxy/http]\nhost='proxy.example.com'\nport=3128\n");
+    const auto groups = keyfile::read(path);
+    EXPECT_EQ(groups.at("system/proxy").at("mode"), "'manual'");
+    EXPECT_EQ(gsettings::toString(groups.at("system/proxy/http").at("host")), "proxy.example.com");
+    EXPECT_EQ(gsettings::toInt(groups.at("system/proxy/http").at("port"), 0), 3128);
+}
+
+TEST_F(KeyFile, WritesOnlyWhatChanged)
+{
+    const std::string original = "[other]\nkey=1\n\n[system/proxy]\nmode='none'\nignore-hosts=['localhost']\n\n[last]\nx=2\n";
+    write(original);
+    // The same value again changes nothing.
+    EXPECT_FALSE(keyfile::writeGroup(path, "system/proxy", {{"mode", "'none'"}}));
+    EXPECT_EQ(contents(), original);
+
+    // A changed key is replaced in place, a new one goes before the blank line ahead of the next group.
+    EXPECT_TRUE(keyfile::writeGroup(path, "system/proxy", {{"mode", "'manual'"}, {"autoconfig-url", "''"}}));
+    EXPECT_EQ(contents(), "[other]\nkey=1\n\n[system/proxy]\nmode='manual'\nignore-hosts=['localhost']\n"
+                          "autoconfig-url=''\n\n[last]\nx=2\n");
+
+    // A new group goes last, after a blank line.
+    EXPECT_TRUE(keyfile::writeGroup(path, "system/proxy/socks", {{"host", "'s'"}, {"port", "1080"}}));
+    EXPECT_TRUE(contents().ends_with("x=2\n\n[system/proxy/socks]\nhost='s'\nport=1080\n"));
+}
+
+TEST(GSettingsValues, ReadAsGLibWritesThem)
+{
+    EXPECT_EQ(gsettings::toString("'it\\'s'"), "it's");
+    EXPECT_EQ(gsettings::toString("\"double\""), "double");
+    EXPECT_EQ(gsettings::toString("'\\u00e9'"), "\xc3\xa9");
+    EXPECT_EQ(gsettings::toString("unquoted", "fallback"), "fallback");
+    EXPECT_EQ(gsettings::toInt("uint32 8080", 0), 8080);
+    EXPECT_EQ(gsettings::toInt("'x'", 7), 7);
+    EXPECT_TRUE(gsettings::toBool("true", false));
+    EXPECT_EQ(gsettings::toStringList("@as []", {"x"}), std::vector<std::string>{});
+    EXPECT_EQ(gsettings::toStringList("['localhost', '127.0.0.0/8']", {}),
+              (std::vector<std::string>{"localhost", "127.0.0.0/8"}));
+    EXPECT_EQ(gsettings::toStringList("['broken", {"x"}), std::vector<std::string>{"x"});
+    EXPECT_EQ(gsettings::stringValue("it's\n"), "'it\\'s\\n'");
+}
+
+TEST(EditFieldText, PortsAndNumbers)
+{
+    EXPECT_TRUE(isPortText(""));
+    EXPECT_TRUE(isPortText("1"));
+    EXPECT_TRUE(isPortText("65535"));
+    EXPECT_FALSE(isPortText("65536"));
+    EXPECT_FALSE(isPortText("0"));
+    EXPECT_FALSE(isPortText("08"));
+    EXPECT_FALSE(isPortText("8a"));
+    EXPECT_TRUE(isNumberText("", 10));
+    EXPECT_TRUE(isNumberText("10", 10));
+    EXPECT_FALSE(isNumberText("11", 10));
+}

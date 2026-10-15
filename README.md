@@ -6,14 +6,18 @@ The System Settings application for Cutefish Desktop.
 
 ## Dependencies
 
+Settings is built on [cutefish-toolkit](https://github.com/cutefishos/cutefish-toolkit)
+and the Qt-free clients of [cutefish-framework](https://github.com/cutefishos/cutefish-framework);
+install those first.
+
 Arch/Manjaro Dependencies:
 ```shell
-sudo pacman -S cmake qt6-base qt6-declarative qt6-tools icu libxcrypt freetype2 fontconfig libxcursor
+sudo pacman -S cmake pkgconf icu libxcrypt fontconfig libxcursor libxkbcommon expat systemd-libs
 ```
 
 Debian/Ubuntu Dependencies:
 ```shell
-sudo apt install cmake debhelper libicu-dev libcrypt-dev libfreetype6-dev libfontconfig1-dev libxcursor-dev qt6-base-dev qt6-declarative-dev qt6-tools-dev qt6-tools-dev-tools pkg-config
+sudo apt install cmake pkg-config libicu-dev libcrypt-dev libfontconfig-dev libxcursor-dev libxkbcommon-dev libexpat1-dev libsystemd-dev
 ```
 
 ## Build

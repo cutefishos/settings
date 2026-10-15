@@ -1,0 +1,56 @@
+// SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+#pragma once
+
+#include <functional>
+#include <optional>
+#include <string>
+
+#include "widgets/listrow.h"
+
+namespace cutefish::ui {
+class Icon;
+}
+
+namespace settings {
+
+class Picture;
+
+// A glyph that is a button, such as a row's info button: it fills its box and
+// whitens by half while pressed. A name ending in ".svg" is a path to one of
+// settings' pictures instead of a toolkit glyph. At the end of a row its
+// drawing, not its box, ends where a switch does.
+class IconButton : public cutefish::ui::View, public TrailingOverhang
+{
+public:
+    explicit IconButton(std::string glyph, double size = 22);
+
+    // Unset: the theme's text colour.
+    void setColor(std::optional<cutefish::ui::Color> color);
+
+    cutefish::ui::SizeF sizeHint() const override { return {m_size, m_size}; }
+    bool acceptsPointer() const override { return true; }
+    double trailingOverhang() const override;
+
+    std::function<void()> onClicked;
+
+protected:
+    void layout() override;
+    void pointerPress(const cutefish::ui::PointerEvent& event) override;
+    void pointerMove(const cutefish::ui::PointerEvent& event) override;
+    void pointerRelease(const cutefish::ui::PointerEvent& event) override;
+
+private:
+    void setPressedInside(bool inside);
+
+    std::string m_glyph;
+    double m_size;
+    cutefish::ui::Icon* m_icon = nullptr;
+    cutefish::ui::Icon* m_overlay = nullptr;
+    Picture* m_picture = nullptr;
+    Picture* m_pictureOverlay = nullptr;
+    bool m_pressed = false;
+};
+
+} // namespace settings
