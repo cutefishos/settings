@@ -251,7 +251,7 @@ void ShortcutEditDialog::update()
             custom->setFontSize(metrics::points(8));
         }
         row->addChild<View>()->setLayoutHints({.fillWidth = true});
-        if (!m_recording && !accelerator.locked) {
+        if (!m_recording) {
             LinkLabel* change = row->addChild<LinkLabel>("Change");
             change->onClicked = [this, accelerator] { startRecording(accelerator); };
             LinkLabel* remove = row->addChild<LinkLabel>("Remove");

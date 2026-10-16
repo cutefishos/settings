@@ -40,7 +40,6 @@ public:
         std::string keyName;
         // "default" or "user".
         std::string type;
-        bool locked = false;
         // As the user reads them: {"Ctrl", "Shift", "Q"}.
         std::vector<std::string> parts;
         // The parts joined: "Ctrl + Shift + Q".

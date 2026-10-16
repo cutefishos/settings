@@ -32,7 +32,7 @@ static std::string accelerator(int keysym, const std::string& keyName, const std
 {
     return "{\"keysym\":" + std::to_string(keysym) + ",\"keyName\":\"" + keyName + "\",\"keyText\":\"" + keyText
             + "\",\"modifiers\":" + std::to_string(modifiers) + ",\"keyState\":\"pressed\",\"type\":\"" + type
-            + "\",\"locked\":false}";
+            + "\"}";
 }
 
 namespace {

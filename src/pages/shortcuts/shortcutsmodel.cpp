@@ -153,7 +153,6 @@ ShortcutsModel::Accelerator ShortcutsModel::acceleratorFromJson(const json::Valu
     accelerator.modifiers = uint32_t(object["modifiers"].toInt());
     accelerator.keyName = object["keyName"].toString();
     accelerator.type = object["type"].toString();
-    accelerator.locked = object["locked"].toBool();
     accelerator.parts = modifierParts(accelerator.modifiers);
     accelerator.parts.push_back(keyDisplay(accelerator.keyName, object["keyText"].toString()));
     for (size_t i = 0; i < accelerator.parts.size(); ++i)
@@ -275,8 +274,6 @@ std::string ShortcutsModel::messageFor(const std::string& result, const std::str
     }
     if (result == "restore-success-with-conflicts")
         return "Some default shortcuts are in use by other actions and were not restored.";
-    if (result == "action-locked" || result == "accelerator-locked")
-        return "This shortcut cannot be changed.";
     if (result == "not-found")
         return "This shortcut no longer exists.";
     return "The shortcut could not be changed.";
