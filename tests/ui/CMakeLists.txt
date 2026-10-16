@@ -23,7 +23,8 @@ endforeach()
 add_executable(settings-ui-tests main.cpp ${SETTINGS_UI_TESTS})
 target_compile_definitions(settings-ui-tests PRIVATE SETTINGS_SOURCE_DIR="${PROJECT_SOURCE_DIR}/src")
 target_link_libraries(settings-ui-tests PRIVATE settings-ui GTest::gtest)
-gtest_discover_tests(settings-ui-tests)
+# The pages' fakes own their services' names on the shared session bus.
+gtest_discover_tests(settings-ui-tests PROPERTIES RESOURCE_LOCK settings-session-bus)
 
 # Renders every page headless into PNGs, light and dark, at 100% and 150%.
 add_executable(settings-capture capture.cpp)
