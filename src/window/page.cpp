@@ -6,7 +6,7 @@
 #include <algorithm>
 
 #include "ui/painter.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/theme.h"
 #include "widgets/metrics.h"
 #include "widgets/sections.h"

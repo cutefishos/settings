@@ -14,7 +14,7 @@
 #include "ui/keys.h"
 #include "ui/label.h"
 #include "ui/layout.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/painter.h"
 #include "ui/path.h"
 #include "ui/scroll_view.h"
@@ -142,7 +142,7 @@ protected:
     {
         m_glyph->setColor(Theme::current().disabledText);
         const double height = geometry().height;
-        m_glyph->setGeometry({metrics::m, qml::anchorsCenter(height, 14), 14, 14});
+        m_glyph->setGeometry({metrics::m, rounding::centeredStart(height, 14), 14, 14});
         field->setGeometry(localRect());
     }
 
@@ -306,7 +306,7 @@ protected:
         m_scroll->setGeometry(inner);
         m_scroll->setVisible(!m_results.empty());
         const SizeF empty = m_empty->sizeHint();
-        m_empty->setGeometry({qml::anchorsCenter(geometry().width, empty.width), qml::anchorsCenter(geometry().height, empty.height),
+        m_empty->setGeometry({rounding::centeredStart(geometry().width, empty.width), rounding::centeredStart(geometry().height, empty.height),
                               empty.width, empty.height});
         m_empty->setVisible(m_results.empty());
     }
@@ -356,7 +356,7 @@ protected:
     void layout() override
     {
         const SizeF label = m_label->sizeHint();
-        m_label->setGeometry({qml::anchorsCenter(geometry().width, label.width), qml::anchorsCenter(geometry().height, label.height),
+        m_label->setGeometry({rounding::centeredStart(geometry().width, label.width), rounding::centeredStart(geometry().height, label.height),
                               label.width, label.height});
     }
 
@@ -442,8 +442,8 @@ protected:
     {
         // Centred in the card as anchors.centerIn centres it.
         const SizeF content = m_column->sizeHint();
-        m_column->setGeometry({qml::anchorsCenter(geometry().width, content.width),
-                               qml::anchorsCenter(geometry().height, content.height), content.width, content.height});
+        m_column->setGeometry({rounding::centeredStart(geometry().width, content.width),
+                               rounding::centeredStart(geometry().height, content.height), content.width, content.height});
     }
 
     void paint(Painter& painter) override
@@ -490,7 +490,7 @@ protected:
         const bool flip = m_point.x + metrics::s + width > m_areaWidth;
         m_pill = {flip ? m_point.x - metrics::s - width : m_point.x + metrics::s,
                   std::max(0.0, m_point.y - height - metrics::xs), width, height};
-        m_label->setGeometry({m_pill.x + qml::anchorsCenter(width, label.width), m_pill.y + qml::anchorsCenter(height, label.height),
+        m_label->setGeometry({m_pill.x + rounding::centeredStart(width, label.width), m_pill.y + rounding::centeredStart(height, label.height),
                               label.width, label.height});
     }
 
@@ -770,9 +770,9 @@ protected:
     {
         const double height = geometry().height;
         const SizeF size = title->sizeHint();
-        title->setGeometry({0, qml::anchorsCenter(height, size.height), size.width, size.height});
-        search->setGeometry({qml::anchorsCenter(geometry().width, kSearchWidth),
-                             qml::anchorsCenter(height, kSearchHeight), kSearchWidth, kSearchHeight});
+        title->setGeometry({0, rounding::centeredStart(height, size.height), size.width, size.height});
+        search->setGeometry({rounding::centeredStart(geometry().width, kSearchWidth),
+                             rounding::centeredStart(height, kSearchHeight), kSearchWidth, kSearchHeight});
     }
 };
 

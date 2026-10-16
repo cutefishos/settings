@@ -13,7 +13,7 @@
 #include "ui/combo_box.h"
 #include "ui/file_chooser.h"
 #include "ui/label.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/switch.h"
 #include "ui/text_field.h"
 #include "ui/theme.h"

@@ -12,7 +12,7 @@
 #include "ui/label.h"
 #include "ui/layout.h"
 #include "ui/menu.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "widgets/card.h"
 #include "widgets/metrics.h"
 #include "window/page.h"

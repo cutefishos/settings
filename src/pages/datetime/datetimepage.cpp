@@ -6,7 +6,7 @@
 #include "pages/datetime/timezonedialog.h"
 #include "pages/datetime/timezonemap.h"
 #include "timedate/timedate.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "widgets/card.h"
 #include "widgets/listrow.h"
 #include "widgets/metrics.h"

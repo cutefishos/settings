@@ -94,7 +94,7 @@ protected:
         else if (m_current)
             alpha = theme.darkMode ? 0.1 : 0.05;
         if (alpha > 0)
-            painter.drawQuickRectangle(localRect(), theme.mediumRadius, theme.text.withAlpha(alpha));
+            painter.drawSmoothRectangle(localRect(), theme.mediumRadius, theme.text.withAlpha(alpha));
     }
 
     void pointerPress(const PointerEvent& event) override

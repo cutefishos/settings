@@ -10,7 +10,7 @@
 #include "pages/network/common/networklist.h"
 #include "ui/dialog_window.h"
 #include "ui/keys.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/window.h"
 #include "widgets/card.h"
 #include "widgets/listrow.h"

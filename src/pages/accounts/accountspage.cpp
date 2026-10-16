@@ -12,7 +12,7 @@
 #include "pages/accounts/userdialogs.h"
 #include "ui/dialog_window.h"
 #include "ui/file_chooser.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "widgets/metrics.h"
 #include "widgets/standardbutton.h"
 #include "window/page.h"

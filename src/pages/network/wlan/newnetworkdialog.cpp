@@ -9,7 +9,7 @@
 #include "ui/dialog_window.h"
 #include "ui/label.h"
 #include "ui/layout.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/text_field.h"
 #include "ui/window.h"
 #include "widgets/formdialog.h"

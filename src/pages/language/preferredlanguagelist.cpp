@@ -12,7 +12,7 @@
 #include "ui/label.h"
 #include "ui/layout.h"
 #include "ui/menu.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/painter.h"
 #include "ui/scroll_view.h"
 #include "ui/theme.h"
@@ -64,7 +64,7 @@ protected:
         const double inkBaseline = (height - ink.height) / 2 - ink.y;
         const double capBaseline = (height + m_label->capHeight()) / 2;
         const double y = std::round((inkBaseline + capBaseline) / 2 - m_label->baselineOffset());
-        m_label->setGeometry({qml::anchorsCenter(geometry().width, text.width), y, text.width, text.height});
+        m_label->setGeometry({rounding::centeredStart(geometry().width, text.width), y, text.width, text.height});
     }
 
     void paint(Painter& painter) override
@@ -99,8 +99,8 @@ protected:
     void paint(Painter& painter) override
     {
         const Color color = Theme::current().disabledText;
-        const double x = qml::anchorsCenter(geometry().width, 14);
-        const double y = qml::anchorsCenter(geometry().height, 9);
+        const double x = rounding::centeredStart(geometry().width, 14);
+        const double y = rounding::centeredStart(geometry().height, 9);
         // One device pixel thick at any scale, as FishUI's snapped lines are.
         for (int line = 0; line < 3; ++line)
             painter.drawHorizontalLine(x, y + line * 4, 14, color);

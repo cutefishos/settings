@@ -8,7 +8,7 @@
 #include "ui/dialog_window.h"
 #include "ui/label.h"
 #include "ui/layout.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/switch.h"
 #include "ui/text_field.h"
 #include "ui/theme.h"
@@ -56,7 +56,7 @@ protected:
         field->setGeometry(localRect());
         const double right = theme.largeSpacing + metrics::trailingGlyphMargin("refresh", kGenerateSize);
         generate->setGeometry({geometry().width - right - kGenerateSize,
-                               qml::anchorsCenter(geometry().height, kGenerateSize), kGenerateSize, kGenerateSize});
+                               rounding::centeredStart(geometry().height, kGenerateSize), kGenerateSize, kGenerateSize});
         generate->setColor(theme.highlight);
     }
 };

@@ -13,7 +13,7 @@
 #include "pages/keyboard/keyboard.h"
 #include "ui/label.h"
 #include "ui/list_view.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/theme.h"
 #include "widgets/card.h"
 #include "widgets/metrics.h"
@@ -108,8 +108,8 @@ protected:
         m_list->setGeometry(bounds);
         m_empty->setColor(Theme::current().disabledText);
         const SizeF size = m_empty->sizeHint();
-        m_empty->setGeometry({qml::anchorsCenter(bounds.width, size.width),
-                              qml::anchorsCenter(bounds.height, size.height), size.width, size.height});
+        m_empty->setGeometry({rounding::centeredStart(bounds.width, size.width),
+                              rounding::centeredStart(bounds.height, size.height), size.width, size.height});
     }
 
 private:

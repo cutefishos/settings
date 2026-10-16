@@ -8,7 +8,7 @@
 #include "base/event_loop.h"
 #include "ui/keys.h"
 #include "ui/label.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/theme.h"
 #include "ui/window.h"
 #include "ui/window_header.h"

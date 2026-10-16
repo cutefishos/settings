@@ -14,7 +14,7 @@
 #include "ui/animation.h"
 #include "ui/label.h"
 #include "ui/painter.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/theme.h"
 #include "ui/window.h"
 #include "widgets/metrics.h"
@@ -200,7 +200,7 @@ protected:
         m_time->setColor(theme.disabledText);
         const SizeF value = m_value->sizeHint();
         const SizeF time = m_time->sizeHint();
-        double x = qml::anchorsCenter(geometry().width, contentWidth());
+        double x = rounding::centeredStart(geometry().width, contentWidth());
         m_value->setGeometry({x, m_graph.m_textBaseline - m_value->baselineOffset(), value.width, value.height});
         x += value.width + kSpacing;
         m_time->setGeometry({x, m_graph.m_textBaseline - m_time->baselineOffset(), time.width, time.height});
@@ -642,9 +642,9 @@ void HistoryGraph::paint(Painter& painter)
             const auto circle = [this](double diameter) {
                 return RectF{m_probe->x - diameter / 2, m_probe->y - diameter / 2, diameter, diameter};
             };
-            painter.drawQuickRectangle(circle(18), 9, tint(color, 0.18));
-            painter.drawQuickRectangle(circle(12), 6, theme.secondBackground);
-            painter.drawQuickRectangle(circle(8), 4, color);
+            painter.drawSmoothRectangle(circle(18), 9, tint(color, 0.18));
+            painter.drawSmoothRectangle(circle(12), 6, theme.secondBackground);
+            painter.drawSmoothRectangle(circle(8), 4, color);
         }
     }
 

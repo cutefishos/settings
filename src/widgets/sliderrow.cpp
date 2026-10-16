@@ -120,9 +120,9 @@ protected:
         for (int i = 0; i < kMeterSegments; ++i) {
             const RectF dot{i * (kMeterDot + spacing), y, kMeterDot, kMeterDot};
             if (i < lit)
-                painter.drawQuickRectangle(dot, kMeterDot / 2, theme.highlight);
+                painter.drawSmoothRectangle(dot, kMeterDot / 2, theme.highlight);
             else
-                painter.drawQuickRectangle(dot, kMeterDot / 2, theme.disabledText.withAlpha(0.3));
+                painter.drawSmoothRectangle(dot, kMeterDot / 2, theme.disabledText.withAlpha(0.3));
         }
     }
 

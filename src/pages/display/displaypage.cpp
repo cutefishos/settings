@@ -17,7 +17,7 @@
 #include "pages/display/brightness.h"
 #include "ui/dialog_window.h"
 #include "ui/label.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/segmented_control.h"
 #include "ui/slider.h"
 #include "ui/switch.h"

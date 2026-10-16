@@ -14,7 +14,7 @@
 #include "ui/button.h"
 #include "ui/icon.h"
 #include "ui/label.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/segmented_control.h"
 #include "ui/theme.h"
 #include "widgets/card.h"

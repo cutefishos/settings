@@ -3,7 +3,7 @@
 
 #include "networkmanager/connections.h"
 #include "networkmanager/handler.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "widgets/card.h"
 #include "widgets/listrow.h"
 #include "widgets/rowicon.h"

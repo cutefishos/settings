@@ -8,7 +8,7 @@
 #include "ui/combo_box.h"
 #include "ui/dialog_window.h"
 #include "ui/label.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/text_field.h"
 #include "ui/theme.h"
 #include "widgets/metrics.h"

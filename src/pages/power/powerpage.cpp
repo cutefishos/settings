@@ -10,7 +10,7 @@
 #include "pages/power/powersettings.h"
 #include "powerprofiles/powerprofiles.h"
 #include "ui/layout.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "upower/batterystatus.h"
 #include "widgets/card.h"
 #include "widgets/imageselectionitem.h"

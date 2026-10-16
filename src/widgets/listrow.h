@@ -9,7 +9,7 @@
 #include <utility>
 
 #include "ui/layout.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 
 namespace cutefish::ui {
 class Animation;

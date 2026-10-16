@@ -11,7 +11,7 @@
 #include "ui/icon.h"
 #include "ui/label.h"
 #include "ui/layout.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/scroll_view.h"
 #include "ui/theme.h"
 #include "widgets/card.h"
@@ -111,8 +111,8 @@ protected:
     void layout() override
     {
         const SizeF size = label->sizeHint();
-        label->setGeometry({qml::anchorsCenter(geometry().width, size.width),
-                            qml::anchorsCenter(geometry().height, size.height), size.width, size.height});
+        label->setGeometry({rounding::centeredStart(geometry().width, size.width),
+                            rounding::centeredStart(geometry().height, size.height), size.width, size.height});
     }
 };
 

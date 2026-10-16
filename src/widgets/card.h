@@ -4,7 +4,7 @@
 #pragma once
 
 #include "ui/painter.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 
 namespace settings {
 

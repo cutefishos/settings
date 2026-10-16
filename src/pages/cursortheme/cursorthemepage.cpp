@@ -9,7 +9,7 @@
 #include "ui/image_view.h"
 #include "ui/label.h"
 #include "ui/layout.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/slider.h"
 #include "widgets/card.h"
 #include "widgets/imageselectionitem.h"

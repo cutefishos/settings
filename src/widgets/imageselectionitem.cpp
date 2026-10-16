@@ -5,7 +5,7 @@
 
 #include "ui/label.h"
 #include "ui/painter.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/theme.h"
 #include "widgets/card.h"
 #include "widgets/metrics.h"
@@ -58,8 +58,8 @@ protected:
         }
         if (m_icon) {
             const SizeF icon = m_icon->sizeHint();
-            m_icon->setGeometry({qml::anchorsCenter(bounds.width, icon.width),
-                                 qml::anchorsCenter(bounds.height, icon.height), icon.width, icon.height});
+            m_icon->setGeometry({rounding::centeredStart(bounds.width, icon.width),
+                                 rounding::centeredStart(bounds.height, icon.height), icon.width, icon.height});
         }
     }
 

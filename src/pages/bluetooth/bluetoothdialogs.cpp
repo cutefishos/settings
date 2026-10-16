@@ -7,7 +7,7 @@
 #include <string>
 
 #include "ui/dialog_window.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/switch.h"
 #include "ui/text_field.h"
 #include "widgets/card.h"

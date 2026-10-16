@@ -14,7 +14,7 @@
 #include "pages/battery/historygraph.h"
 #include "ui/label.h"
 #include "ui/layout.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/segmented_control.h"
 #include "ui/theme.h"
 #include "upower/batterystatus.h"

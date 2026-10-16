@@ -9,7 +9,7 @@
 #include "ui/label.h"
 #include "ui/layout.h"
 #include "ui/painter.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/text_field.h"
 #include "ui/theme.h"
 #include "widgets/card.h"
@@ -40,7 +40,7 @@ protected:
         const Theme& theme = Theme::current();
         // FishUI's Separator: a RoundedRectangle one device pixel high, centred.
         const double height = 1 / painter.scale();
-        painter.drawRoundedRect({0, qml::anchorsCenter(geometry().height, height), geometry().width, height}, {},
+        painter.drawRoundedRect({0, rounding::centeredStart(geometry().height, height), geometry().width, height}, {},
                                 theme.disabledText.withAlpha(theme.darkMode ? 0.3 : 0.1));
     }
 };

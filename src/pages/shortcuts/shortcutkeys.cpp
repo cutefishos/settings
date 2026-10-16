@@ -5,7 +5,7 @@
 
 #include "ui/label.h"
 #include "ui/painter.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/theme.h"
 #include "widgets/metrics.h"
 
@@ -78,15 +78,15 @@ void ShortcutKeys::layout()
             x += metrics::xs;
             part.plus->setColor(theme.disabledText);
             const SizeF plus = part.plus->sizeHint();
-            part.plus->setGeometry({x, qml::anchorsCenter(kCapHeight, plus.height), plus.width, plus.height});
+            part.plus->setGeometry({x, rounding::centeredStart(kCapHeight, plus.height), plus.width, plus.height});
             x += plus.width + metrics::xs;
         }
         part.cap->setColor(theme.text);
         const SizeF label = part.cap->sizeHint();
         const double width = capWidth(part);
         part.capX = x;
-        part.cap->setGeometry({x + qml::anchorsCenter(width, label.width),
-                               qml::anchorsCenter(kCapHeight, label.height), label.width, label.height});
+        part.cap->setGeometry({x + rounding::centeredStart(width, label.width),
+                               rounding::centeredStart(kCapHeight, label.height), label.width, label.height});
         x += width;
     }
 }

@@ -15,7 +15,7 @@
 #include "ui/image_view.h"
 #include "ui/label.h"
 #include "ui/layout.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/painter.h"
 #include "ui/theme.h"
 #include "ui/window.h"
@@ -163,7 +163,7 @@ protected:
     {
         m_initial->setColor(Theme::current().disabledText);
         const SizeF size = m_initial->sizeHint();
-        m_initial->setGeometry({qml::anchorsCenter(kSize, size.width), qml::anchorsCenter(kSize, size.height), size.width, size.height});
+        m_initial->setGeometry({rounding::centeredStart(kSize, size.width), rounding::centeredStart(kSize, size.height), size.width, size.height});
         m_initial->setVisible(!hasPicture());
         m_picture->setGeometry(localRect());
     }

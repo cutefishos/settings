@@ -6,7 +6,7 @@
 
 #include "pages/dock/docksettings.h"
 #include "ui/layout.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/segmented_control.h"
 #include "widgets/card.h"
 #include "widgets/imageselectionitem.h"

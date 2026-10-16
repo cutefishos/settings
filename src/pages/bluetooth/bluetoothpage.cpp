@@ -13,7 +13,7 @@
 #include "ui/button.h"
 #include "ui/icon.h"
 #include "ui/label.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/progress_bar.h"
 #include "ui/switch.h"
 #include "ui/theme.h"

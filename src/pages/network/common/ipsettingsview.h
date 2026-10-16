@@ -10,7 +10,7 @@
 
 #include "base/signal.h"
 #include "networkmanager/iputils.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 
 namespace cutefish::networkmanager {
 class Handler;

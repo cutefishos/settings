@@ -10,7 +10,7 @@
 #include <vector>
 
 #include "networkmanager/handler.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 
 namespace cutefish::ui {
 class Label;

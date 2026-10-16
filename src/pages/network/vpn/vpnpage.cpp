@@ -10,7 +10,7 @@
 #include "ui/label.h"
 #include "ui/layout.h"
 #include "ui/progress_bar.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/switch.h"
 #include "ui/theme.h"
 #include "widgets/card.h"

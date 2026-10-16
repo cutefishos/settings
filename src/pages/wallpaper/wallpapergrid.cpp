@@ -12,7 +12,7 @@
 #include "ui/keys.h"
 #include "ui/label.h"
 #include "ui/painter.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/theme.h"
 #include "ui/window.h"
 #include "widgets/metrics.h"
@@ -95,7 +95,7 @@ protected:
             cross = Color::rgb(0xFFFFFF);
         }
         if (fill.a > 0)
-            painter.drawQuickRectangle(bounds, bounds.width / 2, fill);
+            painter.drawSmoothRectangle(bounds, bounds.width / 2, fill);
         // Two 10 by 1.5 bars turned about their centres, which anchors put
         // half a bar's thickness above the box's centre once rounded.
         const PointF centre{bounds.width / 2, bounds.height / 2 - 1 + 0.75};
@@ -308,7 +308,7 @@ public:
         m_image->setThumbnail(true);
         m_image->setFillMode(ImageView::FillMode::PreserveAspectCrop);
         // A QML Image in a layer masked to the picture's corners, mipmapped.
-        m_image->setRendering(ImageView::Rendering::QuickMaskedLayer);
+        m_image->setRendering(ImageView::Rendering::MaskedLayer);
         m_image->setMipmap(true);
         // Fixed, so a resize of the window decodes nothing again.
         m_image->setSourceSize({kPreferredThumbnailWidth, std::round(kPreferredThumbnailWidth * 0.625)});
@@ -361,15 +361,15 @@ protected:
             // at its left, the plus centred over it.
             const double width = std::max(kPlusSize, label.width);
             const double height = kPlusSize + metrics::xs + label.height;
-            const double left = picture.x + qml::anchorsCenter(picture.width, width);
-            const double top = picture.y + qml::anchorsCenter(picture.height, height);
-            m_plusRect = {left + qml::anchorsCenter(width, kPlusSize), top, kPlusSize, kPlusSize};
+            const double left = picture.x + rounding::centeredStart(picture.width, width);
+            const double top = picture.y + rounding::centeredStart(picture.height, height);
+            m_plusRect = {left + rounding::centeredStart(width, kPlusSize), top, kPlusSize, kPlusSize};
             m_addLabel->setGeometry({left, top + kPlusSize + metrics::xs, label.width, label.height});
             return;
         }
         m_placeholder->setColor(theme.darkMode ? Color::rgb(0xFFFFFF) : Color::rgb(0xC8CAD5));
-        m_placeholder->setGeometry({qml::anchorsCenter(geometry().width, 32),
-                                    qml::anchorsCenter(geometry().height, 32), 32, 32});
+        m_placeholder->setGeometry({rounding::centeredStart(geometry().width, 32),
+                                    rounding::centeredStart(geometry().height, 32), 32, 32});
         m_image->setCornerRadius(theme.bigRadius, themeCorners());
         // The Image sits 3/8 device px down-right of the frame, so that its
         // layer and the frame round the same way at 125-250%.
@@ -387,10 +387,10 @@ protected:
         if (m_addTile) {
             painter.drawRoundedRect(pictureRect(), picture, theme.alternateBackground);
             // Two 12 by 1.5 bars, each anchored at the centre of the 18 px box.
-            const double along = qml::anchorsCenter(kPlusSize, 12);
-            const double across = qml::anchorsCenter(kPlusSize, 1.5);
-            painter.drawQuickRectangle({m_plusRect.x + along, m_plusRect.y + across, 12, 1.5}, 0.75, theme.text);
-            painter.drawQuickRectangle({m_plusRect.x + across, m_plusRect.y + along, 1.5, 12}, 0.75, theme.text);
+            const double along = rounding::centeredStart(kPlusSize, 12);
+            const double across = rounding::centeredStart(kPlusSize, 1.5);
+            painter.drawSmoothRectangle({m_plusRect.x + along, m_plusRect.y + across, 12, 1.5}, 0.75, theme.text);
+            painter.drawSmoothRectangle({m_plusRect.x + across, m_plusRect.y + along, 1.5, 12}, 0.75, theme.text);
             return;
         }
         if (!isReady()) {

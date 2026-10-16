@@ -7,7 +7,7 @@
 #include "pages/network/common/networklist.h"
 #include "pages/network/common/rows.h"
 #include "ui/icon.h"
-#include "ui/quick_layout.h"
+#include "ui/cell_layout.h"
 #include "ui/theme.h"
 #include "widgets/card.h"
 #include "widgets/iconbutton.h"
