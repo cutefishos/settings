@@ -3,6 +3,7 @@
 
 #include "pages/about/aboutinfo.h"
 
+#include <cctype>
 #include <cmath>
 #include <cstdio>
 #include <fstream>
@@ -51,6 +52,75 @@ std::string prettyProductName()
     if (uname(&system) == 0)
         return std::string(system.sysname) + " " + system.release;
     return {};
+}
+
+static std::string firmwareString(const char* path)
+{
+    std::ifstream file(path);
+    if (!file)
+        return {};
+    std::stringstream stream;
+    stream << file.rdbuf();
+    std::string value = stream.str();
+    // Device tree strings end in a NUL byte, DMI ones in a newline.
+    const size_t end = value.find_last_not_of(std::string(" \t\n\0", 4));
+    value.erase(end == std::string::npos ? 0 : end + 1);
+    const size_t begin = value.find_first_not_of(" \t");
+    return begin == std::string::npos ? std::string() : value.substr(begin);
+}
+
+static std::string lowercase(std::string value)
+{
+    for (char& c : value)
+        c = std::tolower(static_cast<unsigned char>(c));
+    return value;
+}
+
+// Firmware vendors leave these in fields they never filled in.
+static bool isPlaceholder(const std::string& value)
+{
+    static const char* const placeholders[] = {
+        "",
+        "to be filled by o.e.m.",
+        "system product name",
+        "system manufacturer",
+        "default string",
+        "not applicable",
+        "not specified",
+        "o.e.m.",
+        "none",
+    };
+    const std::string lowered = lowercase(value);
+    for (const char* placeholder : placeholders) {
+        if (lowered == placeholder)
+            return true;
+    }
+    return false;
+}
+
+std::string computerModel(const std::string& vendor, const std::string& family, const std::string& product,
+                          const std::string& deviceTreeModel)
+{
+    std::string model = !isPlaceholder(family) ? family : !isPlaceholder(product) ? product : std::string();
+    if (model.empty())
+        return isPlaceholder(deviceTreeModel) ? std::string() : deviceTreeModel;
+    if (isPlaceholder(vendor))
+        return model;
+
+    const std::string vendorWord = lowercase(vendor.substr(0, vendor.find(' ')));
+    const std::string loweredModel = lowercase(model);
+    if (loweredModel.starts_with(vendorWord)
+        && (loweredModel.size() == vendorWord.size() || loweredModel[vendorWord.size()] == ' '))
+        return model;
+    return vendor + " " + model;
+}
+
+std::string computerModel()
+{
+    return computerModel(firmwareString("/sys/class/dmi/id/sys_vendor"),
+                         firmwareString("/sys/class/dmi/id/product_family"),
+                         firmwareString("/sys/class/dmi/id/product_name"),
+                         firmwareString("/sys/firmware/devicetree/base/model"));
 }
 
 std::string architecture()

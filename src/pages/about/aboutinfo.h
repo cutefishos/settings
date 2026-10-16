@@ -13,6 +13,12 @@ namespace about {
 
 // The os-release PRETTY_NAME.
 std::string prettyProductName();
+// Vendor and model family from the firmware tables, or the device tree
+// model; empty when the firmware names neither.
+std::string computerModel();
+// The rule behind computerModel(), on the raw firmware strings.
+std::string computerModel(const std::string& vendor, const std::string& family, const std::string& product,
+                          const std::string& deviceTreeModel);
 // As Qt names it: x86_64, arm64, i386.
 std::string architecture();
 std::string kernelVersion();

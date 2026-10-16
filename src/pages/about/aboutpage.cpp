@@ -43,6 +43,9 @@ public:
         m_runningOn->setLayoutHints({.horizontalAlignment = Alignment::Center, .verticalAlignment = Alignment::Start});
 
         Card* card = content()->addChild<Card>(Card::Style::List);
+        const std::string model = about::computerModel();
+        if (!model.empty())
+            card->addChild<InfoRow>("Model", model);
         card->addChild<InfoRow>("System version", about::prettyProductName());
         card->addChild<InfoRow>("System type", about::architecture());
         card->addChild<InfoRow>("Kernel version", about::kernelVersion());
