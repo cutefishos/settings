@@ -3,12 +3,16 @@
 
 #include <gtest/gtest.h>
 
+#include <functional>
 #include <memory>
 #include <string>
 
 #include "networkmanager/handler.h"
 #include "networkmanager/vpnschema.h"
 #include "pages/network/vpn/vpneditor.h"
+#include "ui/label.h"
+#include "ui/test_input.h"
+#include "ui/window.h"
 
 using namespace settings::network;
 namespace nm = cutefish::networkmanager;
@@ -90,4 +94,38 @@ TEST(VpnEditor, WireGuardKeepsItsPeers)
     ASSERT_EQ(values.wireguard.peers.size(), 1u);
     EXPECT_EQ(values.wireguard.peers[0].keepalive, "25");
     EXPECT_TRUE(values.wireguard.peerRoutes);
+}
+
+TEST(VpnEditor, RemovingAWireGuardPeerKeepsTheOthers)
+{
+    nm::VpnForm form;
+    form.kind = "wireguard";
+    form.installed = true;
+    form.wireguard.peers = {{.publicKey = "first"}, {.publicKey = "second"}};
+    cutefish::ui::Window window;
+    auto content = std::make_unique<VpnEditor>();
+    VpnEditor* editor = content.get();
+    window.setContentView(std::move(content));
+    window.resize({480, 1200});
+    editor->load(form);
+    window.grab();
+
+    cutefish::ui::View* remove = nullptr;
+    const std::function<void(cutefish::ui::View*)> findRemove = [&](cutefish::ui::View* view) {
+        auto* label = dynamic_cast<cutefish::ui::Label*>(view);
+        if (!remove && label && label->text() == "Remove")
+            remove = view->parent();
+        for (const auto& child : view->children())
+            findRemove(child.get());
+    };
+    findRemove(editor);
+    ASSERT_NE(remove, nullptr);
+    // The button goes with the peer's card it sits in.
+    const cutefish::ui::PointF origin = remove->mapToWindow({0, 0});
+    cutefish::ui::TestInput::click(window, {origin.x + remove->geometry().width / 2,
+                                            origin.y + remove->geometry().height / 2});
+
+    const nm::VpnValues values = editor->collect();
+    ASSERT_EQ(values.wireguard.peers.size(), 1u);
+    EXPECT_EQ(values.wireguard.peers[0].publicKey, "second");
 }

@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <climits>
 
+#include "base/event_loop.h"
 #include "networkmanager/types.h"
 #include "pages/network/common/textchecks.h"
 #include "pages/network/common/rows.h"
@@ -611,8 +612,10 @@ private:
             for (Label* label : {found->labels[0], found->labels[1], found->labels[2], found->labels[3], found->labels[4]})
                 std::erase(m_labels, label);
             m_peerCards.erase(found);
-            m_peers->takeChild(owner);
+            // The card holds the button being clicked.
+            std::shared_ptr<View> gone = m_peers->takeChild(owner);
             update();
+            cutefish::base::EventLoop::current()->post([gone] {});
         };
         card.publicKey = addField(card.card, "Public key", "Required");
         card.publicKey->setText(peer.publicKey);
