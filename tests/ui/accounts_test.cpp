@@ -9,7 +9,8 @@
 
 #include "cutefish/accounts/accounts_manager.h"
 #include "pages/accounts/password.h"
-#include "pages/accounts/usercard.h"
+#include "pages/accounts/userdetailsdialog.h"
+#include "pages/accounts/userrow.h"
 #include "pages/accounts/userdialogs.h"
 #include "ui/dialog_window.h"
 #include "ui/keys.h"
@@ -18,6 +19,8 @@
 #include "ui/test_input.h"
 #include "ui/text_field.h"
 #include "ui/window.h"
+#include "widgets/card.h"
+#include "widgets/iconbutton.h"
 #include "window/settingswindow.h"
 #include "input_test_support.h"
 
@@ -50,6 +53,17 @@ std::vector<T*> findAll(View* view)
             found.push_back(match);
     }
     return found;
+}
+
+View* findView(View* view, const std::string& name)
+{
+    if (view->name() == name)
+        return view;
+    for (const auto& child : view->children()) {
+        if (View* found = findView(child.get(), name))
+            return found;
+    }
+    return nullptr;
 }
 
 PointF centre(View* view)
@@ -135,44 +149,113 @@ TEST(Accounts, AddUserShowsTheServicesAnswer)
     EXPECT_TRUE(shown);
 }
 
-TEST(Accounts, CardUnfoldsToItsDetails)
+TEST(Accounts, TheLoggedInAccountComesFirst)
 {
-    auto account = std::make_shared<accounts::UserAccount>("/org/freedesktop/Accounts/User1000", nullptr);
-    Window window;
-    window.setScale(1.5);
-    auto root = std::make_unique<Column>();
-    root->setMargins({24, 56, 24, 24});
-    UserCard* card = root->addChild<UserCard>(account, 1000);
-    window.setContentView(std::move(root));
-    window.resize({670, 600});
-    window.grab(1'000'000'000);
-    // The picture and a margin; padded as a card is.
-    EXPECT_EQ(card->geometry().height, 84);
+    const auto make = [](int uid) {
+        return std::make_shared<accounts::UserAccount>("/org/freedesktop/Accounts/User" + std::to_string(uid),
+                                                       nullptr);
+    };
+    const std::vector<std::shared_ptr<accounts::UserAccount>> accounts {make(1001), make(1002), make(1000),
+                                                                       make(1003)};
+    std::vector<int64_t> uids;
+    for (const auto& account : loggedInFirst(accounts, 1000))
+        uids.push_back(account->userId());
+    EXPECT_EQ(uids, (std::vector<int64_t> {1000, 1001, 1002, 1003}));
+}
 
-    // The card's column, its first row, the header, the header's row.
-    View* headerRow = card->children()[0]->children()[0]->children()[0]->children()[0].get();
-    // The disclosure button is the row's last child.
-    TestInput::click(window, centre(headerRow->children().back().get()));
-    window.grab(1'100'000'000);
-    window.grab(1'400'000'000);
-    // The type on its line below a gap, then the two buttons.
-    EXPECT_GT(card->geometry().height, 84 + 12 + 17 + 12 + 36 + 12 + 36 - 1);
+// One account's row in a list card, as the Users page shows it.
+struct UserRowFixture
+{
+    UserRowFixture()
+    {
+        window.setScale(1.5);
+        auto root = std::make_unique<Column>();
+        root->setMargins({24, 56, 24, 24});
+        Card* card = root->addChild<Card>(Card::Style::List);
+        card->setLayoutHints({.fillWidth = true});
+        row = card->addChild<UserRow>(account, 1000);
+        window.setContentView(std::move(root));
+        window.resize({670, 600});
+        window.grab(1'000'000'000);
+    }
+
+    View* avatar() const { return find<Label>(row)->parent(); }
+
+    std::shared_ptr<accounts::UserAccount> account =
+            std::make_shared<accounts::UserAccount>("/org/freedesktop/Accounts/User1000", nullptr);
+    Window window;
+    UserRow* row = nullptr;
+};
+
+TEST(Accounts, ARowIsThePictureAndNamesWithAnInfoButton)
+{
+    UserRowFixture fixture;
+    // As much room above and below the picture as before it.
+    const RectF row = fixture.row->geometry();
+    const PointF rowOrigin = fixture.row->mapToWindow({0, 0});
+    const PointF pictureOrigin = fixture.avatar()->mapToWindow({0, 0});
+    EXPECT_EQ(row.height, 48 + 2 * 16);
+    EXPECT_EQ(pictureOrigin.x - rowOrigin.x, 16);
+    EXPECT_EQ(pictureOrigin.y - rowOrigin.y, 16);
+    EXPECT_EQ(rowOrigin.y + row.height - (pictureOrigin.y + 48), 16);
+    IconButton* info = find<IconButton>(fixture.row);
+    ASSERT_TRUE(info);
+    // At the end of the row, centred on it as the picture is.
+    const PointF picture = centre(fixture.avatar());
+    const PointF button = centre(info);
+    EXPECT_DOUBLE_EQ(picture.y, button.y);
+    EXPECT_GT(button.x, 670 - 24 - 16 - 22);
+
+    int infoClicks = 0;
+    fixture.row->onInfo = [&] { ++infoClicks; };
+    TestInput::click(fixture.window, button);
+    // The rest of the row opens the details too.
+    TestInput::click(fixture.window, {button.x - 200, button.y});
+    EXPECT_EQ(infoClicks, 2);
+    // The picture is for changing the picture.
+    int pictureClicks = 0;
+    fixture.row->onPictureClicked = [&] { ++pictureClicks; };
+    TestInput::click(fixture.window, picture);
+    EXPECT_EQ(pictureClicks, 1);
+    EXPECT_EQ(infoClicks, 2);
+}
+
+TEST(Accounts, TheDetailsShowTheTypeAndLeadToTheActions)
+{
+    SettingsWindow window;
+    auto account = std::make_shared<accounts::UserAccount>("/org/freedesktop/Accounts/User1001", nullptr);
+    const auto open = [&](int64_t loggedIn) {
+        auto details = std::make_unique<UserDetailsDialog>(window, account, loggedIn);
+        details->show();
+        details->dialog()->window()->grab();
+        return details;
+    };
+
+    auto details = open(1000);
+    View* content = details->dialog()->window()->contentView();
+    bool typeShown = false;
+    for (Label* label : findAll<Label>(content))
+        typeShown = typeShown || (label->isVisible() && label->text() == "Standard");
+    EXPECT_TRUE(typeShown);
+    View* remove = findView(content, "user:delete");
+    ASSERT_TRUE(remove);
+    EXPECT_TRUE(remove->isEnabled());
+
+    bool changing = false;
+    details->onChangePassword = [&] { changing = true; };
+    TestInput::click(*details->dialog()->window(), centre(findView(content, "user:changePassword")));
+    EXPECT_TRUE(changing);
+
+    // The account logged in cannot delete itself.
+    auto own = open(1001);
+    EXPECT_FALSE(findView(own->dialog()->window()->contentView(), "user:delete")->isEnabled());
 }
 
 TEST(Accounts, HoveringThePictureDimsItUnderAPencil)
 {
-    auto account = std::make_shared<accounts::UserAccount>("/org/freedesktop/Accounts/User1000", nullptr);
-    Window window;
-    window.setScale(1.5);
-    auto root = std::make_unique<Column>();
-    root->setMargins({24, 56, 24, 24});
-    UserCard* card = root->addChild<UserCard>(account, 1000);
-    window.setContentView(std::move(root));
-    window.resize({670, 600});
-    window.grab(1'000'000'000);
-    // The card's column, its first row, the header, the header's row, and
-    // the picture first in it.
-    View* avatar = card->children()[0]->children()[0]->children()[0]->children()[0]->children()[0].get();
+    UserRowFixture fixture;
+    Window& window = fixture.window;
+    View* avatar = fixture.avatar();
     Label* initial = find<Label>(avatar);
     ASSERT_TRUE(initial);
     const PointF middle = centre(avatar);
@@ -199,16 +282,10 @@ TEST(Accounts, HoveringThePictureDimsItUnderAPencil)
 
 TEST(Accounts, ThePictureReplacesTheInitialOnceDecoded)
 {
-    auto account = std::make_shared<accounts::UserAccount>("/org/freedesktop/Accounts/User1000", nullptr);
-    Window window;
-    window.setScale(1.5);
-    auto root = std::make_unique<Column>();
-    UserCard* card = root->addChild<UserCard>(account, 1000);
-    window.setContentView(std::move(root));
-    window.resize({670, 300});
-    window.grab();
+    UserRowFixture fixture;
+    Window& window = fixture.window;
     const auto initialShown = [&] {
-        for (Label* label : findAll<Label>(card)) {
+        for (Label* label : findAll<Label>(fixture.row)) {
             if (label->text() == "?")
                 return label->isVisible();
         }
@@ -216,7 +293,7 @@ TEST(Accounts, ThePictureReplacesTheInitialOnceDecoded)
     };
     EXPECT_TRUE(initialShown());
 
-    card->showPicture(std::string(SETTINGS_SOURCE_DIR) + "/images/logo.svg");
+    fixture.row->showPicture(std::string(SETTINGS_SOURCE_DIR) + "/images/logo.svg");
     window.grab();
     ASSERT_TRUE(settings::testing::waitFor([&] {
         window.grab();

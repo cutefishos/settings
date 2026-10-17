@@ -19,7 +19,6 @@ enum class SettingsColor : uint16_t {
     RowComboBoxHovered,
     RowComboBoxOpen,
     StandardButtonBackground,
-    UserCardButtonBackground,
     KeyCap,
     PreferredLanguageTag,
     WallpaperPlaceholder,
