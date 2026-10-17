@@ -87,12 +87,12 @@ void HotCorners::setCorner(const std::string& corner, const std::string& action,
 {
     if (!m_available)
         return;
-    m_calls.push_back(m_corners.callAsync("setCorner", [this](const dbus::Reply& reply) {
+    m_calls[corner] = m_corners.callAsync("setCorner", [this](const dbus::Reply& reply) {
         if (reply.isError()) {
             fprintf(stderr, "Cannot update hot corner: %s\n", reply.error().message.c_str());
             changed.emit();
         }
-    }, corner, action, int32_t(modifiers)));
+    }, corner, action, int32_t(modifiers));
 }
 
 int HotCorners::heldModifiers() const

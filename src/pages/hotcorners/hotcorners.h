@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include <map>
 #include <string>
 
 #include "base/dbus.h"
@@ -38,7 +39,8 @@ private:
     cutefish::base::dbus::NameWatch m_watch;
     cutefish::base::dbus::Match m_changedMatch;
     cutefish::base::dbus::PendingCall m_reload;
-    std::vector<cutefish::base::dbus::PendingCall> m_calls;
+    // By corner: a newer change of a corner replaces its older one.
+    std::map<std::string, cutefish::base::dbus::PendingCall> m_calls;
     cutefish::base::dbus::VariantMap m_properties;
     bool m_available = false;
     bool m_commandKeys = false;
