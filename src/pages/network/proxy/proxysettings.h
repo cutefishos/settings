@@ -32,6 +32,8 @@ bool writeGroup(const std::string& path, const std::string& group, const Group& 
 namespace gsettings {
 
 std::string path();
+// Points path() at another file; tests keep the session's own untouched.
+void setPath(std::string path);
 std::string toString(const std::string& text, const std::string& fallback = {});
 int toInt(const std::string& text, int fallback);
 bool toBool(const std::string& text, bool fallback);

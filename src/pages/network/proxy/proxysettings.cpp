@@ -227,9 +227,16 @@ static void skipSpaces(const std::string& text, size_t& pos)
 
 namespace gsettings {
 
+static std::string s_path;
+
 std::string path()
 {
-    return cutefish::base::paths::configHome() + "/glib-2.0/settings/keyfile";
+    return s_path.empty() ? cutefish::base::paths::configHome() + "/glib-2.0/settings/keyfile" : s_path;
+}
+
+void setPath(std::string path)
+{
+    s_path = std::move(path);
 }
 
 std::string toString(const std::string& text, const std::string& fallback)

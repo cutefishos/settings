@@ -9,9 +9,16 @@
 #include <sstream>
 #include <string>
 
+#include "input_test_support.h"
+#include "pagetest.h"
 #include "pages/network/common/textchecks.h"
 #include "pages/network/proxy/proxysettings.h"
+#include "ui/button.h"
+#include "ui/test_input.h"
+#include "ui/text_field.h"
+#include "window/page.h"
 
+using namespace cutefish::ui;
 using namespace settings::network;
 
 namespace {
@@ -44,6 +51,21 @@ struct KeyFile : testing::Test
     std::string directory;
     std::string path;
 };
+
+template<typename T>
+void findAll(View* view, std::vector<T*>* found)
+{
+    if (auto* match = dynamic_cast<T*>(view))
+        found->push_back(match);
+    for (const auto& child : view->children())
+        findAll<T>(child.get(), found);
+}
+
+PointF centre(View* view)
+{
+    const PointF origin = view->mapToWindow({0, 0});
+    return {origin.x + view->geometry().width / 2, origin.y + view->geometry().height / 2};
+}
 
 } // namespace
 
@@ -102,4 +124,42 @@ TEST(EditFieldText, PortsAndNumbers)
     EXPECT_TRUE(isNumberText("", 10));
     EXPECT_TRUE(isNumberText("10", 10));
     EXPECT_FALSE(isNumberText("11", 10));
+}
+
+// A new server and its port saved together: the server going in first must
+// not put the old port back into the field before it is read.
+TEST_F(KeyFile, ANewServerKeepsTheTypedPort)
+{
+    write("[system/proxy]\nmode='manual'\n");
+    gsettings::setPath(path);
+    {
+        PageFixture page("network", "proxy");
+        Window& window = page.window->window();
+        std::vector<TextField*> fields;
+        findAll<TextField>(page.window->currentPage(), &fields);
+        // The script URL, then HTTP, FTP and SOCKS, each with its port.
+        ASSERT_EQ(fields.size(), 7u);
+        const std::vector<std::string> typed = {"", "http.test", "3128", "", "", "socks.test", "1081"};
+        for (size_t i = 0; i < fields.size(); ++i) {
+            if (typed[i].empty())
+                continue;
+            window.grab();
+            TestInput::click(window, centre(fields[i]));
+            TestInput::typeText(window, typed[i]);
+            ASSERT_EQ(fields[i]->text(), typed[i]);
+        }
+
+        std::vector<Button*> buttons;
+        findAll<Button>(page.window->currentPage(), &buttons);
+        ASSERT_FALSE(buttons.empty());
+        buttons.back()->onClicked();
+        EXPECT_EQ(fields[2]->text(), "3128");
+        EXPECT_EQ(fields[6]->text(), "1081");
+        EXPECT_TRUE(settings::testing::waitFor([&] { return contents().find("[system/proxy/socks]") != std::string::npos; }));
+    }
+
+    const ProxySettings saved = ProxySettings::load();
+    gsettings::setPath({});
+    EXPECT_EQ(saved.http, (ProxySettings::Server{"http.test", 3128}));
+    EXPECT_EQ(saved.socks, (ProxySettings::Server{"socks.test", 1081}));
 }

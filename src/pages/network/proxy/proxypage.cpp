@@ -200,6 +200,9 @@ private:
 
     void reload(unsigned fields)
     {
+        // The page's own values coming back while it saves them.
+        if (m_saving)
+            return;
         if (fields & NetworkProxy::FlagField) {
             const int flag = m_proxy.flag();
             m_noProxy->setChecked(flag == 0);
@@ -231,6 +234,7 @@ private:
     void saveFields()
     {
         m_needSave = false;
+        m_saving = true;
         m_proxy.setScriptProxy(m_script->text());
         m_proxy.setHttpProxy(m_http->text());
         m_proxy.setHttpProxyPort(m_httpPort->text());
@@ -239,6 +243,7 @@ private:
         m_proxy.setFtpProxyPort(m_ftpPort->text());
         m_proxy.setSocksProxy(m_socks->text());
         m_proxy.setSocksProxyPort(m_socksPort->text());
+        m_saving = false;
         update();
     }
 
@@ -257,6 +262,7 @@ private:
     cutefish::base::Subscription m_subscription;
     ButtonGroup m_modes;
     bool m_needSave = false;
+    bool m_saving = false;
     RadioButton* m_noProxy;
     RadioButton* m_auto;
     RadioButton* m_manual;
