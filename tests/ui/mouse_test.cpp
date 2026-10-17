@@ -102,7 +102,7 @@ TEST_F(MouseTest, FollowsTheServiceThroughChangesAndRestarts)
     Mouse second;
     EXPECT_FALSE(first.isAvailable());
 
-    service->start();
+    ASSERT_TRUE(service->start());
     ASSERT_TRUE(waitFor([&] { return first.isAvailable() && second.isAvailable(); }));
     EXPECT_FALSE(second.leftHanded());
     EXPECT_TRUE(second.naturalScroll());
@@ -122,7 +122,7 @@ TEST_F(MouseTest, FollowsTheServiceThroughChangesAndRestarts)
     EXPECT_TRUE(first.acceleration());
     EXPECT_FALSE(first.leftHanded());
 
-    service->start();
+    ASSERT_TRUE(service->start());
     ASSERT_TRUE(waitFor([&] { return first.isAvailable() && second.isAvailable(); }));
     EXPECT_TRUE(first.leftHanded());
     EXPECT_FALSE(first.naturalScroll());
@@ -139,7 +139,7 @@ TEST_F(MouseTest, PageLaysOutAsTheQtVersionAndSetsTheService)
         std::lock_guard guard(fake.mutex);
         fake.pointerAcceleration = 0.6;
     }
-    service->start();
+    ASSERT_TRUE(service->start());
     SettingsWindow settingsWindow;
     Window& window = settingsWindow.window();
     window.setScale(1.5);

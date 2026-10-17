@@ -122,6 +122,9 @@ public:
         m_thread.join();
     }
 
+    // False when another connection owns a name: the page would talk to that
+    // service instead.
+    bool owned() const { return m_owned; }
     std::vector<std::vector<Request>> requests() const { return locked(m_requests); }
     std::vector<bool> previews() const { return locked(m_previews); }
     std::vector<std::string> confirmed() const { return locked(m_confirmed); }
@@ -221,7 +224,7 @@ private:
         display.addSignal("OperationFinished", "sbbusastt");
         display.addSignal("PreviewChanged", "sttt");
         display.publish();
-        bus->requestName("com.cutefish.DisplayConfig");
+        m_owned = bus->requestName("com.cutefish.DisplayConfig");
 
         bool enabled = false;
         dbus::Object nightLight(services.get(), "/com/cutefish/Services/NightLight", "com.cutefish.Services.NightLight");
@@ -261,7 +264,7 @@ private:
         brightness.addSignal("displaysChanged", "");
         brightness.addSignal("displayBrightnessChanged", "si");
         brightness.publish();
-        services->requestName("com.cutefish.Services");
+        m_owned = services->requestName("com.cutefish.Services") && m_owned;
 
         ready.set_value();
         loop.run();
@@ -270,6 +273,7 @@ private:
     std::thread m_thread;
     EventLoop* m_loop = nullptr;
     LoopHandle m_handle;
+    bool m_owned = false;
     mutable std::mutex m_mutex;
     std::vector<std::vector<Request>> m_requests;
     std::vector<bool> m_previews;
@@ -283,6 +287,7 @@ struct DisplayPageTest : testing::Test
     void SetUp() override
     {
         services = std::make_unique<FakeServices>();
+        ASSERT_TRUE(services->owned());
         settingsWindow = std::make_unique<SettingsWindow>();
         settingsWindow->window().setScale(1.5);
         settingsWindow->window().resize({900, 820});

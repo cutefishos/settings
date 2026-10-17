@@ -87,7 +87,7 @@ struct TouchpadTest : ::testing::Test
         if (!settings::testing::hasSessionBus())
             GTEST_SKIP() << "no session bus";
         service.emplace("com.cutefish.Touchpad1", [this](dbus::Connection& bus) { return serve(bus, fake); });
-        service->start();
+        ASSERT_TRUE(service->start());
     }
 
     void TearDown() override

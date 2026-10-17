@@ -55,19 +55,23 @@ public:
 
     ~ServiceThread() { stop(); }
 
-    void start()
+    // False when another connection owns the name: the code under test would
+    // talk to that service instead.
+    [[nodiscard]] bool start()
     {
         std::unique_lock lock(m_mutex);
         m_ready = false;
+        m_owned = false;
         m_thread = std::thread([this] {
             cutefish::base::EventLoop loop;
             std::unique_ptr<cutefish::base::dbus::Connection> bus =
                     cutefish::base::dbus::Connection::open(cutefish::base::dbus::Connection::Bus::Session, &loop);
             std::shared_ptr<void> objects = m_setup(*bus);
-            bus->requestName(m_name);
+            const bool owned = bus->requestName(m_name);
             {
                 std::lock_guard guard(m_mutex);
                 m_loop = &loop;
+                m_owned = owned;
                 m_ready = true;
             }
             m_readyChanged.notify_all();
@@ -76,6 +80,7 @@ public:
             bus.reset();
         });
         m_readyChanged.wait(lock, [this] { return m_ready; });
+        return m_owned;
     }
 
     void stop()
@@ -104,6 +109,7 @@ private:
     std::condition_variable m_readyChanged;
     cutefish::base::EventLoop* m_loop = nullptr;
     bool m_ready = false;
+    bool m_owned = false;
 };
 
 // Waits for a stopped service's name to leave the bus.

@@ -55,8 +55,8 @@ struct TimeSettingsFixture : ::testing::Test
             object->publish();
             return std::shared_ptr<void>(object);
         });
-        timedated->start();
-        statusBar->start();
+        ASSERT_TRUE(timedated->start());
+        ASSERT_TRUE(statusBar->start());
     }
 
     void TearDown() override

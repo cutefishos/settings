@@ -155,7 +155,7 @@ struct ShortcutsModelTest : ::testing::Test
 
 TEST_F(ShortcutsModelTest, ListsKnownActionsInLayoutOrderWithReadableKeys)
 {
-    service->start();
+    ASSERT_TRUE(service->start());
     ShortcutsModel model;
     ASSERT_TRUE(waitFor([&] { return model.isAvailable() && model.actions().size() == 2; }));
     // Layout order, not the service's order: lock-screen is in General after
@@ -226,7 +226,7 @@ TEST_F(ShortcutsModelTest, ListsKnownActionsInLayoutOrderWithReadableKeys)
 TEST_F(ShortcutsModelTest, TheCommandConventionNamesTheKeys)
 {
     fake.convention = "command";
-    service->start();
+    ASSERT_TRUE(service->start());
     ShortcutsModel model;
     ASSERT_TRUE(waitFor([&] { return model.isAvailable() && model.commandKeys(); }));
     EXPECT_EQ(model.modifierParts(ShortcutsModel::ControlDown | ShortcutsModel::AltDown | ShortcutsModel::MetaDown),
@@ -245,7 +245,7 @@ TEST_F(ShortcutsModelTest, ReportsTheServiceMissing)
 
 TEST_F(ShortcutsModelTest, PageListsTheActionsInTheirSections)
 {
-    service->start();
+    ASSERT_TRUE(service->start());
     SettingsWindow settingsWindow;
     Window& window = settingsWindow.window();
     window.setScale(1.5);
@@ -261,7 +261,7 @@ TEST_F(ShortcutsModelTest, PageListsTheActionsInTheirSections)
 
 TEST_F(ShortcutsModelTest, DialogRecordsAShortcutWithItsKeyCode)
 {
-    service->start();
+    ASSERT_TRUE(service->start());
     SettingsWindow settingsWindow;
     settingsWindow.window().setScale(1.5);
     ShortcutsModel model;
