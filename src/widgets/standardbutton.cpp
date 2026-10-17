@@ -1,10 +1,12 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+#include "widgets/colors.h"
 #include "widgets/standardbutton.h"
 
 #include <algorithm>
 
+#include "ui/color_provider.h"
 #include "ui/keys.h"
 #include "ui/label.h"
 #include "ui/painter.h"
@@ -38,7 +40,7 @@ void StandardButton::setBackgroundColor(std::optional<Color> color)
 
 Color StandardButton::backgroundColor() const
 {
-    return m_background.value_or(Theme::current().darkMode ? Color::rgb(0x363636) : Color::rgb(0xFFFFFF));
+    return m_background.value_or(color(SettingsColor::StandardButtonBackground));
 }
 
 SizeF StandardButton::sizeHint() const

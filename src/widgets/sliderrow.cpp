@@ -8,6 +8,7 @@
 #include <cmath>
 
 #include "base/timer.h"
+#include "ui/color_provider.h"
 #include "ui/icon.h"
 #include "ui/label.h"
 #include "ui/painter.h"
@@ -77,9 +78,7 @@ protected:
 
     void paint(Painter& painter) override
     {
-        const Theme& theme = Theme::current();
-        const Color tick = theme.darkMode ? Color::rgb(0xFFFFFF).withAlpha(0.55)
-                                          : Color::rgb(0x000000).withAlpha(0.35);
+        const Color tick = color(ColorId::SliderTickMark);
         if (!m_left->text().empty()) {
             const double span = std::min(m_left->sizeHint().width, m_leftReference->sizeHint().width);
             painter.drawRoundedRect({std::round((span - 1) / 2), 0, 1, kTickHeight}, {}, tick);

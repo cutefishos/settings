@@ -36,6 +36,7 @@ endforeach()
 # registration, which a linker would drop from an archive.
 add_library(settings-ui OBJECT
     src/widgets/card.cpp
+    src/widgets/colors.cpp
     src/widgets/formdialog.cpp
     src/widgets/iconbutton.cpp
     src/widgets/imageselectionitem.cpp

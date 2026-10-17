@@ -7,6 +7,7 @@
 #include <cctype>
 #include <cmath>
 
+#include "ui/color_provider.h"
 #include "ui/icon.h"
 #include "ui/image_view.h"
 #include "ui/keys.h"
@@ -15,6 +16,7 @@
 #include "ui/cell_layout.h"
 #include "ui/theme.h"
 #include "ui/window.h"
+#include "widgets/colors.h"
 #include "widgets/metrics.h"
 
 using namespace cutefish::ui;
@@ -367,7 +369,7 @@ protected:
             m_addLabel->setGeometry({left, top + kPlusSize + metrics::xs, label.width, label.height});
             return;
         }
-        m_placeholder->setColor(theme.darkMode ? Color::rgb(0xFFFFFF) : Color::rgb(0xC8CAD5));
+        m_placeholder->setColor(color(SettingsColor::WallpaperPlaceholder));
         m_placeholder->setGeometry({rounding::centeredStart(geometry().width, 32),
                                     rounding::centeredStart(geometry().height, 32), 32, 32});
         m_image->setCornerRadius(theme.bigRadius, themeCorners());

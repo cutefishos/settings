@@ -3,10 +3,12 @@
 
 #include "pages/shortcuts/shortcutkeys.h"
 
+#include "ui/color_provider.h"
 #include "ui/label.h"
 #include "ui/painter.h"
 #include "ui/cell_layout.h"
 #include "ui/theme.h"
+#include "widgets/colors.h"
 #include "widgets/metrics.h"
 
 using namespace cutefish::ui;
@@ -93,8 +95,7 @@ void ShortcutKeys::layout()
 
 void ShortcutKeys::paint(Painter& painter)
 {
-    const Theme& theme = Theme::current();
-    const Color cap = theme.darkMode ? theme.secondBackground.lighter(1.6) : theme.secondBackground.darker(1.08);
+    const Color cap = color(SettingsColor::KeyCap);
     for (const Part& part : m_parts) {
         painter.save();
         painter.multiplyOpacity(m_dimmed ? 0.5 : 1);

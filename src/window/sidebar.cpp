@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cmath>
 
+#include "ui/color_provider.h"
 #include "ui/keys.h"
 #include "ui/label.h"
 #include "ui/painter.h"
@@ -13,6 +14,7 @@
 #include "ui/theme.h"
 #include "ui/window.h"
 #include "widgets/card.h"
+#include "widgets/colors.h"
 #include "widgets/metrics.h"
 #include "widgets/rowicon.h"
 #include "widgets/searchfield.h"
@@ -88,13 +90,11 @@ protected:
         // as the Qt version's list did.
         if (m_current)
             painter.drawRoundedRect(localRect(), {theme.mediumRadius, 0, themeCorners()}, theme.text.withAlpha(0.05));
-        double alpha = 0;
-        if (m_pressed)
-            alpha = theme.darkMode ? 0.05 : 0.1;
-        else if (m_current)
-            alpha = theme.darkMode ? 0.1 : 0.05;
-        if (alpha > 0)
-            painter.drawSmoothRectangle(localRect(), theme.mediumRadius, theme.text.withAlpha(alpha));
+        if (m_pressed || m_current) {
+            painter.drawSmoothRectangle(
+                localRect(), theme.mediumRadius,
+                m_pressed ? color(ColorId::ItemPressed) : color(SettingsColor::SidebarItemCurrent));
+        }
     }
 
     void pointerPress(const PointerEvent& event) override
@@ -560,9 +560,7 @@ void Sidebar::layout()
 
 void Sidebar::paint(Painter& painter)
 {
-    const Theme& theme = Theme::current();
-    const Color base = theme.darkMode ? theme.background.lighter(1.5) : theme.background.darker(1.05);
-    painter.fillRect(localRect(), base.withAlpha(0.7 * base.a / 255.0));
+    painter.fillRect(localRect(), color(SettingsColor::SidebarBackground));
 }
 
 } // namespace settings

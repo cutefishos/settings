@@ -8,6 +8,7 @@
 #include <cmath>
 
 #include "pages/language/language.h"
+#include "ui/color_provider.h"
 #include "ui/keys.h"
 #include "ui/label.h"
 #include "ui/layout.h"
@@ -17,6 +18,7 @@
 #include "ui/scroll_view.h"
 #include "ui/theme.h"
 #include "ui/window.h"
+#include "widgets/colors.h"
 #include "widgets/metrics.h"
 
 using namespace cutefish;
@@ -69,9 +71,8 @@ protected:
 
     void paint(Painter& painter) override
     {
-        const Theme& theme = Theme::current();
         const RectF rect = localRect();
-        painter.fillRoundedRect(rect, rect.height / 2, theme.highlight.withAlpha(theme.darkMode ? 0.2 : 0.12));
+        painter.fillRoundedRect(rect, rect.height / 2, color(SettingsColor::PreferredLanguageTag));
     }
 
 private:
@@ -212,8 +213,7 @@ protected:
         if (m_last)
             return;
         // One device pixel at any scale.
-        const Theme& theme = Theme::current();
-        const Color line = theme.disabledText.withAlpha(theme.darkMode ? 0.3 : 0.1);
+        const Color line = color(ColorId::Separator);
         painter.drawHorizontalLine(0, geometry().height - 1 / painter.scale(), geometry().width, line);
     }
 

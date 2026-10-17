@@ -10,6 +10,7 @@
 #include "base/event_loop.h"
 #include "base/timer.h"
 #include "ui/application.h"
+#include "ui/color_provider.h"
 #include "ui/event.h"
 #include "ui/header_backdrop.h"
 #include "ui/header_button.h"
@@ -232,7 +233,8 @@ SettingsWindow::SettingsWindow()
     };
     m_window->onActiveChanged = [this] {
         updateBackground();
-        m_root->requestLayout();
+        // Views colour their text by it as they lay out.
+        m_window->requestLayout();
         m_root->requestPaint();
         activeChanged.emit();
     };
@@ -378,10 +380,8 @@ void SettingsWindow::updateBackground()
 {
     const Theme& theme = Theme::current();
     const bool active = m_window->isActive();
-    // Inactive windows keep the blur and halve the see-through instead of going opaque.
-    const double alpha = theme.darkMode ? (active ? 0.85 : 0.92) : (active ? 0.8 : 0.9);
-    const Color background = theme.background.withAlpha(alpha);
-    m_window->setBackgroundColor(background);
+    m_window->setBackgroundColor(
+        color(active ? ColorId::TranslucentWindowBackground : ColorId::TranslucentWindowBackgroundInactive));
     m_root->backdropBase = theme.background;
     if (m_root->backdrop)
         m_root->backdrop->setBaseColor(theme.background);

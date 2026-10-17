@@ -1,10 +1,12 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+#include "widgets/colors.h"
 #include "widgets/rowcombobox.h"
 
 #include <cmath>
 
+#include "ui/color_provider.h"
 #include "ui/icon.h"
 #include "ui/keys.h"
 #include "ui/label.h"
@@ -129,8 +131,8 @@ void RowComboBox::paint(Painter& painter)
     const bool open = m_menu && m_menu->isOpen();
     if (!isEnabled() || !(m_hovered || open))
         return;
-    const double alpha = open ? (theme.darkMode ? 0.12 : 0.1) : (theme.darkMode ? 0.08 : 0.06);
-    painter.drawRoundedRect(localRect(), {theme.smallRadius, 0, themeCorners()}, theme.text.withAlpha(alpha));
+    painter.drawRoundedRect(localRect(), {theme.smallRadius, 0, themeCorners()},
+                            color(open ? SettingsColor::RowComboBoxOpen : SettingsColor::RowComboBoxHovered));
 }
 
 // The chevron's colour and fade follow the state, set in layout().

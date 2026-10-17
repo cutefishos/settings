@@ -9,6 +9,7 @@
 
 #include "base/event_loop.h"
 #include "ui/animation.h"
+#include "ui/color_provider.h"
 #include "ui/dialog_window.h"
 #include "ui/icon.h"
 #include "ui/keys.h"
@@ -23,6 +24,7 @@
 #include "ui/window.h"
 #include "ui/window_header.h"
 #include "widgets/card.h"
+#include "widgets/colors.h"
 #include "widgets/metrics.h"
 #include "widgets/picture.h"
 #include "window/settingswindow.h"
@@ -207,6 +209,17 @@ public:
     bool current = false;
     std::function<void(int index)> onPicked;
 
+    void setCurrent(bool isCurrent)
+    {
+        if (isCurrent == current)
+            return;
+        current = isCurrent;
+        // The labels take their colours from it as they lay out.
+        for (StyledLabel* label : {m_name, m_region, m_time, m_detail})
+            label->requestLayout();
+        requestPaint();
+    }
+
     SizeF sizeHint() const override { return {0, kResultHeight}; }
     bool acceptsPointer() const override { return true; }
 
@@ -282,9 +295,7 @@ public:
         m_current = index;
         for (const auto& child : m_rows->children()) {
             auto* row = static_cast<ResultRow*>(child.get());
-            row->current = row->index == index;
-            row->requestLayout();
-            row->requestPaint();
+            row->setCurrent(row->index == index);
         }
         if (index >= 0)
             m_scroll->ensureVisible({0, index * kResultHeight, 1, kResultHeight});
@@ -502,8 +513,7 @@ protected:
         painter.multiplyOpacity(0.8);
         painter.strokeRoundedRect(ring, 6, theme.highlight, painter.borderWidth(2));
         painter.restore();
-        const Color pill = theme.darkMode ? Color::rgb(0x000000).withAlpha(0.6) : Color::rgb(0xFFFFFF).withAlpha(0.9);
-        painter.fillRoundedRect(m_pill, m_pill.height / 2, pill, panelCorners());
+        painter.fillRoundedRect(m_pill, m_pill.height / 2, color(SettingsColor::TimeZoneMapPill), panelCorners());
     }
 
 private:
@@ -740,8 +750,8 @@ protected:
     void paint(Painter& painter) override
     {
         const Theme& theme = Theme::current();
-        const Color fill = theme.darkMode ? Color::rgb(0xFFFFFF).withAlpha(0.04) : Color::rgb(0x000000).withAlpha(0.03);
-        painter.fillRoundedRect(localRect(), theme.bigRadius, fill, panelCorners());
+        painter.fillRoundedRect(localRect(), theme.bigRadius, color(SettingsColor::TimeZoneMapBackground),
+                                panelCorners());
     }
 };
 
@@ -871,6 +881,10 @@ protected:
     {
         m_header->setGeometry({0, 0, geometry().width, kHeaderHeight});
         m_column->setGeometry(localRect());
+    }
+
+    void childrenLaidOut() override
+    {
         // Wider than the field: each result carries a time and a day.
         const RectF field = search->geometry();
         const PointF band = m_band->geometry().topLeft();

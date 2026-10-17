@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+#include "widgets/colors.h"
 #include "widgets/listrow.h"
 
 #include <algorithm>
@@ -8,6 +9,7 @@
 #include <cmath>
 
 #include "ui/animation.h"
+#include "ui/color_provider.h"
 #include "ui/icon.h"
 #include "ui/keys.h"
 #include "ui/label.h"
@@ -280,7 +282,7 @@ void ListRow::paint(Painter& painter)
         painter.save();
         painter.clip({0, 0, width, rowHeight});
         painter.drawRoundedRect({0, top, width, bottom - top}, {radius, 0, themeCorners()},
-                                theme.text.withAlpha(theme.darkMode ? 0.05 : 0.15));
+                                color(SettingsColor::RowHighlight));
         painter.restore();
     }
 
@@ -293,7 +295,7 @@ void ListRow::paint(Painter& painter)
         const double pixel = 1 / painter.scale();
         painter.drawRoundedRect({metrics::cardHorizontalPadding, height - pixel,
                                  width - 2 * metrics::cardHorizontalPadding, pixel},
-                                {}, theme.disabledText.withAlpha(theme.darkMode ? 0.3 : 0.1));
+                                {}, color(ColorId::Separator));
     }
 }
 

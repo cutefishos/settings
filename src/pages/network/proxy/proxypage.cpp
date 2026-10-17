@@ -5,6 +5,7 @@
 #include "pages/network/proxy/proxysettings.h"
 #include "ui/button.h"
 #include "ui/check_box.h"
+#include "ui/color_provider.h"
 #include "ui/file_chooser.h"
 #include "ui/label.h"
 #include "ui/layout.h"
@@ -13,6 +14,7 @@
 #include "ui/text_field.h"
 #include "ui/theme.h"
 #include "widgets/card.h"
+#include "widgets/colors.h"
 #include "widgets/metrics.h"
 #include "window/page.h"
 #include "window/pagelist.h"
@@ -37,11 +39,10 @@ public:
 protected:
     void paint(Painter& painter) override
     {
-        const Theme& theme = Theme::current();
         // FishUI's Separator: a RoundedRectangle one device pixel high, centred.
         const double height = 1 / painter.scale();
         painter.drawRoundedRect({0, rounding::centeredStart(geometry().height, height), geometry().width, height}, {},
-                                theme.disabledText.withAlpha(theme.darkMode ? 0.3 : 0.1));
+                                color(ColorId::Separator));
     }
 };
 

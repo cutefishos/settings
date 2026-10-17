@@ -12,11 +12,13 @@
 #include "base/locale.h"
 #include "pages/battery/timeformat.h"
 #include "ui/animation.h"
+#include "ui/color_provider.h"
 #include "ui/label.h"
 #include "ui/painter.h"
 #include "ui/cell_layout.h"
 #include "ui/theme.h"
 #include "ui/window.h"
+#include "widgets/colors.h"
 #include "widgets/metrics.h"
 
 using namespace cutefish;
@@ -208,11 +210,9 @@ protected:
 
     void paint(Painter& painter) override
     {
-        const Theme& theme = Theme::current();
         const RectF rect = localRect();
-        painter.drawRoundedRect(rect, {.radius = rect.height / 2},
-                                theme.darkMode ? theme.alternateBackground : theme.background, 1 / painter.scale(),
-                                tint(theme.text, theme.darkMode ? 0.1 : 0.08));
+        painter.drawRoundedRect(rect, {.radius = rect.height / 2}, color(SettingsColor::BatteryChipBackground),
+                                1 / painter.scale(), color(SettingsColor::BatteryChipBorder));
     }
 
 private:
@@ -593,8 +593,8 @@ void HistoryGraph::paint(Painter& painter)
     const Theme& theme = Theme::current();
     const double scale = painter.scale();
     const double hairline = 1 / scale;
-    const Color gridColor = theme.darkMode ? tint(Color::rgb(0xFFFFFF), 0.08) : tint(Color::rgb(0), 0.06);
-    const Color baselineColor = theme.darkMode ? tint(Color::rgb(0xFFFFFF), 0.18) : tint(Color::rgb(0), 0.14);
+    const Color gridColor = color(SettingsColor::GraphGrid);
+    const Color baselineColor = color(SettingsColor::GraphBaseline);
 
     painter.save();
     painter.translate({m_plot.x, m_plot.y});
@@ -632,7 +632,7 @@ void HistoryGraph::paint(Painter& painter)
         painter.restore();
 
         if (m_probe && m_reveal >= 1) {
-            const Color probeColor = theme.darkMode ? tint(Color::rgb(0xFFFFFF), 0.28) : tint(Color::rgb(0), 0.2);
+            const Color probeColor = color(SettingsColor::GraphProbe);
             const double top = m_headerHeight - m_plot.y;
             painter.drawRoundedRect({m_probe->x - hairline / 2, top, hairline, m_plot.height - top}, {}, probeColor);
 

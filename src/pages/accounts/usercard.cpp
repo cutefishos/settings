@@ -11,6 +11,7 @@
 #include <unicode/utf16.h>
 
 #include "ui/animation.h"
+#include "ui/color_provider.h"
 #include "ui/icon.h"
 #include "ui/image_view.h"
 #include "ui/label.h"
@@ -19,6 +20,7 @@
 #include "ui/painter.h"
 #include "ui/theme.h"
 #include "ui/window.h"
+#include "widgets/colors.h"
 #include "widgets/metrics.h"
 #include "widgets/standardbutton.h"
 
@@ -53,18 +55,17 @@ public:
 protected:
     void paint(Painter& painter) override
     {
-        const Theme& theme = Theme::current();
         const Rect box = painter.deviceRect(localRect());
         const int icon = int(std::lround(m_iconSize * painter.scale()));
         if (isEnabled() && (m_hovered || m_pressed)) {
-            const double alpha = m_pressed ? (theme.darkMode ? 0.06 : 0.21) : (theme.darkMode ? 0.12 : 0.11);
             const int margin = int(std::lround(std::round(m_size * 0.1) * painter.scale()));
             int plate = std::min(box.width, box.height) - 2 * margin;
             if ((plate - icon) % 2 != 0)
                 plate -= 1;
             painter.fillDeviceRoundedRect({box.x + (box.width - plate) / 2, box.y + (box.height - plate) / 2, plate,
                                            plate},
-                                          plate / 2.0, theme.text.withAlpha(alpha));
+                                          plate / 2.0,
+                                          color(m_pressed ? ColorId::RoundButtonPressed : ColorId::RoundButtonHovered));
         }
     }
 
@@ -357,8 +358,7 @@ UserCard::~UserCard() = default;
 
 void UserCard::layout()
 {
-    const Theme& theme = Theme::current();
-    const Color background = theme.darkMode ? Color::rgb(0x363636) : theme.background;
+    const Color background = color(SettingsColor::UserCardButtonBackground);
     m_password->setBackgroundColor(background);
     m_delete->setBackgroundColor(background);
     Card::layout();
