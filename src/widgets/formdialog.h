@@ -8,6 +8,7 @@
 #include <optional>
 #include <string>
 
+#include "ui/color_mixer.h"
 #include "ui/geometry.h"
 
 namespace cutefish::ui {
@@ -49,7 +50,7 @@ public:
     // A fixed height lets the content's filling items share the space.
     void setFixedHeight(double height);
     // Unset: the theme's second background colour.
-    void setBackgroundColor(std::optional<cutefish::ui::Color> color);
+    void setBackgroundColor(std::optional<cutefish::ui::ColorRecipe> color);
 
     void show();
     // Asks canClose first, as the close button and Escape do.
@@ -68,7 +69,7 @@ private:
     FormRoot* m_root;
     double m_width;
     double m_fixedHeight = 0;
-    std::optional<cutefish::ui::Color> m_background;
+    std::optional<cutefish::ui::ColorRecipe> m_background;
 };
 
 } // namespace settings

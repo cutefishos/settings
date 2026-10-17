@@ -118,18 +118,18 @@ void FormDialog::setFixedHeight(double height)
     m_fixedHeight = height;
 }
 
-void FormDialog::setBackgroundColor(std::optional<Color> color)
+void FormDialog::setBackgroundColor(std::optional<ColorRecipe> color)
 {
-    m_background = color;
+    m_background = std::move(color);
     if (m_window)
-        m_window->setBackgroundColor(m_background.value_or(Theme::current().secondBackground));
+        m_window->setBackgroundColor(m_background.value_or(ColorId::SecondBackground));
 }
 
 void FormDialog::show()
 {
     if (!m_window)
         return;
-    m_window->setBackgroundColor(m_background.value_or(Theme::current().secondBackground));
+    m_window->setBackgroundColor(m_background.value_or(ColorId::SecondBackground));
     if (m_fixedHeight > 0) {
         m_window->resize({m_width, m_fixedHeight});
         m_window->setMinimumSize({m_width, m_fixedHeight});

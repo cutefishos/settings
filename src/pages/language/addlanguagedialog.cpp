@@ -124,7 +124,7 @@ AddLanguageDialog::AddLanguageDialog(SettingsWindow& parent, Language& language)
 {
     setFixedHeight(560);
     // The page colour, so the card stands out as it does on a page.
-    setBackgroundColor(Theme::current().background);
+    setBackgroundColor(ColorId::Background);
 
     m_search = content()->addChild<SearchField>();
     m_search->setPlaceholder("Search languages");

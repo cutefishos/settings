@@ -7,6 +7,7 @@
 #include <optional>
 #include <string>
 
+#include "ui/color_mixer.h"
 #include "widgets/listrow.h"
 
 namespace cutefish::ui {
@@ -27,7 +28,7 @@ public:
     explicit IconButton(std::string glyph, double size = 22);
 
     // Unset: the theme's text colour.
-    void setColor(std::optional<cutefish::ui::Color> color);
+    void setColor(std::optional<cutefish::ui::ColorRecipe> color);
 
     cutefish::ui::SizeF sizeHint() const override { return {m_size, m_size}; }
     bool acceptsPointer() const override { return true; }

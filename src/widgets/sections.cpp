@@ -3,7 +3,6 @@
 
 #include "widgets/sections.h"
 
-#include "ui/theme.h"
 #include "widgets/metrics.h"
 
 using namespace cutefish::ui;
@@ -16,20 +15,13 @@ SectionLabel::SectionLabel(std::string text, bool wrap)
     setLayoutHints({.fillWidth = true});
     m_label = addChild<Label>(std::move(text));
     m_label->setWrap(wrap);
-    m_label->setColor(Theme::current().disabledText);
+    m_label->setColor(ColorId::DisabledText);
     m_label->setLayoutHints({.fillWidth = true});
 }
 
-void SectionLabel::setColor(std::optional<Color> color)
+void SectionLabel::setColor(std::optional<ColorRecipe> color)
 {
-    m_color = color;
-    m_label->setColor(m_color.value_or(Theme::current().disabledText));
-}
-
-void SectionLabel::layout()
-{
-    m_label->setColor(m_color.value_or(Theme::current().disabledText));
-    Column::layout();
+    m_label->setColor(std::move(color).value_or(ColorId::DisabledText));
 }
 
 Section::Section(std::string title)

@@ -6,6 +6,7 @@
 #include <optional>
 #include <string>
 
+#include "ui/color_mixer.h"
 #include "ui/view.h"
 
 namespace settings {
@@ -23,7 +24,7 @@ public:
     explicit Picture(std::string path = {});
 
     void setPath(std::string path);
-    void setTint(std::optional<cutefish::ui::Color> tint);
+    void setTint(std::optional<cutefish::ui::ColorRecipe> tint);
     void setCornerRadius(double radius);
 
 protected:
@@ -31,7 +32,7 @@ protected:
 
 private:
     std::string m_path;
-    std::optional<cutefish::ui::Color> m_tint;
+    std::optional<cutefish::ui::ColorRecipe> m_tint;
     double m_radius = 0;
 };
 

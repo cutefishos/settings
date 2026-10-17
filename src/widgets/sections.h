@@ -22,14 +22,10 @@ public:
     cutefish::ui::Label* label() const { return m_label; }
     void setText(std::string text) { m_label->setText(std::move(text)); }
     // Unset: the theme's disabled text colour.
-    void setColor(std::optional<cutefish::ui::Color> color);
-
-protected:
-    void layout() override;
+    void setColor(std::optional<cutefish::ui::ColorRecipe> color);
 
 private:
     cutefish::ui::Label* m_label;
-    std::optional<cutefish::ui::Color> m_color;
 };
 
 // A titled group on a page: a section label over its content, set tightly so

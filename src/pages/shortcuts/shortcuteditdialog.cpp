@@ -230,8 +230,7 @@ void ShortcutEditDialog::refresh()
 
 void ShortcutEditDialog::update()
 {
-    const Theme& theme = Theme::current();
-    m_noShortcut->setColor(theme.disabledText);
+    m_noShortcut->setColor(ColorId::DisabledText);
     m_noShortcut->setVisible(m_accelerators.empty() && !m_recording);
 
     while (!m_list->children().empty())
@@ -247,7 +246,7 @@ void ShortcutEditDialog::update()
         keys->setDimmed(beingReplaced);
         if (accelerator.type == "user") {
             Label* custom = row->addChild<Label>("Custom");
-            custom->setColor(theme.disabledText);
+            custom->setColor(ColorId::DisabledText);
             custom->setFontSize(metrics::points(8));
         }
         row->addChild<View>()->setLayoutHints({.fillWidth = true});
@@ -270,7 +269,7 @@ void ShortcutEditDialog::update()
 
     m_messageLabel->setVisible(!m_message.empty());
     m_messageLabel->setText(m_message);
-    m_messageLabel->setColor(m_messageIsWarning ? theme.text : kErrorColor);
+    m_messageLabel->setColor(m_messageIsWarning ? ColorRecipe(ColorId::Text) : ColorRecipe(kErrorColor));
 
     m_add->setEnabled(!m_recording && m_accelerators.size() < 5);
     m_restore->setVisible(!m_isDefault);

@@ -37,9 +37,9 @@ void Picture::setPath(std::string path)
     requestPaint();
 }
 
-void Picture::setTint(std::optional<Color> tint)
+void Picture::setTint(std::optional<ColorRecipe> tint)
 {
-    m_tint = tint;
+    m_tint = std::move(tint);
     requestPaint();
 }
 
@@ -67,7 +67,7 @@ void Picture::paint(Painter& painter)
     painter.drawSvg(m_path,
                     {device.x / scale - offset.x, device.y / scale - offset.y, device.width / scale,
                      device.height / scale},
-                    m_tint);
+                    m_tint ? std::optional<Color>(m_tint->resolve()) : std::nullopt);
     painter.restore();
 }
 

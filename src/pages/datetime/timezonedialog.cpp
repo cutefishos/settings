@@ -917,6 +917,7 @@ TimeZoneDialog::TimeZoneDialog(SettingsWindow& parent, TimeZoneMap& map)
     auto root = std::make_unique<Root>(*this);
     m_root = root.get();
     m_window->setTitle("Time Zone");
+    m_window->setBackgroundColor(withAlpha(ColorId::SecondBackground, 0.5));
     m_window->setContentView(std::move(root));
     m_window->setTransientParent(&parent.window(), false);
     m_window->onCloseRequested = [this] { close(); };
@@ -974,9 +975,7 @@ void TimeZoneDialog::show()
 {
     if (!m_window)
         return;
-    const Theme& theme = Theme::current();
-    m_window->setBackgroundColor(theme.secondBackground.withAlpha(0.5));
-    m_window->setBackgroundBlur({0, 0, kWidth, kHeight}, theme.windowRadius);
+    m_window->setBackgroundBlur({0, 0, kWidth, kHeight}, Theme::current().windowRadius);
     m_animatePin = false;
     m_hoveredZone.clear();
     m_map.select(m_map.currentTimeZoneId());

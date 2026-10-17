@@ -32,12 +32,12 @@ IconButton::IconButton(std::string glyph, double size)
     }
 }
 
-void IconButton::setColor(std::optional<Color> color)
+void IconButton::setColor(std::optional<ColorRecipe> color)
 {
     if (m_icon)
-        m_icon->setColor(color);
+        m_icon->setColor(std::move(color));
     else
-        m_picture->setTint(color);
+        m_picture->setTint(std::move(color));
 }
 
 double IconButton::trailingOverhang() const
