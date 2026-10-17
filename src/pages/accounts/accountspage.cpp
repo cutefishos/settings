@@ -8,6 +8,7 @@
 #include "base/event_loop.h"
 #include "base/paths.h"
 #include "pages/accounts/password.h"
+#include "pages/accounts/passwordchanger.h"
 #include "pages/accounts/usercard.h"
 #include "pages/accounts/userdialogs.h"
 #include "ui/dialog_window.h"
@@ -102,7 +103,11 @@ private:
             m_chooser->open();
         };
         card->onChangePassword = [this, account] {
-            m_changePassword = std::make_unique<ChangePasswordDialog>(settingsWindow(), account->userName());
+            // The user's own goes through PAM, which asks for the current
+            // password and updates the login keyring with it.
+            const bool own = account->userId() == int64_t(getuid());
+            m_changePassword = std::make_unique<ChangePasswordDialog>(
+                    settingsWindow(), account->userName(), own ? std::make_unique<PasswordChanger>() : nullptr);
             m_changePassword->onPasswordSubmitted = [account](const std::string& password) {
                 account->setPassword(cryptPassword(password));
             };

@@ -54,37 +54,101 @@ protected:
     }
 };
 
-ChangePasswordDialog::ChangePasswordDialog(SettingsWindow& parent, const std::string& userName)
+ChangePasswordDialog::ChangePasswordDialog(SettingsWindow& parent, const std::string& userName,
+                                           std::unique_ptr<PasswordChanger> changer)
     : FormDialog(parent, "Change password", kWidth)
+    , m_changer(std::move(changer))
 {
     Label* name = content()->addChild<SecondaryLabel>(userName);
     name->setWrap(true);
     name->setLayoutHints({.fillWidth = true});
 
-    GridLayout* grid = addForm(content());
-    m_password = addField(grid, "Password", true);
-    m_verify = addField(grid, "Verify password", true);
+    m_form = addForm(content());
+    if (m_changer) {
+        m_current = addField(m_form, "Current password", true);
+        m_password = addField(m_form, "New password", true);
+    } else {
+        m_password = addField(m_form, "Password", true);
+    }
+    m_verify = addField(m_form, "Verify password", true);
+
+    if (m_changer) {
+        m_error = content()->addChild<Label>();
+        m_error->setWrap(true);
+        m_error->setLayoutHints({.fillWidth = true});
+        m_error->setVisible(false);
+        m_changer->onFinished = [this](PasswordChanger::Result result, const std::string& message) {
+            switch (result) {
+            case PasswordChanger::Result::Changed:
+                close();
+                return;
+            case PasswordChanger::Result::WrongPassword:
+                m_current->setText({});
+                m_current->setFocus();
+                showError("The current password is incorrect");
+                break;
+            case PasswordChanger::Result::Rejected:
+                m_password->setText({});
+                m_verify->setText({});
+                m_password->setFocus();
+                showError(message.empty() ? "The new password was not accepted" : message);
+                break;
+            case PasswordChanger::Result::Failed:
+                showError(message.empty() ? "The password could not be changed" : message);
+                break;
+            case PasswordChanger::Result::TimedOut:
+                showError("The password change did not finish in time");
+                break;
+            }
+            update();
+        };
+    }
 
     RowLayout* buttons = addButtonRow();
-    DialogButton* cancel = buttons->addChild<DialogButton>("Cancel");
-    cancel->onClicked = [this] { close(); };
+    m_cancel = buttons->addChild<DialogButton>("Cancel");
+    m_cancel->onClicked = [this] { requestClose(); };
     m_change = buttons->addChild<DialogButton>("Change password", true);
-    m_change->onClicked = [this] {
+    m_change->onClicked = [this] { change(); };
+
+    for (TextField* field : {m_current, m_password, m_verify}) {
+        if (field)
+            field->onTextChanged = [this] { update(); };
+    }
+    canClose = [this] { return !m_changer || !m_changer->isRunning(); };
+    onShown = [this] { (m_current ? m_current : m_password)->setFocus(); };
+    update();
+}
+
+ChangePasswordDialog::~ChangePasswordDialog() = default;
+
+void ChangePasswordDialog::update()
+{
+    const bool waiting = m_changer && m_changer->isRunning();
+    m_form->setEnabled(!waiting);
+    m_cancel->setEnabled(!waiting);
+    m_change->setEnabled(!waiting && !m_password->text().empty() && m_password->text() == m_verify->text());
+}
+
+void ChangePasswordDialog::change()
+{
+    if (!m_changer) {
         const std::string password = m_password->text();
         if (onPasswordSubmitted)
             onPasswordSubmitted(password);
         close();
-    };
+        return;
+    }
 
-    m_password->onTextChanged = [this] { update(); };
-    m_verify->onTextChanged = [this] { update(); };
-    onShown = [this] { m_password->setFocus(); };
+    showError({});
+    if (!m_changer->start(m_current->text(), m_password->text()))
+        showError("The password could not be changed");
     update();
 }
 
-void ChangePasswordDialog::update()
+void ChangePasswordDialog::showError(const std::string& error)
 {
-    m_change->setEnabled(!m_password->text().empty() && m_password->text() == m_verify->text());
+    m_error->setText(error);
+    m_error->setVisible(!error.empty());
 }
 
 AddUserDialog::AddUserDialog(SettingsWindow& parent, accounts::AccountsManager& manager)

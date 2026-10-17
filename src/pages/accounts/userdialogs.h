@@ -4,8 +4,10 @@
 #pragma once
 
 #include <functional>
+#include <memory>
 #include <string>
 
+#include "pages/accounts/passwordchanger.h"
 #include "widgets/formdialog.h"
 
 namespace cutefish::accounts {
@@ -22,20 +24,31 @@ class TextField;
 
 namespace settings {
 
-// A new password for an account, typed twice.
+// A new password for an account, typed twice. With a changer it is the
+// user's own: the current password is asked too, and the dialog stays open
+// until the change is made, saying why it was not.
 class ChangePasswordDialog : public FormDialog
 {
 public:
-    ChangePasswordDialog(SettingsWindow& parent, const std::string& userName);
+    ChangePasswordDialog(SettingsWindow& parent, const std::string& userName,
+                         std::unique_ptr<PasswordChanger> changer = nullptr);
+    ~ChangePasswordDialog() override;
 
-    // The password as typed; the caller hashes it.
+    // Without a changer: the password as typed; the caller hashes it.
     std::function<void(const std::string& password)> onPasswordSubmitted;
 
 private:
     void update();
+    void change();
+    void showError(const std::string& error);
 
+    std::unique_ptr<PasswordChanger> m_changer;
+    cutefish::ui::GridLayout* m_form;
+    cutefish::ui::TextField* m_current = nullptr;
     cutefish::ui::TextField* m_password;
     cutefish::ui::TextField* m_verify;
+    cutefish::ui::Label* m_error = nullptr;
+    cutefish::ui::DialogButton* m_cancel;
     cutefish::ui::DialogButton* m_change;
 };
 

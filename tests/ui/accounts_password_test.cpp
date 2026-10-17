@@ -13,9 +13,17 @@
 #include <sys/stat.h>
 
 #include "pages/accounts/passwordchanger.h"
+#include "pages/accounts/userdialogs.h"
+#include "ui/dialog_window.h"
+#include "ui/label.h"
+#include "ui/test_input.h"
+#include "ui/text_field.h"
+#include "ui/window.h"
+#include "window/settingswindow.h"
 #include "input_test_support.h"
 
 using namespace cutefish;
+using namespace cutefish::ui;
 using namespace settings;
 using namespace std::chrono_literals;
 
@@ -117,6 +125,40 @@ std::optional<Outcome> change(const std::string& program, const std::string& cur
     return outcome;
 }
 
+template<typename T>
+std::vector<T*> findAll(View* view)
+{
+    std::vector<T*> found;
+    if (auto* match = dynamic_cast<T*>(view))
+        found.push_back(match);
+    for (const auto& child : view->children()) {
+        for (T* match : findAll<T>(child.get()))
+            found.push_back(match);
+    }
+    return found;
+}
+
+PointF centre(View* view)
+{
+    const PointF origin = view->mapToWindow({0, 0});
+    return {origin.x + view->geometry().width / 2, origin.y + view->geometry().height / 2};
+}
+
+void typeInto(Window& window, TextField* field, const std::string& text)
+{
+    TestInput::click(window, centre(field));
+    TestInput::typeText(window, text);
+}
+
+bool showsText(Window& window, const std::string& text)
+{
+    for (Label* label : findAll<Label>(window.contentView())) {
+        if (label->isVisible() && label->text() == text)
+            return true;
+    }
+    return false;
+}
+
 } // namespace
 
 TEST(AccountsPassword, ChangesThroughPasswdsPrompts)
@@ -168,4 +210,40 @@ TEST(AccountsPassword, AMissingPasswdDoesNotStart)
     PasswordChanger changer("/nonexistent/passwd");
     EXPECT_FALSE(changer.start("old", "new password"));
     EXPECT_FALSE(changer.isRunning());
+}
+
+TEST(AccountsPassword, TheOwnAccountsDialogAsksTheCurrentPassword)
+{
+    FakePasswd passwd(kPasswd);
+    SettingsWindow window;
+    ChangePasswordDialog dialog(window, "reion", std::make_unique<PasswordChanger>(passwd.path));
+    dialog.show();
+    Window& dialogWindow = *dialog.window();
+    dialogWindow.grab();
+
+    const auto fields = findAll<TextField>(dialogWindow.contentView());
+    ASSERT_EQ(fields.size(), 3u);
+    for (TextField* field : fields)
+        EXPECT_EQ(field->echoMode(), TextField::EchoMode::Password);
+    const auto buttons = findAll<DialogButton>(dialogWindow.contentView());
+    ASSERT_EQ(buttons.size(), 2u);
+    DialogButton* change = buttons[1];
+
+    typeInto(dialogWindow, fields[0], "wrong");
+    typeInto(dialogWindow, fields[1], "new password");
+    typeInto(dialogWindow, fields[2], "new password");
+    EXPECT_TRUE(change->isEnabled());
+    dialogWindow.grab();
+    TestInput::click(dialogWindow, centre(change));
+    EXPECT_FALSE(change->isEnabled());
+    ASSERT_TRUE(settings::testing::waitFor([&] { return change->isEnabled(); }, 5000ms));
+    EXPECT_TRUE(dialog.isOpen());
+    EXPECT_TRUE(showsText(dialogWindow, "The current password is incorrect"));
+    EXPECT_EQ(fields[0]->text(), "");
+
+    typeInto(dialogWindow, fields[0], "old");
+    dialogWindow.grab();
+    TestInput::click(dialogWindow, centre(change));
+    ASSERT_TRUE(settings::testing::waitFor([&] { return !dialog.isOpen(); }, 5000ms));
+    EXPECT_EQ(passwd.changed(), "new password");
 }
