@@ -3,7 +3,7 @@
 
 #include "pages/accounts/userdialogs.h"
 
-#include "accounts/accountsmanager.h"
+#include "cutefish/accounts/accounts_manager.h"
 #include "pages/accounts/password.h"
 #include "ui/combo_box.h"
 #include "ui/dialog_window.h"

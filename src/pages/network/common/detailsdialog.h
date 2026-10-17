@@ -10,7 +10,7 @@
 #include <vector>
 
 #include "base/signal.h"
-#include "networkmanager/networkmodel.h"
+#include "cutefish/networkmanager/network_model.h"
 
 namespace cutefish::networkmanager {
 class ConnectionSettings;

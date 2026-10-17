@@ -7,8 +7,8 @@
 #include <memory>
 #include <string>
 
-#include "accounts/useraccount.h"
 #include "base/signal.h"
+#include "cutefish/accounts/user_account.h"
 #include "widgets/card.h"
 
 namespace cutefish::ui {

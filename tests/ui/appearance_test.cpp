@@ -3,7 +3,7 @@
 
 #include <gtest/gtest.h>
 
-#include "appearance/appearance.h"
+#include "cutefish/appearance/appearance.h"
 
 // The tests run on a private bus, where no appearance service answers: a
 // change goes out, and the value stays until the service reports one, as

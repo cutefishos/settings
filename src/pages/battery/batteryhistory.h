@@ -12,7 +12,7 @@
 
 #include "base/dbus.h"
 #include "base/signal.h"
-#include "upower/device.h"
+#include "cutefish/upower/device.h"
 
 namespace settings {
 

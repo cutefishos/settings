@@ -9,7 +9,7 @@
 #include <vector>
 
 #include "base/signal.h"
-#include "networkmanager/handler.h"
+#include "cutefish/networkmanager/handler.h"
 
 namespace cutefish::ui {
 class ColumnLayout;

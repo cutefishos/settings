@@ -7,7 +7,7 @@
 #include <vector>
 
 #include "base/signal.h"
-#include "bluez/bluetoothobject.h"
+#include "cutefish/bluez/bluetooth_object.h"
 
 namespace cutefish::ui {
 class DialogButton;

@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-#include "networkmanager/handler.h"
+#include "cutefish/networkmanager/handler.h"
 #include "pages/network/wlan/newnetworkdialog.h"
 #include "ui/combo_box.h"
 #include "ui/text_field.h"

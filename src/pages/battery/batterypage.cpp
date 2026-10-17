@@ -17,7 +17,7 @@
 #include "ui/cell_layout.h"
 #include "ui/segmented_control.h"
 #include "ui/theme.h"
-#include "upower/batterystatus.h"
+#include "cutefish/upower/battery_status.h"
 #include "widgets/card.h"
 #include "widgets/listrow.h"
 #include "widgets/metrics.h"

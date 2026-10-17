@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-#include "networkmanager/handler.h"
+#include "cutefish/networkmanager/handler.h"
 
 namespace cutefish::ui {
 class ComboBox;

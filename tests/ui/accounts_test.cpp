@@ -7,7 +7,7 @@
 #include <memory>
 #include <string>
 
-#include "accounts/accountsmanager.h"
+#include "cutefish/accounts/accounts_manager.h"
 #include "pages/accounts/password.h"
 #include "pages/accounts/usercard.h"
 #include "pages/accounts/userdialogs.h"

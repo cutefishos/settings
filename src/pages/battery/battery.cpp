@@ -11,9 +11,9 @@
 #include "base/file.h"
 #include "base/paths.h"
 #include "base/settings.h"
+#include "cutefish/upower/battery_status.h"
+#include "cutefish/upower/device.h"
 #include "pages/battery/timeformat.h"
-#include "upower/batterystatus.h"
-#include "upower/device.h"
 #include "window/options.h"
 
 using namespace cutefish;

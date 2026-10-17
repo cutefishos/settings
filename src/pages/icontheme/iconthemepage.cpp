@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-#include "appearance/appearance.h"
+#include "cutefish/appearance/appearance.h"
 #include "pages/icontheme/iconthemes.h"
 #include "ui/image_view.h"
 #include "widgets/card.h"

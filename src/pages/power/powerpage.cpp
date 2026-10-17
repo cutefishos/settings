@@ -8,10 +8,10 @@
 
 #include "base/signal.h"
 #include "pages/power/powersettings.h"
-#include "powerprofiles/powerprofiles.h"
+#include "cutefish/powerprofiles/power_profiles.h"
 #include "ui/layout.h"
 #include "ui/cell_layout.h"
-#include "upower/batterystatus.h"
+#include "cutefish/upower/battery_status.h"
 #include "widgets/card.h"
 #include "widgets/imageselectionitem.h"
 #include "widgets/listrow.h"

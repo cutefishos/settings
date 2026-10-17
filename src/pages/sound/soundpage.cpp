@@ -7,9 +7,9 @@
 #include <string>
 #include <vector>
 
-#include "audio/audiomodel.h"
-#include "audio/backend.h"
-#include "audio/volumemonitor.h"
+#include "cutefish/audio/audio_model.h"
+#include "cutefish/audio/backend.h"
+#include "cutefish/audio/volume_monitor.h"
 #include "base/signal.h"
 #include "ui/button.h"
 #include "ui/icon.h"

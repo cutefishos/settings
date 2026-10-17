@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#include "appearance/appearance.h"
+#include "cutefish/appearance/appearance.h"
 #include "pages/wallpaper/wallpapergrid.h"
 #include "pages/wallpaper/wallpapers.h"
 #include "ui/file_chooser.h"

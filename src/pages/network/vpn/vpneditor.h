@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-#include "networkmanager/handler.h"
+#include "cutefish/networkmanager/handler.h"
 #include "ui/cell_layout.h"
 
 namespace cutefish::ui {

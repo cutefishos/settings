@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <cmath>
 
-#include "appearance/appearance.h"
+#include "cutefish/appearance/appearance.h"
 #include "pages/cursortheme/cursorthemes.h"
 #include "ui/image_view.h"
 #include "ui/label.h"

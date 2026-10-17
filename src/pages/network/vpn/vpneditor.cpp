@@ -7,7 +7,7 @@
 #include <climits>
 
 #include "base/event_loop.h"
-#include "networkmanager/types.h"
+#include "cutefish/networkmanager/types.h"
 #include "pages/network/common/textchecks.h"
 #include "pages/network/common/rows.h"
 #include "ui/button.h"

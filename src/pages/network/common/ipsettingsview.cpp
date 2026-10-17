@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <cctype>
 
-#include "networkmanager/handler.h"
+#include "cutefish/networkmanager/handler.h"
 #include "pages/network/common/rows.h"
 #include "ui/combo_box.h"
 #include "ui/dialog_window.h"

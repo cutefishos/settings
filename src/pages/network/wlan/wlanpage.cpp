@@ -5,9 +5,9 @@
 #include <chrono>
 
 #include "base/timer.h"
-#include "networkmanager/connections.h"
-#include "networkmanager/handler.h"
-#include "networkmanager/hotspot.h"
+#include "cutefish/networkmanager/connections.h"
+#include "cutefish/networkmanager/handler.h"
+#include "cutefish/networkmanager/hotspot.h"
 #include "pages/network/common/detailsdialog.h"
 #include "pages/network/common/networklist.h"
 #include "pages/network/common/rows.h"

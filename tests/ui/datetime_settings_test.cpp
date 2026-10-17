@@ -8,9 +8,9 @@
 #include <vector>
 
 #include "base/dbus.h"
+#include "cutefish/timedate/time_date.h"
 #include "input_test_support.h"
 #include "pages/datetime/time.h"
-#include "timedate/timedate.h"
 
 using namespace cutefish;
 using namespace cutefish::base;

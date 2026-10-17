@@ -9,7 +9,7 @@
 #include <vector>
 
 #include "base/signal.h"
-#include "networkmanager/iputils.h"
+#include "cutefish/networkmanager/ip_utils.h"
 #include "ui/cell_layout.h"
 
 namespace cutefish::networkmanager {

@@ -5,11 +5,11 @@
 #include <array>
 #include <cstdio>
 
-#include "appearance/appearance.h"
 #include "base/locale.h"
 #include "base/paths.h"
 #include "base/settings.h"
 #include "base/thread_pool.h"
+#include "cutefish/appearance/appearance.h"
 #include "pages/fonts/fontlist.h"
 #include "widgets/card.h"
 #include "widgets/listrow.h"

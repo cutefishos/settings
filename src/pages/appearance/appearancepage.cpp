@@ -4,7 +4,7 @@
 #include <array>
 #include <functional>
 
-#include "appearance/appearance.h"
+#include "cutefish/appearance/appearance.h"
 #include "ui/icon.h"
 #include "ui/layout.h"
 #include "ui/cell_layout.h"

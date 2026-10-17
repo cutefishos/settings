@@ -4,8 +4,8 @@
 #include "pages/network/common/detailsdialog.h"
 
 #include "base/event_loop.h"
-#include "networkmanager/connections.h"
-#include "networkmanager/handler.h"
+#include "cutefish/networkmanager/connections.h"
+#include "cutefish/networkmanager/handler.h"
 #include "pages/network/common/ipsettingsview.h"
 #include "pages/network/common/networklist.h"
 #include "ui/dialog_window.h"

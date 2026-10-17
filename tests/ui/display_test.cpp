@@ -17,7 +17,7 @@
 #include "base/dbus.h"
 #include "base/event_loop.h"
 #include "base/timer.h"
-#include "display/displaytypes.h"
+#include "cutefish/display/display_types.h"
 #include "ui/application.h"
 #include "ui/keys.h"
 #include "ui/label.h"

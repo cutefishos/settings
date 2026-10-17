@@ -7,8 +7,8 @@
 #include <vector>
 
 #include "base/signal.h"
-#include "bluez/devicesmodel.h"
-#include "bluez/manager.h"
+#include "cutefish/bluez/devices_model.h"
+#include "cutefish/bluez/manager.h"
 #include "pages/bluetooth/bluetoothdialogs.h"
 #include "ui/button.h"
 #include "ui/icon.h"

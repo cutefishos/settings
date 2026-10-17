@@ -7,8 +7,8 @@
 #include <memory>
 #include <string>
 
-#include "networkmanager/handler.h"
-#include "networkmanager/vpnschema.h"
+#include "cutefish/networkmanager/handler.h"
+#include "cutefish/networkmanager/vpn_schema.h"
 #include "pages/network/vpn/vpneditor.h"
 #include "ui/label.h"
 #include "ui/test_input.h"

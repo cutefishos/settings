@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-#include "networkmanager/networkmodel.h"
+#include "cutefish/networkmanager/network_model.h"
 #include "widgets/listrow.h"
 
 namespace cutefish::ui {
