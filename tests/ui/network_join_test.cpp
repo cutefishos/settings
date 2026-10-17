@@ -130,16 +130,25 @@ TEST_F(JoinDialog, PasswordsFitTheSecurity)
 {
     dialog->show();
     dialog->nameField()->setText("Garden");
-    // WPA2/WPA3 keys are 8 to 64 characters.
+    // WPA2/WPA3 passphrases are 8 to 63 characters.
     dialog->passwordField()->setText("short");
     EXPECT_FALSE(dialog->canJoin());
     dialog->passwordField()->setText("long enough");
     EXPECT_TRUE(dialog->canJoin());
-    // WEP keys come in four lengths; an open network needs none.
+    // 64 characters are the key itself, in hexadecimal.
+    dialog->passwordField()->setText(std::string(64, 'a'));
+    EXPECT_TRUE(dialog->canJoin());
+    dialog->passwordField()->setText(std::string(64, 'z'));
+    EXPECT_FALSE(dialog->canJoin());
+    // WEP keys come in four lengths, the longer two hexadecimal; an open network needs none.
     dialog->securityBox()->setCurrentIndex(1);
     EXPECT_FALSE(dialog->canJoin());
     dialog->passwordField()->setText("abcde");
     EXPECT_TRUE(dialog->canJoin());
+    dialog->passwordField()->setText("0123456789");
+    EXPECT_TRUE(dialog->canJoin());
+    dialog->passwordField()->setText("garden key");
+    EXPECT_FALSE(dialog->canJoin());
     dialog->securityBox()->setCurrentIndex(0);
     dialog->passwordField()->setText("");
     EXPECT_TRUE(dialog->canJoin());

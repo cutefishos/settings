@@ -4,6 +4,7 @@
 #include "pages/network/wlan/newnetworkdialog.h"
 
 #include <algorithm>
+#include <cctype>
 
 #include "ui/combo_box.h"
 #include "ui/dialog_window.h"
@@ -110,18 +111,23 @@ std::string NewNetworkDialog::security() const
     return index >= 0 && size_t(index) < std::size(kSecurities) ? kSecurities[index].value : "";
 }
 
-// What NetworkManager accepts for each kind of key.
+static bool isHex(const std::string& text)
+{
+    return std::all_of(text.begin(), text.end(), [](char c) { return std::isxdigit(static_cast<unsigned char>(c)); });
+}
+
+// What NetworkManager accepts for each kind of key: a passphrase, or the key
+// itself in hexadecimal.
 bool NewNetworkDialog::passwordValid(const std::string& password) const
 {
     const std::string type = security();
     if (type == "none")
         return true;
-    if (type == "wep") {
-        const size_t length = password.size();
-        return length == 5 || length == 10 || length == 13 || length == 26;
-    }
+    const size_t length = password.size();
+    if (type == "wep")
+        return length == 5 || length == 13 || ((length == 10 || length == 26) && isHex(password));
     if (type == "wpa" || type == "wpa2-wpa3" || type == "wpa3")
-        return password.size() >= 8 && password.size() <= 64;
+        return (length >= 8 && length <= 63) || (length == 64 && isHex(password));
     return !password.empty();
 }
 
