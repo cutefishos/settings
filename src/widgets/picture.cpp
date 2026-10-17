@@ -56,10 +56,18 @@ void Picture::paint(Painter& painter)
     if (m_path.empty())
         return;
     const RectF bounds = localRect();
+    // On the pixels a rounded fill or clip of the same rect snaps to, so a
+    // glyph stays centred on its tile at fractional scales.
+    const Rect device = painter.snappedRect(bounds);
+    const double scale = painter.scale();
+    const PointF offset = painter.offset();
     painter.save();
     if (m_radius > 0)
         painter.clipRoundedRect(bounds, m_radius, themeCorners());
-    painter.drawSvg(m_path, bounds, m_tint);
+    painter.drawSvg(m_path,
+                    {device.x / scale - offset.x, device.y / scale - offset.y, device.width / scale,
+                     device.height / scale},
+                    m_tint);
     painter.restore();
 }
 
