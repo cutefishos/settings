@@ -159,6 +159,44 @@ TEST(Accounts, CardUnfoldsToItsDetails)
     EXPECT_GT(card->geometry().height, 84 + 12 + 17 + 12 + 36 + 12 + 36 - 1);
 }
 
+TEST(Accounts, HoveringThePictureDimsItUnderAPencil)
+{
+    auto account = std::make_shared<accounts::UserAccount>("/org/freedesktop/Accounts/User1000", nullptr);
+    Window window;
+    window.setScale(1.5);
+    auto root = std::make_unique<Column>();
+    root->setMargins({24, 56, 24, 24});
+    UserCard* card = root->addChild<UserCard>(account, 1000);
+    window.setContentView(std::move(root));
+    window.resize({670, 600});
+    window.grab(1'000'000'000);
+    // The card's column, its first row, the header, the header's row, and
+    // the picture first in it.
+    View* avatar = card->children()[0]->children()[0]->children()[0]->children()[0]->children()[0].get();
+    Label* initial = find<Label>(avatar);
+    ASSERT_TRUE(initial);
+    const PointF middle = centre(avatar);
+    // Inside the circle, above both the initial and the pencil.
+    const PointF probe {middle.x, middle.y - 18};
+    const auto lightness = [&](const Image& image) {
+        const Color pixel = image.pixel(int(probe.x * 1.5), int(probe.y * 1.5));
+        return pixel.r + pixel.g + pixel.b;
+    };
+    const int plain = lightness(window.grab(1'000'000'000));
+
+    TestInput::movePointer(window, middle);
+    window.grab(1'050'000'000);
+    const Image hovered = window.grab(1'400'000'000);
+    EXPECT_LT(lightness(hovered), plain);
+    // The initial makes way for the pencil.
+    EXPECT_EQ(initial->opacity(), 0);
+
+    TestInput::leavePointer(window);
+    window.grab(1'450'000'000);
+    EXPECT_EQ(lightness(window.grab(1'800'000'000)), plain);
+    EXPECT_EQ(initial->opacity(), 1);
+}
+
 TEST(Accounts, ThePictureReplacesTheInitialOnceDecoded)
 {
     auto account = std::make_shared<accounts::UserAccount>("/org/freedesktop/Accounts/User1000", nullptr);

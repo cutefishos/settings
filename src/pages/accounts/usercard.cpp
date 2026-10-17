@@ -10,6 +10,7 @@
 #include <unicode/unistr.h>
 #include <unicode/utf16.h>
 
+#include "base/transform.h"
 #include "ui/animation.h"
 #include "ui/color_provider.h"
 #include "ui/icon.h"
@@ -18,6 +19,7 @@
 #include "ui/layout.h"
 #include "ui/cell_layout.h"
 #include "ui/painter.h"
+#include "ui/path.h"
 #include "ui/theme.h"
 #include "ui/window.h"
 #include "widgets/colors.h"
@@ -111,6 +113,8 @@ private:
 
 // The account's picture in a circle, or its initial, as on the lock screen,
 // for an account with no picture: the icon theme has no avatar that size.
+// Hovering dims it under a pencil, as the lock screen's avatar shows its
+// swap arrows, since a click changes the picture.
 class UserAvatar : public View
 {
 public:
@@ -127,6 +131,7 @@ public:
             requestLayout();
             requestPaint();
         };
+        m_overlay = addChild<EditOverlay>(this);
     }
 
     void setUserName(const std::string& name)
@@ -167,6 +172,7 @@ protected:
         m_initial->setGeometry({rounding::centeredStart(kSize, size.width), rounding::centeredStart(kSize, size.height), size.width, size.height});
         m_initial->setVisible(!hasPicture());
         m_picture->setGeometry(localRect());
+        m_overlay->setGeometry(localRect());
     }
 
     void paint(Painter& painter) override
@@ -183,11 +189,93 @@ protected:
             onClicked();
     }
 
+    void pointerEnter() override { setHovered(true); }
+    void pointerLeave() override { setHovered(false); }
+
 private:
+    class EditOverlay : public View
+    {
+    public:
+        explicit EditOverlay(UserAvatar* avatar)
+            : m_avatar(avatar)
+        {
+        }
+
+    protected:
+        void paint(Painter& painter) override
+        {
+            const double t = m_avatar->m_hover;
+            if (t <= 0)
+                return;
+            painter.fillEllipse(localRect(), Color {0, 0, 0, 255}.withAlpha(0.35 * t));
+            // The pencil on its 24 by 24 grid, drawn 18 across and centred.
+            constexpr double kIcon = 18;
+            Path pencil;
+            pencil.moveTo(13.26, 3.59997);
+            pencil.lineTo(5.04997, 12.29);
+            pencil.cubicTo(4.73997, 12.62, 4.43997, 13.27, 4.37997, 13.72);
+            pencil.lineTo(4.00997, 16.96);
+            pencil.cubicTo(3.87997, 18.13, 4.71997, 18.93, 5.87997, 18.73);
+            pencil.lineTo(9.09997, 18.18);
+            pencil.cubicTo(9.54997, 18.1, 10.18, 17.77, 10.49, 17.43);
+            pencil.lineTo(18.7, 8.73997);
+            pencil.cubicTo(20.12, 7.23997, 20.76, 5.52997, 18.55, 3.43997);
+            pencil.cubicTo(16.35, 1.36997, 14.68, 2.09997, 13.26, 3.59997);
+            pencil.close();
+            pencil.moveTo(11.89, 5.05005);
+            pencil.cubicTo(12.32, 7.81005, 14.56, 9.92005, 17.34, 10.2);
+            pencil.moveTo(3, 22);
+            pencil.lineTo(21, 22);
+            const double scale = kIcon / 24;
+            const base::AffineTransform place(scale, 0, 0, scale, rounding::centeredStart(geometry().width, kIcon),
+                                        rounding::centeredStart(geometry().height, kIcon));
+            painter.strokePath(pencil.transformed(place), Color {255, 255, 255, 255}.withAlpha(t), 1.5,
+                               LineCap::Round, LineJoin::Round);
+        }
+
+    private:
+        UserAvatar* m_avatar;
+    };
+
     bool hasPicture() const { return m_picture->status() == ImageView::Status::Ready; }
+
+    void setHovered(bool hovered)
+    {
+        Window* window = this->window();
+        if (!window) {
+            setHover(hovered ? 1 : 0);
+            return;
+        }
+        if (!m_hoverAnimation) {
+            m_hoverAnimation = std::make_unique<Animation>(window);
+            m_hoverAnimation->setDuration(std::chrono::milliseconds(80));
+            m_hoverAnimation->setEasing(Animation::Easing::OutQuad);
+            m_hoverAnimation->onUpdate = [this](double value) {
+                setHover(m_hoverFrom + (m_hoverTarget - m_hoverFrom) * value);
+            };
+        }
+        // From wherever it is now, as a Behavior retargets.
+        m_hoverFrom = m_hover;
+        m_hoverTarget = hovered ? 1 : 0;
+        m_hoverAnimation->stop();
+        m_hoverAnimation->start();
+    }
+
+    void setHover(double value)
+    {
+        m_hover = value;
+        // A picture shows through the dim; an initial would cross the pencil.
+        m_initial->setOpacity(1 - value);
+        m_overlay->requestPaint();
+    }
 
     Label* m_initial;
     ImageView* m_picture;
+    EditOverlay* m_overlay;
+    std::unique_ptr<Animation> m_hoverAnimation;
+    double m_hover = 0;
+    double m_hoverFrom = 0;
+    double m_hoverTarget = 0;
 };
 
 } // namespace
