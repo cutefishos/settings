@@ -746,13 +746,6 @@ protected:
     {
         area->setGeometry(localRect().adjusted(metrics::m, metrics::m, -metrics::m, -metrics::m));
     }
-
-    void paint(Painter& painter) override
-    {
-        const Theme& theme = Theme::current();
-        painter.fillRoundedRect(localRect(), theme.bigRadius, color(SettingsColor::TimeZoneMapBackground),
-                                panelCorners());
-    }
 };
 
 } // namespace
@@ -800,10 +793,12 @@ public:
 
         m_column = addChild<ColumnLayout>();
         m_column->setSpacing(metrics::dialogSpacing);
-        m_column->setPadding({metrics::dialogPadding, 0, metrics::dialogPadding, metrics::dialogPadding});
+        m_column->setPadding({0, 0, 0, metrics::dialogPadding});
         m_band = m_column->addChild<Band>();
         // Shares the title bar's band, centred on the close button.
-        m_band->setLayoutHints({.fillWidth = true, .margins = {0, 0, 0, metrics::s - metrics::dialogSpacing}});
+        m_band->setLayoutHints({.fillWidth = true,
+                                .margins = {metrics::dialogPadding, 0, metrics::dialogPadding,
+                                            metrics::s - metrics::dialogSpacing}});
         search = m_band->search;
         m_map = m_column->addChild<MapCard>(dialog);
         m_map->setLayoutHints({.fillWidth = true, .fillHeight = true});
@@ -813,7 +808,7 @@ public:
         // changes height.
         RowLayout* bar = m_column->addChild<RowLayout>();
         bar->setSpacing(metrics::l);
-        bar->setLayoutHints({.fillWidth = true});
+        bar->setLayoutHints({.fillWidth = true, .margins = {metrics::dialogPadding, 0, metrics::dialogPadding, 0}});
         m_time = bar->addChild<StyledLabel>();
         m_time->setFontSize(26);
         m_time->setWeight(300);

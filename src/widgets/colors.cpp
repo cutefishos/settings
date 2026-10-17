@@ -29,7 +29,6 @@ void addSettingsColors(ColorMixer& mixer, const Theme& theme)
     mixer[SettingsColor::PreferredLanguageTag] = withAlpha(ColorId::Highlight, dark ? 0.2 : 0.12);
     mixer[SettingsColor::WallpaperPlaceholder] = dark ? kWhite : Color::rgb(0xC8CAD5);
 
-    mixer[SettingsColor::TimeZoneMapBackground] = dark ? kWhite.withAlpha(0.04) : kBlack.withAlpha(0.03);
     mixer[SettingsColor::TimeZoneMapPill] = dark ? kBlack.withAlpha(0.6) : kWhite.withAlpha(0.9);
 
     mixer[SettingsColor::BatteryChipBackground] = dark ? ColorId::AlternateBackground : ColorId::Background;

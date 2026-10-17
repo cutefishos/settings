@@ -23,7 +23,6 @@ enum class SettingsColor : uint16_t {
     PreferredLanguageTag,
     WallpaperPlaceholder,
 
-    TimeZoneMapBackground,
     TimeZoneMapPill,
 
     BatteryChipBackground,
