@@ -101,10 +101,12 @@ protected:
     {
         const Color color = Theme::current().disabledText;
         const double x = rounding::centeredStart(geometry().width, 14);
-        const double y = rounding::centeredStart(geometry().height, 9);
-        // One device pixel thick at any scale, as FishUI's snapped lines are.
+        const double scale = painter.scale();
+        const int thickness = std::max(1, int(std::lround(1.2 * scale)));
+        const double blockHeight = (std::lround(8 * scale) + thickness) / scale;
+        const double y = (std::floor((geometry().height - blockHeight) / 2 * scale) + 0.25) / scale;
         for (int line = 0; line < 3; ++line)
-            painter.drawHorizontalLine(x, y + line * 4, 14, color);
+            painter.drawHorizontalLine(x, y + line * 4, 14, color, thickness);
     }
 
     void pointerPress(const PointerEvent& event) override
