@@ -50,18 +50,28 @@ public:
 
         Card* sliders = content()->addChild<Card>(Card::Style::List);
         SliderRow* size = sliders->addChild<SliderRow>("Size");
+        size->setName("dock:size");
         size->setCaptions("Small", "Huge");
         // The value is the icon size itself; the dock derives its paddings
         // from it (54 is the design baseline).
         size->setRange(32, 128);
         size->setStepSize(1);
         size->setValue(m_settings.iconSize());
-        size->onMoved = [this](double value) { m_settings.setIconSize(int(std::round(value))); };
+        // The dock reports no changes back, so the row learns the new value
+        // here; otherwise it returns to the old one once the move settles.
+        size->onMoved = [this, size](double value) {
+            m_settings.setIconSize(int(std::round(value)));
+            size->setValue(m_settings.iconSize());
+        };
         SliderRow* glass = sliders->addChild<SliderRow>("Glass effect");
+        glass->setName("dock:glass");
         glass->setCaptions("More clear", "More tinted");
         glass->setRange(0, 1);
         glass->setValue(m_settings.glassTint());
-        glass->onMoved = [this](double value) { m_settings.setGlassTint(value); };
+        glass->onMoved = [this, glass](double value) {
+            m_settings.setGlassTint(value);
+            glass->setValue(m_settings.glassTint());
+        };
 
         Section* mode = content()->addChild<Section>("Display mode");
         auto* visibility = mode->addChild<SegmentedControl>(
