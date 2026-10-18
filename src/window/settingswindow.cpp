@@ -398,7 +398,7 @@ void SettingsWindow::switchToIndex(int index)
     navigate(entries[size_t(index)]->id, entries[size_t(index)]->id);
 }
 
-void SettingsWindow::switchToPage(const std::string& name)
+void SettingsWindow::switchToPage(const std::string& name, const std::string& activationToken)
 {
     const PageInfo* page = nullptr;
     for (const PageInfo& info : pages()) {
@@ -421,13 +421,13 @@ void SettingsWindow::switchToPage(const std::string& name)
     }
     // A minimized window is shown again.
     if (m_revealed)
-        m_window->activate();
+        m_window->activate(activationToken);
 }
 
-void SettingsWindow::joinWifi(const std::string& accessPoint)
+void SettingsWindow::joinWifi(const std::string& accessPoint, const std::string& activationToken)
 {
     m_pendingWifiJoin = accessPoint;
-    switchToPage("wlan");
+    switchToPage("wlan", activationToken);
     wifiJoinRequested.emit();
 }
 

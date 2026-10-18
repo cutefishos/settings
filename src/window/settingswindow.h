@@ -49,9 +49,11 @@ public:
     cutefish::base::Signal<> revealedChanged;
 
     // A sidebar page or a named sub page, as -m and switchToPage() name them.
-    void switchToPage(const std::string& name);
+    // A shown window comes forward, with the activation token another
+    // instance was started with.
+    void switchToPage(const std::string& name, const std::string& activationToken = {});
     // Opens the Wi-Fi page to join an access point's enterprise network.
-    void joinWifi(const std::string& accessPoint);
+    void joinWifi(const std::string& accessPoint, const std::string& activationToken = {});
     // Taken by the Wi-Fi page once it can ask for the network.
     std::string takePendingWifiJoin();
     // After joinWifi() switched pages, also when the Wi-Fi page was already

@@ -73,17 +73,22 @@ int main(int argc, char** argv)
     base::dbus::Connection* bus = application.sessionBus();
     if (bus && !bus->requestName(kService)) {
         base::dbus::Proxy existing(bus, kService, kPath, kService);
+        const std::string token = application.takeActivationToken();
         if (!accessPoint.empty())
-            existing.call("joinWifi", accessPoint);
+            existing.call("joinWifi", accessPoint, token);
         else
-            existing.call("switchToPage", module);
+            existing.call("switchToPage", module, token);
         return 0;
     }
 
     settings::SettingsWindow window;
     base::dbus::Object object(bus, kPath, kService);
-    object.addMethod("switchToPage", [&window](const std::string& name) { window.switchToPage(name); });
-    object.addMethod("joinWifi", [&window](const std::string& name) { window.joinWifi(name); });
+    object.addMethod("switchToPage", [&window](const std::string& name, const std::string& token) {
+        window.switchToPage(name, token);
+    });
+    object.addMethod("joinWifi", [&window](const std::string& name, const std::string& token) {
+        window.joinWifi(name, token);
+    });
     if (bus)
         object.publish();
 
