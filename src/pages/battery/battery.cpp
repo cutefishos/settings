@@ -132,7 +132,7 @@ void Battery::setPercentEnabled(bool enabled)
     if (m_mock)
         return;
 
-    dbus::Proxy(dbus::Connection::session(), "com.cutefish.Statusbar", "/Statusbar", "com.cutefish.Statusbar")
+    dbus::Proxy(dbus::Connection::session(), "org.cutefish.Statusbar", "/Statusbar", "org.cutefish.Statusbar")
             .send("setBatteryPercentage", enabled);
 }
 

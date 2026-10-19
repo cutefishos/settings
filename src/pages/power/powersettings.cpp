@@ -25,8 +25,8 @@ static int readTimeout(const Settings& settings, const std::string& key, int fal
 }
 
 PowerSettings::PowerSettings()
-    : m_service(dbus::Connection::session(), "com.cutefish.Services", "/com/cutefish/Services/Power",
-                "com.cutefish.Services.Power")
+    : m_service(dbus::Connection::session(), "org.cutefish.Services", "/org/cutefish/Services/Power",
+                "org.cutefish.Services.Power")
 {
     const Settings settings(paths::cutefishConfig("services"));
     m_batteryScreenOff = readTimeout(settings, "Power/BatteryScreenOff", kDefaultBatteryScreenOff);

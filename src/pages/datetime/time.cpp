@@ -14,7 +14,7 @@ namespace settings {
 
 TimeSettings::TimeSettings(timedate::TimeDate& timeDate)
     : m_timeDate(timeDate)
-    , m_statusBar(dbus::Connection::session(), "com.cutefish.Statusbar", "/Statusbar", "com.cutefish.Statusbar")
+    , m_statusBar(dbus::Connection::session(), "org.cutefish.Statusbar", "/Statusbar", "org.cutefish.Statusbar")
     , m_canNtp(timeDate.canNtp())
     , m_useNtp(timeDate.ntp())
 {

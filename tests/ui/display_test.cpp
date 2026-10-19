@@ -175,7 +175,7 @@ private:
         uint64_t revision = 1;
         std::string previewToken;
 
-        dbus::Object display(bus.get(), "/com/cutefish/DisplayConfig1", "com.cutefish.DisplayConfig1");
+        dbus::Object display(bus.get(), "/org/cutefish/DisplayConfig1", "org.cutefish.DisplayConfig1");
         display.addMethod("GetState", [&] {
             return std::make_tuple(std::string("test"), std::string("seat0"), uint64_t(1), revision, physical,
                                    logicals, std::vector<Placement>(), previewToken,
@@ -224,10 +224,10 @@ private:
         display.addSignal("OperationFinished", "sbbusastt");
         display.addSignal("PreviewChanged", "sttt");
         display.publish();
-        m_owned = bus->requestName("com.cutefish.DisplayConfig");
+        m_owned = bus->requestName("org.cutefish.DisplayConfig");
 
         bool enabled = false;
-        dbus::Object nightLight(services.get(), "/com/cutefish/Services/NightLight", "com.cutefish.Services.NightLight");
+        dbus::Object nightLight(services.get(), "/org/cutefish/Services/NightLight", "org.cutefish.Services.NightLight");
         nightLight.addProperty("enabled", [&] { return enabled; });
         nightLight.addProperty("temperature", [] { return 0.5; });
         nightLight.addProperty("schedule", [this] { return locked(m_schedule); });
@@ -257,14 +257,14 @@ private:
 
         if (!panel.devicePath.empty())
             m_brightnessDisplays = {std::filesystem::path(panel.devicePath).filename().string() + "-eDP-1"};
-        dbus::Object brightness(services.get(), "/com/cutefish/Services/Brightness", "com.cutefish.Services.Brightness");
+        dbus::Object brightness(services.get(), "/org/cutefish/Services/Brightness", "org.cutefish.Services.Brightness");
         brightness.addMethod("displays", [this] { return locked(m_brightnessDisplays); });
         brightness.addMethod("displayBrightness", [](const std::string&) { return int32_t(70); });
         brightness.addMethod("setDisplayBrightness", [](const std::string&, int32_t) {});
         brightness.addSignal("displaysChanged", "");
         brightness.addSignal("displayBrightnessChanged", "si");
         brightness.publish();
-        m_owned = services->requestName("com.cutefish.Services") && m_owned;
+        m_owned = services->requestName("org.cutefish.Services") && m_owned;
 
         ready.set_value();
         loop.run();

@@ -8,7 +8,7 @@
 
 namespace settings {
 
-// Client of the compositor's com.cutefish.Touchpad1 service. Without the
+// Client of the compositor's org.cutefish.Touchpad1 service. Without the
 // service every value is the compositor's default.
 class Touchpad
 {

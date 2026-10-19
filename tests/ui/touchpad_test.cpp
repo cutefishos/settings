@@ -21,7 +21,7 @@ using settings::testing::waitFor;
 
 namespace {
 
-// The compositor's com.cutefish.Touchpad1 as a stand-in, for a pad with
+// The compositor's org.cutefish.Touchpad1 as a stand-in, for a pad with
 // physical buttons: no choice of secondary click.
 struct FakeTouchpad
 {
@@ -36,7 +36,7 @@ struct FakeTouchpad
 
 static std::shared_ptr<void> serve(dbus::Connection& bus, FakeTouchpad& fake)
 {
-    auto object = std::make_shared<dbus::Object>(&bus, "/com/cutefish/Touchpad1", "com.cutefish.Touchpad1");
+    auto object = std::make_shared<dbus::Object>(&bus, "/org/cutefish/Touchpad1", "org.cutefish.Touchpad1");
     object->addProperty("available", [] { return true; });
     object->addProperty("enabled", [] { return true; });
     object->addProperty("disableWithMouse", [] { return false; });
@@ -86,7 +86,7 @@ struct TouchpadTest : ::testing::Test
     {
         if (!settings::testing::hasSessionBus())
             GTEST_SKIP() << "no session bus";
-        service.emplace("com.cutefish.Touchpad1", [this](dbus::Connection& bus) { return serve(bus, fake); });
+        service.emplace("org.cutefish.Touchpad1", [this](dbus::Connection& bus) { return serve(bus, fake); });
         ASSERT_TRUE(service->start());
     }
 
@@ -95,7 +95,7 @@ struct TouchpadTest : ::testing::Test
         if (!service)
             return;
         service.reset();
-        settings::testing::waitForNameGone("com.cutefish.Touchpad1");
+        settings::testing::waitForNameGone("org.cutefish.Touchpad1");
     }
 
     FakeTouchpad fake;

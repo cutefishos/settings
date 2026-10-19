@@ -24,7 +24,7 @@ using settings::testing::waitFor;
 
 namespace {
 
-// The compositor's com.cutefish.Mouse1 as a stand-in: its settings outlive a
+// The compositor's org.cutefish.Mouse1 as a stand-in: its settings outlive a
 // restart of the service, as the compositor keeps them in a file.
 struct FakeMouse
 {
@@ -59,7 +59,7 @@ static void addSetting(dbus::Object& object, FakeMouse& fake, const std::string&
 
 static std::shared_ptr<void> serve(dbus::Connection& bus, FakeMouse& fake)
 {
-    auto object = std::make_shared<dbus::Object>(&bus, "/com/cutefish/Mouse1", "com.cutefish.Mouse1");
+    auto object = std::make_shared<dbus::Object>(&bus, "/org/cutefish/Mouse1", "org.cutefish.Mouse1");
     object->addProperty("available", [] { return true; });
     object->addSignal("availableChanged", "");
     addSetting(*object, fake, "leftHanded", "setLeftHanded", &FakeMouse::leftHanded);
@@ -79,7 +79,7 @@ struct MouseTest : ::testing::Test
     {
         if (!settings::testing::hasSessionBus())
             GTEST_SKIP() << "no session bus";
-        service.emplace("com.cutefish.Mouse1", [this](dbus::Connection& bus) { return serve(bus, fake); });
+        service.emplace("org.cutefish.Mouse1", [this](dbus::Connection& bus) { return serve(bus, fake); });
     }
 
     void TearDown() override
@@ -87,7 +87,7 @@ struct MouseTest : ::testing::Test
         if (!service)
             return;
         service.reset();
-        settings::testing::waitForNameGone("com.cutefish.Mouse1");
+        settings::testing::waitForNameGone("org.cutefish.Mouse1");
     }
 
     FakeMouse fake;

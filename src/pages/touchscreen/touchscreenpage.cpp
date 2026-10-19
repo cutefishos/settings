@@ -19,13 +19,13 @@ namespace settings {
 
 namespace {
 
-// The compositor's com.cutefish.Touchscreen1 service: the touch screens by
+// The compositor's org.cutefish.Touchscreen1 service: the touch screens by
 // name, and those turned off.
 class Touchscreen
 {
 public:
     Touchscreen()
-        : m_service("com.cutefish.Touchscreen1")
+        : m_service("org.cutefish.Touchscreen1")
     {
     }
 

@@ -14,7 +14,7 @@ using namespace cutefish::base;
 namespace settings {
 
 DockSettings::DockSettings()
-    : m_dock(dbus::Connection::session(), "com.cutefish.Dock", "/Dock", "com.cutefish.Dock")
+    : m_dock(dbus::Connection::session(), "org.cutefish.Dock", "/Dock", "org.cutefish.Dock")
 {
     const Settings shell(paths::cutefishConfig("shell"));
     m_iconSize = int(shell.intValue("Dock/IconSize"));

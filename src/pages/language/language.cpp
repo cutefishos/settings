@@ -21,9 +21,9 @@ using namespace cutefish::base;
 
 namespace settings {
 
-static constexpr const char* kService = "com.cutefish.Services";
-static constexpr const char* kPath = "/com/cutefish/Services/Language";
-static constexpr const char* kInterface = "com.cutefish.Services.Language";
+static constexpr const char* kService = "org.cutefish.Services";
+static constexpr const char* kPath = "/org/cutefish/Services/Language";
+static constexpr const char* kInterface = "org.cutefish.Services.Language";
 
 static std::string displayName(const icu::Locale& locale, const icu::Locale& displayLocale)
 {

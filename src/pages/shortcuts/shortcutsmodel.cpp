@@ -94,7 +94,7 @@ static const std::map<uint32_t, uint32_t> kServiceKeysyms = {
 };
 
 ShortcutsModel::ShortcutsModel()
-    : m_service("com.cutefish.Shortcuts1")
+    : m_service("org.cutefish.Shortcuts1")
 {
     // The service's acceleratorsChanged, and its coming and going, end up here.
     m_serviceChanged = m_service.changed.connect([this] { reload(); });

@@ -11,7 +11,7 @@
 
 using namespace cutefish;
 
-static constexpr const char* kService = "com.cutefish.SettingsUI";
+static constexpr const char* kService = "org.cutefish.SettingsUI";
 static constexpr const char* kPath = "/SettingsUI";
 
 static void printHelp(const char* program)

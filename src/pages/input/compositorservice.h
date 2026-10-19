@@ -14,15 +14,15 @@
 
 namespace settings {
 
-// One of the compositor's input services, such as com.cutefish.Keyboard1:
+// One of the compositor's input services, such as org.cutefish.Keyboard1:
 // its properties, read when it appears and again after each of its change
 // signals, and calls to its setters. The first read blocks, so a page shows
 // the service's values from its first frame.
 class CompositorService
 {
 public:
-    // The object path follows the name: com.cutefish.Mouse1 lives at
-    // /com/cutefish/Mouse1, and its interface has the same name.
+    // The object path follows the name: org.cutefish.Mouse1 lives at
+    // /org/cutefish/Mouse1, and its interface has the same name.
     explicit CompositorService(std::string name);
     ~CompositorService();
 

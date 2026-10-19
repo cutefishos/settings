@@ -10,9 +10,9 @@ using namespace cutefish::base;
 
 namespace settings {
 
-static constexpr const char* kService = "com.cutefish.Services";
-static constexpr const char* kPath = "/com/cutefish/Services/Brightness";
-static constexpr const char* kInterface = "com.cutefish.Services.Brightness";
+static constexpr const char* kService = "org.cutefish.Services";
+static constexpr const char* kPath = "/org/cutefish/Services/Brightness";
+static constexpr const char* kInterface = "org.cutefish.Services.Brightness";
 
 Brightness::Brightness()
     : m_service(dbus::Connection::session(), kService, kPath, kInterface)

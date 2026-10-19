@@ -11,7 +11,7 @@
 
 namespace settings {
 
-// Client of the compositor's com.cutefish.InputMethod1 service.
+// Client of the compositor's org.cutefish.InputMethod1 service.
 class InputMethod
 {
 public:

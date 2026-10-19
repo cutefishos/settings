@@ -17,7 +17,7 @@ class Value;
 namespace settings {
 
 // The keyboard shortcuts page's view of the compositor's
-// com.cutefish.Shortcuts1 service. The compositor owns the bindings and the
+// org.cutefish.Shortcuts1 service. The compositor owns the bindings and the
 // defaults; this side owns the order the actions are listed in, their
 // categories and their descriptions, the way
 // ash/webui/shortcut_customization_ui's layout table does for the ChromeOS

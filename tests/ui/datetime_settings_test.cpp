@@ -27,7 +27,7 @@ struct TimeSettingsFixture : ::testing::Test
     {
         dbus::Connection* bus = dbus::Connection::session();
         const dbus::Proxy daemon(bus, "org.freedesktop.DBus", "/org/freedesktop/DBus", "org.freedesktop.DBus");
-        if (!bus || daemon.call("NameHasOwner", std::string("com.cutefish.Statusbar")).value<bool>().value_or(true))
+        if (!bus || daemon.call("NameHasOwner", std::string("org.cutefish.Statusbar")).value<bool>().value_or(true))
             GTEST_SKIP() << "Needs a private session bus: run the tests in dbus-run-session";
 
         timedated = std::make_unique<ServiceThread>("org.freedesktop.timedate1", [this](dbus::Connection& bus) {
@@ -49,8 +49,8 @@ struct TimeSettingsFixture : ::testing::Test
             object->publish();
             return std::shared_ptr<void>(object);
         });
-        statusBar = std::make_unique<ServiceThread>("com.cutefish.Statusbar", [this](dbus::Connection& bus) {
-            auto object = std::make_shared<dbus::Object>(&bus, "/Statusbar", "com.cutefish.Statusbar");
+        statusBar = std::make_unique<ServiceThread>("org.cutefish.Statusbar", [this](dbus::Connection& bus) {
+            auto object = std::make_shared<dbus::Object>(&bus, "/Statusbar", "org.cutefish.Statusbar");
             object->addMethod("setTwentyFourTime", [this](bool enabled) { twentyFour = enabled ? 1 : 0; });
             object->publish();
             return std::shared_ptr<void>(object);
@@ -65,7 +65,7 @@ struct TimeSettingsFixture : ::testing::Test
         if (statusBar) {
             statusBar->stop();
             timedated->stop();
-            settings::testing::waitForNameGone("com.cutefish.Statusbar");
+            settings::testing::waitForNameGone("org.cutefish.Statusbar");
             settings::testing::waitForNameGone("org.freedesktop.timedate1");
         }
     }

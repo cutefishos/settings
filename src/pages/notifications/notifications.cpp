@@ -10,8 +10,8 @@ using namespace cutefish::base;
 namespace settings {
 
 Notifications::Notifications()
-    : m_shell(dbus::Connection::session(), "com.cutefish.Notification", "/Notification",
-              "com.cutefish.Notification")
+    : m_shell(dbus::Connection::session(), "org.cutefish.Notification", "/Notification",
+              "org.cutefish.Notification")
 {
     m_doNotDisturb = m_shell.property<bool>("doNotDisturb").value_or(false);
     m_doNotDisturbMatch = m_shell.onSignal("doNotDisturbChanged", [this](const dbus::Message&) {

@@ -6,7 +6,7 @@
 namespace settings {
 
 Mouse::Mouse()
-    : m_service("com.cutefish.Mouse1")
+    : m_service("org.cutefish.Mouse1")
 {
 }
 

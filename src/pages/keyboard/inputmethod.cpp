@@ -37,7 +37,7 @@ static InputMethod::Method describe(const std::string& id)
 }
 
 InputMethod::InputMethod()
-    : m_service("com.cutefish.InputMethod1")
+    : m_service("org.cutefish.InputMethod1")
 {
     refreshMethods();
     m_wasAvailable = m_service.isAvailable();

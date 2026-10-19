@@ -8,7 +8,7 @@
 
 namespace settings {
 
-// Client of the compositor's com.cutefish.Mouse1 service.
+// Client of the compositor's org.cutefish.Mouse1 service.
 class Mouse
 {
 public:

@@ -123,7 +123,7 @@ const std::vector<KeyboardLayout>& keyboardLayouts()
 }
 
 Keyboard::Keyboard()
-    : m_service("com.cutefish.Keyboard1")
+    : m_service("org.cutefish.Keyboard1")
 {
 }
 

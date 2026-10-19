@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 // ShortcutsModel against a stand-in for the compositor's
-// com.cutefish.Shortcuts1 service, answering in the JSON the real one
+// org.cutefish.Shortcuts1 service, answering in the JSON the real one
 // produces.
 
 #include <gtest/gtest.h>
@@ -76,7 +76,7 @@ struct FakeShortcuts
 
 static std::shared_ptr<void> serve(dbus::Connection& bus, FakeShortcuts& fake)
 {
-    auto object = std::make_shared<dbus::Object>(&bus, "/com/cutefish/Shortcuts1", "com.cutefish.Shortcuts1");
+    auto object = std::make_shared<dbus::Object>(&bus, "/org/cutefish/Shortcuts1", "org.cutefish.Shortcuts1");
     object->addProperty("shortcutConvention", [&fake] {
         std::lock_guard guard(fake.mutex);
         return fake.convention;
@@ -136,7 +136,7 @@ struct ShortcutsModelTest : ::testing::Test
     {
         if (!settings::testing::hasSessionBus())
             GTEST_SKIP() << "no session bus";
-        service.emplace("com.cutefish.Shortcuts1", [this](dbus::Connection& bus) { return serve(bus, fake); });
+        service.emplace("org.cutefish.Shortcuts1", [this](dbus::Connection& bus) { return serve(bus, fake); });
     }
 
     void TearDown() override
@@ -144,7 +144,7 @@ struct ShortcutsModelTest : ::testing::Test
         if (!service)
             return;
         service.reset();
-        settings::testing::waitForNameGone("com.cutefish.Shortcuts1");
+        settings::testing::waitForNameGone("org.cutefish.Shortcuts1");
     }
 
     FakeShortcuts fake;

@@ -11,7 +11,7 @@
 
 namespace settings {
 
-// The compositor's com.cutefish.HotCorners1: what each screen corner runs.
+// The compositor's org.cutefish.HotCorners1: what each screen corner runs.
 class HotCorners
 {
 public:
