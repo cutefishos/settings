@@ -54,7 +54,7 @@ public:
     cutefish::base::Signal<> savingChanged;
     cutefish::base::Signal<> errorMessageChanged;
 
-    // The language generated in /etc/locale.gen, until the user picks one.
+    // The system's default language, until the user picks one.
     static std::string systemLanguage();
     static std::string defaultConfigPath();
     // From cutefish-services' settings, most preferred first.

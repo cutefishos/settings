@@ -7,12 +7,10 @@
 #include <map>
 #include <memory>
 #include <mutex>
-#include <sstream>
 
 #include <unicode/locid.h>
 #include <unicode/unistr.h>
 
-#include "base/file.h"
 #include "base/i18n.h"
 #include "base/locale.h"
 #include "base/paths.h"
@@ -53,18 +51,7 @@ static std::string trimmed(const std::string& text)
 
 std::string Language::systemLanguage()
 {
-    std::string language;
-    if (const auto contents = file::read("/etc/locale.gen")) {
-        std::istringstream lines(*contents);
-        std::string line;
-        while (std::getline(lines, line)) {
-            if (line.starts_with('#') || trimmed(line).empty())
-                continue;
-            const std::string first = line.substr(0, line.find(' '));
-            language = first.substr(0, first.find('.'));
-        }
-    }
-    return language.empty() ? "en_US" : language;
+    return Locale::systemLanguage();
 }
 
 std::string Language::defaultConfigPath()
