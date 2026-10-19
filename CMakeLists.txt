@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 project(cutefish-settings
-    VERSION 1.0.0
+    VERSION 1.0
     LANGUAGES CXX
 )
 
