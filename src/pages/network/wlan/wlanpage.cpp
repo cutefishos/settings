@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <chrono>
 
+#include "base/i18n.h"
 #include "base/timer.h"
 #include "cutefish/networkmanager/connections.h"
 #include "cutefish/networkmanager/handler.h"
@@ -28,6 +29,7 @@
 
 using namespace cutefish::ui;
 using namespace std::chrono_literals;
+using cutefish::i18n::tr;
 namespace nm = cutefish::networkmanager;
 
 namespace settings::network {
@@ -48,7 +50,7 @@ class WlanPage : public Page
 {
 public:
     explicit WlanPage(SettingsWindow& window)
-        : Page(window, "Wi-Fi")
+        : Page(window, tr("Wi-Fi"))
         , m_newNetwork(window)
     {
         content()->setSpacing(metrics::sectionSpacing);
@@ -69,7 +71,7 @@ public:
         m_view->setSpacing(metrics::sectionSpacing);
         m_view->setLayoutHints({.fillWidth = true});
         m_mainCard = m_view->addChild<Card>(Card::Style::List);
-        m_switch = m_mainCard->addChild<SwitchRow>("Wi-Fi");
+        m_switch = m_mainCard->addChild<SwitchRow>(tr("Wi-Fi"));
         m_switch->setName("wlan:switch");
         m_switch->onToggled = [this](bool checked) { wirelessToggled(checked); };
         m_currentRows = std::make_unique<KeyedRows<WifiRow>>([this](View* parent) { return makeRow(parent); });
@@ -78,13 +80,13 @@ public:
         m_hotspotRow = m_mainCard->addChild<ListRow>();
         m_hotspotRow->setName("wlan:hotspot");
         m_hotspotRow->setLeading<Icon>("network-wireless-hotspot", 18);
-        m_hotspotLabel = m_hotspotRow->addContent<Label>("Hotspot");
+        m_hotspotLabel = m_hotspotRow->addContent<Label>(tr("Hotspot"));
         m_hotspotChevron = m_hotspotRow->addContent<TrailingIcon>("chevron-right", 16);
         m_hotspotRow->onClicked = [this] { settingsWindow().switchToPage("hotspot"); };
 
-        m_known = addSection("Known networks", false);
+        m_known = addSection(tr("Known networks"), false);
         m_known.section->setName("wlan:known");
-        m_other = addSection("Other networks", true);
+        m_other = addSection(tr("Other networks"), true);
         m_other.section->setName("wlan:other");
         m_other.footer->setName("wlan:addOther");
 
@@ -126,7 +128,7 @@ private:
         section.card = section.section->addChild<Card>(Card::Style::List);
         section.rows = std::make_unique<KeyedRows<WifiRow>>([this](View* parent) { return makeRow(parent); });
         if (footer) {
-            section.footer = section.card->addChild<ListRow>("Add other…");
+            section.footer = section.card->addChild<ListRow>(tr("Add other…"));
             // Lines the text up with the network names beside their icons.
             View* spacer = section.footer->setLeading<View>();
             spacer->setLayoutHints({.preferredWidth = 18, .preferredHeight = 18});

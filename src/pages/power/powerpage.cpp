@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 
+#include "base/i18n.h"
 #include "base/signal.h"
 #include "pages/power/powersettings.h"
 #include "cutefish/powerprofiles/power_profiles.h"
@@ -26,14 +27,23 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
+using cutefish::i18n::trn;
+using cutefish::i18n::trNoop;
 
 namespace settings {
 
 namespace {
 
 const std::vector<int> kTimeouts{60, 120, 300, 600, 900, 1200, 1800, -1};
-const std::vector<std::string> kTimeoutNames{"1 minute",   "2 minutes",  "5 minutes",  "10 minutes",
-                                             "15 minutes", "20 minutes", "30 minutes", "Never"};
+
+std::vector<std::string> timeoutNames()
+{
+    std::vector<std::string> names;
+    for (const int timeout : kTimeouts)
+        names.push_back(timeout < 0 ? tr("Never") : trn("{n} minute", "{n} minutes", uint64_t(timeout / 60)));
+    return names;
+}
 
 int timeoutToIndex(int timeout)
 {
@@ -51,25 +61,25 @@ struct ProfileTile
 };
 
 constexpr ProfileTile kProfileTiles[] = {
-    {"power-saver", "images/powersave.svg", "Power save"},
-    {"balanced", "images/balanced.svg", "Balanced"},
-    {"performance", "images/performance.svg", "Performance"},
+    {"power-saver", "images/powersave.svg", trNoop("Power save")},
+    {"balanced", "images/balanced.svg", trNoop("Balanced")},
+    {"performance", "images/performance.svg", trNoop("Performance")},
 };
 
 class PowerPage : public Page
 {
 public:
     explicit PowerPage(SettingsWindow& window)
-        : Page(window, "Power")
+        : Page(window, tr("Power"))
     {
         // Mode.
-        m_mode = content()->addChild<Section>("Mode");
+        m_mode = content()->addChild<Section>(tr("Mode"));
         m_mode->setName("power:mode");
         Card* modes = m_mode->addChild<Card>();
         RowLayout* tiles = modes->addChild<RowLayout>();
         tiles->setSpacing(metrics::tileSpacing);
         for (const ProfileTile& tile : kProfileTiles) {
-            ImageSelectionItem* item = tiles->addChild<ImageSelectionItem>(dataPath(tile.picture), tile.name,
+            ImageSelectionItem* item = tiles->addChild<ImageSelectionItem>(dataPath(tile.picture), tr(tile.name),
                                                                            SizeF{80, 80});
             const std::string profile = tile.profile;
             item->onClicked = [this, profile] { m_profiles.setActiveProfile(profile); };
@@ -82,17 +92,17 @@ public:
 
         // Display and sleep.
         Card* idle = content()->addChild<Card>(Card::Style::List);
-        m_batteryRow = idle->addChild<ListRow>("Turn off display when inactive on battery");
+        m_batteryRow = idle->addChild<ListRow>(tr("Turn off display when inactive on battery"));
         m_batteryRow->setName("power:batteryscreenoff");
         m_batteryRow->setInteractive(false);
-        RowComboBox* batteryScreenOff = m_batteryRow->addContent<RowComboBox>(kTimeoutNames);
+        RowComboBox* batteryScreenOff = m_batteryRow->addContent<RowComboBox>(timeoutNames());
         batteryScreenOff->setCurrentIndex(timeoutToIndex(m_settings.batteryScreenOff()));
         batteryScreenOff->onActivated = [this](int index) { m_settings.setBatteryScreenOff(kTimeouts[index]); };
 
         m_acRow = idle->addChild<ListRow>();
         m_acRow->setName("power:acscreenoff");
         m_acRow->setInteractive(false);
-        RowComboBox* acScreenOff = m_acRow->addContent<RowComboBox>(kTimeoutNames);
+        RowComboBox* acScreenOff = m_acRow->addContent<RowComboBox>(timeoutNames());
         acScreenOff->setCurrentIndex(timeoutToIndex(m_settings.acScreenOff()));
         acScreenOff->onActivated = [this](int index) { m_settings.setACScreenOff(kTimeouts[index]); };
 
@@ -129,21 +139,21 @@ private:
 
         std::string description;
         if (active == "power-saver")
-            description = "Reduces performance and power consumption.";
+            description = tr("Reduces performance and power consumption.");
         else if (active == "balanced")
-            description = "Standard performance and power consumption.";
+            description = tr("Standard performance and power consumption.");
         else if (active == "performance")
-            description = "Higher performance, with more power consumption and heat.";
+            description = tr("Higher performance, with more power consumption and heat.");
         m_description->setText(description);
         m_description->setVisible(!description.empty());
 
         const std::string& degraded = m_profiles.performanceDegraded();
         if (degraded.find("lap-detected") != std::string::npos)
-            m_degraded->setText("Performance is limited because the computer is on your lap.");
+            m_degraded->setText(tr("Performance is limited because the computer is on your lap."));
         else if (degraded.find("high-operating-temperature") != std::string::npos)
-            m_degraded->setText("Performance is limited because the computer is too hot.");
+            m_degraded->setText(tr("Performance is limited because the computer is too hot."));
         else
-            m_degraded->setText("Performance is currently limited.");
+            m_degraded->setText(tr("Performance is currently limited."));
         m_degraded->setVisible(active == "performance" && !degraded.empty());
     }
 
@@ -151,10 +161,10 @@ private:
     {
         const bool battery = hasBattery();
         m_batteryRow->setVisible(battery);
-        m_acRow->setText(battery ? "Turn off display when inactive on power adapter"
-                                 : "Turn off display when inactive");
-        m_preventSleep->setText(battery ? "Prevent automatic sleeping on power adapter when the display is off"
-                                        : "Prevent automatic sleeping when the display is off");
+        m_acRow->setText(battery ? tr("Turn off display when inactive on power adapter")
+                                 : tr("Turn off display when inactive"));
+        m_preventSleep->setText(battery ? tr("Prevent automatic sleeping on power adapter when the display is off")
+                                        : tr("Prevent automatic sleeping when the display is off"));
     }
 
     powerprofiles::PowerProfiles m_profiles;

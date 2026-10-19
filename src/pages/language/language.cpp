@@ -13,11 +13,13 @@
 #include <unicode/unistr.h>
 
 #include "base/file.h"
+#include "base/i18n.h"
 #include "base/locale.h"
 #include "base/paths.h"
 #include "base/settings.h"
 
 using namespace cutefish::base;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -279,7 +281,7 @@ void Language::saveLanguages(const std::vector<std::string>& codes)
     m_saving = true;
     savingChanged.emit();
     if (!m_service.isValid()) {
-        m_errorMessage = "Could not save preferred languages. Please try again.";
+        m_errorMessage = tr("Could not save preferred languages. Please try again.");
         errorMessageChanged.emit();
         m_saving = false;
         savingChanged.emit();
@@ -287,7 +289,7 @@ void Language::saveLanguages(const std::vector<std::string>& codes)
     }
     m_saveCall = m_service.callAsync("setPreferredLanguages", [this, codes](const dbus::Reply& reply) {
         if (reply.isError()) {
-            m_errorMessage = "Could not save preferred languages. Please try again.";
+            m_errorMessage = tr("Could not save preferred languages. Please try again.");
             errorMessageChanged.emit();
         } else {
             setPreferredCodes(codes);

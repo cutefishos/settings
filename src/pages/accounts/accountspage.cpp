@@ -7,6 +7,7 @@
 
 #include "cutefish/accounts/accounts_manager.h"
 #include "base/event_loop.h"
+#include "base/i18n.h"
 #include "base/paths.h"
 #include "pages/accounts/password.h"
 #include "pages/accounts/passwordchanger.h"
@@ -25,6 +26,8 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -34,11 +37,11 @@ class AccountsPage : public Page
 {
 public:
     explicit AccountsPage(SettingsWindow& window)
-        : Page(window, "Users")
+        : Page(window, tr("Users"))
     {
         m_users = content()->addChild<Card>(Card::Style::List);
         m_users->setLayoutHints({.fillWidth = true});
-        StandardButton* add = content()->addChild<StandardButton>("Add user");
+        StandardButton* add = content()->addChild<StandardButton>(tr("Add user"));
         add->onClicked = [this] {
             m_addUser = std::make_unique<AddUserDialog>(settingsWindow(), m_manager);
             m_addUser->onClosed = [this] { dispose(m_addUser); };
@@ -93,8 +96,9 @@ private:
             m_chooser->setModal(true);
             m_chooser->setFilters(
                     {FileChooser::Filter::fromNameFilter(
-                             "Image files (*.jpg *.jpeg *.png *.webp *.bmp *.tif *.tiff *.avif)"),
-                     FileChooser::Filter::fromNameFilter("All files (*)")});
+                             format(tr("Image files ({patterns})"),
+                                    {{"patterns", "*.jpg *.jpeg *.png *.webp *.bmp *.tif *.tiff *.avif"}})),
+                     FileChooser::Filter::fromNameFilter(tr("All files (*)"))});
             m_chooser->setCurrentFolder(base::paths::userDirectory(base::paths::UserDirectory::Pictures));
             m_chooser->onAccepted = [this, account](const std::vector<std::string>& paths, const std::string&) {
                 if (paths.empty())
@@ -139,12 +143,12 @@ private:
         if (uid == int64_t(getuid()))
             return;
         m_confirm = std::make_unique<ConfirmDialog>(
-                &settingsWindow().window(), "Delete this user",
-                "Delete user “" + account->userName()
-                        + "”? Their home directory and its contents will be permanently deleted. This "
-                          "cannot be undone.");
-        m_confirm->setCancelText("Cancel");
-        m_confirm->setConfirmText("Delete");
+                &settingsWindow().window(), tr("Delete this user"),
+                format(tr("Delete user “{name}”? Their home directory and its contents will be permanently deleted. "
+                          "This cannot be undone."),
+                       {{"name", account->userName()}}));
+        m_confirm->setCancelText(tr("Cancel"));
+        m_confirm->setConfirmText(tr("Delete"));
         m_confirm->setDestructive(true);
         m_confirm->onAccepted = [this, uid] { m_manager.deleteUser(uid, true); };
         m_confirm->show();

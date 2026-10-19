@@ -4,6 +4,7 @@
 #include <cmath>
 #include <vector>
 
+#include "base/i18n.h"
 #include "pages/dock/docksettings.h"
 #include "ui/layout.h"
 #include "ui/cell_layout.h"
@@ -20,6 +21,7 @@
 #include "window/settingswindow.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -29,13 +31,13 @@ class DockPage : public Page
 {
 public:
     explicit DockPage(SettingsWindow& window)
-        : Page(window, "Dock")
+        : Page(window, tr("Dock"))
     {
-        Section* position = content()->addChild<Section>("Position on screen");
+        Section* position = content()->addChild<Section>(tr("Position on screen"));
         Card* positions = position->addChild<Card>();
         RowLayout* tiles = positions->addChild<RowLayout>();
         tiles->setSpacing(metrics::tileSpacing);
-        const char* const names[] = {"Left", "Bottom", "Right"};
+        const char* const names[] = {tr("Left"), tr("Bottom"), tr("Right")};
         const char* const pictures[] = {"images/dock_left.svg", "images/dock_bottom.svg", "images/dock_right.svg"};
         for (int i = 0; i < 3; ++i) {
             ImageSelectionItem* tile = tiles->addChild<ImageSelectionItem>(dataPath(pictures[i]), names[i],
@@ -49,9 +51,9 @@ public:
         updateDirection();
 
         Card* sliders = content()->addChild<Card>(Card::Style::List);
-        SliderRow* size = sliders->addChild<SliderRow>("Size");
+        SliderRow* size = sliders->addChild<SliderRow>(tr("Size"));
         size->setName("dock:size");
-        size->setCaptions("Small", "Huge");
+        size->setCaptions(tr("Small"), tr("Huge"));
         // The value is the icon size itself; the dock derives its paddings
         // from it (54 is the design baseline).
         size->setRange(32, 128);
@@ -63,9 +65,9 @@ public:
             m_settings.setIconSize(int(std::round(value)));
             size->setValue(m_settings.iconSize());
         };
-        SliderRow* glass = sliders->addChild<SliderRow>("Glass effect");
+        SliderRow* glass = sliders->addChild<SliderRow>(tr("Glass effect"));
         glass->setName("dock:glass");
-        glass->setCaptions("More clear", "More tinted");
+        glass->setCaptions(tr("More clear"), tr("More tinted"));
         glass->setRange(0, 1);
         glass->setValue(m_settings.glassTint());
         glass->onMoved = [this, glass](double value) {
@@ -73,19 +75,19 @@ public:
             glass->setValue(m_settings.glassTint());
         };
 
-        Section* mode = content()->addChild<Section>("Display mode");
+        Section* mode = content()->addChild<Section>(tr("Display mode"));
         auto* visibility = mode->addChild<SegmentedControl>(
-                std::vector<std::string>{"Always show", "Always hide", "Smart hide"});
+                std::vector<std::string>{tr("Always show"), tr("Always hide"), tr("Smart hide")});
         visibility->setLayoutHints({.fillWidth = true});
         visibility->setCurrentIndex(m_settings.visibility());
         visibility->onCurrentChanged = [this](int index) { m_settings.setVisibility(index); };
 
         Card* corners = content()->addChild<Card>(Card::Style::List);
-        NavigationItem* hotCorners = corners->addChild<NavigationItem>("Hot Corners");
+        NavigationItem* hotCorners = corners->addChild<NavigationItem>(tr("Hot Corners"));
         hotCorners->onClicked = [&window] { window.pushPage("hotcorners"); };
 
         Card* minimized = content()->addChild<Card>(Card::Style::List);
-        SwitchRow* area = minimized->addChild<SwitchRow>("Minimized windows area");
+        SwitchRow* area = minimized->addChild<SwitchRow>(tr("Minimized windows area"));
         area->setChecked(m_settings.minimizedArea());
         area->onToggled = [this](bool checked) { m_settings.setMinimizedArea(checked); };
     }

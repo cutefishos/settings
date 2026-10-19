@@ -9,6 +9,7 @@
 
 #include <unicode/ucasemap.h>
 
+#include "base/i18n.h"
 #include "pages/input/checkrow.h"
 #include "pages/keyboard/keyboard.h"
 #include "ui/label.h"
@@ -23,6 +24,7 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -93,7 +95,7 @@ public:
         m_list = addChild<LayoutListView>();
         m_list->setElastic(false);
         m_list->setRowHeight(metrics::rowHeight);
-        m_empty = addChild<Label>("No layouts found");
+        m_empty = addChild<Label>(tr("No layouts found"));
         m_empty->setName("keyboardlayout:empty");
         m_empty->setVisible(false);
     }
@@ -121,7 +123,7 @@ class LayoutPage : public Page
 {
 public:
     explicit LayoutPage(SettingsWindow& window)
-        : Page(window, "Layout")
+        : Page(window, tr("Layout"))
     {
         // The list scrolls, not the page.
         setScrollDirections(false, false);
@@ -129,7 +131,7 @@ public:
 
         m_search = content()->addChild<SearchField>();
         m_search->setName("keyboardlayout:search");
-        m_search->setPlaceholder("Search layouts");
+        m_search->setPlaceholder(tr("Search layouts"));
         m_search->setLayoutHints({.fillWidth = true});
         m_search->onTextChanged = [this] {
             filter();

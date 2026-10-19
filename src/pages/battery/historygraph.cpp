@@ -9,6 +9,7 @@
 #include <cmath>
 #include <cstdio>
 
+#include "base/i18n.h"
 #include "base/locale.h"
 #include "pages/battery/timeformat.h"
 #include "ui/animation.h"
@@ -23,6 +24,8 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -45,15 +48,15 @@ static std::string stateText(uint32_t state)
 {
     switch (state) {
     case 1:
-        return "Charging";
+        return tr("Charging");
     case 4:
-        return "Fully charged";
+        return tr("Fully charged");
     case 5:
-        return "Not charging";
+        return tr("Not charging");
     case 2:
     case 3:
     case 6:
-        return "On battery";
+        return tr("On battery");
     }
     return {};
 }
@@ -86,7 +89,7 @@ public:
     explicit Legend(HistoryGraph& graph)
         : m_graph(graph)
     {
-        for (const char* text : {"On battery", "Plugged in"})
+        for (const char* text : {tr("On battery"), tr("Plugged in")})
             m_labels.push_back(addChild<Label>(text));
     }
 
@@ -579,9 +582,14 @@ void HistoryGraph::layout()
         const int64_t secs = int64_t(std::floor(start + m_probe->x / m_plot.width * m_duration));
         std::string time = timeformat::shortTime(secs);
         if (m_duration > 86400)
-            time = timeformat::shortDayName(secs) + " " + time;
+            // TRANSLATORS: a weekday and a time in the graph's readout, such as "Mon 9:41 AM".
+            time = format(tr("{day} {time}"), {{"day", timeformat::shortDayName(secs)}, {"time", time}});
         const std::string state = stateText(m_probe->state);
-        m_readout->setTexts(fixed(value, m_decimals) + m_units, state.empty() ? time : state + " · " + time);
+        std::string detail = time;
+        if (!state.empty())
+            // TRANSLATORS: the battery state and the time in the graph's readout, such as "Charging · 9:41 AM".
+            detail = format(tr("{state} · {time}"), {{"state", state}, {"time", time}});
+        m_readout->setTexts(fixed(value, m_decimals) + m_units, detail);
         const double readoutWidth = m_readout->contentWidth() + metrics::s * 2;
         const double x = std::max(0.0, std::min(width - readoutWidth, m_plot.x + m_probe->x - readoutWidth / 2));
         m_readout->setGeometry({x, 0, readoutWidth, m_headerHeight});

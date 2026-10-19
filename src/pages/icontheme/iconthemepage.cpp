@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: BSD-3-Clause
 
+#include "base/i18n.h"
 #include "cutefish/appearance/appearance.h"
 #include "pages/icontheme/iconthemes.h"
 #include "ui/image_view.h"
@@ -14,6 +15,7 @@
 
 using namespace cutefish::ui;
 using cutefish::appearance::Appearance;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -52,10 +54,10 @@ class IconThemePage : public Page
 {
 public:
     explicit IconThemePage(SettingsWindow& window)
-        : Page(window, "Icon Theme")
+        : Page(window, tr("Icon Theme"))
         , m_themes(IconTheme::installed())
     {
-        Section* section = content()->addChild<Section>("Icon theme");
+        Section* section = content()->addChild<Section>(tr("Icon theme"));
         Card* card = section->addChild<Card>();
         TileGrid* grid = card->addChild<TileGrid>(SizeF{104 + metrics::tileSpacing, 104}, metrics::m);
         grid->setVisible(!m_themes.empty());

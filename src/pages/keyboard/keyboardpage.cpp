@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <vector>
 
+#include "base/i18n.h"
 #include "pages/input/checkrow.h"
 #include "pages/keyboard/inputmethod.h"
 #include "pages/keyboard/keyboard.h"
@@ -20,6 +21,8 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
+using cutefish::i18n::trc;
 
 namespace settings {
 
@@ -65,41 +68,41 @@ class KeyboardPage : public Page
 {
 public:
     explicit KeyboardPage(SettingsWindow& window)
-        : Page(window, "Keyboard")
+        : Page(window, tr("Keyboard"))
     {
-        Section* inputMethods = content()->addChild<Section>("Input method");
+        Section* inputMethods = content()->addChild<Section>(tr("Input method"));
         m_noInputMethods = inputMethods->addChild<NoteCard>(
-                "Input methods can only be selected in a Cutefish Wayland session.");
+                tr("Input methods can only be selected in a Cutefish Wayland session."));
         m_inputMethodCard = inputMethods->addChild<Card>(Card::Style::List);
         m_inputMethodCard->setName("keyboard:inputMethods");
-        m_notRunning = inputMethods->addChild<Footnote>("The selected input method is not running.");
+        m_notRunning = inputMethods->addChild<Footnote>(tr("The selected input method is not running."));
         m_restartNote = inputMethods->addChild<Footnote>(
-                "Applications started before the input method may need to be restarted.");
+                tr("Applications started before the input method may need to be restarted."));
         m_restartNote->setOpacity(0.8);
 
-        m_shortcutKey = content()->addChild<Section>("Shortcut key");
+        m_shortcutKey = content()->addChild<Section>(tr("Shortcut key"));
         Card* conventions = m_shortcutKey->addChild<Card>(Card::Style::List);
-        m_pc = conventions->addChild<CheckRow>("Ctrl");
+        m_pc = conventions->addChild<CheckRow>(trc("key", "Ctrl"));
         m_pc->onClicked = [this] { m_keyboard.setShortcutConvention("pc"); };
-        m_command = conventions->addChild<CheckRow>("Command");
+        m_command = conventions->addChild<CheckRow>(trc("key", "Command"));
         m_command->onClicked = [this] { m_keyboard.setShortcutConvention("command"); };
         m_conventionNote = m_shortcutKey->addChild<Footnote>();
 
         Card* navigation = content()->addChild<Card>(Card::Style::List);
-        m_layout = navigation->addChild<NavigationItem>("Layout");
+        m_layout = navigation->addChild<NavigationItem>(tr("Layout"));
         m_layout->onClicked = [&window] { window.pushPage("keyboardlayout"); };
-        NavigationItem* shortcuts = navigation->addChild<NavigationItem>("Keyboard Shortcuts");
+        NavigationItem* shortcuts = navigation->addChild<NavigationItem>(tr("Keyboard Shortcuts"));
         shortcuts->onClicked = [&window] { window.pushPage("shortcuts"); };
 
         m_repeatCard = content()->addChild<Card>(Card::Style::List);
         m_repeatCard->setName("keyboard:repeat");
-        m_repeat = m_repeatCard->addChild<SwitchRow>("Key repeat");
+        m_repeat = m_repeatCard->addChild<SwitchRow>(tr("Key repeat"));
         m_repeat->onToggled = [this](bool checked) { m_keyboard.setRepeatEnabled(checked); };
-        m_delay = m_repeatCard->addChild<SliderRow>("Delay until repeat");
+        m_delay = m_repeatCard->addChild<SliderRow>(tr("Delay until repeat"));
         m_delay->setRange(0, double(kRepeatDelays.size() - 1));
         m_delay->setStepSize(1);
         m_delay->onMoved = [this](double value) { m_keyboard.setRepeatDelay(kRepeatDelays[size_t(std::round(value))]); };
-        m_rate = m_repeatCard->addChild<SliderRow>("Repeat rate");
+        m_rate = m_repeatCard->addChild<SliderRow>(tr("Repeat rate"));
         m_rate->setRange(0, double(kRepeatIntervals.size() - 1));
         m_rate->setStepSize(1);
         m_rate->onMoved = [this](double value) {
@@ -122,7 +125,7 @@ private:
         m_notRunning->setVisible(available && !current.empty() && !m_inputMethod.isRunning());
         m_restartNote->setVisible(available);
 
-        std::vector<InputMethod::Method> methods{{"", "None", ""}};
+        std::vector<InputMethod::Method> methods{{"", tr("None"), ""}};
         methods.insert(methods.end(), m_inputMethod.methods().begin(), m_inputMethod.methods().end());
         std::vector<std::string> ids;
         for (const InputMethod::Method& method : methods)
@@ -152,11 +155,11 @@ private:
         m_command->setChecked(convention == "command");
         m_conventionNote->setText(
                 convention == "command"
-                        ? "The key next to the space bar works as Command and the one beside it as Option, on any "
-                          "keyboard: Command+C copies, Command+Tab switches windows, Command+Q quits. The shortcuts "
-                          "can be changed in Keyboard Shortcuts."
-                        : "Ctrl is the shortcut key and Alt switches windows. The shortcuts can be changed in "
-                          "Keyboard Shortcuts.");
+                        ? tr("The key next to the space bar works as Command and the one beside it as Option, on "
+                             "any keyboard: Command+C copies, Command+Tab switches windows, Command+Q quits. The "
+                             "shortcuts can be changed in Keyboard Shortcuts.")
+                        : tr("Ctrl is the shortcut key and Alt switches windows. The shortcuts can be changed in "
+                             "Keyboard Shortcuts."));
         m_layout->setVisible(available);
         m_layout->setValue(m_keyboard.layoutName());
         m_repeatCard->setVisible(available);

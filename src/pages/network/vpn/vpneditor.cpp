@@ -7,6 +7,7 @@
 #include <climits>
 
 #include "base/event_loop.h"
+#include "base/i18n.h"
 #include "cutefish/networkmanager/types.h"
 #include "pages/network/common/textchecks.h"
 #include "pages/network/common/rows.h"
@@ -23,6 +24,8 @@
 #include "widgets/metrics.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
 namespace nm = cutefish::networkmanager;
 namespace schema = cutefish::networkmanager::vpn::schema;
 
@@ -213,7 +216,7 @@ private:
             hasAdvanced |= field.advanced;
         }
 
-        m_link = addChild<LinkLabel>("Show advanced options");
+        m_link = addChild<LinkLabel>(tr("Show advanced options"));
         m_link->setVisible(hasAdvanced);
         m_link->onClicked = [this] {
             m_advancedShown = !m_advancedShown;
@@ -254,7 +257,7 @@ private:
         switch (field.type) {
         case schema::Type::Password: {
             row.text = row.row->addChild<TextField>();
-            row.text->setPlaceholder("Asked on connect");
+            row.text->setPlaceholder(tr("Asked on connect"));
             row.text->setEchoMode(TextField::EchoMode::Password);
             row.text->setLayoutHints({.fillWidth = true});
             const std::string key = field.key;
@@ -274,12 +277,12 @@ private:
         }
         case schema::Type::File: {
             row.text = row.row->addChild<TextField>();
-            row.text->setPlaceholder(field.required ? "Required" : "Optional");
+            row.text->setPlaceholder(field.required ? tr("Required") : tr("Optional"));
             row.text->setLayoutHints({.fillWidth = true});
             const std::string key = field.key;
             row.text->onTextEdited = [this, key, text = row.text] { setValue(key, text->text()); };
             row.text->onAccepted = [this] { accepted(); };
-            Button* choose = row.row->addChild<Button>("Choose…");
+            Button* choose = row.row->addChild<Button>(tr("Choose…"));
             choose->setLayoutHints({.fillHeight = true});
             const std::string title = field.label;
             choose->onClicked = [this, key, title] {
@@ -320,8 +323,8 @@ private:
             const bool number = field.type == schema::Type::Number;
             row.text = row.row->addChild<TextField>();
             row.text->setPlaceholder(!field.placeholder.empty() ? field.placeholder
-                                     : field.required           ? "Required"
-                                                                : "Optional");
+                                     : field.required           ? tr("Required")
+                                                                : tr("Optional"));
             row.text->setLayoutHints({.fillWidth = true});
             if (number) {
                 const long long maximum = field.maximum > 0 ? field.maximum : INT_MAX;
@@ -339,10 +342,10 @@ private:
     void loadStorage(FieldRow& row)
     {
         const uint32_t saveFlags = m_shared ? nm::SecretSystemOwned : nm::SecretAgentOwned;
-        std::vector<std::string> labels{m_shared ? "Saved for all" : "Saved", "Ask each time"};
+        std::vector<std::string> labels{m_shared ? tr("Saved for all") : tr("Saved"), tr("Ask each time")};
         row.storageValues = {saveFlags, nm::SecretNotSaved};
         if (row.field->allowNotRequired) {
-            labels.push_back("Not needed");
+            labels.push_back(tr("Not needed"));
             row.storageValues.push_back(nm::SecretNotRequired);
         }
         row.storage->setItems(labels);
@@ -410,7 +413,7 @@ private:
                 row.storage->setLayoutHints({.fillWidth = !saving, .preferredWidth = 120});
             }
         }
-        m_link->setText(m_advancedShown ? "Hide advanced options" : "Show advanced options");
+        m_link->setText(m_advancedShown ? tr("Hide advanced options") : tr("Show advanced options"));
         m_advanced->setVisible(m_advancedShown);
         requestLayout();
         changed();
@@ -442,12 +445,12 @@ public:
         setSpacing(metrics::formRowSpacing);
         setLayoutHints({.fillWidth = true});
 
-        m_privateKey = addField(this, "Private key", "Required");
+        m_privateKey = addField(this, tr("Private key"), tr("Required"));
         m_privateKey->setEchoMode(TextField::EchoMode::Password);
-        m_address = addField(this, "Address", "10.0.0.2/24");
-        m_dns = addField(this, "DNS", "Optional");
+        m_address = addField(this, tr("Address"), "10.0.0.2/24");
+        m_dns = addField(this, tr("DNS"), tr("Optional"));
 
-        m_link = addChild<LinkLabel>("Show advanced options");
+        m_link = addChild<LinkLabel>(tr("Show advanced options"));
         m_link->onClicked = [this] {
             m_advancedShown = !m_advancedShown;
             update();
@@ -456,15 +459,15 @@ public:
         m_advanced = addChild<ColumnLayout>();
         m_advanced->setSpacing(metrics::formRowSpacing);
         m_advanced->setLayoutHints({.fillWidth = true});
-        m_interface = addField(m_advanced, "Interface name", "From the name");
+        m_interface = addField(m_advanced, tr("Interface name"), tr("From the name"));
         m_interface->setMaximumLength(15);
-        m_listenPort = addField(m_advanced, "Listen port", "Automatic");
+        m_listenPort = addField(m_advanced, tr("Listen port"), tr("Automatic"));
         m_listenPort->setValidator([](std::string_view text) { return isNumberText(text, 65535); });
-        m_fwmark = addField(m_advanced, "Firewall mark", "Optional");
-        m_mtu = addField(m_advanced, "MTU", "Automatic");
+        m_fwmark = addField(m_advanced, tr("Firewall mark"), tr("Optional"));
+        m_mtu = addField(m_advanced, tr("MTU"), tr("Automatic"));
         m_mtu->setValidator([](std::string_view text) { return isNumberText(text, INT_MAX); });
         RowLayout* routes = addFormRow(m_advanced);
-        Label* routesLabel = routes->addChild<Label>("Add routes for the peers' allowed IPs");
+        Label* routesLabel = routes->addChild<Label>(tr("Add routes for the peers' allowed IPs"));
         routesLabel->setWrap(true);
         routesLabel->setLayoutHints({.fillWidth = true});
         m_peerRoutes = routes->addChild<Switch>();
@@ -474,7 +477,7 @@ public:
         m_peers = addChild<ColumnLayout>();
         m_peers->setSpacing(metrics::formRowSpacing);
         m_peers->setLayoutHints({.fillWidth = true});
-        m_addPeer = addChild<LinkLabel>("Add peer");
+        m_addPeer = addChild<LinkLabel>(tr("Add peer"));
         m_addPeer->onClicked = [this] {
             addPeer({});
             update();
@@ -599,10 +602,10 @@ private:
         card.card->setPadding(Margins::all(metrics::cardHorizontalPadding));
         card.card->setSpacing(metrics::formRowSpacing);
         RowLayout* header = addFormRow(card.card);
-        card.title = header->addChild<Label>("Peer");
+        card.title = header->addChild<Label>(tr("Peer"));
         card.title->setWeight(600);
         card.title->setLayoutHints({.fillWidth = true});
-        card.remove = header->addChild<Button>("Remove");
+        card.remove = header->addChild<Button>(tr("Remove"));
         Card* owner = card.card;
         card.remove->onClicked = [this, owner] {
             const auto found = std::find_if(m_peerCards.begin(), m_peerCards.end(),
@@ -617,17 +620,19 @@ private:
             update();
             cutefish::base::EventLoop::current()->post([gone] {});
         };
-        card.publicKey = addField(card.card, "Public key", "Required");
+        card.publicKey = addField(card.card, tr("Public key"), tr("Required"));
         card.publicKey->setText(peer.publicKey);
-        card.presharedKey = addField(card.card, "Preshared key", peer.hasPresharedKey ? "Kept" : "Optional");
+        card.presharedKey = addField(card.card, tr("Preshared key"),
+                                     // TRANSLATORS: a placeholder: the stored key stays unless a new one is typed.
+                                     peer.hasPresharedKey ? tr("Kept") : tr("Optional"));
         card.presharedKey->setEchoMode(TextField::EchoMode::Password);
         card.presharedKey->setText(peer.presharedKey);
         card.hasPresharedKey = peer.hasPresharedKey;
-        card.endpoint = addField(card.card, "Endpoint", "vpn.example.com:51820");
+        card.endpoint = addField(card.card, tr("Endpoint"), "vpn.example.com:51820");
         card.endpoint->setText(peer.endpoint);
-        card.allowedIps = addField(card.card, "Allowed IPs", "All traffic");
+        card.allowedIps = addField(card.card, tr("Allowed IPs"), tr("All traffic"));
         card.allowedIps->setText(peer.allowedIps);
-        card.keepalive = addField(card.card, "Keepalive", "Off");
+        card.keepalive = addField(card.card, tr("Keepalive"), tr("Off"));
         card.keepalive->setValidator([](std::string_view text) { return isNumberText(text, 65535); });
         card.keepalive->setText(peer.keepalive);
         std::copy(m_labels.end() - 5, m_labels.end(), card.labels);
@@ -651,11 +656,12 @@ private:
 
     void update()
     {
-        m_link->setText(m_advancedShown ? "Hide advanced options" : "Show advanced options");
+        m_link->setText(m_advancedShown ? tr("Hide advanced options") : tr("Show advanced options"));
         m_advanced->setVisible(m_advancedShown);
         const bool several = m_peerCards.size() > 1;
         for (size_t i = 0; i < m_peerCards.size(); ++i) {
-            m_peerCards[i].title->setText(several ? "Peer " + std::to_string(i + 1) : std::string("Peer"));
+            m_peerCards[i].title->setText(several ? format(tr("Peer {number}"), {{"number", std::to_string(i + 1)}})
+                                                  : std::string(tr("Peer")));
             m_peerCards[i].remove->setVisible(several);
             // The card's own air above it.
             m_peerCards[i].card->setLayoutHints({.fillWidth = true, .margins = {0, metrics::s, 0, 0}});
@@ -695,9 +701,9 @@ VpnEditor::VpnEditor()
 
     m_nameRow = addFormRow(this);
     std::vector<Label*> unused;
-    m_nameLabel = addFieldLabel(m_nameRow, "Name", unused);
+    m_nameLabel = addFieldLabel(m_nameRow, tr("Name"), unused);
     m_name = m_nameRow->addChild<TextField>();
-    m_name->setPlaceholder("Optional");
+    m_name->setPlaceholder(tr("Optional"));
     m_name->setLayoutHints({.fillWidth = true});
     m_name->onAccepted = [this] {
         if (onAccepted)
@@ -716,12 +722,12 @@ VpnEditor::VpnEditor()
         setTrailingSwitchPadding(toggle);
         return toggle;
     };
-    m_shared = addSwitch("Available to all users");
+    m_shared = addSwitch(tr("Available to all users"));
     m_shared->onToggled = [this](bool checked) {
         if (m_plugin)
             m_plugin->setShared(checked);
     };
-    m_ownNetworkOnly = addSwitch("Use only for resources on its network");
+    m_ownNetworkOnly = addSwitch(tr("Use only for resources on its network"));
 }
 
 VpnEditor::~VpnEditor() = default;
@@ -763,7 +769,7 @@ void VpnEditor::load(const nm::VpnForm& form)
         addChild(std::move(switches));
     }
 
-    m_notInstalled->setText("Install " + form.package + " to set up this kind of VPN.");
+    m_notInstalled->setText(format(tr("Install {package} to set up this kind of VPN."), {{"package", form.package}}));
     m_notInstalled->setVisible(!form.installed && !form.kind.empty());
     m_nameRow->setVisible(form.installed);
     m_switches->setVisible(form.installed);

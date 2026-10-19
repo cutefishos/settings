@@ -3,6 +3,7 @@
 
 #include "pages/accounts/userdetailsdialog.h"
 
+#include "base/i18n.h"
 #include "ui/cell_layout.h"
 #include "ui/dialog_window.h"
 #include "ui/keys.h"
@@ -14,6 +15,7 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -30,8 +32,8 @@ UserDetailsDialog::UserDetailsDialog(SettingsWindow& window, std::shared_ptr<acc
     content->setSpacing(metrics::dialogSpacing);
 
     Card* card = content->addChild<Card>(Card::Style::List);
-    m_type = card->addChild<InfoRow>("Account type");
-    m_password = card->addChild<ListRow>("Change password…");
+    m_type = card->addChild<InfoRow>(tr("Account type"));
+    m_password = card->addChild<ListRow>(tr("Change password…"));
     m_password->setName("user:changePassword");
     m_password->onClicked = [this] {
         close();
@@ -42,7 +44,7 @@ UserDetailsDialog::UserDetailsDialog(SettingsWindow& window, std::shared_ptr<acc
     RowLayout* buttons = content->addChild<RowLayout>();
     buttons->setSpacing(metrics::dialogButtonSpacing);
     buttons->setLayoutHints({.horizontalAlignment = Alignment::End});
-    m_delete = buttons->addChild<DialogButton>("Delete this user", true);
+    m_delete = buttons->addChild<DialogButton>(tr("Delete this user"), true);
     m_delete->setName("user:delete");
     m_delete->setDestructive(true);
     m_delete->onClicked = [this] {
@@ -78,7 +80,8 @@ void UserDetailsDialog::close()
 void UserDetailsDialog::update()
 {
     m_dialog->setTitle(m_account->userName());
-    m_type->setValue(m_account->accountType() == accounts::UserAccount::Standard ? "Standard" : "Administrator");
+    m_type->setValue(m_account->accountType() == accounts::UserAccount::Standard ? tr("Standard")
+                                                                                 : tr("Administrator"));
     m_delete->setEnabled(m_account->userId() != m_loggedInUid);
 }
 

@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: BSD-3-Clause
 
+#include "base/i18n.h"
 #include "cutefish/networkmanager/connections.h"
 #include "cutefish/networkmanager/handler.h"
 #include "ui/cell_layout.h"
@@ -12,6 +13,7 @@
 #include "window/settingswindow.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 namespace nm = cutefish::networkmanager;
 
 namespace settings::network {
@@ -23,20 +25,20 @@ class NetworkPage : public Page
 {
 public:
     explicit NetworkPage(SettingsWindow& window)
-        : Page(window, "Network")
+        : Page(window, tr("Network"))
     {
         Card* card = content()->addChild<Card>(Card::Style::List);
-        NavigationItem* vpn = card->addChild<NavigationItem>("VPN");
+        NavigationItem* vpn = card->addChild<NavigationItem>(tr("VPN"));
         vpn->setName("network:vpn");
         vpn->setLeading<RowIcon>("network-vpn", Color::rgb(0x48484C));
         vpn->onClicked = [this] { settingsWindow().pushPage("vpn"); };
 
-        NavigationItem* proxy = card->addChild<NavigationItem>("Proxy");
+        NavigationItem* proxy = card->addChild<NavigationItem>(tr("Proxy"));
         proxy->setName("network:proxy");
         proxy->setLeading<RowIcon>("proxy.svg", Color::rgb(0x0067FF));
         proxy->onClicked = [this] { settingsWindow().pushPage("proxy"); };
 
-        m_hotspot = card->addChild<NavigationItem>("Hotspot");
+        m_hotspot = card->addChild<NavigationItem>(tr("Hotspot"));
         m_hotspot->setName("network:hotspot");
         m_hotspot->setLeading<RowIcon>("network-wireless-hotspot", Color::rgb(0x2EBC6B));
         m_hotspot->onClicked = [this] { settingsWindow().pushPage("hotspot"); };

@@ -8,10 +8,15 @@
 
 #include <xkbcommon/xkbcommon.h>
 
+#include "base/i18n.h"
 #include "base/json.h"
 
 
 using namespace cutefish::base;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
+using cutefish::i18n::trc;
+using cutefish::i18n::trNoop;
 
 namespace settings {
 
@@ -27,52 +32,53 @@ struct Layout
 } // namespace
 
 // The order here is the order on the page, like kAcceleratorLayouts.
-static constexpr const char* kGeneral = "General";
-static constexpr const char* kWindows = "Windows";
-static constexpr const char* kDesks = "Desks";
-static constexpr const char* kScreenshots = "Screenshots and Recording";
+static constexpr const char* kGeneral = trNoop("General");
+// TRANSLATORS: the group of keyboard shortcuts that act on windows.
+static constexpr const char* kWindows = trNoop("Windows");
+static constexpr const char* kDesks = trNoop("Desks");
+static constexpr const char* kScreenshots = trNoop("Screenshots and Recording");
 static const Layout kLayouts[] = {
-        {"toggle-app-list", kGeneral, "Open the launcher"},
-        {"lock-screen", kGeneral, "Lock the screen"},
-        {"toggle-clipboard-history", kGeneral, "Show the clipboard history"},
+        {"toggle-app-list", kGeneral, trNoop("Open the launcher")},
+        {"lock-screen", kGeneral, trNoop("Lock the screen")},
+        {"toggle-clipboard-history", kGeneral, trNoop("Show the clipboard history")},
 
-        {"cycle-forward-mru", kWindows, "Switch to the next window"},
-        {"cycle-backward-mru", kWindows, "Switch to the previous window"},
-        {"toggle-overview", kWindows, "Show all windows"},
-        {"toggle-show-desktop", kWindows, "Show the desktop"},
-        {"toggle-maximized", kWindows, "Maximize or restore the window"},
-        {"window-minimize", kWindows, "Minimize the window"},
-        {"quit-application", kWindows, "Quit the application"},
-        {"hide-application", kWindows, "Hide the application"},
-        {"hide-other-applications", kWindows, "Hide other applications"},
-        {"toggle-fullscreen", kWindows, "Toggle full screen"},
-        {"window-cycle-snap-left", kWindows, "Snap the window to the left"},
-        {"window-cycle-snap-right", kWindows, "Snap the window to the right"},
-        {"close-window", kWindows, "Close the window"},
-        {"move-active-window-between-displays", kWindows, "Move the window to the next display"},
+        {"cycle-forward-mru", kWindows, trNoop("Switch to the next window")},
+        {"cycle-backward-mru", kWindows, trNoop("Switch to the previous window")},
+        {"toggle-overview", kWindows, trNoop("Show all windows")},
+        {"toggle-show-desktop", kWindows, trNoop("Show the desktop")},
+        {"toggle-maximized", kWindows, trNoop("Maximize or restore the window")},
+        {"window-minimize", kWindows, trNoop("Minimize the window")},
+        {"quit-application", kWindows, trNoop("Quit the application")},
+        {"hide-application", kWindows, trNoop("Hide the application")},
+        {"hide-other-applications", kWindows, trNoop("Hide other applications")},
+        {"toggle-fullscreen", kWindows, trNoop("Toggle full screen")},
+        {"window-cycle-snap-left", kWindows, trNoop("Snap the window to the left")},
+        {"window-cycle-snap-right", kWindows, trNoop("Snap the window to the right")},
+        {"close-window", kWindows, trNoop("Close the window")},
+        {"move-active-window-between-displays", kWindows, trNoop("Move the window to the next display")},
 
-        {"desks-activate-desk-left", kDesks, "Switch to the desk on the left"},
-        {"desks-activate-desk-right", kDesks, "Switch to the desk on the right"},
-        {"desks-move-active-item-left", kDesks, "Move the window to the desk on the left"},
-        {"desks-move-active-item-right", kDesks, "Move the window to the desk on the right"},
-        {"desks-new-desk", kDesks, "Add a desk"},
-        {"desks-remove-current-desk", kDesks, "Remove the desk"},
-        {"desks-activate-0", kDesks, "Switch to desk 1"},
-        {"desks-activate-1", kDesks, "Switch to desk 2"},
-        {"desks-activate-2", kDesks, "Switch to desk 3"},
-        {"desks-activate-3", kDesks, "Switch to desk 4"},
-        {"desks-activate-4", kDesks, "Switch to desk 5"},
-        {"desks-activate-5", kDesks, "Switch to desk 6"},
-        {"desks-activate-6", kDesks, "Switch to desk 7"},
-        {"desks-activate-7", kDesks, "Switch to desk 8"},
-        {"desks-toggle-assign-to-all-desks", kDesks, "Show the window on every desk"},
+        {"desks-activate-desk-left", kDesks, trNoop("Switch to the desk on the left")},
+        {"desks-activate-desk-right", kDesks, trNoop("Switch to the desk on the right")},
+        {"desks-move-active-item-left", kDesks, trNoop("Move the window to the desk on the left")},
+        {"desks-move-active-item-right", kDesks, trNoop("Move the window to the desk on the right")},
+        {"desks-new-desk", kDesks, trNoop("Add a desk")},
+        {"desks-remove-current-desk", kDesks, trNoop("Remove the desk")},
+        {"desks-activate-0", kDesks, trNoop("Switch to desk 1")},
+        {"desks-activate-1", kDesks, trNoop("Switch to desk 2")},
+        {"desks-activate-2", kDesks, trNoop("Switch to desk 3")},
+        {"desks-activate-3", kDesks, trNoop("Switch to desk 4")},
+        {"desks-activate-4", kDesks, trNoop("Switch to desk 5")},
+        {"desks-activate-5", kDesks, trNoop("Switch to desk 6")},
+        {"desks-activate-6", kDesks, trNoop("Switch to desk 7")},
+        {"desks-activate-7", kDesks, trNoop("Switch to desk 8")},
+        {"desks-toggle-assign-to-all-desks", kDesks, trNoop("Show the window on every desk")},
 
-        {"take-screenshot", kScreenshots, "Save a picture of the screen"},
-        {"take-screenshot-to-clipboard", kScreenshots, "Copy a picture of the screen"},
-        {"take-partial-screenshot", kScreenshots, "Save a picture of the selected area"},
-        {"take-partial-screenshot-to-clipboard", kScreenshots, "Copy a picture of the selected area"},
-        {"start-capture-mode", kScreenshots, "Screenshot and recording options"},
-        {"stop-screen-recording", kScreenshots, "Stop screen recording"},
+        {"take-screenshot", kScreenshots, trNoop("Save a picture of the screen")},
+        {"take-screenshot-to-clipboard", kScreenshots, trNoop("Copy a picture of the screen")},
+        {"take-partial-screenshot", kScreenshots, trNoop("Save a picture of the selected area")},
+        {"take-partial-screenshot-to-clipboard", kScreenshots, trNoop("Copy a picture of the selected area")},
+        {"start-capture-mode", kScreenshots, trNoop("Screenshot and recording options")},
+        {"stop-screen-recording", kScreenshots, trNoop("Stop screen recording")},
 };
 
 // The keysyms of the keys the Qt version had a Qt key code for besides the
@@ -135,7 +141,7 @@ void ShortcutsModel::reload()
         Action action;
         action.name = layout.name;
         action.category = layout.category;
-        action.description = layout.description;
+        action.description = tr(layout.description);
         for (const json::Value& value : it->second["accelerators"].toArray())
             action.accelerators.push_back(acceleratorFromJson(value));
         for (const json::Value& value : it->second["defaults"].toArray())
@@ -163,41 +169,41 @@ ShortcutsModel::Accelerator ShortcutsModel::acceleratorFromJson(const json::Valu
 std::string ShortcutsModel::keyDisplay(const std::string& keyName, const std::string& keyText) const
 {
     if (keyName == "Super_L" || keyName == "Super_R")
-        return m_commandKeys ? "Command" : "Meta";
-    static const std::map<std::string, std::string> names = {
+        return m_commandKeys ? trc("key", "Command") : trc("key", "Meta");
+    const std::map<std::string, std::string> names = {
             {"Up", "↑"},
             {"Down", "↓"},
             {"Left", "←"},
             {"Right", "→"},
-            {"Escape", "Esc"},
-            {"Return", "Enter"},
-            {"KP_Enter", "Enter"},
-            {"space", "Space"},
-            {"BackSpace", "Backspace"},
-            {"Delete", "Delete"},
-            {"Insert", "Insert"},
-            {"Home", "Home"},
-            {"End", "End"},
-            {"Prior", "Page Up"},
-            {"Next", "Page Down"},
-            {"Print", "Print Screen"},
-            {"Tab", "Tab"},
-            {"Menu", "Menu"},
-            {"XF86AudioRaiseVolume", "Volume Up"},
-            {"XF86AudioLowerVolume", "Volume Down"},
-            {"XF86AudioMute", "Mute"},
-            {"XF86MonBrightnessUp", "Brightness Up"},
-            {"XF86MonBrightnessDown", "Brightness Down"},
-            {"XF86AudioPlay", "Play/Pause"},
-            {"XF86AudioPause", "Pause"},
-            {"XF86AudioNext", "Next Track"},
-            {"XF86AudioPrev", "Previous Track"},
-            {"XF86AudioStop", "Stop"},
-            {"XF86Calculator", "Calculator"},
-            {"XF86Explorer", "File Manager"},
-            {"XF86Search", "Search"},
-            {"XF86HomePage", "Home Page"},
-            {"XF86Mail", "Mail"},
+            {"Escape", trc("key", "Esc")},
+            {"Return", trc("key", "Enter")},
+            {"KP_Enter", trc("key", "Enter")},
+            {"space", trc("key", "Space")},
+            {"BackSpace", trc("key", "Backspace")},
+            {"Delete", trc("key", "Delete")},
+            {"Insert", trc("key", "Insert")},
+            {"Home", trc("key", "Home")},
+            {"End", trc("key", "End")},
+            {"Prior", trc("key", "Page Up")},
+            {"Next", trc("key", "Page Down")},
+            {"Print", trc("key", "Print Screen")},
+            {"Tab", trc("key", "Tab")},
+            {"Menu", trc("key", "Menu")},
+            {"XF86AudioRaiseVolume", trc("key", "Volume Up")},
+            {"XF86AudioLowerVolume", trc("key", "Volume Down")},
+            {"XF86AudioMute", trc("key", "Mute")},
+            {"XF86MonBrightnessUp", trc("key", "Brightness Up")},
+            {"XF86MonBrightnessDown", trc("key", "Brightness Down")},
+            {"XF86AudioPlay", trc("key", "Play/Pause")},
+            {"XF86AudioPause", trc("key", "Pause")},
+            {"XF86AudioNext", trc("key", "Next Track")},
+            {"XF86AudioPrev", trc("key", "Previous Track")},
+            {"XF86AudioStop", trc("key", "Stop")},
+            {"XF86Calculator", trc("key", "Calculator")},
+            {"XF86Explorer", trc("key", "File Manager")},
+            {"XF86Search", trc("key", "Search")},
+            {"XF86HomePage", trc("key", "Home Page")},
+            {"XF86Mail", trc("key", "Mail")},
     };
     if (!keyText.empty())
         return keyText;
@@ -226,7 +232,7 @@ template<typename... Args>
 ShortcutsModel::Result ShortcutsModel::call(const std::string& method, const Args&... args)
 {
     if (!m_service.isAvailable())
-        return {.result = "unavailable", .message = "The shortcut service is not available."};
+        return {.result = "unavailable", .message = tr("The shortcut service is not available.")};
     const dbus::Reply reply = m_service.proxy().call(method, args...);
     if (reply.isError()) {
         fprintf(stderr, "Shortcut request %s failed: %s\n", method.c_str(), reply.error().message.c_str());
@@ -251,32 +257,33 @@ std::string ShortcutsModel::messageFor(const std::string& result, const std::str
     if (result == "success")
         return {};
     if (result == "conflict")
-        return "This shortcut is already used by \"" + conflictDescription + "\".";
+        return format(tr("This shortcut is already used by \"{action}\"."), {{"action", conflictDescription}});
     if (result == "conflict-can-override")
-        return "This shortcut is used by \"" + conflictDescription + "\". Press it again to reassign it.";
+        return format(tr("This shortcut is used by \"{action}\". Press it again to reassign it."),
+                      {{"action", conflictDescription}});
     if (result == "missing-modifier") {
-        return m_commandKeys ? "Include Control, Option or Command, or use a function key."
-                             : "Include Ctrl, Alt or Meta, or use a function key.";
+        return m_commandKeys ? tr("Include Control, Option or Command, or use a function key.")
+                             : tr("Include Ctrl, Alt or Meta, or use a function key.");
     }
     if (result == "shift-only-not-allowed") {
-        return m_commandKeys ? "Shift cannot be the only modifier. Add Control, Option or Command."
-                             : "Shift cannot be the only modifier. Add Ctrl, Alt or Meta.";
+        return m_commandKeys ? tr("Shift cannot be the only modifier. Add Control, Option or Command.")
+                             : tr("Shift cannot be the only modifier. Add Ctrl, Alt or Meta.");
     }
     if (result == "key-not-allowed" || result == "reserved-key-not-allowed")
-        return "This key cannot be used in a shortcut.";
+        return tr("This key cannot be used in a shortcut.");
     if (result == "maximum-accelerators-reached")
-        return "This action already has the maximum of five shortcuts.";
+        return tr("This action already has the maximum of five shortcuts.");
     if (result == "non-meta-accelerator-warning") {
-        return m_commandKeys ? "Shortcuts without both Control and Command may be intercepted before applications "
-                               "see them. Press it again to keep it."
-                             : "Shortcuts without Meta may be intercepted before applications see them. Press it "
-                               "again to keep it.";
+        return m_commandKeys ? tr("Shortcuts without both Control and Command may be intercepted before "
+                                  "applications see them. Press it again to keep it.")
+                             : tr("Shortcuts without Meta may be intercepted before applications see them. Press it "
+                                  "again to keep it.");
     }
     if (result == "restore-success-with-conflicts")
-        return "Some default shortcuts are in use by other actions and were not restored.";
+        return tr("Some default shortcuts are in use by other actions and were not restored.");
     if (result == "not-found")
-        return "This shortcut no longer exists.";
-    return "The shortcut could not be changed.";
+        return tr("This shortcut no longer exists.");
+    return tr("The shortcut could not be changed.");
 }
 
 ShortcutsModel::Result ShortcutsModel::addAccelerator(const std::string& action, uint32_t keycode, uint32_t keysym,
@@ -320,13 +327,13 @@ std::vector<std::string> ShortcutsModel::modifierParts(uint32_t modifiers) const
     // bar, Alt is Option and Ctrl is Control.
     std::vector<std::string> parts;
     if (modifiers & ControlDown)
-        parts.push_back(m_commandKeys ? "Control" : "Ctrl");
+        parts.push_back(m_commandKeys ? trc("key", "Control") : trc("key", "Ctrl"));
     if (modifiers & AltDown)
-        parts.push_back(m_commandKeys ? "Option" : "Alt");
+        parts.push_back(m_commandKeys ? trc("key", "Option") : trc("key", "Alt"));
     if (modifiers & ShiftDown)
-        parts.push_back("Shift");
+        parts.push_back(trc("key", "Shift"));
     if (modifiers & MetaDown)
-        parts.push_back(m_commandKeys ? "Command" : "Meta");
+        parts.push_back(m_commandKeys ? trc("key", "Command") : trc("key", "Meta"));
     return parts;
 }
 

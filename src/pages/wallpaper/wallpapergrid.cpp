@@ -7,6 +7,7 @@
 #include <cctype>
 #include <cmath>
 
+#include "base/i18n.h"
 #include "ui/color_provider.h"
 #include "ui/icon.h"
 #include "ui/image_view.h"
@@ -20,6 +21,8 @@
 #include "widgets/metrics.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -302,7 +305,7 @@ public:
         , m_addTile(addTile)
     {
         if (m_addTile) {
-            m_addLabel = addChild<Label>("Add wallpaper");
+            m_addLabel = addChild<Label>(tr("Add wallpaper"));
             return;
         }
         m_placeholder = addChild<Icon>("image", 32);
@@ -613,8 +616,9 @@ void WallpaperGrid::updateTiles()
 void WallpaperGrid::updateHeader()
 {
     m_count->setVisible(!m_wallpapers.empty());
-    m_count->setText("(" + std::to_string(m_wallpapers.size()) + ")");
-    m_showAll->setText(m_expanded ? "Show less" : "Show all");
+    // TRANSLATORS: the number of wallpapers after a section's title, such as "(12)".
+    m_count->setText(format(tr("({count})"), {{"count", std::to_string(m_wallpapers.size())}}));
+    m_showAll->setText(m_expanded ? tr("Show less") : tr("Show all"));
     m_title->requestLayout();
 }
 

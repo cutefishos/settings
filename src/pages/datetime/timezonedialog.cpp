@@ -8,6 +8,7 @@
 #include <cmath>
 
 #include "base/event_loop.h"
+#include "base/i18n.h"
 #include "ui/animation.h"
 #include "ui/color_provider.h"
 #include "ui/dialog_window.h"
@@ -31,6 +32,8 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -128,7 +131,7 @@ public:
     SearchBox()
     {
         field = addChild<SearchBoxField>();
-        field->setPlaceholder("Search city or country");
+        field->setPlaceholder(tr("Search city or country"));
         field->setFrameVisible(false);
         field->setTextMargins(metrics::m + 14 + metrics::s, metrics::m);
         m_glyph = addChild<Icon>("search", 14);
@@ -262,7 +265,7 @@ public:
         m_scroll = addChild<ScrollView>();
         m_scroll->setElastic(false);
         m_rows = m_scroll->setContent<Column>();
-        m_empty = addChild<StyledLabel>("No matching time zones");
+        m_empty = addChild<StyledLabel>(tr("No matching time zones"));
         m_empty->style = [](StyledLabel& label) { label.setColor(Theme::current().disabledText); };
     }
 
@@ -757,7 +760,7 @@ class Band : public View
 public:
     Band()
     {
-        title = addChild<Label>("Time Zone");
+        title = addChild<Label>(tr("Time Zone"));
         title->setFontSize(14);
         title->setWeight(600);
         search = addChild<SearchBox>();
@@ -824,9 +827,10 @@ public:
         m_detail->style = [](StyledLabel& label) { label.setColor(Theme::current().disabledText); };
         RowLayout* buttons = bar->addChild<RowLayout>();
         buttons->setSpacing(metrics::dialogButtonSpacing);
-        m_cancel = buttons->addChild<DialogButton>("Cancel");
+        m_cancel = buttons->addChild<DialogButton>(tr("Cancel"));
         m_cancel->onClicked = [this] { m_dialog.close(); };
-        m_set = buttons->addChild<DialogButton>("Set", true);
+        // TRANSLATORS: the button that makes the chosen time zone the system's.
+        m_set = buttons->addChild<DialogButton>(tr("Set"), true);
         m_set->onClicked = [this] { m_dialog.apply(); };
 
         results = addChild<ResultsPopup>();
@@ -843,9 +847,11 @@ public:
         const TimeZoneMap::Info& info = m_dialog.selectedInfo();
         m_time->setText(info.time);
         const bool named = !info.name.empty();
-        m_place->setText(!named ? "Click the map or search to choose a time zone"
-                         : !info.region.empty() && info.region != info.name ? info.name + ", " + info.region
-                                                                             : info.name);
+        m_place->setText(!named ? tr("Click the map or search to choose a time zone")
+                         : !info.region.empty() && info.region != info.name
+                                 // TRANSLATORS: a time zone's city and its country or region, such as "Paris, France".
+                                 ? format(tr("{city}, {region}"), {{"city", info.name}, {"region", info.region}})
+                                 : info.name);
         m_place->setWeight(named ? 600 : 400);
         m_place->style = [named](StyledLabel& label) {
             const Theme& theme = Theme::current();
@@ -854,9 +860,10 @@ public:
         if (!named)
             m_detail->setText({});
         else if (!m_dialog.isChanged())
-            m_detail->setText("Current time zone");
+            m_detail->setText(tr("Current time zone"));
         else
-            m_detail->setText(joined({info.day, info.difference, "Currently " + m_dialog.map().currentTimeZone()},
+            m_detail->setText(joined({info.day, info.difference,
+                                      format(tr("Currently {zone}"), {{"zone", m_dialog.map().currentTimeZone()}})},
                                      "  ·  "));
         m_set->setEnabled(m_dialog.isChanged());
         map()->update();
@@ -916,7 +923,7 @@ TimeZoneDialog::TimeZoneDialog(SettingsWindow& parent, TimeZoneMap& map)
 {
     auto root = std::make_unique<Root>(*this);
     m_root = root.get();
-    m_window->setTitle("Time Zone");
+    m_window->setTitle(tr("Time Zone"));
     m_window->setBackgroundColor(withAlpha(ColorId::SecondBackground, 0.5));
     m_window->setContentView(std::move(root));
     m_window->setTransientParent(&parent.window(), false);

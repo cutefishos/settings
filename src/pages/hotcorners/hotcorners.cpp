@@ -6,7 +6,10 @@
 #include <cstdint>
 #include <cstdio>
 
+#include "base/i18n.h"
+
 using namespace cutefish::base;
+using cutefish::i18n::trc;
 
 namespace settings {
 
@@ -112,13 +115,13 @@ std::string HotCorners::modifierText(int modifiers) const
         text += part;
     };
     if (modifiers & kControlDown)
-        add(m_commandKeys ? "Control" : "Ctrl");
+        add(m_commandKeys ? trc("key", "Control") : trc("key", "Ctrl"));
     if (modifiers & kAltDown)
-        add(m_commandKeys ? "Option" : "Alt");
+        add(m_commandKeys ? trc("key", "Option") : trc("key", "Alt"));
     if (modifiers & kShiftDown)
-        add("Shift");
+        add(trc("key", "Shift"));
     if (modifiers & kMetaDown)
-        add(m_commandKeys ? "Command" : "Meta");
+        add(m_commandKeys ? trc("key", "Command") : trc("key", "Meta"));
     return text;
 }
 

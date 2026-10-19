@@ -3,6 +3,7 @@
 
 #include <array>
 
+#include "base/i18n.h"
 #include "pages/defaultapps/defaultapplications.h"
 #include "widgets/card.h"
 #include "widgets/listrow.h"
@@ -11,6 +12,7 @@
 #include "window/pagelist.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -20,11 +22,11 @@ class DefaultAppsPage : public Page
 {
 public:
     explicit DefaultAppsPage(SettingsWindow& window)
-        : Page(window, "Default Applications")
+        : Page(window, tr("Default Applications"))
     {
         Card* card = content()->addChild<Card>(Card::Style::List);
-        const std::array<const char*, DefaultApplications::KindCount> titles = {"Web browser", "Email client",
-                                                                               "Terminal", "Video player"};
+        const std::array<const char*, DefaultApplications::KindCount> titles = {tr("Web browser"), tr("Email client"),
+                                                                               tr("Terminal"), tr("Video player")};
         for (int kind = 0; kind < DefaultApplications::KindCount; ++kind) {
             ListRow* row = card->addChild<ListRow>(titles[size_t(kind)]);
             row->setInteractive(false);
@@ -50,7 +52,7 @@ private:
             box->setItems(std::move(items));
             const int index = m_applications.defaultIndex(DefaultApplications::Kind(kind));
             box->setCurrentIndex(index >= 0 ? index : (list.empty() ? -1 : 0));
-            box->setDisplayText(list.empty() ? std::optional<std::string>("None") : std::nullopt);
+            box->setDisplayText(list.empty() ? std::optional<std::string>(tr("None")) : std::nullopt);
             row->setEnabled(!list.empty());
         }
     }

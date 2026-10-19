@@ -4,6 +4,7 @@
 #include "pages/network/common/detailsdialog.h"
 
 #include "base/event_loop.h"
+#include "base/i18n.h"
 #include "cutefish/networkmanager/connections.h"
 #include "cutefish/networkmanager/handler.h"
 #include "pages/network/common/ipsettingsview.h"
@@ -18,6 +19,8 @@
 #include "window/settingswindow.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
 namespace nm = cutefish::networkmanager;
 
 namespace settings::network {
@@ -65,33 +68,34 @@ DetailsDialog::DetailsDialog(SettingsWindow& window, NetworkList& list, Kind kin
     m_details->setLayoutHints({.fillWidth = true});
 
     m_savedCard = m_details->addChild<Card>(Card::Style::List);
-    m_autoConnect = m_savedCard->addChild<SwitchRow>(kind == Kind::Wireless ? "Auto-Join" : "Connect Automatically");
+    m_autoConnect =
+            m_savedCard->addChild<SwitchRow>(kind == Kind::Wireless ? tr("Auto-Join") : tr("Connect Automatically"));
     m_autoConnect->onToggled = [this](bool checked) {
         if (!m_list.isMock() && m_settings)
             m_settings->setAutoConnect(checked);
     };
-    NavigationItem* ipSettings = m_savedCard->addChild<NavigationItem>("IP Settings");
+    NavigationItem* ipSettings = m_savedCard->addChild<NavigationItem>(tr("IP Settings"));
     ipSettings->setEnabled(!m_list.isMock());
     ipSettings->onClicked = [this] { showIpSettings(true); };
 
     m_addressCard = m_details->addChild<Card>(Card::Style::List);
     if (kind == Kind::Wireless) {
-        m_security = m_addressCard->addChild<InfoRow>("Security");
-        m_signal = m_addressCard->addChild<InfoRow>("Signal");
+        m_security = m_addressCard->addChild<InfoRow>(tr("Security"));
+        m_signal = m_addressCard->addChild<InfoRow>(tr("Signal"));
     }
-    m_ipv4 = m_addressCard->addChild<InfoRow>("IPv4 address");
-    m_ipv6 = m_addressCard->addChild<InfoRow>("IPv6 address");
-    m_mac = m_addressCard->addChild<InfoRow>("MAC address");
-    m_gateway = m_addressCard->addChild<InfoRow>("Gateway");
-    m_dns = m_addressCard->addChild<InfoRow>("DNS");
+    m_ipv4 = m_addressCard->addChild<InfoRow>(tr("IPv4 address"));
+    m_ipv6 = m_addressCard->addChild<InfoRow>(tr("IPv6 address"));
+    m_mac = m_addressCard->addChild<InfoRow>(tr("MAC address"));
+    m_gateway = m_addressCard->addChild<InfoRow>(tr("Gateway"));
+    m_dns = m_addressCard->addChild<InfoRow>(tr("DNS"));
 
     RowLayout* buttons = m_details->addChild<RowLayout>();
     buttons->setSpacing(metrics::dialogButtonSpacing);
     buttons->setLayoutHints({.horizontalAlignment = Alignment::End});
-    DialogButton* closeButton = buttons->addChild<DialogButton>("Close");
+    DialogButton* closeButton = buttons->addChild<DialogButton>(tr("Close"));
     closeButton->onClicked = [this] { close(); };
     if (kind == Kind::Wireless) {
-        m_forget = buttons->addChild<DialogButton>("Forget this network", true);
+        m_forget = buttons->addChild<DialogButton>(tr("Forget this network"), true);
         m_forget->setDestructive(true);
         m_forget->onClicked = [this] {
             if (!m_list.isMock())
@@ -152,7 +156,8 @@ void DetailsDialog::update()
     if (m_kind == Kind::Wireless) {
         setSaved(!m_row.connectionPath.empty());
         m_security->setValue(m_row.securityTypeString);
-        m_signal->setValue(std::to_string(m_row.signal) + "%");
+        // TRANSLATORS: a percentage, such as "92%".
+        m_signal->setValue(format(tr("{percent}%"), {{"percent", std::to_string(m_row.signal)}}));
     } else {
         // Only a connection that is up has addresses.
         m_addressCard->setVisible(!m_row.ipV4Address.empty() || !m_row.ipV6Address.empty());
@@ -199,7 +204,7 @@ void DetailsDialog::showIpSettings(bool shown)
         cutefish::base::EventLoop::current()->post([gone] {});
     }
     m_dialog->setBackVisible(shown);
-    m_dialog->setTitle(shown ? std::string("IP Settings") : m_row.uniqueName);
+    m_dialog->setTitle(shown ? std::string(tr("IP Settings")) : m_row.uniqueName);
 }
 
 void DetailsDialog::close()

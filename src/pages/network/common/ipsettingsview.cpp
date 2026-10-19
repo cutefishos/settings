@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cctype>
 
+#include "base/i18n.h"
 #include "cutefish/networkmanager/handler.h"
 #include "pages/network/common/rows.h"
 #include "ui/combo_box.h"
@@ -19,6 +20,7 @@
 #include "widgets/metrics.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 namespace nm = cutefish::networkmanager;
 
 namespace settings::network {
@@ -81,52 +83,52 @@ IpSettingsView::IpSettingsView(std::string connectionPath)
         }));
 
     Card* ipv4 = addCard(this);
-    m_ipv4Method = addRow(ipv4, "Configure IPv4").row->addChild<ComboBox>();
+    m_ipv4Method = addRow(ipv4, tr("Configure IPv4")).row->addChild<ComboBox>();
     m_ipv4Method->setLayoutHints({.fillWidth = true});
     m_ipv4Method->onActivated = [this](int) {
         if (currentValue(m_ipv4Method, m_form.ipv4Methods) == "manual")
             fillFromCurrent(true);
         update();
     };
-    FormRow row = addRow(ipv4, "IP Address");
+    FormRow row = addRow(ipv4, tr("IP Address"));
     m_ipv4AddressRow = row.row;
-    m_ipv4Address = addField(row.row, "Required");
-    row = addRow(ipv4, "Subnet Mask");
+    m_ipv4Address = addField(row.row, tr("Required"));
+    row = addRow(ipv4, tr("Subnet Mask"));
     m_ipv4NetmaskRow = row.row;
     m_ipv4Netmask = addField(row.row, "255.255.255.0");
-    row = addRow(ipv4, "Router");
+    row = addRow(ipv4, tr("Router"));
     m_ipv4GatewayRow = row.row;
-    m_ipv4Gateway = addField(row.row, "Optional");
+    m_ipv4Gateway = addField(row.row, tr("Optional"));
 
     Card* ipv6 = addCard(this);
-    m_ipv6Method = addRow(ipv6, "Configure IPv6").row->addChild<ComboBox>();
+    m_ipv6Method = addRow(ipv6, tr("Configure IPv6")).row->addChild<ComboBox>();
     m_ipv6Method->setLayoutHints({.fillWidth = true});
     m_ipv6Method->onActivated = [this](int) {
         if (currentValue(m_ipv6Method, m_form.ipv6Methods) == "manual")
             fillFromCurrent(false);
         update();
     };
-    row = addRow(ipv6, "IP Address");
+    row = addRow(ipv6, tr("IP Address"));
     m_ipv6AddressRow = row.row;
-    m_ipv6Address = addField(row.row, "Required");
-    row = addRow(ipv6, "Prefix Length");
+    m_ipv6Address = addField(row.row, tr("Required"));
+    row = addRow(ipv6, tr("Prefix Length"));
     m_ipv6PrefixRow = row.row;
     m_ipv6Prefix = addField(row.row, "64");
-    row = addRow(ipv6, "Router");
+    row = addRow(ipv6, tr("Router"));
     m_ipv6GatewayRow = row.row;
-    m_ipv6Gateway = addField(row.row, "Optional");
+    m_ipv6Gateway = addField(row.row, tr("Optional"));
 
     Card* dns = addCard(this);
     m_automaticDnsRow = dns->addChild<RowLayout>();
     m_automaticDnsRow->setSpacing(metrics::dialogSpacing);
     m_automaticDnsRow->setLayoutHints({.fillWidth = true});
-    Label* automaticLabel = m_automaticDnsRow->addChild<Label>("Automatic DNS");
+    Label* automaticLabel = m_automaticDnsRow->addChild<Label>(tr("Automatic DNS"));
     automaticLabel->setWrap(true);
     automaticLabel->setLayoutHints({.fillWidth = true});
     m_automaticDns = m_automaticDnsRow->addChild<Switch>();
     setTrailingSwitchPadding(m_automaticDns);
     m_automaticDns->onToggled = [this](bool) { update(); };
-    row = addRow(dns, "DNS Servers");
+    row = addRow(dns, tr("DNS Servers"));
     m_dns = addField(row.row, {});
 
     m_message = addChild<Label>();
@@ -136,12 +138,12 @@ IpSettingsView::IpSettingsView(std::string connectionPath)
     RowLayout* buttons = addChild<RowLayout>();
     buttons->setSpacing(metrics::dialogButtonSpacing);
     buttons->setLayoutHints({.horizontalAlignment = Alignment::End});
-    DialogButton* cancel = buttons->addChild<DialogButton>("Cancel");
+    DialogButton* cancel = buttons->addChild<DialogButton>(tr("Cancel"));
     cancel->onClicked = [this] {
         if (onFinished)
             onFinished();
     };
-    m_saveButton = buttons->addChild<DialogButton>("Save", true);
+    m_saveButton = buttons->addChild<DialogButton>(tr("Save"), true);
     m_saveButton->onClicked = [this] { save(); };
 
     load();
@@ -241,7 +243,7 @@ void IpSettingsView::update()
     for (RowLayout* row : {m_ipv6AddressRow, m_ipv6PrefixRow, m_ipv6GatewayRow})
         row->setVisible(ipv6Manual);
     m_automaticDnsRow->setVisible(automaticFamily);
-    m_dns->setPlaceholder(automaticFamily && m_automaticDns->isChecked() ? "Optional" : "1.1.1.1, 8.8.8.8");
+    m_dns->setPlaceholder(automaticFamily && m_automaticDns->isChecked() ? tr("Optional") : "1.1.1.1, 8.8.8.8");
 
     const nm::ip::Check result = nm::ip::check(form);
     const std::string problem = !m_error.empty() ? m_error : result.message;
@@ -251,11 +253,11 @@ void IpSettingsView::update()
     for (const char c : m_dns->text())
         hasDns |= !std::isspace(static_cast<unsigned char>(c));
     if (message.empty() && automaticFamily && m_automaticDns->isChecked() && hasDns)
-        message = "These servers are asked before the network's own.";
+        message = tr("These servers are asked before the network's own.");
     m_message->setText(message);
     m_message->setVisible(!message.empty());
 
-    m_saveButton->setText(m_saving ? "Saving…" : "Save");
+    m_saveButton->setText(m_saving ? tr("Saving…") : tr("Save"));
     m_saveButton->setEnabled(!m_saving && result.complete);
     requestLayout();
 }

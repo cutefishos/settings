@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 
+#include "base/i18n.h"
 #include "cutefish/appearance/appearance.h"
 #include "pages/wallpaper/wallpapergrid.h"
 #include "pages/wallpaper/wallpapers.h"
@@ -21,6 +22,8 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -30,12 +33,12 @@ class WallpaperPage : public Page
 {
 public:
     explicit WallpaperPage(SettingsWindow& window)
-        : Page(window, "Wallpaper")
+        : Page(window, tr("Wallpaper"))
     {
         Card* card = content()->addChild<Card>();
         card->setSpacing(metrics::sectionSpacing);
 
-        m_user = card->addChild<WallpaperGrid>("Your wallpapers");
+        m_user = card->addChild<WallpaperGrid>(tr("Your wallpapers"));
         m_user->setName("wallpaper:user");
         m_user->setLayoutHints({.fillWidth = true});
         m_user->setShowAddWallpaper(true);
@@ -44,7 +47,7 @@ public:
         m_user->onAddRequested = [this](PointF position) { m_addMenu.popup(&settingsWindow().window(), position); };
         m_user->onRemoveRequested = [this](const std::string& path) { m_appearance.removeUserWallpaper(path); };
 
-        m_system = card->addChild<WallpaperGrid>("System");
+        m_system = card->addChild<WallpaperGrid>(tr("System"));
         m_system->setName("wallpaper:system");
         m_system->setLayoutHints({.fillWidth = true});
         m_system->setWallpapers(wallpapers::system());
@@ -57,7 +60,7 @@ public:
         ColumnLayout* colors = card->addChild<ColumnLayout>();
         colors->setSpacing(metrics::cardSpacing);
         colors->setLayoutHints({.fillWidth = true});
-        colors->addChild<Label>("Colors");
+        colors->addChild<Label>(tr("Colors"));
         m_swatches = colors->addChild<ColorSwatches>();
         m_swatches->setName("wallpaper:colors");
         m_swatches->setLayoutHints({.fillWidth = true});
@@ -66,8 +69,8 @@ public:
             m_appearance.setBackgroundColor(color);
         };
 
-        m_addMenu.addItem("Choose file…", [this] { chooseFile(); });
-        m_addMenu.addItem("Choose folder…", [this] { chooseFolder(); });
+        m_addMenu.addItem(tr("Choose file…"), [this] { chooseFile(); });
+        m_addMenu.addItem(tr("Choose folder…"), [this] { chooseFolder(); });
 
         m_changed = m_appearance.changed.connect([this] { update(); });
         m_folderImagesChanged = m_appearance.wallpaperFolderImagesChanged.connect([this](const std::string& folder) {
@@ -90,9 +93,10 @@ private:
     void chooseFile()
     {
         m_chooser = std::make_unique<FileChooser>(&settingsWindow().window());
-        m_chooser->setTitle("Add wallpaper");
-        m_chooser->setFilters(
-                {FileChooser::Filter::fromNameFilter("Image files (*.jpg *.jpeg *.png *.webp *.bmp *.tif *.tiff *.avif)")});
+        m_chooser->setTitle(tr("Add wallpaper"));
+        m_chooser->setFilters({FileChooser::Filter::fromNameFilter(
+                format(tr("Image files ({patterns})"),
+                       {{"patterns", "*.jpg *.jpeg *.png *.webp *.bmp *.tif *.tiff *.avif"}}))});
         m_chooser->onAccepted = [this](const std::vector<std::string>& paths, const std::string&) {
             if (!paths.empty())
                 select(paths.front());
@@ -104,7 +108,7 @@ private:
     {
         m_chooser = std::make_unique<FileChooser>(&settingsWindow().window());
         m_chooser->setMode(FileChooser::Mode::OpenFolder);
-        m_chooser->setTitle("Add Wallpaper Folder");
+        m_chooser->setTitle(tr("Add Wallpaper Folder"));
         m_chooser->onAccepted = [this](const std::vector<std::string>& paths, const std::string&) {
             if (!paths.empty())
                 m_appearance.addWallpaperFolder(paths.front());

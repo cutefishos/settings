@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cmath>
 
+#include "base/i18n.h"
 #include "cutefish/appearance/appearance.h"
 #include "pages/cursortheme/cursorthemes.h"
 #include "ui/image_view.h"
@@ -22,6 +23,7 @@
 
 using namespace cutefish::ui;
 using cutefish::appearance::Appearance;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -46,10 +48,10 @@ class CursorThemePage : public Page
 {
 public:
     explicit CursorThemePage(SettingsWindow& window)
-        : Page(window, "Cursor Style")
+        : Page(window, tr("Cursor Style"))
         , m_themes(CursorTheme::installed())
     {
-        Section* themes = content()->addChild<Section>("Cursor theme");
+        Section* themes = content()->addChild<Section>(tr("Cursor theme"));
         Card* card = themes->addChild<Card>();
         TileGrid* grid = card->addChild<TileGrid>(SizeF{104 + metrics::tileSpacing, 104}, metrics::m);
         grid->setVisible(!m_themes.themes.empty());
@@ -64,7 +66,7 @@ public:
             m_items.push_back(item);
         }
 
-        Section* size = content()->addChild<Section>("Cursor size");
+        Section* size = content()->addChild<Section>(tr("Cursor size"));
         Card* sizeCard = size->addChild<Card>();
         RowLayout* row = sizeCard->addChild<RowLayout>();
         row->setSpacing(metrics::rowSpacing);

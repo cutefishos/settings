@@ -7,6 +7,7 @@
 #include <chrono>
 #include <cmath>
 
+#include "base/i18n.h"
 #include "base/timer.h"
 #include "ui/color_provider.h"
 #include "ui/icon.h"
@@ -17,6 +18,7 @@
 #include "widgets/metrics.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::trc;
 
 namespace settings {
 
@@ -39,8 +41,8 @@ public:
     {
         m_left = addChild<Label>();
         m_right = addChild<Label>();
-        m_leftReference = addChild<Label>("Left");
-        m_rightReference = addChild<Label>("Right");
+        m_leftReference = addChild<Label>(trc("balance", "Left"));
+        m_rightReference = addChild<Label>(trc("balance", "Right"));
         for (Label* label : {m_left, m_right, m_leftReference, m_rightReference}) {
             label->setFontSize(kCaptionPixelSize);
             // Sized to their text, which rounding must not cut.

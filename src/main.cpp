@@ -5,6 +5,7 @@
 #include <string>
 
 #include "base/dbus.h"
+#include "base/i18n.h"
 #include "ui/application.h"
 #include "window/options.h"
 #include "window/settingswindow.h"
@@ -68,6 +69,7 @@ int main(int argc, char** argv)
 
     ui::Application application(argc, argv);
     application.setApplicationId("cutefish-settings");
+    i18n::setDomain("cutefish-settings");
 
     // A running instance takes the request, and this process ends.
     base::dbus::Connection* bus = application.sessionBus();

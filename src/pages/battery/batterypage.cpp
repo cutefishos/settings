@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "base/event_loop.h"
+#include "base/i18n.h"
 #include "base/timer.h"
 #include "pages/battery/battery.h"
 #include "pages/battery/batteryhistory.h"
@@ -29,6 +30,8 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -45,9 +48,9 @@ public:
     {
         setSpacing(metrics::m);
         setLayoutHints({.fillWidth = true});
-        m_title = addChild<SectionLabel>("History");
+        m_title = addChild<SectionLabel>(tr("History"));
         m_title->setName("battery:historytitle");
-        m_picker = addChild<SegmentedControl>(std::vector<std::string>{"24 hours", "7 days"});
+        m_picker = addChild<SegmentedControl>(std::vector<std::string>{tr("24 hours"), tr("7 days")});
         // Compact, to sit in the title row.
         m_picker->setContentHeight(28);
     }
@@ -75,7 +78,7 @@ class BatteryPage : public Page
 {
 public:
     explicit BatteryPage(SettingsWindow& window)
-        : Page(window, "Battery")
+        : Page(window, tr("Battery"))
     {
         // History.
         m_historySection = content()->addChild<ColumnLayout>();
@@ -101,16 +104,16 @@ public:
         m_graph->setDuration(m_plottedDuration);
 
         // Health.
-        m_health = content()->addChild<Section>("Health");
+        m_health = content()->addChild<Section>(tr("Health"));
         m_health->setName("battery:health");
         Card* health = m_health->addChild<Card>(Card::Style::List);
-        m_condition = health->addChild<InfoRow>("Condition");
-        m_capacity = health->addChild<InfoRow>("Maximum capacity");
+        m_condition = health->addChild<InfoRow>(tr("Condition"));
+        m_capacity = health->addChild<InfoRow>(tr("Maximum capacity"));
         m_lastCharged = health->addChild<InfoRow>();
         m_lastCharged->setName("battery:lastcharged");
 
         // Charging.
-        m_charging = content()->addChild<Section>("Charging");
+        m_charging = content()->addChild<Section>(tr("Charging"));
         m_charging->setName("battery:charging");
         Card* charging = m_charging->addChild<Card>(Card::Style::List);
         m_chargeLimit = charging->addChild<SwitchRow>();
@@ -120,7 +123,7 @@ public:
         m_chargeLimitNote->setName("battery:chargelimitnote");
 
         Card* percentage = content()->addChild<Card>(Card::Style::List);
-        SwitchRow* showPercent = percentage->addChild<SwitchRow>("Show percentage in status bar");
+        SwitchRow* showPercent = percentage->addChild<SwitchRow>(tr("Show percentage in status bar"));
         showPercent->setChecked(m_battery.showPercent());
         showPercent->onToggled = [this](bool checked) { m_battery.setPercentEnabled(checked); };
 
@@ -183,10 +186,11 @@ private:
     {
         const int capacity = m_battery.capacity();
         m_health->setVisible(capacity != 0);
-        m_condition->setValue(capacity >= 90 ? "Excellent" : capacity >= 80 ? "Normal" : "Poor");
-        m_capacity->setValue(std::to_string(capacity) + "%");
+        m_condition->setValue(capacity >= 90 ? tr("Excellent") : capacity >= 80 ? tr("Normal") : tr("Poor"));
+        // TRANSLATORS: a percentage, such as "92%".
+        m_capacity->setValue(format(tr("{percent}%"), {{"percent", std::to_string(capacity)}}));
         const int lastCharged = m_battery.lastChargedPercent();
-        m_lastCharged->setText("Last charged to " + std::to_string(lastCharged) + "%");
+        m_lastCharged->setText(format(tr("Last charged to {percent}%"), {{"percent", std::to_string(lastCharged)}}));
         m_lastCharged->setValue(m_battery.lastChargedTime());
         m_lastCharged->setVisible(lastCharged != 0);
     }
@@ -194,7 +198,8 @@ private:
     void updateChargeLimit()
     {
         m_charging->setVisible(m_battery.chargeLimitSupported());
-        m_chargeLimit->setText("Limit charging to " + std::to_string(m_battery.chargeLimitEnd()) + "%");
+        m_chargeLimit->setText(
+                format(tr("Limit charging to {percent}%"), {{"percent", std::to_string(m_battery.chargeLimitEnd())}}));
         m_chargeLimit->setChecked(m_battery.chargeLimitEnabled());
         updateChargeLimitNote();
     }
@@ -203,11 +208,12 @@ private:
     {
         const bool held = m_battery.chargeLimitHeld();
         m_chargeLimitNote->setText(
-                held ? "While plugged in, charging stops at " + std::to_string(m_battery.chargeLimitEnd())
-                               + "% and resumes below " + std::to_string(m_battery.chargeLimitStart())
-                               + "%, so the battery wears more slowly."
-                     : "This computer's battery controller did not keep the limit, so the battery still "
-                       "charges fully.");
+                held ? format(tr("While plugged in, charging stops at {end}% and resumes below {start}%, so the "
+                                 "battery wears more slowly."),
+                              {{"end", std::to_string(m_battery.chargeLimitEnd())},
+                               {"start", std::to_string(m_battery.chargeLimitStart())}})
+                     : tr("This computer's battery controller did not keep the limit, so the battery still "
+                          "charges fully."));
         m_chargeLimitNote->setColor(held ? std::nullopt : std::optional<Color>(accent::orange));
     }
 

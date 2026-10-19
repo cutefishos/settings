@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cmath>
 
+#include "base/i18n.h"
 #include "ui/color_provider.h"
 #include "ui/keys.h"
 #include "ui/label.h"
@@ -21,6 +22,7 @@
 #include "window/pagelist.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -43,7 +45,7 @@ public:
         : m_page(page)
     {
         m_icon = addChild<RowIcon>(page.icon, page.iconColor);
-        m_title = addChild<Label>(page.title);
+        m_title = addChild<Label>(tr(page.title.c_str()));
         m_title->setFontSize(metrics::points(kItemPointSize));
         m_title->setVerticallyCentered(true);
     }
@@ -179,7 +181,7 @@ public:
             const Entry& entry = m_entries[i];
             if (i == 0 || entry.rootPage->category != category) {
                 category = entry.rootPage->category;
-                addChild<SidebarSection>(category);
+                addChild<SidebarSection>(tr(category.c_str()));
             }
             SidebarItem* item = addChild<SidebarItem>(*entry.page);
             item->setName(m_namePrefix + entry.page->id);
@@ -266,7 +268,7 @@ private:
 
 Sidebar::Sidebar()
 {
-    m_title = addChild<Label>("Settings");
+    m_title = addChild<Label>(tr("Settings"));
     m_title->setFontSize(metrics::points(kTitlePointSize));
     m_title->setVerticallyCentered(true);
     m_search = addChild<SearchField>();
@@ -290,7 +292,7 @@ Sidebar::Sidebar()
     m_resultsList = m_resultsScroll->setContent<SidebarList>();
     m_resultsList->setNamePrefix("result:");
     m_resultsList->onClicked = [this](int index) { openResult(index); };
-    m_noResults = addChild<Label>("No results");
+    m_noResults = addChild<Label>(tr("No results"));
     m_noResults->setElide(Label::Elide::None);
     m_noResults->setVisible(false);
 }
@@ -467,13 +469,14 @@ void Sidebar::updateResults()
     if (searching) {
         const std::vector<std::string> words = queryWords(m_search->text());
         for (const PageInfo* entry : m_entries) {
-            if (matches(words, {entry->title, entry->category, entry->keywords}))
+            if (matches(words, {tr(entry->title.c_str()), tr(entry->category.c_str()), tr(entry->keywords.c_str())}))
                 m_results.push_back({entry, entry});
             for (const PageInfo& sub : pages()) {
                 if (sub.parentId != entry->id
                     || std::find(m_unavailableSubPages.begin(), m_unavailableSubPages.end(), sub.id)
                             != m_unavailableSubPages.end()
-                    || !matches(words, {sub.title, entry->title, entry->category, sub.keywords}))
+                    || !matches(words, {tr(sub.title.c_str()), tr(entry->title.c_str()), tr(entry->category.c_str()),
+                                        tr(sub.keywords.c_str())}))
                     continue;
                 m_results.push_back({&sub, entry});
             }

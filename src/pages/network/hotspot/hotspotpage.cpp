@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: BSD-3-Clause
 
+#include "base/i18n.h"
 #include "cutefish/networkmanager/connections.h"
 #include "cutefish/networkmanager/handler.h"
 #include "cutefish/networkmanager/hotspot.h"
@@ -22,6 +23,8 @@
 #include "window/settingswindow.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
 namespace nm = cutefish::networkmanager;
 
 namespace settings::network {
@@ -68,13 +71,13 @@ class HotspotPage : public Page
 {
 public:
     explicit HotspotPage(SettingsWindow& window)
-        : Page(window, "Hotspot")
+        : Page(window, tr("Hotspot"))
         , m_configuration(nm::HotspotConfiguration::instance())
     {
         content()->setSpacing(metrics::sectionLabelSpacing);
 
         Card* switchCard = content()->addChild<Card>(Card::Style::List);
-        m_switch = switchCard->addChild<SwitchRow>("Wi-Fi hotspot");
+        m_switch = switchCard->addChild<SwitchRow>(tr("Wi-Fi hotspot"));
         m_switch->setName("hotspot:switch");
         m_switch->onToggled = [this](bool checked) {
             if (checked)
@@ -92,7 +95,7 @@ public:
         Card* fields = content()->addChild<Card>(Card::Style::List);
         fields->setLayoutHints(
             {.fillWidth = true, .margins = {0, metrics::sectionSpacing - metrics::sectionLabelSpacing, 0, 0}});
-        ListRow* nameRow = fields->addChild<ListRow>("Network name");
+        ListRow* nameRow = fields->addChild<ListRow>(tr("Network name"));
         nameRow->setInteractive(false);
         nameRow->setMinimumRowHeight(metrics::controlRowHeight);
         m_name = nameRow->addContent<TextField>(m_configuration->name());
@@ -104,7 +107,7 @@ public:
                 m_configuration->setName(m_name->text());
         };
 
-        ListRow* passwordRow = fields->addChild<ListRow>("Password");
+        ListRow* passwordRow = fields->addChild<ListRow>(tr("Password"));
         passwordRow->setInteractive(false);
         passwordRow->setMinimumRowHeight(metrics::controlRowHeight);
         m_password = passwordRow->addContent<PasswordField>();
@@ -117,7 +120,7 @@ public:
             if (nm::HotspotConfiguration::passwordValid(m_password->field->text()))
                 m_configuration->setPassword(m_password->field->text());
         };
-        m_password->generate->setToolTip("Generate password");
+        m_password->generate->setToolTip(tr("Generate password"));
         m_password->generate->onClicked = [this] {
             m_password->field->setText(nm::HotspotConfiguration::generatePassword());
             m_configuration->setPassword(m_password->field->text());
@@ -185,19 +188,20 @@ private:
             return;
         }
         m_confirm = std::make_unique<ConfirmDialog>(
-            &settingsWindow().window(), "Turn On Wi-Fi Hotspot?",
-            "Turning on the hotspot will disconnect from “" + m_handler.hotspotReplaces()
-                + "”, and you will not have access to the internet it provides.");
-        m_confirm->setCancelText("Cancel");
-        m_confirm->setConfirmText("Turn on");
+            &settingsWindow().window(), tr("Turn On Wi-Fi Hotspot?"),
+            format(tr("Turning on the hotspot will disconnect from “{network}”, and you will not have access to the "
+                      "internet it provides."),
+                   {{"network", m_handler.hotspotReplaces()}}));
+        m_confirm->setCancelText(tr("Cancel"));
+        m_confirm->setConfirmText(tr("Turn on"));
         m_confirm->onAccepted = [this] { start(); };
         m_confirm->show();
     }
 
     std::string description() const
     {
-        return "Share this computer's internet connection by creating a Wi-Fi network other devices can join. The "
-               "connection to share must come from a source other than Wi-Fi.";
+        return tr("Share this computer's internet connection by creating a Wi-Fi network other devices can join. "
+                  "The connection to share must come from a source other than Wi-Fi.");
     }
 
     void update()
@@ -214,12 +218,13 @@ private:
         else if (!m_enabled.isReady())
             status = description();
         else if (!m_enabled.isWirelessEnabled())
-            status = "Turn on Wi-Fi to use the hotspot.";
+            status = tr("Turn on Wi-Fi to use the hotspot.");
         else if (!m_handler.hotspotAllowed())
-            status = "System policy prohibits use as a hotspot.";
+            status = tr("System policy prohibits use as a hotspot.");
         else if (active)
-            status = "Other devices can join “" + m_configuration->name()
-                     + "” with the password below. Turn off the hotspot to use Wi-Fi on this computer.";
+            status = format(tr("Other devices can join “{network}” with the password below. Turn off the hotspot to "
+                               "use Wi-Fi on this computer."),
+                            {{"network", m_configuration->name()}});
         else
             status = description();
         m_status->setText(status);
@@ -229,10 +234,10 @@ private:
 
         std::string validation;
         if (!nameValid)
-            validation = m_name->text().empty() ? "Network name cannot be empty." : "Network name is too long.";
+            validation = m_name->text().empty() ? tr("Network name cannot be empty.") : tr("Network name is too long.");
         else if (!passwordValid)
-            validation = m_password->field->text().size() < 8 ? "The password must have at least 8 characters."
-                                                               : "The password must have at most 63 characters.";
+            validation = m_password->field->text().size() < 8 ? tr("The password must have at least 8 characters.")
+                                                               : tr("The password must have at most 63 characters.");
         m_validation->setText(validation);
         m_validation->setVisible(!validation.empty());
         requestLayout();

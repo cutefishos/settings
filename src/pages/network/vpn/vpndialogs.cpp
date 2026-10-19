@@ -5,6 +5,7 @@
 
 #include <algorithm>
 
+#include "base/i18n.h"
 #include "pages/network/common/formscroll.h"
 #include "pages/network/common/networklist.h"
 #include "pages/network/vpn/vpneditor.h"
@@ -24,6 +25,8 @@
 #include "window/settingswindow.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
 namespace nm = cutefish::networkmanager;
 
 namespace settings::network {
@@ -93,17 +96,17 @@ void AddVpnDialog::show()
         return;
     m_adding = false;
     m_error.clear();
-    m_dialog = std::make_unique<FormDialog>(m_window, "Add VPN", kWidth);
+    m_dialog = std::make_unique<FormDialog>(m_window, tr("Add VPN"), kWidth);
     ColumnLayout* content = m_dialog->content();
 
     RowLayout* kindRow = content->addChild<RowLayout>();
     kindRow->setSpacing(metrics::dialogSpacing);
     kindRow->setLayoutHints({.fillWidth = true});
-    m_kindLabel = kindRow->addChild<Label>("Type");
+    m_kindLabel = kindRow->addChild<Label>(tr("Type"));
     m_kinds = m_handler.vpnKinds();
     std::vector<std::string> labels;
     for (const nm::vpn::Kind& kind : m_kinds)
-        labels.push_back(kind.installed ? kind.label : kind.label + " (Not Installed)");
+        labels.push_back(kind.installed ? kind.label : format(tr("{type} (Not Installed)"), {{"type", kind.label}}));
     m_kindBox = kindRow->addChild<ComboBox>(labels);
     m_kindBox->setLayoutHints({.fillWidth = true});
     m_kindBox->setCurrentIndex(0);
@@ -127,9 +130,9 @@ void AddVpnDialog::show()
 
     m_errorLabel = content->addChild<MessageLabel>();
     RowLayout* buttons = m_dialog->addButtonRow();
-    DialogButton* cancel = buttons->addChild<DialogButton>("Cancel");
+    DialogButton* cancel = buttons->addChild<DialogButton>(tr("Cancel"));
     cancel->onClicked = [this] { m_dialog->close(); };
-    m_addButton = buttons->addChild<DialogButton>("Add", true);
+    m_addButton = buttons->addChild<DialogButton>(tr("Add"), true);
     m_addButton->onClicked = [this] { add(); };
 
     loadKind();
@@ -196,19 +199,21 @@ VpnDetailsDialog::VpnDetailsDialog(SettingsWindow& window, NetworkList& list, nm
     m_scroll = formCard->addChild<FormScroll>(std::move(editor), metrics::cardHorizontalPadding);
 
     m_statusCard = m_content->addChild<Card>(Card::Style::List);
-    m_type = m_statusCard->addChild<InfoRow>("Type");
-    m_status = m_statusCard->addChild<InfoRow>("Status");
-    m_address = m_statusCard->addChild<InfoRow>("IPv4 address");
-    m_export = m_statusCard->addChild<ListRow>("Export to file…");
+    m_type = m_statusCard->addChild<InfoRow>(tr("Type"));
+    m_status = m_statusCard->addChild<InfoRow>(tr("Status"));
+    m_address = m_statusCard->addChild<InfoRow>(tr("IPv4 address"));
+    m_export = m_statusCard->addChild<ListRow>(tr("Export to file…"));
     m_export->onClicked = [this] {
         m_exportChooser = std::make_unique<FileChooser>(m_dialog->window());
         m_exportChooser->setMode(FileChooser::Mode::SaveFile);
-        m_exportChooser->setTitle("Export VPN Configuration");
+        m_exportChooser->setTitle(tr("Export VPN Configuration"));
         std::string patterns;
         for (const std::string& pattern : m_editor->form().exportPatterns)
             patterns += (patterns.empty() ? "" : " ") + pattern;
-        m_exportChooser->setFilters({FileChooser::Filter::fromNameFilter("VPN configurations (" + patterns + ")"),
-                                     FileChooser::Filter::fromNameFilter("All files (*)")});
+        m_exportChooser->setFilters(
+                {FileChooser::Filter::fromNameFilter(format(tr("VPN configurations ({patterns})"),
+                                                            {{"patterns", patterns}})),
+                 FileChooser::Filter::fromNameFilter(tr("All files (*)"))});
         m_exportChooser->onAccepted = [this](const std::vector<std::string>& paths, const std::string&) {
             if (paths.empty())
                 return;
@@ -224,16 +229,16 @@ VpnDetailsDialog::VpnDetailsDialog(SettingsWindow& window, NetworkList& list, nm
     RowLayout* buttons = m_content->addChild<RowLayout>();
     buttons->setSpacing(metrics::dialogButtonSpacing);
     buttons->setLayoutHints({.horizontalAlignment = Alignment::End});
-    DialogButton* remove = buttons->addChild<DialogButton>("Remove VPN");
+    DialogButton* remove = buttons->addChild<DialogButton>(tr("Remove VPN"));
     remove->setDestructive(true);
     remove->onClicked = [this] {
         m_handler.removeConnection(m_connectionPath);
         close();
     };
     buttons->addChild<View>()->setLayoutHints({.fillWidth = true});
-    DialogButton* cancel = buttons->addChild<DialogButton>("Cancel");
+    DialogButton* cancel = buttons->addChild<DialogButton>(tr("Cancel"));
     cancel->onClicked = [this] { close(); };
-    m_saveButton = buttons->addChild<DialogButton>("Save", true);
+    m_saveButton = buttons->addChild<DialogButton>(tr("Save"), true);
     m_saveButton->onClicked = [this] { save(); };
 
     // A long form scrolls instead of outgrowing the main window.
@@ -320,14 +325,14 @@ void VpnDetailsDialog::update()
 
     m_dialog->setTitle(row->name);
     m_type->setValue(row->vpnType);
-    m_status->setValue(row->connectionState == nm::ConnectionStatus::Activated    ? "Connected"
-                       : row->connectionState == nm::ConnectionStatus::Activating ? "Connecting…"
-                                                                                   : "Not connected");
+    m_status->setValue(row->connectionState == nm::ConnectionStatus::Activated    ? tr("Connected")
+                       : row->connectionState == nm::ConnectionStatus::Activating ? tr("Connecting…")
+                                                                                   : tr("Not connected"));
     m_address->setValue(row->connectionState == nm::ConnectionStatus::Activated ? row->ipV4Address : std::string());
     m_export->setVisible(m_editor->form().exportable);
     static_cast<MessageLabel*>(m_message)
         ->setMessage(!m_error.empty() ? m_error : row->statusMessage, !m_error.empty());
-    m_saveButton->setText(m_saving ? "Saving…" : "Save");
+    m_saveButton->setText(m_saving ? tr("Saving…") : tr("Save"));
     m_saveButton->setEnabled(!m_saving && m_editor->complete());
     m_scroll->requestLayout();
 }

@@ -8,6 +8,7 @@
 #include <xkbcommon/xkbcommon-keysyms.h>
 
 #include "base/event_loop.h"
+#include "base/i18n.h"
 #include "pages/shortcuts/shortcutkeys.h"
 #include "ui/dialog_window.h"
 #include "ui/event.h"
@@ -20,6 +21,7 @@
 #include "widgets/metrics.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -115,13 +117,13 @@ public:
         m_prompt = m_row->addChild<Label>();
         m_keys = m_row->addChild<ShortcutKeys>();
         m_row->addChild<View>()->setLayoutHints({.fillWidth = true});
-        m_cancel = m_row->addChild<LinkLabel>("Cancel");
+        m_cancel = m_row->addChild<LinkLabel>(tr("Cancel"));
         m_cancel->onClicked = [this] { m_dialog.stopRecording(); };
     }
 
     void setState(bool replacing, const std::vector<std::string>& parts)
     {
-        m_prompt->setText(replacing ? "Press the new shortcut…" : "Press the shortcut…");
+        m_prompt->setText(replacing ? tr("Press the new shortcut…") : tr("Press the shortcut…"));
         m_prompt->setVisible(parts.empty());
         m_keys->setParts(parts);
         m_keys->setVisible(!parts.empty());
@@ -178,7 +180,7 @@ ShortcutEditDialog::ShortcutEditDialog(SettingsWindow& parent, ShortcutsModel& m
     , m_action(std::move(action))
 {
     ColumnLayout* column = content();
-    m_noShortcut = column->addChild<Label>("No shortcut. Add one below.");
+    m_noShortcut = column->addChild<Label>(tr("No shortcut. Add one below."));
     // The accelerators' rows, spaced as the dialog's own items are.
     m_list = column->addChild<ColumnLayout>();
     m_list->setSpacing(metrics::dialogSpacing);
@@ -195,9 +197,9 @@ ShortcutEditDialog::ShortcutEditDialog(SettingsWindow& parent, ShortcutsModel& m
     RowLayout* buttons = column->addChild<RowLayout>();
     buttons->setSpacing(metrics::dialogButtonSpacing);
     buttons->setLayoutHints({.fillWidth = true, .margins = {0, metrics::xs, 0, 0}});
-    m_add = buttons->addChild<DialogButton>("Add shortcut");
+    m_add = buttons->addChild<DialogButton>(tr("Add shortcut"));
     m_add->onClicked = [this] { startRecording(std::nullopt); };
-    m_restore = buttons->addChild<DialogButton>("Restore default");
+    m_restore = buttons->addChild<DialogButton>(tr("Restore default"));
     m_restore->onClicked = [this] {
         const ShortcutsModel::Result result = m_model.restoreDefault(m_action);
         m_message = result.message;
@@ -245,15 +247,15 @@ void ShortcutEditDialog::update()
         ShortcutKeys* keys = row->addChild<ShortcutKeys>(accelerator.parts);
         keys->setDimmed(beingReplaced);
         if (accelerator.type == "user") {
-            Label* custom = row->addChild<Label>("Custom");
+            Label* custom = row->addChild<Label>(tr("Custom"));
             custom->setColor(ColorId::DisabledText);
             custom->setFontSize(metrics::points(8));
         }
         row->addChild<View>()->setLayoutHints({.fillWidth = true});
         if (!m_recording) {
-            LinkLabel* change = row->addChild<LinkLabel>("Change");
+            LinkLabel* change = row->addChild<LinkLabel>(tr("Change"));
             change->onClicked = [this, accelerator] { startRecording(accelerator); };
-            LinkLabel* remove = row->addChild<LinkLabel>("Remove");
+            LinkLabel* remove = row->addChild<LinkLabel>(tr("Remove"));
             remove->onClicked = [this, accelerator] {
                 const ShortcutsModel::Result result =
                         m_model.removeAccelerator(m_action, accelerator.keysym, accelerator.modifiers);

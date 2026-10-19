@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: BSD-3-Clause
 
+#include "base/i18n.h"
 #include "cutefish/networkmanager/handler.h"
 #include "pages/network/common/networklist.h"
 #include "pages/network/common/rows.h"
@@ -22,6 +23,8 @@
 #include "window/settingswindow.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
 namespace nm = cutefish::networkmanager;
 
 namespace settings::network {
@@ -71,8 +74,8 @@ public:
                           || item.connectionState == nm::ConnectionStatus::Deactivating;
         m_name->setText(item.name);
         m_detail->setText(!item.statusMessage.empty()                               ? item.statusMessage
-                          : item.connectionState == nm::ConnectionStatus::Activating ? std::string("Connecting…")
-                          : needsUserName()                                          ? std::string("Add your user name to connect.")
+                          : item.connectionState == nm::ConnectionStatus::Activating ? std::string(tr("Connecting…"))
+                          : needsUserName()                                          ? std::string(tr("Add your user name to connect."))
                                                                                      : item.vpnType);
         m_problem = !item.statusMessage.empty() && item.canActivate;
         m_busy->setVisible(busy);
@@ -122,7 +125,7 @@ class VpnPage : public Page
 {
 public:
     explicit VpnPage(SettingsWindow& window)
-        : Page(window, "VPN")
+        : Page(window, tr("VPN"))
         , m_addDialog(window, m_handler)
         , m_importChooser(&window.window())
     {
@@ -142,17 +145,18 @@ public:
             };
             return row;
         });
-        m_add = m_card->addChild<ListRow>("Add VPN…");
+        m_add = m_card->addChild<ListRow>(tr("Add VPN…"));
         m_add->setName("vpn:add");
         m_add->onClicked = [this] { m_addDialog.show(); };
-        m_import = m_card->addChild<ListRow>("Import from file…");
+        m_import = m_card->addChild<ListRow>(tr("Import from file…"));
         m_import->setName("vpn:import");
         m_import->onClicked = [this] {
             m_importChooser.open();
         };
-        m_importChooser.setTitle("Import VPN Configuration");
-        m_importChooser.setFilters({FileChooser::Filter::fromNameFilter("VPN configurations (*.ovpn *.conf *.pcf)"),
-                                    FileChooser::Filter::fromNameFilter("All files (*)")});
+        m_importChooser.setTitle(tr("Import VPN Configuration"));
+        m_importChooser.setFilters({FileChooser::Filter::fromNameFilter(format(tr("VPN configurations ({patterns})"),
+                                                                               {{"patterns", "*.ovpn *.conf *.pcf"}})),
+                                    FileChooser::Filter::fromNameFilter(tr("All files (*)"))});
         m_importChooser.onAccepted = [this](const std::vector<std::string>& paths, const std::string&) {
             if (paths.empty())
                 return;
@@ -217,10 +221,10 @@ private:
 
         m_add->setEnabled(!m_importing);
         m_import->setEnabled(!m_importing);
-        m_import->setText(m_importing ? "Importing…" : "Import from file…");
+        m_import->setText(m_importing ? tr("Importing…") : tr("Import from file…"));
         m_note->setText(!m_importError.empty() ? m_importError
-                                               : "Import the configuration file your VPN provider gives you, such as an "
-                                                 "OpenVPN .ovpn or a WireGuard .conf file.");
+                                               : tr("Import the configuration file your VPN provider gives you, such "
+                                                    "as an OpenVPN .ovpn or a WireGuard .conf file."));
         requestLayout();
     }
 

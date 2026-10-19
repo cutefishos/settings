@@ -6,6 +6,7 @@
 #include <chrono>
 #include <cmath>
 
+#include "base/i18n.h"
 #include "pages/language/language.h"
 #include "ui/dialog_window.h"
 #include "ui/icon.h"
@@ -21,6 +22,7 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -119,7 +121,7 @@ protected:
 } // namespace
 
 AddLanguageDialog::AddLanguageDialog(SettingsWindow& parent, Language& language)
-    : FormDialog(parent, "Add Language", 460)
+    : FormDialog(parent, tr("Add Language"), 460)
     , m_language(language)
 {
     setFixedHeight(560);
@@ -127,7 +129,7 @@ AddLanguageDialog::AddLanguageDialog(SettingsWindow& parent, Language& language)
     setBackgroundColor(ColorId::Background);
 
     m_search = content()->addChild<SearchField>();
-    m_search->setPlaceholder("Search languages");
+    m_search->setPlaceholder(tr("Search languages"));
     m_search->setLayoutHints({.fillWidth = true});
     m_search->onTextChanged = [this] {
         select({});
@@ -156,9 +158,9 @@ AddLanguageDialog::AddLanguageDialog(SettingsWindow& parent, Language& language)
     m_error->setLayoutHints({.fillWidth = true});
 
     RowLayout* buttons = addButtonRow();
-    m_cancel = buttons->addChild<DialogButton>("Cancel");
+    m_cancel = buttons->addChild<DialogButton>(tr("Cancel"));
     m_cancel->onClicked = [this] { requestClose(); };
-    m_add = buttons->addChild<DialogButton>("Add", true);
+    m_add = buttons->addChild<DialogButton>(tr("Add"), true);
     m_add->onClicked = [this] {
         m_adding = true;
         updateStates();
@@ -208,7 +210,7 @@ void AddLanguageDialog::updateRows()
         row->onClicked = [this, code] { select(code); };
     }
     m_scroll->setScrollPosition(position);
-    m_empty->setText(m_language.isLoading() ? "Loading languages…" : "No languages found");
+    m_empty->setText(m_language.isLoading() ? tr("Loading languages…") : tr("No languages found"));
     m_empty->parent()->setVisible(languages.empty());
     updateStates();
 }

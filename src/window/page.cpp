@@ -5,6 +5,7 @@
 
 #include <algorithm>
 
+#include "base/i18n.h"
 #include "ui/painter.h"
 #include "ui/cell_layout.h"
 #include "ui/theme.h"
@@ -13,6 +14,7 @@
 #include "window/settingswindow.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -74,7 +76,7 @@ void Page::paint(Painter& painter)
 PendingPage::PendingPage(SettingsWindow& window, std::string title)
     : Page(window, std::move(title))
 {
-    content()->addChild<Footnote>("This page is not ported yet.");
+    content()->addChild<Footnote>(tr("This page is not ported yet."));
 }
 
 } // namespace settings

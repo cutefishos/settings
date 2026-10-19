@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: BSD-3-Clause
 
+#include "base/i18n.h"
 #include "cutefish/networkmanager/connections.h"
 #include "cutefish/networkmanager/handler.h"
 #include "pages/network/common/detailsdialog.h"
@@ -20,6 +21,7 @@
 #include "window/settingswindow.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 namespace nm = cutefish::networkmanager;
 
 namespace settings::network {
@@ -76,11 +78,11 @@ class EthernetPage : public Page
 {
 public:
     explicit EthernetPage(SettingsWindow& window)
-        : Page(window, "Ethernet")
+        : Page(window, tr("Ethernet"))
     {
         // The switch and the wired connections share one card.
         m_card = content()->addChild<Card>(Card::Style::List);
-        m_switch = m_card->addChild<SwitchRow>("Ethernet");
+        m_switch = m_card->addChild<SwitchRow>(tr("Ethernet"));
         m_switch->setName("ethernet:switch");
         m_switch->onToggled = [this](bool checked) {
             if (!m_list.isMock())

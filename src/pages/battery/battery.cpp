@@ -9,6 +9,7 @@
 #include <ctime>
 
 #include "base/file.h"
+#include "base/i18n.h"
 #include "base/paths.h"
 #include "base/settings.h"
 #include "cutefish/upower/battery_status.h"
@@ -18,6 +19,8 @@
 
 using namespace cutefish;
 using namespace cutefish::base;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -111,9 +114,9 @@ std::string Battery::lastChargedTime() const
     const int64_t days = timeformat::daysBetween(secs, now());
 
     if (days == 0)
-        return "Today at " + timeformat::shortTime(secs);
+        return format(tr("Today at {time}"), {{"time", timeformat::shortTime(secs)}});
     if (days == 1)
-        return "Yesterday at " + timeformat::shortTime(secs);
+        return format(tr("Yesterday at {time}"), {{"time", timeformat::shortTime(secs)}});
 
     return timeformat::shortDateTime(secs);
 }

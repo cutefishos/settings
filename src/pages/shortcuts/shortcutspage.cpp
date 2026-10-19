@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "base/event_loop.h"
+#include "base/i18n.h"
 #include "pages/shortcuts/shortcuteditdialog.h"
 #include "pages/shortcuts/shortcutkeys.h"
 #include "pages/shortcuts/shortcutsmodel.h"
@@ -24,6 +25,7 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -79,7 +81,7 @@ public:
     explicit ShortcutRow(const ShortcutsModel::Action& action)
         : ListRow(action.description)
     {
-        m_none = addContent<Label>("None");
+        m_none = addContent<Label>(tr("None"));
         m_none->setVisible(action.accelerators.empty());
         m_keys = addContent<AcceleratorStack>();
         // Air above and below, so a stack of two makes the row grow.
@@ -125,17 +127,17 @@ class ShortcutsPage : public Page
 {
 public:
     explicit ShortcutsPage(SettingsWindow& window)
-        : Page(window, "Keyboard Shortcuts")
+        : Page(window, tr("Keyboard Shortcuts"))
     {
         m_unavailable = content()->addChild<NoteCard>(
-                "Keyboard shortcuts are managed by the Cutefish compositor, which is not running.");
+                tr("Keyboard shortcuts are managed by the Cutefish compositor, which is not running."));
         m_intro = content()->addChild<Footnote>();
         for (const std::string& category : ShortcutsModel::categories()) {
-            Section* section = content()->addChild<Section>(category);
+            Section* section = content()->addChild<Section>(tr(category.c_str()));
             m_sections.push_back(section);
             m_cards.push_back(section->addChild<Card>(Card::Style::List));
         }
-        m_restoreAll = content()->addChild<StandardButton>("Restore all defaults");
+        m_restoreAll = content()->addChild<StandardButton>(tr("Restore all defaults"));
         m_restoreAll->setName("shortcuts:restoreAll");
         m_restoreAll->setLayoutHints({.fillWidth = true});
         m_restoreAll->onClicked = [this] { confirmRestoreAll(); };
@@ -151,10 +153,10 @@ private:
         m_unavailable->setVisible(!available);
         m_intro->setVisible(available);
         m_intro->setText(m_model.commandKeys()
-                                 ? "Click a system shortcut to change it. Shortcuts with both Control and Command are "
-                                   "the safest choice: applications never get them."
-                                 : "Click a system shortcut to change it. Shortcuts with Meta are the safest choice: "
-                                   "applications never use them.");
+                                 ? tr("Click a system shortcut to change it. Shortcuts with both Control and Command "
+                                      "are the safest choice: applications never get them.")
+                                 : tr("Click a system shortcut to change it. Shortcuts with Meta are the safest "
+                                      "choice: applications never use them."));
         const std::vector<std::string> categories = ShortcutsModel::categories();
         for (size_t i = 0; i < categories.size(); ++i) {
             m_sections[i]->setVisible(available);
@@ -189,11 +191,11 @@ private:
 
     void confirmRestoreAll()
     {
-        m_confirm = std::make_unique<ConfirmDialog>(&settingsWindow().window(), "Restore all defaults",
-                                                    "Every shortcut goes back to its default. Your changes will be "
-                                                    "lost.");
-        m_confirm->setCancelText("Cancel");
-        m_confirm->setConfirmText("Restore");
+        m_confirm = std::make_unique<ConfirmDialog>(&settingsWindow().window(), tr("Restore all defaults"),
+                                                    tr("Every shortcut goes back to its default. Your changes will "
+                                                       "be lost."));
+        m_confirm->setCancelText(tr("Cancel"));
+        m_confirm->setConfirmText(tr("Restore"));
         m_confirm->setDestructive(true);
         m_confirm->onAccepted = [this] { m_model.restoreAllDefaults(); };
         m_confirm->show();

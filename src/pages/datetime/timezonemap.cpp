@@ -15,11 +15,15 @@
 #include <unicode/unistr.h>
 
 #include "base/file.h"
+#include "base/i18n.h"
 #include "base/locale.h"
 #include "cutefish/timedate/time_date.h"
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
+using cutefish::i18n::trn;
 
 namespace settings {
 
@@ -283,24 +287,25 @@ TimeZoneMap::Info TimeZoneMap::info(const std::string& id) const
     const int hours = std::abs(gap) / 3600;
     const int minutes = std::abs(gap) % 3600 / 60;
     if (gap == 0)
-        difference = "Same time as now";
-    else if (minutes == 0 && hours == 1)
-        difference = gap > 0 ? "1 hour ahead" : "1 hour behind";
+        difference = tr("Same time as now");
     else if (minutes == 0)
-        difference = std::to_string(hours) + (gap > 0 ? " hours ahead" : " hours behind");
+        difference = gap > 0 ? trn("{n} hour ahead", "{n} hours ahead", hours)
+                             : trn("{n} hour behind", "{n} hours behind", hours);
     else if (hours == 0)
-        difference = std::to_string(minutes) + (gap > 0 ? " min ahead" : " min behind");
+        difference = gap > 0 ? trn("{n} min ahead", "{n} min ahead", minutes)
+                             : trn("{n} min behind", "{n} min behind", minutes);
     else
-        difference = std::to_string(hours) + " h " + std::to_string(minutes) + (gap > 0 ? " min ahead" : " min behind");
+        difference = format(gap > 0 ? tr("{hours} h {minutes} min ahead") : tr("{hours} h {minutes} min behind"),
+                            {{"hours", std::to_string(hours)}, {"minutes", std::to_string(minutes)}});
 
     const auto day = [](int64_t seconds) { return int64_t(std::floor(double(seconds) / 86400.0)); };
     const int64_t utc = time.time_since_epoch().count();
     std::string dayText;
     const int64_t days = day(utc + offset) - day(utc + here);
     if (days > 0)
-        dayText = "Tomorrow";
+        dayText = tr("Tomorrow");
     else if (days < 0)
-        dayText = "Yesterday";
+        dayText = tr("Yesterday");
 
     return {found->timeZone, localeTimeZoneName(found->timeZone), territoryName(found->country), offset,
             shortTime(found->timeZone, utc), dayText, difference};

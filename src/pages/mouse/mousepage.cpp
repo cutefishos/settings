@@ -3,6 +3,7 @@
 
 #include <cmath>
 
+#include "base/i18n.h"
 #include "pages/mouse/mouse.h"
 #include "ui/slider.h"
 #include "widgets/card.h"
@@ -13,6 +14,7 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -38,18 +40,18 @@ class MousePage : public Page
 {
 public:
     explicit MousePage(SettingsWindow& window)
-        : Page(window, "Mouse")
+        : Page(window, tr("Mouse"))
     {
         m_card = content()->addChild<Card>(Card::Style::List);
         m_card->setName("mouse:card");
-        m_leftHanded = m_card->addChild<SwitchRow>("Left hand");
+        m_leftHanded = m_card->addChild<SwitchRow>(tr("Left hand"));
         m_leftHanded->setName("mouse:leftHanded");
         m_leftHanded->onToggled = [this](bool checked) { m_mouse.setLeftHanded(checked); };
-        m_naturalScroll = m_card->addChild<SwitchRow>("Natural scrolling");
+        m_naturalScroll = m_card->addChild<SwitchRow>(tr("Natural scrolling"));
         m_naturalScroll->onToggled = [this](bool checked) { m_mouse.setNaturalScroll(checked); };
-        m_acceleration = m_card->addChild<SwitchRow>("Mouse acceleration");
+        m_acceleration = m_card->addChild<SwitchRow>(tr("Mouse acceleration"));
         m_acceleration->onToggled = [this](bool checked) { m_mouse.setAcceleration(checked); };
-        m_speed = m_card->addChild<SliderRow>("Pointer speed");
+        m_speed = m_card->addChild<SliderRow>(tr("Pointer speed"));
         m_speed->setName("mouse:speed");
         m_speed->setRange(0, kSteps);
         m_speed->setStepSize(1);

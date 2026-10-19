@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: BSD-3-Clause
 
+#include "base/i18n.h"
 #include "pages/network/common/textchecks.h"
 #include "pages/network/proxy/proxysettings.h"
 #include "ui/button.h"
@@ -21,6 +22,7 @@
 #include "window/settingswindow.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings::network {
 
@@ -50,15 +52,15 @@ class ProxyPage : public Page
 {
 public:
     explicit ProxyPage(SettingsWindow& window)
-        : Page(window, "Proxy")
+        : Page(window, tr("Proxy"))
         , m_fileChooser(&window.window())
     {
         Card* modes = content()->addChild<Card>();
-        m_noProxy = addRadio(modes, "No proxy", 0);
+        m_noProxy = addRadio(modes, tr("No proxy"), 0);
         m_noProxy->setName("proxy:none");
-        m_auto = addRadio(modes, "Use proxy auto configuration URL", 1);
+        m_auto = addRadio(modes, tr("Use proxy auto configuration URL"), 1);
         m_auto->setVisible(false);
-        m_manual = addRadio(modes, "Use manually specified proxy configuration", 2);
+        m_manual = addRadio(modes, tr("Use manually specified proxy configuration"), 2);
         m_manual->setName("proxy:manual");
 
         m_proxyItem = content()->addChild<Card>();
@@ -69,7 +71,7 @@ public:
         m_script = m_scriptRow->addChild<TextField>(m_proxy.scriptProxy());
         m_script->setLayoutHints({.fillWidth = true});
         m_script->onTextEdited = [this] { markChanged(); };
-        Button* selectFile = m_scriptRow->addChild<Button>("Select file");
+        Button* selectFile = m_scriptRow->addChild<Button>(tr("Select file"));
         selectFile->onClicked = [this] { m_fileChooser.open(); };
         m_fileChooser.onAccepted = [this](const std::vector<std::string>& paths, const std::string&) {
             if (paths.empty())
@@ -81,12 +83,12 @@ public:
         m_grid = m_proxyItem->addChild<GridLayout>(4);
         m_grid->setColumnSpacing(metrics::rowSpacing);
         m_grid->setRowSpacing(metrics::formRowSpacing);
-        addLabel("HTTP proxy");
+        addLabel(tr("HTTP proxy"));
         m_http = addHostField(m_proxy.httpProxy());
-        addLabel("Port");
+        addLabel(tr("Port"));
         m_httpPort = addPortField(m_proxy.httpProxyPort());
         addSpacer();
-        m_forFtp = m_grid->addChild<CheckBox>("Also use this proxy for FTP");
+        m_forFtp = m_grid->addChild<CheckBox>(tr("Also use this proxy for FTP"));
         m_forFtp->setLayoutHints({.fillWidth = true});
         m_forFtp->setChecked(m_proxy.useSameProxy());
         m_forFtp->onToggled = [this](bool) {
@@ -95,20 +97,20 @@ public:
         };
         addSpacer();
         addSpacer();
-        addLabel("FTP proxy");
+        addLabel(tr("FTP proxy"));
         m_ftp = addHostField(m_proxy.ftpProxy());
-        addLabel("Port");
+        addLabel(tr("Port"));
         m_ftpPort = addPortField(m_proxy.ftpProxyPort());
-        addLabel("SOCKS proxy");
+        addLabel(tr("SOCKS proxy"));
         m_socks = addHostField(m_proxy.socksProxy());
-        addLabel("Port");
+        addLabel(tr("Port"));
         m_socksPort = addPortField(m_proxy.socksProxyPort());
 
         m_divider = m_proxyItem->addChild<Divider>();
         m_saveRow = m_proxyItem->addChild<RowLayout>();
         m_saveRow->setSpacing(metrics::rowSpacing);
         m_saveRow->addChild<View>()->setLayoutHints({.fillWidth = true});
-        Button* save = m_saveRow->addChild<Button>("Save");
+        Button* save = m_saveRow->addChild<Button>(tr("Save"));
         save->onClicked = [this] { saveFields(); };
 
         m_subscription = m_proxy.changed.connect([this](unsigned fields) { reload(fields); });

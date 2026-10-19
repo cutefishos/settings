@@ -4,6 +4,7 @@
 #include <array>
 #include <functional>
 
+#include "base/i18n.h"
 #include "cutefish/appearance/appearance.h"
 #include "ui/icon.h"
 #include "ui/layout.h"
@@ -23,6 +24,7 @@
 
 using namespace cutefish::ui;
 using cutefish::appearance::Appearance;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -114,22 +116,22 @@ class AppearancePage : public Page
 {
 public:
     explicit AppearancePage(SettingsWindow& window)
-        : Page(window, "Appearance")
+        : Page(window, tr("Appearance"))
     {
-        Section* modes = content()->addChild<Section>("Appearance");
+        Section* modes = content()->addChild<Section>(tr("Appearance"));
         Card* modeCard = modes->addChild<Card>();
         RowLayout* tiles = modeCard->addChild<RowLayout>();
         tiles->setSpacing(metrics::tileSpacing);
         // The 100x68 artwork at its own size inside the 4px inset.
         const SizeF preview{108, 76};
-        m_light = tiles->addChild<ImageSelectionItem>(dataPath("images/light_mode.svg"), "Light", preview);
+        m_light = tiles->addChild<ImageSelectionItem>(dataPath("images/light_mode.svg"), tr("Light"), preview);
         m_light->onClicked = [this] { chooseDarkMode(false); };
-        m_dark = tiles->addChild<ImageSelectionItem>(dataPath("images/dark_mode.svg"), "Dark", preview);
+        m_dark = tiles->addChild<ImageSelectionItem>(dataPath("images/dark_mode.svg"), tr("Dark"), preview);
         m_dark->onClicked = [this] { chooseDarkMode(true); };
-        m_auto = tiles->addChild<ImageSelectionItem>(dataPath("images/auto_mode.svg"), "Auto", preview);
+        m_auto = tiles->addChild<ImageSelectionItem>(dataPath("images/auto_mode.svg"), tr("Auto"), preview);
         m_auto->onClicked = [this] { m_appearance.setDarkModeSchedule(Appearance::SunsetToSunrise); };
 
-        Section* accents = content()->addChild<Section>("Accent color");
+        Section* accents = content()->addChild<Section>(tr("Accent color"));
         Card* accentCard = accents->addChild<Card>();
         Row* swatches = accentCard->addChild<Row>();
         // The ring sits smallSpacing inside its cell; it, like a preview's
@@ -145,9 +147,9 @@ public:
 
         Card* links = content()->addChild<Card>(Card::Style::List);
         const std::array<std::tuple<const char*, const char*, Color, const char*>, 3> pages = {
-                std::tuple{"Fonts", "fonts.svg", Color::rgb(0xFE8433), "fonts"},
-                {"Icon Theme", "icontheme.svg", Color::rgb(0x2EC347), "icontheme"},
-                {"Cursor Style", "cursor.svg", Color::rgb(0x3385FF), "cursortheme"}};
+                std::tuple{tr("Fonts"), "fonts.svg", Color::rgb(0xFE8433), "fonts"},
+                {tr("Icon Theme"), "icontheme.svg", Color::rgb(0x2EC347), "icontheme"},
+                {tr("Cursor Style"), "cursor.svg", Color::rgb(0x3385FF), "cursortheme"}};
         for (const auto& [title, icon, tint, id] : pages) {
             NavigationItem* item = links->addChild<NavigationItem>(title);
             item->setLeading<RowIcon>(icon, tint);

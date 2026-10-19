@@ -75,8 +75,9 @@ target_link_libraries(${PROJECT_NAME} PRIVATE settings-ui)
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(DIRECTORY src/images/ DESTINATION ${SETTINGS_DATA_DIR}/images)
 
+cutefish_add_translations(cutefish-settings SOURCES src DESKTOP_FILES cutefish-settings.desktop)
 install(FILES
-    cutefish-settings.desktop
+    ${CMAKE_CURRENT_BINARY_DIR}/cutefish-settings.desktop
     DESTINATION ${CMAKE_INSTALL_DATADIR}/applications
 )
 

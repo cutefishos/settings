@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 #include "base/event_loop.h"
+#include "base/i18n.h"
 #include "pages/language/addlanguagedialog.h"
 #include "pages/language/language.h"
 #include "pages/language/preferredlanguagelist.h"
@@ -16,6 +17,7 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -25,16 +27,17 @@ class LanguagePage : public Page
 {
 public:
     explicit LanguagePage(SettingsWindow& window)
-        : Page(window, "Language")
+        : Page(window, tr("Language"))
     {
-        Section* section = content()->addChild<Section>("Preferred languages");
+        Section* section = content()->addChild<Section>(tr("Preferred languages"));
         Card* card = section->addChild<Card>(Card::Style::Padded);
         card->setPadding({metrics::cardHorizontalPadding, metrics::xs, metrics::cardHorizontalPadding, metrics::xs});
         card->addChild<PreferredLanguageList>(m_language);
         section->addChild<Footnote>(
-                "Drag a language to the top to make it the system language. Right-click a language to remove it.");
+                tr("Drag a language to the top to make it the system language. Right-click a language to remove "
+                   "it."));
 
-        m_add = content()->addChild<StandardButton>("Add language…");
+        m_add = content()->addChild<StandardButton>(tr("Add language…"));
         m_add->onClicked = [this] {
             m_dialog = std::make_unique<AddLanguageDialog>(settingsWindow(), m_language);
             m_dialog->onClosed = [this] {

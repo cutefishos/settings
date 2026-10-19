@@ -8,6 +8,7 @@
 #include <cmath>
 
 #include "base/event_loop.h"
+#include "base/i18n.h"
 #include "base/timer.h"
 #include "ui/application.h"
 #include "ui/color_provider.h"
@@ -27,6 +28,7 @@
 #include "window/sidebar.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -200,7 +202,7 @@ SettingsWindow::SettingsWindow()
     : m_window(std::make_unique<Window>())
     , m_revealTimer(std::make_unique<cutefish::base::Timer>())
 {
-    m_window->setTitle("Settings");
+    m_window->setTitle(tr("Settings"));
     m_window->resize({900, 610});
     // Half of a 1280-wide screen, so the window can be split beside another.
     m_window->setMinimumSize({640, 600});
@@ -361,7 +363,7 @@ void SettingsWindow::showHistoryEntry(int index)
     if (info && info->create)
         page = info->create(*this);
     if (!page)
-        page = std::make_unique<PendingPage>(*this, info ? info->title : entry.page);
+        page = std::make_unique<PendingPage>(*this, info ? tr(info->title.c_str()) : entry.page);
     page->setName("page:" + entry.page);
     m_page = page.get();
     m_root->setPage(std::move(page));

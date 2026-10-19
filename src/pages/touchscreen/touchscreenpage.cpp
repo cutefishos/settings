@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 
+#include "base/i18n.h"
 #include "pages/input/availability.h"
 #include "pages/input/compositorservice.h"
 #include "widgets/card.h"
@@ -14,6 +15,7 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -48,7 +50,7 @@ class TouchscreenPage : public Page
 {
 public:
     explicit TouchscreenPage(SettingsWindow& window)
-        : Page(window, "Touchscreen")
+        : Page(window, tr("Touchscreen"))
     {
         m_card = content()->addChild<Card>(Card::Style::List);
         m_changed = m_touchscreen.changed().connect([this] { update(); });

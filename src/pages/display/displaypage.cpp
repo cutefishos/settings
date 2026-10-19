@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 
+#include "base/i18n.h"
 #include "base/locale.h"
 #include "base/signal.h"
 #include "base/timer.h"
@@ -37,6 +38,10 @@ using namespace cutefish;
 using namespace cutefish::display;
 using namespace cutefish::ui;
 using namespace std::chrono_literals;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
+using cutefish::i18n::trc;
+using cutefish::i18n::trn;
 
 namespace settings {
 
@@ -49,7 +54,14 @@ static std::string timeOfDay(int minutes)
 
 static std::string percent(double scale)
 {
-    return std::to_string(int(std::lround(scale * 100))) + "%";
+    // TRANSLATORS: a percentage, such as "92%".
+    return format(tr("{percent}%"), {{"percent", std::to_string(int(std::lround(scale * 100)))}});
+}
+
+// A menu item marked as the best choice for the screen.
+static std::string recommended(const std::string& item)
+{
+    return format(tr("{item} (Recommended)"), {{"item", item}});
 }
 
 namespace {
@@ -155,7 +167,7 @@ class DisplayPage : public Page
 {
 public:
     explicit DisplayPage(SettingsWindow& window)
-        : Page(window, "Display")
+        : Page(window, tr("Display"))
     {
         m_screens = content()->addChild<ColumnLayout>();
         m_screens->setSpacing(metrics::sectionLabelSpacing);
@@ -212,7 +224,7 @@ private:
     void buildModes()
     {
         Card* card = m_screenPage->addChild<Card>(Card::Style::List);
-        m_brightnessRow = card->addChild<HalfRow>("Brightness");
+        m_brightnessRow = card->addChild<HalfRow>(tr("Brightness"));
         m_brightnessRow->setName("display:brightness");
         m_brightnessRow->setInteractive(false);
         m_brightnessRow->setMinimumRowHeight(metrics::controlRowHeight);
@@ -224,19 +236,19 @@ private:
         slider->onMoved = [this](double) { m_brightnessTimer.start(); };
         slider->setValueToolTip([](double value) { return std::to_string(std::lround(value)); });
 
-        m_resolutionRow = card->addChild<ListRow>("Resolution");
+        m_resolutionRow = card->addChild<ListRow>(tr("Resolution"));
         m_resolutionRow->setInteractive(false);
         m_resolution = m_resolutionRow->addContent<RowComboBox>();
         m_resolution->setName("display:resolution");
         m_resolution->onActivated = [this](int index) { outputs().setResolutionIndex(currentRow(), index); };
 
-        ListRow* refreshRow = card->addChild<ListRow>("Refresh rate");
+        ListRow* refreshRow = card->addChild<ListRow>(tr("Refresh rate"));
         refreshRow->setInteractive(false);
         m_refreshRate = refreshRow->addContent<RowComboBox>();
         m_refreshRate->setName("display:refresh");
         m_refreshRate->onActivated = [this](int index) { outputs().setRefreshRateIndex(currentRow(), index); };
 
-        ListRow* scaleRow = card->addChild<ListRow>("Scale");
+        ListRow* scaleRow = card->addChild<ListRow>(tr("Scale"));
         scaleRow->setInteractive(false);
         m_scale = scaleRow->addContent<RowComboBox>();
         m_scale->setName("display:scale");
@@ -246,11 +258,11 @@ private:
                 outputs().setScale(currentRow(), scales[index]);
         };
 
-        ListRow* rotationRow = card->addChild<ListRow>("Rotation");
+        ListRow* rotationRow = card->addChild<ListRow>(tr("Rotation"));
         rotationRow->setInteractive(false);
         // Paired with the labels as the old rotation pictures were.
         m_rotation = rotationRow->addContent<RowComboBox>(
-            std::vector<std::string>{"Normal", "90°", "180°", "270°"});
+            std::vector<std::string>{trc("rotation", "Normal"), "90°", "180°", "270°"});
         m_rotation->setName("display:rotation");
         m_rotation->onActivated = [this](int index) {
             static const int rotations[] = {OutputModel::None, OutputModel::Left, OutputModel::Inverted,
@@ -265,24 +277,24 @@ private:
     {
         m_arrangement = m_screenPage->addChild<Card>(Card::Style::List);
         m_arrangement->setName("display:arrangement");
-        m_enabled = m_arrangement->addChild<SwitchRow>("Enabled");
+        m_enabled = m_arrangement->addChild<SwitchRow>(tr("Enabled"));
         m_enabled->onToggled = [this](bool checked) {
             if (!outputs().setEnabled(currentRow(), checked))
                 updateScreens();
         };
         // A screen stops being primary only when another one takes over, so
         // the switch turns on and never off.
-        m_primary = m_arrangement->addChild<SwitchRow>("Primary");
+        m_primary = m_arrangement->addChild<SwitchRow>(tr("Primary"));
         m_primary->onToggled = [this](bool) {
             if (!outputs().setPrimary(currentRow()))
                 updateScreens();
         };
-        m_modeRow = m_arrangement->addChild<ListRow>("Mode");
+        m_modeRow = m_arrangement->addChild<ListRow>(tr("Mode"));
         m_modeRow->setInteractive(false);
         m_mode = m_modeRow->addContent<RowComboBox>();
         m_mode->onActivated = [this](int index) { outputs().setReplicationSourceIndex(currentRow(), index); };
 
-        HalfRow* positionRow = m_arrangement->addChild<HalfRow>("Position");
+        HalfRow* positionRow = m_arrangement->addChild<HalfRow>(tr("Position"));
         positionRow->setInteractive(false);
         positionRow->setMinimumRowHeight(metrics::controlRowHeight);
         RowLayout* fields = positionRow->addContent<RowLayout>();
@@ -305,11 +317,11 @@ private:
     {
         m_nightCard = content()->addChild<Card>(Card::Style::List);
         m_nightCard->setName("display:nightlight");
-        m_nightSwitch = m_nightCard->addChild<SwitchRow>("Night Light");
+        m_nightSwitch = m_nightCard->addChild<SwitchRow>(tr("Night Light"));
         m_nightSwitch->onToggled = [this](bool checked) { m_nightLight.setEnabled(checked); };
 
-        m_temperature = m_nightCard->addChild<SliderRow>("Color temperature");
-        m_temperature->setCaptions("Less warm", "More warm");
+        m_temperature = m_nightCard->addChild<SliderRow>(tr("Color temperature"));
+        m_temperature->setCaptions(tr("Less warm"), tr("More warm"));
         m_temperature->setRange(0, 1);
         m_temperature->onMoved = [this](double value) {
             m_pendingTemperature = value;
@@ -325,27 +337,27 @@ private:
             m_nightLight.setPreview(pressed);
         };
 
-        ListRow* scheduleRow = m_nightCard->addChild<ListRow>("Schedule");
+        ListRow* scheduleRow = m_nightCard->addChild<ListRow>(tr("Schedule"));
         scheduleRow->setInteractive(false);
         m_schedule = scheduleRow->addContent<RowComboBox>(
-            std::vector<std::string>{"Never", "Sunset to sunrise", "Custom"});
+            std::vector<std::string>{tr("Never"), tr("Sunset to sunrise"), tr("Custom")});
         m_schedule->setName("display:schedule");
         m_schedule->onActivated = [this](int index) { m_nightLight.setSchedule(index); };
 
-        m_sunsetRow = m_nightCard->addChild<ListRow>("Sunset");
+        m_sunsetRow = m_nightCard->addChild<ListRow>(tr("Sunset"));
         m_sunsetRow->setName("display:sunset");
         m_sunsetRow->setInteractive(false);
         m_sunset = m_sunsetRow->addContent<SecondaryLabel>();
-        m_sunriseRow = m_nightCard->addChild<ListRow>("Sunrise");
+        m_sunriseRow = m_nightCard->addChild<ListRow>(tr("Sunrise"));
         m_sunriseRow->setInteractive(false);
         m_sunrise = m_sunriseRow->addContent<SecondaryLabel>();
 
-        m_fromRow = m_nightCard->addChild<ListRow>("From");
+        m_fromRow = m_nightCard->addChild<ListRow>(tr("From"));
         m_fromRow->setName("display:from");
         m_fromRow->setInteractive(false);
         m_from = m_fromRow->addContent<TimeComboBox>();
         m_from->onPicked = [this](int minutes) { m_nightLight.setCustomStart(minutes); };
-        m_toRow = m_nightCard->addChild<ListRow>("To");
+        m_toRow = m_nightCard->addChild<ListRow>(tr("To"));
         m_toRow->setInteractive(false);
         m_to = m_toRow->addContent<TimeComboBox>();
         m_to->onPicked = [this](int minutes) { m_nightLight.setCustomEnd(minutes); };
@@ -357,7 +369,7 @@ private:
         const int count = model.count();
         std::vector<std::string> names;
         for (int row = 0; row < count; ++row)
-            names.push_back(model.name(row).empty() ? "Screen" : model.name(row));
+            names.push_back(model.name(row).empty() ? tr("Screen") : model.name(row));
         if (names != m_tabNames) {
             m_tabNames = names;
             const int current = m_screenTabs->currentIndex();
@@ -368,7 +380,7 @@ private:
         m_screenName->setVisible(count == 1);
         m_screenTabs->setVisible(count > 1);
         const int row = currentRow();
-        m_screenName->setText(count > 0 && !model.name(row).empty() ? model.name(row) : "Screen");
+        m_screenName->setText(count > 0 && !model.name(row).empty() ? model.name(row) : tr("Screen"));
         m_screenPage->setEnabled(m_screen.available() && !m_screen.busy() && !m_screen.pendingConfirmation());
 
         if (count > 0) {
@@ -376,7 +388,7 @@ private:
             std::vector<std::string> resolutionItems;
             for (int i = 0; i < int(resolutions.size()); ++i) {
                 // "Recommended" is only a hint while choosing.
-                resolutionItems.push_back(i == model.recommendedResolutionIndex(row) ? resolutions[i] + " (Recommended)"
+                resolutionItems.push_back(i == model.recommendedResolutionIndex(row) ? recommended(resolutions[i])
                                                                                      : resolutions[i]);
             }
             setItems(m_resolution, resolutionItems);
@@ -393,8 +405,8 @@ private:
             std::vector<std::string> scaleItems;
             int nearest = 0;
             for (int i = 0; i < int(scales.size()); ++i) {
-                const bool recommended = std::abs(scales[i] - model.recommendedScale(row)) < 0.001;
-                scaleItems.push_back(recommended ? percent(scales[i]) + " (Recommended)" : percent(scales[i]));
+                const bool recommendedScale = std::abs(scales[i] - model.recommendedScale(row)) < 0.001;
+                scaleItems.push_back(recommendedScale ? recommended(percent(scales[i])) : percent(scales[i]));
                 // The nearest step, for a scale set some other way.
                 if (std::abs(scales[i] - model.scale(row)) < std::abs(scales[nearest] - model.scale(row)))
                     nearest = i;
@@ -427,7 +439,7 @@ private:
 
         m_errorCard->setVisible(m_screen.loaded() && (!m_screen.available() || !m_screen.error().empty()));
         m_error->setText(m_screen.available() ? m_screen.error()
-                                              : "Display configuration is unavailable in this session.");
+                                              : tr("Display configuration is unavailable in this session."));
         updateConfirmation();
     }
 
@@ -457,16 +469,16 @@ private:
             return;
         }
         const int seconds = m_screen.confirmationSeconds();
-        const std::string text = "The previous settings come back in " + std::to_string(seconds)
-                                 + (seconds == 1 ? " second." : " seconds.");
+        const std::string text = trn("The previous settings come back in {n} second.",
+                                     "The previous settings come back in {n} seconds.", seconds);
         if (m_confirmation) {
             m_confirmation->setText(text);
             return;
         }
         m_confirmation = std::make_unique<ConfirmDialog>(&settingsWindow().window(),
-                                                         "Keep these display settings?", text);
-        m_confirmation->setCancelText("Revert");
-        m_confirmation->setConfirmText("Keep");
+                                                         tr("Keep these display settings?"), text);
+        m_confirmation->setCancelText(tr("Revert"));
+        m_confirmation->setConfirmText(tr("Keep"));
         m_confirmation->onAccepted = [this] { m_screen.keep(); };
         m_confirmation->onRejected = [this] { m_screen.revert(); };
         m_confirmation->show();

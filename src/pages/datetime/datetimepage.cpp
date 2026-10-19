@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 #include "base/event_loop.h"
+#include "base/i18n.h"
 #include "cutefish/timedate/time_date.h"
 #include "pages/datetime/time.h"
 #include "pages/datetime/timezonedialog.h"
@@ -16,6 +17,7 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -25,7 +27,7 @@ class DateTimePage : public Page
 {
 public:
     explicit DateTimePage(SettingsWindow& window)
-        : Page(window, "Date & Time")
+        : Page(window, tr("Date & Time"))
         , m_time(m_timeDate)
         , m_map(m_timeDate)
     {
@@ -34,13 +36,13 @@ public:
         section->setLayoutHints({.fillWidth = true});
 
         Card* card = section->addChild<Card>(Card::Style::List);
-        m_autoSync = card->addChild<SwitchRow>("Auto sync");
+        m_autoSync = card->addChild<SwitchRow>(tr("Auto sync"));
         // Greyed out, with the note below, when no NTP service is installed.
         m_autoSync->setEnabled(m_time.canNtp());
         m_autoSync->onToggled = [this](bool checked) { m_time.setUseNtp(checked); };
-        m_twentyFour = card->addChild<SwitchRow>("24-hour time");
+        m_twentyFour = card->addChild<SwitchRow>(tr("24-hour time"));
         m_twentyFour->onToggled = [this](bool checked) { m_time.setTwentyFour(checked); };
-        m_timeZone = card->addChild<NavigationItem>("Time zone");
+        m_timeZone = card->addChild<NavigationItem>(tr("Time zone"));
         m_timeZone->onClicked = [this] {
             if (m_dialog)
                 return;
@@ -53,7 +55,7 @@ public:
         };
 
         Footnote* note = section->addChild<Footnote>(
-                "Unable to use auto sync. Please ensure your NTP service is installed.");
+                tr("Unable to use auto sync. Please ensure your NTP service is installed."));
         note->setVisible(!m_time.canNtp());
 
         m_subscriptions.push_back(m_time.useNtpChanged.connect([this] { update(); }));

@@ -5,6 +5,7 @@
 #include <array>
 #include <cstdio>
 
+#include "base/i18n.h"
 #include "base/locale.h"
 #include "base/paths.h"
 #include "base/settings.h"
@@ -19,6 +20,8 @@
 
 using namespace cutefish::ui;
 using cutefish::appearance::Appearance;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -41,15 +44,16 @@ std::string languageTag()
 std::string pointSizeText(double size)
 {
     char text[32];
-    snprintf(text, sizeof(text), "%gpt", size);
-    return text;
+    snprintf(text, sizeof(text), "%g", size);
+    // TRANSLATORS: a font size in points, such as "9pt".
+    return format(tr("{size}pt"), {{"size", text}});
 }
 
 class FontsPage : public Page
 {
 public:
     explicit FontsPage(SettingsWindow& window)
-        : Page(window, "Fonts")
+        : Page(window, tr("Fonts"))
     {
         const cutefish::base::Settings services(cutefish::base::paths::cutefishConfig("services"));
         m_antiAliasing = services.boolValue("Appearance/FontAntialias", true);
@@ -58,21 +62,22 @@ public:
         m_hinting = hint == kHintStyles.end() ? 0 : int(hint - kHintStyles.begin());
 
         Card* card = content()->addChild<Card>(Card::Style::List);
-        m_general = addRow(card, "General font")->addContent<RowComboBox>();
+        m_general = addRow(card, tr("General font"))->addContent<RowComboBox>();
         m_general->onActivated = [this](int) { m_appearance.setFontFamily(m_general->currentText()); };
-        m_fixed = addRow(card, "Fixed font")->addContent<RowComboBox>();
+        m_fixed = addRow(card, tr("Fixed font"))->addContent<RowComboBox>();
         m_general->setFontPreview(true);
         m_fixed->setFontPreview(true);
         m_fixed->onActivated = [this](int) { m_appearance.setFixedFontFamily(m_fixed->currentText()); };
 
         std::vector<std::string> sizes;
         for (const int size : kSizes)
-            sizes.push_back(size == kDefaultSize ? pointSizeText(size) + " (Default)" : pointSizeText(size));
-        m_size = addRow(card, "Font size")->addContent<RowComboBox>(sizes);
+            sizes.push_back(size == kDefaultSize ? format(tr("{size} (Default)"), {{"size", pointSizeText(size)}})
+                                                  : pointSizeText(size));
+        m_size = addRow(card, tr("Font size"))->addContent<RowComboBox>(sizes);
         m_size->onActivated = [this](int index) { m_appearance.setFontPointSize(kSizes[size_t(index)]); };
 
-        RowComboBox* hinting = addRow(card, "Hinting")->addContent<RowComboBox>(
-                std::vector<std::string>{"None", "Slight", "Medium", "Full"});
+        RowComboBox* hinting = addRow(card, tr("Hinting"))->addContent<RowComboBox>(
+                std::vector<std::string>{tr("None"), tr("Slight"), tr("Medium"), tr("Full")});
         hinting->setCurrentIndex(m_hinting);
         hinting->onActivated = [this](int index) {
             if (index == m_hinting)
@@ -81,7 +86,7 @@ public:
             save();
         };
 
-        SwitchRow* antiAliasing = card->addChild<SwitchRow>("Anti-Aliasing");
+        SwitchRow* antiAliasing = card->addChild<SwitchRow>(tr("Anti-Aliasing"));
         antiAliasing->setSeparatorVisible(false);
         antiAliasing->setChecked(m_antiAliasing);
         antiAliasing->onToggled = [this](bool checked) {

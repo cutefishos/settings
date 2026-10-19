@@ -7,6 +7,7 @@
 #include <chrono>
 #include <cmath>
 
+#include "base/i18n.h"
 #include "pages/language/language.h"
 #include "ui/color_provider.h"
 #include "ui/keys.h"
@@ -23,6 +24,7 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -36,7 +38,7 @@ class SystemLanguageBadge : public View
 public:
     SystemLanguageBadge()
     {
-        m_label = addChild<Label>("System language");
+        m_label = addChild<Label>(tr("System language"));
         m_label->setWeight(500);
     }
 
@@ -423,7 +425,8 @@ void PreferredLanguageList::scrollAtEdge()
 void PreferredLanguageList::showActions(int index, PointF windowPosition)
 {
     m_actions = std::make_unique<Menu>();
-    const size_t remove = m_actions->addItem("Remove language", [this, index] { m_language.removeLanguage(index); });
+    const size_t remove =
+            m_actions->addItem(tr("Remove language"), [this, index] { m_language.removeLanguage(index); });
     m_actions->setItemEnabled(remove, count() > 1);
     m_actions->popup(window(), windowPosition);
 }

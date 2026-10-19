@@ -6,6 +6,7 @@
 #include <map>
 #include <string>
 
+#include "base/i18n.h"
 #include "ui/dialog_window.h"
 #include "ui/cell_layout.h"
 #include "ui/switch.h"
@@ -16,6 +17,8 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
+using cutefish::i18n::trNoop;
 
 namespace settings {
 
@@ -26,27 +29,27 @@ static constexpr size_t kNameLength = 248;
 // The kind of device behind each icon name BlueZ reports.
 static std::string deviceType(const std::string& icon)
 {
-    static const std::map<std::string, std::string> types = {
-        {"audio-card", "Audio device"},
-        {"audio-headphones", "Headphones"},
-        {"audio-headset", "Headset"},
-        {"camera-photo", "Camera"},
-        {"camera-video", "Video camera"},
-        {"computer", "Computer"},
-        {"input-gaming", "Game controller"},
-        {"input-keyboard", "Keyboard"},
-        {"input-mouse", "Mouse"},
-        {"input-tablet", "Drawing tablet"},
-        {"modem", "Modem"},
-        {"multimedia-player", "Media player"},
-        {"network-wireless", "Network device"},
-        {"phone", "Phone"},
-        {"printer", "Printer"},
-        {"scanner", "Scanner"},
-        {"video-display", "Display"},
+    static const std::map<std::string, const char*> types = {
+        {"audio-card", trNoop("Audio device")},
+        {"audio-headphones", trNoop("Headphones")},
+        {"audio-headset", trNoop("Headset")},
+        {"camera-photo", trNoop("Camera")},
+        {"camera-video", trNoop("Video camera")},
+        {"computer", trNoop("Computer")},
+        {"input-gaming", trNoop("Game controller")},
+        {"input-keyboard", trNoop("Keyboard")},
+        {"input-mouse", trNoop("Mouse")},
+        {"input-tablet", trNoop("Drawing tablet")},
+        {"modem", trNoop("Modem")},
+        {"multimedia-player", trNoop("Media player")},
+        {"network-wireless", trNoop("Network device")},
+        {"phone", trNoop("Phone")},
+        {"printer", trNoop("Printer")},
+        {"scanner", trNoop("Scanner")},
+        {"video-display", trNoop("Display")},
     };
     const auto found = types.find(icon);
-    return found == types.end() ? std::string() : found->second;
+    return found == types.end() ? std::string() : tr(found->second);
 }
 
 // The dialog's content: the page's padding on top, as the window keeps it below.
@@ -73,7 +76,7 @@ AdapterDetailsDialog::AdapterDetailsDialog(Window* parent, std::shared_ptr<bluez
     ColumnLayout* content = makeContent(*m_dialog);
 
     Card* identity = content->addChild<Card>(Card::Style::List);
-    ListRow* nameRow = identity->addChild<ListRow>("Name");
+    ListRow* nameRow = identity->addChild<ListRow>(tr("Name"));
     nameRow->setInteractive(false);
     nameRow->setMinimumRowHeight(metrics::controlRowHeight);
     m_name = nameRow->addContent<TextField>();
@@ -91,17 +94,17 @@ AdapterDetailsDialog::AdapterDetailsDialog(Window* parent, std::shared_ptr<bluez
         }
     };
     m_name->onAccepted = [this] { rename(); };
-    m_address = identity->addChild<InfoRow>("Address");
+    m_address = identity->addChild<InfoRow>(tr("Address"));
 
     Card* switches = content->addChild<Card>(Card::Style::List);
-    m_powered = switches->addChild<SwitchRow>("Powered");
+    m_powered = switches->addChild<SwitchRow>(tr("Powered"));
     m_powered->onToggled = [this](bool checked) { m_adapter->setPowered(checked); };
-    m_discoverable = switches->addChild<SwitchRow>("Visible to other devices");
+    m_discoverable = switches->addChild<SwitchRow>(tr("Visible to other devices"));
     m_discoverable->onToggled = [this](bool checked) { m_adapter->setDiscoverable(checked); };
-    m_pairable = switches->addChild<SwitchRow>("Allow incoming pairing");
+    m_pairable = switches->addChild<SwitchRow>(tr("Allow incoming pairing"));
     m_pairable->onToggled = [this](bool checked) { m_adapter->setPairable(checked); };
 
-    DialogButton* close = makeButtons(content)->addChild<DialogButton>("Close");
+    DialogButton* close = makeButtons(content)->addChild<DialogButton>(tr("Close"));
     close->onClicked = [this] {
         rename();
         m_dialog->close();
@@ -144,21 +147,21 @@ DeviceDetailsDialog::DeviceDetailsDialog(Window* parent, std::shared_ptr<bluez::
     ColumnLayout* content = makeContent(*m_dialog);
 
     Card* details = content->addChild<Card>(Card::Style::List);
-    m_type = details->addChild<InfoRow>("Device type");
-    m_model = details->addChild<InfoRow>("Model number");
-    m_version = details->addChild<InfoRow>("Version");
-    m_address = details->addChild<InfoRow>("Address");
+    m_type = details->addChild<InfoRow>(tr("Device type"));
+    m_model = details->addChild<InfoRow>(tr("Model number"));
+    m_version = details->addChild<InfoRow>(tr("Version"));
+    m_address = details->addChild<InfoRow>(tr("Address"));
 
     Card* switches = content->addChild<Card>(Card::Style::List);
-    m_trusted = switches->addChild<SwitchRow>("Trusted");
+    m_trusted = switches->addChild<SwitchRow>(tr("Trusted"));
     m_trusted->onToggled = [this](bool checked) { m_device->setTrusted(checked); };
-    m_blocked = switches->addChild<SwitchRow>("Blocked");
+    m_blocked = switches->addChild<SwitchRow>(tr("Blocked"));
     m_blocked->onToggled = [this](bool checked) { m_device->setBlocked(checked); };
 
     RowLayout* buttons = makeButtons(content);
-    DialogButton* close = buttons->addChild<DialogButton>("Close");
+    DialogButton* close = buttons->addChild<DialogButton>(tr("Close"));
     close->onClicked = [this] { m_dialog->close(); };
-    m_forget = buttons->addChild<DialogButton>("Forget this device", true);
+    m_forget = buttons->addChild<DialogButton>(tr("Forget this device"), true);
     m_forget->setDestructive(true);
     m_forget->onClicked = [this] {
         m_device->forget();

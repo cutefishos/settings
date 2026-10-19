@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 
+#include "base/i18n.h"
 #include "base/signal.h"
 #include "cutefish/bluez/devices_model.h"
 #include "cutefish/bluez/manager.h"
@@ -29,6 +30,8 @@
 using namespace cutefish;
 using namespace cutefish::bluez;
 using namespace cutefish::ui;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -105,12 +108,14 @@ public:
         setName(m_device->path());
         m_icon->setIconName(m_device->icon().empty() ? "bluetooth" : m_device->icon());
         m_name->setText(m_device->name());
-        std::string status = m_device->blocked()  ? "Blocked"
-                             : linked()           ? "Connected"
-                             : m_device->paired() ? "Not connected"
+        std::string status = m_device->blocked()  ? tr("Blocked")
+                             : linked()           ? tr("Connected")
+                             : m_device->paired() ? tr("Not connected")
                                                   : "";
         if (linked() && m_device->batteryPercentage() >= 0)
-            status += " · " + std::to_string(m_device->batteryPercentage()) + "%";
+            // TRANSLATORS: a device's connection and its battery level, such as "Connected · 80%".
+            status = format(tr("{status} · {percent}%"),
+                            {{"status", status}, {"percent", std::to_string(m_device->batteryPercentage())}});
         m_status->setText(status);
         m_status->setVisible(!status.empty());
         setMinimumRowHeight(status.empty() ? metrics::rowHeight : metrics::twoLineRowHeight);
@@ -119,7 +124,7 @@ public:
         // The busy indicator stands in for the action, except that pairing can be cancelled.
         m_action->setVisible(!m_device->blocked() && (pairing() || (linked() && !m_device->busy()))
                              && (isHovered() || m_revealed));
-        m_action->setText(pairing() ? "Cancel pairing" : "Disconnect");
+        m_action->setText(pairing() ? tr("Cancel pairing") : tr("Disconnect"));
         m_info->setVisible(m_device->paired());
     }
 
@@ -251,7 +256,7 @@ public:
     void update()
     {
         setText(m_adapter->name());
-        m_state->setText(m_adapter->discoverable() ? "Discoverable" : "Not discoverable");
+        m_state->setText(m_adapter->discoverable() ? tr("Discoverable") : tr("Not discoverable"));
     }
 
 protected:
@@ -271,14 +276,14 @@ class BluetoothPage : public Page
 {
 public:
     explicit BluetoothPage(SettingsWindow& window)
-        : Page(window, "Bluetooth")
+        : Page(window, tr("Bluetooth"))
         , m_manager(Manager::shared())
     {
         ColumnLayout* top = content()->addChild<ColumnLayout>();
         top->setSpacing(metrics::sectionLabelSpacing);
         top->setLayoutHints({.fillWidth = true});
         m_firstCard = top->addChild<Card>(Card::Style::List);
-        m_switch = m_firstCard->addChild<SwitchRow>("Bluetooth");
+        m_switch = m_firstCard->addChild<SwitchRow>(tr("Bluetooth"));
         m_switch->onToggled = [this](bool checked) { m_manager->setEnabled(checked); };
         m_message = top->addChild<SectionLabel>(std::string(), true);
         m_message->setName("bluetooth:message");
@@ -287,11 +292,11 @@ public:
         m_devices->setSpacing(metrics::sectionSpacing);
         m_devices->setLayoutHints({.fillWidth = true});
         const auto details = [this](std::shared_ptr<BluetoothObject> device) { showDeviceDetails(std::move(device)); };
-        m_paired = m_devices->addChild<DeviceSection>("My devices", m_manager, DevicesModel::PairedDevices, false,
+        m_paired = m_devices->addChild<DeviceSection>(tr("My devices"), m_manager, DevicesModel::PairedDevices, false,
                                                       details);
         m_paired->setName("bluetooth:paired");
-        m_other = m_devices->addChild<DeviceSection>("Other devices", m_manager, DevicesModel::UnpairedDevices, true,
-                                                     details);
+        m_other = m_devices->addChild<DeviceSection>(tr("Other devices"), m_manager, DevicesModel::UnpairedDevices,
+                                                     true, details);
         m_other->setName("bluetooth:other");
 
         m_subscriptions.push_back(m_manager->changed.connect([this] { update(); }));
@@ -342,16 +347,16 @@ private:
             row->setVisible(enabled);
         }
         const std::string message = !m_manager->errorText().empty() ? m_manager->errorText()
-                                    : !m_manager->operational()     ? "Bluetooth service is unavailable"
-                                    : m_manager->hardwareBlocked() ? "Bluetooth is blocked by a hardware switch"
-                                    : m_manager->adapters().empty() ? "No Bluetooth adapters found"
+                                    : !m_manager->operational()     ? tr("Bluetooth service is unavailable")
+                                    : m_manager->hardwareBlocked() ? tr("Bluetooth is blocked by a hardware switch")
+                                    : m_manager->adapters().empty() ? tr("No Bluetooth adapters found")
                                                                     : "";
         m_message->setText(message);
         m_message->setVisible(!message.empty());
         m_devices->setVisible(enabled);
         const bool scanning = m_manager->scanning();
         m_other->setBusy(scanning);
-        m_other->setPlaceholder(scanning ? "" : "No devices found. Make sure your device is discoverable.");
+        m_other->setPlaceholder(scanning ? "" : tr("No devices found. Make sure your device is discoverable."));
     }
 
     void showAdapterDetails(std::shared_ptr<BluetoothObject> adapter)

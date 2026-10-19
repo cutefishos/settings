@@ -3,6 +3,7 @@
 
 #include "pages/accounts/userdialogs.h"
 
+#include "base/i18n.h"
 #include "cutefish/accounts/accounts_manager.h"
 #include "pages/accounts/password.h"
 #include "ui/combo_box.h"
@@ -15,6 +16,7 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -56,7 +58,7 @@ protected:
 
 ChangePasswordDialog::ChangePasswordDialog(SettingsWindow& parent, const std::string& userName,
                                            std::unique_ptr<PasswordChanger> changer)
-    : FormDialog(parent, "Change password", kWidth)
+    : FormDialog(parent, tr("Change password"), kWidth)
     , m_changer(std::move(changer))
 {
     Label* name = content()->addChild<SecondaryLabel>(userName);
@@ -65,12 +67,12 @@ ChangePasswordDialog::ChangePasswordDialog(SettingsWindow& parent, const std::st
 
     m_form = addForm(content());
     if (m_changer) {
-        m_current = addField(m_form, "Current password", true);
-        m_password = addField(m_form, "New password", true);
+        m_current = addField(m_form, tr("Current password"), true);
+        m_password = addField(m_form, tr("New password"), true);
     } else {
-        m_password = addField(m_form, "Password", true);
+        m_password = addField(m_form, tr("Password"), true);
     }
-    m_verify = addField(m_form, "Verify password", true);
+    m_verify = addField(m_form, tr("Verify password"), true);
 
     if (m_changer) {
         m_error = content()->addChild<Label>();
@@ -85,19 +87,19 @@ ChangePasswordDialog::ChangePasswordDialog(SettingsWindow& parent, const std::st
             case PasswordChanger::Result::WrongPassword:
                 m_current->setText({});
                 m_current->setFocus();
-                showError("The current password is incorrect");
+                showError(tr("The current password is incorrect"));
                 break;
             case PasswordChanger::Result::Rejected:
                 m_password->setText({});
                 m_verify->setText({});
                 m_password->setFocus();
-                showError(message.empty() ? "The new password was not accepted" : message);
+                showError(message.empty() ? tr("The new password was not accepted") : message);
                 break;
             case PasswordChanger::Result::Failed:
-                showError(message.empty() ? "The password could not be changed" : message);
+                showError(message.empty() ? tr("The password could not be changed") : message);
                 break;
             case PasswordChanger::Result::TimedOut:
-                showError("The password change did not finish in time");
+                showError(tr("The password change did not finish in time"));
                 break;
             }
             update();
@@ -105,9 +107,9 @@ ChangePasswordDialog::ChangePasswordDialog(SettingsWindow& parent, const std::st
     }
 
     RowLayout* buttons = addButtonRow();
-    m_cancel = buttons->addChild<DialogButton>("Cancel");
+    m_cancel = buttons->addChild<DialogButton>(tr("Cancel"));
     m_cancel->onClicked = [this] { requestClose(); };
-    m_change = buttons->addChild<DialogButton>("Change password", true);
+    m_change = buttons->addChild<DialogButton>(tr("Change password"), true);
     m_change->onClicked = [this] { change(); };
 
     for (TextField* field : {m_current, m_password, m_verify}) {
@@ -141,7 +143,7 @@ void ChangePasswordDialog::change()
 
     showError({});
     if (!m_changer->start(m_current->text(), m_password->text()))
-        showError("The password could not be changed");
+        showError(tr("The password could not be changed"));
     update();
 }
 
@@ -152,15 +154,15 @@ void ChangePasswordDialog::showError(const std::string& error)
 }
 
 AddUserDialog::AddUserDialog(SettingsWindow& parent, accounts::AccountsManager& manager)
-    : FormDialog(parent, "Add new user", kWidth)
+    : FormDialog(parent, tr("Add new user"), kWidth)
     , m_manager(manager)
 {
     m_form = addForm(content());
-    m_name = addField(m_form, "User name", false);
-    m_password = addField(m_form, "Password", true);
-    m_verify = addField(m_form, "Verify password", true);
-    m_form->addChild<Label>("Account type");
-    m_type = m_form->addChild<ComboBox>(std::vector<std::string>{"Standard", "Administrator"});
+    m_name = addField(m_form, tr("User name"), false);
+    m_password = addField(m_form, tr("Password"), true);
+    m_verify = addField(m_form, tr("Verify password"), true);
+    m_form->addChild<Label>(tr("Account type"));
+    m_type = m_form->addChild<ComboBox>(std::vector<std::string>{tr("Standard"), tr("Administrator")});
     m_type->setCurrentIndex(0);
     m_type->setLayoutHints({.fillWidth = true});
 
@@ -170,9 +172,9 @@ AddUserDialog::AddUserDialog(SettingsWindow& parent, accounts::AccountsManager& 
     m_error->setVisible(false);
 
     RowLayout* buttons = addButtonRow();
-    m_cancel = buttons->addChild<DialogButton>("Cancel");
+    m_cancel = buttons->addChild<DialogButton>(tr("Cancel"));
     m_cancel->onClicked = [this] { requestClose(); };
-    m_add = buttons->addChild<DialogButton>("Add", true);
+    m_add = buttons->addChild<DialogButton>(tr("Add"), true);
     m_add->onClicked = [this] { add(); };
 
     for (TextField* field : {m_name, m_password, m_verify})

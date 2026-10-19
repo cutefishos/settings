@@ -12,6 +12,12 @@
 #include <sys/sysinfo.h>
 #include <sys/utsname.h>
 
+#include "base/i18n.h"
+
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
+using cutefish::i18n::trNoop;
+
 namespace settings::about {
 
 static std::string unquoted(std::string value)
@@ -165,15 +171,17 @@ std::string processor()
         }
     }
     if (!found)
-        return "Unknown";
+        return tr("Unknown");
     if (count > 0)
-        model += " x " + std::to_string(count);
+        // TRANSLATORS: a processor model and its number of cores, such as "Intel Core i5 x 8".
+        model = format(tr("{model} x {count}"), {{"model", model}, {"count", std::to_string(count)}});
     return model;
 }
 
 std::string formatByteSize(double size)
 {
-    static const char* const units[] = {"B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"};
+    static const char* const units[] = {trNoop("B"), trNoop("KB"), trNoop("MB"), trNoop("GB"), trNoop("TB"),
+                                        trNoop("PB"), trNoop("EB"), trNoop("ZB"), trNoop("YB")};
     int unit = 0;
     while (std::abs(size) >= 1024 && unit < 8) {
         size /= 1024;
@@ -181,7 +189,8 @@ std::string formatByteSize(double size)
     }
     char number[64];
     snprintf(number, sizeof(number), "%.0f", size);
-    return std::string(number) + " " + units[unit];
+    // TRANSLATORS: a size, such as "16 GB".
+    return format(tr("{value} {unit}"), {{"value", number}, {"unit", tr(units[unit])}});
 }
 
 std::string memorySize()
@@ -192,14 +201,20 @@ std::string memorySize()
     return formatByteSize(double(info.totalram) * info.mem_unit);
 }
 
+static std::string storageText(const std::string& used, const std::string& total)
+{
+    // TRANSLATORS: the space used on the system disk and its size, such as "40 GB / 256 GB".
+    return format(tr("{used} / {total}"), {{"used", used}, {"total", total}});
+}
+
 std::string internalStorage()
 {
     struct statvfs root;
     if (statvfs("/", &root) != 0)
-        return formatByteSize(0) + " / " + formatByteSize(0);
+        return storageText(formatByteSize(0), formatByteSize(0));
     const double total = double(root.f_blocks) * root.f_frsize;
     const double available = double(root.f_bavail) * root.f_frsize;
-    return formatByteSize(total - available) + " / " + formatByteSize(total);
+    return storageText(formatByteSize(total - available), formatByteSize(total));
 }
 
 } // namespace settings::about

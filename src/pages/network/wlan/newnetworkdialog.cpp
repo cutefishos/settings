@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cctype>
 
+#include "base/i18n.h"
 #include "ui/combo_box.h"
 #include "ui/dialog_window.h"
 #include "ui/label.h"
@@ -17,6 +18,9 @@
 #include "widgets/metrics.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
+using cutefish::i18n::trNoop;
 namespace nm = cutefish::networkmanager;
 
 namespace settings::network {
@@ -30,14 +34,15 @@ struct SecurityChoice
 };
 
 static const SecurityChoice kSecurities[] = {
-    {"Open", "none"},
+    // TRANSLATORS: a Wi-Fi network's security: none, anyone can join.
+    {trNoop("Open"), "none"},
     {"WEP", "wep"},
     {"WPA", "wpa"},
     {"WPA2/WPA3", "wpa2-wpa3"},
     {"WPA3", "wpa3"},
-    {"WPA Enterprise", "wpa-eap"},
-    {"WPA2 Enterprise", "wpa2-eap"},
-    {"WPA3 Enterprise", "wpa3-eap"},
+    {trNoop("WPA Enterprise"), "wpa-eap"},
+    {trNoop("WPA2 Enterprise"), "wpa2-eap"},
+    {trNoop("WPA3 Enterprise"), "wpa3-eap"},
 };
 static constexpr int kDefaultSecurity = 3;
 
@@ -102,7 +107,8 @@ bool NewNetworkDialog::isOpen() const
 
 std::string NewNetworkDialog::title() const
 {
-    return m_accessPoint.empty() ? std::string("Add Other Network") : "Join “" + m_networkName + "”";
+    return m_accessPoint.empty() ? std::string(tr("Add Other Network"))
+                                 : format(tr("Join “{network}”"), {{"network", m_networkName}});
 }
 
 std::string NewNetworkDialog::security() const
@@ -188,20 +194,20 @@ void NewNetworkDialog::build()
         return field;
     };
 
-    m_nameLabel = addLabel("Name");
-    m_name = addField("Network name");
-    m_securityLabel = addLabel("Security");
+    m_nameLabel = addLabel(tr("Name"));
+    m_name = addField(tr("Network name"));
+    m_securityLabel = addLabel(tr("Security"));
     std::vector<std::string> securities;
     for (const SecurityChoice& choice : kSecurities)
-        securities.push_back(choice.text);
+        securities.push_back(tr(choice.text));
     m_security = m_form->addChild<ComboBox>(securities);
     m_security->setLayoutHints({.fillWidth = true});
     m_security->setCurrentIndex(kDefaultSecurity);
     m_security->onActivated = [this](int) { update(); };
-    m_userNameLabel = addLabel("Username");
-    m_userName = addField("Username");
-    m_passwordLabel = addLabel("Password");
-    m_password = addField("Password");
+    m_userNameLabel = addLabel(tr("Username"));
+    m_userName = addField(tr("Username"));
+    m_passwordLabel = addLabel(tr("Password"));
+    m_password = addField(tr("Password"));
     m_password->setEchoMode(TextField::EchoMode::Password);
 
     // Hidden rows leave the grid, so the fields would move as they appear.
@@ -211,14 +217,15 @@ void NewNetworkDialog::build()
     for (Label* label : m_labels)
         label->setLayoutHints({.preferredWidth = labelWidth});
 
-    m_certificateNote = content->addChild<Label>("This network signs in with a certificate, which can't be set up here yet.");
+    m_certificateNote =
+            content->addChild<Label>(tr("This network signs in with a certificate, which can't be set up here yet."));
     m_certificateNote->setWrap(true);
     m_certificateNote->setLayoutHints({.fillWidth = true});
 
     RowLayout* buttons = m_dialog->addButtonRow();
-    DialogButton* cancel = buttons->addChild<DialogButton>("Cancel");
+    DialogButton* cancel = buttons->addChild<DialogButton>(tr("Cancel"));
     cancel->onClicked = [this] { close(); };
-    m_joinButton = buttons->addChild<DialogButton>("Join", true);
+    m_joinButton = buttons->addChild<DialogButton>(tr("Join"), true);
     m_joinButton->onClicked = [this] { join(); };
 }
 

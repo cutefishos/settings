@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <array>
 
+#include "base/i18n.h"
 #include "pages/hotcorners/hotcorners.h"
 #include "ui/label.h"
 #include "ui/theme.h"
@@ -15,6 +16,9 @@
 #include "window/pagelist.h"
 
 using namespace cutefish::ui;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
+using cutefish::i18n::trNoop;
 
 namespace settings {
 
@@ -23,29 +27,32 @@ namespace {
 // The compositor's action names, "" for none, and what the menu calls them.
 const std::array<const char*, 5> kActions = {"", "toggle-overview", "toggle-show-desktop", "toggle-app-list",
                                              "lock-screen"};
-const std::vector<std::string> kActionNames = {"None", "Show All Windows", "Show Desktop", "Launcher",
-                                               "Lock Screen"};
+const std::array<const char*, 5> kActionNames = {trNoop("None"), trNoop("Show All Windows"), trNoop("Show Desktop"),
+                                                 trNoop("Launcher"), trNoop("Lock Screen")};
 
 class HotCornersPage : public Page
 {
 public:
     explicit HotCornersPage(SettingsWindow& window)
-        : Page(window, "Hot Corners")
+        : Page(window, tr("Hot Corners"))
     {
         m_unavailable = content()->addChild<Card>();
         m_unavailableLabel = m_unavailable->addChild<Label>(
-                "Hot corners are managed by the Cutefish compositor, which is not running.");
+                tr("Hot corners are managed by the Cutefish compositor, which is not running."));
         m_unavailableLabel->setWrap(true);
         m_unavailableLabel->setLayoutHints({.fillWidth = true});
 
         m_list = content()->addChild<Card>(Card::Style::List);
         const std::array<std::pair<const char*, const char*>, 4> corners = {
-                std::pair{"Top left", "top-left"}, {"Top right", "top-right"}, {"Bottom left", "bottom-left"},
-                {"Bottom right", "bottom-right"}};
+                std::pair{tr("Top left"), "top-left"}, {tr("Top right"), "top-right"},
+                {tr("Bottom left"), "bottom-left"}, {tr("Bottom right"), "bottom-right"}};
+        std::vector<std::string> actionNames;
+        for (const char* name : kActionNames)
+            actionNames.push_back(tr(name));
         for (const auto& [text, corner] : corners) {
             ListRow* row = m_list->addChild<ListRow>(text);
             row->setInteractive(false);
-            RowComboBox* box = row->addContent<RowComboBox>(kActionNames);
+            RowComboBox* box = row->addContent<RowComboBox>(actionNames);
             const std::string name = corner;
             // Keys held while choosing are the ones the corner will ask for.
             box->onActivated = [this, name](int index) {
@@ -54,8 +61,8 @@ public:
             m_boxes.push_back({name, box});
         }
         m_note = content()->addChild<Footnote>(
-                "Move the pointer into a corner of the screen to run its action. Hold modifier keys while "
-                "choosing an action to make the corner work only while they are held.");
+                tr("Move the pointer into a corner of the screen to run its action. Hold modifier keys while "
+                   "choosing an action to make the corner work only while they are held."));
         m_subscription = m_corners.changed.connect([this] { update(); });
         update();
     }
@@ -81,7 +88,9 @@ private:
             box->setCurrentIndex(index);
             const int modifiers = m_corners.modifiers(corner);
             if (modifiers != 0 && index > 0)
-                box->setDisplayText(m_corners.modifierText(modifiers) + " – " + kActionNames[size_t(index)]);
+                // TRANSLATORS: the keys a hot corner needs held and its action, such as "Ctrl + Alt – Lock Screen".
+                box->setDisplayText(format(tr("{keys} – {action}"), {{"keys", m_corners.modifierText(modifiers)},
+                                                                    {"action", tr(kActionNames[size_t(index)])}}));
             else
                 box->setDisplayText(std::nullopt);
         }

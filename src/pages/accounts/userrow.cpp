@@ -10,6 +10,7 @@
 #include <unicode/unistr.h>
 #include <unicode/utf16.h>
 
+#include "base/i18n.h"
 #include "base/transform.h"
 #include "ui/animation.h"
 #include "ui/cell_layout.h"
@@ -24,6 +25,7 @@
 
 using namespace cutefish;
 using namespace cutefish::ui;
+using cutefish::i18n::tr;
 
 namespace settings {
 
@@ -208,7 +210,7 @@ UserRow::UserRow(std::shared_ptr<accounts::UserAccount> account, int64_t loggedI
     m_userName = addContent<Label>();
     m_realName = addContent<Label>();
     addContent<View>()->setLayoutHints({.fillWidth = true});
-    m_loggedIn = addContent<Label>("Logged in");
+    m_loggedIn = addContent<Label>(tr("Logged in"));
     m_info = addContent<IconButton>("info", 20);
     m_info->onClicked = [this] {
         if (onInfo)

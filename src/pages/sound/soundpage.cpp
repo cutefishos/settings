@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 
+#include "base/i18n.h"
 #include "cutefish/audio/audio_model.h"
 #include "cutefish/audio/backend.h"
 #include "cutefish/audio/volume_monitor.h"
@@ -27,6 +28,9 @@
 using namespace cutefish;
 using namespace cutefish::audio;
 using namespace cutefish::ui;
+using cutefish::i18n::format;
+using cutefish::i18n::tr;
+using cutefish::i18n::trc;
 
 namespace settings {
 
@@ -34,17 +38,17 @@ namespace settings {
 static std::string deviceType(const AudioObject& device)
 {
     if (device.isVirtualDevice())
-        return "Virtual";
+        return tr("Virtual");
     const std::string bus = device.bus();
     if (bus == "bluetooth")
-        return "Bluetooth";
+        return tr("Bluetooth");
     if (bus == "usb")
         return "USB";
     const std::vector<AudioObject::Choice> ports = device.ports();
     const int active = device.activePortIndex();
     if (active >= 0 && active < int(ports.size()) && ports[active].name.starts_with("hdmi"))
         return "HDMI";
-    return "Built-in";
+    return tr("Built-in");
 }
 
 static bool hasFrontPair(const AudioObject& device)
@@ -140,14 +144,14 @@ class SoundPage : public Page
 {
 public:
     explicit SoundPage(SettingsWindow& window)
-        : Page(window, "Sound")
+        : Page(window, tr("Sound"))
         , m_backend(Backend::shared())
         , m_outputs(AudioObject::Sink, m_backend)
         , m_inputs(AudioObject::Source, m_backend)
         , m_monitor(m_backend)
     {
         m_connecting = content()->addChild<Card>();
-        Label* connecting = m_connecting->addChild<Label>("Connecting to the audio service…");
+        Label* connecting = m_connecting->addChild<Label>(tr("Connecting to the audio service…"));
         connecting->setWrap(true);
         connecting->setLayoutHints({.fillWidth = true});
 
@@ -155,13 +159,13 @@ public:
         m_error = m_errorCard->addChild<Label>();
         m_error->setWrap(true);
         m_error->setLayoutHints({.fillWidth = true});
-        Button* dismiss = m_errorCard->addChild<Button>("Dismiss");
+        Button* dismiss = m_errorCard->addChild<Button>(tr("Dismiss"));
         dismiss->onClicked = [this] { setOperationError({}); };
 
         ColumnLayout* devices = content()->addChild<ColumnLayout>();
         devices->setSpacing(metrics::l);
         devices->setLayoutHints({.fillWidth = true});
-        m_tabs = devices->addChild<SegmentedControl>(std::vector<std::string>{"Output", "Input"});
+        m_tabs = devices->addChild<SegmentedControl>(std::vector<std::string>{tr("Output"), tr("Input")});
         m_tabs->setName("tabs");
         m_tabs->setLayoutHints({.fillWidth = true});
         m_tabs->onCurrentChanged = [this](int) {
@@ -175,7 +179,7 @@ public:
         m_noDevices->setEnabled(false);
 
         m_sliders = devices->addChild<Card>(Card::Style::List);
-        m_outputVolume = m_sliders->addChild<SliderRow>("Output volume");
+        m_outputVolume = m_sliders->addChild<SliderRow>(tr("Output volume"));
         m_outputVolume->setIcons("audio-volume-zero", "audio-volume-high");
         m_outputVolume->setRange(AudioObject::MinimalVolume, AudioObject::NormalVolume);
         m_outputVolume->setStepSize(0.01);
@@ -186,16 +190,16 @@ public:
                 device->setMuted(value == 0);
             }
         };
-        m_balance = m_sliders->addChild<SliderRow>("Balance");
+        m_balance = m_sliders->addChild<SliderRow>(tr("Balance"));
         m_balance->setName("balance");
-        m_balance->setCaptions("Left", "Right");
+        m_balance->setCaptions(trc("balance", "Left"), trc("balance", "Right"));
         m_balance->setRange(-1, 1);
         m_balance->setStepSize(0.02);
         m_balance->onMoved = [this](double value) {
             if (const auto device = m_outputs.defaultNode())
                 setBalance(*device, value);
         };
-        m_inputVolume = m_sliders->addChild<SliderRow>("Input volume");
+        m_inputVolume = m_sliders->addChild<SliderRow>(tr("Input volume"));
         m_inputVolume->setRange(AudioObject::MinimalVolume, AudioObject::NormalVolume);
         m_inputVolume->setStepSize(0.01);
         m_inputVolume->onMoved = [this](double value) {
@@ -204,7 +208,7 @@ public:
                 device->setMuted(false);
             }
         };
-        m_inputLevel = m_sliders->addChild<SliderRow>("Input level");
+        m_inputLevel = m_sliders->addChild<SliderRow>(tr("Input level"));
         m_inputLevel->setMeterLevel(0);
 
         m_subscriptions.push_back(m_backend->connectedChanged.connect([this] {
@@ -235,7 +239,7 @@ private:
     {
         m_operationError = message;
         m_errorCard->setVisible(!message.empty());
-        m_error->setText("Could not apply the audio change: " + message);
+        m_error->setText(format(tr("Could not apply the audio change: {error}"), {{"error", message}}));
     }
 
     void rebuildDevices()
@@ -267,7 +271,7 @@ private:
         const bool inputs = showInputs();
         const bool connected = m_backend->isConnected();
         m_connecting->setVisible(!connected);
-        m_noDevices->setText(inputs ? "No input devices" : "No output devices");
+        m_noDevices->setText(inputs ? tr("No input devices") : tr("No output devices"));
         m_noDevices->setVisible(connected && model().count() == 0);
 
         const std::shared_ptr<AudioObject> output = m_outputs.defaultNode();
