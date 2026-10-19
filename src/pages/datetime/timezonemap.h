@@ -16,7 +16,7 @@ class TimeDate;
 namespace settings {
 
 // Every zone of zone.tab placed on the world map, and the zones a click on
-// the map picks, as gnome-control-center's map does.
+// the map picks.
 class TimeZoneMap
 {
 public:

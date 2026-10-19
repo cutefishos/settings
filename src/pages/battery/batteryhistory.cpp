@@ -1,5 +1,4 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
-// SPDX-FileCopyrightText: 2015 Kai Uwe Broulik <kde@privat.broulik.de>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "pages/battery/batteryhistory.h"
@@ -20,108 +19,74 @@ BatteryHistory::BatteryHistory() = default;
 
 BatteryHistory::~BatteryHistory() = default;
 
-void BatteryHistory::setDevice(const std::string& device)
+void BatteryHistory::load(const Query& query)
 {
-    if (device == m_device)
+    if (m_loaded && query == m_query)
         return;
 
-    m_device = device;
-    m_upowerDevice.reset();
-    load();
-}
-
-void BatteryHistory::setDuration(uint32_t duration)
-{
-    if (duration == m_duration)
-        return;
-
-    m_duration = duration;
-    load();
-}
-
-void BatteryHistory::setType(Type type)
-{
-    if (type == m_type)
-        return;
-
-    m_type = type;
-    load();
-}
-
-void BatteryHistory::start()
-{
-    m_started = true;
-    load();
+    if (query.device != m_query.device)
+        m_device.reset();
+    m_query = query;
+    m_loaded = true;
+    request();
 }
 
 void BatteryHistory::refresh()
 {
-    load();
+    if (m_loaded)
+        request();
 }
 
-uint32_t BatteryHistory::lastTime() const
+void BatteryHistory::request()
 {
-    return m_values.empty() ? 0 : m_values.back().time;
-}
-
-int BatteryHistory::largestValue() const
-{
-    int max = 0;
-    for (const HistorySample& sample : m_values) {
-        if (sample.value > max)
-            max = int(sample.value);
-    }
-    return max;
-}
-
-void BatteryHistory::load()
-{
-    if (!m_started || m_device.empty())
+    if (m_query.device.empty())
         return;
 
     if (options().mockBattery) {
-        loadMock();
+        m_samples = mockSamples();
+        samplesChanged.emit();
         return;
     }
 
-    if (!m_upowerDevice)
-        m_upowerDevice = std::make_unique<Device>(m_device);
+    if (!m_device)
+        m_device = std::make_unique<Device>(m_query.device);
 
-    const Device::HistoryType type = m_type == Type::Rate ? Device::HistoryType::Rate : Device::HistoryType::Charge;
-    m_window.reset();
-    m_all.reset();
-    m_pending = 2;
+    const Device::HistoryType type
+            = m_query.type == Type::Rate ? Device::HistoryType::Rate : Device::HistoryType::Charge;
+    // A query that changes meanwhile leaves these answers unused.
+    auto answers = std::make_shared<Answers>();
+    m_answers = answers;
 
-    m_windowCall = m_upowerDevice->history(type, m_duration, 100,
-                                           [this](const std::optional<std::vector<HistorySample>>& samples) {
-                                               m_window = samples;
-                                               if (--m_pending == 0)
-                                                   finish();
-                                           });
+    m_windowCall = m_device->history(type, m_query.duration, 100,
+                                     [this, answers](const std::optional<std::vector<HistorySample>>& samples) {
+                                         answers->window = samples;
+                                         answered(answers);
+                                     });
 
     // UPower returns only the samples inside the timespan and records one only
     // when the value changes, so the value at the window's start is the newest
     // sample before it, found in the whole history.
-    m_allCall = m_upowerDevice->history(type, std::numeric_limits<uint32_t>::max(),
-                                        std::numeric_limits<uint32_t>::max(),
-                                        [this](const std::optional<std::vector<HistorySample>>& samples) {
-                                            m_all = samples;
-                                            if (--m_pending == 0)
-                                                finish();
-                                        });
+    m_allCall = m_device->history(type, std::numeric_limits<uint32_t>::max(), std::numeric_limits<uint32_t>::max(),
+                                  [this, answers](const std::optional<std::vector<HistorySample>>& samples) {
+                                      answers->all = samples;
+                                      answered(answers);
+                                  });
 }
 
-void BatteryHistory::finish()
+void BatteryHistory::answered(const std::shared_ptr<Answers>& answers)
 {
-    m_values.clear();
+    if (--answers->outstanding > 0 || answers != m_answers)
+        return;
 
-    if (!m_window) {
+    m_answers.reset();
+    if (!answers->window) {
         fprintf(stderr, "Failed to get device history from UPower\n");
+        m_samples.clear();
         return;
     }
 
-    m_values = plotted(*m_window, m_all, uint32_t(std::time(nullptr)), m_duration);
-    dataChanged.emit();
+    m_samples = plotted(*answers->window, answers->all, uint32_t(std::time(nullptr)), m_query.duration);
+    samplesChanged.emit();
 }
 
 std::vector<HistorySample> BatteryHistory::plotted(const std::vector<HistorySample>& window,
@@ -183,9 +148,9 @@ std::vector<HistorySample> BatteryHistory::plotted(const std::vector<HistorySamp
     return values;
 }
 
-void BatteryHistory::loadMock()
+std::vector<HistorySample> BatteryHistory::mockSamples() const
 {
-    m_values.clear();
+    std::vector<HistorySample> samples;
     const uint32_t now = uint32_t(std::time(nullptr));
     // Each day drains on battery, charges, is held at 90% by the charge
     // limit and is unplugged again, ending where the next day starts.
@@ -196,29 +161,29 @@ void BatteryHistory::loadMock()
     static const std::vector<uint32_t> states{2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 5, 2, 2, 2, 2};
     // Days drain a little deeper or shallower than one another.
     static const std::vector<double> depths{0, -6, 4, -3, 6, -4, 2};
-    const std::vector<double>& values = m_type == Type::Rate ? rateValues : chargeValues;
-    const uint32_t days = std::max(1u, m_duration / 86400);
-    const uint32_t interval = m_duration / days / uint32_t(values.size());
+    const std::vector<double>& values = m_query.type == Type::Rate ? rateValues : chargeValues;
+    const uint32_t duration = m_query.duration;
+    const uint32_t days = std::max(1u, duration / 86400);
+    const uint32_t interval = duration / days / uint32_t(values.size());
 
     for (uint32_t day = 0; day < days; ++day) {
         for (size_t i = 0; i < values.size(); ++i) {
             HistorySample sample;
-            sample.time = now - m_duration + (day * uint32_t(values.size()) + uint32_t(i)) * interval;
+            sample.time = now - duration + (day * uint32_t(values.size()) + uint32_t(i)) * interval;
             sample.value = values[i];
             sample.state = states[i];
 
-            if (m_type == Type::Charge && i >= 3 && i <= 8)
+            if (m_query.type == Type::Charge && i >= 3 && i <= 8)
                 sample.value += depths[(days - 1 - day) % depths.size()];
 
-            m_values.push_back(sample);
+            samples.push_back(sample);
         }
     }
 
-    HistorySample current = m_values.back();
+    HistorySample current = samples.back();
     current.time = now;
-    m_values.push_back(current);
-
-    dataChanged.emit();
+    samples.push_back(current);
+    return samples;
 }
 
 } // namespace settings

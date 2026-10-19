@@ -1,5 +1,4 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
-// SPDX-FileCopyrightText: 2015 Kai Uwe Broulik <kde@privat.broulik.de>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #pragma once
@@ -28,29 +27,31 @@ public:
         Charge,
     };
 
+    struct Query {
+        // The UPower device object path; nothing loads while it is empty.
+        std::string device;
+        // Seconds back from now.
+        uint32_t duration = 120;
+        Type type = Type::Charge;
+
+        bool operator==(const Query&) const = default;
+    };
+
     BatteryHistory();
     ~BatteryHistory();
 
     BatteryHistory(const BatteryHistory&) = delete;
     BatteryHistory& operator=(const BatteryHistory&) = delete;
 
-    // The UPower device object path.
-    void setDevice(const std::string& device);
-    // Seconds back from now.
-    void setDuration(uint32_t duration);
-    uint32_t duration() const { return m_duration; }
-    void setType(Type type);
-
-    // Loads once set up, and again on every change of the above.
-    void start();
+    // Loads unless `query` is already the one loaded.
+    void load(const Query& query);
+    // Loads the current query again, for samples recorded since.
     void refresh();
+    const Query& query() const { return m_query; }
 
-    const std::vector<cutefish::upower::HistorySample>& samples() const { return m_values; }
-    int count() const { return int(m_values.size()); }
-    uint32_t lastTime() const;
-    int largestValue() const;
-
-    cutefish::base::Signal<> dataChanged;
+    // Empty until the first answer arrives.
+    const std::vector<cutefish::upower::HistorySample>& samples() const { return m_samples; }
+    cutefish::base::Signal<> samplesChanged;
 
     // The samples to plot from UPower's answers: the span's samples, newest
     // first, and the whole history when it came, over `duration` seconds up
@@ -61,22 +62,23 @@ public:
             uint32_t duration);
 
 private:
-    void load();
-    void loadMock();
-    void finish();
+    struct Answers {
+        std::optional<std::vector<cutefish::upower::HistorySample>> window;
+        std::optional<std::vector<cutefish::upower::HistorySample>> all;
+        int outstanding = 2;
+    };
 
-    std::string m_device;
-    uint32_t m_duration = 120;
-    Type m_type = Type::Charge;
-    bool m_started = false;
-    std::unique_ptr<cutefish::upower::Device> m_upowerDevice;
-    std::vector<cutefish::upower::HistorySample> m_values;
+    void request();
+    void answered(const std::shared_ptr<Answers>& answers);
+    std::vector<cutefish::upower::HistorySample> mockSamples() const;
 
+    Query m_query;
+    bool m_loaded = false;
+    std::unique_ptr<cutefish::upower::Device> m_device;
+    std::vector<cutefish::upower::HistorySample> m_samples;
+    std::shared_ptr<Answers> m_answers;
     cutefish::base::dbus::PendingCall m_windowCall;
     cutefish::base::dbus::PendingCall m_allCall;
-    int m_pending = 0;
-    std::optional<std::vector<cutefish::upower::HistorySample>> m_window;
-    std::optional<std::vector<cutefish::upower::HistorySample>> m_all;
 };
 
 } // namespace settings

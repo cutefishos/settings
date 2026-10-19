@@ -23,46 +23,43 @@ using namespace cutefish::ui;
 
 namespace settings {
 
-// gnome-control-center: cc-timezone-map.c
-static double radians(double degrees)
+// Miller's cylindrical projection: the height of a latitude on the map,
+// in units of the earth's radius.
+static double millerY(double latitude)
 {
-    return (degrees / 360.0) * M_PI * 2;
+    return 1.25 * std::log(std::tan(M_PI / 4 + 0.4 * latitude * M_PI / 180));
 }
 
-static double convertLatitudeToY(double latitude)
+// The world map's top edge lies 81/180 of the projection's full height above
+// the equator, its bottom edge at 59 degrees south, and its left edge at 168
+// degrees west; positions are fractions of its size.
+static double mapY(double latitude)
 {
-    const double bottomLatitude = -59;
-    const double topLatitude = 81;
-    const double fullRange = 4.6068250867599998;
-
-    const double topPer = topLatitude / 180.0;
-    double y = 1.25 * log(tan(M_PI_4 + 0.4 * radians(latitude)));
-    const double topOffset = fullRange * topPer;
-    const double mapRange = fabs(1.25 * log(tan(M_PI_4 + 0.4 * radians(bottomLatitude))) - topOffset);
-    y = fabs(y - topOffset);
-    return y / mapRange;
+    const double top = 2 * millerY(90) * 81 / 180;
+    return (top - millerY(latitude)) / (top - millerY(-59));
 }
 
-static double convertLongitudeToX(double longitude)
+static double mapX(double longitude)
 {
-    const double xDegreeOffset = -6;
-    return (180.0 + longitude) / 360.0 + xDegreeOffset / 180.0;
+    return (longitude + 168) / 360;
 }
 
-// The zone's principal location in ISO 6709 sign-degrees-minutes(-seconds),
-// +-DDMM+-DDDMM or +-DDMMSS+-DDDMMSS; `digits` is 2 for the latitude, 3 for
-// the longitude. Read the way the map has always read it.
-static double convertPosition(const std::string& position, int digits)
+// One coordinate of zone.tab's ISO 6709 location, sign then degrees, minutes
+// and optional seconds: "+3130" or "-0583506", with `degreeDigits` of 2 for a
+// latitude and 3 for a longitude.
+static double iso6709Degrees(const std::string& text, size_t degreeDigits)
 {
-    if (position.size() < 4 || digits > 9)
+    if (text.empty() || (text[0] != '+' && text[0] != '-'))
         return 0.0;
-    const std::string integer = position.substr(0, digits + 1);
-    const std::string fraction = position.substr(digits + 1);
-    const double t1 = strtod(integer.c_str(), nullptr);
-    const double t2 = strtod(fraction.c_str(), nullptr);
-    if (t1 > 0.0)
-        return t1 + t2 / pow(10.0, double(fraction.size()));
-    return t1 - t2 / pow(10.0, double(fraction.size()));
+    const size_t digits = text.size() - 1;
+    if (digits != degreeDigits + 2 && digits != degreeDigits + 4)
+        return 0.0;
+
+    const auto field = [&text](size_t at, size_t length) { return std::atoi(text.substr(at, length).c_str()); };
+    const double minutes = field(1 + degreeDigits, 2);
+    const double seconds = digits == degreeDigits + 4 ? field(3 + degreeDigits, 2) : 0;
+    const double degrees = field(1, degreeDigits) + minutes / 60 + seconds / 3600;
+    return text[0] == '-' ? -degrees : degrees;
 }
 
 static const std::chrono::time_zone* locate(const std::string& id)
@@ -143,8 +140,8 @@ TimeZoneMap::TimeZoneMap(timedate::TimeDate& timeDate)
             size_t index = coordinate.find('+', 3);
             if (index == std::string::npos)
                 index = coordinate.find('-', 3);
-            m_list.push_back({parts[0], parts[2], convertPosition(coordinate.substr(0, index), 2),
-                              index == std::string::npos ? 0.0 : convertPosition(coordinate.substr(index), 3)});
+            m_list.push_back({parts[0], parts[2], iso6709Degrees(coordinate.substr(0, index), 2),
+                              index == std::string::npos ? 0.0 : iso6709Degrees(coordinate.substr(index), 3)});
         }
     }
 
@@ -171,8 +168,8 @@ int TimeZoneMap::nearestIndex(int x, int y, int width, int height) const
     int nearest = -1;
     for (size_t i = 0; i < m_list.size(); ++i) {
         const Item& item = m_list[i];
-        const double dx = convertLongitudeToX(item.longitude) * width - x;
-        const double dy = convertLatitudeToY(item.latitude) * height - y;
+        const double dx = mapX(item.longitude) * width - x;
+        const double dy = mapY(item.latitude) * height - y;
         const double distance = dx * dx + dy * dy;
         if (distance < minimumDistance) {
             minimumDistance = distance;
@@ -186,8 +183,8 @@ void TimeZoneMap::clicked(int x, int y, int width, int height)
 {
     std::vector<const Item*> items;
     for (const Item& item : m_list) {
-        const double dx = convertLongitudeToX(item.longitude) * width - x;
-        const double dy = convertLatitudeToY(item.latitude) * height - y;
+        const double dx = mapX(item.longitude) * width - x;
+        const double dy = mapY(item.latitude) * height - y;
         if (dx * dx + dy * dy <= 20)
             items.push_back(&item);
     }
@@ -233,7 +230,7 @@ void TimeZoneMap::select(const std::string& id)
 PointF TimeZoneMap::position(const std::string& id, int width, int height) const
 {
     if (const Item* item = find(id))
-        return {convertLongitudeToX(item->longitude) * width, convertLatitudeToY(item->latitude) * height};
+        return {mapX(item->longitude) * width, mapY(item->latitude) * height};
     return {-1, -1};
 }
 
@@ -249,7 +246,7 @@ std::vector<TimeZoneMap::Point> TimeZoneMap::points() const
     std::vector<Point> result;
     result.reserve(m_list.size());
     for (const Item& item : m_list) {
-        result.push_back({item.timeZone, convertLongitudeToX(item.longitude), convertLatitudeToY(item.latitude),
+        result.push_back({item.timeZone, mapX(item.longitude), mapY(item.latitude),
                           offsetAt(item.timeZone, time)});
     }
     return result;

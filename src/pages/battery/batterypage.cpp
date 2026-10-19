@@ -86,7 +86,9 @@ public:
         m_rangePicker = title->picker();
         m_rangePicker->setName("battery:range");
         m_rangePicker->onCurrentChanged = [this](int index) {
-            m_history.setDuration(kHistoryDurations[index]);
+            BatteryHistory::Query query = m_history.query();
+            query.duration = kHistoryDurations[index];
+            m_history.load(query);
         };
         Card* graphCard = m_historySection->addChild<Card>();
         graphCard->setSpacing(0);
@@ -125,19 +127,20 @@ public:
         m_subscriptions.push_back(m_battery.capacityChanged.connect([this] { updateHealth(); }));
         m_subscriptions.push_back(m_battery.lastChargedChanged.connect([this] { updateHealth(); }));
         m_subscriptions.push_back(m_battery.chargeLimitChanged.connect([this] { updateChargeLimit(); }));
-        m_subscriptions.push_back(m_battery.udiChanged.connect([this] { m_history.setDevice(m_battery.udi()); }));
+        m_subscriptions.push_back(m_battery.udiChanged.connect([this] {
+            BatteryHistory::Query query = m_history.query();
+            query.device = m_battery.udi();
+            m_history.load(query);
+        }));
         m_subscriptions.push_back(m_battery.availableChanged.connect([this] { updateRefreshTimer(); }));
         m_subscriptions.push_back(window.activeChanged.connect([this] { updateRefreshTimer(); }));
-        m_subscriptions.push_back(m_history.dataChanged.connect([this] { historyChanged(); }));
+        m_subscriptions.push_back(m_history.samplesChanged.connect([this] { historyChanged(); }));
 
         // Picks up new samples and moves the plot's right edge along with the
         // clock, only while the page is in front.
         m_refresh.onTimeout = [this] { m_history.refresh(); };
 
-        m_history.setDevice(m_battery.udi());
-        m_history.setDuration(kHistoryDurations[0]);
-        m_history.setType(BatteryHistory::Type::Charge);
-        m_history.start();
+        m_history.load({m_battery.udi(), kHistoryDurations[0], BatteryHistory::Type::Charge});
 
         m_historySection->setVisible(false);
         updateHealth();
@@ -150,15 +153,15 @@ private:
     {
         // The range the plotted samples cover follows the picker only once
         // they arrive, so the old samples are never drawn across the new range.
-        m_plottedDuration = m_history.duration();
+        m_plottedDuration = m_history.query().duration;
         std::vector<HistoryGraph::Point> points;
         points.reserve(m_history.samples().size());
         for (const auto& sample : m_history.samples())
             points.push_back({double(sample.time), sample.value, sample.state});
         m_graph->setPoints(std::move(points));
-        m_graph->setEnd(m_history.lastTime());
+        m_graph->setEnd(m_history.samples().empty() ? 0 : m_history.samples().back().time);
         m_graph->setDuration(m_plottedDuration);
-        m_historySection->setVisible(m_history.count() > 2);
+        m_historySection->setVisible(m_history.samples().size() > 2);
     }
 
     void updateRefreshTimer()
@@ -172,7 +175,7 @@ private:
         }
         m_refresh.start(std::chrono::minutes(1));
         // The history loads by itself at first, so only a return needs a refresh.
-        if (m_history.count() > 0)
+        if (!m_history.samples().empty())
             m_history.refresh();
     }
 
