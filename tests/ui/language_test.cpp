@@ -259,3 +259,23 @@ TEST_F(LongDragFixture, ScrollsAtTheEdge)
     EXPECT_EQ(moves.front().first, 0);
     EXPECT_GT(moves.front().second, 0);
 }
+
+TEST_F(DragFixture, ReleasingAboveMovesToTheTop)
+{
+    const PointF point = startDrag(2);
+    TestInput::movePointer(window, {point.x, rowY(0.5)});
+    TestInput::movePointer(window, {point.x, list->geometry().y - 20});
+    EXPECT_EQ(list->targetIndex(), 0);
+    TestInput::release(window, {point.x, list->geometry().y - 20});
+    EXPECT_EQ(moves, (std::vector<std::pair<int, int>>{{2, 0}}));
+}
+
+TEST_F(DragFixture, ReleasingBelowMovesToTheBottom)
+{
+    const PointF point = startDrag(0);
+    const double below = list->geometry().bottom() + 20;
+    TestInput::movePointer(window, {point.x, below});
+    EXPECT_EQ(list->targetIndex(), list->count() - 1);
+    TestInput::release(window, {point.x, below});
+    EXPECT_EQ(moves, (std::vector<std::pair<int, int>>{{0, list->count() - 1}}));
+}

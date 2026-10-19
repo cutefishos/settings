@@ -343,10 +343,11 @@ void PreferredLanguageList::layout()
     m_indicator->setGeometry(localRect());
 }
 
+// Above or below the rows a drop goes first or last; only leaving the list
+// sideways cancels it.
 bool PreferredLanguageList::isInside() const
 {
-    return m_pointer.x >= 0 && m_pointer.x <= geometry().width && m_pointer.y >= 0
-           && m_pointer.y <= geometry().height;
+    return m_pointer.x >= 0 && m_pointer.x <= geometry().width;
 }
 
 void PreferredLanguageList::press(int index, PointF point)
@@ -412,9 +413,10 @@ void PreferredLanguageList::scrollAtEdge()
         return;
     const double edge = kRowHeight;
     const double height = geometry().height;
-    const double delta = m_pointer.y < edge            ? -8 * (1 - m_pointer.y / edge)
-                         : m_pointer.y > height - edge ? 8 * (1 - (height - m_pointer.y) / edge)
-                                                       : 0;
+    const double y = std::clamp(m_pointer.y, 0.0, height);
+    const double delta = y < edge            ? -8 * (1 - y / edge)
+                         : y > height - edge ? 8 * (1 - (height - y) / edge)
+                                             : 0;
     if (delta == 0)
         return;
     const double maximum = std::max(0.0, m_scroll->contentSize().height - height);
