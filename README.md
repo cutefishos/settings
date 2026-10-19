@@ -5,7 +5,7 @@ The System Settings application for Cutefish Desktop.
 ## Dependencies
 
 Settings is built on [cutefish-toolkit](https://github.com/cutefishos/cutefish-toolkit)
-and the Qt-free clients of [cutefish-framework](https://github.com/cutefishos/cutefish-framework);
+and the clients of [cutefish-framework](https://github.com/cutefishos/cutefish-framework);
 install those first.
 
 Arch/Manjaro Dependencies:
