@@ -46,13 +46,12 @@ std::optional<NetworkItem> NetworkList::find(const std::string& connectionPath, 
 std::vector<NetworkItem> mockNetworks()
 {
     const int64_t now = int64_t(std::time(nullptr));
-    const auto wireless = [](std::string name, ConnectionStatus state, NetworkItem::Kind kind, SecurityType security,
-                             std::string securityLabel, int signal, std::string icon) {
+    const auto wireless = [](std::string name, ConnectionStatus state, SecurityType security, std::string securityLabel,
+                             int signal, std::string icon) {
         NetworkItem item;
         item.type = ConnectionType::Wireless;
         item.name = std::move(name);
         item.connectionState = state;
-        item.kind = kind;
         item.securityType = security;
         item.securityTypeString = std::move(securityLabel);
         item.signal = signal;
@@ -61,8 +60,8 @@ std::vector<NetworkItem> mockNetworks()
     };
 
     std::vector<NetworkItem> items;
-    NetworkItem studio = wireless("Cutefish Studio", ConnectionStatus::Activated, NetworkItem::Kind::AvailableConnection,
-                                  SecurityType::Wpa2Psk, "WPA2 Personal", 92, "network-wireless-connected-100");
+    NetworkItem studio = wireless("Cutefish Studio", ConnectionStatus::Activated, SecurityType::Wpa2Psk,
+                                  "WPA2 Personal", 92, "network-wireless-connected-100");
     studio.uuid = "mock-wifi-connected";
     studio.ipV4Address = "192.168.1.86";
     studio.ipV6Address = "fe80::1c2b:3aff:fe4d:5e6f";
@@ -72,20 +71,19 @@ std::vector<NetworkItem> mockNetworks()
     studio.timestamp = now;
     items.push_back(studio);
 
-    NetworkItem coffee = wireless("Coffee Shop", ConnectionStatus::Deactivated, NetworkItem::Kind::AvailableAccessPoint,
-                                  SecurityType::Wpa2Psk, "WPA2 Personal", 74, "network-wireless-connected-100");
+    NetworkItem coffee = wireless("Coffee Shop", ConnectionStatus::Deactivated, SecurityType::Wpa2Psk,
+                                  "WPA2 Personal", 74, "network-wireless-connected-100");
     coffee.uuid = "mock-wifi-saved";
     coffee.timestamp = now - 3600;
     items.push_back(coffee);
 
-    NetworkItem guest = wireless("Guest Network", ConnectionStatus::Deactivated, NetworkItem::Kind::AvailableAccessPoint,
-                                 SecurityType::None, "None", 51, "network-wireless-connected-66");
+    NetworkItem guest = wireless("Guest Network", ConnectionStatus::Deactivated, SecurityType::None, "None", 51,
+                                 "network-wireless-connected-66");
     guest.timestamp = now - 7200;
     items.push_back(guest);
 
-    NetworkItem neighbor = wireless("Neighbor Wi-Fi", ConnectionStatus::Deactivated,
-                                    NetworkItem::Kind::AvailableAccessPoint, SecurityType::Sae, "WPA3 Personal", 28,
-                                    "network-wireless-connected-33");
+    NetworkItem neighbor = wireless("Neighbor Wi-Fi", ConnectionStatus::Deactivated, SecurityType::Sae, "WPA3 Personal",
+                                    28, "network-wireless-connected-33");
     neighbor.timestamp = now - 10800;
     items.push_back(neighbor);
 
@@ -94,7 +92,6 @@ std::vector<NetworkItem> mockNetworks()
         item.type = ConnectionType::Wired;
         item.name = std::move(name);
         item.connectionState = state;
-        item.kind = NetworkItem::Kind::AvailableConnection;
         item.securityType = SecurityType::None;
         item.signal = 100;
         item.icon = "network-wired";
