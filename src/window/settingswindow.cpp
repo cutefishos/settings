@@ -242,6 +242,7 @@ SettingsWindow::SettingsWindow()
     };
     // A press anywhere outside the search field takes the focus off it.
     m_window->onPointerPressed = [this](PointF position, MouseButton) { m_sidebar->releaseSearch(position); };
+    m_languageChanged = Application::instance()->languageChanged.connect([this] { retranslate(); });
 
     for (const PageInfo& page : pages()) {
         const bool sidebarPage = !page.category.empty();
@@ -369,6 +370,16 @@ void SettingsWindow::showHistoryEntry(int index)
     m_root->setPage(std::move(page));
     m_sidebar->setCurrent(entry.page, entry.rootPage);
     updateHeader();
+}
+
+void SettingsWindow::retranslate()
+{
+    m_window->setTitle(tr("Settings"));
+    m_sidebar->retranslate();
+    if (m_historyIndex >= 0)
+        showHistoryEntry(m_historyIndex);
+    else
+        updateHeader();
 }
 
 void SettingsWindow::updateHeader()

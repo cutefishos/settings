@@ -316,6 +316,14 @@ void Sidebar::setEntries(std::vector<const PageInfo*> entries)
         updateResults();
 }
 
+void Sidebar::retranslate()
+{
+    m_title->setText(tr("Settings"));
+    m_search->setPlaceholder(tr("Search"));
+    m_noResults->setText(tr("No results"));
+    setEntries(m_entries);
+}
+
 void Sidebar::setSubPageAvailable(const std::string& id, bool available)
 {
     auto it = std::find(m_unavailableSubPages.begin(), m_unavailableSubPages.end(), id);

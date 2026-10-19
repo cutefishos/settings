@@ -5,6 +5,7 @@
 
 #include <string>
 
+#include "ui/application.h"
 #include "ui/keys.h"
 #include "ui/layout.h"
 #include "ui/test_input.h"
@@ -102,6 +103,19 @@ TEST_F(Fixture, HistoryGoesBackAndForward)
     EXPECT_TRUE(settingsWindow->canGoForward());
     // Going somewhere new drops the steps ahead.
     settingsWindow->switchToPage("sound");
+    EXPECT_FALSE(settingsWindow->canGoForward());
+}
+
+TEST_F(Fixture, LanguageChangeMakesThePageAgain)
+{
+    settingsWindow->switchToPage("dock");
+    settingsWindow->pushPage("hotcorners");
+    const Page* before = settingsWindow->currentPage();
+    Application::instance()->languageChanged.emit();
+    window().grab();
+    EXPECT_NE(settingsWindow->currentPage(), before);
+    EXPECT_NE(dumpLine(window(), "page:hotcorners"), "");
+    EXPECT_TRUE(settingsWindow->canGoBack());
     EXPECT_FALSE(settingsWindow->canGoForward());
 }
 

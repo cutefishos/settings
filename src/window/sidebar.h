@@ -32,6 +32,8 @@ public:
 
     // The sidebar pages shown, in order.
     void setEntries(std::vector<const PageInfo*> entries);
+    // Takes its text again after the session language changed.
+    void retranslate();
     const std::vector<const PageInfo*>& entries() const { return m_entries; }
     // Sub pages whose entry is unavailable stay out of search results.
     void setSubPageAvailable(const std::string& id, bool available);

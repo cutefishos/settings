@@ -90,6 +90,7 @@ private:
     void updateHeader();
     void updateBackground();
     bool isReady() const;
+    void retranslate();
 
     std::unique_ptr<cutefish::ui::Window> m_window;
     SettingsRoot* m_root;
@@ -108,6 +109,7 @@ private:
     std::string m_pendingWifiJoin;
     std::unique_ptr<cutefish::base::Timer> m_revealTimer;
     bool m_revealed = false;
+    cutefish::base::Subscription m_languageChanged;
 };
 
 } // namespace settings
