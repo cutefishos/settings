@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <chrono>
+#include <optional>
 
 #include "base/i18n.h"
 #include "base/timer.h"
@@ -92,6 +93,7 @@ public:
 
         m_subscriptions.push_back(m_list.changed.connect([this] { update(); }));
         m_subscriptions.push_back(m_enabled.changed.connect([this] {
+            settleWireless();
             update();
             joinRequestedNetwork();
         }));
@@ -167,18 +169,32 @@ private:
         m_details->show();
     }
 
+    // The switch shows the requested state until NetworkManager reports it,
+    // so that a list refresh in between does not flip it back.
     void wirelessToggled(bool checked)
     {
-        if (m_list.isMock())
+        if (m_list.isMock() || checked == wirelessEnabled())
             return;
-        if (checked) {
-            if (!m_enabled.isWirelessEnabled()) {
-                m_handler.enableWireless(true);
-                m_handler.requestScan();
-            }
-        } else if (m_enabled.isWirelessEnabled()) {
-            m_handler.enableWireless(false);
-        }
+        m_requestedWireless = checked;
+        ++m_wirelessRequests;
+        m_handler.enableWireless(checked, [this](const cutefish::base::dbus::Reply& reply) {
+            --m_wirelessRequests;
+            if (reply.isError())
+                m_requestedWireless.reset();
+            settleWireless();
+            update();
+        });
+        if (checked)
+            m_handler.requestScan();
+        update();
+    }
+
+    bool wirelessEnabled() const { return m_requestedWireless.value_or(m_enabled.isWirelessEnabled()); }
+
+    void settleWireless()
+    {
+        if (m_wirelessRequests == 0 && m_requestedWireless == m_enabled.isWirelessEnabled())
+            m_requestedWireless.reset();
     }
 
     // The status bar sends enterprise networks here. The window and
@@ -198,7 +214,7 @@ private:
     {
         const bool mock = m_list.isMock();
         content()->setVisible(m_enabled.isWirelessHwEnabled() || mock);
-        m_switch->setChecked(mock || m_enabled.isWirelessEnabled());
+        m_switch->setChecked(mock || wirelessEnabled());
 
         const std::vector<nm::NetworkItem> items = m_list.rows(nm::ConnectionType::Wireless);
         // Switching networks leaves the old one Deactivating until the new one
@@ -264,6 +280,8 @@ private:
     std::vector<cutefish::base::Subscription> m_subscriptions;
     NewNetworkDialog m_newNetwork;
     std::unique_ptr<DetailsDialog> m_details;
+    std::optional<bool> m_requestedWireless;
+    int m_wirelessRequests = 0;
 
     ColumnLayout* m_view;
     Card* m_mainCard;
