@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-10-19 23:02+0800\n"
+"POT-Creation-Date: 2026-10-20 09:33+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1457,7 +1457,7 @@ msgstr ""
 msgid "Peer"
 msgstr ""
 
-#: src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/vpn/vpneditor.cpp src/pages/privacy/privacypage.cpp
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 msgid "Remove"
 msgstr ""
@@ -1470,7 +1470,7 @@ msgstr ""
 msgid "Preshared key"
 msgstr ""
 
-#. TRANSLATORS: a placeholder: the stored preshared key stays unless a new one is typed.
+#. TRANSLATORS: a placeholder: the stored key stays unless a new one is typed.
 #: src/pages/network/vpn/vpneditor.cpp
 msgid "Kept"
 msgstr ""
@@ -1685,6 +1685,26 @@ msgstr ""
 
 #: src/pages/power/powerpage.cpp
 msgid "Prevent automatic sleeping when the display is off"
+msgstr ""
+
+#: src/pages/privacy/privacypage.cpp src/window/pagelist.cpp
+msgid "Privacy"
+msgstr ""
+
+#: src/pages/privacy/privacypage.cpp
+msgid "Computer control"
+msgstr ""
+
+#: src/pages/privacy/privacypage.cpp
+msgid "Computer control is managed by the Cutefish compositor, which is not running."
+msgstr ""
+
+#: src/pages/privacy/privacypage.cpp
+msgid "No apps are allowed to control this computer without asking."
+msgstr ""
+
+#: src/pages/privacy/privacypage.cpp
+msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the status bar still shows while it is in control."
 msgstr ""
 
 #: src/pages/shortcuts/shortcuteditdialog.cpp
@@ -2259,7 +2279,7 @@ msgstr ""
 msgid "Add Wallpaper Folder"
 msgstr ""
 
-#: src/widgets/searchfield.cpp
+#: src/widgets/searchfield.cpp src/window/sidebar.cpp
 msgid "Search"
 msgstr ""
 
@@ -2345,6 +2365,10 @@ msgstr ""
 
 #: src/window/pagelist.cpp
 msgid "web browser, email client, terminal"
+msgstr ""
+
+#: src/window/pagelist.cpp
+msgid "computer control, agents, allowed apps, permissions"
 msgstr ""
 
 #: src/window/pagelist.cpp
