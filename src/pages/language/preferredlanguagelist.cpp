@@ -254,10 +254,11 @@ protected:
             return;
         const int slot = m_list.targetIndex() > m_list.pressedIndex() ? m_list.targetIndex() + 1
                                                                        : m_list.targetIndex();
-        const double y = slot * kRowHeight - m_list.scrollY();
+        // The list clips, so the first and last slots move inwards to keep the dot whole.
+        const double center = std::clamp(slot * kRowHeight - m_list.scrollY(), 3.0, geometry().height - 3);
         const Color color = Theme::current().highlight;
-        painter.fillRoundedRect({3, y, geometry().width - 3, 2}, 1, color);
-        painter.fillRoundedRect({0, y + 1 - 3, 6, 6}, 3, color);
+        painter.fillRoundedRect({3, center - 1, geometry().width - 3, 2}, 1, color);
+        painter.fillRoundedRect({0, center - 3, 6, 6}, 3, color);
     }
 
 private:
