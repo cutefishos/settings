@@ -25,7 +25,8 @@ static void printHelp(const char* program)
            "  -m <module>                    Switch to module\n"
            "  --join-wifi <access point>     Join the Wi-Fi network of an access point\n"
            "  --mock-network                 Show sample network data\n"
-           "  --mock-battery                 Show sample battery data\n",
+           "  --mock-battery                 Show sample battery data\n"
+           "  --mock-batteries               Show sample data of two batteries\n",
            program);
 }
 
@@ -60,6 +61,9 @@ int main(int argc, char** argv)
             options.mockNetwork = true;
         } else if (argument == "--mock-battery") {
             options.mockBattery = true;
+        } else if (argument == "--mock-batteries") {
+            options.mockBattery = true;
+            options.mockExtraBattery = true;
         } else {
             fprintf(stderr, "Unknown option '%s'.\n", argument.c_str());
             return 1;

@@ -12,6 +12,8 @@ struct Options
     bool mockNetwork = false;
     // Sample battery data.
     bool mockBattery = false;
+    // A second sample battery, with mockBattery.
+    bool mockExtraBattery = false;
 };
 
 const Options& options();

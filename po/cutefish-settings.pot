@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-10-20 09:33+0800\n"
+"POT-Creation-Date: 2026-10-30 16:02+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -116,16 +116,6 @@ msgstr ""
 msgid "Add user"
 msgstr ""
 
-#: src/pages/accounts/accountspage.cpp src/pages/wallpaper/wallpaperpage.cpp
-#, python-brace-format
-msgid "Image files ({patterns})"
-msgstr ""
-
-#: src/pages/accounts/accountspage.cpp src/pages/network/vpn/vpndialogs.cpp
-#: src/pages/network/vpn/vpnpage.cpp
-msgid "All files (*)"
-msgstr ""
-
 #: src/pages/accounts/accountspage.cpp src/pages/accounts/userdetailsdialog.cpp
 msgid "Delete this user"
 msgstr ""
@@ -135,8 +125,8 @@ msgstr ""
 msgid "Delete user “{name}”? Their home directory and its contents will be permanently deleted. This cannot be undone."
 msgstr ""
 
-#: src/pages/accounts/accountspage.cpp src/pages/accounts/userdialogs.cpp
-#: src/pages/datetime/timezonedialog.cpp
+#: src/pages/accounts/accountspage.cpp src/pages/accounts/picturedialog.cpp
+#: src/pages/accounts/userdialogs.cpp src/pages/datetime/timezonedialog.cpp
 #: src/pages/language/addlanguagedialog.cpp
 #: src/pages/network/common/ipsettingsview.cpp
 #: src/pages/network/hotspot/hotspotpage.cpp
@@ -149,6 +139,30 @@ msgstr ""
 
 #: src/pages/accounts/accountspage.cpp
 msgid "Delete"
+msgstr ""
+
+#: src/pages/accounts/picturedialog.cpp
+msgid "Choose a picture"
+msgstr ""
+
+#: src/pages/accounts/picturedialog.cpp
+msgid "Choose File…"
+msgstr ""
+
+#: src/pages/accounts/picturedialog.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/proxy/proxypage.cpp src/pages/network/vpn/vpndialogs.cpp
+msgid "Save"
+msgstr ""
+
+#: src/pages/accounts/picturedialog.cpp src/pages/wallpaper/wallpaperpage.cpp
+#, python-brace-format
+msgid "Image files ({patterns})"
+msgstr ""
+
+#: src/pages/accounts/picturedialog.cpp src/pages/network/vpn/vpndialogs.cpp
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "All files (*)"
 msgstr ""
 
 #: src/pages/accounts/userdetailsdialog.cpp src/pages/accounts/userdialogs.cpp
@@ -300,6 +314,20 @@ msgstr ""
 
 #: src/pages/battery/batterypage.cpp
 msgid "Show percentage in status bar"
+msgstr ""
+
+#. TRANSLATORS: the names of a computer's two batteries.
+#: src/pages/battery/batterypage.cpp
+msgid "Main"
+msgstr ""
+
+#: src/pages/battery/batterypage.cpp
+msgid "Extra"
+msgstr ""
+
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "Battery {n}"
 msgstr ""
 
 #: src/pages/battery/batterypage.cpp
@@ -1213,11 +1241,6 @@ msgstr ""
 
 #: src/pages/network/common/ipsettingsview.cpp
 msgid "DNS Servers"
-msgstr ""
-
-#: src/pages/network/common/ipsettingsview.cpp
-#: src/pages/network/proxy/proxypage.cpp src/pages/network/vpn/vpndialogs.cpp
-msgid "Save"
 msgstr ""
 
 #: src/pages/network/common/ipsettingsview.cpp

@@ -19,8 +19,9 @@ class Device;
 
 namespace settings {
 
-// The battery page's view of cutefish-services' battery, plus UPower's
-// charge limit. With --mock-battery it shows sample values instead.
+// The battery page's view of cutefish-services' batteries, plus each
+// battery's capacity and UPower's charge limit. With --mock-battery it shows
+// sample values instead.
 class Battery
 {
 public:
@@ -33,7 +34,16 @@ public:
     bool isReady() const;
     bool isAvailable() const;
 
+    // The UPower device object paths of the batteries; the page shows the
+    // history and health of the current one.
+    const std::vector<std::string>& batteries() const { return m_batteries; }
+    int currentBattery() const { return m_current; }
+    void setCurrentBattery(int index);
+    // The current battery's UPower device object path.
+    std::string udi() const;
+
     int lastChargedPercent() const;
+    // The current battery's.
     int capacity() const;
     // "Today at 2:21 pm", or the date and time; empty when never charged.
     std::string lastChargedTime() const;
@@ -42,47 +52,48 @@ public:
     bool showPercent() const;
     void setPercentEnabled(bool enabled);
 
-    // UPower's charge limit: only on or off, between thresholds the system sets.
+    // UPower's charge limit: only on or off, between thresholds the system
+    // sets. It is turned on and off for every battery that has one.
     bool chargeLimitSupported() const { return m_chargeLimitSupported; }
     bool chargeLimitEnabled() const { return m_chargeLimitEnabled; }
     int chargeLimitStart() const { return m_chargeLimitStart; }
     int chargeLimitEnd() const { return m_chargeLimitEnd; }
-    // False when UPower has the limit on but the kernel does not: some battery
-    // controllers take the thresholds and reset them a few seconds later.
+    // False when UPower has the limit on but the kernel does not, for any of
+    // the batteries: some battery controllers take the thresholds and reset
+    // them a few seconds later.
     bool chargeLimitHeld() const;
     void setChargeLimitEnabled(bool enabled);
 
-    // The UPower device object path.
-    const std::string& udi() const { return m_udi; }
-
     cutefish::base::Signal<> readyChanged;
     cutefish::base::Signal<> availableChanged;
+    cutefish::base::Signal<> batteriesChanged;
     cutefish::base::Signal<> capacityChanged;
     cutefish::base::Signal<> lastChargedChanged;
     cutefish::base::Signal<> udiChanged;
     cutefish::base::Signal<> chargeLimitChanged;
 
 private:
-    void watchDevice();
-    void updateChargeLimit(const cutefish::base::dbus::VariantMap& properties);
-    void readKernelChargeLimit();
+    void watchBatteries();
+    void updateChargeLimit();
+    void readKernelChargeLimits();
 
     bool m_mock;
     std::shared_ptr<cutefish::upower::BatteryStatus> m_status;
-    std::unique_ptr<cutefish::upower::Device> m_device;
+    std::vector<std::string> m_batteries;
+    // One for each of m_batteries.
+    std::vector<std::unique_ptr<cutefish::upower::Device>> m_devices;
     std::vector<cutefish::base::Subscription> m_subscriptions;
-    cutefish::base::Subscription m_deviceSubscription;
+    std::vector<cutefish::base::Subscription> m_deviceSubscriptions;
     cutefish::base::Timer m_recheck;
-    std::string m_udi;
+    int m_current = 0;
 
     bool m_chargeLimitSupported = false;
     bool m_chargeLimitEnabled = false;
     int m_chargeLimitStart = 0;
     int m_chargeLimitEnd = 0;
-    // The battery's directory in /sys/class/power_supply, and the end
-    // threshold the kernel reports there; -1 when it cannot be read.
-    std::string m_batteryPath;
-    int m_kernelChargeLimit = -1;
+    // The end threshold the kernel reports for each of m_devices in
+    // /sys/class/power_supply; -1 when it cannot be read.
+    std::vector<int> m_kernelChargeLimits;
     int64_t m_mockLastCharged = 0;
 };
 

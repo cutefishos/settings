@@ -63,11 +63,26 @@ View* findView(View* view, const std::string& name)
     return nullptr;
 }
 
+bool showsText(View* view, const std::string& text)
+{
+    if (!view->isVisible())
+        return false;
+    if (auto* label = dynamic_cast<Label*>(view); label && label->text() == text)
+        return true;
+    for (const auto& child : view->children()) {
+        if (showsText(child.get(), text))
+            return true;
+    }
+    return false;
+}
+
 struct BatteryPageTest : testing::Test
 {
+    virtual Options pageOptions() const { return {.mockBattery = true}; }
+
     void SetUp() override
     {
-        setOptions({.mockBattery = true});
+        setOptions(pageOptions());
         settingsWindow = std::make_unique<SettingsWindow>();
         window().setScale(1.5);
         window().resize({900, 610});
@@ -94,11 +109,38 @@ struct BatteryPageTest : testing::Test
 
 } // namespace
 
+struct TwoBatteriesPageTest : BatteryPageTest
+{
+    Options pageOptions() const override { return {.mockBattery = true, .mockExtraBattery = true}; }
+};
+
 TEST_F(BatteryPageTest, ShowsTheSampleBattery)
 {
     EXPECT_FALSE(isHidden(window(), "battery:history"));
     EXPECT_FALSE(isHidden(window(), "battery:health"));
     EXPECT_FALSE(isHidden(window(), "battery:lastcharged"));
+    EXPECT_FALSE(isHidden(window(), "battery:charging"));
+    // One battery needs no picking.
+    EXPECT_TRUE(isHidden(window(), "battery:tabs"));
+}
+
+TEST_F(TwoBatteriesPageTest, TheTabsPickTheBatteryShown)
+{
+    ASSERT_FALSE(isHidden(window(), "battery:tabs"));
+    const RectF tabs = windowRect(window(), "battery:tabs");
+    const RectF card = windowRect(window(), "battery:graphcard");
+    EXPECT_EQ(tabs.x, card.x);
+    EXPECT_EQ(tabs.width, card.width);
+    EXPECT_LT(tabs.y + tabs.height, windowRect(window(), "battery:history").y);
+
+    View* page = settingsWindow->currentPage();
+    EXPECT_TRUE(showsText(page, "94%"));
+
+    TestInput::click(window(), {tabs.x + tabs.width * 3 / 4, tabs.y + tabs.height / 2});
+    TestInput::presentFrame(window(), 2000000000);
+    EXPECT_TRUE(showsText(page, "81%"));
+    EXPECT_FALSE(showsText(page, "94%"));
+    // The charge limit is every battery's.
     EXPECT_FALSE(isHidden(window(), "battery:charging"));
 }
 

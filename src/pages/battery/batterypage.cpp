@@ -80,6 +80,12 @@ public:
     explicit BatteryPage(SettingsWindow& window)
         : Page(window, tr("Battery"))
     {
+        // With several batteries, the history and health below are the picked one's.
+        m_batteryTabs = content()->addChild<SegmentedControl>();
+        m_batteryTabs->setName("battery:tabs");
+        m_batteryTabs->setLayoutHints({.fillWidth = true});
+        m_batteryTabs->onCurrentChanged = [this](int index) { m_battery.setCurrentBattery(index); };
+
         // History.
         m_historySection = content()->addChild<ColumnLayout>();
         m_historySection->setName("battery:history");
@@ -103,14 +109,17 @@ public:
         m_graph->setValueAxis(100, 25, "%", 0);
         m_graph->setDuration(m_plottedDuration);
 
+        // Every battery's, so outside the picked battery's health.
+        m_lastChargedCard = content()->addChild<Card>(Card::Style::List);
+        m_lastCharged = m_lastChargedCard->addChild<InfoRow>();
+        m_lastCharged->setName("battery:lastcharged");
+
         // Health.
         m_health = content()->addChild<Section>(tr("Health"));
         m_health->setName("battery:health");
         Card* health = m_health->addChild<Card>(Card::Style::List);
         m_condition = health->addChild<InfoRow>(tr("Condition"));
         m_capacity = health->addChild<InfoRow>(tr("Maximum capacity"));
-        m_lastCharged = health->addChild<InfoRow>();
-        m_lastCharged->setName("battery:lastcharged");
 
         // Charging.
         m_charging = content()->addChild<Section>(tr("Charging"));
@@ -127,6 +136,7 @@ public:
         showPercent->setChecked(m_battery.showPercent());
         showPercent->onToggled = [this](bool checked) { m_battery.setPercentEnabled(checked); };
 
+        m_subscriptions.push_back(m_battery.batteriesChanged.connect([this] { updateBatteryTabs(); }));
         m_subscriptions.push_back(m_battery.capacityChanged.connect([this] { updateHealth(); }));
         m_subscriptions.push_back(m_battery.lastChargedChanged.connect([this] { updateHealth(); }));
         m_subscriptions.push_back(m_battery.chargeLimitChanged.connect([this] { updateChargeLimit(); }));
@@ -146,6 +156,7 @@ public:
         m_history.load({m_battery.udi(), kHistoryDurations[0], BatteryHistory::Type::Charge});
 
         m_historySection->setVisible(false);
+        updateBatteryTabs();
         updateHealth();
         updateChargeLimit();
         updateRefreshTimer();
@@ -182,6 +193,24 @@ private:
             m_history.refresh();
     }
 
+    void updateBatteryTabs()
+    {
+        const size_t count = m_battery.batteries().size();
+        std::vector<std::string> names;
+        if (count == 2) {
+            // TRANSLATORS: the names of a computer's two batteries.
+            names = {tr("Main"), tr("Extra")};
+        } else {
+            for (size_t i = 0; i < count; ++i) {
+                // TRANSLATORS: the name of one of a computer's batteries, such as "Battery 3".
+                names.push_back(format(tr("Battery {n}"), {{"n", std::to_string(i + 1)}}));
+            }
+        }
+        m_batteryTabs->setItems(names);
+        m_batteryTabs->setCurrentIndex(m_battery.currentBattery());
+        m_batteryTabs->setVisible(count > 1);
+    }
+
     void updateHealth()
     {
         const int capacity = m_battery.capacity();
@@ -192,7 +221,7 @@ private:
         const int lastCharged = m_battery.lastChargedPercent();
         m_lastCharged->setText(format(tr("Last charged to {percent}%"), {{"percent", std::to_string(lastCharged)}}));
         m_lastCharged->setValue(m_battery.lastChargedTime());
-        m_lastCharged->setVisible(lastCharged != 0);
+        m_lastChargedCard->setVisible(lastCharged != 0);
     }
 
     void updateChargeLimit()
@@ -223,12 +252,14 @@ private:
     double m_plottedDuration = kHistoryDurations[0];
     std::vector<base::Subscription> m_subscriptions;
 
+    SegmentedControl* m_batteryTabs;
     ColumnLayout* m_historySection;
     SegmentedControl* m_rangePicker;
     HistoryGraph* m_graph;
     Section* m_health;
     InfoRow* m_condition;
     InfoRow* m_capacity;
+    Card* m_lastChargedCard;
     InfoRow* m_lastCharged;
     Section* m_charging;
     SwitchRow* m_chargeLimit;

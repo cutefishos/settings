@@ -162,6 +162,8 @@ std::vector<HistorySample> BatteryHistory::mockSamples() const
     // Days drain a little deeper or shallower than one another.
     static const std::vector<double> depths{0, -6, 4, -3, 6, -4, 2};
     const std::vector<double>& values = m_query.type == Type::Rate ? rateValues : chargeValues;
+    // The extra sample battery runs lower than the main one.
+    const double offset = m_query.type == Type::Charge && m_query.device == "mock-battery-extra" ? -20 : 0;
     const uint32_t duration = m_query.duration;
     const uint32_t days = std::max(1u, duration / 86400);
     const uint32_t interval = duration / days / uint32_t(values.size());
@@ -170,7 +172,7 @@ std::vector<HistorySample> BatteryHistory::mockSamples() const
         for (size_t i = 0; i < values.size(); ++i) {
             HistorySample sample;
             sample.time = now - duration + (day * uint32_t(values.size()) + uint32_t(i)) * interval;
-            sample.value = values[i];
+            sample.value = values[i] + offset;
             sample.state = states[i];
 
             if (m_query.type == Type::Charge && i >= 3 && i <= 8)
