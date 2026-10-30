@@ -146,6 +146,7 @@ public:
         pages->setClipsChildren(true);
         header = addChild<SettingsHeader>(window);
         bar = header->setContent<HeaderBar>(sidebar);
+        header->setContentUnderButtons(true);
     }
 
     void setPage(std::unique_ptr<Page> page)

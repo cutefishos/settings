@@ -271,6 +271,9 @@ Sidebar::Sidebar()
     m_title = addChild<Label>(tr("Settings"));
     m_title->setFontSize(metrics::points(kTitlePointSize));
     m_title->setVerticallyCentered(true);
+    // Never shown: the window buttons take its line, and the header's title
+    // follows its baseline.
+    m_title->setVisible(false);
     m_search = addChild<SearchField>();
     m_search->setName("search");
     m_search->onTextChanged = [this] { updateResults(); };
