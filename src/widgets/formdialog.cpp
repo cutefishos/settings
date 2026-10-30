@@ -118,6 +118,14 @@ void FormDialog::setFixedHeight(double height)
     m_fixedHeight = height;
 }
 
+void FormDialog::setCloseVisible(bool visible)
+{
+    m_root->header->setCloseVisible(visible);
+    LayoutHints hints = m_root->title->layoutHints();
+    hints.margins.right = visible ? metrics::xxl : 0;
+    m_root->title->setLayoutHints(hints);
+}
+
 void FormDialog::setBackgroundColor(std::optional<ColorRecipe> color)
 {
     m_background = std::move(color);

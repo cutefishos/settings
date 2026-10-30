@@ -124,6 +124,7 @@ AddLanguageDialog::AddLanguageDialog(SettingsWindow& parent, Language& language)
     : FormDialog(parent, tr("Add Language"), 460)
     , m_language(language)
 {
+    setCloseVisible(false);
     setFixedHeight(560);
     // The page colour, so the card stands out as it does on a page.
     setBackgroundColor(ColorId::Background);

@@ -753,8 +753,8 @@ protected:
 
 } // namespace
 
-// The title bar's band: the title at the left and the search box in the
-// middle of the window, not in the middle of what the title leaves free.
+// The title bar's band: the title at the content's edge and the search box in
+// the middle of the window, not in the middle of what the title leaves free.
 class Band : public View
 {
 public:
@@ -792,13 +792,15 @@ public:
         m_header = addChild<WindowHeader>(kHeaderHeight);
         m_header->setMinimizeVisible(false);
         m_header->setMaximizeVisible(false);
+        // Cancel closes it.
+        m_header->setCloseVisible(false);
         m_header->setButtonMargin(metrics::dialogWindowButtonsMargin);
 
         m_column = addChild<ColumnLayout>();
         m_column->setSpacing(metrics::dialogSpacing);
         m_column->setPadding({0, 0, 0, metrics::dialogPadding});
         m_band = m_column->addChild<Band>();
-        // Shares the title bar's band, centred on the close button.
+        // Shares the title bar's band.
         m_band->setLayoutHints({.fillWidth = true,
                                 .margins = {metrics::dialogPadding, 0, metrics::dialogPadding,
                                             metrics::s - metrics::dialogSpacing}});

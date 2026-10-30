@@ -52,6 +52,7 @@ DetailsDialog::DetailsDialog(SettingsWindow& window, NetworkList& list, Kind kin
     , m_handler(std::make_unique<nm::Handler>())
     , m_dialog(std::make_unique<DialogWindow>(&window.window(), item.uniqueName, kWidth))
 {
+    m_dialog->setCloseVisible(false);
     auto content = std::make_unique<Content>();
     m_content = content.get();
     m_content->setPadding({0, metrics::dialogPadding, 0, 0});

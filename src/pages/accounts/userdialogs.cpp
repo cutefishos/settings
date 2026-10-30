@@ -61,6 +61,7 @@ ChangePasswordDialog::ChangePasswordDialog(SettingsWindow& parent, const std::st
     : FormDialog(parent, tr("Change password"), kWidth)
     , m_changer(std::move(changer))
 {
+    setCloseVisible(false);
     Label* name = content()->addChild<SecondaryLabel>(userName);
     name->setWrap(true);
     name->setLayoutHints({.fillWidth = true});
@@ -157,6 +158,7 @@ AddUserDialog::AddUserDialog(SettingsWindow& parent, accounts::AccountsManager& 
     : FormDialog(parent, tr("Add new user"), kWidth)
     , m_manager(manager)
 {
+    setCloseVisible(false);
     m_form = addForm(content());
     m_name = addField(m_form, tr("User name"), false);
     m_password = addField(m_form, tr("Password"), true);

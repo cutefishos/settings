@@ -165,6 +165,7 @@ void NewNetworkDialog::join()
 void NewNetworkDialog::build()
 {
     m_dialog = std::make_unique<FormDialog>(m_window, title(), kWidth);
+    m_dialog->setCloseVisible(false);
     m_dialog->onClosed = [this] {
         // Closing returns the dialog to a hidden network.
         m_accessPoint.clear();

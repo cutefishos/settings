@@ -55,6 +55,8 @@ static std::string deviceType(const std::string& icon)
 // The dialog's content: the page's padding on top, as the window keeps it below.
 static ColumnLayout* makeContent(DialogWindow& dialog)
 {
+    // Close at the bottom closes it.
+    dialog.setCloseVisible(false);
     ColumnLayout* content = dialog.setContent<ColumnLayout>();
     content->setPadding({0, metrics::dialogPadding, 0, 0});
     content->setSpacing(metrics::dialogSpacing);

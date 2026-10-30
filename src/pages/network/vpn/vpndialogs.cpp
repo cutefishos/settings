@@ -97,6 +97,7 @@ void AddVpnDialog::show()
     m_adding = false;
     m_error.clear();
     m_dialog = std::make_unique<FormDialog>(m_window, tr("Add VPN"), kWidth);
+    m_dialog->setCloseVisible(false);
     ColumnLayout* content = m_dialog->content();
 
     RowLayout* kindRow = content->addChild<RowLayout>();
@@ -185,6 +186,7 @@ VpnDetailsDialog::VpnDetailsDialog(SettingsWindow& window, NetworkList& list, nm
     , m_connectionPath(std::move(connectionPath))
     , m_dialog(std::make_unique<DialogWindow>(&window.window(), std::string(), kWidth))
 {
+    m_dialog->setCloseVisible(false);
     auto content = std::make_unique<ColumnLayout>();
     m_content = content.get();
     m_content->setPadding({0, metrics::dialogPadding, 0, 0});
