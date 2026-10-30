@@ -50,7 +50,7 @@ public:
     // A fixed height lets the content's filling items share the space.
     void setFixedHeight(double height);
     // Hidden for dialogs whose own Cancel or Close button closes them; the title then
-    // reaches the content's edge.
+    // starts at the content's edge.
     void setCloseVisible(bool visible);
     // Unset: the theme's second background colour.
     void setBackgroundColor(std::optional<cutefish::ui::ColorRecipe> color);

@@ -38,7 +38,7 @@ public:
         title->setWrap(true);
         // Clear of the close button.
         LayoutHints hints{.fillWidth = true};
-        hints.margins.right = metrics::xxl;
+        hints.margins.left = metrics::xxl;
         title->setLayoutHints(hints);
         header = addChild<WindowHeader>(kHeaderHeight);
         header->setMinimizeVisible(false);
@@ -122,7 +122,7 @@ void FormDialog::setCloseVisible(bool visible)
 {
     m_root->header->setCloseVisible(visible);
     LayoutHints hints = m_root->title->layoutHints();
-    hints.margins.right = visible ? metrics::xxl : 0;
+    hints.margins.left = visible ? metrics::xxl : 0;
     m_root->title->setLayoutHints(hints);
 }
 
