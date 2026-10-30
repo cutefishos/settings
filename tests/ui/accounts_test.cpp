@@ -7,12 +7,15 @@
 #include <memory>
 #include <string>
 
+#include "cutefish/accounts/account_picture.h"
 #include "cutefish/accounts/accounts_manager.h"
 #include "pages/accounts/password.h"
+#include "pages/accounts/picturedialog.h"
 #include "pages/accounts/userdetailsdialog.h"
 #include "pages/accounts/userrow.h"
 #include "pages/accounts/userdialogs.h"
 #include "ui/dialog_window.h"
+#include "ui/image_view.h"
 #include "ui/keys.h"
 #include "ui/label.h"
 #include "ui/layout.h"
@@ -179,7 +182,7 @@ struct UserRowFixture
         window.grab(1'000'000'000);
     }
 
-    View* avatar() const { return find<Label>(row)->parent(); }
+    View* avatar() const { return find<ImageView>(row)->parent(); }
 
     std::shared_ptr<accounts::UserAccount> account =
             std::make_shared<accounts::UserAccount>("/org/freedesktop/Accounts/User1000", nullptr);
@@ -256,10 +259,8 @@ TEST(Accounts, HoveringThePictureDimsItUnderAPencil)
     UserRowFixture fixture;
     Window& window = fixture.window;
     View* avatar = fixture.avatar();
-    Label* initial = find<Label>(avatar);
-    ASSERT_TRUE(initial);
     const PointF middle = centre(avatar);
-    // Inside the circle, above both the initial and the pencil.
+    // Inside the circle, above the pencil.
     const PointF probe {middle.x, middle.y - 18};
     const auto lightness = [&](const Image& image) {
         const Color pixel = image.pixel(int(probe.x * 1.5), int(probe.y * 1.5));
@@ -271,32 +272,38 @@ TEST(Accounts, HoveringThePictureDimsItUnderAPencil)
     window.grab(1'050'000'000);
     const Image hovered = window.grab(1'400'000'000);
     EXPECT_LT(lightness(hovered), plain);
-    // The initial makes way for the pencil.
-    EXPECT_EQ(initial->opacity(), 0);
 
     TestInput::leavePointer(window);
     window.grab(1'450'000'000);
     EXPECT_EQ(lightness(window.grab(1'800'000'000)), plain);
-    EXPECT_EQ(initial->opacity(), 1);
 }
 
-TEST(Accounts, ThePictureReplacesTheInitialOnceDecoded)
+TEST(Accounts, ThePictureReplacesTheAccountColourOnceDecoded)
 {
     UserRowFixture fixture;
     Window& window = fixture.window;
-    const auto initialShown = [&] {
-        for (Label* label : findAll<Label>(fixture.row)) {
-            if (label->text() == "?")
-                return label->isVisible();
-        }
-        return false;
-    };
-    EXPECT_TRUE(initialShown());
+    const PointF middle = centre(fixture.avatar());
+    const auto pixel = [&] { return window.grab().pixel(int(middle.x * 1.5), int(middle.y * 1.5)); };
+    EXPECT_EQ(pixel(), Color::rgb(accounts::pictureColor(fixture.account->userName())));
 
     fixture.row->showPicture(std::string(SETTINGS_SOURCE_DIR) + "/images/logo.svg");
-    window.grab();
     ASSERT_TRUE(settings::testing::waitFor([&] {
-        window.grab();
-        return !initialShown();
+        return pixel() != Color::rgb(accounts::pictureColor(fixture.account->userName()));
     }));
+}
+
+TEST(Accounts, ThePictureDialogSavesOnlyAnotherPicture)
+{
+    SettingsWindow window;
+    auto account = std::make_shared<accounts::UserAccount>("/org/freedesktop/Accounts/User1001", nullptr);
+    PictureDialog dialog(window, account);
+    dialog.show();
+    dialog.window()->grab();
+    View* content = dialog.window()->contentView();
+    EXPECT_TRUE(findView(content, "picture-choose-file"));
+    const std::vector<DialogButton*> buttons = findAll<DialogButton>(content);
+    ASSERT_EQ(buttons.size(), 3u);
+    // Choose File and Cancel, then Save, which waits for another picture.
+    EXPECT_TRUE(buttons.front()->isEnabled());
+    EXPECT_FALSE(buttons.back()->isEnabled());
 }

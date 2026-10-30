@@ -4,6 +4,7 @@
 #include "pages/accounts/userdialogs.h"
 
 #include "base/i18n.h"
+#include "cutefish/accounts/account_picture.h"
 #include "cutefish/accounts/accounts_manager.h"
 #include "pages/accounts/password.h"
 #include "ui/combo_box.h"
@@ -218,6 +219,7 @@ void AddUserDialog::add()
                                  return;
                              }
                              account->setPasswordMode(accounts::UserAccount::RegularPassword);
+                             account->setIconFileName(accounts::randomPresetPicture());
                              account->setPassword(cryptPassword(password));
                              close();
                          });

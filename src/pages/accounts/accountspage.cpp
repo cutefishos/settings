@@ -8,14 +8,13 @@
 #include "cutefish/accounts/accounts_manager.h"
 #include "base/event_loop.h"
 #include "base/i18n.h"
-#include "base/paths.h"
 #include "pages/accounts/password.h"
 #include "pages/accounts/passwordchanger.h"
+#include "pages/accounts/picturedialog.h"
 #include "pages/accounts/userdetailsdialog.h"
 #include "pages/accounts/userrow.h"
 #include "pages/accounts/userdialogs.h"
 #include "ui/dialog_window.h"
-#include "ui/file_chooser.h"
 #include "ui/cell_layout.h"
 #include "widgets/card.h"
 #include "widgets/metrics.h"
@@ -90,28 +89,17 @@ private:
     {
         auto row = std::make_unique<UserRow>(account, int64_t(getuid()));
         row->onPictureClicked = [this, account] {
-            m_chooser = std::make_unique<FileChooser>(&settingsWindow().window());
-            m_chooser->setMode(FileChooser::Mode::OpenFile);
-            // As QML's FileDialog, window-modal.
-            m_chooser->setModal(true);
-            m_chooser->setFilters(
-                    {FileChooser::Filter::fromNameFilter(
-                             format(tr("Image files ({patterns})"),
-                                    {{"patterns", "*.jpg *.jpeg *.png *.webp *.bmp *.tif *.tiff *.avif"}})),
-                     FileChooser::Filter::fromNameFilter(tr("All files (*)"))});
-            m_chooser->setCurrentFolder(base::paths::userDirectory(base::paths::UserDirectory::Pictures));
-            m_chooser->onAccepted = [this, account](const std::vector<std::string>& paths, const std::string&) {
-                if (paths.empty())
-                    return;
-                account->setIconFileName(paths.front());
+            m_picture = std::make_unique<PictureDialog>(settingsWindow(), account);
+            m_picture->onPicked = [this, account](const std::string& path) {
                 // Shown from the file picked while the service copies it.
                 for (const auto& child : m_users->children()) {
                     auto* row = static_cast<UserRow*>(child.get());
                     if (row->account() == account)
-                        row->showPicture(paths.front());
+                        row->showPicture(path);
                 }
             };
-            m_chooser->open();
+            m_picture->onClosed = [this] { dispose(m_picture); };
+            m_picture->show();
         };
         row->onInfo = [this, account] {
             m_details = std::make_unique<UserDetailsDialog>(settingsWindow(), account, int64_t(getuid()));
@@ -160,8 +148,8 @@ private:
     std::unique_ptr<UserDetailsDialog> m_details;
     std::unique_ptr<AddUserDialog> m_addUser;
     std::unique_ptr<ChangePasswordDialog> m_changePassword;
+    std::unique_ptr<PictureDialog> m_picture;
     std::unique_ptr<ConfirmDialog> m_confirm;
-    std::unique_ptr<FileChooser> m_chooser;
 };
 
 } // namespace

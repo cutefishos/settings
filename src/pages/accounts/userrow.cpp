@@ -7,11 +7,9 @@
 #include <chrono>
 #include <cmath>
 
-#include <unicode/unistr.h>
-#include <unicode/utf16.h>
-
 #include "base/i18n.h"
 #include "base/transform.h"
+#include "cutefish/accounts/account_picture.h"
 #include "ui/animation.h"
 #include "ui/cell_layout.h"
 #include "ui/image_view.h"
@@ -29,9 +27,8 @@ using cutefish::i18n::tr;
 
 namespace settings {
 
-// The account's picture in a circle, or its initial, as on the lock screen,
-// for an account with no picture: the icon theme has no avatar that size.
-// Hovering dims it under a pencil, as the lock screen's avatar shows its
+// The account's picture in a circle, or the account's colour where there is
+// none. Hovering dims it under a pencil, as the lock screen's avatar shows its
 // swap arrows, since a click changes the picture.
 class UserAvatar : public View
 {
@@ -40,9 +37,7 @@ public:
 
     UserAvatar()
     {
-        m_initial = addChild<Label>();
-        m_initial->setFontSize(22);
-        // Drawn once decoded; the initial shows until then.
+        // Drawn once decoded; the colour shows until then.
         m_picture = addChild<ImageView>();
         m_picture->setCornerRadius(kSize / 2);
         m_picture->onStatusChanged = [this](ImageView::Status) {
@@ -54,17 +49,11 @@ public:
 
     void setUserName(const std::string& name)
     {
-        // The first character, upper case, as QString::charAt(0).toUpper() gives it.
-        icu::UnicodeString text = icu::UnicodeString::fromUTF8(name);
-        std::string initial = "?";
-        if (!text.isEmpty()) {
-            icu::UnicodeString first = text.tempSubString(0, text.length() > 0 && U16_IS_LEAD(text[0]) ? 2 : 1);
-            first.toUpper();
-            initial.clear();
-            first.toUTF8String(initial);
-        }
-        m_initial->setText(initial);
-        requestLayout();
+        const Color color = Color::rgb(accounts::pictureColor(name));
+        if (color == m_color)
+            return;
+        m_color = color;
+        requestPaint();
     }
 
     void setPicture(const std::string& path)
@@ -85,20 +74,14 @@ public:
 protected:
     void layout() override
     {
-        m_initial->setColor(Theme::current().disabledText);
-        const SizeF size = m_initial->sizeHint();
-        m_initial->setGeometry({rounding::centeredStart(kSize, size.width), rounding::centeredStart(kSize, size.height), size.width, size.height});
-        m_initial->setVisible(!hasPicture());
         m_picture->setGeometry(localRect());
         m_overlay->setGeometry(localRect());
     }
 
     void paint(Painter& painter) override
     {
-        // The account's initial, as on the lock screen, for an account with
-        // no picture: the icon theme has no avatar the size of a picture.
         if (!hasPicture())
-            painter.fillEllipse(localRect(), Theme::current().text.withAlpha(0.12));
+            painter.fillEllipse(localRect(), m_color);
     }
 
     void pointerRelease(const PointerEvent& event) override
@@ -182,12 +165,10 @@ private:
     void setHover(double value)
     {
         m_hover = value;
-        // A picture shows through the dim; an initial would cross the pencil.
-        m_initial->setOpacity(1 - value);
         m_overlay->requestPaint();
     }
 
-    Label* m_initial;
+    Color m_color;
     ImageView* m_picture;
     EditOverlay* m_overlay;
     std::unique_ptr<Animation> m_hoverAnimation;
