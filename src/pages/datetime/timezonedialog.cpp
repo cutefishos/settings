@@ -264,7 +264,9 @@ public:
     {
         m_scroll = addChild<ScrollView>();
         m_scroll->setElastic(false);
+        m_scroll->setCornerRadius(Theme::current().windowRadius);
         m_rows = m_scroll->setContent<Column>();
+        m_rows->setMargins(Margins::all(kResultsPadding));
         m_empty = addChild<StyledLabel>(tr("No matching time zones"));
         m_empty->style = [](StyledLabel& label) { label.setColor(Theme::current().disabledText); };
     }
@@ -301,7 +303,7 @@ public:
             row->setCurrent(row->index == index);
         }
         if (index >= 0)
-            m_scroll->ensureVisible({0, index * kResultHeight, 1, kResultHeight});
+            m_scroll->ensureVisible({0, index * kResultHeight, 1, kResultHeight + 2 * kResultsPadding});
     }
 
     double popupHeight() const
@@ -316,8 +318,7 @@ public:
 protected:
     void layout() override
     {
-        const RectF inner = localRect().adjusted(kResultsPadding, kResultsPadding, -kResultsPadding, -kResultsPadding);
-        m_scroll->setGeometry(inner);
+        m_scroll->setGeometry(localRect());
         m_scroll->setVisible(!m_results.empty());
         const SizeF empty = m_empty->sizeHint();
         m_empty->setGeometry({rounding::centeredStart(geometry().width, empty.width), rounding::centeredStart(geometry().height, empty.height),
