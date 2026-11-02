@@ -75,6 +75,9 @@ public:
     // Off for a row whose actions are buttons inside it.
     void setHighlightOnPress(bool highlight) { m_highlightOnPress = highlight; }
     void setSeparatorVisible(bool visible);
+    // Something other than list rows sits above this row in the card, so the
+    // row does not share the card's top corners.
+    void setContentAbove(bool contentAbove);
     void setMinimumRowHeight(double height);
     // Lifts the label by half this, onto a control with captions hanging below it.
     void setLabelBottomMargin(double margin);
@@ -141,6 +144,7 @@ private:
     bool m_interactive = true;
     bool m_highlightOnPress = true;
     bool m_separatorVisible = true;
+    bool m_contentAbove = false;
     bool m_pressed = false;
     double m_minimumRowHeight;
     double m_labelBottomMargin = 0;

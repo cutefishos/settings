@@ -16,6 +16,7 @@
 #include "ui/scroll_view.h"
 #include "ui/theme.h"
 #include "widgets/card.h"
+#include "widgets/emptylistoverlay.h"
 #include "widgets/listrow.h"
 #include "widgets/metrics.h"
 #include "widgets/searchfield.h"
@@ -73,51 +74,6 @@ private:
     TrailingIcon* m_check;
 };
 
-// Recoloured with the theme.
-class DisabledLabel : public Label
-{
-public:
-    using Label::Label;
-
-protected:
-    void layout() override
-    {
-        setColor(Theme::current().disabledText);
-        Label::layout();
-    }
-};
-
-// Gives every child its whole rect: the list, and the label over it.
-class Stack : public View
-{
-protected:
-    void layout() override
-    {
-        for (const auto& child : children())
-            child->setGeometry(localRect());
-    }
-};
-
-// Centres a label over the list without scrolling with it.
-class EmptyOverlay : public View
-{
-public:
-    EmptyOverlay()
-    {
-        label = addChild<DisabledLabel>();
-    }
-
-    DisabledLabel* label;
-
-protected:
-    void layout() override
-    {
-        const SizeF size = label->sizeHint();
-        label->setGeometry({rounding::centeredStart(geometry().width, size.width),
-                            rounding::centeredStart(geometry().height, size.height), size.width, size.height});
-    }
-};
-
 } // namespace
 
 AddLanguageDialog::AddLanguageDialog(SettingsWindow& parent, Language& language)
@@ -145,14 +101,14 @@ AddLanguageDialog::AddLanguageDialog(SettingsWindow& parent, Language& language)
 
     Card* card = content()->addChild<Card>(Card::Style::List);
     card->setLayoutHints({.fillWidth = true, .fillHeight = true});
-    Stack* stack = card->addChild<Stack>();
+    StackView* stack = card->addChild<StackView>();
     stack->setLayoutHints({.fillWidth = true, .fillHeight = true});
     stack->setClipsChildren(true);
     m_scroll = stack->addChild<ScrollView>();
     m_scroll->setElastic(false);
     m_rows = m_scroll->setContent<ColumnLayout>();
     m_rows->setSpacing(0);
-    m_empty = stack->addChild<EmptyOverlay>()->label;
+    m_empty = stack->addChild<EmptyListOverlay>()->label();
 
     m_error = content()->addChild<Label>();
     m_error->setWrap(true);

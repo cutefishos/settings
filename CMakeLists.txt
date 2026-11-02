@@ -37,6 +37,7 @@ endforeach()
 add_library(settings-ui OBJECT
     src/widgets/card.cpp
     src/widgets/colors.cpp
+    src/widgets/emptylistoverlay.cpp
     src/widgets/formdialog.cpp
     src/widgets/iconbutton.cpp
     src/widgets/imageselectionitem.cpp

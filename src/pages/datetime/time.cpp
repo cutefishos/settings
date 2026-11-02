@@ -4,21 +4,36 @@
 #include "pages/datetime/time.h"
 
 #include "base/paths.h"
-#include "base/settings.h"
 #include "cutefish/timedate/time_date.h"
+#include "pages/language/region.h"
 
 using namespace cutefish;
 using namespace cutefish::base;
 
 namespace settings {
 
-TimeSettings::TimeSettings(timedate::TimeDate& timeDate)
+std::string TimeSettings::defaultConfigPath()
+{
+    return paths::cutefishConfig("services");
+}
+
+TimeSettings::TimeSettings(timedate::TimeDate& timeDate, std::string configPath)
     : m_timeDate(timeDate)
-    , m_statusBar(dbus::Connection::session(), "org.cutefish.Statusbar", "/Statusbar", "org.cutefish.Statusbar")
+    , m_configPath(std::move(configPath))
+    , m_service(dbus::Connection::session(), "org.cutefish.Services", "/org/cutefish/Services/Language",
+                "org.cutefish.Services.Language")
     , m_canNtp(timeDate.canNtp())
     , m_useNtp(timeDate.ntp())
 {
-    m_twentyFour = Settings(paths::cutefishConfig("shell")).boolValue("Statusbar/TwentyFourTime", false);
+    m_twentyFour = Region::sessionLocale(m_configPath).usesTwentyFourHourTime();
+    // A change made elsewhere, or the region's clock after a new region.
+    m_changedMatch = m_service.onSignal("languageChanged", [this](const dbus::Message&) {
+        const bool twentyFour = Region::sessionLocale(m_configPath).usesTwentyFourHourTime();
+        if (twentyFour != m_twentyFour) {
+            m_twentyFour = twentyFour;
+            twentyFourChanged.emit();
+        }
+    });
     m_timeDateChanged = m_timeDate.changed.connect([this] {
         if (m_timeDate.ntp() != m_useNtp) {
             m_useNtp = m_timeDate.ntp();
@@ -47,8 +62,7 @@ void TimeSettings::setTwentyFour(bool enabled)
     if (m_twentyFour == enabled)
         return;
     m_twentyFour = enabled;
-    // The status bar keeps the setting; it writes shell.conf itself.
-    m_statusBar.send("setTwentyFourTime", enabled);
+    m_service.send("setTwentyFourHour", int32_t(enabled ? 2 : 1));
     twentyFourChanged.emit();
 }
 

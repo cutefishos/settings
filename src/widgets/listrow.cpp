@@ -143,6 +143,12 @@ void ListRow::setSeparatorVisible(bool visible)
     requestPaint();
 }
 
+void ListRow::setContentAbove(bool contentAbove)
+{
+    m_contentAbove = contentAbove;
+    requestPaint();
+}
+
 void ListRow::setMinimumRowHeight(double height)
 {
     m_minimumRowHeight = height;
@@ -241,6 +247,7 @@ ListRow::Neighbours ListRow::neighbours() const
             result.next = dynamic_cast<ListRow*>(m_view->itemForRow(size_t(m_viewIndex + 1)));
         return result;
     }
+    result.first = !m_contentAbove;
     if (!parent())
         return result;
     bool seen = false;

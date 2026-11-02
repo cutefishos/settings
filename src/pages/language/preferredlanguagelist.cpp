@@ -160,14 +160,13 @@ private:
 
 // One preferred language: its own name, the badge on the first, its name in
 // the interface's language below, the drag handle at the end, and a
-// separator under every row but the last.
+// separator under it, the last row's above the card's Add row.
 class PreferredLanguageRow : public View
 {
 public:
-    PreferredLanguageRow(PreferredLanguageList& list, const LanguageEntry& entry, int index, bool last)
+    PreferredLanguageRow(PreferredLanguageList& list, const LanguageEntry& entry, int index)
         : m_list(list)
         , m_index(index)
-        , m_last(last)
     {
         m_row = addChild<RowLayout>();
         m_row->setSpacing(metrics::rowSpacing);
@@ -214,8 +213,6 @@ protected:
 
     void paint(Painter& painter) override
     {
-        if (m_last)
-            return;
         // One device pixel at any scale.
         const Color line = color(ColorId::Separator);
         painter.drawHorizontalLine(0, geometry().height - 1 / painter.scale(), geometry().width, line);
@@ -230,7 +227,6 @@ protected:
 private:
     PreferredLanguageList& m_list;
     int m_index;
-    bool m_last;
     RowLayout* m_row;
     Label* m_name;
     SystemLanguageBadge* m_badge = nullptr;
@@ -320,8 +316,7 @@ void PreferredLanguageList::rebuild()
         m_rows->takeChild(m_rows->children().front().get());
     const auto& languages = m_language.preferredLanguages();
     for (size_t i = 0; i < languages.size(); ++i) {
-        PreferredLanguageRow* row = m_rows->addChild<PreferredLanguageRow>(*this, languages[i], int(i),
-                                                                           i + 1 == languages.size());
+        PreferredLanguageRow* row = m_rows->addChild<PreferredLanguageRow>(*this, languages[i], int(i));
         row->setLayoutHints({.fillWidth = true});
     }
     updateStates();

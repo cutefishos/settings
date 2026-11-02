@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-10-30 16:02+0800\n"
+"POT-Creation-Date: 2026-11-02 23:05+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -128,6 +128,7 @@ msgstr ""
 #: src/pages/accounts/accountspage.cpp src/pages/accounts/picturedialog.cpp
 #: src/pages/accounts/userdialogs.cpp src/pages/datetime/timezonedialog.cpp
 #: src/pages/language/addlanguagedialog.cpp
+#: src/pages/language/chooseregiondialog.cpp
 #: src/pages/network/common/ipsettingsview.cpp
 #: src/pages/network/hotspot/hotspotpage.cpp
 #: src/pages/network/vpn/vpndialogs.cpp
@@ -325,6 +326,7 @@ msgstr ""
 msgid "Extra"
 msgstr ""
 
+#. TRANSLATORS: the name of one of a computer's batteries, such as "Battery 3".
 #: src/pages/battery/batterypage.cpp
 #, python-brace-format
 msgid "Battery {n}"
@@ -1110,12 +1112,60 @@ msgstr ""
 msgid "No languages found"
 msgstr ""
 
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Choose Region"
+msgstr ""
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Search regions"
+msgstr ""
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Choose"
+msgstr ""
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Loading regions…"
+msgstr ""
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "No regions found"
+msgstr ""
+
 #: src/pages/language/language.cpp
 msgid "Could not save preferred languages. Please try again."
 msgstr ""
 
+#: src/pages/language/languagepage.cpp
+#, python-brace-format
+msgid "Automatic ({value})"
+msgstr ""
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "US"
+msgstr ""
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "UK"
+msgstr ""
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "Metric"
+msgstr ""
+
+#: src/pages/language/languagepage.cpp
+msgid "Fahrenheit (°F)"
+msgstr ""
+
+#: src/pages/language/languagepage.cpp
+msgid "Celsius (°C)"
+msgstr ""
+
 #: src/pages/language/languagepage.cpp src/window/pagelist.cpp
-msgid "Language"
+msgid "Language & Region"
 msgstr ""
 
 #: src/pages/language/languagepage.cpp
@@ -1128,6 +1178,46 @@ msgstr ""
 
 #: src/pages/language/languagepage.cpp
 msgid "Add language…"
+msgstr ""
+
+#: src/pages/language/languagepage.cpp
+msgid "Region"
+msgstr ""
+
+#: src/pages/language/languagepage.cpp
+msgid "First day of week"
+msgstr ""
+
+#: src/pages/language/languagepage.cpp
+msgid "Measurement system"
+msgstr ""
+
+#: src/pages/language/languagepage.cpp
+msgid "Temperature"
+msgstr ""
+
+#: src/pages/language/languagepage.cpp
+msgid "Applications that are already open may use the new region after they restart."
+msgstr ""
+
+#: src/pages/language/languagepage.cpp
+msgid "Format preview"
+msgstr ""
+
+#: src/pages/language/languagepage.cpp
+msgid "Date"
+msgstr ""
+
+#: src/pages/language/languagepage.cpp
+msgid "Date and time"
+msgstr ""
+
+#: src/pages/language/languagepage.cpp
+msgid "Number"
+msgstr ""
+
+#: src/pages/language/languagepage.cpp
+msgid "Currency"
 msgstr ""
 
 #: src/pages/language/preferredlanguagelist.cpp
@@ -2379,7 +2469,7 @@ msgid "accounts, password, login, administrator, avatar"
 msgstr ""
 
 #: src/window/pagelist.cpp
-msgid "region, locale, system language"
+msgid "region, locale, system language, country, formats, first day of week, measurement system, temperature"
 msgstr ""
 
 #: src/window/pagelist.cpp

@@ -29,7 +29,7 @@ static std::vector<PageInfo> makePages()
     add({.id = "bluetooth", .name = "bluetooth", .title = trNoop("Bluetooth"), .icon = "bluetooth.svg",
          .iconColor = Color::rgb(0x0067FF), .category = trNoop("Network"),
          .keywords = trNoop("wireless, devices, pairing, headphones"), .initiallyAvailable = false});
-    add({.id = "network", .name = "network", .title = trNoop("Network"), .icon = "globe.svg",
+    add({.id = "network", .name = "network", .title = trNoop("Network"), .icon = "globe-grid.svg",
          .iconColor = Color::rgb(0x0067FF), .category = trNoop("Network"),
          .keywords = trNoop("VPN, proxy, hotspot, tethering, internet")});
     add({.id = "appearance", .name = "appearance", .title = trNoop("Appearance"), .icon = "appearance.svg",
@@ -65,9 +65,10 @@ static std::vector<PageInfo> makePages()
     add({.id = "accounts", .name = "accounts", .title = trNoop("Users"), .icon = "accounts.svg",
          .iconColor = Color::rgb(0xDA7C43), .category = trNoop("System"),
          .keywords = trNoop("accounts, password, login, administrator, avatar")});
-    add({.id = "language", .name = "language", .title = trNoop("Language"), .icon = "language.svg",
+    add({.id = "language", .name = "language", .title = trNoop("Language & Region"), .icon = "globe.svg",
          .iconColor = Color::rgb(0x20A7FF), .category = trNoop("System"),
-         .keywords = trNoop("region, locale, system language")});
+         .keywords = trNoop("region, locale, system language, country, formats, first day of week, measurement "
+                            "system, temperature")});
     add({.id = "datetime", .name = "datetime", .title = trNoop("Date & Time"), .icon = "datetime.svg",
          .iconColor = Color::rgb(0x418CFF), .category = trNoop("System"),
          .keywords = trNoop("clock, time zone, 24-hour time, NTP, sync")});

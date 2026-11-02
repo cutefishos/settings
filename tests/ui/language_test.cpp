@@ -3,6 +3,7 @@
 
 #include <gtest/gtest.h>
 
+#include <algorithm>
 #include <chrono>
 #include <cstdlib>
 #include <filesystem>
@@ -16,6 +17,7 @@
 #include "base/settings.h"
 #include "pages/language/language.h"
 #include "pages/language/preferredlanguagelist.h"
+#include "pages/language/region.h"
 #include "ui/application.h"
 #include "ui/keys.h"
 #include "ui/layout.h"
@@ -121,6 +123,61 @@ TEST(Language, ClosingWhileLoadingLeavesTheCatalogForTheNextPage)
     Language reopened(config.path);
     reopened.loadLanguages();
     ASSERT_TRUE(waitFor([&] { return !reopened.isLoading() && reopened.availableLanguages().size() == 40; }));
+}
+
+TEST(Region, CatalogNamesEveryRegionInOrder)
+{
+    const std::vector<RegionEntry> regions = Region::catalog("en_US");
+    ASSERT_GT(regions.size(), 240u);
+    const auto find = [&regions](const std::string& code) {
+        return std::find_if(regions.begin(), regions.end(), [&code](const RegionEntry& entry) { return entry.code == code; });
+    };
+    ASSERT_NE(find("SG"), regions.end());
+    EXPECT_EQ(find("SG")->name, "Singapore");
+    EXPECT_EQ(find("US")->name, "United States");
+    EXPECT_LT(find("AT"), find("DE"));
+    EXPECT_EQ(Region::catalog("de_DE").front().code, "AF");
+}
+
+TEST(Region, SearchKeepsTheCurrentRegion)
+{
+    LanguageConfig config({"en_US"});
+    base::Settings(config.path).setValue("Region/region", "SG");
+    Region region(config.path);
+    EXPECT_EQ(region.region(), "SG");
+    region.loadRegions();
+    ASSERT_TRUE(waitFor([&] { return !region.isLoading() && !region.availableRegions().empty(); }));
+    region.search("  singa ");
+    ASSERT_EQ(region.availableRegions().size(), 1u);
+    EXPECT_EQ(region.availableRegions().front().code, "SG");
+    // English names and codes match in another display language too.
+    region.search("de");
+    EXPECT_FALSE(region.availableRegions().empty());
+    region.search("no-such-region");
+    EXPECT_TRUE(region.availableRegions().empty());
+}
+
+TEST(Region, SessionLocaleHasTheChoices)
+{
+    LanguageConfig config({"ja_JP", "en_US"});
+    {
+        base::Settings settings(config.path);
+        settings.setValue("Region/region", "DE");
+        settings.setValue("Region/firstWeekday", 7);
+        settings.setValue("Region/twentyFourHour", false);
+        settings.setValue("Region/temperature", "fahrenheit");
+    }
+    const base::Locale locale = Region::sessionLocale(config.path);
+    EXPECT_EQ(locale.territory(), "DE");
+    EXPECT_EQ(locale.language(), "ja");
+    EXPECT_EQ(locale.firstDayOfWeek(), 7);
+    EXPECT_FALSE(locale.usesTwentyFourHourTime());
+    EXPECT_EQ(locale.temperatureUnit(), base::TemperatureUnit::Fahrenheit);
+    EXPECT_EQ(locale.measurementSystem(), base::MeasurementSystem::Metric);
+
+    Region region(config.path);
+    EXPECT_EQ(region.preferences().firstDayOfWeek, 7);
+    EXPECT_EQ(region.locale().formatsId(), locale.formatsId());
 }
 
 TEST(Language, SavingWithoutTheServiceReportsAnError)
