@@ -28,7 +28,6 @@ UserDetailsDialog::UserDetailsDialog(SettingsWindow& window, std::shared_ptr<acc
     , m_dialog(std::make_unique<DialogWindow>(&window.window(), m_account->userName(), kWidth))
 {
     auto content = std::make_unique<ColumnLayout>();
-    content->setPadding({0, metrics::dialogPadding, 0, 0});
     content->setSpacing(metrics::dialogSpacing);
 
     Card* card = content->addChild<Card>(Card::Style::List);

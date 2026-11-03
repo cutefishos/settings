@@ -74,7 +74,6 @@ DetailsDialog::DetailsDialog(SettingsWindow& window, NetworkList& list, Kind kin
     m_dialog->setCloseVisible(false);
     auto content = std::make_unique<Content>();
     m_content = content.get();
-    m_content->setPadding({0, metrics::dialogPadding, 0, 0});
     m_content->onEscape = [this] {
         if (m_ipSettingsShown)
             showIpSettings(false);

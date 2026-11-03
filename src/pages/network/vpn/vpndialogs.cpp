@@ -189,7 +189,6 @@ VpnDetailsDialog::VpnDetailsDialog(SettingsWindow& window, NetworkList& list, nm
     m_dialog->setCloseVisible(false);
     auto content = std::make_unique<ColumnLayout>();
     m_content = content.get();
-    m_content->setPadding({0, metrics::dialogPadding, 0, 0});
     m_content->setSpacing(metrics::dialogSpacing);
 
     Card* formCard = m_content->addChild<Card>();
