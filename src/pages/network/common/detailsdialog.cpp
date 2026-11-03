@@ -12,6 +12,7 @@
 #include "ui/dialog_window.h"
 #include "ui/keys.h"
 #include "ui/cell_layout.h"
+#include "ui/label.h"
 #include "ui/window.h"
 #include "widgets/card.h"
 #include "widgets/listrow.h"
@@ -40,6 +41,24 @@ protected:
         if (event.key == key::Escape && event.modifiers == NoModifier && onEscape)
             return onEscape();
         return false;
+    }
+};
+
+// A list row that acts on the network and says so in the destructive colour.
+class DestructiveRow : public ListRow
+{
+public:
+    explicit DestructiveRow(std::string text)
+        : ListRow(std::move(text))
+    {
+    }
+
+protected:
+    // After the row's own layout, which gives the label the text colour.
+    void layout() override
+    {
+        ListRow::layout();
+        label()->setColor(ColorId::DestructiveAction);
     }
 };
 
@@ -89,21 +108,26 @@ DetailsDialog::DetailsDialog(SettingsWindow& window, NetworkList& list, Kind kin
     m_mac = m_addressCard->addChild<InfoRow>(tr("MAC address"));
     m_gateway = m_addressCard->addChild<InfoRow>(tr("Gateway"));
     m_dns = m_addressCard->addChild<InfoRow>(tr("DNS"));
-
-    RowLayout* buttons = m_details->addChild<RowLayout>();
-    buttons->setSpacing(metrics::dialogButtonSpacing);
-    buttons->setLayoutHints({.horizontalAlignment = Alignment::End});
-    DialogButton* closeButton = buttons->addChild<DialogButton>(tr("Close"));
-    closeButton->onClicked = [this] { close(); };
     if (kind == Kind::Wireless) {
-        m_forget = buttons->addChild<DialogButton>(tr("Forget this network"), true);
-        m_forget->setDestructive(true);
+        m_forget = m_addressCard->addChild<DestructiveRow>(tr("Forget this network"));
         m_forget->onClicked = [this] {
             if (!m_list.isMock())
                 m_handler->removeConnection(m_row.connectionPath);
             close();
         };
     }
+
+    RowLayout* buttons = m_details->addChild<RowLayout>();
+    buttons->setSpacing(metrics::dialogButtonSpacing);
+    buttons->setLayoutHints({.horizontalAlignment = Alignment::End});
+    m_disconnect = buttons->addChild<DialogButton>(tr("Disconnect"));
+    m_disconnect->onClicked = [this] {
+        if (!m_list.isMock())
+            m_handler->deactivateConnection(m_row.connectionPath, m_row.devicePath);
+        close();
+    };
+    DialogButton* closeButton = buttons->addChild<DialogButton>(tr("Close"));
+    closeButton->onClicked = [this] { close(); };
 
     m_dialog->setContentView(std::move(content));
     m_dialog->onBack = [this] { showIpSettings(false); };
@@ -168,6 +192,8 @@ void DetailsDialog::update()
     m_mac->setValue(m_row.macAddress);
     m_gateway->setValue(m_row.gateway);
     m_dns->setValue(m_row.nameServer);
+    m_disconnect->setVisible(!m_row.connectionPath.empty()
+                             && m_row.connectionState != nm::ConnectionStatus::Deactivated);
     if (!m_ipSettingsShown)
         m_dialog->setTitle(m_row.uniqueName);
 }

@@ -145,6 +145,8 @@ private:
         row->onClicked = [this, row] {
             if (row->displayedState() == nm::ConnectionStatus::Deactivated)
                 connectNetwork(row->item());
+            else
+                showDetails(row->item());
         };
         row->onInfo = [this](WifiRow* row) { showDetails(row->item()); };
         return row;

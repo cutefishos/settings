@@ -28,8 +28,8 @@ namespace settings::network {
 
 namespace {
 
-// One wired connection: a click activates or deactivates it; the info button
-// opens its details.
+// One wired connection: a click connects it, or opens its details once it is
+// connected; the info button always opens them.
 class WiredRow : public ListRow
 {
 public:
@@ -90,11 +90,13 @@ public:
         };
         m_rows = std::make_unique<KeyedRows<WiredRow>>([this](View* parent) {
             WiredRow* row = parent->addChild<WiredRow>();
-            row->onClicked = [this, row] { toggle(row->item()); };
-            row->onInfo = [this](const nm::NetworkItem& item) {
-                m_details = std::make_unique<DetailsDialog>(settingsWindow(), m_list, DetailsDialog::Kind::Wired, item);
-                m_details->show();
+            row->onClicked = [this, row] {
+                if (row->item().connectionState == nm::ConnectionStatus::Deactivated)
+                    connect(row->item());
+                else
+                    showDetails(row->item());
             };
+            row->onInfo = [this](const nm::NetworkItem& item) { showDetails(item); };
             return row;
         });
 
@@ -104,14 +106,16 @@ public:
     }
 
 private:
-    void toggle(const nm::NetworkItem& item)
+    void connect(const nm::NetworkItem& item)
     {
-        if (m_list.isMock())
-            return;
-        if (item.connectionState == nm::ConnectionStatus::Deactivated)
+        if (!m_list.isMock())
             m_handler.activateConnection(item.connectionPath, item.devicePath, item.specificPath);
-        else
-            m_handler.deactivateConnection(item.connectionPath, item.devicePath);
+    }
+
+    void showDetails(const nm::NetworkItem& item)
+    {
+        m_details = std::make_unique<DetailsDialog>(settingsWindow(), m_list, DetailsDialog::Kind::Wired, item);
+        m_details->show();
     }
 
     void update()

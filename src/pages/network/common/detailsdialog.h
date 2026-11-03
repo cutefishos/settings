@@ -25,6 +25,7 @@ class DialogWindow;
 
 namespace settings {
 class InfoRow;
+class ListRow;
 class SettingsWindow;
 class SwitchRow;
 }
@@ -94,7 +95,8 @@ private:
     InfoRow* m_mac = nullptr;
     InfoRow* m_gateway = nullptr;
     InfoRow* m_dns = nullptr;
-    cutefish::ui::DialogButton* m_forget = nullptr;
+    cutefish::ui::DialogButton* m_disconnect = nullptr;
+    ListRow* m_forget = nullptr;
     IpSettingsView* m_ipSettings = nullptr;
 };
 
