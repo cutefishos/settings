@@ -71,7 +71,7 @@ TEST_F(Fixture, SidebarLinesUpWithTheMetrics)
 {
     const RectF search = windowRect(window(), "search");
     EXPECT_EQ(search.x, 12);
-    EXPECT_EQ(search.y, 56);
+    EXPECT_EQ(search.y, 48);
     EXPECT_EQ(search.width, 206);
     EXPECT_EQ(search.height, 28);
     // Wi-Fi opens first; its entry is 36 high and inset by the sidebar margin.

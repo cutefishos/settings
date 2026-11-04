@@ -20,6 +20,7 @@
 #include "widgets/rowicon.h"
 #include "widgets/searchfield.h"
 #include "window/pagelist.h"
+#include "window/settingswindow.h"
 
 using namespace cutefish::ui;
 using cutefish::i18n::tr;
@@ -561,7 +562,7 @@ void Sidebar::layout()
     m_title->setColor(active ? theme.text : theme.disabledText);
     m_title->setGeometry({titleLeft, theme.smallSpacing, std::max(0.0, width - 2 * titleLeft),
                           titleHeight - theme.smallSpacing - metrics::m});
-    const double searchTop = titleHeight + metrics::xs;
+    const double searchTop = SettingsWindow::headerHeight + metrics::pageTopMargin;
     m_search->setGeometry({metrics::sidebarMargin, searchTop, width - 2 * metrics::sidebarMargin, kSearchHeight});
     const double listTop = searchTop + kSearchHeight;
     m_listScroll->setGeometry({0, listTop, width, height - listTop});

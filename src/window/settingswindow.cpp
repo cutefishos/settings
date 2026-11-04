@@ -34,6 +34,9 @@ namespace settings {
 
 static constexpr double kButtonSize = 32;
 static constexpr double kButtonsSpacing = 1;
+static constexpr double kGlyphSize = 16;
+// chevron-left.svg's stroke starts 3.25 of its 12 units in.
+static constexpr double kBackInkInset = 3.25 * kGlyphSize / 12;
 static constexpr size_t kMaxHistoryLength = 50;
 static constexpr uint32_t kBackKey = 0x1008ff26;
 static constexpr uint32_t kForwardKey = 0x1008ff27;
@@ -58,10 +61,10 @@ public:
         m_row = addChild<RowLayout>();
         m_row->setSpacing(kButtonsSpacing);
         back = m_row->addChild<HeaderButton>(std::string(), kButtonSize);
-        back->setGlyph("chevron-left", 16);
+        back->setGlyph("chevron-left", kGlyphSize);
         back->setName("back");
         forward = m_row->addChild<HeaderButton>(std::string(), kButtonSize);
-        forward->setGlyph("chevron-right", 16);
+        forward->setGlyph("chevron-right", kGlyphSize);
         forward->setName("forward");
         // Settings' NavigationButton plates.
         for (HeaderButton* button : {back, forward})
@@ -104,7 +107,9 @@ protected:
 
         const bool active = !window || window->isActive();
         title->setColor(active ? theme.text : theme.disabledText);
-        const double left = sidebarWidth(scale) + theme.smallSpacing * 1.5;
+        // The back chevron's tip lines up with the cards' left edge.
+        const double left = snap(sidebarWidth(scale) + metrics::pageMargin - (kButtonSize - kGlyphSize) / 2
+                                 - kBackInkInset);
         m_row->setGeometry({left, 0, std::max(0.0, geometry().width - left - theme.smallSpacing),
                             geometry().height});
     }

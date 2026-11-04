@@ -88,7 +88,7 @@ TEST(KeyboardLayoutPage, FiltersByNameOrIdAndSaysWhenNothingMatches)
     const RectF search = settings::testing::windowRect(window, "keyboardlayout:search");
     const RectF list = settings::testing::windowRect(window, "keyboardlayout:list");
     EXPECT_EQ(search.x, 254);
-    EXPECT_EQ(search.y, 56);
+    EXPECT_EQ(search.y, 48);
     EXPECT_EQ(list.y, search.y + search.height + 16);
     EXPECT_EQ(list.y + list.height, 610 - 24);
     EXPECT_TRUE(settings::testing::isHidden(window, "keyboardlayout:empty"));

@@ -23,7 +23,7 @@ inline constexpr double headerTitlePointSize = 11;
 // Page: the scroll area's margins and the rhythm between its sections.
 inline constexpr double pageMargin = xl;
 // Below the floating window header, which already has its own air.
-inline constexpr double pageTopMargin = l;
+inline constexpr double pageTopMargin = s;
 inline constexpr double sectionSpacing = xl;
 // Between a section's card and its label or footnote: tight, so the text
 // reads as belonging to that card and not to the neighbouring section.

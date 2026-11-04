@@ -117,7 +117,7 @@ TEST_F(TouchpadTest, PageFollowsWhatThePadCanDo)
     // Both cards, the second without the secondary click row.
     EXPECT_EQ(settings::testing::windowRect(window, "touchpad:device").height, 3 * 44);
     const RectF gestures = settings::testing::windowRect(window, "touchpad:gestures");
-    EXPECT_EQ(gestures.y, 56 + 3 * 44 + 24);
+    EXPECT_EQ(gestures.y, 48 + 3 * 44 + 24);
     EXPECT_EQ(gestures.height, 3 * 44 + 2 * 52);
     EXPECT_TRUE(settings::testing::isHidden(window, "touchpad:secondaryClick"));
     // Tap and drag needs tapping on.
