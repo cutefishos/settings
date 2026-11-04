@@ -37,6 +37,9 @@ static constexpr const char* kGeneral = trNoop("General");
 static constexpr const char* kWindows = trNoop("Windows");
 static constexpr const char* kDesks = trNoop("Desks");
 static constexpr const char* kScreenshots = trNoop("Screenshots and Recording");
+static constexpr const char* kMedia = trNoop("Media Playback");
+static constexpr const char* kSound = trNoop("Sound");
+static constexpr const char* kDisplay = trNoop("Brightness");
 static const Layout kLayouts[] = {
         {"toggle-app-list", kGeneral, trNoop("Open the launcher")},
         {"lock-screen", kGeneral, trNoop("Lock the screen")},
@@ -79,6 +82,19 @@ static const Layout kLayouts[] = {
         {"take-partial-screenshot-to-clipboard", kScreenshots, trNoop("Copy a picture of the selected area")},
         {"start-capture-mode", kScreenshots, trNoop("Screenshot and recording options")},
         {"stop-screen-recording", kScreenshots, trNoop("Stop screen recording")},
+        {"media-play-pause", kMedia, trNoop("Play or pause media")},
+        {"media-pause", kMedia, trNoop("Pause media")},
+        {"media-previous", kMedia, trNoop("Previous track")},
+        {"media-next", kMedia, trNoop("Next track")},
+        {"media-stop", kMedia, trNoop("Stop playback")},
+        {"volume-mute-toggle", kSound, trNoop("Mute or unmute audio")},
+        {"volume-down", kSound, trNoop("Decrease volume")},
+        {"volume-up", kSound, trNoop("Increase volume")},
+        {"microphone-mute-toggle", kSound, trNoop("Mute or unmute microphone")},
+        {"brightness-down", kDisplay, trNoop("Decrease screen brightness")},
+        {"brightness-up", kDisplay, trNoop("Increase screen brightness")},
+        {"keyboard-brightness-down", kDisplay, trNoop("Decrease keyboard brightness")},
+        {"keyboard-brightness-up", kDisplay, trNoop("Increase keyboard brightness")},
 };
 
 // The keysyms of the keys the Qt version had a Qt key code for besides the
@@ -94,6 +110,7 @@ static const std::map<uint32_t, uint32_t> kServiceKeysyms = {
         {XKB_KEY_Super_L, 0xffeb},     {XKB_KEY_Super_R, 0xffec},
         {XKB_KEY_XF86AudioLowerVolume, 0x1008ff11}, {XKB_KEY_XF86AudioMute, 0x1008ff12},
         {XKB_KEY_XF86AudioRaiseVolume, 0x1008ff13}, {XKB_KEY_XF86AudioPlay, 0x1008ff14},
+        {XKB_KEY_XF86AudioPause, 0x1008ff31},
         {XKB_KEY_XF86AudioStop, 0x1008ff15},        {XKB_KEY_XF86AudioPrev, 0x1008ff16},
         {XKB_KEY_XF86AudioNext, 0x1008ff17},        {XKB_KEY_XF86MonBrightnessUp, 0x1008ff02},
         {XKB_KEY_XF86MonBrightnessDown, 0x1008ff03}, {XKB_KEY_XF86Calculator, 0x1008ff1d},
@@ -114,7 +131,7 @@ ShortcutsModel::~ShortcutsModel()
 
 std::vector<std::string> ShortcutsModel::categories()
 {
-    return {kGeneral, kWindows};
+    return {kGeneral, kWindows, kDesks, kScreenshots, kMedia, kSound, kDisplay};
 }
 
 void ShortcutsModel::reload()

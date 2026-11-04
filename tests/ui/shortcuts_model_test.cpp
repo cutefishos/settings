@@ -46,6 +46,7 @@ struct FakeShortcuts
     std::string maximizeDefaults = maximize;
     std::string lock = "[" + accelerator(0x6c, "l", "L", 8) + "]";
     std::vector<std::string> calls;
+    std::string extraActions;
     std::string nextResult = "{\"result\":\"success\"}";
     // On the service thread only.
     dbus::Object* object = nullptr;
@@ -68,7 +69,7 @@ struct FakeShortcuts
         return "{\"actions\":[{\"name\":\"lock-screen\",\"accelerators\":" + lock + ",\"defaults\":" + lock
                 + "},{\"name\":\"toggle-maximized\",\"accelerators\":" + maximize
                 + ",\"defaults\":" + maximizeDefaults
-                + "},{\"name\":\"not-a-cutefish-action\",\"accelerators\":[],\"defaults\":[]}]}";
+                + "}" + extraActions + ",{\"name\":\"not-a-cutefish-action\",\"accelerators\":[],\"defaults\":[]}]}";
     }
 };
 
@@ -301,4 +302,23 @@ TEST_F(ShortcutsModelTest, DialogRecordsAShortcutWithItsKeyCode)
     TestInput::pressKey(window, {.key = 'l', .keycode = 38, .text = "l", .modifiers = SuperModifier});
     EXPECT_TRUE(dialog.isRecording());
     EXPECT_NE(dialog.message().find("Lock the screen"), std::string::npos);
+}
+
+TEST_F(ShortcutsModelTest, MediaActionsAreListedAndEditedThroughTheService)
+{
+    fake.extraActions = ",{\"name\":\"media-play-pause\",\"accelerators\":[],\"defaults\":[]},"
+                        "{\"name\":\"volume-up\",\"accelerators\":[],\"defaults\":[]}";
+    ASSERT_TRUE(service->start());
+    ShortcutsModel model;
+    ASSERT_TRUE(waitFor([&] { return model.action("media-play-pause") != nullptr; }));
+    EXPECT_EQ("Media Playback", model.action("media-play-pause")->category);
+    EXPECT_EQ("Sound", model.action("volume-up")->category);
+    const auto categories = ShortcutsModel::categories();
+    EXPECT_NE(categories.end(), std::find(categories.begin(), categories.end(), "Media Playback"));
+    EXPECT_EQ("success", model.addAccelerator("media-play-pause", 66, 0, 8).result);
+    EXPECT_EQ("success", model.removeAccelerator("media-play-pause", 0xffc5, 8).result);
+    EXPECT_EQ("success", model.restoreDefault("media-play-pause").result);
+    const auto calls = fake.takeCalls();
+    EXPECT_NE(calls.end(), std::find(calls.begin(), calls.end(), "add media-play-pause 66 0 8"));
+    EXPECT_NE(calls.end(), std::find(calls.begin(), calls.end(), "restore media-play-pause"));
 }
