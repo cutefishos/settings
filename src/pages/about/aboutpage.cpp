@@ -12,6 +12,7 @@
 #include "widgets/picture.h"
 #include "window/page.h"
 #include "window/pagelist.h"
+#include "window/settingswindow.h"
 
 using namespace cutefish::ui;
 using cutefish::i18n::format;
@@ -56,6 +57,10 @@ public:
         card->addChild<InfoRow>(tr("Processor"), about::processor());
         card->addChild<InfoRow>(tr("RAM"), about::memorySize());
         card->addChild<InfoRow>(tr("Internal storage"), about::internalStorage());
+
+        Card* licensesCard = content()->addChild<Card>(Card::Style::List);
+        NavigationItem* licenses = licensesCard->addChild<NavigationItem>(tr("Open-Source Licenses"));
+        licenses->onClicked = [&window] { window.pushPage("licenses"); };
     }
 
 protected:

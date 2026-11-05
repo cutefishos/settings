@@ -111,6 +111,9 @@ static std::vector<PageInfo> makePages()
          .parentId = "dock"});
     add({.id = "shortcuts", .title = trNoop("Keyboard Shortcuts"), .icon = "keyboard.svg",
          .iconColor = Color::rgb(0x5E6AD2), .keywords = trNoop("hotkeys, key bindings"), .parentId = "keyboard"});
+    add({.id = "licenses", .name = "licenses", .title = trNoop("Open-Source Licenses"), .icon = "about.svg",
+         .iconColor = Color::rgb(0x24A7FD), .keywords = trNoop("license, copyright, source code, open source"),
+         .parentId = "about"});
     return pages;
 }
 

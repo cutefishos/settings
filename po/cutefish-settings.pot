@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-02 23:05+0800\n"
+"POT-Creation-Date: 2026-11-05 23:09+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -106,6 +106,43 @@ msgstr ""
 
 #: src/pages/about/aboutpage.cpp
 msgid "Internal storage"
+msgstr ""
+
+#: src/pages/about/aboutpage.cpp src/pages/about/licensespage.cpp
+#: src/window/pagelist.cpp
+msgid "Open-Source Licenses"
+msgstr ""
+
+#: src/pages/about/licensespage.cpp
+msgid "Cutefish"
+msgstr ""
+
+#: src/pages/about/licensespage.cpp
+msgid "Desktop and applications"
+msgstr ""
+
+#: src/pages/about/licensespage.cpp
+msgid "Terminal and the icon theme are under the GNU General Public License 3.0."
+msgstr ""
+
+#: src/pages/about/licensespage.cpp
+msgid "Compositor"
+msgstr ""
+
+#: src/pages/about/licensespage.cpp
+msgid "Wayland and window management, designed after Chromium's Exo and Ash"
+msgstr ""
+
+#: src/pages/about/licensespage.cpp
+msgid "Xwayland window manager and selection bridge, adapted from sommelier"
+msgstr ""
+
+#: src/pages/about/licensespage.cpp
+msgid "Pointer acceleration curve"
+msgstr ""
+
+#: src/pages/about/licensespage.cpp
+msgid "The source code of the pointer acceleration curve is available under the Apple Public Source License 2.0 at https://github.com/cutefishos/cutefish-compositor."
 msgstr ""
 
 #: src/pages/accounts/accountspage.cpp src/window/pagelist.cpp
@@ -539,6 +576,7 @@ msgid "Cancel pairing"
 msgstr ""
 
 #: src/pages/bluetooth/bluetoothpage.cpp
+#: src/pages/network/common/detailsdialog.cpp
 msgid "Disconnect"
 msgstr ""
 
@@ -1173,11 +1211,11 @@ msgid "Preferred languages"
 msgstr ""
 
 #: src/pages/language/languagepage.cpp
-msgid "Drag a language to the top to make it the system language. Right-click a language to remove it."
+msgid "Add language…"
 msgstr ""
 
 #: src/pages/language/languagepage.cpp
-msgid "Add language…"
+msgid "Drag a language to the top to make it the system language. Right-click a language to remove it."
 msgstr ""
 
 #: src/pages/language/languagepage.cpp
@@ -2534,6 +2572,10 @@ msgstr ""
 
 #: src/window/pagelist.cpp
 msgid "hotkeys, key bindings"
+msgstr ""
+
+#: src/window/pagelist.cpp
+msgid "license, copyright, source code, open source"
 msgstr ""
 
 #: src/window/settingswindow.cpp src/window/sidebar.cpp

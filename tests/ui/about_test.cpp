@@ -16,6 +16,20 @@ TEST(AboutPage, ShowsTheSystemRows)
     EXPECT_EQ(page.count("settings::InfoRow"), 6 + modelRows);
 }
 
+TEST(AboutPage, LinksToTheLicenses)
+{
+    PageFixture page("about");
+    EXPECT_EQ(page.count("settings::NavigationItem"), 1);
+}
+
+TEST(LicensesPage, ListsTheCompositorNotices)
+{
+    PageFixture page("about", "licenses");
+    EXPECT_NE(page.dump().find("\"page:licenses\""), std::string::npos);
+    EXPECT_EQ(page.count("settings::InfoRow"), 4);
+    EXPECT_EQ(page.count("settings::Footnote"), 2);
+}
+
 TEST(AboutPage, FormatsSizesAsTheQtVersionDid)
 {
     using settings::about::formatByteSize;
