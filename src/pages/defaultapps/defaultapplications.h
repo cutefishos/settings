@@ -12,17 +12,20 @@
 
 namespace settings {
 
-// The applications that can be the default web browser, mail client,
-// terminal and video player, and which ones are. The choices go to the
-// user's mimeapps.list and the terminal list.
+// The applications that can be the default web browser, mail client, text
+// editor, music player, video player, image viewer and terminal, and which
+// ones are. The choices go to the user's mimeapps.list and the terminal list.
 class DefaultApplications
 {
 public:
     enum Kind {
         Browser,
         Email,
-        Terminal,
+        TextEditor,
+        MusicPlayer,
         VideoPlayer,
+        ImageViewer,
+        Terminal,
         KindCount,
     };
 
@@ -51,7 +54,7 @@ private:
     void watchLists();
 
     std::vector<Application> m_lists[KindCount];
-    int m_defaults[KindCount] = {-1, -1, -1, -1};
+    int m_defaults[KindCount] = {-1, -1, -1, -1, -1, -1, -1};
     cutefish::base::Subscription m_registry;
     std::vector<cutefish::base::FileWatch> m_watches;
     cutefish::base::Timer m_reload;

@@ -21,12 +21,12 @@ static bool contains(const std::vector<std::string>& list, const std::string& va
     return std::find(list.begin(), list.end(), value) != list.end();
 }
 
-static bool playsVideo(const DesktopEntry& entry)
+static bool opensAny(const DesktopEntry& entry, const std::string& category, const std::string& prefix)
 {
-    if (!contains(entry.categories, "AudioVideo"))
+    if (!contains(entry.categories, category))
         return false;
     return std::any_of(entry.mimeTypes.begin(), entry.mimeTypes.end(),
-                       [](const std::string& type) { return type.starts_with("video/"); });
+                       [&prefix](const std::string& type) { return type.starts_with(prefix); });
 }
 
 DefaultApplications::DefaultApplications()
@@ -60,14 +60,22 @@ void DefaultApplications::load()
     for (const auto& entry : ApplicationRegistry::instance().applications()) {
         Application application{entry->path, fs::path(entry->path).filename().string(), entry->name, entry->icon,
                                 entry->mimeTypes};
+        // A player can be both the music and the video player.
         if (contains(entry->categories, "WebBrowser") && contains(entry->mimeTypes, "x-scheme-handler/http"))
-            m_lists[Browser].push_back(std::move(application));
-        else if (contains(entry->categories, "Email") && contains(entry->mimeTypes, "x-scheme-handler/mailto"))
-            m_lists[Email].push_back(std::move(application));
-        else if (contains(entry->categories, "TerminalEmulator"))
-            m_lists[Terminal].push_back(std::move(application));
-        else if (playsVideo(*entry))
-            m_lists[VideoPlayer].push_back(std::move(application));
+            m_lists[Browser].push_back(application);
+        if (contains(entry->categories, "Email") && contains(entry->mimeTypes, "x-scheme-handler/mailto"))
+            m_lists[Email].push_back(application);
+        if (contains(entry->categories, "TextEditor") && contains(entry->mimeTypes, "text/plain"))
+            m_lists[TextEditor].push_back(application);
+        if (opensAny(*entry, "AudioVideo", "audio/"))
+            m_lists[MusicPlayer].push_back(application);
+        if (opensAny(*entry, "AudioVideo", "video/"))
+            m_lists[VideoPlayer].push_back(application);
+        // Browsers and image editors open images too.
+        if (opensAny(*entry, "Viewer", "image/"))
+            m_lists[ImageViewer].push_back(application);
+        if (contains(entry->categories, "TerminalEmulator"))
+            m_lists[Terminal].push_back(application);
     }
 
     const auto first = [](const std::vector<std::string>& list) { return list.empty() ? std::string() : list.front(); };
@@ -76,9 +84,12 @@ void DefaultApplications::load()
     const std::string email = first(mimeapps::associations(mimeapps::userListPath(), "Default Applications",
                                                            "x-scheme-handler/mailto"));
     const std::string terminal = mimeapps::defaultTerminal(mimeapps::userTerminalsListPath());
-    // Players differ in the video types they list; the commonest one stands
-    // for all. Without a choice, this is what the file manager opens videos with.
+    // Applications differ in the types they list; the commonest one stands
+    // for all. Without a choice, this is what the file manager opens them with.
+    const std::string textEditor = mimeapps::defaultApplication(mimeapps::listPaths(), "text/plain");
+    const std::string musicPlayer = mimeapps::defaultApplication(mimeapps::listPaths(), "audio/mpeg");
     const std::string videoPlayer = mimeapps::defaultApplication(mimeapps::listPaths(), "video/mp4");
+    const std::string imageViewer = mimeapps::defaultApplication(mimeapps::listPaths(), "image/jpeg");
 
     const auto find = [this](Kind kind, const std::string& value, bool byPath) {
         const auto& list = m_lists[kind];
@@ -91,8 +102,11 @@ void DefaultApplications::load()
     };
     find(Browser, browser, false);
     find(Email, email, false);
-    find(Terminal, terminal, false);
+    find(TextEditor, textEditor, true);
+    find(MusicPlayer, musicPlayer, true);
     find(VideoPlayer, videoPlayer, true);
+    find(ImageViewer, imageViewer, true);
+    find(Terminal, terminal, false);
     changed.emit();
 }
 
@@ -107,6 +121,12 @@ void DefaultApplications::setDefault(Kind kind, int index)
         if (!mimeapps::setDefault(userList, type, desktop))
             fprintf(stderr, "Failed to save default application for %s\n", type.c_str());
     };
+    const auto setAll = [&set, &application](const std::string& prefix) {
+        for (const std::string& type : application.mimeTypes) {
+            if (type.starts_with(prefix))
+                set(type, application.fileName);
+        }
+    };
     switch (kind) {
     case Browser:
         set("x-scheme-handler/http", application.fileName);
@@ -115,16 +135,24 @@ void DefaultApplications::setDefault(Kind kind, int index)
     case Email:
         set("x-scheme-handler/mailto", application.fileName);
         break;
+    // Only plain text: editors also list web pages and other types that have
+    // an application of their own.
+    case TextEditor:
+        set("text/plain", application.fileName);
+        break;
+    case MusicPlayer:
+        setAll("audio/");
+        break;
+    case VideoPlayer:
+        setAll("video/");
+        break;
+    case ImageViewer:
+        setAll("image/");
+        break;
     case Terminal:
         if (!mimeapps::setDefaultTerminal(mimeapps::userTerminalsListPath(), application.fileName)) {
             fprintf(stderr, "Failed to save the default terminal\n");
             return;
-        }
-        break;
-    case VideoPlayer:
-        for (const std::string& type : application.mimeTypes) {
-            if (type.starts_with("video/"))
-                set(type, application.fileName);
         }
         break;
     case KindCount:

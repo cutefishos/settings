@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-05 23:09+0800\n"
+"POT-Creation-Date: 2026-11-08 04:43+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -744,11 +744,23 @@ msgid "Email client"
 msgstr ""
 
 #: src/pages/defaultapps/defaultappspage.cpp
-msgid "Terminal"
+msgid "Text editor"
+msgstr ""
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Music player"
 msgstr ""
 
 #: src/pages/defaultapps/defaultappspage.cpp
 msgid "Video player"
+msgstr ""
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Image viewer"
+msgstr ""
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Terminal"
 msgstr ""
 
 #: src/pages/defaultapps/defaultappspage.cpp src/pages/fonts/fontspage.cpp

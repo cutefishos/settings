@@ -25,8 +25,10 @@ public:
         : Page(window, tr("Default Applications"))
     {
         Card* card = content()->addChild<Card>(Card::Style::List);
-        const std::array<const char*, DefaultApplications::KindCount> titles = {tr("Web browser"), tr("Email client"),
-                                                                               tr("Terminal"), tr("Video player")};
+        const std::array<const char*, DefaultApplications::KindCount> titles = {
+            tr("Web browser"),  tr("Email client"), tr("Text editor"), tr("Music player"),
+            tr("Video player"), tr("Image viewer"), tr("Terminal"),
+        };
         for (int kind = 0; kind < DefaultApplications::KindCount; ++kind) {
             ListRow* row = card->addChild<ListRow>(titles[size_t(kind)]);
             row->setInteractive(false);
