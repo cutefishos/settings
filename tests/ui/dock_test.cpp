@@ -52,7 +52,8 @@ TEST(DockPage, HasEveryControl)
 {
     PageFixture page("dock");
     EXPECT_EQ(page.count("settings::ImageSelectionItem"), 3);
-    EXPECT_EQ(page.count("settings::SliderRow"), 2);
+    // Size, glass effect and magnification.
+    EXPECT_EQ(page.count("settings::SliderRow"), 3);
     EXPECT_EQ(page.count("SegmentedControl"), 1);
     EXPECT_EQ(page.count("settings::NavigationItem"), 1);
     EXPECT_EQ(page.count("settings::SwitchRow"), 1);
@@ -68,4 +69,10 @@ TEST(DockPage, GlassEffectStaysWhereItIsDragged)
 {
     PageFixture page("dock");
     expectDragHolds(page, "dock:glass", 0.3);
+}
+
+TEST(DockPage, MagnificationStaysWhereItIsDragged)
+{
+    PageFixture page("dock");
+    expectDragHolds(page, "dock:magnification", 0.6);
 }
