@@ -27,6 +27,9 @@ public:
 
     double glassTint() const { return m_glassTint; }
     void setGlassTint(double tint);
+    // 0 sharper to 1 softer, 0.3 the blur the dock had.
+    double glassBlur() const { return m_glassBlur; }
+    void setGlassBlur(double blur);
 
     bool minimizedArea() const { return m_minimizedArea; }
     void setMinimizedArea(bool enabled);
@@ -37,6 +40,7 @@ private:
     int m_direction = 0;
     int m_visibility = 0;
     double m_glassTint = 0.5;
+    double m_glassBlur = 0.3;
     bool m_minimizedArea = true;
 };
 

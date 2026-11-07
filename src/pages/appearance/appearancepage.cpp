@@ -153,11 +153,15 @@ public:
         }
 
         // The glass of windows, menus, panels, notifications and the OSD: the
-        // dock's material, tinted by the slider the dock page has for its own,
-        // and blurred by a second one, which the dock follows too.
+        // dock's material, with a tint and a blur slider of its own like the
+        // dock page's. Frosted puts the heavy frost without a lens back, for
+        // text that must read over anything; the sliders go then.
         Section* glass = content()->addChild<Section>(tr("Glass effect"));
         Card* glassCard = glass->addChild<Card>(Card::Style::List);
         loadGlass();
+        SwitchRow* frosted = glassCard->addChild<SwitchRow>(tr("Frosted glass"));
+        frosted->setName("appearance:glassfrosted");
+        frosted->setChecked(m_glassFrosted);
         SliderRow* tint = glassCard->addChild<SliderRow>(tr("Glass effect"));
         tint->setName("appearance:glass");
         tint->setCaptions(tr("More clear"), tr("More tinted"));
@@ -181,8 +185,17 @@ public:
             blur->setValue(m_glassBlur);
             m_glassSave.start(std::chrono::milliseconds(150));
         };
+        // Frosted, the sliders have nothing to set and go out of sight.
+        tint->setVisible(!m_glassFrosted);
+        blur->setVisible(!m_glassFrosted);
+        frosted->onToggled = [this, tint, blur](bool checked) {
+            m_glassFrosted = checked;
+            tint->setVisible(!checked);
+            blur->setVisible(!checked);
+            saveGlass();
+        };
         glass->addChild<Footnote>(tr("Windows with a translucent background, menus, panels and notifications. "
-                                     "The dock has its own tint setting and shares the blur."));
+                                     "The dock has its own tint and blur settings; frosted glass covers it too."));
         m_glassSave.setSingleShot(true);
         m_glassSave.onTimeout = [this] { saveGlass(); };
 
@@ -214,12 +227,13 @@ private:
     bool autoDarkMode() const { return m_appearance.darkModeSchedule() == Appearance::SunsetToSunrise; }
 
     // Appearance/GlassTint and GlassBlur of shell.conf, 0 to 1 each, 0.5
-    // and 0.3 the defaults.
+    // and 0.3 the defaults, and GlassFrosted, off by default.
     void loadGlass()
     {
         const cutefish::base::Settings shell(cutefish::base::paths::cutefishConfig("shell"));
         m_glassTint = std::clamp(shell.doubleValue("Appearance/GlassTint", 0.5), 0.0, 1.0);
         m_glassBlur = std::clamp(shell.doubleValue("Appearance/GlassBlur", 0.3), 0.0, 1.0);
+        m_glassFrosted = shell.boolValue("Appearance/GlassFrosted", false);
     }
 
     void saveGlass()
@@ -227,6 +241,7 @@ private:
         cutefish::base::Settings shell(cutefish::base::paths::cutefishConfig("shell"));
         shell.setValue("Appearance/GlassTint", m_glassTint);
         shell.setValue("Appearance/GlassBlur", m_glassBlur);
+        shell.setValue("Appearance/GlassFrosted", m_glassFrosted);
         if (!shell.sync())
             fprintf(stderr, "Failed to save the glass effect\n");
     }
@@ -256,6 +271,7 @@ private:
     std::vector<AccentSwatch*> m_swatches;
     double m_glassTint = 0.5;
     double m_glassBlur = 0.3;
+    bool m_glassFrosted = false;
     cutefish::base::Timer m_glassSave;
 };
 

@@ -21,6 +21,7 @@ DockSettings::DockSettings()
     m_direction = int(shell.intValue("Dock/Direction"));
     m_visibility = int(shell.intValue("Dock/Visibility"));
     m_glassTint = std::clamp(shell.doubleValue("Dock/GlassTint", 0.5), 0.0, 1.0);
+    m_glassBlur = std::clamp(shell.doubleValue("Dock/GlassBlur", 0.3), 0.0, 1.0);
     m_minimizedArea = shell.boolValue("Dock/MinimizedArea", true);
 }
 
@@ -56,6 +57,15 @@ void DockSettings::setGlassTint(double tint)
         return;
     m_dock.send("setGlassTint", tint);
     m_glassTint = tint;
+}
+
+void DockSettings::setGlassBlur(double blur)
+{
+    blur = std::clamp(blur, 0.0, 1.0);
+    if (blur == m_glassBlur)
+        return;
+    m_dock.send("setGlassBlur", blur);
+    m_glassBlur = blur;
 }
 
 void DockSettings::setMinimizedArea(bool enabled)
