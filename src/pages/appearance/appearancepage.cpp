@@ -1,10 +1,16 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: BSD-3-Clause
 
+#include <algorithm>
 #include <array>
+#include <chrono>
+#include <cstdio>
 #include <functional>
 
 #include "base/i18n.h"
+#include "base/paths.h"
+#include "base/settings.h"
+#include "base/timer.h"
 #include "cutefish/appearance/appearance.h"
 #include "ui/icon.h"
 #include "ui/layout.h"
@@ -18,6 +24,7 @@
 #include "widgets/picture.h"
 #include "widgets/rowicon.h"
 #include "widgets/sections.h"
+#include "widgets/sliderrow.h"
 #include "window/page.h"
 #include "window/pagelist.h"
 #include "window/settingswindow.h"
@@ -145,6 +152,40 @@ public:
             m_swatches.push_back(swatch);
         }
 
+        // The glass of windows, menus, panels, notifications and the OSD: the
+        // dock's material, tinted by the slider the dock page has for its own,
+        // and blurred by a second one, which the dock follows too.
+        Section* glass = content()->addChild<Section>(tr("Glass effect"));
+        Card* glassCard = glass->addChild<Card>(Card::Style::List);
+        loadGlass();
+        SliderRow* tint = glassCard->addChild<SliderRow>(tr("Glass effect"));
+        tint->setName("appearance:glass");
+        tint->setCaptions(tr("More clear"), tr("More tinted"));
+        tint->setRange(0, 1);
+        tint->setValue(m_glassTint);
+        tint->onMoved = [this, tint](double value) {
+            m_glassTint = std::clamp(value, 0.0, 1.0);
+            // The row keeps the value it is given back.
+            tint->setValue(m_glassTint);
+            // Written once the slider rests for a moment; every program
+            // with a window or a menu open follows the file.
+            m_glassSave.start(std::chrono::milliseconds(150));
+        };
+        SliderRow* blur = glassCard->addChild<SliderRow>(tr("Blur intensity"));
+        blur->setName("appearance:glassblur");
+        blur->setCaptions(tr("Sharper"), tr("Softer"));
+        blur->setRange(0, 1);
+        blur->setValue(m_glassBlur);
+        blur->onMoved = [this, blur](double value) {
+            m_glassBlur = std::clamp(value, 0.0, 1.0);
+            blur->setValue(m_glassBlur);
+            m_glassSave.start(std::chrono::milliseconds(150));
+        };
+        glass->addChild<Footnote>(tr("Windows with a translucent background, menus, panels and notifications. "
+                                     "The dock has its own tint setting and shares the blur."));
+        m_glassSave.setSingleShot(true);
+        m_glassSave.onTimeout = [this] { saveGlass(); };
+
         Card* links = content()->addChild<Card>(Card::Style::List);
         const std::array<std::tuple<const char*, const char*, Color, const char*>, 3> pages = {
                 std::tuple{tr("Fonts"), "fonts.svg", Color::rgb(0xFE8433), "fonts"},
@@ -172,6 +213,24 @@ protected:
 private:
     bool autoDarkMode() const { return m_appearance.darkModeSchedule() == Appearance::SunsetToSunrise; }
 
+    // Appearance/GlassTint and GlassBlur of shell.conf, 0 to 1 each, 0.5
+    // and 0.3 the defaults.
+    void loadGlass()
+    {
+        const cutefish::base::Settings shell(cutefish::base::paths::cutefishConfig("shell"));
+        m_glassTint = std::clamp(shell.doubleValue("Appearance/GlassTint", 0.5), 0.0, 1.0);
+        m_glassBlur = std::clamp(shell.doubleValue("Appearance/GlassBlur", 0.3), 0.0, 1.0);
+    }
+
+    void saveGlass()
+    {
+        cutefish::base::Settings shell(cutefish::base::paths::cutefishConfig("shell"));
+        shell.setValue("Appearance/GlassTint", m_glassTint);
+        shell.setValue("Appearance/GlassBlur", m_glassBlur);
+        if (!shell.sync())
+            fprintf(stderr, "Failed to save the glass effect\n");
+    }
+
     void chooseDarkMode(bool dark)
     {
         m_appearance.setDarkModeSchedule(Appearance::Never);
@@ -195,6 +254,9 @@ private:
     ImageSelectionItem* m_dark;
     ImageSelectionItem* m_auto;
     std::vector<AccentSwatch*> m_swatches;
+    double m_glassTint = 0.5;
+    double m_glassBlur = 0.3;
+    cutefish::base::Timer m_glassSave;
 };
 
 } // namespace
