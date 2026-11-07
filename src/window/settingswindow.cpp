@@ -72,6 +72,7 @@ public:
         title = m_row->addChild<Label>();
         title->setName("title");
         title->setFontSize(metrics::points(metrics::headerTitlePointSize));
+        title->setWeight(600);
     }
 
     HeaderButton* back;
@@ -106,7 +107,7 @@ protected:
             title->setLayoutHints(text);
 
         const bool active = !window || window->isActive();
-        title->setColor(active ? theme.text : theme.disabledText);
+        title->setColor(active ? withAlpha(ColorId::Text, 0.85) : ColorRecipe(theme.disabledText));
         // The back chevron's tip lines up with the cards' left edge.
         const double left = snap(sidebarWidth(scale) + metrics::pageMargin - (kButtonSize - kGlyphSize) / 2
                                  - kBackInkInset);

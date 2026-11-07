@@ -3,25 +3,34 @@
 
 #include "widgets/sections.h"
 
+#include "ui/color_mixer.h"
 #include "widgets/metrics.h"
 
 using namespace cutefish::ui;
 
 namespace settings {
 
-SectionLabel::SectionLabel(std::string text, bool wrap)
+SectionLabel::SectionLabel(std::string text)
 {
     setMargins({metrics::cardHorizontalPadding, 0, metrics::cardHorizontalPadding, 0});
     setLayoutHints({.fillWidth = true});
     m_label = addChild<Label>(std::move(text));
-    m_label->setWrap(wrap);
-    m_label->setColor(ColorId::DisabledText);
+    m_label->setWeight(500);
+    m_label->setColor(withAlpha(ColorId::Text, 0.85));
     m_label->setLayoutHints({.fillWidth = true});
 }
 
-void SectionLabel::setColor(std::optional<ColorRecipe> color)
+Footnote::Footnote(std::string text)
+    : SectionLabel(std::move(text))
 {
-    m_label->setColor(std::move(color).value_or(ColorId::DisabledText));
+    label()->setWrap(true);
+    label()->setWeight(400);
+    label()->setColor(ColorId::DisabledText);
+}
+
+void Footnote::setColor(std::optional<ColorRecipe> color)
+{
+    label()->setColor(std::move(color).value_or(ColorId::DisabledText));
 }
 
 Section::Section(std::string title)

@@ -285,7 +285,7 @@ public:
         m_firstCard = top->addChild<Card>(Card::Style::List);
         m_switch = m_firstCard->addChild<SwitchRow>(tr("Bluetooth"));
         m_switch->onToggled = [this](bool checked) { m_manager->setEnabled(checked); };
-        m_message = top->addChild<SectionLabel>(std::string(), true);
+        m_message = top->addChild<Footnote>();
         m_message->setName("bluetooth:message");
 
         m_devices = content()->addChild<ColumnLayout>();
@@ -377,7 +377,7 @@ private:
     Card* m_firstCard;
     SwitchRow* m_switch;
     std::vector<AdapterRow*> m_adapterRows;
-    SectionLabel* m_message;
+    Footnote* m_message;
     ColumnLayout* m_devices;
     DeviceSection* m_paired;
     DeviceSection* m_other;
