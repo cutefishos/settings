@@ -13,7 +13,8 @@
 namespace settings {
 
 // The applications that can be the default web browser, mail client,
-// terminal and video player, and which ones are. The choices go to the
+// terminal and video player, and which ones are, and the same for every
+// type of file an installed application opens. The choices go to the
 // user's mimeapps.list and the terminal list.
 class DefaultApplications
 {
@@ -36,12 +37,49 @@ public:
         std::vector<std::string> mimeTypes;
     };
 
+    // A type of file some installed application opens, with those
+    // applications in the order the file manager offers them.
+    struct FileType
+    {
+        std::string mimeType;
+        // The MIME database's comment in the session language, else the type's name.
+        std::string description;
+        // The type's theme icon.
+        std::string icon;
+        std::vector<Application> applications;
+        // -1 when none of them is the default.
+        int defaultIndex = -1;
+    };
+
     DefaultApplications();
 
     const std::vector<Application>& applications(Kind kind) const { return m_lists[kind]; }
     // -1 when none of them is the default.
     int defaultIndex(Kind kind) const { return m_defaults[kind]; }
     void setDefault(Kind kind, int index);
+
+    // The file types of a kind, such as images, that can be given one opener at once.
+    struct FileTypeGroup
+    {
+        // Untranslated; the page translates it.
+        const char* title;
+        std::string icon;
+        // Indexes into fileTypes(), sorted by description.
+        std::vector<size_t> types;
+        // Every application that opens one of the types, those opening most first.
+        std::vector<Application> applications;
+        // The application that is the default of most of the types; -1 without any.
+        int defaultIndex = -1;
+    };
+
+    // Sorted by description.
+    const std::vector<FileType>& fileTypes() const { return m_fileTypes; }
+    void setFileTypeDefault(size_t typeIndex, int applicationIndex);
+    // Images, audio, video, text, documents, archives, fonts, the rest, in that
+    // order; a group without types is left out.
+    const std::vector<FileTypeGroup>& fileTypeGroups() const { return m_groups; }
+    // The application becomes the default of every type in the group it opens.
+    void setGroupDefault(size_t groupIndex, int applicationIndex);
 
     // After the lists or the defaults changed.
     cutefish::base::Signal<> changed;
@@ -50,7 +88,12 @@ private:
     void load();
     void watchLists();
 
+    void loadFileTypes();
+    void loadGroups();
+
     std::vector<Application> m_lists[KindCount];
+    std::vector<FileType> m_fileTypes;
+    std::vector<FileTypeGroup> m_groups;
     int m_defaults[KindCount] = {-1, -1, -1, -1};
     cutefish::base::Subscription m_registry;
     std::vector<cutefish::base::FileWatch> m_watches;
