@@ -65,12 +65,7 @@ public:
             m_settings.setIconSize(int(std::round(value)));
             size->setValue(m_settings.iconSize());
         };
-
-        // The dock's glass, tint and blur together; the frosted glass of the
-        // Appearance page takes its lens.
-        Section* glassSection = content()->addChild<Section>(tr("Glass"));
-        Card* glassCard = glassSection->addChild<Card>(Card::Style::List);
-        SliderRow* glass = glassCard->addChild<SliderRow>(tr("Glass effect"));
+        SliderRow* glass = sliders->addChild<SliderRow>(tr("Glass effect"));
         glass->setName("dock:glass");
         glass->setCaptions(tr("More clear"), tr("More tinted"));
         glass->setRange(0, 1);
@@ -78,16 +73,6 @@ public:
         glass->onMoved = [this, glass](double value) {
             m_settings.setGlassTint(value);
             glass->setValue(m_settings.glassTint());
-        };
-        // How blurred it is; the default is the blur the dock had.
-        SliderRow* blur = glassCard->addChild<SliderRow>(tr("Blur intensity"));
-        blur->setName("dock:glassblur");
-        blur->setCaptions(tr("Sharper"), tr("Softer"));
-        blur->setRange(0, 1);
-        blur->setValue(m_settings.glassBlur());
-        blur->onMoved = [this, blur](double value) {
-            m_settings.setGlassBlur(value);
-            blur->setValue(m_settings.glassBlur());
         };
 
         Section* mode = content()->addChild<Section>(tr("Display mode"));

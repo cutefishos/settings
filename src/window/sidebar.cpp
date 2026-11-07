@@ -11,7 +11,6 @@
 #include "ui/keys.h"
 #include "ui/label.h"
 #include "ui/painter.h"
-#include "ui/popup_glass.h"
 #include "ui/scroll_view.h"
 #include "ui/theme.h"
 #include "ui/window.h"
@@ -576,12 +575,6 @@ void Sidebar::layout()
 
 void Sidebar::paint(Painter& painter)
 {
-    // Over the compositor's glass (Appearance > Glass effect) the sidebar is
-    // the glass itself, its edges refracting as the dock's do; a fill would
-    // hide that. Without glass, or with it frosted, the usual translucent
-    // shade.
-    if (window() && window()->backgroundGlassAvailable() && !cutefish::ui::shellGlassFrosted())
-        return;
     painter.fillRect(localRect(), color(SettingsColor::SidebarBackground));
 }
 
