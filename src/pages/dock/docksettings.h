@@ -30,6 +30,9 @@ public:
 
     bool minimizedArea() const { return m_minimizedArea; }
     void setMinimizedArea(bool enabled);
+    // 1 for none, up to 2: how much the icons under the pointer grow.
+    double magnification() const { return m_magnification; }
+    void setMagnification(double magnification);
 
 private:
     cutefish::base::dbus::Proxy m_dock;
@@ -38,6 +41,7 @@ private:
     int m_visibility = 0;
     double m_glassTint = 0.5;
     bool m_minimizedArea = true;
+    double m_magnification = 1;
 };
 
 } // namespace settings

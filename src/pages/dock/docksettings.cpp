@@ -22,6 +22,7 @@ DockSettings::DockSettings()
     m_visibility = int(shell.intValue("Dock/Visibility"));
     m_glassTint = std::clamp(shell.doubleValue("Dock/GlassTint", 0.5), 0.0, 1.0);
     m_minimizedArea = shell.boolValue("Dock/MinimizedArea", true);
+    m_magnification = std::clamp(shell.doubleValue("Dock/Magnification", 1.0), 1.0, 2.0);
 }
 
 // Called on every slider move; none of these waits for the dock.
@@ -56,6 +57,15 @@ void DockSettings::setGlassTint(double tint)
         return;
     m_dock.send("setGlassTint", tint);
     m_glassTint = tint;
+}
+
+void DockSettings::setMagnification(double magnification)
+{
+    magnification = std::clamp(magnification, 1.0, 2.0);
+    if (magnification == m_magnification)
+        return;
+    m_dock.send("setMagnification", magnification);
+    m_magnification = magnification;
 }
 
 void DockSettings::setMinimizedArea(bool enabled)

@@ -74,6 +74,17 @@ public:
             m_settings.setGlassTint(value);
             glass->setValue(m_settings.glassTint());
         };
+        // 1 is off; the dock grows the icons under the pointer up to twice their size.
+        SliderRow* magnification = sliders->addChild<SliderRow>(tr("Magnification"));
+        magnification->setName("dock:magnification");
+        magnification->setCaptions(tr("Off"), tr("Large"));
+        magnification->setRange(1, 2);
+        magnification->setValue(m_settings.magnification());
+        magnification->onMoved = [this, magnification](double value) {
+            // Below a visible growth the slider snaps to off.
+            m_settings.setMagnification(value < 1.1 ? 1 : value);
+            magnification->setValue(m_settings.magnification());
+        };
 
         Section* mode = content()->addChild<Section>(tr("Display mode"));
         auto* visibility = mode->addChild<SegmentedControl>(
