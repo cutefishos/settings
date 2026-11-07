@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <cstdlib>
+#include <map>
 #include <vector>
 
 #include "base/i18n.h"
@@ -23,6 +24,7 @@ using namespace cutefish;
 using namespace cutefish::ui;
 using cutefish::i18n::tr;
 using cutefish::i18n::trc;
+using cutefish::i18n::trNoop;
 
 namespace settings {
 
@@ -38,6 +40,20 @@ static int nearestStop(const std::vector<int>& stops, int value)
             best = i;
     }
     return int(best);
+}
+
+// Where Command, Option and Control land for each choice of Command key.
+static std::string commandKeyNote(const std::string& key)
+{
+    static const std::map<std::string, const char*> notes = {
+            {"auto", trNoop("Alt on a PC keyboard and Command on an Apple one, with the key beside it as Option "
+                            "and Ctrl as Control.")},
+            {"alt", trNoop("Alt is Command, Win is Option and Ctrl is Control, on any keyboard.")},
+            {"meta", trNoop("Win, or Command on an Apple keyboard, is Command; Alt is Option and Ctrl is Control.")},
+            {"ctrl", trNoop("Ctrl is Command, Alt is Option and Win is Control.")},
+    };
+    const auto found = notes.find(key);
+    return tr(found == notes.end() ? notes.at("auto") : found->second);
 }
 
 namespace {
@@ -87,6 +103,18 @@ public:
         m_command = conventions->addChild<CheckRow>(trc("key", "Command"));
         m_command->onClicked = [this] { m_keyboard.setShortcutConvention("command"); };
         m_conventionNote = m_shortcutKey->addChild<Footnote>();
+
+        m_commandKeySection = content()->addChild<Section>(tr("Command key"));
+        Card* commandKeys = m_commandKeySection->addChild<Card>(Card::Style::List);
+        m_commandAuto = commandKeys->addChild<CheckRow>(tr("Next to the space bar"));
+        m_commandAuto->onClicked = [this] { m_keyboard.setCommandKey("auto"); };
+        m_commandAlt = commandKeys->addChild<CheckRow>(trc("key", "Alt"));
+        m_commandAlt->onClicked = [this] { m_keyboard.setCommandKey("alt"); };
+        m_commandMeta = commandKeys->addChild<CheckRow>(trc("key", "Win"));
+        m_commandMeta->onClicked = [this] { m_keyboard.setCommandKey("meta"); };
+        m_commandCtrl = commandKeys->addChild<CheckRow>(trc("key", "Ctrl"));
+        m_commandCtrl->onClicked = [this] { m_keyboard.setCommandKey("ctrl"); };
+        m_commandKeyNote = m_commandKeySection->addChild<Footnote>();
 
         Card* navigation = content()->addChild<Card>(Card::Style::List);
         m_layout = navigation->addChild<NavigationItem>(tr("Layout"));
@@ -160,6 +188,14 @@ private:
                              "shortcuts can be changed in Keyboard Shortcuts.")
                         : tr("Ctrl is the shortcut key and Alt switches windows. The shortcuts can be changed in "
                              "Keyboard Shortcuts."));
+        const std::string commandKey = m_keyboard.commandKey();
+        m_commandKeySection->setVisible(available && convention == "command"
+                                        && m_keyboard.supportsCommandKey());
+        m_commandAuto->setChecked(commandKey == "auto");
+        m_commandAlt->setChecked(commandKey == "alt");
+        m_commandMeta->setChecked(commandKey == "meta");
+        m_commandCtrl->setChecked(commandKey == "ctrl");
+        m_commandKeyNote->setText(commandKeyNote(commandKey));
         m_layout->setVisible(available);
         m_layout->setValue(m_keyboard.layoutName());
         m_repeatCard->setVisible(available);
@@ -185,6 +221,12 @@ private:
     CheckRow* m_pc;
     CheckRow* m_command;
     Footnote* m_conventionNote;
+    Section* m_commandKeySection;
+    CheckRow* m_commandAuto;
+    CheckRow* m_commandAlt;
+    CheckRow* m_commandMeta;
+    CheckRow* m_commandCtrl;
+    Footnote* m_commandKeyNote;
     NavigationItem* m_layout;
     Card* m_repeatCard;
     SwitchRow* m_repeat;
