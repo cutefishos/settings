@@ -891,11 +891,11 @@ msgid "Keep"
 msgstr ""
 
 #: src/pages/dock/dockpage.cpp src/window/pagelist.cpp
-msgid "Dock"
+msgid "Dock & Desktop"
 msgstr ""
 
 #: src/pages/dock/dockpage.cpp
-msgid "Position on screen"
+msgid "Dock"
 msgstr ""
 
 #: src/pages/dock/dockpage.cpp
@@ -2466,7 +2466,7 @@ msgstr ""
 msgid "VPN, proxy, hotspot, tethering, internet"
 msgstr ""
 
-#: src/window/pagelist.cpp
+#: src/pages/dock/dockpage.cpp src/window/pagelist.cpp
 msgid "Desktop"
 msgstr ""
 

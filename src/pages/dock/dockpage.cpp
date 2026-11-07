@@ -27,13 +27,44 @@ namespace settings {
 
 namespace {
 
+// Rows below the sliders, near their height so the card keeps one rhythm.
+constexpr double kTallRowHeight = 64;
+
+// A segmented control over the right half of the row, as a SliderRow puts its slider.
+class SegmentedRow : public ListRow
+{
+public:
+    SegmentedRow(std::string text, std::vector<std::string> items)
+        : ListRow(std::move(text))
+    {
+        setInteractive(false);
+        setMinimumRowHeight(kTallRowHeight);
+        m_control = addContent<SegmentedControl>(std::move(items));
+        m_control->setContentHeight(32);
+    }
+
+    SegmentedControl* control() const { return m_control; }
+
+protected:
+    void layout() override
+    {
+        const double width = std::round((geometry().width - 2 * metrics::cardHorizontalPadding) / 2);
+        if (m_control->layoutHints().preferredWidth != width)
+            m_control->setLayoutHints({.preferredWidth = width});
+        ListRow::layout();
+    }
+
+private:
+    SegmentedControl* m_control;
+};
+
 class DockPage : public Page
 {
 public:
     explicit DockPage(SettingsWindow& window)
-        : Page(window, tr("Dock"))
+        : Page(window, tr("Dock & Desktop"))
     {
-        Section* position = content()->addChild<Section>(tr("Position on screen"));
+        Section* position = content()->addChild<Section>(tr("Dock"));
         Card* positions = position->addChild<Card>();
         RowLayout* tiles = positions->addChild<RowLayout>();
         tiles->setSpacing(metrics::tileSpacing);
@@ -75,21 +106,21 @@ public:
             glass->setValue(m_settings.glassTint());
         };
 
-        Section* mode = content()->addChild<Section>(tr("Display mode"));
-        auto* visibility = mode->addChild<SegmentedControl>(
-                std::vector<std::string>{tr("Always show"), tr("Always hide"), tr("Smart hide")});
-        visibility->setLayoutHints({.fillWidth = true});
+        SegmentedRow* mode = sliders->addChild<SegmentedRow>(
+                tr("Display mode"), std::vector<std::string>{tr("Always show"), tr("Always hide"), tr("Smart hide")});
+        SegmentedControl* visibility = mode->control();
         visibility->setCurrentIndex(m_settings.visibility());
         visibility->onCurrentChanged = [this](int index) { m_settings.setVisibility(index); };
 
-        Card* corners = content()->addChild<Card>(Card::Style::List);
-        NavigationItem* hotCorners = corners->addChild<NavigationItem>(tr("Hot Corners"));
-        hotCorners->onClicked = [&window] { window.pushPage("hotcorners"); };
-
-        Card* minimized = content()->addChild<Card>(Card::Style::List);
-        SwitchRow* area = minimized->addChild<SwitchRow>(tr("Minimized windows area"));
+        SwitchRow* area = sliders->addChild<SwitchRow>(tr("Minimized windows area"));
+        area->setMinimumRowHeight(kTallRowHeight);
         area->setChecked(m_settings.minimizedArea());
         area->onToggled = [this](bool checked) { m_settings.setMinimizedArea(checked); };
+
+        Section* desktop = content()->addChild<Section>(tr("Desktop"));
+        Card* corners = desktop->addChild<Card>(Card::Style::List);
+        NavigationItem* hotCorners = corners->addChild<NavigationItem>(tr("Hot Corners"));
+        hotCorners->onClicked = [&window] { window.pushPage("hotcorners"); };
     }
 
 private:
