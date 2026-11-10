@@ -11,6 +11,7 @@
 #include "ui/cell_layout.h"
 #include "ui/theme.h"
 #include "ui/window.h"
+#include "ui/window_controls.h"
 #include "ui/window_header.h"
 #include "widgets/metrics.h"
 #include "window/settingswindow.h"
@@ -21,10 +22,18 @@ namespace settings {
 
 static constexpr double kHeaderHeight = 44;
 static constexpr double kTitlePixelSize = 14;
+// With the window controls, a title bar as the toolkit's dialogs have: 32
+// high, the title centred on the window in a smaller size, clear of the
+// controls in their 32-pixel slot.
+static constexpr double kBarHeight = 32;
+static constexpr double kBarTitlePixelSize = 12;
+static constexpr double kBarTitleInset = metrics::dialogWindowButtonsMargin + window_controls::kRowWidth
+        + (metrics::xxl - window_controls::kButton) + metrics::s;
 
 // A ColumnLayout anchored to the window's left, right and top with the
-// dialog's padding: the header with the close button lies over the title's
-// line, and the window is as tall as the layout and the padding.
+// dialog's padding, the title first in it; with the window controls, the
+// title moves into a title bar over the column instead. The window is as
+// tall as the layout and the padding.
 class FormRoot : public View
 {
 public:
@@ -32,34 +41,49 @@ public:
     {
         column = addChild<ColumnLayout>();
         column->setSpacing(metrics::dialogSpacing);
-        title = column->addChild<Label>(std::move(text));
+        title = column->addChild<Label>(text);
         title->setFontSize(kTitlePixelSize);
         title->setWeight(600);
         title->setWrap(true);
-        // Clear of the close button.
-        LayoutHints hints{.fillWidth = true};
-        hints.margins.left = metrics::xxl;
-        title->setLayoutHints(hints);
-        header = addChild<WindowHeader>(kHeaderHeight);
-        header->setMinimizeVisible(false);
-        header->setMaximizeVisible(false);
+        title->setLayoutHints({.fillWidth = true});
+        header = addChild<WindowHeader>(kBarHeight);
+        header->setMinimizeEnabled(false);
+        header->setMaximizeEnabled(false);
         header->setButtonMargin(metrics::dialogWindowButtonsMargin);
+        barTitle = addChild<Label>(std::move(text));
+        barTitle->setFontSize(kBarTitlePixelSize);
+        barTitle->setTextAlignment(Label::TextAlignment::Center);
+        barTitle->setVerticallyCentered(true);
+        setControlsVisible(true);
+    }
+
+    void setControlsVisible(bool visible)
+    {
+        controls = visible;
+        header->setCloseVisible(visible);
+        header->setMinimizeVisible(visible);
+        header->setMaximizeVisible(visible);
+        barTitle->setVisible(visible);
+        title->setVisible(!visible);
+        requestLayout();
     }
 
     SizeF sizeHint() const override
     {
         const SizeF size = column->sizeHint();
-        return {size.width + 2 * metrics::dialogPadding, size.height + 2 * metrics::dialogPadding};
+        return {size.width + 2 * metrics::dialogPadding, size.height + top() + metrics::dialogPadding};
     }
 
     double heightForWidth(double width) const override
     {
-        return column->heightForWidth(std::max(0.0, width - 2 * metrics::dialogPadding)) + 2 * metrics::dialogPadding;
+        return column->heightForWidth(std::max(0.0, width - 2 * metrics::dialogPadding)) + top() + metrics::dialogPadding;
     }
 
     ColumnLayout* column;
     Label* title;
+    Label* barTitle;
     WindowHeader* header;
+    bool controls = true;
 
 protected:
     void layout() override
@@ -67,10 +91,14 @@ protected:
         // Not filled to the window: a fixed-height dialog gives the rest to the
         // layout's filling items, a fitted one is exactly as tall.
         const double width = std::max(0.0, geometry().width - 2 * metrics::dialogPadding);
-        column->setGeometry({metrics::dialogPadding, metrics::dialogPadding, width,
-                             std::max(0.0, geometry().height - 2 * metrics::dialogPadding)});
-        header->setGeometry({0, 0, geometry().width, kHeaderHeight});
+        column->setGeometry({metrics::dialogPadding, top(), width,
+                             std::max(0.0, geometry().height - top() - metrics::dialogPadding)});
+        header->setGeometry({0, 0, geometry().width, controls ? kBarHeight : kHeaderHeight});
+        barTitle->setGeometry({kBarTitleInset, 0, std::max(0.0, geometry().width - 2 * kBarTitleInset), kBarHeight});
     }
+
+private:
+    double top() const { return controls ? kBarHeight : metrics::dialogPadding; }
 };
 
 FormDialog::FormDialog(SettingsWindow& parent, std::string title, double width)
@@ -101,6 +129,7 @@ Label* FormDialog::titleLabel() const
 void FormDialog::setTitle(std::string title)
 {
     m_root->title->setText(title);
+    m_root->barTitle->setText(title);
     if (m_window)
         m_window->setTitle(title);
 }
@@ -120,10 +149,7 @@ void FormDialog::setFixedHeight(double height)
 
 void FormDialog::setCloseVisible(bool visible)
 {
-    m_root->header->setCloseVisible(visible);
-    LayoutHints hints = m_root->title->layoutHints();
-    hints.margins.left = visible ? metrics::xxl : 0;
-    m_root->title->setLayoutHints(hints);
+    m_root->setControlsVisible(visible);
 }
 
 void FormDialog::setBackgroundColor(std::optional<ColorRecipe> color)

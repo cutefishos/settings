@@ -73,7 +73,7 @@ inline constexpr double sidebarCategorySpacing = l;
 inline constexpr double dialogPadding = l;
 inline constexpr double dialogSpacing = l;
 inline constexpr double dialogButtonSpacing = s;
-inline constexpr double dialogWindowButtonsMargin = s;
+inline constexpr double dialogWindowButtonsMargin = 0;
 
 // Font sizes are kept in points, as the Qt version gave them.
 constexpr double points(double pointSize)

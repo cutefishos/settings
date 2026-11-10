@@ -25,8 +25,9 @@ class SettingsWindow;
 
 // Settings' own form dialogs (add a user, change a password, add a language,
 // join a network, edit a shortcut): a modal window over the settings window
-// with only a close button, its title in semibold on the button's line, and
-// a column of content below. Its height follows the content unless fixed.
+// with the window controls and its title centred in a title bar, or, without
+// them, its title in semibold first in the content; and a column of content
+// below. Its height follows the content unless fixed.
 // A dialog is shown once: after it closes, make a new one.
 class FormDialog
 {
@@ -38,8 +39,9 @@ public:
     FormDialog& operator=(const FormDialog&) = delete;
 
     cutefish::ui::Window* window() const { return m_window.get(); }
-    // The dialog's ColumnLayout, inside its padding: the title first, then
-    // what goes under it, with the dialog's spacing.
+    // The dialog's ColumnLayout, inside its padding: the title first (hidden
+    // while the title bar holds it), then what goes under it, with the
+    // dialog's spacing.
     cutefish::ui::ColumnLayout* content() const;
     cutefish::ui::Label* titleLabel() const;
     void setTitle(std::string title);
@@ -49,8 +51,8 @@ public:
 
     // A fixed height lets the content's filling items share the space.
     void setFixedHeight(double height);
-    // Hidden for dialogs whose own Cancel or Close button closes them; the title then
-    // starts at the content's edge.
+    // The window controls; hidden for dialogs whose own Cancel or Close button
+    // closes them, the title then first in the content.
     void setCloseVisible(bool visible);
     // Unset: the theme's second background colour.
     void setBackgroundColor(std::optional<cutefish::ui::ColorRecipe> color);
