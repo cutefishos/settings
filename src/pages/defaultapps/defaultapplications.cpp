@@ -11,6 +11,7 @@
 #include "base/application_bundle.h"
 #include "base/application_registry.h"
 #include "base/mime_apps.h"
+#include "base/mime_database.h"
 
 namespace fs = std::filesystem;
 using namespace cutefish::base;
@@ -28,6 +29,23 @@ static const char* const kTextType = "text/plain";
 static const char* const kMusicType = "audio/mpeg";
 static const char* const kVideoType = "video/mp4";
 static const char* const kImageType = "image/jpeg";
+
+// Text formats that are documents of another kind, opened by the programs
+// for that kind: web pages, calendars, contacts, tables, rich text, printed
+// pages, and launchers the file manager runs.
+static const char* const kNotForEditing[] = {
+    "text/html", "application/xhtml+xml", "text/calendar", "text/vcard", "text/x-vcard", "text/csv",
+    "text/tab-separated-values", "text/rtf", "application/rtf", "application/postscript", "application/x-desktop",
+};
+
+static bool opensType(const std::vector<std::string>& opened, const std::string& type)
+{
+    return std::any_of(opened.begin(), opened.end(), [&type](const std::string& listed) {
+        if (listed.ends_with("/*"))
+            return type.starts_with(std::string_view(listed).substr(0, listed.size() - 1));
+        return mime::inherits(type, listed);
+    });
+}
 
 static bool opensAny(const DesktopEntry& entry, const std::string& category, const std::string& prefix)
 {
@@ -132,6 +150,36 @@ void DefaultApplications::load()
     changed.emit();
 }
 
+// What the text editor opens: plain text and every kind of it the text
+// editors say they edit (logs, scripts, source, markup) that this one can
+// open, except media, documents of another kind, and types the lists give an
+// application that is no text editor.
+std::vector<std::string> DefaultApplications::textTypes(const Application& editor) const
+{
+    std::vector<std::string> types = {kTextType};
+    const std::vector<std::string> paths = mimeapps::listPaths();
+    const auto& editors = m_lists[TextEditor];
+    for (const Application& other : editors) {
+        for (const std::string& listed : other.mimeTypes) {
+            const std::string type = mime::canonicalName(listed);
+            if (type.empty() || contains(types, type) || !mime::inherits(type, kTextType))
+                continue;
+            if (type.starts_with("image/") || type.starts_with("audio/") || type.starts_with("video/")
+                || std::find(std::begin(kNotForEditing), std::end(kNotForEditing), type) != std::end(kNotForEditing))
+                continue;
+            if (!opensType(editor.mimeTypes, type))
+                continue;
+            const std::string chosen = mimeapps::chosenApplication(paths, type);
+            const bool chosenElsewhere = !chosen.empty()
+                && std::none_of(editors.begin(), editors.end(),
+                                [&chosen](const Application& other) { return other.path == chosen; });
+            if (!chosenElsewhere)
+                types.push_back(type);
+        }
+    }
+    return types;
+}
+
 void DefaultApplications::setDefault(Kind kind, int index)
 {
     const auto& list = m_lists[kind];
@@ -171,10 +219,9 @@ void DefaultApplications::setDefault(Kind kind, int index)
     case Email:
         set("x-scheme-handler/mailto", application.fileName);
         break;
-    // Only plain text: editors also list web pages and other types that have
-    // an application of their own.
     case TextEditor:
-        set(kTextType, application.fileName);
+        for (const std::string& type : textTypes(application))
+            set(type, application.fileName);
         break;
     case MusicPlayer:
         setAll("audio/", kMusicType);

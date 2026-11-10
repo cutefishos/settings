@@ -54,6 +54,7 @@ public:
 private:
     void load();
     void watchLists();
+    std::vector<std::string> textTypes(const Application& editor) const;
 
     std::vector<Application> m_lists[KindCount];
     int m_defaults[KindCount] = {-1, -1, -1, -1, -1, -1, -1};
