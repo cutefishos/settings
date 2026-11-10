@@ -8,6 +8,7 @@
 #include <cstdio>
 #include <filesystem>
 
+#include "base/application_bundle.h"
 #include "base/application_registry.h"
 #include "base/mime_apps.h"
 
@@ -20,6 +21,13 @@ static bool contains(const std::vector<std::string>& list, const std::string& va
 {
     return std::find(list.begin(), list.end(), value) != list.end();
 }
+
+// Applications differ in the types they list; the commonest one stands for
+// all. Without a choice, this is what the file manager opens them with.
+static const char* const kTextType = "text/plain";
+static const char* const kMusicType = "audio/mpeg";
+static const char* const kVideoType = "video/mp4";
+static const char* const kImageType = "image/jpeg";
 
 static bool opensAny(const DesktopEntry& entry, const std::string& category, const std::string& prefix)
 {
@@ -58,14 +66,30 @@ void DefaultApplications::load()
     std::fill(std::begin(m_defaults), std::end(m_defaults), -1);
 
     for (const auto& entry : ApplicationRegistry::instance().applications()) {
-        Application application{entry->path, fs::path(entry->path).filename().string(), entry->name, entry->icon,
+        Application application{entry->path, mimeapps::listedId(*entry), entry->name, entry->icon,
                                 entry->mimeTypes};
+        // A bundle has no categories but the terminal's. Any type of a kind
+        // is too wide for it (an editor that opens SVG is no image viewer),
+        // so it has to open the type the default is read from.
+        if (entry->bundle) {
+            if (bundle::opensType(*entry, kTextType))
+                m_lists[TextEditor].push_back(application);
+            if (bundle::opensType(*entry, kMusicType))
+                m_lists[MusicPlayer].push_back(application);
+            if (bundle::opensType(*entry, kVideoType))
+                m_lists[VideoPlayer].push_back(application);
+            if (bundle::opensType(*entry, kImageType))
+                m_lists[ImageViewer].push_back(application);
+            if (contains(entry->categories, "TerminalEmulator"))
+                m_lists[Terminal].push_back(application);
+            continue;
+        }
         // A player can be both the music and the video player.
         if (contains(entry->categories, "WebBrowser") && contains(entry->mimeTypes, "x-scheme-handler/http"))
             m_lists[Browser].push_back(application);
         if (contains(entry->categories, "Email") && contains(entry->mimeTypes, "x-scheme-handler/mailto"))
             m_lists[Email].push_back(application);
-        if (contains(entry->categories, "TextEditor") && contains(entry->mimeTypes, "text/plain"))
+        if (contains(entry->categories, "TextEditor") && contains(entry->mimeTypes, kTextType))
             m_lists[TextEditor].push_back(application);
         if (opensAny(*entry, "AudioVideo", "audio/"))
             m_lists[MusicPlayer].push_back(application);
@@ -84,12 +108,10 @@ void DefaultApplications::load()
     const std::string email = first(mimeapps::associations(mimeapps::userListPath(), "Default Applications",
                                                            "x-scheme-handler/mailto"));
     const std::string terminal = mimeapps::defaultTerminal(mimeapps::userTerminalsListPath());
-    // Applications differ in the types they list; the commonest one stands
-    // for all. Without a choice, this is what the file manager opens them with.
-    const std::string textEditor = mimeapps::defaultApplication(mimeapps::listPaths(), "text/plain");
-    const std::string musicPlayer = mimeapps::defaultApplication(mimeapps::listPaths(), "audio/mpeg");
-    const std::string videoPlayer = mimeapps::defaultApplication(mimeapps::listPaths(), "video/mp4");
-    const std::string imageViewer = mimeapps::defaultApplication(mimeapps::listPaths(), "image/jpeg");
+    const std::string textEditor = mimeapps::defaultApplication(mimeapps::listPaths(), kTextType);
+    const std::string musicPlayer = mimeapps::defaultApplication(mimeapps::listPaths(), kMusicType);
+    const std::string videoPlayer = mimeapps::defaultApplication(mimeapps::listPaths(), kVideoType);
+    const std::string imageViewer = mimeapps::defaultApplication(mimeapps::listPaths(), kImageType);
 
     const auto find = [this](Kind kind, const std::string& value, bool byPath) {
         const auto& list = m_lists[kind];
@@ -121,11 +143,25 @@ void DefaultApplications::setDefault(Kind kind, int index)
         if (!mimeapps::setDefault(userList, type, desktop))
             fprintf(stderr, "Failed to save default application for %s\n", type.c_str());
     };
-    const auto setAll = [&set, &application](const std::string& prefix) {
-        for (const std::string& type : application.mimeTypes) {
-            if (type.starts_with(prefix))
-                set(type, application.fileName);
+    // A bundle can open a whole group such as image/*, which stands for the
+    // types the other choices open and the one the default is read from.
+    const auto setAll = [&set, &application, &list](const std::string& prefix, const std::string& common) {
+        std::vector<std::string> types;
+        const auto add = [&types, &prefix](const std::string& type) {
+            if (type.starts_with(prefix) && !type.ends_with("/*") && !contains(types, type))
+                types.push_back(type);
+        };
+        for (const std::string& type : application.mimeTypes)
+            add(type);
+        if (contains(application.mimeTypes, prefix + "*")) {
+            add(common);
+            for (const Application& other : list) {
+                for (const std::string& type : other.mimeTypes)
+                    add(type);
+            }
         }
+        for (const std::string& type : types)
+            set(type, application.fileName);
     };
     switch (kind) {
     case Browser:
@@ -138,16 +174,16 @@ void DefaultApplications::setDefault(Kind kind, int index)
     // Only plain text: editors also list web pages and other types that have
     // an application of their own.
     case TextEditor:
-        set("text/plain", application.fileName);
+        set(kTextType, application.fileName);
         break;
     case MusicPlayer:
-        setAll("audio/");
+        setAll("audio/", kMusicType);
         break;
     case VideoPlayer:
-        setAll("video/");
+        setAll("video/", kVideoType);
         break;
     case ImageViewer:
-        setAll("image/");
+        setAll("image/", kImageType);
         break;
     case Terminal:
         if (!mimeapps::setDefaultTerminal(mimeapps::userTerminalsListPath(), application.fileName)) {

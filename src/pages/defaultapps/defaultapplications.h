@@ -14,7 +14,8 @@ namespace settings {
 
 // The applications that can be the default web browser, mail client, text
 // editor, music player, video player, image viewer and terminal, and which
-// ones are. The choices go to the user's mimeapps.list and the terminal list.
+// ones are; an installed bundle counts where it opens the main type. The
+// choices go to the user's mimeapps.list and the terminal list.
 class DefaultApplications
 {
 public:
@@ -32,7 +33,8 @@ public:
     struct Application
     {
         std::string path;
-        // The desktop file's name, which mimeapps.list refers to.
+        // How mimeapps.list names it: the desktop file's name, or the
+        // bundle's path.
         std::string fileName;
         std::string name;
         std::string icon;
