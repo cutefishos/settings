@@ -3,12 +3,14 @@
 
 #include "pages/accounts/picturedialog.h"
 
+#include <algorithm>
 #include <optional>
 
 #include "base/file.h"
 #include "base/i18n.h"
 #include "base/paths.h"
 #include "cutefish/accounts/account_picture.h"
+#include "ui/bitmap.h"
 #include "ui/cell_layout.h"
 #include "ui/dialog_window.h"
 #include "ui/file_chooser.h"
@@ -27,6 +29,35 @@ namespace settings {
 
 static constexpr double kWidth = 400;
 static constexpr int kColumns = 5;
+
+// The presets' size.
+static constexpr int kPictureSide = 512;
+// The account service refuses a larger file.
+static constexpr size_t kMaximumPictureBytes = 1024 * 1024;
+
+// A square crop of the file at the presets' size, smaller if it would still be
+// too large for the service; the file itself when it cannot be read.
+static std::string accountPicture(const std::string& path)
+{
+    const Bitmap decoded =
+            Bitmap::decodeFile(path, {kPictureSide, kPictureSide}, Bitmap::Scaling::Cover, true);
+    if (decoded.isNull())
+        return path;
+    Bitmap picture = decoded.copy(base::Rect((decoded.width() - kPictureSide) / 2,
+                                             (decoded.height() - kPictureSide) / 2,
+                                             kPictureSide,
+                                             kPictureSide));
+    std::optional<std::string> encoded = picture.encodePng();
+    while (encoded && encoded->size() > kMaximumPictureBytes && picture.width() > 64) {
+        picture = picture.scaled(picture.width() / 2, picture.height() / 2);
+        encoded = picture.encodePng();
+    }
+    const std::string runtime = base::paths::runtimeDirectory();
+    if (!encoded || runtime.empty())
+        return path;
+    const std::string target = runtime + "/cutefish-account-picture.png";
+    return base::file::writeAtomically(target, *encoded) ? target : path;
+}
 
 // A preset picture in a circle, with a ring around it while it is selected,
 // fainter while hovered.
@@ -222,7 +253,9 @@ void PictureDialog::save()
 {
     if (m_selected.empty())
         return;
-    m_account->setIconFileName(m_selected);
+    const bool preset = std::any_of(m_tiles.begin(), m_tiles.end(),
+                                    [this](PictureTile* tile) { return tile->path() == m_selected; });
+    m_account->setIconFileName(preset ? m_selected : accountPicture(m_selected));
     if (onPicked)
         onPicked(m_selected);
     close();
