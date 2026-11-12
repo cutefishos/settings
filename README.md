@@ -2,6 +2,8 @@
 
 The System Settings application for Cutefish Desktop.
 
+<img src="screenshots/settings.png" alt="Settings" width="937">
+
 ## Dependencies
 
 Settings is built on [cutefish-toolkit](https://github.com/cutefishos/cutefish-toolkit)
