@@ -22,6 +22,7 @@ DockSettings::DockSettings()
     m_visibility = int(shell.intValue("Dock/Visibility"));
     m_glassTint = std::clamp(shell.doubleValue("Dock/GlassTint", 0.5), 0.0, 1.0);
     m_minimizedArea = shell.boolValue("Dock/MinimizedArea", true);
+    m_magnifiedIconSize = int(shell.intValue("Dock/MagnifiedIconSize", 0));
 }
 
 // Called on every slider move; none of these waits for the dock.
@@ -64,6 +65,14 @@ void DockSettings::setMinimizedArea(bool enabled)
         return;
     m_dock.send("setMinimizedArea", enabled);
     m_minimizedArea = enabled;
+}
+
+void DockSettings::setMagnifiedIconSize(int size)
+{
+    if (size == m_magnifiedIconSize)
+        return;
+    m_dock.send("setMagnifiedIconSize", int32_t(size));
+    m_magnifiedIconSize = size;
 }
 
 } // namespace settings

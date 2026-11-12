@@ -30,6 +30,19 @@ namespace {
 // Rows below the sliders, near their height so the card keeps one rhythm.
 constexpr double kTallRowHeight = 64;
 
+// The magnification slider: off at its left end, then the magnified sizes;
+// below kMagnificationOn a drag is off, from there up it is at least the
+// smallest size.
+constexpr int kMagnificationOff = 56;
+constexpr int kMagnificationOn = 60;
+constexpr int kSmallestMagnified = 64;
+constexpr int kLargestMagnified = 128;
+
+double magnificationValue(int size)
+{
+    return size <= 0 ? kMagnificationOff : size;
+}
+
 // A segmented control over the right half of the row, as a SliderRow puts its slider.
 class SegmentedRow : public ListRow
 {
@@ -84,7 +97,7 @@ public:
         Card* sliders = content()->addChild<Card>(Card::Style::List);
         SliderRow* size = sliders->addChild<SliderRow>(tr("Size"));
         size->setName("dock:size");
-        size->setCaptions(tr("Small"), tr("Huge"));
+        size->setCaptions(tr("Small"), tr("Large"));
         // The value is the icon size itself; the dock derives its paddings
         // from it (54 is the design baseline).
         size->setRange(32, 128);
@@ -95,6 +108,18 @@ public:
         size->onMoved = [this, size](double value) {
             m_settings.setIconSize(int(std::round(value)));
             size->setValue(m_settings.iconSize());
+        };
+        SliderRow* magnification = sliders->addChild<SliderRow>(tr("Magnification"));
+        magnification->setName("dock:magnification");
+        magnification->setCaptions(tr("Off"), tr("Large"));
+        // The size the icon under the pointer grows to.
+        magnification->setRange(kMagnificationOff, kLargestMagnified);
+        magnification->setStepSize(1);
+        magnification->setValue(magnificationValue(m_settings.magnifiedIconSize()));
+        magnification->onMoved = [this, magnification](double value) {
+            const int position = int(std::round(value));
+            m_settings.setMagnifiedIconSize(position < kMagnificationOn ? 0 : std::max(kSmallestMagnified, position));
+            magnification->setValue(magnificationValue(m_settings.magnifiedIconSize()));
         };
         SliderRow* glass = sliders->addChild<SliderRow>(tr("Glass effect"));
         glass->setName("dock:glass");

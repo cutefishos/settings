@@ -3,6 +3,7 @@
 
 #include <gtest/gtest.h>
 
+#include <algorithm>
 #include <chrono>
 #include <string>
 
@@ -52,10 +53,32 @@ TEST(DockPage, HasEveryControl)
 {
     PageFixture page("dock");
     EXPECT_EQ(page.count("settings::ImageSelectionItem"), 3);
-    EXPECT_EQ(page.count("settings::SliderRow"), 2);
+    EXPECT_EQ(page.count("settings::SliderRow"), 3);
     EXPECT_EQ(page.count("SegmentedControl"), 1);
     EXPECT_EQ(page.count("settings::NavigationItem"), 1);
     EXPECT_EQ(page.count("settings::SwitchRow"), 1);
+}
+
+TEST(DockPage, MagnificationIsOneSliderThatIsOffAtItsLeftEnd)
+{
+    PageFixture page("dock");
+    Window& window = page.window->window();
+    auto* row = findView<SliderRow>(window.contentView(), "dock:magnification");
+    ASSERT_NE(row, nullptr);
+    Slider& slider = *row->slider();
+    // 56 is off, then 64 to 128.
+    const auto dragTo = [&](double fraction) {
+        TestInput::press(window, trackPoint(slider, std::min(1.0, fraction + 0.2)));
+        TestInput::movePointer(window, trackPoint(slider, fraction));
+        TestInput::release(window, trackPoint(slider, fraction));
+        waitFor([] { return false; }, std::chrono::milliseconds(600));
+        return row->value();
+    };
+    EXPECT_EQ(56, dragTo(0));
+    // Just past off it stays off; a little farther it is the smallest size.
+    EXPECT_EQ(56, dragTo(2.0 / 72));
+    EXPECT_EQ(64, dragTo(6.0 / 72));
+    EXPECT_NEAR(92, dragTo(36.0 / 72), 1);
 }
 
 TEST(DockPage, SizeStaysWhereItIsDragged)

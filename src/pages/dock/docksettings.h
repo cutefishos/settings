@@ -31,6 +31,10 @@ public:
     bool minimizedArea() const { return m_minimizedArea; }
     void setMinimizedArea(bool enabled);
 
+    // 0 is off.
+    int magnifiedIconSize() const { return m_magnifiedIconSize; }
+    void setMagnifiedIconSize(int size);
+
 private:
     cutefish::base::dbus::Proxy m_dock;
     int m_iconSize = 0;
@@ -38,6 +42,7 @@ private:
     int m_visibility = 0;
     double m_glassTint = 0.5;
     bool m_minimizedArea = true;
+    int m_magnifiedIconSize = 0;
 };
 
 } // namespace settings

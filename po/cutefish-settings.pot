@@ -919,7 +919,11 @@ msgid "Small"
 msgstr ""
 
 #: src/pages/dock/dockpage.cpp
-msgid "Huge"
+msgid "Large"
+msgstr ""
+
+#: src/pages/dock/dockpage.cpp
+msgid "Magnification"
 msgstr ""
 
 #: src/pages/dock/dockpage.cpp
@@ -1654,7 +1658,7 @@ msgstr ""
 msgid "Keepalive"
 msgstr ""
 
-#: src/pages/network/vpn/vpneditor.cpp
+#: src/pages/dock/dockpage.cpp src/pages/network/vpn/vpneditor.cpp
 #: src/pages/notifications/notificationspage.cpp
 msgid "Off"
 msgstr ""
