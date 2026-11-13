@@ -158,6 +158,16 @@ TEST_F(Fixture, SearchMatchesWordStarts)
     EXPECT_FALSE(isHidden(window(), "sidebar:appearance"));
 }
 
+TEST_F(Fixture, SearchFoldsCaseBeyondAscii)
+{
+    TestInput::setKeyboardFocus(window(), true);
+    TestInput::typeKey(window(), key::letter('f'), ControlModifier);
+    // The Kelvin sign folds to "k", as "Ü" folds to "ü" in a translated title.
+    TestInput::typeText(window(), "Keyb");
+    window().grab();
+    EXPECT_NE(dumpLine(window(), "result:keyboard"), "");
+}
+
 TEST(ListRow, KeepsTheRowHeights)
 {
     Window window;

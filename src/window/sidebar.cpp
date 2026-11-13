@@ -5,6 +5,9 @@
 
 #include <algorithm>
 #include <cmath>
+#include <memory>
+
+#include <unicode/ucasemap.h>
 
 #include "base/i18n.h"
 #include "ui/color_provider.h"
@@ -390,13 +393,26 @@ bool Sidebar::isSearching() const
     return !trimmed(m_search->text()).empty();
 }
 
-static std::string lowered(std::string text)
+static std::string lowered(const std::string& text)
 {
-    for (char& c : text) {
-        if (c >= 'A' && c <= 'Z')
-            c = char(c - 'A' + 'a');
+    UErrorCode status = U_ZERO_ERROR;
+    std::unique_ptr<UCaseMap, decltype(&ucasemap_close)> map(ucasemap_open("", U_FOLD_CASE_DEFAULT, &status),
+                                                             ucasemap_close);
+    if (U_FAILURE(status))
+        return text;
+    std::string result(text.size() + 16, '\0');
+    int32_t length = ucasemap_utf8FoldCase(map.get(), result.data(), int32_t(result.size()), text.data(),
+                                           int32_t(text.size()), &status);
+    if (status == U_BUFFER_OVERFLOW_ERROR) {
+        status = U_ZERO_ERROR;
+        result.resize(size_t(length));
+        length = ucasemap_utf8FoldCase(map.get(), result.data(), int32_t(result.size()), text.data(),
+                                       int32_t(text.size()), &status);
     }
-    return text;
+    if (U_FAILURE(status))
+        return text;
+    result.resize(size_t(length));
+    return result;
 }
 
 static std::string withoutHyphens(std::string text)
