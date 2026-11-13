@@ -282,7 +282,10 @@ void SliderRow::setStepped(bool stepped)
 void SliderRow::setValue(double value)
 {
     m_value = value;
-    if (!m_settling && !isPressed())
+    // While the handle is held the slider takes it at once: the value it was
+    // moved to changes nothing, another one (a value refused) holds the
+    // handle there. Let go, it waits for a change still going out.
+    if (isPressed() || !m_settling)
         m_controls->slider()->setValue(value);
 }
 
