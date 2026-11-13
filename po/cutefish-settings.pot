@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-13 15:22+0800\n"
+"POT-Creation-Date: 2026-11-13 16:33+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -114,10 +114,6 @@ msgid "Open-Source Licenses"
 msgstr ""
 
 #: src/pages/about/licensespage.cpp
-msgid "Cutefish"
-msgstr ""
-
-#: src/pages/about/licensespage.cpp
 msgid "Desktop and applications"
 msgstr ""
 
@@ -193,11 +189,13 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
 #: src/pages/accounts/picturedialog.cpp src/pages/wallpaper/wallpaperpage.cpp
 #, python-brace-format
 msgid "Image files ({patterns})"
 msgstr ""
 
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
 #: src/pages/accounts/picturedialog.cpp src/pages/network/vpn/vpndialogs.cpp
 #: src/pages/network/vpn/vpnpage.cpp
 msgid "All files (*)"
@@ -501,8 +499,8 @@ msgstr ""
 msgid "Scanner"
 msgstr ""
 
-#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/display/displaypage.cpp
-#: src/window/pagelist.cpp
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgctxt "device type"
 msgid "Display"
 msgstr ""
 
@@ -772,6 +770,10 @@ msgstr ""
 #: src/pages/display/displaypage.cpp
 #, python-brace-format
 msgid "{item} (Recommended)"
+msgstr ""
+
+#: src/pages/display/displaypage.cpp src/window/pagelist.cpp
+msgid "Display"
 msgstr ""
 
 #: src/pages/display/displaypage.cpp
@@ -1548,6 +1550,7 @@ msgstr ""
 msgid "Export VPN Configuration"
 msgstr ""
 
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
 #: src/pages/network/vpn/vpndialogs.cpp src/pages/network/vpn/vpnpage.cpp
 #, python-brace-format
 msgid "VPN configurations ({patterns})"
@@ -2217,12 +2220,12 @@ msgstr ""
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
 #, python-brace-format
-msgid "This shortcut is already used by \"{action}\"."
+msgid "This shortcut is already used by “{action}”."
 msgstr ""
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
 #, python-brace-format
-msgid "This shortcut is used by \"{action}\". Press it again to reassign it."
+msgid "This shortcut is used by “{action}”. Press it again to reassign it."
 msgstr ""
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
@@ -2430,7 +2433,8 @@ msgstr ""
 msgid "Your wallpapers"
 msgstr ""
 
-#: src/pages/wallpaper/wallpaperpage.cpp src/window/pagelist.cpp
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgctxt "wallpaper section"
 msgid "System"
 msgstr ""
 
@@ -2516,6 +2520,10 @@ msgstr ""
 
 #: src/window/pagelist.cpp
 msgid "touch, touch screen, touch panel"
+msgstr ""
+
+#: src/window/pagelist.cpp
+msgid "System"
 msgstr ""
 
 #: src/window/pagelist.cpp
