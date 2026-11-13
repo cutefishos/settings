@@ -166,10 +166,10 @@ TEST_F(BatteryPageTest, TheTitleCentresOnThePicker)
     View* page = settingsWindow->currentPage();
     const RectF range = findView(page, "battery:range")->geometry();
     const RectF title = findView(page, "battery:historytitle")->geometry();
-    // Where Qt's RowLayout puts it, measured with the QML: y 8 next to the 32
-    // high picker.
-    EXPECT_EQ(title.y, 8);
-    EXPECT_EQ(title.height, 17);
+    // Centred on the 32 high picker, rounded to a whole pixel. The height is
+    // the UI font's line height.
+    EXPECT_GT(title.height, 0);
+    EXPECT_EQ(title.y, std::round((range.height - title.height) / 2));
     EXPECT_EQ(range.y, 0);
 }
 
