@@ -3,6 +3,7 @@
 
 #include <chrono>
 #include <memory>
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -284,7 +285,7 @@ public:
         top->setLayoutHints({.fillWidth = true});
         m_firstCard = top->addChild<Card>(Card::Style::List);
         m_switch = m_firstCard->addChild<SwitchRow>(tr("Bluetooth"));
-        m_switch->onToggled = [this](bool checked) { m_manager->setEnabled(checked); };
+        m_switch->onToggled = [this](bool checked) { toggled(checked); };
         m_message = top->addChild<Footnote>();
         m_message->setName("bluetooth:message");
 
@@ -337,10 +338,25 @@ private:
         }
     }
 
+    // The switch shows the requested state until BlueZ reports it, so that
+    // PowerState and other signals in between do not flip it back.
+    void toggled(bool checked)
+    {
+        if (checked == switchEnabled())
+            return;
+        m_requestedEnabled = checked;
+        m_manager->setEnabled(checked);
+        update();
+    }
+
+    bool switchEnabled() const { return m_requestedEnabled.value_or(m_manager->enabled()); }
+
     void update()
     {
         const bool enabled = m_manager->enabled();
-        m_switch->setChecked(enabled);
+        if (m_requestedEnabled == enabled || !m_manager->errorText().empty())
+            m_requestedEnabled.reset();
+        m_switch->setChecked(switchEnabled());
         m_switch->control()->setEnabled(m_manager->operational() && !m_manager->adapters().empty());
         for (AdapterRow* row : m_adapterRows) {
             row->update();
@@ -383,6 +399,7 @@ private:
     DeviceSection* m_other;
     std::unique_ptr<AdapterDetailsDialog> m_adapterDialog;
     std::unique_ptr<DeviceDetailsDialog> m_deviceDialog;
+    std::optional<bool> m_requestedEnabled;
     std::vector<base::Subscription> m_subscriptions;
 };
 
