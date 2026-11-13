@@ -1,0 +1,2605 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cutefish-settings\n"
+"Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
+"POT-Creation-Date: 2026-11-13 16:33+0800\n"
+"PO-Revision-Date: 2026-11-13 15:22+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "Unknown"
+msgstr "알 수 없음"
+
+#. TRANSLATORS: a processor model and its number of cores, such as "Intel Core i5 x 8".
+#: src/pages/about/aboutinfo.cpp
+#, python-brace-format
+msgid "{model} x {count}"
+msgstr "{model} x {count}"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "B"
+msgstr "B"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "KB"
+msgstr "KB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "MB"
+msgstr "MB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "GB"
+msgstr "GB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "TB"
+msgstr "TB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "PB"
+msgstr "PB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "EB"
+msgstr "EB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "ZB"
+msgstr "ZB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "YB"
+msgstr "YB"
+
+#. TRANSLATORS: a size, such as "16 GB".
+#: src/pages/about/aboutinfo.cpp
+#, python-brace-format
+msgid "{value} {unit}"
+msgstr "{value}{unit}"
+
+#. TRANSLATORS: the space used on the system disk and its size, such as "40 GB / 256 GB".
+#: src/pages/about/aboutinfo.cpp
+#, python-brace-format
+msgid "{used} / {total}"
+msgstr "{used} / {total}"
+
+#: src/pages/about/aboutpage.cpp src/window/pagelist.cpp
+msgid "About"
+msgstr "정보"
+
+#: src/pages/about/aboutpage.cpp
+#, python-brace-format
+msgid "Running on {system}"
+msgstr "{system}에서 실행 중"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Model"
+msgstr "모델"
+
+#: src/pages/about/aboutpage.cpp
+msgid "System version"
+msgstr "시스템 버전"
+
+#: src/pages/about/aboutpage.cpp
+msgid "System type"
+msgstr "시스템 유형"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Kernel version"
+msgstr "커널 버전"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Processor"
+msgstr "프로세서"
+
+#: src/pages/about/aboutpage.cpp
+msgid "RAM"
+msgstr "RAM"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Internal storage"
+msgstr "내장 저장 공간"
+
+#: src/pages/about/aboutpage.cpp src/pages/about/licensespage.cpp
+#: src/window/pagelist.cpp
+msgid "Open-Source Licenses"
+msgstr "오픈 소스 라이선스"
+
+#: src/pages/about/licensespage.cpp
+msgid "Desktop and applications"
+msgstr "데스크톱 및 애플리케이션"
+
+#: src/pages/about/licensespage.cpp
+msgid "Terminal and the icon theme are under the GNU General Public License 3.0."
+msgstr "터미널과 아이콘 테마는 GNU General Public License 3.0을 따릅니다."
+
+#: src/pages/about/licensespage.cpp
+msgid "Compositor"
+msgstr "컴포지터"
+
+#: src/pages/about/licensespage.cpp
+msgid "Wayland and window management, designed after Chromium's Exo and Ash"
+msgstr "Chromium의 Exo와 Ash를 본떠 설계한 Wayland 및 창 관리"
+
+#: src/pages/about/licensespage.cpp
+msgid "Xwayland window manager and selection bridge, adapted from sommelier"
+msgstr "sommelier에서 가져온 Xwayland 창 관리자 및 선택 영역 브리지"
+
+#: src/pages/about/licensespage.cpp
+msgid "Pointer acceleration curve"
+msgstr "포인터 가속 곡선"
+
+#: src/pages/about/licensespage.cpp
+msgid "The source code of the pointer acceleration curve is available under the Apple Public Source License 2.0 at https://github.com/cutefishos/cutefish-compositor."
+msgstr "포인터 가속 곡선의 소스 코드는 Apple Public Source License 2.0에 따라 https://github.com/cutefishos/cutefish-compositor에서 제공됩니다."
+
+#: src/pages/accounts/accountspage.cpp src/window/pagelist.cpp
+msgid "Users"
+msgstr "사용자"
+
+#: src/pages/accounts/accountspage.cpp
+msgid "Add user"
+msgstr "사용자 추가"
+
+#: src/pages/accounts/accountspage.cpp src/pages/accounts/userdetailsdialog.cpp
+msgid "Delete this user"
+msgstr "이 사용자 삭제"
+
+#: src/pages/accounts/accountspage.cpp
+#, python-brace-format
+msgid "Delete user “{name}”? Their home directory and its contents will be permanently deleted. This cannot be undone."
+msgstr "“{name}” 사용자를 삭제하겠습니까? 해당 사용자의 홈 디렉토리와 그 내용이 영구적으로 삭제됩니다. 이 작업은 취소할 수 없습니다."
+
+#: src/pages/accounts/accountspage.cpp src/pages/accounts/picturedialog.cpp
+#: src/pages/accounts/userdialogs.cpp src/pages/datetime/timezonedialog.cpp
+#: src/pages/language/addlanguagedialog.cpp
+#: src/pages/language/chooseregiondialog.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Cancel"
+msgstr "취소"
+
+#: src/pages/accounts/accountspage.cpp
+msgid "Delete"
+msgstr "삭제"
+
+#: src/pages/accounts/picturedialog.cpp
+msgid "Choose a picture"
+msgstr "사진 선택"
+
+#: src/pages/accounts/picturedialog.cpp
+msgid "Choose File…"
+msgstr "파일 선택…"
+
+#: src/pages/accounts/picturedialog.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/proxy/proxypage.cpp src/pages/network/vpn/vpndialogs.cpp
+msgid "Save"
+msgstr "저장"
+
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
+#: src/pages/accounts/picturedialog.cpp src/pages/wallpaper/wallpaperpage.cpp
+#, python-brace-format
+msgid "Image files ({patterns})"
+msgstr "이미지 파일({patterns})"
+
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
+#: src/pages/accounts/picturedialog.cpp src/pages/network/vpn/vpndialogs.cpp
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "All files (*)"
+msgstr "모든 파일 (*)"
+
+#: src/pages/accounts/userdetailsdialog.cpp src/pages/accounts/userdialogs.cpp
+msgid "Account type"
+msgstr "계정 유형"
+
+#: src/pages/accounts/userdetailsdialog.cpp
+msgid "Change password…"
+msgstr "암호 변경…"
+
+#: src/pages/accounts/userdetailsdialog.cpp src/pages/accounts/userdialogs.cpp
+msgid "Standard"
+msgstr "일반"
+
+#: src/pages/accounts/userdetailsdialog.cpp src/pages/accounts/userdialogs.cpp
+msgid "Administrator"
+msgstr "관리자"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Change password"
+msgstr "암호 변경"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Current password"
+msgstr "현재 암호"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "New password"
+msgstr "새 암호"
+
+#: src/pages/accounts/userdialogs.cpp src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Password"
+msgstr "암호"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Verify password"
+msgstr "암호 확인"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The current password is incorrect"
+msgstr "현재 암호가 올바르지 않습니다"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The new password was not accepted"
+msgstr "새 암호가 받아들여지지 않았습니다"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The password could not be changed"
+msgstr "암호를 변경할 수 없습니다"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The password change did not finish in time"
+msgstr "암호 변경이 제시간에 완료되지 않았습니다"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Add new user"
+msgstr "새 사용자 추가"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "User name"
+msgstr "사용자 이름"
+
+#: src/pages/accounts/userdialogs.cpp src/pages/language/addlanguagedialog.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Add"
+msgstr "추가"
+
+#: src/pages/accounts/userrow.cpp
+msgid "Logged in"
+msgstr "로그인됨"
+
+#: src/pages/appearance/appearancepage.cpp src/window/pagelist.cpp
+msgid "Appearance"
+msgstr "모양"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Light"
+msgstr "라이트"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Dark"
+msgstr "다크"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Auto"
+msgstr "자동"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Accent color"
+msgstr "강조 색상"
+
+#: src/pages/appearance/appearancepage.cpp src/pages/fonts/fontspage.cpp
+#: src/window/pagelist.cpp
+msgid "Fonts"
+msgstr "글꼴"
+
+#: src/pages/appearance/appearancepage.cpp
+#: src/pages/icontheme/iconthemepage.cpp src/window/pagelist.cpp
+msgid "Icon Theme"
+msgstr "아이콘 테마"
+
+#: src/pages/appearance/appearancepage.cpp
+#: src/pages/cursortheme/cursorthemepage.cpp src/window/pagelist.cpp
+msgid "Cursor Style"
+msgstr "커서 스타일"
+
+#: src/pages/battery/battery.cpp
+#, python-brace-format
+msgid "Today at {time}"
+msgstr "오늘 {time}"
+
+#: src/pages/battery/battery.cpp
+#, python-brace-format
+msgid "Yesterday at {time}"
+msgstr "어제 {time}"
+
+#: src/pages/battery/batterypage.cpp
+msgid "History"
+msgstr "기록"
+
+#: src/pages/battery/batterypage.cpp
+msgid "24 hours"
+msgstr "24시간"
+
+#: src/pages/battery/batterypage.cpp
+msgid "7 days"
+msgstr "7일"
+
+#: src/pages/battery/batterypage.cpp src/window/pagelist.cpp
+msgid "Battery"
+msgstr "배터리"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Health"
+msgstr "성능 상태"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Condition"
+msgstr "상태"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Maximum capacity"
+msgstr "최대 용량"
+
+#: src/pages/battery/batterypage.cpp src/pages/battery/historygraph.cpp
+msgid "Charging"
+msgstr "충전 중"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Show percentage in status bar"
+msgstr "상태 막대에 퍼센트 보기"
+
+#. TRANSLATORS: the names of a computer's two batteries.
+#: src/pages/battery/batterypage.cpp
+msgid "Main"
+msgstr "기본"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Extra"
+msgstr "보조"
+
+#. TRANSLATORS: the name of one of a computer's batteries, such as "Battery 3".
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "Battery {n}"
+msgstr "배터리 {n}"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Excellent"
+msgstr "매우 좋음"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Normal"
+msgstr "보통"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Poor"
+msgstr "나쁨"
+
+#. TRANSLATORS: a percentage, such as "92%".
+#: src/pages/battery/batterypage.cpp src/pages/display/displaypage.cpp
+#: src/pages/network/common/detailsdialog.cpp
+#, python-brace-format
+msgid "{percent}%"
+msgstr "{percent}%"
+
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "Last charged to {percent}%"
+msgstr "마지막으로 {percent}%까지 충전됨"
+
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "Limit charging to {percent}%"
+msgstr "충전을 {percent}%로 제한"
+
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "While plugged in, charging stops at {end}% and resumes below {start}%, so the battery wears more slowly."
+msgstr "전원에 연결되어 있는 동안 {end}%에서 충전을 멈추고 {start}% 미만이 되면 다시 충전하여 배터리 노화를 늦춥니다."
+
+#: src/pages/battery/batterypage.cpp
+msgid "This computer's battery controller did not keep the limit, so the battery still charges fully."
+msgstr "이 컴퓨터의 배터리 컨트롤러가 제한을 유지하지 않아 배터리가 계속 완전히 충전됩니다."
+
+#: src/pages/battery/historygraph.cpp
+msgid "Fully charged"
+msgstr "완전히 충전됨"
+
+#: src/pages/battery/historygraph.cpp
+msgid "Not charging"
+msgstr "충전 안 됨"
+
+#: src/pages/battery/historygraph.cpp
+msgid "On battery"
+msgstr "배터리 사용 중"
+
+#: src/pages/battery/historygraph.cpp
+msgid "Plugged in"
+msgstr "전원 연결됨"
+
+#. TRANSLATORS: a weekday and a time in the graph's readout, such as "Mon 9:41 AM".
+#: src/pages/battery/historygraph.cpp
+#, python-brace-format
+msgid "{day} {time}"
+msgstr "{day} {time}"
+
+#. TRANSLATORS: the battery state and the time in the graph's readout, such as "Charging · 9:41 AM".
+#: src/pages/battery/historygraph.cpp
+#, python-brace-format
+msgid "{state} · {time}"
+msgstr "{state} · {time}"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Audio device"
+msgstr "오디오 장치"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Headphones"
+msgstr "헤드폰"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Headset"
+msgstr "헤드셋"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Camera"
+msgstr "카메라"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Video camera"
+msgstr "비디오 카메라"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Computer"
+msgstr "컴퓨터"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Game controller"
+msgstr "게임 컨트롤러"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/window/pagelist.cpp
+msgid "Keyboard"
+msgstr "키보드"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/mouse/mousepage.cpp
+#: src/window/pagelist.cpp
+msgid "Mouse"
+msgstr "마우스"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Drawing tablet"
+msgstr "드로잉 태블릿"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Modem"
+msgstr "모뎀"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Media player"
+msgstr "미디어 플레이어"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Network device"
+msgstr "네트워크 장치"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Phone"
+msgstr "전화"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Printer"
+msgstr "프린터"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Scanner"
+msgstr "스캐너"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgctxt "device type"
+msgid "Display"
+msgstr "디스플레이"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Name"
+msgstr "이름"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/network/vpn/vpneditor.cpp
+msgid "Address"
+msgstr "주소"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Powered"
+msgstr "전원 켜짐"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Visible to other devices"
+msgstr "다른 장치에서 검색 가능"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Allow incoming pairing"
+msgstr "들어오는 페어링 허용"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Close"
+msgstr "닫기"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Device type"
+msgstr "장치 유형"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Model number"
+msgstr "모델 번호"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Version"
+msgstr "버전"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Trusted"
+msgstr "신뢰함"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Blocked"
+msgstr "차단됨"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Forget this device"
+msgstr "이 장치 등록 해제"
+
+#: src/pages/bluetooth/bluetoothpage.cpp src/pages/network/vpn/vpndialogs.cpp
+msgid "Connected"
+msgstr "연결됨"
+
+#: src/pages/bluetooth/bluetoothpage.cpp src/pages/network/vpn/vpndialogs.cpp
+msgid "Not connected"
+msgstr "연결 안 됨"
+
+#. TRANSLATORS: a device's connection and its battery level, such as "Connected · 80%".
+#: src/pages/bluetooth/bluetoothpage.cpp
+#, python-brace-format
+msgid "{status} · {percent}%"
+msgstr "{status} · {percent}%"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Cancel pairing"
+msgstr "페어링 취소"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Disconnect"
+msgstr "연결 해제"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Discoverable"
+msgstr "검색 가능"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Not discoverable"
+msgstr "검색 불가"
+
+#: src/pages/bluetooth/bluetoothpage.cpp src/pages/sound/soundpage.cpp
+#: src/window/pagelist.cpp
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "My devices"
+msgstr "내 장치"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Other devices"
+msgstr "기타 장치"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Bluetooth service is unavailable"
+msgstr "Bluetooth 서비스를 사용할 수 없음"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Bluetooth is blocked by a hardware switch"
+msgstr "Bluetooth가 하드웨어 스위치로 차단됨"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "No Bluetooth adapters found"
+msgstr "Bluetooth 어댑터를 찾을 수 없음"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "No devices found. Make sure your device is discoverable."
+msgstr "장치를 찾을 수 없습니다. 장치가 검색 가능한 상태인지 확인하십시오."
+
+#: src/pages/cursortheme/cursorthemepage.cpp
+msgid "Cursor theme"
+msgstr "커서 테마"
+
+#: src/pages/cursortheme/cursorthemepage.cpp
+msgid "Cursor size"
+msgstr "커서 크기"
+
+#: src/pages/datetime/datetimepage.cpp src/window/pagelist.cpp
+msgid "Date & Time"
+msgstr "날짜 및 시간"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "Auto sync"
+msgstr "자동 동기화"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "24-hour time"
+msgstr "24시간제"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "Time zone"
+msgstr "시간대"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "Unable to use auto sync. Please ensure your NTP service is installed."
+msgstr "자동 동기화를 사용할 수 없습니다. NTP 서비스가 설치되어 있는지 확인하십시오."
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Search city or country"
+msgstr "도시 또는 국가 검색"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "No matching time zones"
+msgstr "일치하는 시간대 없음"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Time Zone"
+msgstr "시간대"
+
+#. TRANSLATORS: the button that makes the chosen time zone the system's.
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Set"
+msgstr "설정"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Click the map or search to choose a time zone"
+msgstr "지도를 클릭하거나 검색하여 시간대를 선택하십시오"
+
+#. TRANSLATORS: a time zone's city and its country or region, such as "Paris, France".
+#: src/pages/datetime/timezonedialog.cpp
+#, python-brace-format
+msgid "{city}, {region}"
+msgstr "{city}, {region}"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Current time zone"
+msgstr "현재 시간대"
+
+#: src/pages/datetime/timezonedialog.cpp
+#, python-brace-format
+msgid "Currently {zone}"
+msgstr "현재 {zone}"
+
+#: src/pages/datetime/timezonemap.cpp
+msgid "Same time as now"
+msgstr "현재와 같은 시간"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} hour ahead"
+msgid_plural "{n} hours ahead"
+msgstr[0] "{n}시간 빠름"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} hour behind"
+msgid_plural "{n} hours behind"
+msgstr[0] "{n}시간 느림"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} min ahead"
+msgid_plural "{n} min ahead"
+msgstr[0] "{n}분 빠름"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} min behind"
+msgid_plural "{n} min behind"
+msgstr[0] "{n}분 느림"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{hours} h {minutes} min ahead"
+msgstr "{hours}시간 {minutes}분 빠름"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{hours} h {minutes} min behind"
+msgstr "{hours}시간 {minutes}분 느림"
+
+#: src/pages/datetime/timezonemap.cpp
+msgid "Tomorrow"
+msgstr "내일"
+
+#: src/pages/datetime/timezonemap.cpp
+msgid "Yesterday"
+msgstr "어제"
+
+#: src/pages/defaultapps/defaultappspage.cpp src/window/pagelist.cpp
+msgid "Default Applications"
+msgstr "기본 애플리케이션"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Web browser"
+msgstr "웹 브라우저"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Email client"
+msgstr "이메일 클라이언트"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Text editor"
+msgstr "텍스트 편집기"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Music player"
+msgstr "음악 플레이어"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Video player"
+msgstr "비디오 플레이어"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Image viewer"
+msgstr "이미지 뷰어"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Terminal"
+msgstr "터미널"
+
+#: src/pages/defaultapps/defaultappspage.cpp src/pages/fonts/fontspage.cpp
+#: src/pages/hotcorners/hotcornerspage.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "None"
+msgstr "없음"
+
+#: src/pages/display/displaypage.cpp
+#, python-brace-format
+msgid "{item} (Recommended)"
+msgstr "{item}(권장)"
+
+#: src/pages/display/displaypage.cpp src/window/pagelist.cpp
+msgid "Display"
+msgstr "디스플레이"
+
+#: src/pages/display/displaypage.cpp
+msgid "Brightness"
+msgstr "밝기"
+
+#: src/pages/display/displaypage.cpp
+msgid "Resolution"
+msgstr "해상도"
+
+#: src/pages/display/displaypage.cpp
+msgid "Refresh rate"
+msgstr "재생률"
+
+#: src/pages/display/displaypage.cpp
+msgid "Scale"
+msgstr "배율"
+
+#: src/pages/display/displaypage.cpp
+msgid "Rotation"
+msgstr "회전"
+
+#: src/pages/display/displaypage.cpp
+msgctxt "rotation"
+msgid "Normal"
+msgstr "표준"
+
+#: src/pages/display/displaypage.cpp
+msgid "Enabled"
+msgstr "사용"
+
+#: src/pages/display/displaypage.cpp
+msgid "Primary"
+msgstr "주 디스플레이"
+
+#: src/pages/display/displaypage.cpp src/pages/power/powerpage.cpp
+msgid "Mode"
+msgstr "모드"
+
+#: src/pages/display/displaypage.cpp
+msgid "Position"
+msgstr "위치"
+
+#: src/pages/display/displaypage.cpp
+msgid "Night Light"
+msgstr "야간 모드"
+
+#: src/pages/display/displaypage.cpp
+msgid "Color temperature"
+msgstr "색온도"
+
+#: src/pages/display/displaypage.cpp
+msgid "Less warm"
+msgstr "덜 따뜻하게"
+
+#: src/pages/display/displaypage.cpp
+msgid "More warm"
+msgstr "더 따뜻하게"
+
+#: src/pages/display/displaypage.cpp
+msgid "Schedule"
+msgstr "일정"
+
+#: src/pages/display/displaypage.cpp src/pages/power/powerpage.cpp
+msgid "Never"
+msgstr "안 함"
+
+#: src/pages/display/displaypage.cpp
+msgid "Sunset to sunrise"
+msgstr "일몰부터 일출까지"
+
+#: src/pages/display/displaypage.cpp src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Custom"
+msgstr "사용자 지정"
+
+#: src/pages/display/displaypage.cpp
+msgid "Sunset"
+msgstr "일몰"
+
+#: src/pages/display/displaypage.cpp
+msgid "Sunrise"
+msgstr "일출"
+
+#: src/pages/display/displaypage.cpp
+msgid "From"
+msgstr "시작"
+
+#: src/pages/display/displaypage.cpp
+msgid "To"
+msgstr "종료"
+
+#: src/pages/display/displaypage.cpp
+msgid "Screen"
+msgstr "화면"
+
+#: src/pages/display/displaypage.cpp
+msgid "Display configuration is unavailable in this session."
+msgstr "이 세션에서는 디스플레이를 구성할 수 없습니다."
+
+#: src/pages/display/displaypage.cpp
+#, python-brace-format
+msgid "The previous settings come back in {n} second."
+msgid_plural "The previous settings come back in {n} seconds."
+msgstr[0] "{n}초 후에 이전 설정으로 돌아갑니다."
+
+#: src/pages/display/displaypage.cpp
+msgid "Keep these display settings?"
+msgstr "이 디스플레이 설정을 유지하겠습니까?"
+
+#: src/pages/display/displaypage.cpp
+msgid "Revert"
+msgstr "되돌리기"
+
+#: src/pages/display/displaypage.cpp
+msgid "Keep"
+msgstr "유지"
+
+#: src/pages/dock/dockpage.cpp src/window/pagelist.cpp
+msgid "Dock & Desktop"
+msgstr "Dock 및 데스크톱"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Dock"
+msgstr "Dock"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Left"
+msgstr "왼쪽"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Bottom"
+msgstr "아래쪽"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Right"
+msgstr "오른쪽"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Size"
+msgstr "크기"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Small"
+msgstr "작게"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Large"
+msgstr "크게"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Magnification"
+msgstr "확대"
+
+#: src/pages/dock/dockpage.cpp src/pages/network/vpn/vpneditor.cpp
+#: src/pages/notifications/notificationspage.cpp
+msgid "Off"
+msgstr "끔"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Glass effect"
+msgstr "유리 효과"
+
+#: src/pages/dock/dockpage.cpp
+msgid "More clear"
+msgstr "더 투명하게"
+
+#: src/pages/dock/dockpage.cpp
+msgid "More tinted"
+msgstr "더 진하게"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Display mode"
+msgstr "표시 방식"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Always show"
+msgstr "항상 보기"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Always hide"
+msgstr "항상 숨기기"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Smart hide"
+msgstr "스마트 숨기기"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Minimized windows area"
+msgstr "최소화된 창 영역"
+
+#: src/pages/dock/dockpage.cpp src/window/pagelist.cpp
+msgid "Desktop"
+msgstr "데스크톱"
+
+#: src/pages/dock/dockpage.cpp src/pages/hotcorners/hotcornerspage.cpp
+#: src/window/pagelist.cpp
+msgid "Hot Corners"
+msgstr "핫 코너"
+
+#. TRANSLATORS: a font size in points, such as "9pt".
+#: src/pages/fonts/fontspage.cpp
+#, python-brace-format
+msgid "{size}pt"
+msgstr "{size}pt"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "General font"
+msgstr "일반 글꼴"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Fixed font"
+msgstr "고정폭 글꼴"
+
+#: src/pages/fonts/fontspage.cpp
+#, python-brace-format
+msgid "{size} (Default)"
+msgstr "{size}(기본값)"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Font size"
+msgstr "글꼴 크기"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Hinting"
+msgstr "힌팅"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Slight"
+msgstr "약함"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Medium"
+msgstr "중간"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Full"
+msgstr "최대"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Anti-Aliasing"
+msgstr "안티에일리어싱"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Control"
+msgstr "Control"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Option"
+msgstr "Option"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Alt"
+msgstr "Alt"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Shift"
+msgstr "Shift"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Command"
+msgstr "Command"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Meta"
+msgstr "Meta"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Show All Windows"
+msgstr "모든 창 보기"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Show Desktop"
+msgstr "데스크톱 보기"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Launcher"
+msgstr "런처"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Lock Screen"
+msgstr "화면 잠금"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Hot corners are managed by the Cutefish compositor, which is not running."
+msgstr "핫 코너는 Cutefish 컴포지터가 관리하지만 컴포지터가 실행 중이 아닙니다."
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Top left"
+msgstr "왼쪽 위"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Top right"
+msgstr "오른쪽 위"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Bottom left"
+msgstr "왼쪽 아래"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Bottom right"
+msgstr "오른쪽 아래"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Move the pointer into a corner of the screen to run its action. Hold modifier keys while choosing an action to make the corner work only while they are held."
+msgstr "포인터를 화면 모서리로 옮기면 해당 동작이 실행됩니다. 동작을 선택하는 동안 보조 키를 누르고 있으면 그 키를 누르고 있을 때만 모서리가 작동합니다."
+
+#. TRANSLATORS: the keys a hot corner needs held and its action, such as "Ctrl + Alt – Lock Screen".
+#: src/pages/hotcorners/hotcornerspage.cpp
+#, python-brace-format
+msgid "{keys} – {action}"
+msgstr "{keys} – {action}"
+
+#: src/pages/icontheme/iconthemepage.cpp
+msgid "Icon theme"
+msgstr "아이콘 테마"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Input method"
+msgstr "입력기"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Input methods can only be selected in a Cutefish Wayland session."
+msgstr "입력기는 Cutefish Wayland 세션에서만 선택할 수 있습니다."
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "The selected input method is not running."
+msgstr "선택한 입력기가 실행 중이 아닙니다."
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Applications started before the input method may need to be restarted."
+msgstr "입력기보다 먼저 시작된 애플리케이션은 다시 시작해야 할 수 있습니다."
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Shortcut key"
+msgstr "단축키 보조 키"
+
+#: src/pages/keyboard/keyboardpage.cpp src/pages/keyboard/layoutpage.cpp
+msgid "Layout"
+msgstr "레이아웃"
+
+#: src/pages/keyboard/keyboardpage.cpp src/pages/shortcuts/shortcutspage.cpp
+#: src/window/pagelist.cpp
+msgid "Keyboard Shortcuts"
+msgstr "키보드 단축키"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Key repeat"
+msgstr "키 반복"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Delay until repeat"
+msgstr "반복 지연 시간"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Repeat rate"
+msgstr "반복 속도"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "The key next to the space bar works as Command and the one beside it as Option, on any keyboard: Command+C copies, Command+Tab switches windows, Command+Q quits. The shortcuts can be changed in Keyboard Shortcuts."
+msgstr "어떤 키보드에서든 스페이스 바 옆의 키는 Command로, 그 옆의 키는 Option으로 작동합니다. Command+C는 복사, Command+Tab은 창 전환, Command+Q는 종료입니다. 단축키는 키보드 단축키에서 변경할 수 있습니다."
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Ctrl is the shortcut key and Alt switches windows. The shortcuts can be changed in Keyboard Shortcuts."
+msgstr "Ctrl이 단축키 보조 키이고 Alt로 창을 전환합니다. 단축키는 키보드 단축키에서 변경할 수 있습니다."
+
+#: src/pages/keyboard/layoutpage.cpp
+msgid "No layouts found"
+msgstr "레이아웃을 찾을 수 없음"
+
+#: src/pages/keyboard/layoutpage.cpp
+msgid "Search layouts"
+msgstr "레이아웃 검색"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "Add Language"
+msgstr "언어 추가"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "Search languages"
+msgstr "언어 검색"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "Loading languages…"
+msgstr "언어를 불러오는 중…"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "No languages found"
+msgstr "언어를 찾을 수 없음"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Choose Region"
+msgstr "지역 선택"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Search regions"
+msgstr "지역 검색"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Choose"
+msgstr "선택"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Loading regions…"
+msgstr "지역을 불러오는 중…"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "No regions found"
+msgstr "지역을 찾을 수 없음"
+
+#: src/pages/language/language.cpp
+msgid "Could not save preferred languages. Please try again."
+msgstr "선호하는 언어를 저장할 수 없습니다. 다시 시도하십시오."
+
+#: src/pages/language/languagepage.cpp
+#, python-brace-format
+msgid "Automatic ({value})"
+msgstr "자동({value})"
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "US"
+msgstr "미국식"
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "UK"
+msgstr "영국식"
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "Metric"
+msgstr "미터법"
+
+#: src/pages/language/languagepage.cpp
+msgid "Fahrenheit (°F)"
+msgstr "화씨(°F)"
+
+#: src/pages/language/languagepage.cpp
+msgid "Celsius (°C)"
+msgstr "섭씨(°C)"
+
+#: src/pages/language/languagepage.cpp src/window/pagelist.cpp
+msgid "Language & Region"
+msgstr "언어 및 지역"
+
+#: src/pages/language/languagepage.cpp
+msgid "Preferred languages"
+msgstr "선호하는 언어"
+
+#: src/pages/language/languagepage.cpp
+msgid "Add language…"
+msgstr "언어 추가…"
+
+#: src/pages/language/languagepage.cpp
+msgid "Drag a language to the top to make it the system language. Right-click a language to remove it."
+msgstr "언어를 맨 위로 드래그하면 시스템 언어가 됩니다. 언어를 제거하려면 마우스 오른쪽 버튼으로 클릭하십시오."
+
+#: src/pages/language/languagepage.cpp
+msgid "Region"
+msgstr "지역"
+
+#: src/pages/language/languagepage.cpp
+msgid "First day of week"
+msgstr "주의 첫 번째 요일"
+
+#: src/pages/language/languagepage.cpp
+msgid "Measurement system"
+msgstr "측정 단위"
+
+#: src/pages/language/languagepage.cpp
+msgid "Temperature"
+msgstr "온도"
+
+#: src/pages/language/languagepage.cpp
+msgid "Applications that are already open may use the new region after they restart."
+msgstr "이미 열려 있는 애플리케이션은 다시 시작한 후에 새 지역을 사용할 수 있습니다."
+
+#: src/pages/language/languagepage.cpp
+msgid "Format preview"
+msgstr "형식 미리보기"
+
+#: src/pages/language/languagepage.cpp
+msgid "Date"
+msgstr "날짜"
+
+#: src/pages/language/languagepage.cpp
+msgid "Date and time"
+msgstr "날짜 및 시간"
+
+#: src/pages/language/languagepage.cpp
+msgid "Number"
+msgstr "숫자"
+
+#: src/pages/language/languagepage.cpp
+msgid "Currency"
+msgstr "통화"
+
+#: src/pages/language/preferredlanguagelist.cpp
+msgid "System language"
+msgstr "시스템 언어"
+
+#: src/pages/language/preferredlanguagelist.cpp
+msgid "Remove language"
+msgstr "언어 제거"
+
+#: src/pages/mouse/mousepage.cpp
+msgid "Left hand"
+msgstr "왼손잡이용"
+
+#: src/pages/mouse/mousepage.cpp src/pages/touchpad/touchpadpage.cpp
+msgid "Natural scrolling"
+msgstr "자연스러운 스크롤"
+
+#: src/pages/mouse/mousepage.cpp
+msgid "Mouse acceleration"
+msgstr "마우스 가속"
+
+#: src/pages/mouse/mousepage.cpp src/pages/touchpad/touchpadpage.cpp
+msgid "Pointer speed"
+msgstr "포인터 속도"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Auto-Join"
+msgstr "자동 연결"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Connect Automatically"
+msgstr "자동으로 연결"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "IP Settings"
+msgstr "IP 설정"
+
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Security"
+msgstr "보안"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Signal"
+msgstr "신호"
+
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "IPv4 address"
+msgstr "IPv4 주소"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "IPv6 address"
+msgstr "IPv6 주소"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "MAC address"
+msgstr "MAC 주소"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Gateway"
+msgstr "게이트웨이"
+
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "DNS"
+msgstr "DNS"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Forget this network"
+msgstr "이 네트워크 등록 해제"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Configure IPv4"
+msgstr "IPv4 구성"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "IP Address"
+msgstr "IP 주소"
+
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Required"
+msgstr "필수"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Subnet Mask"
+msgstr "서브넷 마스크"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Router"
+msgstr "라우터"
+
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Optional"
+msgstr "선택 사항"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Configure IPv6"
+msgstr "IPv6 구성"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Prefix Length"
+msgstr "접두사 길이"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Automatic DNS"
+msgstr "자동 DNS"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "DNS Servers"
+msgstr "DNS 서버"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "These servers are asked before the network's own."
+msgstr "이 서버들은 네트워크 자체의 서버보다 먼저 사용됩니다."
+
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Saving…"
+msgstr "저장 중…"
+
+#: src/pages/network/ethernet/ethernetpage.cpp src/window/pagelist.cpp
+msgid "Ethernet"
+msgstr "이더넷"
+
+#: src/pages/network/hotspot/hotspotpage.cpp src/pages/network/networkpage.cpp
+#: src/pages/network/wlan/wlanpage.cpp src/window/pagelist.cpp
+msgid "Hotspot"
+msgstr "핫스팟"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Wi-Fi hotspot"
+msgstr "Wi-Fi 핫스팟"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Network name"
+msgstr "네트워크 이름"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Generate password"
+msgstr "암호 생성"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Turn On Wi-Fi Hotspot?"
+msgstr "Wi-Fi 핫스팟을 켜겠습니까?"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+#, python-brace-format
+msgid "Turning on the hotspot will disconnect from “{network}”, and you will not have access to the internet it provides."
+msgstr "핫스팟을 켜면 “{network}” 네트워크와의 연결이 끊어지며 해당 네트워크가 제공하는 인터넷에 접속할 수 없게 됩니다."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Turn on"
+msgstr "켜기"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Share this computer's internet connection by creating a Wi-Fi network other devices can join. The connection to share must come from a source other than Wi-Fi."
+msgstr "다른 장치가 연결할 수 있는 Wi-Fi 네트워크를 만들어 이 컴퓨터의 인터넷 연결을 공유합니다. 공유할 연결은 Wi-Fi가 아닌 다른 소스에서 와야 합니다."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Turn on Wi-Fi to use the hotspot."
+msgstr "핫스팟을 사용하려면 Wi-Fi를 켜십시오."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "System policy prohibits use as a hotspot."
+msgstr "시스템 정책상 핫스팟으로 사용할 수 없습니다."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+#, python-brace-format
+msgid "Other devices can join “{network}” with the password below. Turn off the hotspot to use Wi-Fi on this computer."
+msgstr "다른 장치는 아래 암호로 “{network}” 네트워크에 연결할 수 있습니다. 이 컴퓨터에서 Wi-Fi를 사용하려면 핫스팟을 끄십시오."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Network name cannot be empty."
+msgstr "네트워크 이름은 비워 둘 수 없습니다."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Network name is too long."
+msgstr "네트워크 이름이 너무 깁니다."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "The password must have at least 8 characters."
+msgstr "암호는 8자 이상이어야 합니다."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "The password must have at most 63 characters."
+msgstr "암호는 63자 이하여야 합니다."
+
+#: src/pages/network/networkpage.cpp src/window/pagelist.cpp
+msgid "Network"
+msgstr "네트워크"
+
+#: src/pages/network/networkpage.cpp src/pages/network/vpn/vpnpage.cpp
+#: src/window/pagelist.cpp
+msgid "VPN"
+msgstr "VPN"
+
+#: src/pages/network/networkpage.cpp src/pages/network/proxy/proxypage.cpp
+#: src/window/pagelist.cpp
+msgid "Proxy"
+msgstr "프록시"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "No proxy"
+msgstr "프록시 없음"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Use proxy auto configuration URL"
+msgstr "프록시 자동 구성 URL 사용"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Use manually specified proxy configuration"
+msgstr "수동으로 지정한 프록시 구성 사용"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Select file"
+msgstr "파일 선택"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "HTTP proxy"
+msgstr "HTTP 프록시"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Port"
+msgstr "포트"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Also use this proxy for FTP"
+msgstr "FTP에도 이 프록시 사용"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "FTP proxy"
+msgstr "FTP 프록시"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "SOCKS proxy"
+msgstr "SOCKS 프록시"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Add VPN"
+msgstr "VPN 추가"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Type"
+msgstr "유형"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+#, python-brace-format
+msgid "{type} (Not Installed)"
+msgstr "{type}(설치되지 않음)"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Status"
+msgstr "상태"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Export to file…"
+msgstr "파일로 내보내기…"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Export VPN Configuration"
+msgstr "VPN 구성 내보내기"
+
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
+#: src/pages/network/vpn/vpndialogs.cpp src/pages/network/vpn/vpnpage.cpp
+#, python-brace-format
+msgid "VPN configurations ({patterns})"
+msgstr "VPN 구성({patterns})"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Remove VPN"
+msgstr "VPN 제거"
+
+#: src/pages/network/vpn/vpndialogs.cpp src/pages/network/vpn/vpnpage.cpp
+msgid "Connecting…"
+msgstr "연결 중…"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Show advanced options"
+msgstr "고급 옵션 보기"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Asked on connect"
+msgstr "연결할 때 요청"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Choose…"
+msgstr "선택…"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Saved for all"
+msgstr "모든 사용자용으로 저장됨"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Saved"
+msgstr "저장됨"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Ask each time"
+msgstr "매번 묻기"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Not needed"
+msgstr "필요 없음"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Hide advanced options"
+msgstr "고급 옵션 가리기"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Private key"
+msgstr "개인 키"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Interface name"
+msgstr "인터페이스 이름"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "From the name"
+msgstr "이름에서 가져옴"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Listen port"
+msgstr "수신 포트"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Automatic"
+msgstr "자동"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Firewall mark"
+msgstr "방화벽 표시"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "MTU"
+msgstr "MTU"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Add routes for the peers' allowed IPs"
+msgstr "피어의 허용 IP에 대한 경로 추가"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Add peer"
+msgstr "피어 추가"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Peer"
+msgstr "피어"
+
+#: src/pages/network/vpn/vpneditor.cpp src/pages/privacy/privacypage.cpp
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Remove"
+msgstr "제거"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Public key"
+msgstr "공개 키"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Preshared key"
+msgstr "사전 공유 키"
+
+#. TRANSLATORS: a placeholder: the stored key stays unless a new one is typed.
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Kept"
+msgstr "유지됨"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Endpoint"
+msgstr "엔드포인트"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Allowed IPs"
+msgstr "허용 IP"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "All traffic"
+msgstr "모든 트래픽"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Keepalive"
+msgstr "연결 유지"
+
+#: src/pages/network/vpn/vpneditor.cpp
+#, python-brace-format
+msgid "Peer {number}"
+msgstr "피어 {number}"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Available to all users"
+msgstr "모든 사용자가 사용 가능"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Use only for resources on its network"
+msgstr "해당 네트워크의 리소스에만 사용"
+
+#: src/pages/network/vpn/vpneditor.cpp
+#, python-brace-format
+msgid "Install {package} to set up this kind of VPN."
+msgstr "이 종류의 VPN을 설정하려면 {package} 패키지를 설치하십시오."
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Add your user name to connect."
+msgstr "연결하려면 사용자 이름을 추가하십시오."
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Add VPN…"
+msgstr "VPN 추가…"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Import from file…"
+msgstr "파일에서 가져오기…"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Import VPN Configuration"
+msgstr "VPN 구성 가져오기"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Importing…"
+msgstr "가져오는 중…"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Import the configuration file your VPN provider gives you, such as an OpenVPN .ovpn or a WireGuard .conf file."
+msgstr "VPN 제공업체에서 받은 구성 파일(예: OpenVPN .ovpn 또는 WireGuard .conf 파일)을 가져오십시오."
+
+#. TRANSLATORS: a Wi-Fi network's security: none, anyone can join.
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Open"
+msgstr "개방"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "WPA Enterprise"
+msgstr "WPA 엔터프라이즈"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "WPA2 Enterprise"
+msgstr "WPA2 엔터프라이즈"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "WPA3 Enterprise"
+msgstr "WPA3 엔터프라이즈"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Add Other Network"
+msgstr "기타 네트워크 추가"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+#, python-brace-format
+msgid "Join “{network}”"
+msgstr "“{network}” 연결"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Username"
+msgstr "사용자 이름"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "This network signs in with a certificate, which can't be set up here yet."
+msgstr "이 네트워크는 인증서로 로그인하며, 아직 여기에서 설정할 수 없습니다."
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Join"
+msgstr "연결"
+
+#: src/pages/network/wlan/wlanpage.cpp src/window/pagelist.cpp
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
+
+#: src/pages/network/wlan/wlanpage.cpp
+msgid "Known networks"
+msgstr "알려진 네트워크"
+
+#: src/pages/network/wlan/wlanpage.cpp
+msgid "Other networks"
+msgstr "기타 네트워크"
+
+#: src/pages/network/wlan/wlanpage.cpp
+msgid "Add other…"
+msgstr "기타 추가…"
+
+#: src/pages/notifications/notificationspage.cpp src/window/pagelist.cpp
+msgid "Notifications"
+msgstr "알림"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Do Not Disturb"
+msgstr "방해 금지 모드"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Applications"
+msgstr "애플리케이션"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Applications appear here after they send a notification."
+msgstr "알림을 보낸 애플리케이션이 여기에 표시됩니다."
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Notifications that skip the banner still go to the Notification Center. Turned off, they are dropped."
+msgstr "배너를 건너뛴 알림도 알림 센터로 이동합니다. 끄면 알림이 삭제됩니다."
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Banners"
+msgstr "배너"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Notification Center only"
+msgstr "알림 센터만"
+
+#: src/pages/power/powerpage.cpp
+#, python-brace-format
+msgid "{n} minute"
+msgid_plural "{n} minutes"
+msgstr[0] "{n}분"
+
+#: src/pages/power/powerpage.cpp
+msgid "Power save"
+msgstr "절전"
+
+#: src/pages/power/powerpage.cpp
+msgid "Balanced"
+msgstr "균형"
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance"
+msgstr "성능"
+
+#: src/pages/power/powerpage.cpp src/window/pagelist.cpp
+msgid "Power"
+msgstr "전원"
+
+#: src/pages/power/powerpage.cpp
+msgid "Turn off display when inactive on battery"
+msgstr "배터리 사용 시 비활성 상태이면 디스플레이 끄기"
+
+#: src/pages/power/powerpage.cpp
+msgid "Reduces performance and power consumption."
+msgstr "성능과 전력 소비를 줄입니다."
+
+#: src/pages/power/powerpage.cpp
+msgid "Standard performance and power consumption."
+msgstr "표준 성능과 전력 소비입니다."
+
+#: src/pages/power/powerpage.cpp
+msgid "Higher performance, with more power consumption and heat."
+msgstr "성능이 더 높아지며 전력 소비와 발열이 늘어납니다."
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance is limited because the computer is on your lap."
+msgstr "컴퓨터가 무릎 위에 있어 성능이 제한됩니다."
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance is limited because the computer is too hot."
+msgstr "컴퓨터가 너무 뜨거워 성능이 제한됩니다."
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance is currently limited."
+msgstr "현재 성능이 제한되어 있습니다."
+
+#: src/pages/power/powerpage.cpp
+msgid "Turn off display when inactive on power adapter"
+msgstr "전원 어댑터 사용 시 비활성 상태이면 디스플레이 끄기"
+
+#: src/pages/power/powerpage.cpp
+msgid "Turn off display when inactive"
+msgstr "비활성 상태이면 디스플레이 끄기"
+
+#: src/pages/power/powerpage.cpp
+msgid "Prevent automatic sleeping on power adapter when the display is off"
+msgstr "전원 어댑터 사용 시 디스플레이가 꺼져 있을 때 자동으로 잠자기 방지"
+
+#: src/pages/power/powerpage.cpp
+msgid "Prevent automatic sleeping when the display is off"
+msgstr "디스플레이가 꺼져 있을 때 자동으로 잠자기 방지"
+
+#: src/pages/privacy/privacypage.cpp src/window/pagelist.cpp
+msgid "Privacy"
+msgstr "개인정보 보호"
+
+#: src/pages/privacy/privacypage.cpp
+msgid "Computer control"
+msgstr "컴퓨터 제어"
+
+#: src/pages/privacy/privacypage.cpp
+msgid "Computer control is managed by the Cutefish compositor, which is not running."
+msgstr "컴퓨터 제어는 Cutefish 컴포지터가 관리하지만 컴포지터가 실행 중이 아닙니다."
+
+#: src/pages/privacy/privacypage.cpp
+msgid "No apps are allowed to control this computer without asking."
+msgstr "묻지 않고 이 컴퓨터를 제어하도록 허용된 앱이 없습니다."
+
+#: src/pages/privacy/privacypage.cpp
+msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the status bar still shows while it is in control."
+msgstr "항상 허용한 앱은 먼저 묻지 않고도 에이전트가 화면을 보고 포인터와 키보드를 사용하게 할 수 있습니다. 제어하는 동안에도 상태 막대에 중단 버튼이 계속 표시됩니다."
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Press the new shortcut…"
+msgstr "새 단축키를 누르십시오…"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Press the shortcut…"
+msgstr "단축키를 누르십시오…"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "No shortcut. Add one below."
+msgstr "단축키가 없습니다. 아래에서 추가하십시오."
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Add shortcut"
+msgstr "단축키 추가"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Restore default"
+msgstr "기본값 복원"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Change"
+msgstr "변경"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "General"
+msgstr "일반"
+
+#. TRANSLATORS: the group of keyboard shortcuts that act on windows.
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Windows"
+msgstr "창"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Desks"
+msgstr "데스크"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Screenshots and Recording"
+msgstr "스크린샷 및 화면 기록"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Open the launcher"
+msgstr "런처 열기"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Lock the screen"
+msgstr "화면 잠그기"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show the clipboard history"
+msgstr "클립보드 기록 보기"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the next window"
+msgstr "다음 창으로 전환"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the previous window"
+msgstr "이전 창으로 전환"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show all windows"
+msgstr "모든 창 보기"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show the desktop"
+msgstr "데스크톱 보기"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Maximize or restore the window"
+msgstr "창 최대화 또는 복원"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Minimize the window"
+msgstr "창 최소화"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Quit the application"
+msgstr "애플리케이션 종료"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Hide the application"
+msgstr "애플리케이션 숨기기"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Hide other applications"
+msgstr "다른 애플리케이션 숨기기"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Toggle full screen"
+msgstr "전체 화면 전환"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Snap the window to the left"
+msgstr "창을 왼쪽에 맞추기"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Snap the window to the right"
+msgstr "창을 오른쪽에 맞추기"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Close the window"
+msgstr "창 닫기"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Move the window to the next display"
+msgstr "창을 다음 디스플레이로 이동"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the desk on the left"
+msgstr "왼쪽 데스크로 전환"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the desk on the right"
+msgstr "오른쪽 데스크로 전환"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Move the window to the desk on the left"
+msgstr "창을 왼쪽 데스크로 이동"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Move the window to the desk on the right"
+msgstr "창을 오른쪽 데스크로 이동"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Add a desk"
+msgstr "데스크 추가"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Remove the desk"
+msgstr "데스크 제거"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 1"
+msgstr "데스크 1로 전환"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 2"
+msgstr "데스크 2로 전환"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 3"
+msgstr "데스크 3으로 전환"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 4"
+msgstr "데스크 4로 전환"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 5"
+msgstr "데스크 5로 전환"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 6"
+msgstr "데스크 6으로 전환"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 7"
+msgstr "데스크 7로 전환"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 8"
+msgstr "데스크 8로 전환"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show the window on every desk"
+msgstr "모든 데스크에 창 표시"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Save a picture of the screen"
+msgstr "화면 이미지 저장"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Copy a picture of the screen"
+msgstr "화면 이미지 복사"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Save a picture of the selected area"
+msgstr "선택 영역 이미지 저장"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Copy a picture of the selected area"
+msgstr "선택 영역 이미지 복사"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Screenshot and recording options"
+msgstr "스크린샷 및 화면 기록 옵션"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Stop screen recording"
+msgstr "화면 기록 중단"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Esc"
+msgstr "Esc"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Enter"
+msgstr "Enter"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Space"
+msgstr "Space"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Backspace"
+msgstr "Backspace"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Delete"
+msgstr "Delete"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Insert"
+msgstr "Insert"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Home"
+msgstr "Home"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "End"
+msgstr "End"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Page Up"
+msgstr "Page Up"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Page Down"
+msgstr "Page Down"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Print Screen"
+msgstr "Print Screen"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Tab"
+msgstr "Tab"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Menu"
+msgstr "Menu"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Volume Up"
+msgstr "음량 높이기"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Volume Down"
+msgstr "음량 낮추기"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Mute"
+msgstr "음소거"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Brightness Up"
+msgstr "밝기 높이기"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Brightness Down"
+msgstr "밝기 낮추기"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Play/Pause"
+msgstr "재생/일시 정지"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Pause"
+msgstr "일시 정지"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Next Track"
+msgstr "다음 트랙"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Previous Track"
+msgstr "이전 트랙"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Stop"
+msgstr "정지"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Calculator"
+msgstr "계산기"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "File Manager"
+msgstr "파일 관리자"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Search"
+msgstr "검색"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Home Page"
+msgstr "홈 페이지"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Mail"
+msgstr "메일"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "The shortcut service is not available."
+msgstr "단축키 서비스를 사용할 수 없습니다."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+#, python-brace-format
+msgid "This shortcut is already used by “{action}”."
+msgstr "이 단축키는 이미 “{action}”에서 사용 중입니다."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+#, python-brace-format
+msgid "This shortcut is used by “{action}”. Press it again to reassign it."
+msgstr "이 단축키는 “{action}”에서 사용 중입니다. 다시 지정하려면 한 번 더 누르십시오."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Include Control, Option or Command, or use a function key."
+msgstr "Control, Option 또는 Command를 포함하거나 기능 키를 사용하십시오."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Include Ctrl, Alt or Meta, or use a function key."
+msgstr "Ctrl, Alt 또는 Meta를 포함하거나 기능 키를 사용하십시오."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shift cannot be the only modifier. Add Control, Option or Command."
+msgstr "Shift만 보조 키로 사용할 수 없습니다. Control, Option 또는 Command를 추가하십시오."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shift cannot be the only modifier. Add Ctrl, Alt or Meta."
+msgstr "Shift만 보조 키로 사용할 수 없습니다. Ctrl, Alt 또는 Meta를 추가하십시오."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "This key cannot be used in a shortcut."
+msgstr "이 키는 단축키에 사용할 수 없습니다."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "This action already has the maximum of five shortcuts."
+msgstr "이 동작에는 이미 최대 개수인 5개의 단축키가 있습니다."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shortcuts without both Control and Command may be intercepted before applications see them. Press it again to keep it."
+msgstr "Control과 Command가 모두 포함되지 않은 단축키는 애플리케이션에 전달되기 전에 가로채질 수 있습니다. 유지하려면 한 번 더 누르십시오."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shortcuts without Meta may be intercepted before applications see them. Press it again to keep it."
+msgstr "Meta가 포함되지 않은 단축키는 애플리케이션에 전달되기 전에 가로채질 수 있습니다. 유지하려면 한 번 더 누르십시오."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Some default shortcuts are in use by other actions and were not restored."
+msgstr "일부 기본 단축키는 다른 동작에서 사용 중이므로 복원되지 않았습니다."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "This shortcut no longer exists."
+msgstr "이 단축키는 더 이상 존재하지 않습니다."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "The shortcut could not be changed."
+msgstr "단축키를 변경할 수 없습니다."
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Keyboard shortcuts are managed by the Cutefish compositor, which is not running."
+msgstr "키보드 단축키는 Cutefish 컴포지터가 관리하지만 컴포지터가 실행 중이 아닙니다."
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Restore all defaults"
+msgstr "모두 기본값으로 복원"
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Click a system shortcut to change it. Shortcuts with both Control and Command are the safest choice: applications never get them."
+msgstr "시스템 단축키를 클릭하여 변경하십시오. Control과 Command를 모두 포함한 단축키가 가장 안전합니다. 애플리케이션에는 전달되지 않습니다."
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Click a system shortcut to change it. Shortcuts with Meta are the safest choice: applications never use them."
+msgstr "시스템 단축키를 클릭하여 변경하십시오. Meta를 포함한 단축키가 가장 안전합니다. 애플리케이션에서는 사용하지 않습니다."
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Every shortcut goes back to its default. Your changes will be lost."
+msgstr "모든 단축키가 기본값으로 돌아갑니다. 변경한 내용은 사라집니다."
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Restore"
+msgstr "복원"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Virtual"
+msgstr "가상"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Built-in"
+msgstr "내장"
+
+#: src/pages/sound/soundpage.cpp src/window/pagelist.cpp
+msgid "Sound"
+msgstr "사운드"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Connecting to the audio service…"
+msgstr "오디오 서비스에 연결하는 중…"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Dismiss"
+msgstr "닫기"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Output"
+msgstr "출력"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Input"
+msgstr "입력"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Output volume"
+msgstr "출력 음량"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Balance"
+msgstr "밸런스"
+
+#: src/pages/sound/soundpage.cpp src/widgets/sliderrow.cpp
+msgctxt "balance"
+msgid "Left"
+msgstr "왼쪽"
+
+#: src/pages/sound/soundpage.cpp src/widgets/sliderrow.cpp
+msgctxt "balance"
+msgid "Right"
+msgstr "오른쪽"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Input volume"
+msgstr "입력 음량"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Input level"
+msgstr "입력 레벨"
+
+#: src/pages/sound/soundpage.cpp
+#, python-brace-format
+msgid "Could not apply the audio change: {error}"
+msgstr "오디오 변경 사항을 적용할 수 없습니다: {error}"
+
+#: src/pages/sound/soundpage.cpp
+msgid "No input devices"
+msgstr "입력 장치 없음"
+
+#: src/pages/sound/soundpage.cpp
+msgid "No output devices"
+msgstr "출력 장치 없음"
+
+#: src/pages/touchpad/touchpadpage.cpp src/window/pagelist.cpp
+msgid "Touchpad"
+msgstr "터치패드"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Enable"
+msgstr "사용"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Disable when a mouse is connected"
+msgstr "마우스가 연결되면 사용 안 함"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Disable while typing"
+msgstr "입력하는 동안 사용 안 함"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Tap to click"
+msgstr "탭하여 클릭"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Tap and drag"
+msgstr "탭하여 드래그"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Secondary click"
+msgstr "보조 클릭"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Two-finger press"
+msgstr "두 손가락으로 누르기"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Bottom-right corner press"
+msgstr "오른쪽 아래 모서리 누르기"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Scroll speed"
+msgstr "스크롤 속도"
+
+#: src/pages/touchscreen/touchscreenpage.cpp src/window/pagelist.cpp
+msgid "Touchscreen"
+msgstr "터치스크린"
+
+#: src/pages/wallpaper/wallpapergrid.cpp src/pages/wallpaper/wallpaperpage.cpp
+msgid "Add wallpaper"
+msgstr "배경화면 추가"
+
+#. TRANSLATORS: the number of wallpapers after a section's title, such as "(12)".
+#: src/pages/wallpaper/wallpapergrid.cpp
+#, python-brace-format
+msgid "({count})"
+msgstr "({count})"
+
+#: src/pages/wallpaper/wallpapergrid.cpp
+msgid "Show less"
+msgstr "간단히 보기"
+
+#: src/pages/wallpaper/wallpapergrid.cpp
+msgid "Show all"
+msgstr "모두 보기"
+
+#: src/pages/wallpaper/wallpaperpage.cpp src/window/pagelist.cpp
+msgid "Wallpaper"
+msgstr "배경화면"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Your wallpapers"
+msgstr "내 배경화면"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgctxt "wallpaper section"
+msgid "System"
+msgstr "시스템"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Colors"
+msgstr "색상"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Choose file…"
+msgstr "파일 선택…"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Choose folder…"
+msgstr "폴더 선택…"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Add Wallpaper Folder"
+msgstr "배경화면 폴더 추가"
+
+#: src/widgets/searchfield.cpp src/window/sidebar.cpp
+msgid "Search"
+msgstr "검색"
+
+#: src/window/page.cpp
+msgid "This page is not ported yet."
+msgstr "이 페이지는 아직 포팅되지 않았습니다."
+
+#: src/window/pagelist.cpp
+msgid "wireless, WLAN, network, internet, password, DNS, IP address"
+msgstr "무선, 와이파이, WLAN, wireless, 네트워크, 인터넷, 암호, 비밀번호, DNS, IP 주소"
+
+#: src/window/pagelist.cpp
+msgid "wired, LAN, network, internet, cable, IP address"
+msgstr "유선, 랜, LAN, wired, 네트워크, 인터넷, 케이블, IP 주소"
+
+#: src/window/pagelist.cpp
+msgid "wireless, devices, pairing, headphones"
+msgstr "무선, 장치, 기기, 페어링, 헤드폰, 블루투스"
+
+#: src/window/pagelist.cpp
+msgid "VPN, proxy, hotspot, tethering, internet"
+msgstr "VPN, 프록시, proxy, 핫스팟, 테더링, 인터넷"
+
+#: src/window/pagelist.cpp
+msgid "theme, dark mode, light mode, accent color, dim wallpaper"
+msgstr "테마, 다크 모드, 라이트 모드, 강조 색상, 어두운 배경화면, theme"
+
+#: src/window/pagelist.cpp
+msgid "background, desktop picture, image"
+msgstr "배경, 바탕화면, 데스크톱 사진, 이미지, 그림"
+
+#: src/window/pagelist.cpp
+msgid "taskbar, position, size, auto hide, glass effect"
+msgstr "작업 표시줄, 독, 위치, 크기, 자동 숨기기, 유리 효과"
+
+#: src/window/pagelist.cpp
+msgid "do not disturb, banners, alerts"
+msgstr "방해 금지, 배너, 알림, 경고"
+
+#: src/window/pagelist.cpp
+msgid "Devices"
+msgstr "장치"
+
+#: src/window/pagelist.cpp
+msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
+msgstr "모니터, 화면, 해상도, 재생률, 주사율, 배율, 밝기, 회전"
+
+#: src/window/pagelist.cpp
+msgid "audio, volume, speakers, headphones, microphone, input, output"
+msgstr "오디오, 음량, 볼륨, 스피커, 헤드폰, 마이크, 입력, 출력"
+
+#: src/window/pagelist.cpp
+msgid "input method, key repeat, keyboard style"
+msgstr "입력기, 한글, 한영, 키 반복, 키보드 스타일"
+
+#: src/window/pagelist.cpp
+msgid "pointer speed, acceleration, natural scrolling, left-handed"
+msgstr "포인터 속도, 가속, 자연스러운 스크롤, 왼손잡이"
+
+#: src/window/pagelist.cpp
+msgid "trackpad, tap to click, natural scrolling, secondary click, pointer speed"
+msgstr "트랙패드, 터치패드, 탭하여 클릭, 자연스러운 스크롤, 보조 클릭, 포인터 속도"
+
+#: src/window/pagelist.cpp
+msgid "touch, touch screen, touch panel"
+msgstr "터치, 터치스크린, 터치 스크린, 터치 패널"
+
+#: src/window/pagelist.cpp
+msgid "System"
+msgstr "시스템"
+
+#: src/window/pagelist.cpp
+msgid "accounts, password, login, administrator, avatar"
+msgstr "계정, 사용자, 암호, 비밀번호, 로그인, 관리자, 아바타, 프로필 사진"
+
+#: src/window/pagelist.cpp
+msgid "region, locale, system language, country, formats, first day of week, measurement system, temperature"
+msgstr "지역, 로케일, locale, 시스템 언어, 국가, 형식, 주의 첫 번째 요일, 측정 단위, 온도"
+
+#: src/window/pagelist.cpp
+msgid "clock, time zone, 24-hour time, NTP, sync"
+msgstr "시계, 시간대, 표준 시간대, 24시간제, NTP, 동기화"
+
+#: src/window/pagelist.cpp
+msgid "web browser, email client, terminal"
+msgstr "웹 브라우저, 이메일 클라이언트, 메일, 터미널"
+
+#: src/window/pagelist.cpp
+msgid "computer control, agents, allowed apps, permissions"
+msgstr "컴퓨터 제어, 에이전트, 허용된 앱, 권한"
+
+#: src/window/pagelist.cpp
+msgid "charge, charging limit, battery health, capacity, history, percentage"
+msgstr "충전, 충전 제한, 배터리 상태, 용량, 기록, 퍼센트, 백분율"
+
+#: src/window/pagelist.cpp
+msgid "energy, performance, power saving, sleep, turn off display"
+msgstr "에너지, 전력, 성능, 절전, 잠자기, 디스플레이 끄기"
+
+#: src/window/pagelist.cpp
+msgid "system, version, kernel, processor, memory, storage, hardware"
+msgstr "시스템, 버전, 커널, 프로세서, CPU, 메모리, 저장 공간, 하드웨어"
+
+#: src/window/pagelist.cpp
+msgid "VPN, WireGuard, OpenVPN, tunnel, network"
+msgstr "VPN, WireGuard, OpenVPN, 터널, 네트워크"
+
+#: src/window/pagelist.cpp
+msgid "HTTP, HTTPS, SOCKS, FTP, PAC, network"
+msgstr "HTTP, HTTPS, SOCKS, FTP, PAC, 네트워크"
+
+#: src/window/pagelist.cpp
+msgid "tethering, share internet, access point, Wi-Fi, wireless"
+msgstr "테더링, 인터넷 공유, 액세스 포인트, Wi-Fi, 와이파이, 무선"
+
+#: src/window/pagelist.cpp
+msgid "general font, fixed font, font size, anti-aliasing, hinting"
+msgstr "일반 글꼴, 고정폭 글꼴, 글꼴 크기, 폰트, 안티에일리어싱, 힌팅"
+
+#: src/window/pagelist.cpp
+msgid "icons"
+msgstr "아이콘"
+
+#: src/window/pagelist.cpp
+msgid "cursor theme, cursor size, pointer"
+msgstr "커서 테마, 커서 크기, 포인터, 마우스"
+
+#: src/window/pagelist.cpp
+msgid "Keyboard Layout"
+msgstr "키보드 레이아웃"
+
+#: src/window/pagelist.cpp
+msgid "input source"
+msgstr "입력 소스, 자판"
+
+#: src/window/pagelist.cpp
+msgid "screen corners, show desktop, show all windows"
+msgstr "화면 모서리, 데스크톱 보기, 모든 창 보기"
+
+#: src/window/pagelist.cpp
+msgid "hotkeys, key bindings"
+msgstr "단축키, 핫키, 키 바인딩"
+
+#: src/window/pagelist.cpp
+msgid "license, copyright, source code, open source"
+msgstr "라이선스, 저작권, 소스 코드, 오픈 소스"
+
+#: src/window/settingswindow.cpp src/window/sidebar.cpp
+#: cutefish-settings.desktop
+msgid "Settings"
+msgstr "설정"
+
+#: src/window/sidebar.cpp
+msgid "No results"
+msgstr "결과 없음"

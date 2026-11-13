@@ -1,0 +1,2611 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cutefish-settings\n"
+"Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
+"POT-Creation-Date: 2026-11-13 16:33+0800\n"
+"PO-Revision-Date: 2026-11-13 12:00+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "Unknown"
+msgstr "Desconhecido"
+
+#. TRANSLATORS: a processor model and its number of cores, such as "Intel Core i5 x 8".
+#: src/pages/about/aboutinfo.cpp
+#, python-brace-format
+msgid "{model} x {count}"
+msgstr "{model} x {count}"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "B"
+msgstr "B"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "KB"
+msgstr "KB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "MB"
+msgstr "MB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "GB"
+msgstr "GB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "TB"
+msgstr "TB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "PB"
+msgstr "PB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "EB"
+msgstr "EB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "ZB"
+msgstr "ZB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "YB"
+msgstr "YB"
+
+#. TRANSLATORS: a size, such as "16 GB".
+#: src/pages/about/aboutinfo.cpp
+#, python-brace-format
+msgid "{value} {unit}"
+msgstr "{value} {unit}"
+
+#. TRANSLATORS: the space used on the system disk and its size, such as "40 GB / 256 GB".
+#: src/pages/about/aboutinfo.cpp
+#, python-brace-format
+msgid "{used} / {total}"
+msgstr "{used} / {total}"
+
+#: src/pages/about/aboutpage.cpp src/window/pagelist.cpp
+msgid "About"
+msgstr "Sobre"
+
+#: src/pages/about/aboutpage.cpp
+#, python-brace-format
+msgid "Running on {system}"
+msgstr "Executado em {system}"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Model"
+msgstr "Modelo"
+
+#: src/pages/about/aboutpage.cpp
+msgid "System version"
+msgstr "Versão do sistema"
+
+#: src/pages/about/aboutpage.cpp
+msgid "System type"
+msgstr "Tipo de sistema"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Kernel version"
+msgstr "Versão do kernel"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Processor"
+msgstr "Processador"
+
+#: src/pages/about/aboutpage.cpp
+msgid "RAM"
+msgstr "Memória"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Internal storage"
+msgstr "Armazenamento interno"
+
+#: src/pages/about/aboutpage.cpp src/pages/about/licensespage.cpp
+#: src/window/pagelist.cpp
+msgid "Open-Source Licenses"
+msgstr "Licenças de código aberto"
+
+#: src/pages/about/licensespage.cpp
+msgid "Desktop and applications"
+msgstr "Área de trabalho e aplicativos"
+
+#: src/pages/about/licensespage.cpp
+msgid "Terminal and the icon theme are under the GNU General Public License 3.0."
+msgstr "O Terminal e o tema de ícones estão sob a GNU General Public License 3.0."
+
+#: src/pages/about/licensespage.cpp
+msgid "Compositor"
+msgstr "Compositor"
+
+#: src/pages/about/licensespage.cpp
+msgid "Wayland and window management, designed after Chromium's Exo and Ash"
+msgstr "Wayland e gerenciamento de janelas, projetados com base no Exo e no Ash do Chromium"
+
+#: src/pages/about/licensespage.cpp
+msgid "Xwayland window manager and selection bridge, adapted from sommelier"
+msgstr "Gerenciador de janelas Xwayland e ponte de seleção, adaptados do sommelier"
+
+#: src/pages/about/licensespage.cpp
+msgid "Pointer acceleration curve"
+msgstr "Curva de aceleração do ponteiro"
+
+#: src/pages/about/licensespage.cpp
+msgid "The source code of the pointer acceleration curve is available under the Apple Public Source License 2.0 at https://github.com/cutefishos/cutefish-compositor."
+msgstr "O código-fonte da curva de aceleração do ponteiro está disponível sob a Apple Public Source License 2.0 em https://github.com/cutefishos/cutefish-compositor."
+
+#: src/pages/accounts/accountspage.cpp src/window/pagelist.cpp
+msgid "Users"
+msgstr "Usuários"
+
+#: src/pages/accounts/accountspage.cpp
+msgid "Add user"
+msgstr "Adicionar usuário"
+
+#: src/pages/accounts/accountspage.cpp src/pages/accounts/userdetailsdialog.cpp
+msgid "Delete this user"
+msgstr "Excluir este usuário"
+
+#: src/pages/accounts/accountspage.cpp
+#, python-brace-format
+msgid "Delete user “{name}”? Their home directory and its contents will be permanently deleted. This cannot be undone."
+msgstr "Excluir o usuário “{name}”? A pasta pessoal dele e todo o seu conteúdo serão excluídos permanentemente. Não é possível desfazer esta ação."
+
+#: src/pages/accounts/accountspage.cpp src/pages/accounts/picturedialog.cpp
+#: src/pages/accounts/userdialogs.cpp src/pages/datetime/timezonedialog.cpp
+#: src/pages/language/addlanguagedialog.cpp
+#: src/pages/language/chooseregiondialog.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/pages/accounts/accountspage.cpp
+msgid "Delete"
+msgstr "Excluir"
+
+#: src/pages/accounts/picturedialog.cpp
+msgid "Choose a picture"
+msgstr "Escolha uma imagem"
+
+#: src/pages/accounts/picturedialog.cpp
+msgid "Choose File…"
+msgstr "Escolher arquivo…"
+
+#: src/pages/accounts/picturedialog.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/proxy/proxypage.cpp src/pages/network/vpn/vpndialogs.cpp
+msgid "Save"
+msgstr "Salvar"
+
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
+#: src/pages/accounts/picturedialog.cpp src/pages/wallpaper/wallpaperpage.cpp
+#, python-brace-format
+msgid "Image files ({patterns})"
+msgstr "Arquivos de imagem ({patterns})"
+
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
+#: src/pages/accounts/picturedialog.cpp src/pages/network/vpn/vpndialogs.cpp
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "All files (*)"
+msgstr "Todos os arquivos (*)"
+
+#: src/pages/accounts/userdetailsdialog.cpp src/pages/accounts/userdialogs.cpp
+msgid "Account type"
+msgstr "Tipo de conta"
+
+#: src/pages/accounts/userdetailsdialog.cpp
+msgid "Change password…"
+msgstr "Alterar senha…"
+
+#: src/pages/accounts/userdetailsdialog.cpp src/pages/accounts/userdialogs.cpp
+msgid "Standard"
+msgstr "Padrão"
+
+#: src/pages/accounts/userdetailsdialog.cpp src/pages/accounts/userdialogs.cpp
+msgid "Administrator"
+msgstr "Administrador"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Change password"
+msgstr "Alterar senha"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Current password"
+msgstr "Senha atual"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "New password"
+msgstr "Nova senha"
+
+#: src/pages/accounts/userdialogs.cpp src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Password"
+msgstr "Senha"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Verify password"
+msgstr "Confirmar senha"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The current password is incorrect"
+msgstr "A senha atual está incorreta"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The new password was not accepted"
+msgstr "A nova senha não foi aceita"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The password could not be changed"
+msgstr "Não foi possível alterar a senha"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The password change did not finish in time"
+msgstr "A alteração da senha não terminou a tempo"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Add new user"
+msgstr "Adicionar novo usuário"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "User name"
+msgstr "Nome de usuário"
+
+#: src/pages/accounts/userdialogs.cpp src/pages/language/addlanguagedialog.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Add"
+msgstr "Adicionar"
+
+#: src/pages/accounts/userrow.cpp
+msgid "Logged in"
+msgstr "Sessão iniciada"
+
+#: src/pages/appearance/appearancepage.cpp src/window/pagelist.cpp
+msgid "Appearance"
+msgstr "Aparência"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Light"
+msgstr "Claro"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Dark"
+msgstr "Escuro"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Auto"
+msgstr "Automático"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Accent color"
+msgstr "Cor de destaque"
+
+#: src/pages/appearance/appearancepage.cpp src/pages/fonts/fontspage.cpp
+#: src/window/pagelist.cpp
+msgid "Fonts"
+msgstr "Fontes"
+
+#: src/pages/appearance/appearancepage.cpp
+#: src/pages/icontheme/iconthemepage.cpp src/window/pagelist.cpp
+msgid "Icon Theme"
+msgstr "Tema de ícones"
+
+#: src/pages/appearance/appearancepage.cpp
+#: src/pages/cursortheme/cursorthemepage.cpp src/window/pagelist.cpp
+msgid "Cursor Style"
+msgstr "Estilo do cursor"
+
+#: src/pages/battery/battery.cpp
+#, python-brace-format
+msgid "Today at {time}"
+msgstr "Hoje às {time}"
+
+#: src/pages/battery/battery.cpp
+#, python-brace-format
+msgid "Yesterday at {time}"
+msgstr "Ontem às {time}"
+
+#: src/pages/battery/batterypage.cpp
+msgid "History"
+msgstr "Histórico"
+
+#: src/pages/battery/batterypage.cpp
+msgid "24 hours"
+msgstr "24 horas"
+
+#: src/pages/battery/batterypage.cpp
+msgid "7 days"
+msgstr "7 dias"
+
+#: src/pages/battery/batterypage.cpp src/window/pagelist.cpp
+msgid "Battery"
+msgstr "Bateria"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Health"
+msgstr "Saúde"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Condition"
+msgstr "Condição"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Maximum capacity"
+msgstr "Capacidade máxima"
+
+#: src/pages/battery/batterypage.cpp src/pages/battery/historygraph.cpp
+msgid "Charging"
+msgstr "Carregando"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Show percentage in status bar"
+msgstr "Mostrar porcentagem na barra de status"
+
+#. TRANSLATORS: the names of a computer's two batteries.
+#: src/pages/battery/batterypage.cpp
+msgid "Main"
+msgstr "Principal"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Extra"
+msgstr "Adicional"
+
+#. TRANSLATORS: the name of one of a computer's batteries, such as "Battery 3".
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "Battery {n}"
+msgstr "Bateria {n}"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Excellent"
+msgstr "Excelente"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Normal"
+msgstr "Normal"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Poor"
+msgstr "Ruim"
+
+#. TRANSLATORS: a percentage, such as "92%".
+#: src/pages/battery/batterypage.cpp src/pages/display/displaypage.cpp
+#: src/pages/network/common/detailsdialog.cpp
+#, python-brace-format
+msgid "{percent}%"
+msgstr "{percent}%"
+
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "Last charged to {percent}%"
+msgstr "Última carga até {percent}%"
+
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "Limit charging to {percent}%"
+msgstr "Limitar a carga a {percent}%"
+
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "While plugged in, charging stops at {end}% and resumes below {start}%, so the battery wears more slowly."
+msgstr "Enquanto estiver conectado, a carga para em {end}% e recomeça abaixo de {start}%, para que a bateria se desgaste mais devagar."
+
+#: src/pages/battery/batterypage.cpp
+msgid "This computer's battery controller did not keep the limit, so the battery still charges fully."
+msgstr "O controlador de bateria deste computador não manteve o limite, então a bateria ainda carrega por completo."
+
+#: src/pages/battery/historygraph.cpp
+msgid "Fully charged"
+msgstr "Carga completa"
+
+#: src/pages/battery/historygraph.cpp
+msgid "Not charging"
+msgstr "Não está carregando"
+
+#: src/pages/battery/historygraph.cpp
+msgid "On battery"
+msgstr "Na bateria"
+
+#: src/pages/battery/historygraph.cpp
+msgid "Plugged in"
+msgstr "Conectado à energia"
+
+#. TRANSLATORS: a weekday and a time in the graph's readout, such as "Mon 9:41 AM".
+#: src/pages/battery/historygraph.cpp
+#, python-brace-format
+msgid "{day} {time}"
+msgstr "{day} {time}"
+
+#. TRANSLATORS: the battery state and the time in the graph's readout, such as "Charging · 9:41 AM".
+#: src/pages/battery/historygraph.cpp
+#, python-brace-format
+msgid "{state} · {time}"
+msgstr "{state} · {time}"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Audio device"
+msgstr "Dispositivo de áudio"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Headphones"
+msgstr "Fones de ouvido"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Headset"
+msgstr "Headset"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Camera"
+msgstr "Câmera"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Video camera"
+msgstr "Câmera de vídeo"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Computer"
+msgstr "Computador"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Game controller"
+msgstr "Controle de jogo"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/window/pagelist.cpp
+msgid "Keyboard"
+msgstr "Teclado"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/mouse/mousepage.cpp
+#: src/window/pagelist.cpp
+msgid "Mouse"
+msgstr "Mouse"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Drawing tablet"
+msgstr "Mesa digitalizadora"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Modem"
+msgstr "Modem"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Media player"
+msgstr "Reprodutor de mídia"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Network device"
+msgstr "Dispositivo de rede"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Phone"
+msgstr "Telefone"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Printer"
+msgstr "Impressora"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Scanner"
+msgstr "Scanner"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgctxt "device type"
+msgid "Display"
+msgstr "Monitor"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Name"
+msgstr "Nome"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/network/vpn/vpneditor.cpp
+msgid "Address"
+msgstr "Endereço"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Powered"
+msgstr "Ligado"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Visible to other devices"
+msgstr "Visível para outros dispositivos"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Allow incoming pairing"
+msgstr "Permitir pareamento de entrada"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Close"
+msgstr "Fechar"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Device type"
+msgstr "Tipo de dispositivo"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Model number"
+msgstr "Número do modelo"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Version"
+msgstr "Versão"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Trusted"
+msgstr "Confiável"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Blocked"
+msgstr "Bloqueado"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Forget this device"
+msgstr "Esquecer este dispositivo"
+
+#: src/pages/bluetooth/bluetoothpage.cpp src/pages/network/vpn/vpndialogs.cpp
+msgid "Connected"
+msgstr "Conectado"
+
+#: src/pages/bluetooth/bluetoothpage.cpp src/pages/network/vpn/vpndialogs.cpp
+msgid "Not connected"
+msgstr "Não conectado"
+
+#. TRANSLATORS: a device's connection and its battery level, such as "Connected · 80%".
+#: src/pages/bluetooth/bluetoothpage.cpp
+#, python-brace-format
+msgid "{status} · {percent}%"
+msgstr "{status} · {percent}%"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Cancel pairing"
+msgstr "Cancelar pareamento"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Disconnect"
+msgstr "Desconectar"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Discoverable"
+msgstr "Detectável"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Not discoverable"
+msgstr "Não detectável"
+
+#: src/pages/bluetooth/bluetoothpage.cpp src/pages/sound/soundpage.cpp
+#: src/window/pagelist.cpp
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "My devices"
+msgstr "Meus dispositivos"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Other devices"
+msgstr "Outros dispositivos"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Bluetooth service is unavailable"
+msgstr "O serviço de Bluetooth não está disponível"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Bluetooth is blocked by a hardware switch"
+msgstr "O Bluetooth está bloqueado por um interruptor físico"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "No Bluetooth adapters found"
+msgstr "Nenhum adaptador Bluetooth encontrado"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "No devices found. Make sure your device is discoverable."
+msgstr "Nenhum dispositivo encontrado. Verifique se o seu dispositivo está detectável."
+
+#: src/pages/cursortheme/cursorthemepage.cpp
+msgid "Cursor theme"
+msgstr "Tema do cursor"
+
+#: src/pages/cursortheme/cursorthemepage.cpp
+msgid "Cursor size"
+msgstr "Tamanho do cursor"
+
+#: src/pages/datetime/datetimepage.cpp src/window/pagelist.cpp
+msgid "Date & Time"
+msgstr "Data e hora"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "Auto sync"
+msgstr "Sincronização automática"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "24-hour time"
+msgstr "Formato de 24 horas"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "Time zone"
+msgstr "Fuso horário"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "Unable to use auto sync. Please ensure your NTP service is installed."
+msgstr "Não é possível usar a sincronização automática. Verifique se o serviço NTP está instalado."
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Search city or country"
+msgstr "Pesquisar cidade ou país"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "No matching time zones"
+msgstr "Nenhum fuso horário correspondente"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Time Zone"
+msgstr "Fuso horário"
+
+#. TRANSLATORS: the button that makes the chosen time zone the system's.
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Set"
+msgstr "Definir"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Click the map or search to choose a time zone"
+msgstr "Clique no mapa ou pesquise para escolher um fuso horário"
+
+#. TRANSLATORS: a time zone's city and its country or region, such as "Paris, France".
+#: src/pages/datetime/timezonedialog.cpp
+#, python-brace-format
+msgid "{city}, {region}"
+msgstr "{city}, {region}"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Current time zone"
+msgstr "Fuso horário atual"
+
+#: src/pages/datetime/timezonedialog.cpp
+#, python-brace-format
+msgid "Currently {zone}"
+msgstr "Atualmente {zone}"
+
+#: src/pages/datetime/timezonemap.cpp
+msgid "Same time as now"
+msgstr "Mesmo horário que o atual"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} hour ahead"
+msgid_plural "{n} hours ahead"
+msgstr[0] "{n} hora à frente"
+msgstr[1] "{n} horas à frente"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} hour behind"
+msgid_plural "{n} hours behind"
+msgstr[0] "{n} hora atrás"
+msgstr[1] "{n} horas atrás"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} min ahead"
+msgid_plural "{n} min ahead"
+msgstr[0] "{n} min à frente"
+msgstr[1] "{n} min à frente"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} min behind"
+msgid_plural "{n} min behind"
+msgstr[0] "{n} min atrás"
+msgstr[1] "{n} min atrás"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{hours} h {minutes} min ahead"
+msgstr "{hours} h {minutes} min à frente"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{hours} h {minutes} min behind"
+msgstr "{hours} h {minutes} min atrás"
+
+#: src/pages/datetime/timezonemap.cpp
+msgid "Tomorrow"
+msgstr "Amanhã"
+
+#: src/pages/datetime/timezonemap.cpp
+msgid "Yesterday"
+msgstr "Ontem"
+
+#: src/pages/defaultapps/defaultappspage.cpp src/window/pagelist.cpp
+msgid "Default Applications"
+msgstr "Aplicativos padrão"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Web browser"
+msgstr "Navegador da web"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Email client"
+msgstr "Cliente de e-mail"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Text editor"
+msgstr "Editor de texto"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Music player"
+msgstr "Reprodutor de música"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Video player"
+msgstr "Reprodutor de vídeo"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Image viewer"
+msgstr "Visualizador de imagens"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Terminal"
+msgstr "Terminal"
+
+#: src/pages/defaultapps/defaultappspage.cpp src/pages/fonts/fontspage.cpp
+#: src/pages/hotcorners/hotcornerspage.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "None"
+msgstr "Nenhum"
+
+#: src/pages/display/displaypage.cpp
+#, python-brace-format
+msgid "{item} (Recommended)"
+msgstr "{item} (recomendado)"
+
+#: src/pages/display/displaypage.cpp src/window/pagelist.cpp
+msgid "Display"
+msgstr "Tela"
+
+#: src/pages/display/displaypage.cpp
+msgid "Brightness"
+msgstr "Brilho"
+
+#: src/pages/display/displaypage.cpp
+msgid "Resolution"
+msgstr "Resolução"
+
+#: src/pages/display/displaypage.cpp
+msgid "Refresh rate"
+msgstr "Taxa de atualização"
+
+#: src/pages/display/displaypage.cpp
+msgid "Scale"
+msgstr "Escala"
+
+#: src/pages/display/displaypage.cpp
+msgid "Rotation"
+msgstr "Rotação"
+
+#: src/pages/display/displaypage.cpp
+msgctxt "rotation"
+msgid "Normal"
+msgstr "Normal"
+
+#: src/pages/display/displaypage.cpp
+msgid "Enabled"
+msgstr "Ativado"
+
+#: src/pages/display/displaypage.cpp
+msgid "Primary"
+msgstr "Principal"
+
+#: src/pages/display/displaypage.cpp src/pages/power/powerpage.cpp
+msgid "Mode"
+msgstr "Modo"
+
+#: src/pages/display/displaypage.cpp
+msgid "Position"
+msgstr "Posição"
+
+#: src/pages/display/displaypage.cpp
+msgid "Night Light"
+msgstr "Luz noturna"
+
+#: src/pages/display/displaypage.cpp
+msgid "Color temperature"
+msgstr "Temperatura de cor"
+
+#: src/pages/display/displaypage.cpp
+msgid "Less warm"
+msgstr "Menos quente"
+
+#: src/pages/display/displaypage.cpp
+msgid "More warm"
+msgstr "Mais quente"
+
+#: src/pages/display/displaypage.cpp
+msgid "Schedule"
+msgstr "Programação"
+
+#: src/pages/display/displaypage.cpp src/pages/power/powerpage.cpp
+msgid "Never"
+msgstr "Nunca"
+
+#: src/pages/display/displaypage.cpp
+msgid "Sunset to sunrise"
+msgstr "Do pôr ao nascer do sol"
+
+#: src/pages/display/displaypage.cpp src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Custom"
+msgstr "Personalizado"
+
+#: src/pages/display/displaypage.cpp
+msgid "Sunset"
+msgstr "Pôr do sol"
+
+#: src/pages/display/displaypage.cpp
+msgid "Sunrise"
+msgstr "Nascer do sol"
+
+#: src/pages/display/displaypage.cpp
+msgid "From"
+msgstr "De"
+
+#: src/pages/display/displaypage.cpp
+msgid "To"
+msgstr "Até"
+
+#: src/pages/display/displaypage.cpp
+msgid "Screen"
+msgstr "Tela"
+
+#: src/pages/display/displaypage.cpp
+msgid "Display configuration is unavailable in this session."
+msgstr "A configuração de telas não está disponível nesta sessão."
+
+#: src/pages/display/displaypage.cpp
+#, python-brace-format
+msgid "The previous settings come back in {n} second."
+msgid_plural "The previous settings come back in {n} seconds."
+msgstr[0] "As configurações anteriores voltarão em {n} segundo."
+msgstr[1] "As configurações anteriores voltarão em {n} segundos."
+
+#: src/pages/display/displaypage.cpp
+msgid "Keep these display settings?"
+msgstr "Manter estas configurações de tela?"
+
+#: src/pages/display/displaypage.cpp
+msgid "Revert"
+msgstr "Reverter"
+
+#: src/pages/display/displaypage.cpp
+msgid "Keep"
+msgstr "Manter"
+
+#: src/pages/dock/dockpage.cpp src/window/pagelist.cpp
+msgid "Dock & Desktop"
+msgstr "Dock e área de trabalho"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Dock"
+msgstr "Dock"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Left"
+msgstr "Esquerda"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Bottom"
+msgstr "Embaixo"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Right"
+msgstr "Direita"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Size"
+msgstr "Tamanho"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Small"
+msgstr "Pequeno"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Large"
+msgstr "Grande"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Magnification"
+msgstr "Ampliação"
+
+#: src/pages/dock/dockpage.cpp src/pages/network/vpn/vpneditor.cpp
+#: src/pages/notifications/notificationspage.cpp
+msgid "Off"
+msgstr "Desativado"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Glass effect"
+msgstr "Efeito de vidro"
+
+#: src/pages/dock/dockpage.cpp
+msgid "More clear"
+msgstr "Mais transparente"
+
+#: src/pages/dock/dockpage.cpp
+msgid "More tinted"
+msgstr "Mais tingido"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Display mode"
+msgstr "Modo de exibição"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Always show"
+msgstr "Sempre mostrar"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Always hide"
+msgstr "Sempre ocultar"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Smart hide"
+msgstr "Ocultação inteligente"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Minimized windows area"
+msgstr "Área de janelas minimizadas"
+
+#: src/pages/dock/dockpage.cpp src/window/pagelist.cpp
+msgid "Desktop"
+msgstr "Área de trabalho"
+
+#: src/pages/dock/dockpage.cpp src/pages/hotcorners/hotcornerspage.cpp
+#: src/window/pagelist.cpp
+msgid "Hot Corners"
+msgstr "Cantos ativos"
+
+#. TRANSLATORS: a font size in points, such as "9pt".
+#: src/pages/fonts/fontspage.cpp
+#, python-brace-format
+msgid "{size}pt"
+msgstr "{size} pt"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "General font"
+msgstr "Fonte geral"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Fixed font"
+msgstr "Fonte de largura fixa"
+
+#: src/pages/fonts/fontspage.cpp
+#, python-brace-format
+msgid "{size} (Default)"
+msgstr "{size} (padrão)"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Font size"
+msgstr "Tamanho da fonte"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Hinting"
+msgstr "Hinting"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Slight"
+msgstr "Leve"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Medium"
+msgstr "Médio"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Full"
+msgstr "Completo"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Anti-Aliasing"
+msgstr "Suavização"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Control"
+msgstr "Control"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Option"
+msgstr "Option"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Alt"
+msgstr "Alt"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Shift"
+msgstr "Shift"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Command"
+msgstr "Command"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Meta"
+msgstr "Meta"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Show All Windows"
+msgstr "Mostrar todas as janelas"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Show Desktop"
+msgstr "Mostrar a área de trabalho"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Launcher"
+msgstr "Lançador"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Lock Screen"
+msgstr "Bloquear tela"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Hot corners are managed by the Cutefish compositor, which is not running."
+msgstr "Os cantos ativos são gerenciados pelo compositor do Cutefish, que não está em execução."
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Top left"
+msgstr "Superior esquerdo"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Top right"
+msgstr "Superior direito"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Bottom left"
+msgstr "Inferior esquerdo"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Bottom right"
+msgstr "Inferior direito"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Move the pointer into a corner of the screen to run its action. Hold modifier keys while choosing an action to make the corner work only while they are held."
+msgstr "Mova o ponteiro para um canto da tela para executar a ação dele. Mantenha teclas modificadoras pressionadas ao escolher uma ação para que o canto só funcione enquanto elas estiverem pressionadas."
+
+#. TRANSLATORS: the keys a hot corner needs held and its action, such as "Ctrl + Alt – Lock Screen".
+#: src/pages/hotcorners/hotcornerspage.cpp
+#, python-brace-format
+msgid "{keys} – {action}"
+msgstr "{keys} – {action}"
+
+#: src/pages/icontheme/iconthemepage.cpp
+msgid "Icon theme"
+msgstr "Tema de ícones"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Input method"
+msgstr "Método de entrada"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Input methods can only be selected in a Cutefish Wayland session."
+msgstr "Métodos de entrada só podem ser selecionados em uma sessão Cutefish Wayland."
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "The selected input method is not running."
+msgstr "O método de entrada selecionado não está em execução."
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Applications started before the input method may need to be restarted."
+msgstr "Aplicativos iniciados antes do método de entrada podem precisar ser reiniciados."
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Shortcut key"
+msgstr "Tecla de atalho"
+
+#: src/pages/keyboard/keyboardpage.cpp src/pages/keyboard/layoutpage.cpp
+msgid "Layout"
+msgstr "Layout"
+
+#: src/pages/keyboard/keyboardpage.cpp src/pages/shortcuts/shortcutspage.cpp
+#: src/window/pagelist.cpp
+msgid "Keyboard Shortcuts"
+msgstr "Atalhos de teclado"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Key repeat"
+msgstr "Repetição de teclas"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Delay until repeat"
+msgstr "Atraso até repetir"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Repeat rate"
+msgstr "Taxa de repetição"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "The key next to the space bar works as Command and the one beside it as Option, on any keyboard: Command+C copies, Command+Tab switches windows, Command+Q quits. The shortcuts can be changed in Keyboard Shortcuts."
+msgstr "A tecla ao lado da barra de espaço funciona como Command e a seguinte como Option, em qualquer teclado: Command+C copia, Command+Tab alterna janelas, Command+Q encerra. Os atalhos podem ser alterados em Atalhos de teclado."
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Ctrl is the shortcut key and Alt switches windows. The shortcuts can be changed in Keyboard Shortcuts."
+msgstr "Ctrl é a tecla de atalho e Alt alterna janelas. Os atalhos podem ser alterados em Atalhos de teclado."
+
+#: src/pages/keyboard/layoutpage.cpp
+msgid "No layouts found"
+msgstr "Nenhum layout encontrado"
+
+#: src/pages/keyboard/layoutpage.cpp
+msgid "Search layouts"
+msgstr "Pesquisar layouts"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "Add Language"
+msgstr "Adicionar idioma"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "Search languages"
+msgstr "Pesquisar idiomas"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "Loading languages…"
+msgstr "Carregando idiomas…"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "No languages found"
+msgstr "Nenhum idioma encontrado"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Choose Region"
+msgstr "Escolher região"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Search regions"
+msgstr "Pesquisar regiões"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Choose"
+msgstr "Escolher"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Loading regions…"
+msgstr "Carregando regiões…"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "No regions found"
+msgstr "Nenhuma região encontrada"
+
+#: src/pages/language/language.cpp
+msgid "Could not save preferred languages. Please try again."
+msgstr "Não foi possível salvar os idiomas preferidos. Tente novamente."
+
+#: src/pages/language/languagepage.cpp
+#, python-brace-format
+msgid "Automatic ({value})"
+msgstr "Automático ({value})"
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "US"
+msgstr "EUA"
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "UK"
+msgstr "Reino Unido"
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "Metric"
+msgstr "Métrico"
+
+#: src/pages/language/languagepage.cpp
+msgid "Fahrenheit (°F)"
+msgstr "Fahrenheit (°F)"
+
+#: src/pages/language/languagepage.cpp
+msgid "Celsius (°C)"
+msgstr "Celsius (°C)"
+
+#: src/pages/language/languagepage.cpp src/window/pagelist.cpp
+msgid "Language & Region"
+msgstr "Idioma e região"
+
+#: src/pages/language/languagepage.cpp
+msgid "Preferred languages"
+msgstr "Idiomas preferidos"
+
+#: src/pages/language/languagepage.cpp
+msgid "Add language…"
+msgstr "Adicionar idioma…"
+
+#: src/pages/language/languagepage.cpp
+msgid "Drag a language to the top to make it the system language. Right-click a language to remove it."
+msgstr "Arraste um idioma para o topo para torná-lo o idioma do sistema. Clique com o botão direito em um idioma para removê-lo."
+
+#: src/pages/language/languagepage.cpp
+msgid "Region"
+msgstr "Região"
+
+#: src/pages/language/languagepage.cpp
+msgid "First day of week"
+msgstr "Primeiro dia da semana"
+
+#: src/pages/language/languagepage.cpp
+msgid "Measurement system"
+msgstr "Sistema de medidas"
+
+#: src/pages/language/languagepage.cpp
+msgid "Temperature"
+msgstr "Temperatura"
+
+#: src/pages/language/languagepage.cpp
+msgid "Applications that are already open may use the new region after they restart."
+msgstr "Os aplicativos que já estão abertos podem usar a nova região depois de reiniciados."
+
+#: src/pages/language/languagepage.cpp
+msgid "Format preview"
+msgstr "Prévia do formato"
+
+#: src/pages/language/languagepage.cpp
+msgid "Date"
+msgstr "Data"
+
+#: src/pages/language/languagepage.cpp
+msgid "Date and time"
+msgstr "Data e hora"
+
+#: src/pages/language/languagepage.cpp
+msgid "Number"
+msgstr "Número"
+
+#: src/pages/language/languagepage.cpp
+msgid "Currency"
+msgstr "Moeda"
+
+#: src/pages/language/preferredlanguagelist.cpp
+msgid "System language"
+msgstr "Idioma do sistema"
+
+#: src/pages/language/preferredlanguagelist.cpp
+msgid "Remove language"
+msgstr "Remover idioma"
+
+#: src/pages/mouse/mousepage.cpp
+msgid "Left hand"
+msgstr "Canhoto"
+
+#: src/pages/mouse/mousepage.cpp src/pages/touchpad/touchpadpage.cpp
+msgid "Natural scrolling"
+msgstr "Rolagem natural"
+
+#: src/pages/mouse/mousepage.cpp
+msgid "Mouse acceleration"
+msgstr "Aceleração do mouse"
+
+#: src/pages/mouse/mousepage.cpp src/pages/touchpad/touchpadpage.cpp
+msgid "Pointer speed"
+msgstr "Velocidade do ponteiro"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Auto-Join"
+msgstr "Entrar automaticamente"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Connect Automatically"
+msgstr "Conectar automaticamente"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "IP Settings"
+msgstr "Configurações de IP"
+
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Security"
+msgstr "Segurança"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Signal"
+msgstr "Sinal"
+
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "IPv4 address"
+msgstr "Endereço IPv4"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "IPv6 address"
+msgstr "Endereço IPv6"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "MAC address"
+msgstr "Endereço MAC"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Gateway"
+msgstr "Gateway"
+
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "DNS"
+msgstr "DNS"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Forget this network"
+msgstr "Esquecer esta rede"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Configure IPv4"
+msgstr "Configurar IPv4"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "IP Address"
+msgstr "Endereço IP"
+
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Required"
+msgstr "Obrigatório"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Subnet Mask"
+msgstr "Máscara de sub-rede"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Router"
+msgstr "Roteador"
+
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Optional"
+msgstr "Opcional"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Configure IPv6"
+msgstr "Configurar IPv6"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Prefix Length"
+msgstr "Comprimento do prefixo"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Automatic DNS"
+msgstr "DNS automático"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "DNS Servers"
+msgstr "Servidores DNS"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "These servers are asked before the network's own."
+msgstr "Estes servidores são consultados antes dos da própria rede."
+
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Saving…"
+msgstr "Salvando…"
+
+#: src/pages/network/ethernet/ethernetpage.cpp src/window/pagelist.cpp
+msgid "Ethernet"
+msgstr "Ethernet"
+
+#: src/pages/network/hotspot/hotspotpage.cpp src/pages/network/networkpage.cpp
+#: src/pages/network/wlan/wlanpage.cpp src/window/pagelist.cpp
+msgid "Hotspot"
+msgstr "Ponto de acesso"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Wi-Fi hotspot"
+msgstr "Ponto de acesso Wi-Fi"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Network name"
+msgstr "Nome da rede"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Generate password"
+msgstr "Gerar senha"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Turn On Wi-Fi Hotspot?"
+msgstr "Ativar o ponto de acesso Wi-Fi?"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+#, python-brace-format
+msgid "Turning on the hotspot will disconnect from “{network}”, and you will not have access to the internet it provides."
+msgstr "Ativar o ponto de acesso desconectará você de “{network}”, e você não terá acesso à internet que ela fornece."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Turn on"
+msgstr "Ativar"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Share this computer's internet connection by creating a Wi-Fi network other devices can join. The connection to share must come from a source other than Wi-Fi."
+msgstr "Compartilhe a conexão de internet deste computador criando uma rede Wi-Fi à qual outros dispositivos podem se conectar. A conexão compartilhada deve vir de uma fonte que não seja o Wi-Fi."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Turn on Wi-Fi to use the hotspot."
+msgstr "Ative o Wi-Fi para usar o ponto de acesso."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "System policy prohibits use as a hotspot."
+msgstr "A política do sistema proíbe o uso como ponto de acesso."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+#, python-brace-format
+msgid "Other devices can join “{network}” with the password below. Turn off the hotspot to use Wi-Fi on this computer."
+msgstr "Outros dispositivos podem se conectar a “{network}” com a senha abaixo. Desative o ponto de acesso para usar o Wi-Fi neste computador."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Network name cannot be empty."
+msgstr "O nome da rede não pode ficar vazio."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Network name is too long."
+msgstr "O nome da rede é longo demais."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "The password must have at least 8 characters."
+msgstr "A senha deve ter pelo menos 8 caracteres."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "The password must have at most 63 characters."
+msgstr "A senha deve ter no máximo 63 caracteres."
+
+#: src/pages/network/networkpage.cpp src/window/pagelist.cpp
+msgid "Network"
+msgstr "Rede"
+
+#: src/pages/network/networkpage.cpp src/pages/network/vpn/vpnpage.cpp
+#: src/window/pagelist.cpp
+msgid "VPN"
+msgstr "VPN"
+
+#: src/pages/network/networkpage.cpp src/pages/network/proxy/proxypage.cpp
+#: src/window/pagelist.cpp
+msgid "Proxy"
+msgstr "Proxy"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "No proxy"
+msgstr "Sem proxy"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Use proxy auto configuration URL"
+msgstr "Usar URL de configuração automática de proxy"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Use manually specified proxy configuration"
+msgstr "Usar configuração de proxy especificada manualmente"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Select file"
+msgstr "Selecionar arquivo"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "HTTP proxy"
+msgstr "Proxy HTTP"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Port"
+msgstr "Porta"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Also use this proxy for FTP"
+msgstr "Usar este proxy também para FTP"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "FTP proxy"
+msgstr "Proxy FTP"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "SOCKS proxy"
+msgstr "Proxy SOCKS"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Add VPN"
+msgstr "Adicionar VPN"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Type"
+msgstr "Tipo"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+#, python-brace-format
+msgid "{type} (Not Installed)"
+msgstr "{type} (não instalado)"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Status"
+msgstr "Status"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Export to file…"
+msgstr "Exportar para arquivo…"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Export VPN Configuration"
+msgstr "Exportar configuração de VPN"
+
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
+#: src/pages/network/vpn/vpndialogs.cpp src/pages/network/vpn/vpnpage.cpp
+#, python-brace-format
+msgid "VPN configurations ({patterns})"
+msgstr "Configurações de VPN ({patterns})"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Remove VPN"
+msgstr "Remover VPN"
+
+#: src/pages/network/vpn/vpndialogs.cpp src/pages/network/vpn/vpnpage.cpp
+msgid "Connecting…"
+msgstr "Conectando…"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Show advanced options"
+msgstr "Mostrar opções avançadas"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Asked on connect"
+msgstr "Solicitada ao conectar"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Choose…"
+msgstr "Escolher…"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Saved for all"
+msgstr "Salva para todos"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Saved"
+msgstr "Salva"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Ask each time"
+msgstr "Perguntar sempre"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Not needed"
+msgstr "Não necessária"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Hide advanced options"
+msgstr "Ocultar opções avançadas"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Private key"
+msgstr "Chave privada"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Interface name"
+msgstr "Nome da interface"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "From the name"
+msgstr "A partir do nome"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Listen port"
+msgstr "Porta de escuta"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Automatic"
+msgstr "Automático"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Firewall mark"
+msgstr "Marca de firewall"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "MTU"
+msgstr "MTU"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Add routes for the peers' allowed IPs"
+msgstr "Adicionar rotas para os IPs permitidos dos pares"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Add peer"
+msgstr "Adicionar par"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Peer"
+msgstr "Par"
+
+#: src/pages/network/vpn/vpneditor.cpp src/pages/privacy/privacypage.cpp
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Remove"
+msgstr "Remover"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Public key"
+msgstr "Chave pública"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Preshared key"
+msgstr "Chave pré-compartilhada"
+
+#. TRANSLATORS: a placeholder: the stored key stays unless a new one is typed.
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Kept"
+msgstr "Mantida"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Endpoint"
+msgstr "Endpoint"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Allowed IPs"
+msgstr "IPs permitidos"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "All traffic"
+msgstr "Todo o tráfego"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Keepalive"
+msgstr "Keepalive"
+
+#: src/pages/network/vpn/vpneditor.cpp
+#, python-brace-format
+msgid "Peer {number}"
+msgstr "Par {number}"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Available to all users"
+msgstr "Disponível para todos os usuários"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Use only for resources on its network"
+msgstr "Usar somente para recursos da rede dela"
+
+#: src/pages/network/vpn/vpneditor.cpp
+#, python-brace-format
+msgid "Install {package} to set up this kind of VPN."
+msgstr "Instale {package} para configurar este tipo de VPN."
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Add your user name to connect."
+msgstr "Adicione seu nome de usuário para conectar."
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Add VPN…"
+msgstr "Adicionar VPN…"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Import from file…"
+msgstr "Importar de arquivo…"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Import VPN Configuration"
+msgstr "Importar configuração de VPN"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Importing…"
+msgstr "Importando…"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Import the configuration file your VPN provider gives you, such as an OpenVPN .ovpn or a WireGuard .conf file."
+msgstr "Importe o arquivo de configuração fornecido pelo seu provedor de VPN, como um arquivo .ovpn do OpenVPN ou .conf do WireGuard."
+
+#. TRANSLATORS: a Wi-Fi network's security: none, anyone can join.
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Open"
+msgstr "Aberta"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "WPA Enterprise"
+msgstr "WPA Enterprise"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "WPA2 Enterprise"
+msgstr "WPA2 Enterprise"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "WPA3 Enterprise"
+msgstr "WPA3 Enterprise"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Add Other Network"
+msgstr "Adicionar outra rede"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+#, python-brace-format
+msgid "Join “{network}”"
+msgstr "Conectar-se a “{network}”"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Username"
+msgstr "Nome de usuário"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "This network signs in with a certificate, which can't be set up here yet."
+msgstr "Esta rede faz login com um certificado, o que ainda não pode ser configurado aqui."
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Join"
+msgstr "Conectar"
+
+#: src/pages/network/wlan/wlanpage.cpp src/window/pagelist.cpp
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
+
+#: src/pages/network/wlan/wlanpage.cpp
+msgid "Known networks"
+msgstr "Redes conhecidas"
+
+#: src/pages/network/wlan/wlanpage.cpp
+msgid "Other networks"
+msgstr "Outras redes"
+
+#: src/pages/network/wlan/wlanpage.cpp
+msgid "Add other…"
+msgstr "Adicionar outra…"
+
+#: src/pages/notifications/notificationspage.cpp src/window/pagelist.cpp
+msgid "Notifications"
+msgstr "Notificações"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Do Not Disturb"
+msgstr "Não perturbe"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Applications"
+msgstr "Aplicativos"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Applications appear here after they send a notification."
+msgstr "Os aplicativos aparecem aqui depois de enviarem uma notificação."
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Notifications that skip the banner still go to the Notification Center. Turned off, they are dropped."
+msgstr "As notificações que não exibem banner continuam indo para a Central de notificações. Se desativadas, são descartadas."
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Banners"
+msgstr "Banners"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Notification Center only"
+msgstr "Somente Central de notificações"
+
+#: src/pages/power/powerpage.cpp
+#, python-brace-format
+msgid "{n} minute"
+msgid_plural "{n} minutes"
+msgstr[0] "{n} minuto"
+msgstr[1] "{n} minutos"
+
+#: src/pages/power/powerpage.cpp
+msgid "Power save"
+msgstr "Economia de energia"
+
+#: src/pages/power/powerpage.cpp
+msgid "Balanced"
+msgstr "Equilibrado"
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance"
+msgstr "Desempenho"
+
+#: src/pages/power/powerpage.cpp src/window/pagelist.cpp
+msgid "Power"
+msgstr "Energia"
+
+#: src/pages/power/powerpage.cpp
+msgid "Turn off display when inactive on battery"
+msgstr "Desligar a tela após inatividade na bateria"
+
+#: src/pages/power/powerpage.cpp
+msgid "Reduces performance and power consumption."
+msgstr "Reduz o desempenho e o consumo de energia."
+
+#: src/pages/power/powerpage.cpp
+msgid "Standard performance and power consumption."
+msgstr "Desempenho e consumo de energia padrão."
+
+#: src/pages/power/powerpage.cpp
+msgid "Higher performance, with more power consumption and heat."
+msgstr "Desempenho maior, com mais consumo de energia e calor."
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance is limited because the computer is on your lap."
+msgstr "O desempenho está limitado porque o computador está no seu colo."
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance is limited because the computer is too hot."
+msgstr "O desempenho está limitado porque o computador está quente demais."
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance is currently limited."
+msgstr "O desempenho está limitado no momento."
+
+#: src/pages/power/powerpage.cpp
+msgid "Turn off display when inactive on power adapter"
+msgstr "Desligar a tela após inatividade no adaptador de energia"
+
+#: src/pages/power/powerpage.cpp
+msgid "Turn off display when inactive"
+msgstr "Desligar a tela após inatividade"
+
+#: src/pages/power/powerpage.cpp
+msgid "Prevent automatic sleeping on power adapter when the display is off"
+msgstr "Impedir a suspensão automática no adaptador de energia quando a tela estiver desligada"
+
+#: src/pages/power/powerpage.cpp
+msgid "Prevent automatic sleeping when the display is off"
+msgstr "Impedir a suspensão automática quando a tela estiver desligada"
+
+#: src/pages/privacy/privacypage.cpp src/window/pagelist.cpp
+msgid "Privacy"
+msgstr "Privacidade"
+
+#: src/pages/privacy/privacypage.cpp
+msgid "Computer control"
+msgstr "Controle do computador"
+
+#: src/pages/privacy/privacypage.cpp
+msgid "Computer control is managed by the Cutefish compositor, which is not running."
+msgstr "O controle do computador é gerenciado pelo compositor do Cutefish, que não está em execução."
+
+#: src/pages/privacy/privacypage.cpp
+msgid "No apps are allowed to control this computer without asking."
+msgstr "Nenhum aplicativo tem permissão para controlar este computador sem perguntar."
+
+#: src/pages/privacy/privacypage.cpp
+msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the status bar still shows while it is in control."
+msgstr "Um aplicativo que você sempre permite pode deixar seu agente ver a tela e usar o ponteiro e o teclado sem perguntar antes. O botão Parar na barra de status continua visível enquanto ele estiver no controle."
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Press the new shortcut…"
+msgstr "Pressione o novo atalho…"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Press the shortcut…"
+msgstr "Pressione o atalho…"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "No shortcut. Add one below."
+msgstr "Sem atalho. Adicione um abaixo."
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Add shortcut"
+msgstr "Adicionar atalho"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Restore default"
+msgstr "Restaurar padrão"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Change"
+msgstr "Alterar"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "General"
+msgstr "Geral"
+
+#. TRANSLATORS: the group of keyboard shortcuts that act on windows.
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Windows"
+msgstr "Janelas"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Desks"
+msgstr "Mesas"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Screenshots and Recording"
+msgstr "Capturas e gravação de tela"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Open the launcher"
+msgstr "Abrir o lançador"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Lock the screen"
+msgstr "Bloquear a tela"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show the clipboard history"
+msgstr "Mostrar o histórico da área de transferência"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the next window"
+msgstr "Alternar para a próxima janela"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the previous window"
+msgstr "Alternar para a janela anterior"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show all windows"
+msgstr "Mostrar todas as janelas"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show the desktop"
+msgstr "Mostrar a área de trabalho"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Maximize or restore the window"
+msgstr "Maximizar ou restaurar a janela"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Minimize the window"
+msgstr "Minimizar a janela"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Quit the application"
+msgstr "Encerrar o aplicativo"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Hide the application"
+msgstr "Ocultar o aplicativo"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Hide other applications"
+msgstr "Ocultar os outros aplicativos"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Toggle full screen"
+msgstr "Alternar tela cheia"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Snap the window to the left"
+msgstr "Encaixar a janela à esquerda"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Snap the window to the right"
+msgstr "Encaixar a janela à direita"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Close the window"
+msgstr "Fechar a janela"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Move the window to the next display"
+msgstr "Mover a janela para a próxima tela"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the desk on the left"
+msgstr "Alternar para a mesa à esquerda"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the desk on the right"
+msgstr "Alternar para a mesa à direita"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Move the window to the desk on the left"
+msgstr "Mover a janela para a mesa à esquerda"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Move the window to the desk on the right"
+msgstr "Mover a janela para a mesa à direita"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Add a desk"
+msgstr "Adicionar uma mesa"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Remove the desk"
+msgstr "Remover a mesa"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 1"
+msgstr "Alternar para a mesa 1"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 2"
+msgstr "Alternar para a mesa 2"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 3"
+msgstr "Alternar para a mesa 3"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 4"
+msgstr "Alternar para a mesa 4"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 5"
+msgstr "Alternar para a mesa 5"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 6"
+msgstr "Alternar para a mesa 6"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 7"
+msgstr "Alternar para a mesa 7"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 8"
+msgstr "Alternar para a mesa 8"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show the window on every desk"
+msgstr "Mostrar a janela em todas as mesas"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Save a picture of the screen"
+msgstr "Salvar uma imagem da tela"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Copy a picture of the screen"
+msgstr "Copiar uma imagem da tela"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Save a picture of the selected area"
+msgstr "Salvar uma imagem da área selecionada"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Copy a picture of the selected area"
+msgstr "Copiar uma imagem da área selecionada"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Screenshot and recording options"
+msgstr "Opções de captura e gravação de tela"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Stop screen recording"
+msgstr "Parar a gravação de tela"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Esc"
+msgstr "Esc"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Enter"
+msgstr "Enter"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Space"
+msgstr "Espaço"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Backspace"
+msgstr "Backspace"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Delete"
+msgstr "Delete"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Insert"
+msgstr "Insert"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Home"
+msgstr "Home"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "End"
+msgstr "End"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Page Up"
+msgstr "Page Up"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Page Down"
+msgstr "Page Down"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Print Screen"
+msgstr "Print Screen"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Tab"
+msgstr "Tab"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Menu"
+msgstr "Menu"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Volume Up"
+msgstr "Aumentar volume"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Volume Down"
+msgstr "Diminuir volume"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Mute"
+msgstr "Silenciar"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Brightness Up"
+msgstr "Aumentar brilho"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Brightness Down"
+msgstr "Diminuir brilho"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Play/Pause"
+msgstr "Reproduzir/Pausar"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Pause"
+msgstr "Pause"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Next Track"
+msgstr "Próxima faixa"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Previous Track"
+msgstr "Faixa anterior"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Stop"
+msgstr "Parar"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Calculator"
+msgstr "Calculadora"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "File Manager"
+msgstr "Gerenciador de arquivos"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Search"
+msgstr "Pesquisar"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Home Page"
+msgstr "Página inicial"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Mail"
+msgstr "E-mail"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "The shortcut service is not available."
+msgstr "O serviço de atalhos não está disponível."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+#, python-brace-format
+msgid "This shortcut is already used by “{action}”."
+msgstr "Este atalho já é usado por “{action}”."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+#, python-brace-format
+msgid "This shortcut is used by “{action}”. Press it again to reassign it."
+msgstr "Este atalho é usado por “{action}”. Pressione-o novamente para reatribuí-lo."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Include Control, Option or Command, or use a function key."
+msgstr "Inclua Control, Option ou Command, ou use uma tecla de função."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Include Ctrl, Alt or Meta, or use a function key."
+msgstr "Inclua Ctrl, Alt ou Meta, ou use uma tecla de função."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shift cannot be the only modifier. Add Control, Option or Command."
+msgstr "Shift não pode ser o único modificador. Adicione Control, Option ou Command."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shift cannot be the only modifier. Add Ctrl, Alt or Meta."
+msgstr "Shift não pode ser o único modificador. Adicione Ctrl, Alt ou Meta."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "This key cannot be used in a shortcut."
+msgstr "Esta tecla não pode ser usada em um atalho."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "This action already has the maximum of five shortcuts."
+msgstr "Esta ação já tem o máximo de cinco atalhos."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shortcuts without both Control and Command may be intercepted before applications see them. Press it again to keep it."
+msgstr "Atalhos sem Control e Command juntos podem ser interceptados antes que os aplicativos os recebam. Pressione-o novamente para mantê-lo."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shortcuts without Meta may be intercepted before applications see them. Press it again to keep it."
+msgstr "Atalhos sem Meta podem ser interceptados antes que os aplicativos os recebam. Pressione-o novamente para mantê-lo."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Some default shortcuts are in use by other actions and were not restored."
+msgstr "Alguns atalhos padrão estão em uso por outras ações e não foram restaurados."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "This shortcut no longer exists."
+msgstr "Este atalho não existe mais."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "The shortcut could not be changed."
+msgstr "Não foi possível alterar o atalho."
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Keyboard shortcuts are managed by the Cutefish compositor, which is not running."
+msgstr "Os atalhos de teclado são gerenciados pelo compositor do Cutefish, que não está em execução."
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Restore all defaults"
+msgstr "Restaurar todos os padrões"
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Click a system shortcut to change it. Shortcuts with both Control and Command are the safest choice: applications never get them."
+msgstr "Clique em um atalho do sistema para alterá-lo. Atalhos com Control e Command juntos são a escolha mais segura: os aplicativos nunca os recebem."
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Click a system shortcut to change it. Shortcuts with Meta are the safest choice: applications never use them."
+msgstr "Clique em um atalho do sistema para alterá-lo. Atalhos com Meta são a escolha mais segura: os aplicativos nunca os usam."
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Every shortcut goes back to its default. Your changes will be lost."
+msgstr "Todos os atalhos voltarão ao padrão. Suas alterações serão perdidas."
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Restore"
+msgstr "Restaurar"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Virtual"
+msgstr "Virtual"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Built-in"
+msgstr "Integrado"
+
+#: src/pages/sound/soundpage.cpp src/window/pagelist.cpp
+msgid "Sound"
+msgstr "Som"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Connecting to the audio service…"
+msgstr "Conectando ao serviço de áudio…"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Dismiss"
+msgstr "Dispensar"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Output"
+msgstr "Saída"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Input"
+msgstr "Entrada"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Output volume"
+msgstr "Volume de saída"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Balance"
+msgstr "Balanço"
+
+#: src/pages/sound/soundpage.cpp src/widgets/sliderrow.cpp
+msgctxt "balance"
+msgid "Left"
+msgstr "Esquerda"
+
+#: src/pages/sound/soundpage.cpp src/widgets/sliderrow.cpp
+msgctxt "balance"
+msgid "Right"
+msgstr "Direita"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Input volume"
+msgstr "Volume de entrada"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Input level"
+msgstr "Nível de entrada"
+
+#: src/pages/sound/soundpage.cpp
+#, python-brace-format
+msgid "Could not apply the audio change: {error}"
+msgstr "Não foi possível aplicar a alteração de áudio: {error}"
+
+#: src/pages/sound/soundpage.cpp
+msgid "No input devices"
+msgstr "Nenhum dispositivo de entrada"
+
+#: src/pages/sound/soundpage.cpp
+msgid "No output devices"
+msgstr "Nenhum dispositivo de saída"
+
+#: src/pages/touchpad/touchpadpage.cpp src/window/pagelist.cpp
+msgid "Touchpad"
+msgstr "Touchpad"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Enable"
+msgstr "Ativar"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Disable when a mouse is connected"
+msgstr "Desativar quando um mouse estiver conectado"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Disable while typing"
+msgstr "Desativar ao digitar"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Tap to click"
+msgstr "Tocar para clicar"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Tap and drag"
+msgstr "Tocar e arrastar"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Secondary click"
+msgstr "Clique secundário"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Two-finger press"
+msgstr "Pressionar com dois dedos"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Bottom-right corner press"
+msgstr "Pressionar o canto inferior direito"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Scroll speed"
+msgstr "Velocidade de rolagem"
+
+#: src/pages/touchscreen/touchscreenpage.cpp src/window/pagelist.cpp
+msgid "Touchscreen"
+msgstr "Tela sensível ao toque"
+
+#: src/pages/wallpaper/wallpapergrid.cpp src/pages/wallpaper/wallpaperpage.cpp
+msgid "Add wallpaper"
+msgstr "Adicionar papel de parede"
+
+#. TRANSLATORS: the number of wallpapers after a section's title, such as "(12)".
+#: src/pages/wallpaper/wallpapergrid.cpp
+#, python-brace-format
+msgid "({count})"
+msgstr "({count})"
+
+#: src/pages/wallpaper/wallpapergrid.cpp
+msgid "Show less"
+msgstr "Mostrar menos"
+
+#: src/pages/wallpaper/wallpapergrid.cpp
+msgid "Show all"
+msgstr "Mostrar tudo"
+
+#: src/pages/wallpaper/wallpaperpage.cpp src/window/pagelist.cpp
+msgid "Wallpaper"
+msgstr "Papel de parede"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Your wallpapers"
+msgstr "Seus papéis de parede"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgctxt "wallpaper section"
+msgid "System"
+msgstr "Do sistema"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Colors"
+msgstr "Cores"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Choose file…"
+msgstr "Escolher arquivo…"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Choose folder…"
+msgstr "Escolher pasta…"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Add Wallpaper Folder"
+msgstr "Adicionar pasta de papéis de parede"
+
+#: src/widgets/searchfield.cpp src/window/sidebar.cpp
+msgid "Search"
+msgstr "Pesquisar"
+
+#: src/window/page.cpp
+msgid "This page is not ported yet."
+msgstr "Esta página ainda não foi portada."
+
+#: src/window/pagelist.cpp
+msgid "wireless, WLAN, network, internet, password, DNS, IP address"
+msgstr "sem fio, WLAN, Wi-Fi, rede, internet, senha, DNS, endereço IP, wireless"
+
+#: src/window/pagelist.cpp
+msgid "wired, LAN, network, internet, cable, IP address"
+msgstr "cabeada, cabo, LAN, rede, internet, endereço IP, ethernet"
+
+#: src/window/pagelist.cpp
+msgid "wireless, devices, pairing, headphones"
+msgstr "sem fio, dispositivos, parear, pareamento, fones de ouvido, wireless"
+
+#: src/window/pagelist.cpp
+msgid "VPN, proxy, hotspot, tethering, internet"
+msgstr "VPN, proxy, ponto de acesso, hotspot, roteador, ancoragem, internet"
+
+#: src/window/pagelist.cpp
+msgid "theme, dark mode, light mode, accent color, dim wallpaper"
+msgstr "tema, modo escuro, modo claro, cor de destaque, escurecer papel de parede, dark mode"
+
+#: src/window/pagelist.cpp
+msgid "background, desktop picture, image"
+msgstr "fundo, plano de fundo, imagem da área de trabalho, imagem, wallpaper"
+
+#: src/window/pagelist.cpp
+msgid "taskbar, position, size, auto hide, glass effect"
+msgstr "barra de tarefas, posição, tamanho, ocultar automaticamente, efeito de vidro, dock"
+
+#: src/window/pagelist.cpp
+msgid "do not disturb, banners, alerts"
+msgstr "não perturbe, banners, alertas, avisos"
+
+#: src/window/pagelist.cpp
+msgid "Devices"
+msgstr "Dispositivos"
+
+#: src/window/pagelist.cpp
+msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
+msgstr "monitor, tela, resolução, taxa de atualização, escala, brilho, rotação"
+
+#: src/window/pagelist.cpp
+msgid "audio, volume, speakers, headphones, microphone, input, output"
+msgstr "áudio, volume, alto-falantes, fones de ouvido, microfone, entrada, saída, som"
+
+#: src/window/pagelist.cpp
+msgid "input method, key repeat, keyboard style"
+msgstr "método de entrada, repetição de teclas, layout do teclado, teclado"
+
+#: src/window/pagelist.cpp
+msgid "pointer speed, acceleration, natural scrolling, left-handed"
+msgstr "velocidade do ponteiro, aceleração, rolagem natural, canhoto, mouse"
+
+#: src/window/pagelist.cpp
+msgid "trackpad, tap to click, natural scrolling, secondary click, pointer speed"
+msgstr "trackpad, touchpad, tocar para clicar, rolagem natural, clique secundário, velocidade do ponteiro"
+
+#: src/window/pagelist.cpp
+msgid "touch, touch screen, touch panel"
+msgstr "toque, tela sensível ao toque, touchscreen, painel de toque"
+
+#: src/window/pagelist.cpp
+msgid "System"
+msgstr "Sistema"
+
+#: src/window/pagelist.cpp
+msgid "accounts, password, login, administrator, avatar"
+msgstr "contas, usuários, senha, login, administrador, avatar, foto"
+
+#: src/window/pagelist.cpp
+msgid "region, locale, system language, country, formats, first day of week, measurement system, temperature"
+msgstr "região, localidade, idioma do sistema, país, formatos, primeiro dia da semana, sistema de medidas, temperatura"
+
+#: src/window/pagelist.cpp
+msgid "clock, time zone, 24-hour time, NTP, sync"
+msgstr "relógio, hora, fuso horário, formato de 24 horas, NTP, sincronização"
+
+#: src/window/pagelist.cpp
+msgid "web browser, email client, terminal"
+msgstr "navegador, navegador da web, cliente de e-mail, e-mail, terminal"
+
+#: src/window/pagelist.cpp
+msgid "computer control, agents, allowed apps, permissions"
+msgstr "controle do computador, agentes, aplicativos permitidos, permissões"
+
+#: src/window/pagelist.cpp
+msgid "charge, charging limit, battery health, capacity, history, percentage"
+msgstr "carga, carregamento, limite de carga, saúde da bateria, capacidade, histórico, porcentagem"
+
+#: src/window/pagelist.cpp
+msgid "energy, performance, power saving, sleep, turn off display"
+msgstr "energia, desempenho, economia de energia, suspensão, repouso, desligar a tela"
+
+#: src/window/pagelist.cpp
+msgid "system, version, kernel, processor, memory, storage, hardware"
+msgstr "sistema, versão, kernel, processador, memória, armazenamento, hardware"
+
+#: src/window/pagelist.cpp
+msgid "VPN, WireGuard, OpenVPN, tunnel, network"
+msgstr "VPN, WireGuard, OpenVPN, túnel, rede"
+
+#: src/window/pagelist.cpp
+msgid "HTTP, HTTPS, SOCKS, FTP, PAC, network"
+msgstr "HTTP, HTTPS, SOCKS, FTP, PAC, rede"
+
+#: src/window/pagelist.cpp
+msgid "tethering, share internet, access point, Wi-Fi, wireless"
+msgstr "ancoragem, compartilhar internet, ponto de acesso, roteador, hotspot, Wi-Fi, sem fio"
+
+#: src/window/pagelist.cpp
+msgid "general font, fixed font, font size, anti-aliasing, hinting"
+msgstr "fonte geral, fonte de largura fixa, monoespaçada, tamanho da fonte, suavização, antialiasing, hinting"
+
+#: src/window/pagelist.cpp
+msgid "icons"
+msgstr "ícones, tema de ícones"
+
+#: src/window/pagelist.cpp
+msgid "cursor theme, cursor size, pointer"
+msgstr "tema do cursor, tamanho do cursor, ponteiro"
+
+#: src/window/pagelist.cpp
+msgid "Keyboard Layout"
+msgstr "Layout do teclado"
+
+#: src/window/pagelist.cpp
+msgid "input source"
+msgstr "fonte de entrada, método de entrada, teclado"
+
+#: src/window/pagelist.cpp
+msgid "screen corners, show desktop, show all windows"
+msgstr "cantos da tela, cantos ativos, mostrar a área de trabalho, mostrar todas as janelas"
+
+#: src/window/pagelist.cpp
+msgid "hotkeys, key bindings"
+msgstr "teclas de atalho, atalhos, combinações de teclas"
+
+#: src/window/pagelist.cpp
+msgid "license, copyright, source code, open source"
+msgstr "licença, direitos autorais, copyright, código-fonte, código aberto, open source"
+
+#: src/window/settingswindow.cpp src/window/sidebar.cpp
+#: cutefish-settings.desktop
+msgid "Settings"
+msgstr "Configurações"
+
+#: src/window/sidebar.cpp
+msgid "No results"
+msgstr "Nenhum resultado"

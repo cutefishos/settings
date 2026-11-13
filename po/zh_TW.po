@@ -1,0 +1,2605 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cutefish-settings\n"
+"Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
+"POT-Creation-Date: 2026-11-13 16:33+0800\n"
+"PO-Revision-Date: 2026-11-13 16:33+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "Unknown"
+msgstr "未知"
+
+#. TRANSLATORS: a processor model and its number of cores, such as "Intel Core i5 x 8".
+#: src/pages/about/aboutinfo.cpp
+#, python-brace-format
+msgid "{model} x {count}"
+msgstr "{model} x {count}"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "B"
+msgstr "B"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "KB"
+msgstr "KB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "MB"
+msgstr "MB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "GB"
+msgstr "GB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "TB"
+msgstr "TB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "PB"
+msgstr "PB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "EB"
+msgstr "EB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "ZB"
+msgstr "ZB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "YB"
+msgstr "YB"
+
+#. TRANSLATORS: a size, such as "16 GB".
+#: src/pages/about/aboutinfo.cpp
+#, python-brace-format
+msgid "{value} {unit}"
+msgstr "{value} {unit}"
+
+#. TRANSLATORS: the space used on the system disk and its size, such as "40 GB / 256 GB".
+#: src/pages/about/aboutinfo.cpp
+#, python-brace-format
+msgid "{used} / {total}"
+msgstr "{used} / {total}"
+
+#: src/pages/about/aboutpage.cpp src/window/pagelist.cpp
+msgid "About"
+msgstr "關於"
+
+#: src/pages/about/aboutpage.cpp
+#, python-brace-format
+msgid "Running on {system}"
+msgstr "執行於 {system}"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Model"
+msgstr "型號"
+
+#: src/pages/about/aboutpage.cpp
+msgid "System version"
+msgstr "系統版本"
+
+#: src/pages/about/aboutpage.cpp
+msgid "System type"
+msgstr "系統類型"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Kernel version"
+msgstr "核心版本"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Processor"
+msgstr "處理器"
+
+#: src/pages/about/aboutpage.cpp
+msgid "RAM"
+msgstr "記憶體"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Internal storage"
+msgstr "內建儲存空間"
+
+#: src/pages/about/aboutpage.cpp src/pages/about/licensespage.cpp
+#: src/window/pagelist.cpp
+msgid "Open-Source Licenses"
+msgstr "開放原始碼授權"
+
+#: src/pages/about/licensespage.cpp
+msgid "Desktop and applications"
+msgstr "桌面與應用程式"
+
+#: src/pages/about/licensespage.cpp
+msgid "Terminal and the icon theme are under the GNU General Public License 3.0."
+msgstr "終端機與圖示主題採用 GNU 通用公共授權條款 3.0 版。"
+
+#: src/pages/about/licensespage.cpp
+msgid "Compositor"
+msgstr "合成器"
+
+#: src/pages/about/licensespage.cpp
+msgid "Wayland and window management, designed after Chromium's Exo and Ash"
+msgstr "Wayland 與視窗管理，參照 Chromium 的 Exo 與 Ash 設計"
+
+#: src/pages/about/licensespage.cpp
+msgid "Xwayland window manager and selection bridge, adapted from sommelier"
+msgstr "Xwayland 視窗管理器與選取範圍橋接，改編自 sommelier"
+
+#: src/pages/about/licensespage.cpp
+msgid "Pointer acceleration curve"
+msgstr "指標加速曲線"
+
+#: src/pages/about/licensespage.cpp
+msgid "The source code of the pointer acceleration curve is available under the Apple Public Source License 2.0 at https://github.com/cutefishos/cutefish-compositor."
+msgstr "指標加速曲線的原始碼依 Apple Public Source License 2.0 提供於 https://github.com/cutefishos/cutefish-compositor。"
+
+#: src/pages/accounts/accountspage.cpp src/window/pagelist.cpp
+msgid "Users"
+msgstr "使用者"
+
+#: src/pages/accounts/accountspage.cpp
+msgid "Add user"
+msgstr "新增使用者"
+
+#: src/pages/accounts/accountspage.cpp src/pages/accounts/userdetailsdialog.cpp
+msgid "Delete this user"
+msgstr "刪除此使用者"
+
+#: src/pages/accounts/accountspage.cpp
+#, python-brace-format
+msgid "Delete user “{name}”? Their home directory and its contents will be permanently deleted. This cannot be undone."
+msgstr "要刪除使用者「{name}」嗎？其家目錄及其中的內容將被永久刪除。此操作無法還原。"
+
+#: src/pages/accounts/accountspage.cpp src/pages/accounts/picturedialog.cpp
+#: src/pages/accounts/userdialogs.cpp src/pages/datetime/timezonedialog.cpp
+#: src/pages/language/addlanguagedialog.cpp
+#: src/pages/language/chooseregiondialog.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Cancel"
+msgstr "取消"
+
+#: src/pages/accounts/accountspage.cpp
+msgid "Delete"
+msgstr "刪除"
+
+#: src/pages/accounts/picturedialog.cpp
+msgid "Choose a picture"
+msgstr "選擇圖片"
+
+#: src/pages/accounts/picturedialog.cpp
+msgid "Choose File…"
+msgstr "選擇檔案…"
+
+#: src/pages/accounts/picturedialog.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/proxy/proxypage.cpp src/pages/network/vpn/vpndialogs.cpp
+msgid "Save"
+msgstr "儲存"
+
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
+#: src/pages/accounts/picturedialog.cpp src/pages/wallpaper/wallpaperpage.cpp
+#, python-brace-format
+msgid "Image files ({patterns})"
+msgstr "圖片檔案 ({patterns})"
+
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
+#: src/pages/accounts/picturedialog.cpp src/pages/network/vpn/vpndialogs.cpp
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "All files (*)"
+msgstr "所有檔案 (*)"
+
+#: src/pages/accounts/userdetailsdialog.cpp src/pages/accounts/userdialogs.cpp
+msgid "Account type"
+msgstr "帳號類型"
+
+#: src/pages/accounts/userdetailsdialog.cpp
+msgid "Change password…"
+msgstr "更改密碼…"
+
+#: src/pages/accounts/userdetailsdialog.cpp src/pages/accounts/userdialogs.cpp
+msgid "Standard"
+msgstr "標準"
+
+#: src/pages/accounts/userdetailsdialog.cpp src/pages/accounts/userdialogs.cpp
+msgid "Administrator"
+msgstr "管理者"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Change password"
+msgstr "更改密碼"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Current password"
+msgstr "目前的密碼"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "New password"
+msgstr "新密碼"
+
+#: src/pages/accounts/userdialogs.cpp src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Password"
+msgstr "密碼"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Verify password"
+msgstr "驗證密碼"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The current password is incorrect"
+msgstr "目前的密碼不正確"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The new password was not accepted"
+msgstr "新密碼未被接受"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The password could not be changed"
+msgstr "無法更改密碼"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The password change did not finish in time"
+msgstr "密碼更改未能及時完成"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Add new user"
+msgstr "新增使用者"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "User name"
+msgstr "使用者名稱"
+
+#: src/pages/accounts/userdialogs.cpp src/pages/language/addlanguagedialog.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Add"
+msgstr "加入"
+
+#: src/pages/accounts/userrow.cpp
+msgid "Logged in"
+msgstr "已登入"
+
+#: src/pages/appearance/appearancepage.cpp src/window/pagelist.cpp
+msgid "Appearance"
+msgstr "外觀"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Light"
+msgstr "淺色"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Dark"
+msgstr "深色"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Auto"
+msgstr "自動"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Accent color"
+msgstr "強調色"
+
+#: src/pages/appearance/appearancepage.cpp src/pages/fonts/fontspage.cpp
+#: src/window/pagelist.cpp
+msgid "Fonts"
+msgstr "字體"
+
+#: src/pages/appearance/appearancepage.cpp
+#: src/pages/icontheme/iconthemepage.cpp src/window/pagelist.cpp
+msgid "Icon Theme"
+msgstr "圖示主題"
+
+#: src/pages/appearance/appearancepage.cpp
+#: src/pages/cursortheme/cursorthemepage.cpp src/window/pagelist.cpp
+msgid "Cursor Style"
+msgstr "游標樣式"
+
+#: src/pages/battery/battery.cpp
+#, python-brace-format
+msgid "Today at {time}"
+msgstr "今天 {time}"
+
+#: src/pages/battery/battery.cpp
+#, python-brace-format
+msgid "Yesterday at {time}"
+msgstr "昨天 {time}"
+
+#: src/pages/battery/batterypage.cpp
+msgid "History"
+msgstr "歷史記錄"
+
+#: src/pages/battery/batterypage.cpp
+msgid "24 hours"
+msgstr "24 小時"
+
+#: src/pages/battery/batterypage.cpp
+msgid "7 days"
+msgstr "7 天"
+
+#: src/pages/battery/batterypage.cpp src/window/pagelist.cpp
+msgid "Battery"
+msgstr "電池"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Health"
+msgstr "健康度"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Condition"
+msgstr "狀況"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Maximum capacity"
+msgstr "最大容量"
+
+#: src/pages/battery/batterypage.cpp src/pages/battery/historygraph.cpp
+msgid "Charging"
+msgstr "充電"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Show percentage in status bar"
+msgstr "在狀態列中顯示百分比"
+
+#. TRANSLATORS: the names of a computer's two batteries.
+#: src/pages/battery/batterypage.cpp
+msgid "Main"
+msgstr "主要"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Extra"
+msgstr "附加"
+
+#. TRANSLATORS: the name of one of a computer's batteries, such as "Battery 3".
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "Battery {n}"
+msgstr "電池 {n}"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Excellent"
+msgstr "極佳"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Normal"
+msgstr "正常"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Poor"
+msgstr "不佳"
+
+#. TRANSLATORS: a percentage, such as "92%".
+#: src/pages/battery/batterypage.cpp src/pages/display/displaypage.cpp
+#: src/pages/network/common/detailsdialog.cpp
+#, python-brace-format
+msgid "{percent}%"
+msgstr "{percent}%"
+
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "Last charged to {percent}%"
+msgstr "上次充電至 {percent}%"
+
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "Limit charging to {percent}%"
+msgstr "將充電上限設為 {percent}%"
+
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "While plugged in, charging stops at {end}% and resumes below {start}%, so the battery wears more slowly."
+msgstr "接上電源時，充電會在 {end}% 停止，並在低於 {start}% 時恢復，讓電池耗損得更慢。"
+
+#: src/pages/battery/batterypage.cpp
+msgid "This computer's battery controller did not keep the limit, so the battery still charges fully."
+msgstr "這部電腦的電池控制器未保留此上限，因此電池仍會充滿。"
+
+#: src/pages/battery/historygraph.cpp
+msgid "Fully charged"
+msgstr "已充飽電"
+
+#: src/pages/battery/historygraph.cpp
+msgid "Not charging"
+msgstr "未在充電"
+
+#: src/pages/battery/historygraph.cpp
+msgid "On battery"
+msgstr "使用電池"
+
+#: src/pages/battery/historygraph.cpp
+msgid "Plugged in"
+msgstr "已接上電源"
+
+#. TRANSLATORS: a weekday and a time in the graph's readout, such as "Mon 9:41 AM".
+#: src/pages/battery/historygraph.cpp
+#, python-brace-format
+msgid "{day} {time}"
+msgstr "{day} {time}"
+
+#. TRANSLATORS: the battery state and the time in the graph's readout, such as "Charging · 9:41 AM".
+#: src/pages/battery/historygraph.cpp
+#, python-brace-format
+msgid "{state} · {time}"
+msgstr "{state} · {time}"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Audio device"
+msgstr "音訊裝置"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Headphones"
+msgstr "耳機"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Headset"
+msgstr "耳麥"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Camera"
+msgstr "相機"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Video camera"
+msgstr "攝影機"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Computer"
+msgstr "電腦"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Game controller"
+msgstr "遊戲控制器"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/window/pagelist.cpp
+msgid "Keyboard"
+msgstr "鍵盤"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/mouse/mousepage.cpp
+#: src/window/pagelist.cpp
+msgid "Mouse"
+msgstr "滑鼠"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Drawing tablet"
+msgstr "繪圖板"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Modem"
+msgstr "數據機"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Media player"
+msgstr "媒體播放器"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Network device"
+msgstr "網路裝置"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Phone"
+msgstr "電話"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Printer"
+msgstr "印表機"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Scanner"
+msgstr "掃描器"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgctxt "device type"
+msgid "Display"
+msgstr "顯示器"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Name"
+msgstr "名稱"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/network/vpn/vpneditor.cpp
+msgid "Address"
+msgstr "位址"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Powered"
+msgstr "開啟"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Visible to other devices"
+msgstr "讓其他裝置可以看見"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Allow incoming pairing"
+msgstr "允許傳入的配對"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Close"
+msgstr "關閉"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Device type"
+msgstr "裝置類型"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Model number"
+msgstr "型號"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Version"
+msgstr "版本"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Trusted"
+msgstr "信任"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Blocked"
+msgstr "已封鎖"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Forget this device"
+msgstr "忘記此裝置"
+
+#: src/pages/bluetooth/bluetoothpage.cpp src/pages/network/vpn/vpndialogs.cpp
+msgid "Connected"
+msgstr "已連線"
+
+#: src/pages/bluetooth/bluetoothpage.cpp src/pages/network/vpn/vpndialogs.cpp
+msgid "Not connected"
+msgstr "未連線"
+
+#. TRANSLATORS: a device's connection and its battery level, such as "Connected · 80%".
+#: src/pages/bluetooth/bluetoothpage.cpp
+#, python-brace-format
+msgid "{status} · {percent}%"
+msgstr "{status} · {percent}%"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Cancel pairing"
+msgstr "取消配對"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Disconnect"
+msgstr "中斷連線"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Discoverable"
+msgstr "可被偵測"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Not discoverable"
+msgstr "不可被偵測"
+
+#: src/pages/bluetooth/bluetoothpage.cpp src/pages/sound/soundpage.cpp
+#: src/window/pagelist.cpp
+msgid "Bluetooth"
+msgstr "藍牙"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "My devices"
+msgstr "我的裝置"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Other devices"
+msgstr "其他裝置"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Bluetooth service is unavailable"
+msgstr "無法使用藍牙服務"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Bluetooth is blocked by a hardware switch"
+msgstr "藍牙已被硬體開關封鎖"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "No Bluetooth adapters found"
+msgstr "找不到藍牙介面卡"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "No devices found. Make sure your device is discoverable."
+msgstr "找不到裝置。請確定您的裝置可被偵測。"
+
+#: src/pages/cursortheme/cursorthemepage.cpp
+msgid "Cursor theme"
+msgstr "游標主題"
+
+#: src/pages/cursortheme/cursorthemepage.cpp
+msgid "Cursor size"
+msgstr "游標大小"
+
+#: src/pages/datetime/datetimepage.cpp src/window/pagelist.cpp
+msgid "Date & Time"
+msgstr "日期與時間"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "Auto sync"
+msgstr "自動同步"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "24-hour time"
+msgstr "24 小時制"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "Time zone"
+msgstr "時區"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "Unable to use auto sync. Please ensure your NTP service is installed."
+msgstr "無法使用自動同步。請確定已安裝 NTP 服務。"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Search city or country"
+msgstr "搜尋城市或國家"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "No matching time zones"
+msgstr "沒有符合的時區"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Time Zone"
+msgstr "時區"
+
+#. TRANSLATORS: the button that makes the chosen time zone the system's.
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Set"
+msgstr "設定"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Click the map or search to choose a time zone"
+msgstr "按一下地圖或搜尋以選擇時區"
+
+#. TRANSLATORS: a time zone's city and its country or region, such as "Paris, France".
+#: src/pages/datetime/timezonedialog.cpp
+#, python-brace-format
+msgid "{city}, {region}"
+msgstr "{city}，{region}"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Current time zone"
+msgstr "目前的時區"
+
+#: src/pages/datetime/timezonedialog.cpp
+#, python-brace-format
+msgid "Currently {zone}"
+msgstr "目前為 {zone}"
+
+#: src/pages/datetime/timezonemap.cpp
+msgid "Same time as now"
+msgstr "與現在時間相同"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} hour ahead"
+msgid_plural "{n} hours ahead"
+msgstr[0] "快 {n} 小時"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} hour behind"
+msgid_plural "{n} hours behind"
+msgstr[0] "慢 {n} 小時"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} min ahead"
+msgid_plural "{n} min ahead"
+msgstr[0] "快 {n} 分鐘"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} min behind"
+msgid_plural "{n} min behind"
+msgstr[0] "慢 {n} 分鐘"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{hours} h {minutes} min ahead"
+msgstr "快 {hours} 小時 {minutes} 分鐘"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{hours} h {minutes} min behind"
+msgstr "慢 {hours} 小時 {minutes} 分鐘"
+
+#: src/pages/datetime/timezonemap.cpp
+msgid "Tomorrow"
+msgstr "明天"
+
+#: src/pages/datetime/timezonemap.cpp
+msgid "Yesterday"
+msgstr "昨天"
+
+#: src/pages/defaultapps/defaultappspage.cpp src/window/pagelist.cpp
+msgid "Default Applications"
+msgstr "預設應用程式"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Web browser"
+msgstr "網頁瀏覽器"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Email client"
+msgstr "電子郵件用戶端"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Text editor"
+msgstr "文字編輯器"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Music player"
+msgstr "音樂播放器"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Video player"
+msgstr "影片播放器"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Image viewer"
+msgstr "影像檢視器"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Terminal"
+msgstr "終端機"
+
+#: src/pages/defaultapps/defaultappspage.cpp src/pages/fonts/fontspage.cpp
+#: src/pages/hotcorners/hotcornerspage.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "None"
+msgstr "無"
+
+#: src/pages/display/displaypage.cpp
+#, python-brace-format
+msgid "{item} (Recommended)"
+msgstr "{item}（建議）"
+
+#: src/pages/display/displaypage.cpp src/window/pagelist.cpp
+msgid "Display"
+msgstr "顯示器"
+
+#: src/pages/display/displaypage.cpp
+msgid "Brightness"
+msgstr "亮度"
+
+#: src/pages/display/displaypage.cpp
+msgid "Resolution"
+msgstr "解析度"
+
+#: src/pages/display/displaypage.cpp
+msgid "Refresh rate"
+msgstr "更新頻率"
+
+#: src/pages/display/displaypage.cpp
+msgid "Scale"
+msgstr "縮放比例"
+
+#: src/pages/display/displaypage.cpp
+msgid "Rotation"
+msgstr "旋轉"
+
+#: src/pages/display/displaypage.cpp
+msgctxt "rotation"
+msgid "Normal"
+msgstr "標準"
+
+#: src/pages/display/displaypage.cpp
+msgid "Enabled"
+msgstr "已啟用"
+
+#: src/pages/display/displaypage.cpp
+msgid "Primary"
+msgstr "主要"
+
+#: src/pages/display/displaypage.cpp src/pages/power/powerpage.cpp
+msgid "Mode"
+msgstr "模式"
+
+#: src/pages/display/displaypage.cpp
+msgid "Position"
+msgstr "位置"
+
+#: src/pages/display/displaypage.cpp
+msgid "Night Light"
+msgstr "夜間模式"
+
+#: src/pages/display/displaypage.cpp
+msgid "Color temperature"
+msgstr "色溫"
+
+#: src/pages/display/displaypage.cpp
+msgid "Less warm"
+msgstr "較不暖"
+
+#: src/pages/display/displaypage.cpp
+msgid "More warm"
+msgstr "較暖"
+
+#: src/pages/display/displaypage.cpp
+msgid "Schedule"
+msgstr "排程"
+
+#: src/pages/display/displaypage.cpp src/pages/power/powerpage.cpp
+msgid "Never"
+msgstr "永不"
+
+#: src/pages/display/displaypage.cpp
+msgid "Sunset to sunrise"
+msgstr "日落到日出"
+
+#: src/pages/display/displaypage.cpp src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Custom"
+msgstr "自訂"
+
+#: src/pages/display/displaypage.cpp
+msgid "Sunset"
+msgstr "日落"
+
+#: src/pages/display/displaypage.cpp
+msgid "Sunrise"
+msgstr "日出"
+
+#: src/pages/display/displaypage.cpp
+msgid "From"
+msgstr "從"
+
+#: src/pages/display/displaypage.cpp
+msgid "To"
+msgstr "至"
+
+#: src/pages/display/displaypage.cpp
+msgid "Screen"
+msgstr "螢幕"
+
+#: src/pages/display/displaypage.cpp
+msgid "Display configuration is unavailable in this session."
+msgstr "此工作階段無法使用顯示器設定。"
+
+#: src/pages/display/displaypage.cpp
+#, python-brace-format
+msgid "The previous settings come back in {n} second."
+msgid_plural "The previous settings come back in {n} seconds."
+msgstr[0] "先前的設定將在 {n} 秒後恢復。"
+
+#: src/pages/display/displaypage.cpp
+msgid "Keep these display settings?"
+msgstr "要保留這些顯示器設定嗎？"
+
+#: src/pages/display/displaypage.cpp
+msgid "Revert"
+msgstr "回復"
+
+#: src/pages/display/displaypage.cpp
+msgid "Keep"
+msgstr "保留"
+
+#: src/pages/dock/dockpage.cpp src/window/pagelist.cpp
+msgid "Dock & Desktop"
+msgstr "Dock 與桌面"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Dock"
+msgstr "Dock"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Left"
+msgstr "左側"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Bottom"
+msgstr "底部"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Right"
+msgstr "右側"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Size"
+msgstr "大小"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Small"
+msgstr "小"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Large"
+msgstr "大"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Magnification"
+msgstr "放大效果"
+
+#: src/pages/dock/dockpage.cpp src/pages/network/vpn/vpneditor.cpp
+#: src/pages/notifications/notificationspage.cpp
+msgid "Off"
+msgstr "關閉"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Glass effect"
+msgstr "玻璃效果"
+
+#: src/pages/dock/dockpage.cpp
+msgid "More clear"
+msgstr "較透明"
+
+#: src/pages/dock/dockpage.cpp
+msgid "More tinted"
+msgstr "較多色調"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Display mode"
+msgstr "顯示模式"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Always show"
+msgstr "永遠顯示"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Always hide"
+msgstr "永遠隱藏"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Smart hide"
+msgstr "智慧隱藏"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Minimized windows area"
+msgstr "最小化視窗區域"
+
+#: src/pages/dock/dockpage.cpp src/window/pagelist.cpp
+msgid "Desktop"
+msgstr "桌面"
+
+#: src/pages/dock/dockpage.cpp src/pages/hotcorners/hotcornerspage.cpp
+#: src/window/pagelist.cpp
+msgid "Hot Corners"
+msgstr "觸發角"
+
+#. TRANSLATORS: a font size in points, such as "9pt".
+#: src/pages/fonts/fontspage.cpp
+#, python-brace-format
+msgid "{size}pt"
+msgstr "{size}pt"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "General font"
+msgstr "一般字體"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Fixed font"
+msgstr "等寬字體"
+
+#: src/pages/fonts/fontspage.cpp
+#, python-brace-format
+msgid "{size} (Default)"
+msgstr "{size}（預設）"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Font size"
+msgstr "字體大小"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Hinting"
+msgstr "字體微調"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Slight"
+msgstr "輕微"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Medium"
+msgstr "中等"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Full"
+msgstr "完整"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Anti-Aliasing"
+msgstr "消除鋸齒"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Control"
+msgstr "Control"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Option"
+msgstr "Option"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Alt"
+msgstr "Alt"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Shift"
+msgstr "Shift"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Command"
+msgstr "Command"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Meta"
+msgstr "Meta"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Show All Windows"
+msgstr "顯示所有視窗"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Show Desktop"
+msgstr "顯示桌面"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Launcher"
+msgstr "啟動器"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Lock Screen"
+msgstr "鎖定螢幕"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Hot corners are managed by the Cutefish compositor, which is not running."
+msgstr "觸發角由 Cutefish 合成器管理，但它目前未在執行。"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Top left"
+msgstr "左上角"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Top right"
+msgstr "右上角"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Bottom left"
+msgstr "左下角"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Bottom right"
+msgstr "右下角"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Move the pointer into a corner of the screen to run its action. Hold modifier keys while choosing an action to make the corner work only while they are held."
+msgstr "將指標移到螢幕的角落即可執行其動作。在選擇動作時按住修飾鍵，可讓該角落只在按住這些鍵時才有作用。"
+
+#. TRANSLATORS: the keys a hot corner needs held and its action, such as "Ctrl + Alt – Lock Screen".
+#: src/pages/hotcorners/hotcornerspage.cpp
+#, python-brace-format
+msgid "{keys} – {action}"
+msgstr "{keys} – {action}"
+
+#: src/pages/icontheme/iconthemepage.cpp
+msgid "Icon theme"
+msgstr "圖示主題"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Input method"
+msgstr "輸入法"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Input methods can only be selected in a Cutefish Wayland session."
+msgstr "只能在 Cutefish Wayland 工作階段中選擇輸入法。"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "The selected input method is not running."
+msgstr "所選的輸入法未在執行。"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Applications started before the input method may need to be restarted."
+msgstr "在輸入法之前啟動的應用程式可能需要重新啟動。"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Shortcut key"
+msgstr "快速鍵按鍵"
+
+#: src/pages/keyboard/keyboardpage.cpp src/pages/keyboard/layoutpage.cpp
+msgid "Layout"
+msgstr "鍵盤配置"
+
+#: src/pages/keyboard/keyboardpage.cpp src/pages/shortcuts/shortcutspage.cpp
+#: src/window/pagelist.cpp
+msgid "Keyboard Shortcuts"
+msgstr "鍵盤快速鍵"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Key repeat"
+msgstr "按鍵重複"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Delay until repeat"
+msgstr "重複前的延遲"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Repeat rate"
+msgstr "重複速率"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "The key next to the space bar works as Command and the one beside it as Option, on any keyboard: Command+C copies, Command+Tab switches windows, Command+Q quits. The shortcuts can be changed in Keyboard Shortcuts."
+msgstr "在任何鍵盤上，空白鍵旁的按鍵都會作為 Command，再旁邊的按鍵則作為 Option：Command+C 複製、Command+Tab 切換視窗、Command+Q 結束。可在「鍵盤快速鍵」中更改這些快速鍵。"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Ctrl is the shortcut key and Alt switches windows. The shortcuts can be changed in Keyboard Shortcuts."
+msgstr "Ctrl 是快速鍵按鍵，Alt 用來切換視窗。可在「鍵盤快速鍵」中更改這些快速鍵。"
+
+#: src/pages/keyboard/layoutpage.cpp
+msgid "No layouts found"
+msgstr "找不到鍵盤配置"
+
+#: src/pages/keyboard/layoutpage.cpp
+msgid "Search layouts"
+msgstr "搜尋鍵盤配置"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "Add Language"
+msgstr "加入語言"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "Search languages"
+msgstr "搜尋語言"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "Loading languages…"
+msgstr "正在載入語言…"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "No languages found"
+msgstr "找不到語言"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Choose Region"
+msgstr "選擇地區"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Search regions"
+msgstr "搜尋地區"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Choose"
+msgstr "選擇"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Loading regions…"
+msgstr "正在載入地區…"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "No regions found"
+msgstr "找不到地區"
+
+#: src/pages/language/language.cpp
+msgid "Could not save preferred languages. Please try again."
+msgstr "無法儲存偏好的語言。請再試一次。"
+
+#: src/pages/language/languagepage.cpp
+#, python-brace-format
+msgid "Automatic ({value})"
+msgstr "自動（{value}）"
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "US"
+msgstr "美制"
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "UK"
+msgstr "英制"
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "Metric"
+msgstr "公制"
+
+#: src/pages/language/languagepage.cpp
+msgid "Fahrenheit (°F)"
+msgstr "華氏（°F）"
+
+#: src/pages/language/languagepage.cpp
+msgid "Celsius (°C)"
+msgstr "攝氏（°C）"
+
+#: src/pages/language/languagepage.cpp src/window/pagelist.cpp
+msgid "Language & Region"
+msgstr "語言與地區"
+
+#: src/pages/language/languagepage.cpp
+msgid "Preferred languages"
+msgstr "偏好的語言"
+
+#: src/pages/language/languagepage.cpp
+msgid "Add language…"
+msgstr "加入語言…"
+
+#: src/pages/language/languagepage.cpp
+msgid "Drag a language to the top to make it the system language. Right-click a language to remove it."
+msgstr "將語言拖到最上方即可將其設為系統語言。在語言上按右鍵即可移除。"
+
+#: src/pages/language/languagepage.cpp
+msgid "Region"
+msgstr "地區"
+
+#: src/pages/language/languagepage.cpp
+msgid "First day of week"
+msgstr "每週的第一天"
+
+#: src/pages/language/languagepage.cpp
+msgid "Measurement system"
+msgstr "度量衡系統"
+
+#: src/pages/language/languagepage.cpp
+msgid "Temperature"
+msgstr "溫度"
+
+#: src/pages/language/languagepage.cpp
+msgid "Applications that are already open may use the new region after they restart."
+msgstr "已開啟的應用程式可能會在重新啟動後使用新的地區。"
+
+#: src/pages/language/languagepage.cpp
+msgid "Format preview"
+msgstr "格式預覽"
+
+#: src/pages/language/languagepage.cpp
+msgid "Date"
+msgstr "日期"
+
+#: src/pages/language/languagepage.cpp
+msgid "Date and time"
+msgstr "日期與時間"
+
+#: src/pages/language/languagepage.cpp
+msgid "Number"
+msgstr "數字"
+
+#: src/pages/language/languagepage.cpp
+msgid "Currency"
+msgstr "貨幣"
+
+#: src/pages/language/preferredlanguagelist.cpp
+msgid "System language"
+msgstr "系統語言"
+
+#: src/pages/language/preferredlanguagelist.cpp
+msgid "Remove language"
+msgstr "移除語言"
+
+#: src/pages/mouse/mousepage.cpp
+msgid "Left hand"
+msgstr "左手"
+
+#: src/pages/mouse/mousepage.cpp src/pages/touchpad/touchpadpage.cpp
+msgid "Natural scrolling"
+msgstr "自然捲動"
+
+#: src/pages/mouse/mousepage.cpp
+msgid "Mouse acceleration"
+msgstr "滑鼠加速"
+
+#: src/pages/mouse/mousepage.cpp src/pages/touchpad/touchpadpage.cpp
+msgid "Pointer speed"
+msgstr "指標速度"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Auto-Join"
+msgstr "自動加入"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Connect Automatically"
+msgstr "自動連線"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "IP Settings"
+msgstr "IP 設定"
+
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Security"
+msgstr "安全性"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Signal"
+msgstr "訊號"
+
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "IPv4 address"
+msgstr "IPv4 位址"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "IPv6 address"
+msgstr "IPv6 位址"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "MAC address"
+msgstr "MAC 位址"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Gateway"
+msgstr "閘道器"
+
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "DNS"
+msgstr "DNS"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Forget this network"
+msgstr "忘記此網路"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Configure IPv4"
+msgstr "設定 IPv4"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "IP Address"
+msgstr "IP 位址"
+
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Required"
+msgstr "必填"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Subnet Mask"
+msgstr "子網路遮罩"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Router"
+msgstr "路由器"
+
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Optional"
+msgstr "選填"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Configure IPv6"
+msgstr "設定 IPv6"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Prefix Length"
+msgstr "首碼長度"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Automatic DNS"
+msgstr "自動 DNS"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "DNS Servers"
+msgstr "DNS 伺服器"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "These servers are asked before the network's own."
+msgstr "會先詢問這些伺服器，再詢問網路本身的伺服器。"
+
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Saving…"
+msgstr "正在儲存…"
+
+#: src/pages/network/ethernet/ethernetpage.cpp src/window/pagelist.cpp
+msgid "Ethernet"
+msgstr "乙太網路"
+
+#: src/pages/network/hotspot/hotspotpage.cpp src/pages/network/networkpage.cpp
+#: src/pages/network/wlan/wlanpage.cpp src/window/pagelist.cpp
+msgid "Hotspot"
+msgstr "熱點"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Wi-Fi hotspot"
+msgstr "Wi-Fi 熱點"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Network name"
+msgstr "網路名稱"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Generate password"
+msgstr "產生密碼"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Turn On Wi-Fi Hotspot?"
+msgstr "要開啟 Wi-Fi 熱點嗎？"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+#, python-brace-format
+msgid "Turning on the hotspot will disconnect from “{network}”, and you will not have access to the internet it provides."
+msgstr "開啟熱點將會中斷與「{network}」的連線，您將無法使用它所提供的網際網路。"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Turn on"
+msgstr "開啟"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Share this computer's internet connection by creating a Wi-Fi network other devices can join. The connection to share must come from a source other than Wi-Fi."
+msgstr "建立其他裝置可以加入的 Wi-Fi 網路，分享這部電腦的網際網路連線。要分享的連線必須來自 Wi-Fi 以外的來源。"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Turn on Wi-Fi to use the hotspot."
+msgstr "請開啟 Wi-Fi 以使用熱點。"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "System policy prohibits use as a hotspot."
+msgstr "系統原則禁止將此電腦用作熱點。"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+#, python-brace-format
+msgid "Other devices can join “{network}” with the password below. Turn off the hotspot to use Wi-Fi on this computer."
+msgstr "其他裝置可以使用下方的密碼加入「{network}」。若要在這部電腦上使用 Wi-Fi，請關閉熱點。"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Network name cannot be empty."
+msgstr "網路名稱不能空白。"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Network name is too long."
+msgstr "網路名稱過長。"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "The password must have at least 8 characters."
+msgstr "密碼至少需要 8 個字元。"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "The password must have at most 63 characters."
+msgstr "密碼最多只能有 63 個字元。"
+
+#: src/pages/network/networkpage.cpp src/window/pagelist.cpp
+msgid "Network"
+msgstr "網路"
+
+#: src/pages/network/networkpage.cpp src/pages/network/vpn/vpnpage.cpp
+#: src/window/pagelist.cpp
+msgid "VPN"
+msgstr "VPN"
+
+#: src/pages/network/networkpage.cpp src/pages/network/proxy/proxypage.cpp
+#: src/window/pagelist.cpp
+msgid "Proxy"
+msgstr "代理伺服器"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "No proxy"
+msgstr "不使用代理伺服器"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Use proxy auto configuration URL"
+msgstr "使用代理伺服器自動設定網址"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Use manually specified proxy configuration"
+msgstr "使用手動指定的代理伺服器設定"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Select file"
+msgstr "選擇檔案"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "HTTP proxy"
+msgstr "HTTP 代理伺服器"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Port"
+msgstr "連接埠"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Also use this proxy for FTP"
+msgstr "FTP 也使用此代理伺服器"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "FTP proxy"
+msgstr "FTP 代理伺服器"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "SOCKS proxy"
+msgstr "SOCKS 代理伺服器"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Add VPN"
+msgstr "加入 VPN"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Type"
+msgstr "類型"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+#, python-brace-format
+msgid "{type} (Not Installed)"
+msgstr "{type}（未安裝）"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Status"
+msgstr "狀態"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Export to file…"
+msgstr "匯出至檔案…"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Export VPN Configuration"
+msgstr "匯出 VPN 設定"
+
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
+#: src/pages/network/vpn/vpndialogs.cpp src/pages/network/vpn/vpnpage.cpp
+#, python-brace-format
+msgid "VPN configurations ({patterns})"
+msgstr "VPN 設定 ({patterns})"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Remove VPN"
+msgstr "移除 VPN"
+
+#: src/pages/network/vpn/vpndialogs.cpp src/pages/network/vpn/vpnpage.cpp
+msgid "Connecting…"
+msgstr "正在連線…"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Show advanced options"
+msgstr "顯示進階選項"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Asked on connect"
+msgstr "連線時詢問"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Choose…"
+msgstr "選擇…"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Saved for all"
+msgstr "為所有使用者儲存"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Saved"
+msgstr "已儲存"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Ask each time"
+msgstr "每次都詢問"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Not needed"
+msgstr "不需要"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Hide advanced options"
+msgstr "隱藏進階選項"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Private key"
+msgstr "私密金鑰"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Interface name"
+msgstr "介面名稱"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "From the name"
+msgstr "依名稱產生"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Listen port"
+msgstr "監聽連接埠"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Automatic"
+msgstr "自動"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Firewall mark"
+msgstr "防火牆標記"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "MTU"
+msgstr "MTU"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Add routes for the peers' allowed IPs"
+msgstr "為對等端允許的 IP 加入路由"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Add peer"
+msgstr "加入對等端"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Peer"
+msgstr "對等端"
+
+#: src/pages/network/vpn/vpneditor.cpp src/pages/privacy/privacypage.cpp
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Remove"
+msgstr "移除"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Public key"
+msgstr "公開金鑰"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Preshared key"
+msgstr "預先共享金鑰"
+
+#. TRANSLATORS: a placeholder: the stored key stays unless a new one is typed.
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Kept"
+msgstr "已保留"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Endpoint"
+msgstr "端點"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Allowed IPs"
+msgstr "允許的 IP"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "All traffic"
+msgstr "所有流量"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Keepalive"
+msgstr "保持連線"
+
+#: src/pages/network/vpn/vpneditor.cpp
+#, python-brace-format
+msgid "Peer {number}"
+msgstr "對等端 {number}"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Available to all users"
+msgstr "提供給所有使用者"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Use only for resources on its network"
+msgstr "只用於其網路上的資源"
+
+#: src/pages/network/vpn/vpneditor.cpp
+#, python-brace-format
+msgid "Install {package} to set up this kind of VPN."
+msgstr "請安裝 {package} 以設定這種 VPN。"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Add your user name to connect."
+msgstr "請加入您的使用者名稱以連線。"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Add VPN…"
+msgstr "加入 VPN…"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Import from file…"
+msgstr "從檔案匯入…"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Import VPN Configuration"
+msgstr "匯入 VPN 設定"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Importing…"
+msgstr "正在匯入…"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Import the configuration file your VPN provider gives you, such as an OpenVPN .ovpn or a WireGuard .conf file."
+msgstr "請匯入 VPN 供應商提供的設定檔，例如 OpenVPN 的 .ovpn 或 WireGuard 的 .conf 檔案。"
+
+#. TRANSLATORS: a Wi-Fi network's security: none, anyone can join.
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Open"
+msgstr "開放"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "WPA Enterprise"
+msgstr "WPA 企業級"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "WPA2 Enterprise"
+msgstr "WPA2 企業級"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "WPA3 Enterprise"
+msgstr "WPA3 企業級"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Add Other Network"
+msgstr "加入其他網路"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+#, python-brace-format
+msgid "Join “{network}”"
+msgstr "加入「{network}」"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Username"
+msgstr "使用者名稱"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "This network signs in with a certificate, which can't be set up here yet."
+msgstr "此網路使用憑證登入，目前尚無法在此設定。"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Join"
+msgstr "加入"
+
+#: src/pages/network/wlan/wlanpage.cpp src/window/pagelist.cpp
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
+
+#: src/pages/network/wlan/wlanpage.cpp
+msgid "Known networks"
+msgstr "已知網路"
+
+#: src/pages/network/wlan/wlanpage.cpp
+msgid "Other networks"
+msgstr "其他網路"
+
+#: src/pages/network/wlan/wlanpage.cpp
+msgid "Add other…"
+msgstr "加入其他…"
+
+#: src/pages/notifications/notificationspage.cpp src/window/pagelist.cpp
+msgid "Notifications"
+msgstr "通知"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Do Not Disturb"
+msgstr "勿擾模式"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Applications"
+msgstr "應用程式"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Applications appear here after they send a notification."
+msgstr "應用程式傳送通知後會顯示在這裡。"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Notifications that skip the banner still go to the Notification Center. Turned off, they are dropped."
+msgstr "略過橫幅的通知仍會傳送到通知中心。關閉後，通知會被捨棄。"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Banners"
+msgstr "橫幅"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Notification Center only"
+msgstr "僅通知中心"
+
+#: src/pages/power/powerpage.cpp
+#, python-brace-format
+msgid "{n} minute"
+msgid_plural "{n} minutes"
+msgstr[0] "{n} 分鐘"
+
+#: src/pages/power/powerpage.cpp
+msgid "Power save"
+msgstr "省電"
+
+#: src/pages/power/powerpage.cpp
+msgid "Balanced"
+msgstr "平衡"
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance"
+msgstr "效能"
+
+#: src/pages/power/powerpage.cpp src/window/pagelist.cpp
+msgid "Power"
+msgstr "電源"
+
+#: src/pages/power/powerpage.cpp
+msgid "Turn off display when inactive on battery"
+msgstr "使用電池且閒置時關閉顯示器"
+
+#: src/pages/power/powerpage.cpp
+msgid "Reduces performance and power consumption."
+msgstr "降低效能與耗電量。"
+
+#: src/pages/power/powerpage.cpp
+msgid "Standard performance and power consumption."
+msgstr "標準效能與耗電量。"
+
+#: src/pages/power/powerpage.cpp
+msgid "Higher performance, with more power consumption and heat."
+msgstr "更高的效能，但耗電量與發熱也更多。"
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance is limited because the computer is on your lap."
+msgstr "因為電腦放在您的腿上，效能受到限制。"
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance is limited because the computer is too hot."
+msgstr "因為電腦溫度過高，效能受到限制。"
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance is currently limited."
+msgstr "效能目前受到限制。"
+
+#: src/pages/power/powerpage.cpp
+msgid "Turn off display when inactive on power adapter"
+msgstr "使用電源轉接器且閒置時關閉顯示器"
+
+#: src/pages/power/powerpage.cpp
+msgid "Turn off display when inactive"
+msgstr "閒置時關閉顯示器"
+
+#: src/pages/power/powerpage.cpp
+msgid "Prevent automatic sleeping on power adapter when the display is off"
+msgstr "使用電源轉接器時，在顯示器關閉後防止自動睡眠"
+
+#: src/pages/power/powerpage.cpp
+msgid "Prevent automatic sleeping when the display is off"
+msgstr "在顯示器關閉後防止自動睡眠"
+
+#: src/pages/privacy/privacypage.cpp src/window/pagelist.cpp
+msgid "Privacy"
+msgstr "隱私權"
+
+#: src/pages/privacy/privacypage.cpp
+msgid "Computer control"
+msgstr "電腦控制"
+
+#: src/pages/privacy/privacypage.cpp
+msgid "Computer control is managed by the Cutefish compositor, which is not running."
+msgstr "電腦控制由 Cutefish 合成器管理，但它目前未在執行。"
+
+#: src/pages/privacy/privacypage.cpp
+msgid "No apps are allowed to control this computer without asking."
+msgstr "沒有 App 獲准在不詢問的情況下控制這部電腦。"
+
+#: src/pages/privacy/privacypage.cpp
+msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the status bar still shows while it is in control."
+msgstr "您永遠允許的 App 可讓其代理程式不經詢問就看見螢幕並使用指標與鍵盤。在其控制期間，狀態列中仍會顯示「停止」按鈕。"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Press the new shortcut…"
+msgstr "請按下新的快速鍵…"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Press the shortcut…"
+msgstr "請按下快速鍵…"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "No shortcut. Add one below."
+msgstr "沒有快速鍵。請在下方新增。"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Add shortcut"
+msgstr "新增快速鍵"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Restore default"
+msgstr "恢復預設值"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Change"
+msgstr "更改"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "General"
+msgstr "一般"
+
+#. TRANSLATORS: the group of keyboard shortcuts that act on windows.
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Windows"
+msgstr "視窗"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Desks"
+msgstr "虛擬桌面"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Screenshots and Recording"
+msgstr "截圖與錄影"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Open the launcher"
+msgstr "開啟啟動器"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Lock the screen"
+msgstr "鎖定螢幕"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show the clipboard history"
+msgstr "顯示剪貼簿歷史記錄"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the next window"
+msgstr "切換到下一個視窗"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the previous window"
+msgstr "切換到上一個視窗"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show all windows"
+msgstr "顯示所有視窗"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show the desktop"
+msgstr "顯示桌面"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Maximize or restore the window"
+msgstr "最大化或恢復視窗"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Minimize the window"
+msgstr "最小化視窗"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Quit the application"
+msgstr "結束應用程式"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Hide the application"
+msgstr "隱藏應用程式"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Hide other applications"
+msgstr "隱藏其他應用程式"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Toggle full screen"
+msgstr "切換全螢幕"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Snap the window to the left"
+msgstr "將視窗貼齊左側"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Snap the window to the right"
+msgstr "將視窗貼齊右側"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Close the window"
+msgstr "關閉視窗"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Move the window to the next display"
+msgstr "將視窗移到下一個顯示器"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the desk on the left"
+msgstr "切換到左側的桌面"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the desk on the right"
+msgstr "切換到右側的桌面"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Move the window to the desk on the left"
+msgstr "將視窗移到左側的桌面"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Move the window to the desk on the right"
+msgstr "將視窗移到右側的桌面"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Add a desk"
+msgstr "新增桌面"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Remove the desk"
+msgstr "移除桌面"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 1"
+msgstr "切換到桌面 1"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 2"
+msgstr "切換到桌面 2"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 3"
+msgstr "切換到桌面 3"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 4"
+msgstr "切換到桌面 4"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 5"
+msgstr "切換到桌面 5"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 6"
+msgstr "切換到桌面 6"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 7"
+msgstr "切換到桌面 7"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 8"
+msgstr "切換到桌面 8"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show the window on every desk"
+msgstr "在每個桌面上顯示此視窗"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Save a picture of the screen"
+msgstr "儲存螢幕的截圖"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Copy a picture of the screen"
+msgstr "複製螢幕的截圖"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Save a picture of the selected area"
+msgstr "儲存所選區域的截圖"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Copy a picture of the selected area"
+msgstr "複製所選區域的截圖"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Screenshot and recording options"
+msgstr "截圖與錄影選項"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Stop screen recording"
+msgstr "停止螢幕錄影"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Esc"
+msgstr "Esc"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Enter"
+msgstr "Enter"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Space"
+msgstr "空白鍵"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Backspace"
+msgstr "Backspace"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Delete"
+msgstr "Delete"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Insert"
+msgstr "Insert"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Home"
+msgstr "Home"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "End"
+msgstr "End"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Page Up"
+msgstr "Page Up"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Page Down"
+msgstr "Page Down"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Print Screen"
+msgstr "Print Screen"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Tab"
+msgstr "Tab"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Menu"
+msgstr "選單鍵"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Volume Up"
+msgstr "調高音量"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Volume Down"
+msgstr "調低音量"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Mute"
+msgstr "靜音"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Brightness Up"
+msgstr "調高亮度"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Brightness Down"
+msgstr "調低亮度"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Play/Pause"
+msgstr "播放／暫停"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Pause"
+msgstr "暫停"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Next Track"
+msgstr "下一首"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Previous Track"
+msgstr "上一首"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Stop"
+msgstr "停止"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Calculator"
+msgstr "計算機"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "File Manager"
+msgstr "檔案管理器"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Search"
+msgstr "搜尋"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Home Page"
+msgstr "首頁"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Mail"
+msgstr "郵件"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "The shortcut service is not available."
+msgstr "無法使用快速鍵服務。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+#, python-brace-format
+msgid "This shortcut is already used by “{action}”."
+msgstr "此快速鍵已被「{action}」使用。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+#, python-brace-format
+msgid "This shortcut is used by “{action}”. Press it again to reassign it."
+msgstr "此快速鍵正被「{action}」使用。再按一次即可重新指定。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Include Control, Option or Command, or use a function key."
+msgstr "請包含 Control、Option 或 Command，或使用功能鍵。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Include Ctrl, Alt or Meta, or use a function key."
+msgstr "請包含 Ctrl、Alt 或 Meta，或使用功能鍵。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shift cannot be the only modifier. Add Control, Option or Command."
+msgstr "Shift 不能是唯一的修飾鍵。請加上 Control、Option 或 Command。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shift cannot be the only modifier. Add Ctrl, Alt or Meta."
+msgstr "Shift 不能是唯一的修飾鍵。請加上 Ctrl、Alt 或 Meta。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "This key cannot be used in a shortcut."
+msgstr "此按鍵無法用於快速鍵。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "This action already has the maximum of five shortcuts."
+msgstr "此動作已達五個快速鍵的上限。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shortcuts without both Control and Command may be intercepted before applications see them. Press it again to keep it."
+msgstr "未同時包含 Control 與 Command 的快速鍵可能會在應用程式收到之前被攔截。再按一次即可保留。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shortcuts without Meta may be intercepted before applications see them. Press it again to keep it."
+msgstr "未包含 Meta 的快速鍵可能會在應用程式收到之前被攔截。再按一次即可保留。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Some default shortcuts are in use by other actions and were not restored."
+msgstr "部分預設快速鍵正被其他動作使用，因此未恢復。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "This shortcut no longer exists."
+msgstr "此快速鍵已不存在。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "The shortcut could not be changed."
+msgstr "無法更改快速鍵。"
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Keyboard shortcuts are managed by the Cutefish compositor, which is not running."
+msgstr "鍵盤快速鍵由 Cutefish 合成器管理，但它目前未在執行。"
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Restore all defaults"
+msgstr "全部恢復預設值"
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Click a system shortcut to change it. Shortcuts with both Control and Command are the safest choice: applications never get them."
+msgstr "按一下系統快速鍵即可更改。同時包含 Control 與 Command 的快速鍵最安全：應用程式永遠不會收到它們。"
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Click a system shortcut to change it. Shortcuts with Meta are the safest choice: applications never use them."
+msgstr "按一下系統快速鍵即可更改。包含 Meta 的快速鍵最安全：應用程式永遠不會使用它們。"
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Every shortcut goes back to its default. Your changes will be lost."
+msgstr "所有快速鍵都會恢復為預設值。您所做的變更將會遺失。"
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Restore"
+msgstr "恢復"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Virtual"
+msgstr "虛擬"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Built-in"
+msgstr "內建"
+
+#: src/pages/sound/soundpage.cpp src/window/pagelist.cpp
+msgid "Sound"
+msgstr "聲音"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Connecting to the audio service…"
+msgstr "正在連接音訊服務…"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Dismiss"
+msgstr "關閉"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Output"
+msgstr "輸出"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Input"
+msgstr "輸入"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Output volume"
+msgstr "輸出音量"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Balance"
+msgstr "平衡"
+
+#: src/pages/sound/soundpage.cpp src/widgets/sliderrow.cpp
+msgctxt "balance"
+msgid "Left"
+msgstr "左"
+
+#: src/pages/sound/soundpage.cpp src/widgets/sliderrow.cpp
+msgctxt "balance"
+msgid "Right"
+msgstr "右"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Input volume"
+msgstr "輸入音量"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Input level"
+msgstr "輸入電平"
+
+#: src/pages/sound/soundpage.cpp
+#, python-brace-format
+msgid "Could not apply the audio change: {error}"
+msgstr "無法套用音訊變更：{error}"
+
+#: src/pages/sound/soundpage.cpp
+msgid "No input devices"
+msgstr "沒有輸入裝置"
+
+#: src/pages/sound/soundpage.cpp
+msgid "No output devices"
+msgstr "沒有輸出裝置"
+
+#: src/pages/touchpad/touchpadpage.cpp src/window/pagelist.cpp
+msgid "Touchpad"
+msgstr "觸控板"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Enable"
+msgstr "啟用"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Disable when a mouse is connected"
+msgstr "連接滑鼠時停用"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Disable while typing"
+msgstr "打字時停用"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Tap to click"
+msgstr "輕點以點按"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Tap and drag"
+msgstr "輕點並拖移"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Secondary click"
+msgstr "輔助按鍵"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Two-finger press"
+msgstr "雙指按壓"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Bottom-right corner press"
+msgstr "按壓右下角"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Scroll speed"
+msgstr "捲動速度"
+
+#: src/pages/touchscreen/touchscreenpage.cpp src/window/pagelist.cpp
+msgid "Touchscreen"
+msgstr "觸控螢幕"
+
+#: src/pages/wallpaper/wallpapergrid.cpp src/pages/wallpaper/wallpaperpage.cpp
+msgid "Add wallpaper"
+msgstr "加入桌布"
+
+#. TRANSLATORS: the number of wallpapers after a section's title, such as "(12)".
+#: src/pages/wallpaper/wallpapergrid.cpp
+#, python-brace-format
+msgid "({count})"
+msgstr "（{count}）"
+
+#: src/pages/wallpaper/wallpapergrid.cpp
+msgid "Show less"
+msgstr "顯示較少"
+
+#: src/pages/wallpaper/wallpapergrid.cpp
+msgid "Show all"
+msgstr "顯示全部"
+
+#: src/pages/wallpaper/wallpaperpage.cpp src/window/pagelist.cpp
+msgid "Wallpaper"
+msgstr "桌布"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Your wallpapers"
+msgstr "您的桌布"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgctxt "wallpaper section"
+msgid "System"
+msgstr "系統"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Colors"
+msgstr "顏色"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Choose file…"
+msgstr "選擇檔案…"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Choose folder…"
+msgstr "選擇資料夾…"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Add Wallpaper Folder"
+msgstr "加入桌布資料夾"
+
+#: src/widgets/searchfield.cpp src/window/sidebar.cpp
+msgid "Search"
+msgstr "搜尋"
+
+#: src/window/page.cpp
+msgid "This page is not ported yet."
+msgstr "此頁面尚未移植。"
+
+#: src/window/pagelist.cpp
+msgid "wireless, WLAN, network, internet, password, DNS, IP address"
+msgstr "無線, 無線網路, 網路, 網際網路, 上網, 密碼, DNS, IP 位址, wireless, WLAN, WiFi"
+
+#: src/window/pagelist.cpp
+msgid "wired, LAN, network, internet, cable, IP address"
+msgstr "有線, 區域網路, 網路, 網際網路, 網路線, IP 位址, LAN, wired"
+
+#: src/window/pagelist.cpp
+msgid "wireless, devices, pairing, headphones"
+msgstr "無線, 裝置, 配對, 耳機, wireless"
+
+#: src/window/pagelist.cpp
+msgid "VPN, proxy, hotspot, tethering, internet"
+msgstr "VPN, 代理伺服器, 熱點, 網路共享, 網際網路, proxy"
+
+#: src/window/pagelist.cpp
+msgid "theme, dark mode, light mode, accent color, dim wallpaper"
+msgstr "主題, 深色模式, 淺色模式, 強調色, 調暗桌布, dark mode"
+
+#: src/window/pagelist.cpp
+msgid "background, desktop picture, image"
+msgstr "背景, 桌面圖片, 圖片, 影像, wallpaper"
+
+#: src/window/pagelist.cpp
+msgid "taskbar, position, size, auto hide, glass effect"
+msgstr "工作列, 位置, 大小, 自動隱藏, 玻璃效果, taskbar"
+
+#: src/window/pagelist.cpp
+msgid "do not disturb, banners, alerts"
+msgstr "勿擾模式, 橫幅, 提示, 通知"
+
+#: src/window/pagelist.cpp
+msgid "Devices"
+msgstr "裝置"
+
+#: src/window/pagelist.cpp
+msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
+msgstr "顯示器, 螢幕, 解析度, 更新頻率, 縮放, 亮度, 旋轉, monitor"
+
+#: src/window/pagelist.cpp
+msgid "audio, volume, speakers, headphones, microphone, input, output"
+msgstr "音訊, 音量, 喇叭, 揚聲器, 耳機, 麥克風, 輸入, 輸出, audio"
+
+#: src/window/pagelist.cpp
+msgid "input method, key repeat, keyboard style"
+msgstr "輸入法, 按鍵重複, 鍵盤樣式, 注音, 倉頡"
+
+#: src/window/pagelist.cpp
+msgid "pointer speed, acceleration, natural scrolling, left-handed"
+msgstr "指標速度, 加速, 自然捲動, 左手, 滑鼠"
+
+#: src/window/pagelist.cpp
+msgid "trackpad, tap to click, natural scrolling, secondary click, pointer speed"
+msgstr "軌跡板, 觸控式軌跡板, 輕點以點按, 自然捲動, 輔助按鍵, 右鍵, 指標速度, trackpad"
+
+#: src/window/pagelist.cpp
+msgid "touch, touch screen, touch panel"
+msgstr "觸控, 觸控螢幕, 觸控面板, touch"
+
+#: src/window/pagelist.cpp
+msgid "System"
+msgstr "系統"
+
+#: src/window/pagelist.cpp
+msgid "accounts, password, login, administrator, avatar"
+msgstr "帳號, 密碼, 登入, 管理者, 大頭貼, 頭像, account"
+
+#: src/window/pagelist.cpp
+msgid "region, locale, system language, country, formats, first day of week, measurement system, temperature"
+msgstr "地區, 語系, 系統語言, 國家, 格式, 每週的第一天, 度量衡系統, 溫度, locale"
+
+#: src/window/pagelist.cpp
+msgid "clock, time zone, 24-hour time, NTP, sync"
+msgstr "時鐘, 時區, 24 小時制, NTP, 同步, 時間"
+
+#: src/window/pagelist.cpp
+msgid "web browser, email client, terminal"
+msgstr "網頁瀏覽器, 電子郵件用戶端, 終端機, 瀏覽器"
+
+#: src/window/pagelist.cpp
+msgid "computer control, agents, allowed apps, permissions"
+msgstr "電腦控制, 代理程式, 允許的 App, 權限, agent"
+
+#: src/window/pagelist.cpp
+msgid "charge, charging limit, battery health, capacity, history, percentage"
+msgstr "充電, 充電上限, 電池健康度, 容量, 歷史記錄, 百分比"
+
+#: src/window/pagelist.cpp
+msgid "energy, performance, power saving, sleep, turn off display"
+msgstr "能源, 效能, 省電, 睡眠, 關閉顯示器, 電源"
+
+#: src/window/pagelist.cpp
+msgid "system, version, kernel, processor, memory, storage, hardware"
+msgstr "系統, 版本, 核心, 處理器, 記憶體, 儲存空間, 硬體, kernel, CPU"
+
+#: src/window/pagelist.cpp
+msgid "VPN, WireGuard, OpenVPN, tunnel, network"
+msgstr "VPN, WireGuard, OpenVPN, 通道, 網路"
+
+#: src/window/pagelist.cpp
+msgid "HTTP, HTTPS, SOCKS, FTP, PAC, network"
+msgstr "HTTP, HTTPS, SOCKS, FTP, PAC, 網路, 代理伺服器, proxy"
+
+#: src/window/pagelist.cpp
+msgid "tethering, share internet, access point, Wi-Fi, wireless"
+msgstr "網路共享, 分享網際網路, 存取點, 基地台, Wi-Fi, 無線, 熱點, hotspot"
+
+#: src/window/pagelist.cpp
+msgid "general font, fixed font, font size, anti-aliasing, hinting"
+msgstr "一般字體, 等寬字體, 字體大小, 消除鋸齒, 字體微調, 字型, font"
+
+#: src/window/pagelist.cpp
+msgid "icons"
+msgstr "圖示, icon"
+
+#: src/window/pagelist.cpp
+msgid "cursor theme, cursor size, pointer"
+msgstr "游標主題, 游標大小, 指標, 滑鼠指標, cursor"
+
+#: src/window/pagelist.cpp
+msgid "Keyboard Layout"
+msgstr "鍵盤配置"
+
+#: src/window/pagelist.cpp
+msgid "input source"
+msgstr "輸入來源, 鍵盤配置, layout"
+
+#: src/window/pagelist.cpp
+msgid "screen corners, show desktop, show all windows"
+msgstr "螢幕角落, 顯示桌面, 顯示所有視窗, 觸發角"
+
+#: src/window/pagelist.cpp
+msgid "hotkeys, key bindings"
+msgstr "快速鍵, 熱鍵, 按鍵綁定, shortcut"
+
+#: src/window/pagelist.cpp
+msgid "license, copyright, source code, open source"
+msgstr "授權, 版權, 原始碼, 開放原始碼, license"
+
+#: src/window/settingswindow.cpp src/window/sidebar.cpp
+#: cutefish-settings.desktop
+msgid "Settings"
+msgstr "設定"
+
+#: src/window/sidebar.cpp
+msgid "No results"
+msgstr "沒有結果"

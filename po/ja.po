@@ -1,0 +1,2605 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cutefish-settings\n"
+"Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
+"POT-Creation-Date: 2026-11-13 16:33+0800\n"
+"PO-Revision-Date: 2026-11-13 15:22+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "Unknown"
+msgstr "不明"
+
+#. TRANSLATORS: a processor model and its number of cores, such as "Intel Core i5 x 8".
+#: src/pages/about/aboutinfo.cpp
+#, python-brace-format
+msgid "{model} x {count}"
+msgstr "{model} x {count}"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "B"
+msgstr "B"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "KB"
+msgstr "KB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "MB"
+msgstr "MB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "GB"
+msgstr "GB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "TB"
+msgstr "TB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "PB"
+msgstr "PB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "EB"
+msgstr "EB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "ZB"
+msgstr "ZB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "YB"
+msgstr "YB"
+
+#. TRANSLATORS: a size, such as "16 GB".
+#: src/pages/about/aboutinfo.cpp
+#, python-brace-format
+msgid "{value} {unit}"
+msgstr "{value} {unit}"
+
+#. TRANSLATORS: the space used on the system disk and its size, such as "40 GB / 256 GB".
+#: src/pages/about/aboutinfo.cpp
+#, python-brace-format
+msgid "{used} / {total}"
+msgstr "{used} / {total}"
+
+#: src/pages/about/aboutpage.cpp src/window/pagelist.cpp
+msgid "About"
+msgstr "情報"
+
+#: src/pages/about/aboutpage.cpp
+#, python-brace-format
+msgid "Running on {system}"
+msgstr "{system} で動作中"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Model"
+msgstr "機種"
+
+#: src/pages/about/aboutpage.cpp
+msgid "System version"
+msgstr "システムのバージョン"
+
+#: src/pages/about/aboutpage.cpp
+msgid "System type"
+msgstr "システムの種類"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Kernel version"
+msgstr "カーネルのバージョン"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Processor"
+msgstr "プロセッサ"
+
+#: src/pages/about/aboutpage.cpp
+msgid "RAM"
+msgstr "メモリ"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Internal storage"
+msgstr "内蔵ストレージ"
+
+#: src/pages/about/aboutpage.cpp src/pages/about/licensespage.cpp
+#: src/window/pagelist.cpp
+msgid "Open-Source Licenses"
+msgstr "オープンソースライセンス"
+
+#: src/pages/about/licensespage.cpp
+msgid "Desktop and applications"
+msgstr "デスクトップとアプリケーション"
+
+#: src/pages/about/licensespage.cpp
+msgid "Terminal and the icon theme are under the GNU General Public License 3.0."
+msgstr "ターミナルとアイコンテーマは GNU General Public License 3.0 の下で提供されています。"
+
+#: src/pages/about/licensespage.cpp
+msgid "Compositor"
+msgstr "コンポジタ"
+
+#: src/pages/about/licensespage.cpp
+msgid "Wayland and window management, designed after Chromium's Exo and Ash"
+msgstr "Wayland とウインドウ管理。Chromium の Exo と Ash を手本に設計"
+
+#: src/pages/about/licensespage.cpp
+msgid "Xwayland window manager and selection bridge, adapted from sommelier"
+msgstr "Xwayland ウインドウマネージャと選択範囲ブリッジ。sommelier から改変"
+
+#: src/pages/about/licensespage.cpp
+msgid "Pointer acceleration curve"
+msgstr "ポインタの加速曲線"
+
+#: src/pages/about/licensespage.cpp
+msgid "The source code of the pointer acceleration curve is available under the Apple Public Source License 2.0 at https://github.com/cutefishos/cutefish-compositor."
+msgstr "ポインタの加速曲線のソースコードは、Apple Public Source License 2.0 の下で https://github.com/cutefishos/cutefish-compositor で公開されています。"
+
+#: src/pages/accounts/accountspage.cpp src/window/pagelist.cpp
+msgid "Users"
+msgstr "ユーザ"
+
+#: src/pages/accounts/accountspage.cpp
+msgid "Add user"
+msgstr "ユーザを追加"
+
+#: src/pages/accounts/accountspage.cpp src/pages/accounts/userdetailsdialog.cpp
+msgid "Delete this user"
+msgstr "このユーザを削除"
+
+#: src/pages/accounts/accountspage.cpp
+#, python-brace-format
+msgid "Delete user “{name}”? Their home directory and its contents will be permanently deleted. This cannot be undone."
+msgstr "ユーザ「{name}」を削除しますか? ホームディレクトリとその内容は完全に削除されます。この操作は取り消せません。"
+
+#: src/pages/accounts/accountspage.cpp src/pages/accounts/picturedialog.cpp
+#: src/pages/accounts/userdialogs.cpp src/pages/datetime/timezonedialog.cpp
+#: src/pages/language/addlanguagedialog.cpp
+#: src/pages/language/chooseregiondialog.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: src/pages/accounts/accountspage.cpp
+msgid "Delete"
+msgstr "削除"
+
+#: src/pages/accounts/picturedialog.cpp
+msgid "Choose a picture"
+msgstr "ピクチャを選択"
+
+#: src/pages/accounts/picturedialog.cpp
+msgid "Choose File…"
+msgstr "ファイルを選択…"
+
+#: src/pages/accounts/picturedialog.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/proxy/proxypage.cpp src/pages/network/vpn/vpndialogs.cpp
+msgid "Save"
+msgstr "保存"
+
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
+#: src/pages/accounts/picturedialog.cpp src/pages/wallpaper/wallpaperpage.cpp
+#, python-brace-format
+msgid "Image files ({patterns})"
+msgstr "イメージファイル ({patterns})"
+
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
+#: src/pages/accounts/picturedialog.cpp src/pages/network/vpn/vpndialogs.cpp
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "All files (*)"
+msgstr "すべてのファイル (*)"
+
+#: src/pages/accounts/userdetailsdialog.cpp src/pages/accounts/userdialogs.cpp
+msgid "Account type"
+msgstr "アカウントの種類"
+
+#: src/pages/accounts/userdetailsdialog.cpp
+msgid "Change password…"
+msgstr "パスワードを変更…"
+
+#: src/pages/accounts/userdetailsdialog.cpp src/pages/accounts/userdialogs.cpp
+msgid "Standard"
+msgstr "通常"
+
+#: src/pages/accounts/userdetailsdialog.cpp src/pages/accounts/userdialogs.cpp
+msgid "Administrator"
+msgstr "管理者"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Change password"
+msgstr "パスワードを変更"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Current password"
+msgstr "現在のパスワード"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "New password"
+msgstr "新しいパスワード"
+
+#: src/pages/accounts/userdialogs.cpp src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Password"
+msgstr "パスワード"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Verify password"
+msgstr "パスワードの確認"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The current password is incorrect"
+msgstr "現在のパスワードが正しくありません"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The new password was not accepted"
+msgstr "新しいパスワードは受け入れられませんでした"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The password could not be changed"
+msgstr "パスワードを変更できませんでした"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The password change did not finish in time"
+msgstr "パスワードの変更が時間内に完了しませんでした"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Add new user"
+msgstr "新しいユーザを追加"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "User name"
+msgstr "ユーザ名"
+
+#: src/pages/accounts/userdialogs.cpp src/pages/language/addlanguagedialog.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Add"
+msgstr "追加"
+
+#: src/pages/accounts/userrow.cpp
+msgid "Logged in"
+msgstr "ログイン中"
+
+#: src/pages/appearance/appearancepage.cpp src/window/pagelist.cpp
+msgid "Appearance"
+msgstr "外観"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Light"
+msgstr "ライト"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Dark"
+msgstr "ダーク"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Auto"
+msgstr "自動"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Accent color"
+msgstr "アクセントカラー"
+
+#: src/pages/appearance/appearancepage.cpp src/pages/fonts/fontspage.cpp
+#: src/window/pagelist.cpp
+msgid "Fonts"
+msgstr "フォント"
+
+#: src/pages/appearance/appearancepage.cpp
+#: src/pages/icontheme/iconthemepage.cpp src/window/pagelist.cpp
+msgid "Icon Theme"
+msgstr "アイコンテーマ"
+
+#: src/pages/appearance/appearancepage.cpp
+#: src/pages/cursortheme/cursorthemepage.cpp src/window/pagelist.cpp
+msgid "Cursor Style"
+msgstr "カーソルのスタイル"
+
+#: src/pages/battery/battery.cpp
+#, python-brace-format
+msgid "Today at {time}"
+msgstr "今日 {time}"
+
+#: src/pages/battery/battery.cpp
+#, python-brace-format
+msgid "Yesterday at {time}"
+msgstr "昨日 {time}"
+
+#: src/pages/battery/batterypage.cpp
+msgid "History"
+msgstr "履歴"
+
+#: src/pages/battery/batterypage.cpp
+msgid "24 hours"
+msgstr "24 時間"
+
+#: src/pages/battery/batterypage.cpp
+msgid "7 days"
+msgstr "7 日間"
+
+#: src/pages/battery/batterypage.cpp src/window/pagelist.cpp
+msgid "Battery"
+msgstr "バッテリー"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Health"
+msgstr "バッテリーの状態"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Condition"
+msgstr "状態"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Maximum capacity"
+msgstr "最大容量"
+
+#: src/pages/battery/batterypage.cpp src/pages/battery/historygraph.cpp
+msgid "Charging"
+msgstr "充電中"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Show percentage in status bar"
+msgstr "ステータスバーに残量（%）を表示"
+
+#. TRANSLATORS: the names of a computer's two batteries.
+#: src/pages/battery/batterypage.cpp
+msgid "Main"
+msgstr "メイン"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Extra"
+msgstr "追加"
+
+#. TRANSLATORS: the name of one of a computer's batteries, such as "Battery 3".
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "Battery {n}"
+msgstr "バッテリー {n}"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Excellent"
+msgstr "良好"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Normal"
+msgstr "正常"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Poor"
+msgstr "劣化"
+
+#. TRANSLATORS: a percentage, such as "92%".
+#: src/pages/battery/batterypage.cpp src/pages/display/displaypage.cpp
+#: src/pages/network/common/detailsdialog.cpp
+#, python-brace-format
+msgid "{percent}%"
+msgstr "{percent}%"
+
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "Last charged to {percent}%"
+msgstr "最後に {percent}% まで充電"
+
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "Limit charging to {percent}%"
+msgstr "充電を {percent}% までに制限"
+
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "While plugged in, charging stops at {end}% and resumes below {start}%, so the battery wears more slowly."
+msgstr "電源に接続中は、{end}% で充電を停止し、{start}% を下回ると再開するため、バッテリーの劣化が遅くなります。"
+
+#: src/pages/battery/batterypage.cpp
+msgid "This computer's battery controller did not keep the limit, so the battery still charges fully."
+msgstr "このコンピュータのバッテリーコントローラが制限を維持しなかったため、バッテリーはフル充電されます。"
+
+#: src/pages/battery/historygraph.cpp
+msgid "Fully charged"
+msgstr "フル充電"
+
+#: src/pages/battery/historygraph.cpp
+msgid "Not charging"
+msgstr "充電していません"
+
+#: src/pages/battery/historygraph.cpp
+msgid "On battery"
+msgstr "バッテリー駆動"
+
+#: src/pages/battery/historygraph.cpp
+msgid "Plugged in"
+msgstr "電源に接続中"
+
+#. TRANSLATORS: a weekday and a time in the graph's readout, such as "Mon 9:41 AM".
+#: src/pages/battery/historygraph.cpp
+#, python-brace-format
+msgid "{day} {time}"
+msgstr "{day} {time}"
+
+#. TRANSLATORS: the battery state and the time in the graph's readout, such as "Charging · 9:41 AM".
+#: src/pages/battery/historygraph.cpp
+#, python-brace-format
+msgid "{state} · {time}"
+msgstr "{state} · {time}"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Audio device"
+msgstr "オーディオデバイス"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Headphones"
+msgstr "ヘッドフォン"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Headset"
+msgstr "ヘッドセット"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Camera"
+msgstr "カメラ"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Video camera"
+msgstr "ビデオカメラ"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Computer"
+msgstr "コンピュータ"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Game controller"
+msgstr "ゲームコントローラ"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/window/pagelist.cpp
+msgid "Keyboard"
+msgstr "キーボード"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/mouse/mousepage.cpp
+#: src/window/pagelist.cpp
+msgid "Mouse"
+msgstr "マウス"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Drawing tablet"
+msgstr "ペンタブレット"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Modem"
+msgstr "モデム"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Media player"
+msgstr "メディアプレーヤ"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Network device"
+msgstr "ネットワークデバイス"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Phone"
+msgstr "電話"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Printer"
+msgstr "プリンタ"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Scanner"
+msgstr "スキャナ"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgctxt "device type"
+msgid "Display"
+msgstr "ディスプレイ"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Name"
+msgstr "名前"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/network/vpn/vpneditor.cpp
+msgid "Address"
+msgstr "アドレス"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Powered"
+msgstr "電源"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Visible to other devices"
+msgstr "ほかのデバイスから見える"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Allow incoming pairing"
+msgstr "ペアリングの受け入れを許可"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Close"
+msgstr "閉じる"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Device type"
+msgstr "デバイスの種類"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Model number"
+msgstr "型番"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Version"
+msgstr "バージョン"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Trusted"
+msgstr "信頼済み"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Blocked"
+msgstr "ブロック中"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Forget this device"
+msgstr "このデバイスの登録を解除"
+
+#: src/pages/bluetooth/bluetoothpage.cpp src/pages/network/vpn/vpndialogs.cpp
+msgid "Connected"
+msgstr "接続済み"
+
+#: src/pages/bluetooth/bluetoothpage.cpp src/pages/network/vpn/vpndialogs.cpp
+msgid "Not connected"
+msgstr "未接続"
+
+#. TRANSLATORS: a device's connection and its battery level, such as "Connected · 80%".
+#: src/pages/bluetooth/bluetoothpage.cpp
+#, python-brace-format
+msgid "{status} · {percent}%"
+msgstr "{status} · {percent}%"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Cancel pairing"
+msgstr "ペアリングをキャンセル"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Disconnect"
+msgstr "接続解除"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Discoverable"
+msgstr "検出可能"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Not discoverable"
+msgstr "検出不可"
+
+#: src/pages/bluetooth/bluetoothpage.cpp src/pages/sound/soundpage.cpp
+#: src/window/pagelist.cpp
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "My devices"
+msgstr "自分のデバイス"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Other devices"
+msgstr "ほかのデバイス"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Bluetooth service is unavailable"
+msgstr "Bluetooth サービスを利用できません"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Bluetooth is blocked by a hardware switch"
+msgstr "Bluetooth はハードウェアスイッチでブロックされています"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "No Bluetooth adapters found"
+msgstr "Bluetooth アダプタが見つかりません"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "No devices found. Make sure your device is discoverable."
+msgstr "デバイスが見つかりません。デバイスが検出可能になっていることを確認してください。"
+
+#: src/pages/cursortheme/cursorthemepage.cpp
+msgid "Cursor theme"
+msgstr "カーソルテーマ"
+
+#: src/pages/cursortheme/cursorthemepage.cpp
+msgid "Cursor size"
+msgstr "カーソルのサイズ"
+
+#: src/pages/datetime/datetimepage.cpp src/window/pagelist.cpp
+msgid "Date & Time"
+msgstr "日付と時刻"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "Auto sync"
+msgstr "自動同期"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "24-hour time"
+msgstr "24 時間表示"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "Time zone"
+msgstr "時間帯"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "Unable to use auto sync. Please ensure your NTP service is installed."
+msgstr "自動同期を使用できません。NTP サービスがインストールされていることを確認してください。"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Search city or country"
+msgstr "都市または国を検索"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "No matching time zones"
+msgstr "一致する時間帯がありません"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Time Zone"
+msgstr "時間帯"
+
+#. TRANSLATORS: the button that makes the chosen time zone the system's.
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Set"
+msgstr "設定"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Click the map or search to choose a time zone"
+msgstr "地図をクリックするか検索して、時間帯を選択してください"
+
+#. TRANSLATORS: a time zone's city and its country or region, such as "Paris, France".
+#: src/pages/datetime/timezonedialog.cpp
+#, python-brace-format
+msgid "{city}, {region}"
+msgstr "{city}、{region}"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Current time zone"
+msgstr "現在の時間帯"
+
+#: src/pages/datetime/timezonedialog.cpp
+#, python-brace-format
+msgid "Currently {zone}"
+msgstr "現在: {zone}"
+
+#: src/pages/datetime/timezonemap.cpp
+msgid "Same time as now"
+msgstr "現在と同じ時刻"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} hour ahead"
+msgid_plural "{n} hours ahead"
+msgstr[0] "{n} 時間進み"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} hour behind"
+msgid_plural "{n} hours behind"
+msgstr[0] "{n} 時間遅れ"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} min ahead"
+msgid_plural "{n} min ahead"
+msgstr[0] "{n} 分進み"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} min behind"
+msgid_plural "{n} min behind"
+msgstr[0] "{n} 分遅れ"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{hours} h {minutes} min ahead"
+msgstr "{hours} 時間 {minutes} 分進み"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{hours} h {minutes} min behind"
+msgstr "{hours} 時間 {minutes} 分遅れ"
+
+#: src/pages/datetime/timezonemap.cpp
+msgid "Tomorrow"
+msgstr "明日"
+
+#: src/pages/datetime/timezonemap.cpp
+msgid "Yesterday"
+msgstr "昨日"
+
+#: src/pages/defaultapps/defaultappspage.cpp src/window/pagelist.cpp
+msgid "Default Applications"
+msgstr "デフォルトのアプリケーション"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Web browser"
+msgstr "Web ブラウザ"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Email client"
+msgstr "メールクライアント"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Text editor"
+msgstr "テキストエディタ"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Music player"
+msgstr "ミュージックプレーヤ"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Video player"
+msgstr "ビデオプレーヤ"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Image viewer"
+msgstr "イメージビューア"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Terminal"
+msgstr "ターミナル"
+
+#: src/pages/defaultapps/defaultappspage.cpp src/pages/fonts/fontspage.cpp
+#: src/pages/hotcorners/hotcornerspage.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "None"
+msgstr "なし"
+
+#: src/pages/display/displaypage.cpp
+#, python-brace-format
+msgid "{item} (Recommended)"
+msgstr "{item}（推奨）"
+
+#: src/pages/display/displaypage.cpp src/window/pagelist.cpp
+msgid "Display"
+msgstr "ディスプレイ"
+
+#: src/pages/display/displaypage.cpp
+msgid "Brightness"
+msgstr "明るさ"
+
+#: src/pages/display/displaypage.cpp
+msgid "Resolution"
+msgstr "解像度"
+
+#: src/pages/display/displaypage.cpp
+msgid "Refresh rate"
+msgstr "リフレッシュレート"
+
+#: src/pages/display/displaypage.cpp
+msgid "Scale"
+msgstr "拡大縮小"
+
+#: src/pages/display/displaypage.cpp
+msgid "Rotation"
+msgstr "回転"
+
+#: src/pages/display/displaypage.cpp
+msgctxt "rotation"
+msgid "Normal"
+msgstr "標準"
+
+#: src/pages/display/displaypage.cpp
+msgid "Enabled"
+msgstr "有効"
+
+#: src/pages/display/displaypage.cpp
+msgid "Primary"
+msgstr "メイン"
+
+#: src/pages/display/displaypage.cpp src/pages/power/powerpage.cpp
+msgid "Mode"
+msgstr "モード"
+
+#: src/pages/display/displaypage.cpp
+msgid "Position"
+msgstr "位置"
+
+#: src/pages/display/displaypage.cpp
+msgid "Night Light"
+msgstr "夜間モード"
+
+#: src/pages/display/displaypage.cpp
+msgid "Color temperature"
+msgstr "色温度"
+
+#: src/pages/display/displaypage.cpp
+msgid "Less warm"
+msgstr "暖色弱め"
+
+#: src/pages/display/displaypage.cpp
+msgid "More warm"
+msgstr "暖色強め"
+
+#: src/pages/display/displaypage.cpp
+msgid "Schedule"
+msgstr "スケジュール"
+
+#: src/pages/display/displaypage.cpp src/pages/power/powerpage.cpp
+msgid "Never"
+msgstr "しない"
+
+#: src/pages/display/displaypage.cpp
+msgid "Sunset to sunrise"
+msgstr "日没から日の出まで"
+
+#: src/pages/display/displaypage.cpp src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Custom"
+msgstr "カスタム"
+
+#: src/pages/display/displaypage.cpp
+msgid "Sunset"
+msgstr "日没"
+
+#: src/pages/display/displaypage.cpp
+msgid "Sunrise"
+msgstr "日の出"
+
+#: src/pages/display/displaypage.cpp
+msgid "From"
+msgstr "開始"
+
+#: src/pages/display/displaypage.cpp
+msgid "To"
+msgstr "終了"
+
+#: src/pages/display/displaypage.cpp
+msgid "Screen"
+msgstr "画面"
+
+#: src/pages/display/displaypage.cpp
+msgid "Display configuration is unavailable in this session."
+msgstr "このセッションではディスプレイ構成を利用できません。"
+
+#: src/pages/display/displaypage.cpp
+#, python-brace-format
+msgid "The previous settings come back in {n} second."
+msgid_plural "The previous settings come back in {n} seconds."
+msgstr[0] "{n} 秒後に以前の設定に戻ります。"
+
+#: src/pages/display/displaypage.cpp
+msgid "Keep these display settings?"
+msgstr "このディスプレイ設定を維持しますか?"
+
+#: src/pages/display/displaypage.cpp
+msgid "Revert"
+msgstr "元に戻す"
+
+#: src/pages/display/displaypage.cpp
+msgid "Keep"
+msgstr "維持"
+
+#: src/pages/dock/dockpage.cpp src/window/pagelist.cpp
+msgid "Dock & Desktop"
+msgstr "Dock とデスクトップ"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Dock"
+msgstr "Dock"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Left"
+msgstr "左"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Bottom"
+msgstr "下"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Right"
+msgstr "右"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Size"
+msgstr "サイズ"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Small"
+msgstr "小"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Large"
+msgstr "大"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Magnification"
+msgstr "拡大"
+
+#: src/pages/dock/dockpage.cpp src/pages/network/vpn/vpneditor.cpp
+#: src/pages/notifications/notificationspage.cpp
+msgid "Off"
+msgstr "オフ"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Glass effect"
+msgstr "ガラス効果"
+
+#: src/pages/dock/dockpage.cpp
+msgid "More clear"
+msgstr "透明"
+
+#: src/pages/dock/dockpage.cpp
+msgid "More tinted"
+msgstr "色付き"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Display mode"
+msgstr "表示モード"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Always show"
+msgstr "常に表示"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Always hide"
+msgstr "常に隠す"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Smart hide"
+msgstr "スマートに隠す"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Minimized windows area"
+msgstr "最小化したウインドウの領域"
+
+#: src/pages/dock/dockpage.cpp src/window/pagelist.cpp
+msgid "Desktop"
+msgstr "デスクトップ"
+
+#: src/pages/dock/dockpage.cpp src/pages/hotcorners/hotcornerspage.cpp
+#: src/window/pagelist.cpp
+msgid "Hot Corners"
+msgstr "ホットコーナー"
+
+#. TRANSLATORS: a font size in points, such as "9pt".
+#: src/pages/fonts/fontspage.cpp
+#, python-brace-format
+msgid "{size}pt"
+msgstr "{size} pt"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "General font"
+msgstr "標準フォント"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Fixed font"
+msgstr "等幅フォント"
+
+#: src/pages/fonts/fontspage.cpp
+#, python-brace-format
+msgid "{size} (Default)"
+msgstr "{size}（デフォルト）"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Font size"
+msgstr "フォントサイズ"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Hinting"
+msgstr "ヒンティング"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Slight"
+msgstr "弱"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Medium"
+msgstr "中"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Full"
+msgstr "完全"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Anti-Aliasing"
+msgstr "アンチエイリアス"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Control"
+msgstr "Control"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Option"
+msgstr "Option"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Alt"
+msgstr "Alt"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Shift"
+msgstr "Shift"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Command"
+msgstr "Command"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Meta"
+msgstr "Meta"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Show All Windows"
+msgstr "すべてのウインドウを表示"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Show Desktop"
+msgstr "デスクトップを表示"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Launcher"
+msgstr "ランチャ"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Lock Screen"
+msgstr "画面をロック"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Hot corners are managed by the Cutefish compositor, which is not running."
+msgstr "ホットコーナーは Cutefish コンポジタが管理していますが、コンポジタが実行されていません。"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Top left"
+msgstr "左上"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Top right"
+msgstr "右上"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Bottom left"
+msgstr "左下"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Bottom right"
+msgstr "右下"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Move the pointer into a corner of the screen to run its action. Hold modifier keys while choosing an action to make the corner work only while they are held."
+msgstr "ポインタを画面の隅に移動すると、その隅に割り当てた操作を実行します。操作を選択するときに修飾キーを押しておくと、そのキーを押している間だけその隅が機能するようになります。"
+
+#. TRANSLATORS: the keys a hot corner needs held and its action, such as "Ctrl + Alt – Lock Screen".
+#: src/pages/hotcorners/hotcornerspage.cpp
+#, python-brace-format
+msgid "{keys} – {action}"
+msgstr "{keys} – {action}"
+
+#: src/pages/icontheme/iconthemepage.cpp
+msgid "Icon theme"
+msgstr "アイコンテーマ"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Input method"
+msgstr "入力方式"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Input methods can only be selected in a Cutefish Wayland session."
+msgstr "入力方式は Cutefish Wayland セッションでのみ選択できます。"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "The selected input method is not running."
+msgstr "選択した入力方式は実行されていません。"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Applications started before the input method may need to be restarted."
+msgstr "入力方式より前に起動したアプリケーションは、再起動が必要な場合があります。"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Shortcut key"
+msgstr "ショートカットキー"
+
+#: src/pages/keyboard/keyboardpage.cpp src/pages/keyboard/layoutpage.cpp
+msgid "Layout"
+msgstr "レイアウト"
+
+#: src/pages/keyboard/keyboardpage.cpp src/pages/shortcuts/shortcutspage.cpp
+#: src/window/pagelist.cpp
+msgid "Keyboard Shortcuts"
+msgstr "キーボードショートカット"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Key repeat"
+msgstr "キーのリピート"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Delay until repeat"
+msgstr "リピート入力認識までの時間"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Repeat rate"
+msgstr "リピート速度"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "The key next to the space bar works as Command and the one beside it as Option, on any keyboard: Command+C copies, Command+Tab switches windows, Command+Q quits. The shortcuts can be changed in Keyboard Shortcuts."
+msgstr "どのキーボードでも、スペースバーの隣のキーが Command、その隣のキーが Option として機能します。Command+C でコピー、Command+Tab でウインドウの切り替え、Command+Q で終了します。ショートカットは「キーボードショートカット」で変更できます。"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Ctrl is the shortcut key and Alt switches windows. The shortcuts can be changed in Keyboard Shortcuts."
+msgstr "Ctrl がショートカットキーになり、Alt でウインドウを切り替えます。ショートカットは「キーボードショートカット」で変更できます。"
+
+#: src/pages/keyboard/layoutpage.cpp
+msgid "No layouts found"
+msgstr "レイアウトが見つかりません"
+
+#: src/pages/keyboard/layoutpage.cpp
+msgid "Search layouts"
+msgstr "レイアウトを検索"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "Add Language"
+msgstr "言語を追加"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "Search languages"
+msgstr "言語を検索"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "Loading languages…"
+msgstr "言語を読み込み中…"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "No languages found"
+msgstr "言語が見つかりません"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Choose Region"
+msgstr "地域を選択"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Search regions"
+msgstr "地域を検索"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Choose"
+msgstr "選択"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Loading regions…"
+msgstr "地域を読み込み中…"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "No regions found"
+msgstr "地域が見つかりません"
+
+#: src/pages/language/language.cpp
+msgid "Could not save preferred languages. Please try again."
+msgstr "優先する言語を保存できませんでした。もう一度お試しください。"
+
+#: src/pages/language/languagepage.cpp
+#, python-brace-format
+msgid "Automatic ({value})"
+msgstr "自動（{value}）"
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "US"
+msgstr "米国"
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "UK"
+msgstr "英国"
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "Metric"
+msgstr "メートル法"
+
+#: src/pages/language/languagepage.cpp
+msgid "Fahrenheit (°F)"
+msgstr "華氏（°F）"
+
+#: src/pages/language/languagepage.cpp
+msgid "Celsius (°C)"
+msgstr "摂氏（°C）"
+
+#: src/pages/language/languagepage.cpp src/window/pagelist.cpp
+msgid "Language & Region"
+msgstr "言語と地域"
+
+#: src/pages/language/languagepage.cpp
+msgid "Preferred languages"
+msgstr "優先する言語"
+
+#: src/pages/language/languagepage.cpp
+msgid "Add language…"
+msgstr "言語を追加…"
+
+#: src/pages/language/languagepage.cpp
+msgid "Drag a language to the top to make it the system language. Right-click a language to remove it."
+msgstr "言語をいちばん上にドラッグすると、システムの言語になります。言語を右クリックすると削除できます。"
+
+#: src/pages/language/languagepage.cpp
+msgid "Region"
+msgstr "地域"
+
+#: src/pages/language/languagepage.cpp
+msgid "First day of week"
+msgstr "週の最初の曜日"
+
+#: src/pages/language/languagepage.cpp
+msgid "Measurement system"
+msgstr "単位系"
+
+#: src/pages/language/languagepage.cpp
+msgid "Temperature"
+msgstr "温度"
+
+#: src/pages/language/languagepage.cpp
+msgid "Applications that are already open may use the new region after they restart."
+msgstr "すでに開いているアプリケーションは、再起動後に新しい地域を使用する場合があります。"
+
+#: src/pages/language/languagepage.cpp
+msgid "Format preview"
+msgstr "表示形式のプレビュー"
+
+#: src/pages/language/languagepage.cpp
+msgid "Date"
+msgstr "日付"
+
+#: src/pages/language/languagepage.cpp
+msgid "Date and time"
+msgstr "日付と時刻"
+
+#: src/pages/language/languagepage.cpp
+msgid "Number"
+msgstr "数値"
+
+#: src/pages/language/languagepage.cpp
+msgid "Currency"
+msgstr "通貨"
+
+#: src/pages/language/preferredlanguagelist.cpp
+msgid "System language"
+msgstr "システムの言語"
+
+#: src/pages/language/preferredlanguagelist.cpp
+msgid "Remove language"
+msgstr "言語を削除"
+
+#: src/pages/mouse/mousepage.cpp
+msgid "Left hand"
+msgstr "左利き"
+
+#: src/pages/mouse/mousepage.cpp src/pages/touchpad/touchpadpage.cpp
+msgid "Natural scrolling"
+msgstr "ナチュラルスクロール"
+
+#: src/pages/mouse/mousepage.cpp
+msgid "Mouse acceleration"
+msgstr "マウスの加速"
+
+#: src/pages/mouse/mousepage.cpp src/pages/touchpad/touchpadpage.cpp
+msgid "Pointer speed"
+msgstr "ポインタの速度"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Auto-Join"
+msgstr "自動接続"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Connect Automatically"
+msgstr "自動的に接続"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "IP Settings"
+msgstr "IP 設定"
+
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Security"
+msgstr "セキュリティ"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Signal"
+msgstr "信号強度"
+
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "IPv4 address"
+msgstr "IPv4 アドレス"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "IPv6 address"
+msgstr "IPv6 アドレス"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "MAC address"
+msgstr "MAC アドレス"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Gateway"
+msgstr "ゲートウェイ"
+
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "DNS"
+msgstr "DNS"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Forget this network"
+msgstr "このネットワークを削除"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Configure IPv4"
+msgstr "IPv4 の構成"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "IP Address"
+msgstr "IP アドレス"
+
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Required"
+msgstr "必須"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Subnet Mask"
+msgstr "サブネットマスク"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Router"
+msgstr "ルータ"
+
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Optional"
+msgstr "オプション"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Configure IPv6"
+msgstr "IPv6 の構成"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Prefix Length"
+msgstr "プレフィックス長"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Automatic DNS"
+msgstr "DNS を自動取得"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "DNS Servers"
+msgstr "DNS サーバ"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "These servers are asked before the network's own."
+msgstr "これらのサーバには、ネットワーク自身のサーバより先に問い合わせます。"
+
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Saving…"
+msgstr "保存中…"
+
+#: src/pages/network/ethernet/ethernetpage.cpp src/window/pagelist.cpp
+msgid "Ethernet"
+msgstr "イーサネット"
+
+#: src/pages/network/hotspot/hotspotpage.cpp src/pages/network/networkpage.cpp
+#: src/pages/network/wlan/wlanpage.cpp src/window/pagelist.cpp
+msgid "Hotspot"
+msgstr "ホットスポット"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Wi-Fi hotspot"
+msgstr "Wi-Fi ホットスポット"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Network name"
+msgstr "ネットワーク名"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Generate password"
+msgstr "パスワードを生成"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Turn On Wi-Fi Hotspot?"
+msgstr "Wi-Fi ホットスポットをオンにしますか?"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+#, python-brace-format
+msgid "Turning on the hotspot will disconnect from “{network}”, and you will not have access to the internet it provides."
+msgstr "ホットスポットをオンにすると「{network}」から切断され、そのネットワークが提供するインターネットにアクセスできなくなります。"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Turn on"
+msgstr "オンにする"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Share this computer's internet connection by creating a Wi-Fi network other devices can join. The connection to share must come from a source other than Wi-Fi."
+msgstr "ほかのデバイスが接続できる Wi-Fi ネットワークを作成して、このコンピュータのインターネット接続を共有します。共有する接続は Wi-Fi 以外から提供されている必要があります。"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Turn on Wi-Fi to use the hotspot."
+msgstr "ホットスポットを使用するには Wi-Fi をオンにしてください。"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "System policy prohibits use as a hotspot."
+msgstr "システムのポリシーにより、ホットスポットとしての使用は禁止されています。"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+#, python-brace-format
+msgid "Other devices can join “{network}” with the password below. Turn off the hotspot to use Wi-Fi on this computer."
+msgstr "ほかのデバイスは、下のパスワードで「{network}」に接続できます。このコンピュータで Wi-Fi を使用するには、ホットスポットをオフにしてください。"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Network name cannot be empty."
+msgstr "ネットワーク名を空にすることはできません。"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Network name is too long."
+msgstr "ネットワーク名が長すぎます。"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "The password must have at least 8 characters."
+msgstr "パスワードは 8 文字以上にしてください。"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "The password must have at most 63 characters."
+msgstr "パスワードは 63 文字以下にしてください。"
+
+#: src/pages/network/networkpage.cpp src/window/pagelist.cpp
+msgid "Network"
+msgstr "ネットワーク"
+
+#: src/pages/network/networkpage.cpp src/pages/network/vpn/vpnpage.cpp
+#: src/window/pagelist.cpp
+msgid "VPN"
+msgstr "VPN"
+
+#: src/pages/network/networkpage.cpp src/pages/network/proxy/proxypage.cpp
+#: src/window/pagelist.cpp
+msgid "Proxy"
+msgstr "プロキシ"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "No proxy"
+msgstr "プロキシなし"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Use proxy auto configuration URL"
+msgstr "プロキシ自動設定 URL を使用"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Use manually specified proxy configuration"
+msgstr "手動で指定したプロキシ設定を使用"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Select file"
+msgstr "ファイルを選択"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "HTTP proxy"
+msgstr "HTTP プロキシ"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Port"
+msgstr "ポート"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Also use this proxy for FTP"
+msgstr "FTP にもこのプロキシを使用"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "FTP proxy"
+msgstr "FTP プロキシ"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "SOCKS proxy"
+msgstr "SOCKS プロキシ"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Add VPN"
+msgstr "VPN を追加"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Type"
+msgstr "種類"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+#, python-brace-format
+msgid "{type} (Not Installed)"
+msgstr "{type}（未インストール）"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Status"
+msgstr "状況"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Export to file…"
+msgstr "ファイルに書き出す…"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Export VPN Configuration"
+msgstr "VPN 構成を書き出す"
+
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
+#: src/pages/network/vpn/vpndialogs.cpp src/pages/network/vpn/vpnpage.cpp
+#, python-brace-format
+msgid "VPN configurations ({patterns})"
+msgstr "VPN 構成 ({patterns})"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Remove VPN"
+msgstr "VPN を削除"
+
+#: src/pages/network/vpn/vpndialogs.cpp src/pages/network/vpn/vpnpage.cpp
+msgid "Connecting…"
+msgstr "接続中…"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Show advanced options"
+msgstr "詳細オプションを表示"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Asked on connect"
+msgstr "接続時に確認"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Choose…"
+msgstr "選択…"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Saved for all"
+msgstr "全ユーザ用に保存"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Saved"
+msgstr "保存済み"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Ask each time"
+msgstr "毎回確認"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Not needed"
+msgstr "不要"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Hide advanced options"
+msgstr "詳細オプションを隠す"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Private key"
+msgstr "秘密鍵"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Interface name"
+msgstr "インターフェイス名"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "From the name"
+msgstr "名前から生成"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Listen port"
+msgstr "待ち受けポート"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Automatic"
+msgstr "自動"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Firewall mark"
+msgstr "ファイアウォールマーク"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "MTU"
+msgstr "MTU"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Add routes for the peers' allowed IPs"
+msgstr "ピアの許可された IP へのルートを追加"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Add peer"
+msgstr "ピアを追加"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Peer"
+msgstr "ピア"
+
+#: src/pages/network/vpn/vpneditor.cpp src/pages/privacy/privacypage.cpp
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Remove"
+msgstr "削除"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Public key"
+msgstr "公開鍵"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Preshared key"
+msgstr "事前共有鍵"
+
+#. TRANSLATORS: a placeholder: the stored key stays unless a new one is typed.
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Kept"
+msgstr "変更なし"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Endpoint"
+msgstr "エンドポイント"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Allowed IPs"
+msgstr "許可された IP"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "All traffic"
+msgstr "すべてのトラフィック"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Keepalive"
+msgstr "キープアライブ"
+
+#: src/pages/network/vpn/vpneditor.cpp
+#, python-brace-format
+msgid "Peer {number}"
+msgstr "ピア {number}"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Available to all users"
+msgstr "すべてのユーザが使用可能"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Use only for resources on its network"
+msgstr "このネットワーク上のリソースにのみ使用"
+
+#: src/pages/network/vpn/vpneditor.cpp
+#, python-brace-format
+msgid "Install {package} to set up this kind of VPN."
+msgstr "この種類の VPN を設定するには {package} をインストールしてください。"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Add your user name to connect."
+msgstr "接続するにはユーザ名を追加してください。"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Add VPN…"
+msgstr "VPN を追加…"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Import from file…"
+msgstr "ファイルから読み込む…"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Import VPN Configuration"
+msgstr "VPN 構成を読み込む"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Importing…"
+msgstr "読み込み中…"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Import the configuration file your VPN provider gives you, such as an OpenVPN .ovpn or a WireGuard .conf file."
+msgstr "VPN プロバイダから提供された構成ファイル（OpenVPN の .ovpn や WireGuard の .conf ファイルなど）を読み込みます。"
+
+#. TRANSLATORS: a Wi-Fi network's security: none, anyone can join.
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Open"
+msgstr "なし"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "WPA Enterprise"
+msgstr "WPA エンタープライズ"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "WPA2 Enterprise"
+msgstr "WPA2 エンタープライズ"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "WPA3 Enterprise"
+msgstr "WPA3 エンタープライズ"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Add Other Network"
+msgstr "ほかのネットワークを追加"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+#, python-brace-format
+msgid "Join “{network}”"
+msgstr "「{network}」に接続"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Username"
+msgstr "ユーザ名"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "This network signs in with a certificate, which can't be set up here yet."
+msgstr "このネットワークは証明書でサインインしますが、ここではまだ設定できません。"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Join"
+msgstr "接続"
+
+#: src/pages/network/wlan/wlanpage.cpp src/window/pagelist.cpp
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
+
+#: src/pages/network/wlan/wlanpage.cpp
+msgid "Known networks"
+msgstr "既知のネットワーク"
+
+#: src/pages/network/wlan/wlanpage.cpp
+msgid "Other networks"
+msgstr "ほかのネットワーク"
+
+#: src/pages/network/wlan/wlanpage.cpp
+msgid "Add other…"
+msgstr "その他を追加…"
+
+#: src/pages/notifications/notificationspage.cpp src/window/pagelist.cpp
+msgid "Notifications"
+msgstr "通知"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Do Not Disturb"
+msgstr "おやすみモード"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Applications"
+msgstr "アプリケーション"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Applications appear here after they send a notification."
+msgstr "通知を送信したアプリケーションがここに表示されます。"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Notifications that skip the banner still go to the Notification Center. Turned off, they are dropped."
+msgstr "バナーを表示しない通知も通知センターには送られます。オフにすると破棄されます。"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Banners"
+msgstr "バナー"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Notification Center only"
+msgstr "通知センターのみ"
+
+#: src/pages/power/powerpage.cpp
+#, python-brace-format
+msgid "{n} minute"
+msgid_plural "{n} minutes"
+msgstr[0] "{n} 分"
+
+#: src/pages/power/powerpage.cpp
+msgid "Power save"
+msgstr "省電力"
+
+#: src/pages/power/powerpage.cpp
+msgid "Balanced"
+msgstr "バランス"
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance"
+msgstr "パフォーマンス"
+
+#: src/pages/power/powerpage.cpp src/window/pagelist.cpp
+msgid "Power"
+msgstr "電源"
+
+#: src/pages/power/powerpage.cpp
+msgid "Turn off display when inactive on battery"
+msgstr "バッテリー駆動時、操作していないときにディスプレイをオフにする"
+
+#: src/pages/power/powerpage.cpp
+msgid "Reduces performance and power consumption."
+msgstr "パフォーマンスと消費電力を抑えます。"
+
+#: src/pages/power/powerpage.cpp
+msgid "Standard performance and power consumption."
+msgstr "標準的なパフォーマンスと消費電力です。"
+
+#: src/pages/power/powerpage.cpp
+msgid "Higher performance, with more power consumption and heat."
+msgstr "パフォーマンスが向上しますが、消費電力と発熱が増えます。"
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance is limited because the computer is on your lap."
+msgstr "コンピュータが膝の上にあるため、パフォーマンスが制限されています。"
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance is limited because the computer is too hot."
+msgstr "コンピュータが高温になっているため、パフォーマンスが制限されています。"
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance is currently limited."
+msgstr "現在、パフォーマンスが制限されています。"
+
+#: src/pages/power/powerpage.cpp
+msgid "Turn off display when inactive on power adapter"
+msgstr "電源アダプタ使用時、操作していないときにディスプレイをオフにする"
+
+#: src/pages/power/powerpage.cpp
+msgid "Turn off display when inactive"
+msgstr "操作していないときにディスプレイをオフにする"
+
+#: src/pages/power/powerpage.cpp
+msgid "Prevent automatic sleeping on power adapter when the display is off"
+msgstr "電源アダプタ使用時、ディスプレイがオフのときに自動でスリープしない"
+
+#: src/pages/power/powerpage.cpp
+msgid "Prevent automatic sleeping when the display is off"
+msgstr "ディスプレイがオフのときに自動でスリープしない"
+
+#: src/pages/privacy/privacypage.cpp src/window/pagelist.cpp
+msgid "Privacy"
+msgstr "プライバシー"
+
+#: src/pages/privacy/privacypage.cpp
+msgid "Computer control"
+msgstr "コンピュータの操作"
+
+#: src/pages/privacy/privacypage.cpp
+msgid "Computer control is managed by the Cutefish compositor, which is not running."
+msgstr "コンピュータの操作は Cutefish コンポジタが管理していますが、コンポジタが実行されていません。"
+
+#: src/pages/privacy/privacypage.cpp
+msgid "No apps are allowed to control this computer without asking."
+msgstr "確認なしでこのコンピュータの操作を許可されているアプリはありません。"
+
+#: src/pages/privacy/privacypage.cpp
+msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the status bar still shows while it is in control."
+msgstr "常に許可したアプリは、確認なしでエージェントに画面を見せ、ポインタとキーボードを操作させることができます。操作中はステータスバーに停止ボタンが表示されます。"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Press the new shortcut…"
+msgstr "新しいショートカットを押してください…"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Press the shortcut…"
+msgstr "ショートカットを押してください…"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "No shortcut. Add one below."
+msgstr "ショートカットがありません。下で追加してください。"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Add shortcut"
+msgstr "ショートカットを追加"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Restore default"
+msgstr "デフォルトに戻す"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Change"
+msgstr "変更"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "General"
+msgstr "一般"
+
+#. TRANSLATORS: the group of keyboard shortcuts that act on windows.
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Windows"
+msgstr "ウインドウ"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Desks"
+msgstr "デスク"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Screenshots and Recording"
+msgstr "スクリーンショットと収録"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Open the launcher"
+msgstr "ランチャを開く"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Lock the screen"
+msgstr "画面をロック"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show the clipboard history"
+msgstr "クリップボードの履歴を表示"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the next window"
+msgstr "次のウインドウに切り替え"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the previous window"
+msgstr "前のウインドウに切り替え"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show all windows"
+msgstr "すべてのウインドウを表示"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show the desktop"
+msgstr "デスクトップを表示"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Maximize or restore the window"
+msgstr "ウインドウを最大化/元のサイズに戻す"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Minimize the window"
+msgstr "ウインドウを最小化"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Quit the application"
+msgstr "アプリケーションを終了"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Hide the application"
+msgstr "アプリケーションを非表示"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Hide other applications"
+msgstr "ほかのアプリケーションを非表示"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Toggle full screen"
+msgstr "フルスクリーンの切り替え"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Snap the window to the left"
+msgstr "ウインドウを左にスナップ"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Snap the window to the right"
+msgstr "ウインドウを右にスナップ"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Close the window"
+msgstr "ウインドウを閉じる"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Move the window to the next display"
+msgstr "ウインドウを次のディスプレイに移動"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the desk on the left"
+msgstr "左のデスクに切り替え"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the desk on the right"
+msgstr "右のデスクに切り替え"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Move the window to the desk on the left"
+msgstr "ウインドウを左のデスクに移動"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Move the window to the desk on the right"
+msgstr "ウインドウを右のデスクに移動"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Add a desk"
+msgstr "デスクを追加"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Remove the desk"
+msgstr "デスクを削除"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 1"
+msgstr "デスク 1 に切り替え"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 2"
+msgstr "デスク 2 に切り替え"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 3"
+msgstr "デスク 3 に切り替え"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 4"
+msgstr "デスク 4 に切り替え"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 5"
+msgstr "デスク 5 に切り替え"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 6"
+msgstr "デスク 6 に切り替え"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 7"
+msgstr "デスク 7 に切り替え"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 8"
+msgstr "デスク 8 に切り替え"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show the window on every desk"
+msgstr "ウインドウをすべてのデスクに表示"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Save a picture of the screen"
+msgstr "画面のピクチャを保存"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Copy a picture of the screen"
+msgstr "画面のピクチャをコピー"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Save a picture of the selected area"
+msgstr "選択部分のピクチャを保存"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Copy a picture of the selected area"
+msgstr "選択部分のピクチャをコピー"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Screenshot and recording options"
+msgstr "スクリーンショットと収録のオプション"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Stop screen recording"
+msgstr "画面収録を停止"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Esc"
+msgstr "Esc"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Enter"
+msgstr "Enter"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Space"
+msgstr "スペース"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Backspace"
+msgstr "Backspace"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Delete"
+msgstr "Delete"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Insert"
+msgstr "Insert"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Home"
+msgstr "Home"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "End"
+msgstr "End"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Page Up"
+msgstr "Page Up"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Page Down"
+msgstr "Page Down"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Print Screen"
+msgstr "Print Screen"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Tab"
+msgstr "Tab"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Menu"
+msgstr "メニュー"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Volume Up"
+msgstr "音量を上げる"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Volume Down"
+msgstr "音量を下げる"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Mute"
+msgstr "消音"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Brightness Up"
+msgstr "明るさを上げる"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Brightness Down"
+msgstr "明るさを下げる"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Play/Pause"
+msgstr "再生/一時停止"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Pause"
+msgstr "一時停止"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Next Track"
+msgstr "次のトラック"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Previous Track"
+msgstr "前のトラック"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Stop"
+msgstr "停止"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Calculator"
+msgstr "計算機"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "File Manager"
+msgstr "ファイルマネージャ"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Search"
+msgstr "検索"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Home Page"
+msgstr "ホームページ"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Mail"
+msgstr "メール"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "The shortcut service is not available."
+msgstr "ショートカットサービスを利用できません。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+#, python-brace-format
+msgid "This shortcut is already used by “{action}”."
+msgstr "このショートカットはすでに「{action}」で使用されています。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+#, python-brace-format
+msgid "This shortcut is used by “{action}”. Press it again to reassign it."
+msgstr "このショートカットは「{action}」で使用されています。割り当て直すにはもう一度押してください。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Include Control, Option or Command, or use a function key."
+msgstr "Control、Option、Command のいずれかを含めるか、ファンクションキーを使用してください。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Include Ctrl, Alt or Meta, or use a function key."
+msgstr "Ctrl、Alt、Meta のいずれかを含めるか、ファンクションキーを使用してください。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shift cannot be the only modifier. Add Control, Option or Command."
+msgstr "Shift だけを修飾キーにすることはできません。Control、Option、Command のいずれかを追加してください。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shift cannot be the only modifier. Add Ctrl, Alt or Meta."
+msgstr "Shift だけを修飾キーにすることはできません。Ctrl、Alt、Meta のいずれかを追加してください。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "This key cannot be used in a shortcut."
+msgstr "このキーはショートカットに使用できません。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "This action already has the maximum of five shortcuts."
+msgstr "この操作にはすでに上限の 5 つのショートカットが設定されています。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shortcuts without both Control and Command may be intercepted before applications see them. Press it again to keep it."
+msgstr "Control と Command の両方を含まないショートカットは、アプリケーションに届く前に横取りされることがあります。このまま使うにはもう一度押してください。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shortcuts without Meta may be intercepted before applications see them. Press it again to keep it."
+msgstr "Meta を含まないショートカットは、アプリケーションに届く前に横取りされることがあります。このまま使うにはもう一度押してください。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Some default shortcuts are in use by other actions and were not restored."
+msgstr "一部のデフォルトショートカットはほかの操作で使用されているため、元に戻されませんでした。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "This shortcut no longer exists."
+msgstr "このショートカットはもう存在しません。"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "The shortcut could not be changed."
+msgstr "ショートカットを変更できませんでした。"
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Keyboard shortcuts are managed by the Cutefish compositor, which is not running."
+msgstr "キーボードショートカットは Cutefish コンポジタが管理していますが、コンポジタが実行されていません。"
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Restore all defaults"
+msgstr "すべてデフォルトに戻す"
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Click a system shortcut to change it. Shortcuts with both Control and Command are the safest choice: applications never get them."
+msgstr "システムショートカットをクリックすると変更できます。Control と Command の両方を含むショートカットがもっとも安全です。アプリケーションには届きません。"
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Click a system shortcut to change it. Shortcuts with Meta are the safest choice: applications never use them."
+msgstr "システムショートカットをクリックすると変更できます。Meta を含むショートカットがもっとも安全です。アプリケーションでは使用されません。"
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Every shortcut goes back to its default. Your changes will be lost."
+msgstr "すべてのショートカットがデフォルトに戻ります。変更内容は失われます。"
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Restore"
+msgstr "復元"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Virtual"
+msgstr "仮想"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Built-in"
+msgstr "内蔵"
+
+#: src/pages/sound/soundpage.cpp src/window/pagelist.cpp
+msgid "Sound"
+msgstr "サウンド"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Connecting to the audio service…"
+msgstr "オーディオサービスに接続中…"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Dismiss"
+msgstr "閉じる"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Output"
+msgstr "出力"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Input"
+msgstr "入力"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Output volume"
+msgstr "出力音量"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Balance"
+msgstr "バランス"
+
+#: src/pages/sound/soundpage.cpp src/widgets/sliderrow.cpp
+msgctxt "balance"
+msgid "Left"
+msgstr "左"
+
+#: src/pages/sound/soundpage.cpp src/widgets/sliderrow.cpp
+msgctxt "balance"
+msgid "Right"
+msgstr "右"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Input volume"
+msgstr "入力音量"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Input level"
+msgstr "入力レベル"
+
+#: src/pages/sound/soundpage.cpp
+#, python-brace-format
+msgid "Could not apply the audio change: {error}"
+msgstr "オーディオの変更を適用できませんでした: {error}"
+
+#: src/pages/sound/soundpage.cpp
+msgid "No input devices"
+msgstr "入力装置がありません"
+
+#: src/pages/sound/soundpage.cpp
+msgid "No output devices"
+msgstr "出力装置がありません"
+
+#: src/pages/touchpad/touchpadpage.cpp src/window/pagelist.cpp
+msgid "Touchpad"
+msgstr "タッチパッド"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Enable"
+msgstr "有効"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Disable when a mouse is connected"
+msgstr "マウス接続時は無効にする"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Disable while typing"
+msgstr "入力中は無効にする"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Tap to click"
+msgstr "タップでクリック"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Tap and drag"
+msgstr "タップしてドラッグ"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Secondary click"
+msgstr "副ボタンのクリック"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Two-finger press"
+msgstr "2 本指で押す"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Bottom-right corner press"
+msgstr "右下隅を押す"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Scroll speed"
+msgstr "スクロールの速さ"
+
+#: src/pages/touchscreen/touchscreenpage.cpp src/window/pagelist.cpp
+msgid "Touchscreen"
+msgstr "タッチスクリーン"
+
+#: src/pages/wallpaper/wallpapergrid.cpp src/pages/wallpaper/wallpaperpage.cpp
+msgid "Add wallpaper"
+msgstr "壁紙を追加"
+
+#. TRANSLATORS: the number of wallpapers after a section's title, such as "(12)".
+#: src/pages/wallpaper/wallpapergrid.cpp
+#, python-brace-format
+msgid "({count})"
+msgstr "（{count}）"
+
+#: src/pages/wallpaper/wallpapergrid.cpp
+msgid "Show less"
+msgstr "表示を減らす"
+
+#: src/pages/wallpaper/wallpapergrid.cpp
+msgid "Show all"
+msgstr "すべて表示"
+
+#: src/pages/wallpaper/wallpaperpage.cpp src/window/pagelist.cpp
+msgid "Wallpaper"
+msgstr "壁紙"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Your wallpapers"
+msgstr "自分の壁紙"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgctxt "wallpaper section"
+msgid "System"
+msgstr "システム"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Colors"
+msgstr "カラー"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Choose file…"
+msgstr "ファイルを選択…"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Choose folder…"
+msgstr "フォルダを選択…"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Add Wallpaper Folder"
+msgstr "壁紙フォルダを追加"
+
+#: src/widgets/searchfield.cpp src/window/sidebar.cpp
+msgid "Search"
+msgstr "検索"
+
+#: src/window/page.cpp
+msgid "This page is not ported yet."
+msgstr "このページはまだ移植されていません。"
+
+#: src/window/pagelist.cpp
+msgid "wireless, WLAN, network, internet, password, DNS, IP address"
+msgstr "Wi-Fi, WLAN, DNS, IP, 無線, ワイヤレス, ネットワーク, インターネット, パスワード, IP アドレス"
+
+#: src/window/pagelist.cpp
+msgid "wired, LAN, network, internet, cable, IP address"
+msgstr "LAN, IP, 有線, イーサネット, ネットワーク, インターネット, ケーブル, IP アドレス"
+
+#: src/window/pagelist.cpp
+msgid "wireless, devices, pairing, headphones"
+msgstr "無線, ワイヤレス, デバイス, ペアリング, ヘッドフォン, イヤホン"
+
+#: src/window/pagelist.cpp
+msgid "VPN, proxy, hotspot, tethering, internet"
+msgstr "VPN, プロキシ, ホットスポット, テザリング, インターネット"
+
+#: src/window/pagelist.cpp
+msgid "theme, dark mode, light mode, accent color, dim wallpaper"
+msgstr "テーマ, ダークモード, ライトモード, アクセントカラー, 壁紙を暗く"
+
+#: src/window/pagelist.cpp
+msgid "background, desktop picture, image"
+msgstr "背景, 壁紙, デスクトップピクチャ, 画像"
+
+#: src/window/pagelist.cpp
+msgid "taskbar, position, size, auto hide, glass effect"
+msgstr "タスクバー, 位置, サイズ, 自動的に隠す, ガラス効果"
+
+#: src/window/pagelist.cpp
+msgid "do not disturb, banners, alerts"
+msgstr "おやすみモード, バナー, 通知, アラート"
+
+#: src/window/pagelist.cpp
+msgid "Devices"
+msgstr "デバイス"
+
+#: src/window/pagelist.cpp
+msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
+msgstr "モニタ, モニター, 画面, 解像度, リフレッシュレート, 拡大縮小, スケーリング, 明るさ, 回転"
+
+#: src/window/pagelist.cpp
+msgid "audio, volume, speakers, headphones, microphone, input, output"
+msgstr "オーディオ, 音量, スピーカ, スピーカー, ヘッドフォン, イヤホン, マイク, 入力, 出力"
+
+#: src/window/pagelist.cpp
+msgid "input method, key repeat, keyboard style"
+msgstr "IME, 入力方式, 日本語入力, キーのリピート, キーボード"
+
+#: src/window/pagelist.cpp
+msgid "pointer speed, acceleration, natural scrolling, left-handed"
+msgstr "ポインタの速度, 加速, ナチュラルスクロール, 左利き"
+
+#: src/window/pagelist.cpp
+msgid "trackpad, tap to click, natural scrolling, secondary click, pointer speed"
+msgstr "トラックパッド, タッチパッド, タップでクリック, ナチュラルスクロール, 副ボタンのクリック, 右クリック, ポインタの速度"
+
+#: src/window/pagelist.cpp
+msgid "touch, touch screen, touch panel"
+msgstr "タッチ, タッチスクリーン, タッチパネル"
+
+#: src/window/pagelist.cpp
+msgid "System"
+msgstr "システム"
+
+#: src/window/pagelist.cpp
+msgid "accounts, password, login, administrator, avatar"
+msgstr "アカウント, パスワード, ログイン, 管理者, アバター, ユーザ, ユーザー"
+
+#: src/window/pagelist.cpp
+msgid "region, locale, system language, country, formats, first day of week, measurement system, temperature"
+msgstr "地域, ロケール, 言語, 国, 表示形式, 週の最初の曜日, 単位系, 温度"
+
+#: src/window/pagelist.cpp
+msgid "clock, time zone, 24-hour time, NTP, sync"
+msgstr "NTP, 時計, 時間帯, タイムゾーン, 24 時間表示, 同期"
+
+#: src/window/pagelist.cpp
+msgid "web browser, email client, terminal"
+msgstr "Web ブラウザ, ブラウザ, メール, ターミナル"
+
+#: src/window/pagelist.cpp
+msgid "computer control, agents, allowed apps, permissions"
+msgstr "コンピュータの操作, エージェント, 許可したアプリ, アクセス許可, 権限"
+
+#: src/window/pagelist.cpp
+msgid "charge, charging limit, battery health, capacity, history, percentage"
+msgstr "充電, 充電制限, バッテリーの状態, 容量, 履歴, パーセント, 残量"
+
+#: src/window/pagelist.cpp
+msgid "energy, performance, power saving, sleep, turn off display"
+msgstr "電源, エネルギー, パフォーマンス, 省電力, スリープ, ディスプレイをオフ"
+
+#: src/window/pagelist.cpp
+msgid "system, version, kernel, processor, memory, storage, hardware"
+msgstr "CPU, システム, バージョン, カーネル, プロセッサ, メモリ, ストレージ, ハードウェア"
+
+#: src/window/pagelist.cpp
+msgid "VPN, WireGuard, OpenVPN, tunnel, network"
+msgstr "VPN, WireGuard, OpenVPN, トンネル, ネットワーク"
+
+#: src/window/pagelist.cpp
+msgid "HTTP, HTTPS, SOCKS, FTP, PAC, network"
+msgstr "HTTP, HTTPS, SOCKS, FTP, PAC, プロキシ, ネットワーク"
+
+#: src/window/pagelist.cpp
+msgid "tethering, share internet, access point, Wi-Fi, wireless"
+msgstr "Wi-Fi, テザリング, インターネット共有, アクセスポイント, 無線, ワイヤレス"
+
+#: src/window/pagelist.cpp
+msgid "general font, fixed font, font size, anti-aliasing, hinting"
+msgstr "標準フォント, 等幅フォント, フォントサイズ, アンチエイリアス, ヒンティング, 文字"
+
+#: src/window/pagelist.cpp
+msgid "icons"
+msgstr "アイコン"
+
+#: src/window/pagelist.cpp
+msgid "cursor theme, cursor size, pointer"
+msgstr "カーソルテーマ, カーソルのサイズ, ポインタ, マウスカーソル"
+
+#: src/window/pagelist.cpp
+msgid "Keyboard Layout"
+msgstr "キーボードレイアウト"
+
+#: src/window/pagelist.cpp
+msgid "input source"
+msgstr "入力ソース, 配列, キー配列"
+
+#: src/window/pagelist.cpp
+msgid "screen corners, show desktop, show all windows"
+msgstr "画面の隅, デスクトップを表示, すべてのウインドウを表示"
+
+#: src/window/pagelist.cpp
+msgid "hotkeys, key bindings"
+msgstr "ホットキー, キー割り当て, ショートカット"
+
+#: src/window/pagelist.cpp
+msgid "license, copyright, source code, open source"
+msgstr "ライセンス, 著作権, ソースコード, オープンソース"
+
+#: src/window/settingswindow.cpp src/window/sidebar.cpp
+#: cutefish-settings.desktop
+msgid "Settings"
+msgstr "設定"
+
+#: src/window/sidebar.cpp
+msgid "No results"
+msgstr "結果なし"
