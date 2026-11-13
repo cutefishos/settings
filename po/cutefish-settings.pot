@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-08 04:43+0800\n"
+"POT-Creation-Date: 2026-11-13 15:22+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -926,6 +926,11 @@ msgstr ""
 msgid "Magnification"
 msgstr ""
 
+#: src/pages/dock/dockpage.cpp src/pages/network/vpn/vpneditor.cpp
+#: src/pages/notifications/notificationspage.cpp
+msgid "Off"
+msgstr ""
+
 #: src/pages/dock/dockpage.cpp
 msgid "Glass effect"
 msgstr ""
@@ -954,13 +959,17 @@ msgstr ""
 msgid "Smart hide"
 msgstr ""
 
+#: src/pages/dock/dockpage.cpp
+msgid "Minimized windows area"
+msgstr ""
+
+#: src/pages/dock/dockpage.cpp src/window/pagelist.cpp
+msgid "Desktop"
+msgstr ""
+
 #: src/pages/dock/dockpage.cpp src/pages/hotcorners/hotcornerspage.cpp
 #: src/window/pagelist.cpp
 msgid "Hot Corners"
-msgstr ""
-
-#: src/pages/dock/dockpage.cpp
-msgid "Minimized windows area"
 msgstr ""
 
 #. TRANSLATORS: a font size in points, such as "9pt".
@@ -1656,11 +1665,6 @@ msgstr ""
 
 #: src/pages/network/vpn/vpneditor.cpp
 msgid "Keepalive"
-msgstr ""
-
-#: src/pages/dock/dockpage.cpp src/pages/network/vpn/vpneditor.cpp
-#: src/pages/notifications/notificationspage.cpp
-msgid "Off"
 msgstr ""
 
 #: src/pages/network/vpn/vpneditor.cpp
@@ -2468,10 +2472,6 @@ msgstr ""
 
 #: src/window/pagelist.cpp
 msgid "VPN, proxy, hotspot, tethering, internet"
-msgstr ""
-
-#: src/pages/dock/dockpage.cpp src/window/pagelist.cpp
-msgid "Desktop"
 msgstr ""
 
 #: src/window/pagelist.cpp
