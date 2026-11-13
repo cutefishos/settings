@@ -21,7 +21,7 @@ public:
     explicit LicensesPage(SettingsWindow& window)
         : Page(window, tr("Open-Source Licenses"))
     {
-        Section* cutefish = content()->addChild<Section>(tr("Cutefish"));
+        Section* cutefish = content()->addChild<Section>("Cutefish");
         Card* cutefishCard = cutefish->addChild<Card>(Card::Style::List);
         cutefishCard->addChild<InfoRow>(tr("Desktop and applications"), "BSD-3-Clause");
         cutefish->addChild<Footnote>(tr("Terminal and the icon theme are under the GNU General Public License 3.0."));
