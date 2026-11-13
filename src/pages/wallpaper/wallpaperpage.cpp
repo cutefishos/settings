@@ -24,6 +24,7 @@ using namespace cutefish;
 using namespace cutefish::ui;
 using cutefish::i18n::format;
 using cutefish::i18n::tr;
+using cutefish::i18n::trc;
 
 namespace settings {
 
@@ -47,7 +48,7 @@ public:
         m_user->onAddRequested = [this](PointF position) { m_addMenu.popup(&settingsWindow().window(), position); };
         m_user->onRemoveRequested = [this](const std::string& path) { m_appearance.removeUserWallpaper(path); };
 
-        m_system = card->addChild<WallpaperGrid>(tr("System"));
+        m_system = card->addChild<WallpaperGrid>(trc("wallpaper section", "System"));
         m_system->setName("wallpaper:system");
         m_system->setLayoutHints({.fillWidth = true});
         m_system->setWallpapers(wallpapers::system());
@@ -95,6 +96,7 @@ private:
         m_chooser = std::make_unique<FileChooser>(&settingsWindow().window());
         m_chooser->setTitle(tr("Add wallpaper"));
         m_chooser->setFilters({FileChooser::Filter::fromNameFilter(
+                // TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
                 format(tr("Image files ({patterns})"),
                        {{"patterns", "*.jpg *.jpeg *.png *.webp *.bmp *.tif *.tiff *.avif"}}))});
         m_chooser->onAccepted = [this](const std::vector<std::string>& paths, const std::string&) {

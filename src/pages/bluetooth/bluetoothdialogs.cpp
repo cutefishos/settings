@@ -18,6 +18,7 @@
 using namespace cutefish;
 using namespace cutefish::ui;
 using cutefish::i18n::tr;
+using cutefish::i18n::trc;
 using cutefish::i18n::trNoop;
 
 namespace settings {
@@ -46,8 +47,9 @@ static std::string deviceType(const std::string& icon)
         {"phone", trNoop("Phone")},
         {"printer", trNoop("Printer")},
         {"scanner", trNoop("Scanner")},
-        {"video-display", trNoop("Display")},
     };
+    if (icon == "video-display")
+        return trc("device type", "Display");
     const auto found = types.find(icon);
     return found == types.end() ? std::string() : tr(found->second);
 }
