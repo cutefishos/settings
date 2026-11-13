@@ -17,7 +17,7 @@ DockSettings::DockSettings()
     : m_dock(dbus::Connection::session(), "org.cutefish.Dock", "/Dock", "org.cutefish.Dock")
 {
     const Settings shell(paths::cutefishConfig("shell"));
-    m_iconSize = int(shell.intValue("Dock/IconSize"));
+    m_iconSize = int(shell.intValue("Dock/IconSize", 54));
     m_direction = int(shell.intValue("Dock/Direction"));
     m_visibility = int(shell.intValue("Dock/Visibility"));
     m_glassTint = std::clamp(shell.doubleValue("Dock/GlassTint", 0.5), 0.0, 1.0);
