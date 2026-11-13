@@ -112,6 +112,7 @@ AdapterDetailsDialog::AdapterDetailsDialog(Window* parent, std::shared_ptr<bluez
     };
 
     m_changed = m_adapter->changed.connect([this] { update(); });
+    m_dialog->onClosed = [this] { m_changed.reset(); };
     update();
 }
 
@@ -176,6 +177,7 @@ DeviceDetailsDialog::DeviceDetailsDialog(Window* parent, std::shared_ptr<bluez::
         m_servicesResolved = resolved;
         update();
     });
+    m_dialog->onClosed = [this] { m_changed.reset(); };
     m_device->readDeviceInformation();
     update();
 }
