@@ -238,8 +238,10 @@ void PictureDialog::chooseFile()
     m_chooser->setModal(true);
     m_chooser->setFilters(
             {FileChooser::Filter::fromNameFilter(
+                     // TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
                      format(tr("Image files ({patterns})"),
                             {{"patterns", "*.jpg *.jpeg *.png *.webp *.bmp *.tif *.tiff *.avif"}})),
+             // TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
              FileChooser::Filter::fromNameFilter(tr("All files (*)"))});
     m_chooser->setCurrentFolder(base::paths::userDirectory(base::paths::UserDirectory::Pictures));
     m_chooser->onAccepted = [this](const std::vector<std::string>& paths, const std::string&) {

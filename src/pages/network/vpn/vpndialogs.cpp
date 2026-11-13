@@ -212,8 +212,10 @@ VpnDetailsDialog::VpnDetailsDialog(SettingsWindow& window, NetworkList& list, nm
         for (const std::string& pattern : m_editor->form().exportPatterns)
             patterns += (patterns.empty() ? "" : " ") + pattern;
         m_exportChooser->setFilters(
+                // TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
                 {FileChooser::Filter::fromNameFilter(format(tr("VPN configurations ({patterns})"),
                                                             {{"patterns", patterns}})),
+                 // TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
                  FileChooser::Filter::fromNameFilter(tr("All files (*)"))});
         m_exportChooser->onAccepted = [this](const std::vector<std::string>& paths, const std::string&) {
             if (paths.empty())

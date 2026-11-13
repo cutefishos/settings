@@ -154,8 +154,10 @@ public:
             m_importChooser.open();
         };
         m_importChooser.setTitle(tr("Import VPN Configuration"));
+        // TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
         m_importChooser.setFilters({FileChooser::Filter::fromNameFilter(format(tr("VPN configurations ({patterns})"),
                                                                                {{"patterns", "*.ovpn *.conf *.pcf"}})),
+                                    // TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
                                     FileChooser::Filter::fromNameFilter(tr("All files (*)"))});
         m_importChooser.onAccepted = [this](const std::vector<std::string>& paths, const std::string&) {
             if (paths.empty())
