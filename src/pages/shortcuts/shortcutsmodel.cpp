@@ -257,9 +257,9 @@ std::string ShortcutsModel::messageFor(const std::string& result, const std::str
     if (result == "success")
         return {};
     if (result == "conflict")
-        return format(tr("This shortcut is already used by \"{action}\"."), {{"action", conflictDescription}});
+        return format(tr("This shortcut is already used by “{action}”."), {{"action", conflictDescription}});
     if (result == "conflict-can-override")
-        return format(tr("This shortcut is used by \"{action}\". Press it again to reassign it."),
+        return format(tr("This shortcut is used by “{action}”. Press it again to reassign it."),
                       {{"action", conflictDescription}});
     if (result == "missing-modifier") {
         return m_commandKeys ? tr("Include Control, Option or Command, or use a function key.")
