@@ -21,6 +21,8 @@ static double glyphEndInset(std::string_view name)
         return 3.0 / 16;
     if (name == "refresh")
         return 1.0 / 6;
+    if (name == "stop")
+        return 1.0 / 14;
     return 0;
 }
 
