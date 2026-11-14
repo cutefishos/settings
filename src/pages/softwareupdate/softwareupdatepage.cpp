@@ -15,6 +15,7 @@
 #include "cutefish/packagekit/updates.h"
 #include "pages/softwareupdate/softwareupdate.h"
 #include "ui/button.h"
+#include "ui/dialog_window.h"
 #include "ui/header_button.h"
 #include "ui/icon.h"
 #include "ui/label.h"
@@ -27,6 +28,7 @@
 #include "widgets/sections.h"
 #include "window/page.h"
 #include "window/pagelist.h"
+#include "window/settingswindow.h"
 
 using namespace cutefish;
 using namespace cutefish::ui;
@@ -74,6 +76,27 @@ static std::string packageIcon(const std::string& package)
 static constexpr double kStopButton = 24;
 static constexpr double kStopGlyph = 16;
 
+// Keeps the stop button's place on the bar's line while the button hides, so
+// the bar keeps its length.
+class StopSlot : public View
+{
+public:
+    StopSlot()
+        : m_button(addChild<HeaderButton>(std::string(), kStopButton))
+    {
+    }
+
+    HeaderButton* button() const { return m_button; }
+
+    SizeF sizeHint() const override { return {kStopButton, kStopButton}; }
+
+protected:
+    void layout() override { m_button->setGeometry(localRect()); }
+
+private:
+    HeaderButton* m_button;
+};
+
 // Where the updates stand, with the one action that takes them further.
 class StatusRow : public ListRow
 {
@@ -95,11 +118,12 @@ public:
         m_progress = m_progressRow->addChild<ProgressBar>();
         m_progress->setName("softwareupdate:progress");
         m_progress->setLayoutHints({.fillWidth = true, .alignment = Alignment::Center});
-        m_stop = m_progressRow->addChild<HeaderButton>(std::string(), kStopButton);
+        StopSlot* slot = m_progressRow->addChild<StopSlot>();
+        slot->setLayoutHints({.alignment = Alignment::Center});
+        m_stop = slot->button();
         m_stop->setGlyph("stop", kStopGlyph);
         m_stop->setName("softwareupdate:stop");
         m_stop->setToolTip(tr("Stop"));
-        m_stop->setLayoutHints({.alignment = Alignment::Center});
         m_detail = texts->addChild<SecondaryLabel>();
         m_detail->setName("softwareupdate:detail");
         m_detail->setWrap(true);
@@ -178,8 +202,6 @@ public:
         m_status = status->addChild<StatusRow>();
         m_status->action()->onClicked = [this] { act(); };
         m_status->stop()->onClicked = [this] { m_update.cancel(); };
-        m_note = content()->addChild<Footnote>();
-        m_note->setName("softwareupdate:note");
 
         m_list = content()->addChild<Section>(tr("Updates"));
         m_list->setName("softwareupdate:list");
@@ -199,10 +221,10 @@ private:
     {
         switch (m_update.state()) {
         case SoftwareUpdate::State::Available:
-            m_update.download();
+            m_update.update();
             break;
-        case SoftwareUpdate::State::Ready:
-            m_update.restartAndUpdate();
+        case SoftwareUpdate::State::RestartSuggested:
+            confirmRestart();
             break;
         default:
             m_update.check();
@@ -210,12 +232,26 @@ private:
         }
     }
 
+    void confirmRestart()
+    {
+        m_confirm = std::make_unique<ConfirmDialog>(
+                &settingsWindow().window(), tr("Restart Now?"),
+                tr("The applications close and the computer starts again, which finishes installing the updates. "
+                   "Save your work first."));
+        m_confirm->setCancelText(tr("Cancel"));
+        // TRANSLATORS: the button that restarts the computer.
+        m_confirm->setConfirmText(tr("Restart"));
+        m_confirm->onAccepted = [this] { m_update.restart(); };
+        m_confirm->show();
+    }
+
     void update()
     {
         const SoftwareUpdate::State state = m_update.state();
-        if (state == SoftwareUpdate::State::Checking || state == SoftwareUpdate::State::Downloading)
+        if (state == SoftwareUpdate::State::Checking || state == SoftwareUpdate::State::Updating)
             m_lastBusyState = state;
         const uint64_t count = m_update.updates().size();
+        const int progress = m_update.progress();
 
         std::string title;
         std::string detail;
@@ -231,24 +267,30 @@ private:
             break;
         case SoftwareUpdate::State::Available:
             title = trn("{n} update available", "{n} updates available", count);
-            detail = tr("Download the updates now; they install the next time the computer restarts.");
-            action = tr("Download");
+            detail = tr("You can keep working while they install.");
+            action = tr("Update Now");
             break;
-        case SoftwareUpdate::State::Downloading:
-            // TRANSLATORS: {percent} is how much of the updates has been downloaded, such as 42.
-            title = m_update.progress() >= 0 ? format(tr("Downloading updates… {percent}%"),
-                                                      {{"percent", std::to_string(m_update.progress())}})
-                                             : std::string(tr("Downloading updates…"));
+        case SoftwareUpdate::State::Updating:
+            if (m_update.phase() == SoftwareUpdate::Phase::Installing) {
+                // TRANSLATORS: {percent} is how far the update has come, such as 80.
+                title = progress >= 0 ? format(tr("Installing updates… {percent}%"),
+                                               {{"percent", std::to_string(progress)}})
+                                      : std::string(tr("Installing updates…"));
+            } else {
+                // TRANSLATORS: {percent} is how far the update has come, such as 42.
+                title = progress >= 0 ? format(tr("Downloading updates… {percent}%"),
+                                               {{"percent", std::to_string(progress)}})
+                                      : std::string(tr("Downloading updates…"));
+            }
             break;
-        case SoftwareUpdate::State::Ready:
-            title = tr("Updates are ready to install");
-            detail = trn("{n} update installs while the computer restarts.",
-                         "{n} updates install while the computer restarts.", count);
-            action = tr("Restart and Update");
+        case SoftwareUpdate::State::RestartSuggested:
+            title = tr("Updates installed");
+            detail = tr("Restart the computer to finish installing them.");
+            action = tr("Restart");
             break;
         case SoftwareUpdate::State::Error:
-            title = m_lastBusyState == SoftwareUpdate::State::Downloading ? tr("The updates could not be downloaded")
-                                                                            : tr("Cannot check for updates");
+            title = m_lastBusyState == SoftwareUpdate::State::Updating ? tr("The updates could not be installed")
+                                                                         : tr("Cannot check for updates");
             detail = m_update.error().empty() ? std::string(tr("Check the network connection and try again."))
                                               : m_update.error();
             action = tr("Check Now");
@@ -258,28 +300,16 @@ private:
         m_status->title()->setText(title);
         m_status->detail()->setText(detail);
         m_status->detail()->setVisible(!detail.empty());
-        m_status->progressRow()->setVisible(state == SoftwareUpdate::State::Downloading);
-        m_status->progress()->setIndeterminate(m_update.progress() < 0);
-        m_status->progress()->setValue(std::max(0, m_update.progress()) / 100.0);
+        m_status->progressRow()->setVisible(state == SoftwareUpdate::State::Updating);
+        m_status->progress()->setIndeterminate(progress < 0);
+        m_status->progress()->setValue(std::max(0, progress) / 100.0);
+        m_status->stop()->setVisible(m_update.canCancel());
         m_status->busy()->setVisible(state == SoftwareUpdate::State::Unknown
                                      || state == SoftwareUpdate::State::Checking);
         m_status->action()->setText(action);
         m_status->action()->setVisible(!action.empty());
 
-        if (!m_update.restartError().empty()) {
-            // TRANSLATORS: {reason} is the system's own message, in English.
-            m_note->setText(format(tr("The computer could not be set up to install the updates: {reason}"),
-                                   {{"reason", m_update.restartError()}}));
-            m_note->setColor(accent::orange);
-        } else {
-            m_note->setText(tr("Save your work first: the computer restarts, installs the updates and then "
-                               "starts again."));
-            m_note->setColor(std::nullopt);
-        }
-        m_note->setVisible(state == SoftwareUpdate::State::Ready);
-
-        const bool listed = state == SoftwareUpdate::State::Available || state == SoftwareUpdate::State::Downloading
-                            || state == SoftwareUpdate::State::Ready;
+        const bool listed = state == SoftwareUpdate::State::Available || state == SoftwareUpdate::State::Updating;
         m_list->setVisible(listed && count > 0);
         if (m_update.updates() != m_shownUpdates) {
             m_shownUpdates = m_update.updates();
@@ -298,10 +328,10 @@ private:
     std::vector<SoftwareUpdate::Update> m_shownUpdates;
 
     StatusRow* m_status;
-    Footnote* m_note;
     Section* m_list;
     Card* m_listCard;
     std::vector<ListRow*> m_rows;
+    std::unique_ptr<ConfirmDialog> m_confirm;
 };
 
 // The page is there while PackageKit is on the system bus or can be

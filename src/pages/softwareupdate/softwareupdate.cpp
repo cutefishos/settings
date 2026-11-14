@@ -3,7 +3,6 @@
 
 #include "pages/softwareupdate/softwareupdate.h"
 
-#include <chrono>
 #include <cstdint>
 #include <tuple>
 
@@ -25,10 +24,10 @@ static SoftwareUpdate::State stateFromName(const std::string& name)
         return SoftwareUpdate::State::UpToDate;
     if (name == "available")
         return SoftwareUpdate::State::Available;
-    if (name == "downloading")
-        return SoftwareUpdate::State::Downloading;
-    if (name == "ready")
-        return SoftwareUpdate::State::Ready;
+    if (name == "updating")
+        return SoftwareUpdate::State::Updating;
+    if (name == "restart")
+        return SoftwareUpdate::State::RestartSuggested;
     if (name == "error")
         return SoftwareUpdate::State::Error;
     return SoftwareUpdate::State::Unknown;
@@ -40,8 +39,6 @@ SoftwareUpdate::SoftwareUpdate()
     dbus::Connection* bus = m_service.connection();
     if (!bus)
         return;
-    // The restart waits for polkit, which may ask the user.
-    m_service.setTimeout(std::chrono::minutes(2));
     m_changedMatch = m_service.onPropertiesChanged(
             [this](const dbus::VariantMap& changed, const std::vector<std::string>&) { apply(changed); });
     m_watch = bus->watchName(kService, [this](const std::string& owner) {
@@ -52,14 +49,12 @@ SoftwareUpdate::SoftwareUpdate()
 
 void SoftwareUpdate::check()
 {
-    m_restartError.clear();
     m_service.send("check");
 }
 
-void SoftwareUpdate::download()
+void SoftwareUpdate::update()
 {
-    m_restartError.clear();
-    m_service.send("download");
+    m_service.send("update");
 }
 
 void SoftwareUpdate::cancel()
@@ -67,15 +62,9 @@ void SoftwareUpdate::cancel()
     m_service.send("cancel");
 }
 
-void SoftwareUpdate::restartAndUpdate()
+void SoftwareUpdate::restart()
 {
-    m_restartError.clear();
-    m_restart = m_service.callAsync("restartAndUpdate", [this](const dbus::Reply& reply) {
-        if (!reply.isError())
-            return;
-        m_restartError = reply.error().message;
-        changed.emit();
-    });
+    m_service.send("restart");
 }
 
 dbus::Connection* SoftwareUpdate::packageKitBus()
@@ -106,8 +95,12 @@ void SoftwareUpdate::apply(const dbus::VariantMap& properties)
              it->second.value<std::vector<std::tuple<std::string, std::string, std::string>>>())
             m_updates.push_back({std::move(name), std::move(version), std::move(summary)});
     }
+    if (const auto it = properties.find("phase"); it != properties.end())
+        m_phase = it->second.value<std::string>() == "installing" ? Phase::Installing : Phase::Downloading;
     if (const auto it = properties.find("progress"); it != properties.end())
         m_progress = it->second.value<int32_t>();
+    if (const auto it = properties.find("canCancel"); it != properties.end())
+        m_canCancel = it->second.value<bool>();
     if (const auto it = properties.find("error"); it != properties.end())
         m_error = it->second.value<std::string>();
     changed.emit();

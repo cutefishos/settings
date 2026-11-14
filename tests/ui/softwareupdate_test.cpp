@@ -3,6 +3,7 @@
 
 #include <gtest/gtest.h>
 
+#include <algorithm>
 #include <chrono>
 #include <cstdlib>
 #include <filesystem>
@@ -20,6 +21,9 @@
 #include "pages/softwareupdate/softwareupdate.h"
 #include "ui/application.h"
 #include "ui/button.h"
+#include "ui/dialog_window.h"
+#include "ui/keys.h"
+#include "ui/test_input.h"
 #include "ui/header_button.h"
 #include "ui/icon.h"
 #include "ui/label.h"
@@ -78,6 +82,19 @@ bool isShown(View* view)
     return true;
 }
 
+template<typename T>
+std::vector<T*> findAll(View* view)
+{
+    std::vector<T*> found;
+    if (auto* match = dynamic_cast<T*>(view))
+        found.push_back(match);
+    for (const auto& child : view->children()) {
+        for (T* match : findAll<T>(child.get()))
+            found.push_back(match);
+    }
+    return found;
+}
+
 using UpdateEntry = std::tuple<std::string, std::string, std::string>;
 
 // cutefish-services' software update object, and PackageKit's name when
@@ -93,29 +110,33 @@ public:
                                                         "org.cutefish.Services.SoftwareUpdate");
         m_object->addProperty("state", [this] { return state; });
         m_object->addProperty("updates", [this] { return updates; });
+        m_object->addProperty("phase", [this] { return phase; });
         m_object->addProperty("progress", [this] { return progress; });
+        m_object->addProperty("canCancel", [this] { return canCancel; });
         m_object->addProperty("error", [this] { return error; });
         m_object->addMethod("check", [this] { calls.push_back("check"); });
-        m_object->addMethod("download", [this] { calls.push_back("download"); });
+        m_object->addMethod("update", [this] { calls.push_back("update"); });
         m_object->addMethod("cancel", [this] { calls.push_back("cancel"); });
-        m_object->addMethod("restartAndUpdate", "", "", [this](base::dbus::MethodCall& call) {
-            calls.push_back("restartAndUpdate");
-            call.replyError("org.cutefish.Services.SoftwareUpdate.Error.Failed", "Not authorized");
-        });
+        m_object->addMethod("restart", [this] { calls.push_back("restart"); });
         EXPECT_TRUE(m_object->publish());
         EXPECT_TRUE(m_bus->requestName("org.cutefish.Services"));
     }
 
     bool ownPackageKit() { return m_bus->requestName("org.freedesktop.PackageKit"); }
 
-    void change() { m_object->emitPropertiesChanged({"state", "updates", "progress", "error"}); }
+    void change()
+    {
+        m_object->emitPropertiesChanged({"state", "updates", "phase", "progress", "canCancel", "error"});
+    }
 
     std::string state = "available";
     std::vector<UpdateEntry> updates = {
         {"openssl", "3.5.4-1~deb13u2", "Secure Sockets Layer toolkit"},
         {"tzdata", "2026f-0+deb13u1", "time zone and daylight-saving time data"},
     };
+    std::string phase = "downloading";
     int32_t progress = -1;
+    bool canCancel = false;
     std::string error;
     std::vector<std::string> calls;
 
@@ -166,6 +187,21 @@ struct SoftwareUpdatePageTest : testing::Test
         return label && isShown(label) ? label->text() : std::string();
     }
     Button* action() { return dynamic_cast<Button*>(view("softwareupdate:action")); }
+    std::string actionText()
+    {
+        const auto labels = findAll<Label>(action());
+        return labels.empty() ? std::string() : labels.front()->text();
+    }
+    // The shown confirmation over the window, if any.
+    Window* confirmation()
+    {
+        for (Window* window : Application::instance()->windows()) {
+            if (window != &this->window() && window->contentView() && !window->isHidden()
+                && !findAll<DialogButton>(window->contentView()).empty())
+                return window;
+        }
+        return nullptr;
+    }
     bool inSidebar()
     {
         window().grab();
@@ -193,25 +229,22 @@ TEST_F(SoftwareUpdatePageTest, WithoutPackageKitThereIsNoPage)
     EXPECT_FALSE(inSidebar());
 }
 
-TEST_F(SoftwareUpdatePageTest, ListsTheUpdatesToDownload)
+TEST_F(SoftwareUpdatePageTest, InstallsAndSuggestsARestart)
 {
     ASSERT_TRUE(service->ownPackageKit());
     ASSERT_TRUE(openPage());
     ASSERT_TRUE(shows("2 updates available"));
     EXPECT_TRUE(isShown(view("softwareupdate:list")));
     EXPECT_FALSE(isShown(view("softwareupdate:progress")));
-    EXPECT_FALSE(isShown(view("softwareupdate:note")));
     ASSERT_TRUE(action());
     EXPECT_TRUE(isShown(action()));
+    EXPECT_EQ(actionText(), "Update Now");
     action()->onClicked();
-    ASSERT_TRUE(waitFor([&] { return service->calls == std::vector<std::string>{"download"}; }));
+    ASSERT_TRUE(waitFor([&] { return service->calls == std::vector<std::string>{"update"}; }));
 
-    service->state = "downloading";
-    service->change();
-    ASSERT_TRUE(shows("Downloading updates…"));
-    EXPECT_TRUE(dynamic_cast<ProgressBar*>(view("softwareupdate:progress")) != nullptr);
-
+    service->state = "updating";
     service->progress = 42;
+    service->canCancel = true;
     service->change();
     ASSERT_TRUE(shows("Downloading updates… 42%"));
     auto* bar = dynamic_cast<ProgressBar*>(view("softwareupdate:progress"));
@@ -222,28 +255,60 @@ TEST_F(SoftwareUpdatePageTest, ListsTheUpdatesToDownload)
     EXPECT_DOUBLE_EQ(bar->value(), 0.42);
     EXPECT_EQ(stop->toolTip(), "Stop");
     // The stop button ends the bar's line, centred on the bar.
-    EXPECT_EQ(stop->parent(), bar->parent());
-    EXPECT_NEAR(bar->geometry().y + bar->geometry().height / 2, stop->geometry().y + stop->geometry().height / 2, 0.5);
-    EXPECT_GT(stop->geometry().x, bar->geometry().x + bar->geometry().width);
+    const RectF barRect = {bar->mapToWindow({0, 0}).x, bar->mapToWindow({0, 0}).y, bar->geometry().width,
+                           bar->geometry().height};
+    const PointF stopOrigin = stop->mapToWindow({0, 0});
+    EXPECT_NEAR(barRect.y + barRect.height / 2, stopOrigin.y + stop->geometry().height / 2, 0.5);
+    EXPECT_GT(stopOrigin.x, barRect.x + barRect.width);
     EXPECT_FALSE(isShown(view("softwareupdate:detail")));
     EXPECT_FALSE(isShown(action()));
     EXPECT_TRUE(isShown(view("softwareupdate:list")));
     stop->onClicked();
     ASSERT_TRUE(waitFor([&] { return service->calls.back() == "cancel"; }));
 
-    service->state = "ready";
+    // Installing can no longer be stopped; the bar keeps its length.
+    service->phase = "installing";
+    service->progress = 80;
+    service->canCancel = false;
     service->change();
-    ASSERT_TRUE(shows("Updates are ready to install"));
-    EXPECT_EQ(text("softwareupdate:detail"), "2 updates install while the computer restarts.");
-    EXPECT_TRUE(isShown(view("softwareupdate:note")));
+    ASSERT_TRUE(shows("Installing updates… 80%"));
+    EXPECT_FALSE(isShown(stop));
+    EXPECT_TRUE(isShown(bar));
+    EXPECT_DOUBLE_EQ(bar->mapToWindow({0, 0}).x, barRect.x);
+    EXPECT_DOUBLE_EQ(bar->geometry().width, barRect.width);
+
+    service->state = "restart";
+    service->updates.clear();
+    service->change();
+    ASSERT_TRUE(shows("Updates installed"));
+    EXPECT_EQ(text("softwareupdate:detail"), "Restart the computer to finish installing them.");
+    EXPECT_FALSE(isShown(view("softwareupdate:list")));
+    EXPECT_EQ(actionText(), "Restart");
+
+    // Nothing restarts before the confirmation, and not when it is turned down.
     action()->onClicked();
-    // A refusal shows below the card.
-    ASSERT_TRUE(waitFor([&] {
-        window().grab();
-        auto* note = dynamic_cast<Footnote*>(view("softwareupdate:note"));
-        return note && note->label()->text().find("Not authorized") != std::string::npos;
-    }));
-    EXPECT_EQ(service->calls.back(), "restartAndUpdate");
+    Window* dialog = confirmation();
+    ASSERT_TRUE(dialog);
+    waitFor([] { return false; }, 100ms);
+    EXPECT_EQ(std::count(service->calls.begin(), service->calls.end(), "restart"), 0);
+    TestInput::setKeyboardFocus(*dialog, true);
+    TestInput::typeKey(*dialog, key::Escape);
+    EXPECT_TRUE(waitFor([&] { return confirmation() == nullptr; }));
+    waitFor([] { return false; }, 100ms);
+    EXPECT_EQ(std::count(service->calls.begin(), service->calls.end(), "restart"), 0);
+
+    action()->onClicked();
+    dialog = confirmation();
+    ASSERT_TRUE(dialog);
+    dialog->grab();
+    const auto buttons = findAll<DialogButton>(dialog->contentView());
+    ASSERT_EQ(buttons.size(), 2u);
+    const RectF restart = buttons[1]->geometry();
+    const PointF origin = buttons[1]->mapToWindow({0, 0});
+    TestInput::click(*dialog, {origin.x + restart.width / 2, origin.y + restart.height / 2});
+    ASSERT_TRUE(waitFor([&] { return std::count(service->calls.begin(), service->calls.end(), "restart") == 1; }));
+    waitFor([] { return false; }, 100ms);
+    EXPECT_EQ(std::count(service->calls.begin(), service->calls.end(), "restart"), 1);
 }
 
 TEST_F(SoftwareUpdatePageTest, ShowsTheApplicationsIcons)
@@ -306,4 +371,13 @@ TEST_F(SoftwareUpdatePageTest, ExplainsEachState)
     ASSERT_TRUE(shows("Cannot check for updates"));
     EXPECT_EQ(text("softwareupdate:detail"), "Cannot download the package lists");
     EXPECT_TRUE(isShown(action()));
+
+    // A failure while updating says so.
+    service->state = "updating";
+    service->change();
+    ASSERT_TRUE(shows("Downloading updates…"));
+    service->state = "error";
+    service->error = "dpkg returned an error code (1)";
+    service->change();
+    ASSERT_TRUE(shows("The updates could not be installed"));
 }

@@ -12,7 +12,7 @@
 namespace settings {
 
 // cutefish-services' org.cutefish.Services.SoftwareUpdate: the pending system
-// updates, which the service checks, downloads and installs at a restart.
+// updates, which the service checks and installs while the session runs.
 // Read asynchronously and kept up to date, so the getters never block.
 class SoftwareUpdate
 {
@@ -22,9 +22,15 @@ public:
         Checking,
         UpToDate,
         Available,
-        Downloading,
-        Ready,
+        Updating,
+        // Installed in this boot; a restart finishes them.
+        RestartSuggested,
         Error,
+    };
+
+    enum class Phase {
+        Downloading,
+        Installing,
     };
 
     struct Update
@@ -40,17 +46,19 @@ public:
 
     State state() const { return m_state; }
     const std::vector<Update>& updates() const { return m_updates; }
-    // While downloading: from 0 to 100, -1 while unknown.
+    // While updating.
+    Phase phase() const { return m_phase; }
+    // While updating: from 0 to 100, -1 while unknown.
     int progress() const { return m_progress; }
+    // While updating: whether cancel() can still stop it.
+    bool canCancel() const { return m_canCancel; }
     // In the Error state: the package manager's text, which may be empty.
     const std::string& error() const { return m_error; }
-    // Why the last restartAndUpdate() did not restart; empty otherwise.
-    const std::string& restartError() const { return m_restartError; }
 
     void check();
-    void download();
+    void update();
     void cancel();
-    void restartAndUpdate();
+    void restart();
 
     // Where the page looks for PackageKit: the system bus, unless a test
     // put its own.
@@ -67,12 +75,12 @@ private:
     cutefish::base::dbus::NameWatch m_watch;
     cutefish::base::dbus::Match m_changedMatch;
     cutefish::base::dbus::PendingCall m_reload;
-    cutefish::base::dbus::PendingCall m_restart;
     State m_state = State::Unknown;
     std::vector<Update> m_updates;
+    Phase m_phase = Phase::Downloading;
     int m_progress = -1;
+    bool m_canCancel = false;
     std::string m_error;
-    std::string m_restartError;
 };
 
 } // namespace settings
