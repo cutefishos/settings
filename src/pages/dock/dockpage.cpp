@@ -1,11 +1,13 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: BSD-3-Clause
 
+#include <algorithm>
 #include <cmath>
 #include <vector>
 
 #include "base/i18n.h"
 #include "pages/dock/docksettings.h"
+#include "ui/slider.h"
 #include "ui/layout.h"
 #include "ui/cell_layout.h"
 #include "ui/segmented_control.h"
@@ -30,18 +32,10 @@ namespace {
 // Rows below the sliders, near their height so the card keeps one rhythm.
 constexpr double kTallRowHeight = 64;
 
-// The magnification slider: off at its left end, then the magnified sizes;
-// below kMagnificationOn a drag is off, from there up it is at least the
-// smallest size.
-constexpr int kMagnificationOff = 56;
-constexpr int kMagnificationOn = 60;
-constexpr int kSmallestMagnified = 64;
-constexpr int kLargestMagnified = 128;
-
-double magnificationValue(int size)
-{
-    return size <= 0 ? kMagnificationOff : size;
-}
+// The Size slider's range, which the Magnification slider shares: its floor,
+// the icon size, lies under the Size handle.
+constexpr int kSmallestIconSize = 32;
+constexpr int kLargestIconSize = 128;
 
 // A segmented control over the right half of the row, as a SliderRow puts its slider.
 class SegmentedRow : public ListRow
@@ -100,26 +94,43 @@ public:
         size->setCaptions(tr("Small"), tr("Large"));
         // The value is the icon size itself; the dock derives its paddings
         // from it (54 is the design baseline).
-        size->setRange(32, 128);
+        size->setRange(kSmallestIconSize, kLargestIconSize);
         size->setStepSize(1);
         size->setValue(m_settings.iconSize());
+        // Off at the left end, else at least the icon size: below it the
+        // handle holds until dragged out past the left end, which is off.
+        m_magnification = sliders->addChild<SliderRow>(tr("Magnification"));
+        m_magnification->setName("dock:magnification");
+        m_magnification->setCaptions(tr("Off"), tr("Large"));
+        m_magnification->setRange(kSmallestIconSize, kLargestIconSize);
+        m_magnification->setStepSize(1);
+        updateMagnification();
+        m_magnification->onMoved = [this](double value) {
+            const int position = int(std::round(value));
+            if (position >= iconSize() || m_settings.magnifiedIconSize() > 0)
+                m_settings.setMagnifiedIconSize(std::max(position, iconSize()));
+            updateMagnification();
+        };
+        m_magnification->slider()->onPushedPastEnd = [this](int side) {
+            if (side < 0) {
+                m_settings.setMagnifiedIconSize(0);
+                updateMagnification();
+            }
+        };
+        // A larger icon size pushes the magnified size up, a smaller one leaves
+        // it; within one drag a push is given back as the size comes down.
+        size->onPressedChanged = [this, size] {
+            m_magnifiedAtPress = size->isPressed() ? m_settings.magnifiedIconSize() : -1;
+        };
         // The dock reports no changes back, so the row learns the new value
         // here; otherwise it returns to the old one once the move settles.
         size->onMoved = [this, size](double value) {
             m_settings.setIconSize(int(std::round(value)));
             size->setValue(m_settings.iconSize());
-        };
-        SliderRow* magnification = sliders->addChild<SliderRow>(tr("Magnification"));
-        magnification->setName("dock:magnification");
-        magnification->setCaptions(tr("Off"), tr("Large"));
-        // The size the icon under the pointer grows to.
-        magnification->setRange(kMagnificationOff, kLargestMagnified);
-        magnification->setStepSize(1);
-        magnification->setValue(magnificationValue(m_settings.magnifiedIconSize()));
-        magnification->onMoved = [this, magnification](double value) {
-            const int position = int(std::round(value));
-            m_settings.setMagnifiedIconSize(position < kMagnificationOn ? 0 : std::max(kSmallestMagnified, position));
-            magnification->setValue(magnificationValue(m_settings.magnifiedIconSize()));
+            const int magnified = m_magnifiedAtPress >= 0 ? m_magnifiedAtPress : m_settings.magnifiedIconSize();
+            if (magnified > 0)
+                m_settings.setMagnifiedIconSize(std::max(magnified, iconSize()));
+            updateMagnification();
         };
         SliderRow* glass = sliders->addChild<SliderRow>(tr("Glass effect"));
         glass->setName("dock:glass");
@@ -155,8 +166,18 @@ private:
             m_directions[i]->setChecked(m_settings.direction() == int(i));
     }
 
+    int iconSize() const { return std::clamp(m_settings.iconSize(), kSmallestIconSize, kLargestIconSize); }
+
+    void updateMagnification()
+    {
+        const int magnified = m_settings.magnifiedIconSize();
+        m_magnification->setValue(magnified > 0 ? std::max(magnified, iconSize()) : kSmallestIconSize);
+    }
+
     DockSettings m_settings;
     std::vector<ImageSelectionItem*> m_directions;
+    SliderRow* m_magnification = nullptr;
+    int m_magnifiedAtPress = -1;
 };
 
 } // namespace
