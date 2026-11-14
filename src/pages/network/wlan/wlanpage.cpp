@@ -199,7 +199,7 @@ private:
             m_requestedWireless.reset();
     }
 
-    // The status bar sends enterprise networks here. The window and
+    // The menu bar sends enterprise networks here. The window and
     // NetworkManager's objects may not be there yet when the request arrives.
     void joinRequestedNetwork()
     {

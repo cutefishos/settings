@@ -28,7 +28,7 @@ namespace {
 const std::array<const char*, 5> kActions = {"", "toggle-overview", "toggle-show-desktop", "toggle-app-list",
                                              "lock-screen"};
 const std::array<const char*, 5> kActionNames = {trNoop("None"), trNoop("Show All Windows"), trNoop("Show Desktop"),
-                                                 trNoop("Launcher"), trNoop("Lock Screen")};
+                                                 trNoop("Apps"), trNoop("Lock Screen")};
 
 class HotCornersPage : public Page
 {

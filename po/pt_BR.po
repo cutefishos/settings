@@ -348,8 +348,8 @@ msgid "Charging"
 msgstr "Carregando"
 
 #: src/pages/battery/batterypage.cpp
-msgid "Show percentage in status bar"
-msgstr "Mostrar porcentagem na barra de status"
+msgid "Show percentage in menu bar"
+msgstr "Mostrar porcentagem na barra de menus"
 
 #. TRANSLATORS: the names of a computer's two batteries.
 #: src/pages/battery/batterypage.cpp
@@ -1062,8 +1062,8 @@ msgid "Show Desktop"
 msgstr "Mostrar a área de trabalho"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
-msgid "Launcher"
-msgstr "Lançador"
+msgid "Apps"
+msgstr "Apps"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
 msgid "Lock Screen"
@@ -1877,8 +1877,8 @@ msgid "No apps are allowed to control this computer without asking."
 msgstr "Nenhum aplicativo tem permissão para controlar este computador sem perguntar."
 
 #: src/pages/privacy/privacypage.cpp
-msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the status bar still shows while it is in control."
-msgstr "Um aplicativo que você sempre permite pode deixar seu agente ver a tela e usar o ponteiro e o teclado sem perguntar antes. O botão Parar na barra de status continua visível enquanto ele estiver no controle."
+msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the menu bar still shows while it is in control."
+msgstr "Um aplicativo que você sempre permite pode deixar seu agente ver a tela e usar o ponteiro e o teclado sem perguntar antes. O botão Parar na barra de menus continua visível enquanto ele estiver no controle."
 
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 msgid "Press the new shortcut…"
@@ -1922,8 +1922,8 @@ msgid "Screenshots and Recording"
 msgstr "Capturas e gravação de tela"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
-msgid "Open the launcher"
-msgstr "Abrir o lançador"
+msgid "Open Apps"
+msgstr "Abrir Apps"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
 msgid "Lock the screen"

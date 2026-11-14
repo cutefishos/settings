@@ -33,7 +33,7 @@ static void printHelp(const char* program)
 int main(int argc, char** argv)
 {
     std::string module;
-    // The status bar's way to an enterprise network: the user name is asked for here.
+    // The menu bar's way to an enterprise network: the user name is asked for here.
     std::string accessPoint;
     settings::Options options;
     for (int i = 1; i < argc; ++i) {

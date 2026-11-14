@@ -348,8 +348,8 @@ msgid "Charging"
 msgstr "充電"
 
 #: src/pages/battery/batterypage.cpp
-msgid "Show percentage in status bar"
-msgstr "在狀態列中顯示百分比"
+msgid "Show percentage in menu bar"
+msgstr "在選單列中顯示百分比"
 
 #. TRANSLATORS: the names of a computer's two batteries.
 #: src/pages/battery/batterypage.cpp
@@ -1057,8 +1057,8 @@ msgid "Show Desktop"
 msgstr "顯示桌面"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
-msgid "Launcher"
-msgstr "啟動器"
+msgid "Apps"
+msgstr "應用程式"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
 msgid "Lock Screen"
@@ -1871,8 +1871,8 @@ msgid "No apps are allowed to control this computer without asking."
 msgstr "沒有 App 獲准在不詢問的情況下控制這部電腦。"
 
 #: src/pages/privacy/privacypage.cpp
-msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the status bar still shows while it is in control."
-msgstr "您永遠允許的 App 可讓其代理程式不經詢問就看見螢幕並使用指標與鍵盤。在其控制期間，狀態列中仍會顯示「停止」按鈕。"
+msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the menu bar still shows while it is in control."
+msgstr "您永遠允許的 App 可讓其代理程式不經詢問就看見螢幕並使用指標與鍵盤。在其控制期間，選單列中仍會顯示「停止」按鈕。"
 
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 msgid "Press the new shortcut…"
@@ -1916,8 +1916,8 @@ msgid "Screenshots and Recording"
 msgstr "截圖與錄影"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
-msgid "Open the launcher"
-msgstr "開啟啟動器"
+msgid "Open Apps"
+msgstr "開啟應用程式"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
 msgid "Lock the screen"

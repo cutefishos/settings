@@ -61,7 +61,7 @@ private:
     std::string m_message;
     bool m_messageIsWarning = false;
     // Meta went down alone and nothing else has been pressed since: releasing
-    // it records the Meta tap, which is how the launcher key is bound.
+    // it records the Meta tap, which is how the launchpad key is bound.
     bool m_metaTapCandidate = false;
 
     cutefish::ui::Label* m_noShortcut;

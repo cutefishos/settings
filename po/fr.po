@@ -348,8 +348,8 @@ msgid "Charging"
 msgstr "En charge"
 
 #: src/pages/battery/batterypage.cpp
-msgid "Show percentage in status bar"
-msgstr "Afficher le pourcentage dans la barre d'état"
+msgid "Show percentage in menu bar"
+msgstr "Afficher le pourcentage dans la barre des menus"
 
 #. TRANSLATORS: the names of a computer's two batteries.
 #: src/pages/battery/batterypage.cpp
@@ -1062,8 +1062,8 @@ msgid "Show Desktop"
 msgstr "Afficher le bureau"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
-msgid "Launcher"
-msgstr "Lanceur"
+msgid "Apps"
+msgstr "Apps"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
 msgid "Lock Screen"
@@ -1877,8 +1877,8 @@ msgid "No apps are allowed to control this computer without asking."
 msgstr "Aucune application n'est autorisée à contrôler cet ordinateur sans demander."
 
 #: src/pages/privacy/privacypage.cpp
-msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the status bar still shows while it is in control."
-msgstr "Une application toujours autorisée peut laisser son agent voir l'écran et utiliser le pointeur et le clavier sans demander au préalable. Le bouton Arrêter reste affiché dans la barre d'état tant qu'elle a le contrôle."
+msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the menu bar still shows while it is in control."
+msgstr "Une application toujours autorisée peut laisser son agent voir l'écran et utiliser le pointeur et le clavier sans demander au préalable. Le bouton Arrêter reste affiché dans la barre des menus tant qu'elle a le contrôle."
 
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 msgid "Press the new shortcut…"
@@ -1922,8 +1922,8 @@ msgid "Screenshots and Recording"
 msgstr "Captures et enregistrement d'écran"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
-msgid "Open the launcher"
-msgstr "Ouvrir le lanceur"
+msgid "Open Apps"
+msgstr "Ouvrir Apps"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
 msgid "Lock the screen"

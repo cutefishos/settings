@@ -330,8 +330,8 @@ msgid "Charging"
 msgstr "Зарядка"
 
 #: src/pages/battery/batterypage.cpp
-msgid "Show percentage in status bar"
-msgstr "Показывать процент в строке состояния"
+msgid "Show percentage in menu bar"
+msgstr "Показывать процент в строке меню"
 
 #. TRANSLATORS: the names of a computer's two batteries.
 #: src/pages/battery/batterypage.cpp
@@ -1035,8 +1035,8 @@ msgid "Show Desktop"
 msgstr "Показать рабочий стол"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
-msgid "Launcher"
-msgstr "Панель запуска"
+msgid "Apps"
+msgstr "Приложения"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
 msgid "Lock Screen"
@@ -1839,8 +1839,8 @@ msgid "No apps are allowed to control this computer without asking."
 msgstr "Ни одному приложению не разрешено управлять этим компьютером без запроса."
 
 #: src/pages/privacy/privacypage.cpp
-msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the status bar still shows while it is in control."
-msgstr "Приложение, которому вы всегда разрешаете управление, может позволить своему агенту видеть экран и пользоваться указателем и клавиатурой без предварительного запроса. Пока оно управляет компьютером, в строке состояния по-прежнему видна кнопка остановки."
+msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the menu bar still shows while it is in control."
+msgstr "Приложение, которому вы всегда разрешаете управление, может позволить своему агенту видеть экран и пользоваться указателем и клавиатурой без предварительного запроса. Пока оно управляет компьютером, в строке меню по-прежнему видна кнопка остановки."
 
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 msgid "Press the new shortcut…"
@@ -1884,8 +1884,8 @@ msgid "Screenshots and Recording"
 msgstr "Снимки и запись экрана"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
-msgid "Open the launcher"
-msgstr "Открыть панель запуска"
+msgid "Open Apps"
+msgstr "Открыть приложения"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
 msgid "Lock the screen"

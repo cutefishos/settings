@@ -159,7 +159,7 @@ TEST_F(ShortcutsModelTest, ListsKnownActionsInLayoutOrderWithReadableKeys)
     ShortcutsModel model;
     ASSERT_TRUE(waitFor([&] { return model.isAvailable() && model.actions().size() == 2; }));
     // Layout order, not the service's order: lock-screen is in General after
-    // the launcher entries, toggle-maximized is in Windows.
+    // the launchpad entries, toggle-maximized is in Windows.
     EXPECT_EQ(model.actions()[0].name, "lock-screen");
     EXPECT_EQ(model.actions()[1].name, "toggle-maximized");
     EXPECT_EQ(model.actions()[1].category, "Windows");

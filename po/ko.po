@@ -348,8 +348,8 @@ msgid "Charging"
 msgstr "충전 중"
 
 #: src/pages/battery/batterypage.cpp
-msgid "Show percentage in status bar"
-msgstr "상태 막대에 퍼센트 보기"
+msgid "Show percentage in menu bar"
+msgstr "메뉴 막대에 퍼센트 보기"
 
 #. TRANSLATORS: the names of a computer's two batteries.
 #: src/pages/battery/batterypage.cpp
@@ -1057,8 +1057,8 @@ msgid "Show Desktop"
 msgstr "데스크톱 보기"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
-msgid "Launcher"
-msgstr "런처"
+msgid "Apps"
+msgstr "앱"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
 msgid "Lock Screen"
@@ -1871,8 +1871,8 @@ msgid "No apps are allowed to control this computer without asking."
 msgstr "묻지 않고 이 컴퓨터를 제어하도록 허용된 앱이 없습니다."
 
 #: src/pages/privacy/privacypage.cpp
-msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the status bar still shows while it is in control."
-msgstr "항상 허용한 앱은 먼저 묻지 않고도 에이전트가 화면을 보고 포인터와 키보드를 사용하게 할 수 있습니다. 제어하는 동안에도 상태 막대에 중단 버튼이 계속 표시됩니다."
+msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the menu bar still shows while it is in control."
+msgstr "항상 허용한 앱은 먼저 묻지 않고도 에이전트가 화면을 보고 포인터와 키보드를 사용하게 할 수 있습니다. 제어하는 동안에도 메뉴 막대에 중단 버튼이 계속 표시됩니다."
 
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 msgid "Press the new shortcut…"
@@ -1916,8 +1916,8 @@ msgid "Screenshots and Recording"
 msgstr "스크린샷 및 화면 기록"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
-msgid "Open the launcher"
-msgstr "런처 열기"
+msgid "Open Apps"
+msgstr "앱 열기"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
 msgid "Lock the screen"

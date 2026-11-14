@@ -95,7 +95,7 @@ public:
     Result restoreAllDefaults();
 
     // While recording, the compositor performs no shortcut, so pressing Meta
-    // does not open the launcher under the dialog.
+    // does not open the launchpad under the dialog.
     void setRecording(bool recording);
 
     std::vector<std::string> modifierParts(uint32_t modifiers) const;

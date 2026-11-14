@@ -94,7 +94,7 @@ public:
 
         m_note = content()->addChild<Footnote>(
                 tr("An app you always allow can let its agent see the screen and use the pointer and keyboard "
-                   "without asking first. The Stop button in the status bar still shows while it is in control."));
+                   "without asking first. The Stop button in the menu bar still shows while it is in control."));
         m_subscription = m_control.changed.connect([this] { update(); });
         // Names and icons come once the registry has read the desktop entries.
         m_registry = ApplicationRegistry::instance().changed.connect([this] { update(); });

@@ -348,8 +348,8 @@ msgid "Charging"
 msgstr "Wird geladen"
 
 #: src/pages/battery/batterypage.cpp
-msgid "Show percentage in status bar"
-msgstr "Prozent in der Statusleiste anzeigen"
+msgid "Show percentage in menu bar"
+msgstr "Prozent in der Menüleiste anzeigen"
 
 #. TRANSLATORS: the names of a computer's two batteries.
 #: src/pages/battery/batterypage.cpp
@@ -1062,8 +1062,8 @@ msgid "Show Desktop"
 msgstr "Schreibtisch anzeigen"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
-msgid "Launcher"
-msgstr "Launcher"
+msgid "Apps"
+msgstr "Apps"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
 msgid "Lock Screen"
@@ -1877,8 +1877,8 @@ msgid "No apps are allowed to control this computer without asking."
 msgstr "Keine App darf diesen Computer ohne Nachfrage steuern."
 
 #: src/pages/privacy/privacypage.cpp
-msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the status bar still shows while it is in control."
-msgstr "Eine immer erlaubte App kann ihren Agenten den Bildschirm sehen und Zeiger und Tastatur ohne Nachfrage verwenden lassen. Die Stopptaste in der Statusleiste erscheint weiterhin, solange er steuert."
+msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the menu bar still shows while it is in control."
+msgstr "Eine immer erlaubte App kann ihren Agenten den Bildschirm sehen und Zeiger und Tastatur ohne Nachfrage verwenden lassen. Die Stopptaste in der Menüleiste erscheint weiterhin, solange er steuert."
 
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 msgid "Press the new shortcut…"
@@ -1922,8 +1922,8 @@ msgid "Screenshots and Recording"
 msgstr "Bildschirmfotos und Aufnahme"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
-msgid "Open the launcher"
-msgstr "Launcher öffnen"
+msgid "Open Apps"
+msgstr "Apps öffnen"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
 msgid "Lock the screen"

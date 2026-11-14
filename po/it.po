@@ -348,8 +348,8 @@ msgid "Charging"
 msgstr "In carica"
 
 #: src/pages/battery/batterypage.cpp
-msgid "Show percentage in status bar"
-msgstr "Mostra la percentuale nella barra di stato"
+msgid "Show percentage in menu bar"
+msgstr "Mostra la percentuale nella barra dei menu"
 
 #. TRANSLATORS: the names of a computer's two batteries.
 #: src/pages/battery/batterypage.cpp
@@ -1062,8 +1062,8 @@ msgid "Show Desktop"
 msgstr "Mostra la Scrivania"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
-msgid "Launcher"
-msgstr "Avvio applicazioni"
+msgid "Apps"
+msgstr "App"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
 msgid "Lock Screen"
@@ -1877,8 +1877,8 @@ msgid "No apps are allowed to control this computer without asking."
 msgstr "Nessuna app può controllare questo computer senza chiedere."
 
 #: src/pages/privacy/privacypage.cpp
-msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the status bar still shows while it is in control."
-msgstr "Un’app che consenti sempre può permettere al suo agente di vedere lo schermo e usare puntatore e tastiera senza chiedere prima. Il pulsante di arresto nella barra di stato resta visibile finché ha il controllo."
+msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the menu bar still shows while it is in control."
+msgstr "Un’app che consenti sempre può permettere al suo agente di vedere lo schermo e usare puntatore e tastiera senza chiedere prima. Il pulsante di arresto nella barra dei menu resta visibile finché ha il controllo."
 
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 msgid "Press the new shortcut…"
@@ -1922,8 +1922,8 @@ msgid "Screenshots and Recording"
 msgstr "Screenshot e registrazione"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
-msgid "Open the launcher"
-msgstr "Apri Avvio applicazioni"
+msgid "Open Apps"
+msgstr "Apri App"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
 msgid "Lock the screen"

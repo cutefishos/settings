@@ -348,8 +348,8 @@ msgid "Charging"
 msgstr "Cargando"
 
 #: src/pages/battery/batterypage.cpp
-msgid "Show percentage in status bar"
-msgstr "Mostrar el porcentaje en la barra de estado"
+msgid "Show percentage in menu bar"
+msgstr "Mostrar el porcentaje en la barra de menús"
 
 #. TRANSLATORS: the names of a computer's two batteries.
 #: src/pages/battery/batterypage.cpp
@@ -1062,8 +1062,8 @@ msgid "Show Desktop"
 msgstr "Mostrar el escritorio"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
-msgid "Launcher"
-msgstr "Lanzador"
+msgid "Apps"
+msgstr "Apps"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
 msgid "Lock Screen"
@@ -1877,8 +1877,8 @@ msgid "No apps are allowed to control this computer without asking."
 msgstr "No hay apps con permiso para controlar esta computadora sin preguntar."
 
 #: src/pages/privacy/privacypage.cpp
-msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the status bar still shows while it is in control."
-msgstr "Una app que siempre tiene permiso puede dejar que su agente vea la pantalla y use el puntero y el teclado sin preguntar antes. El botón Detener de la barra de estado se sigue mostrando mientras tiene el control."
+msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the menu bar still shows while it is in control."
+msgstr "Una app que siempre tiene permiso puede dejar que su agente vea la pantalla y use el puntero y el teclado sin preguntar antes. El botón Detener de la barra de menús se sigue mostrando mientras tiene el control."
 
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 msgid "Press the new shortcut…"
@@ -1922,8 +1922,8 @@ msgid "Screenshots and Recording"
 msgstr "Capturas y grabación de pantalla"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
-msgid "Open the launcher"
-msgstr "Abrir el lanzador"
+msgid "Open Apps"
+msgstr "Abrir Apps"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
 msgid "Lock the screen"

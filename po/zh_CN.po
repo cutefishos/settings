@@ -348,8 +348,8 @@ msgid "Charging"
 msgstr "正在充电"
 
 #: src/pages/battery/batterypage.cpp
-msgid "Show percentage in status bar"
-msgstr "在状态栏中显示电量百分比"
+msgid "Show percentage in menu bar"
+msgstr "在菜单栏中显示电量百分比"
 
 #. TRANSLATORS: the names of a computer's two batteries.
 #: src/pages/battery/batterypage.cpp
@@ -1057,8 +1057,8 @@ msgid "Show Desktop"
 msgstr "显示桌面"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
-msgid "Launcher"
-msgstr "启动器"
+msgid "Apps"
+msgstr "应用程序"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
 msgid "Lock Screen"
@@ -1871,8 +1871,8 @@ msgid "No apps are allowed to control this computer without asking."
 msgstr "没有应用被允许不经询问就控制这台电脑。"
 
 #: src/pages/privacy/privacypage.cpp
-msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the status bar still shows while it is in control."
-msgstr "你设为始终允许的应用可以让其代理查看屏幕并使用指针和键盘，而无需事先询问。在其控制期间，状态栏中仍会显示“停止”按钮。"
+msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the menu bar still shows while it is in control."
+msgstr "你设为始终允许的应用可以让其代理查看屏幕并使用指针和键盘，而无需事先询问。在其控制期间，菜单栏中仍会显示“停止”按钮。"
 
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 msgid "Press the new shortcut…"
@@ -1916,8 +1916,8 @@ msgid "Screenshots and Recording"
 msgstr "截图和录屏"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
-msgid "Open the launcher"
-msgstr "打开启动器"
+msgid "Open Apps"
+msgstr "打开应用程序"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
 msgid "Lock the screen"

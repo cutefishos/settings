@@ -132,7 +132,7 @@ public:
         m_chargeLimitNote->setName("battery:chargelimitnote");
 
         Card* percentage = content()->addChild<Card>(Card::Style::List);
-        SwitchRow* showPercent = percentage->addChild<SwitchRow>(tr("Show percentage in status bar"));
+        SwitchRow* showPercent = percentage->addChild<SwitchRow>(tr("Show percentage in menu bar"));
         showPercent->setChecked(m_battery.showPercent());
         showPercent->onToggled = [this](bool checked) { m_battery.setPercentEnabled(checked); };
 

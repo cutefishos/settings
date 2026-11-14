@@ -349,7 +349,7 @@ msgid "Charging"
 msgstr ""
 
 #: src/pages/battery/batterypage.cpp
-msgid "Show percentage in status bar"
+msgid "Show percentage in menu bar"
 msgstr ""
 
 #. TRANSLATORS: the names of a computer's two batteries.
@@ -1063,7 +1063,7 @@ msgid "Show Desktop"
 msgstr ""
 
 #: src/pages/hotcorners/hotcornerspage.cpp
-msgid "Launcher"
+msgid "Apps"
 msgstr ""
 
 #: src/pages/hotcorners/hotcornerspage.cpp
@@ -1878,7 +1878,7 @@ msgid "No apps are allowed to control this computer without asking."
 msgstr ""
 
 #: src/pages/privacy/privacypage.cpp
-msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the status bar still shows while it is in control."
+msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the menu bar still shows while it is in control."
 msgstr ""
 
 #: src/pages/shortcuts/shortcuteditdialog.cpp
@@ -1923,7 +1923,7 @@ msgid "Screenshots and Recording"
 msgstr ""
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
-msgid "Open the launcher"
+msgid "Open Apps"
 msgstr ""
 
 #: src/pages/shortcuts/shortcutsmodel.cpp

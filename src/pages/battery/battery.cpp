@@ -158,7 +158,7 @@ bool Battery::showPercent() const
         return true;
 
     Settings settings(paths::cutefishConfig("shell"));
-    return settings.boolValue("Statusbar/BatteryPercentage", false);
+    return settings.boolValue("MenuBar/BatteryPercentage", false);
 }
 
 void Battery::setPercentEnabled(bool enabled)
@@ -166,7 +166,7 @@ void Battery::setPercentEnabled(bool enabled)
     if (m_mock)
         return;
 
-    dbus::Proxy(dbus::Connection::session(), "org.cutefish.Statusbar", "/Statusbar", "org.cutefish.Statusbar")
+    dbus::Proxy(dbus::Connection::session(), "org.cutefish.MenuBar", "/MenuBar", "org.cutefish.MenuBar")
             .send("setBatteryPercentage", enabled);
 }
 

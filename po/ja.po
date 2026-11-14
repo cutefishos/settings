@@ -348,8 +348,8 @@ msgid "Charging"
 msgstr "充電中"
 
 #: src/pages/battery/batterypage.cpp
-msgid "Show percentage in status bar"
-msgstr "ステータスバーに残量（%）を表示"
+msgid "Show percentage in menu bar"
+msgstr "メニューバーに残量（%）を表示"
 
 #. TRANSLATORS: the names of a computer's two batteries.
 #: src/pages/battery/batterypage.cpp
@@ -1057,8 +1057,8 @@ msgid "Show Desktop"
 msgstr "デスクトップを表示"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
-msgid "Launcher"
-msgstr "ランチャ"
+msgid "Apps"
+msgstr "アプリ"
 
 #: src/pages/hotcorners/hotcornerspage.cpp
 msgid "Lock Screen"
@@ -1871,8 +1871,8 @@ msgid "No apps are allowed to control this computer without asking."
 msgstr "確認なしでこのコンピュータの操作を許可されているアプリはありません。"
 
 #: src/pages/privacy/privacypage.cpp
-msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the status bar still shows while it is in control."
-msgstr "常に許可したアプリは、確認なしでエージェントに画面を見せ、ポインタとキーボードを操作させることができます。操作中はステータスバーに停止ボタンが表示されます。"
+msgid "An app you always allow can let its agent see the screen and use the pointer and keyboard without asking first. The Stop button in the menu bar still shows while it is in control."
+msgstr "常に許可したアプリは、確認なしでエージェントに画面を見せ、ポインタとキーボードを操作させることができます。操作中はメニューバーに停止ボタンが表示されます。"
 
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 msgid "Press the new shortcut…"
@@ -1916,8 +1916,8 @@ msgid "Screenshots and Recording"
 msgstr "スクリーンショットと収録"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
-msgid "Open the launcher"
-msgstr "ランチャを開く"
+msgid "Open Apps"
+msgstr "アプリを開く"
 
 #: src/pages/shortcuts/shortcutsmodel.cpp
 msgid "Lock the screen"

@@ -48,7 +48,7 @@ public:
     // "Today at 2:21 pm", or the date and time; empty when never charged.
     std::string lastChargedTime() const;
 
-    // Whether the status bar shows the percentage.
+    // Whether the menu bar shows the percentage.
     bool showPercent() const;
     void setPercentEnabled(bool enabled);
 
