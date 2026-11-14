@@ -82,6 +82,9 @@ void SoftwareUpdate::reload()
     m_reload = m_service.getAllAsync([this](const dbus::Reply& reply) {
         if (const auto properties = reply.value<dbus::VariantMap>())
             apply(*properties);
+        // A service that has not found PackageKit looks for it again when asked to check.
+        if (m_state == State::Unknown)
+            check();
     });
 }
 
