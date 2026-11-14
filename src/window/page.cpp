@@ -8,6 +8,7 @@
 #include "base/i18n.h"
 #include "ui/painter.h"
 #include "ui/cell_layout.h"
+#include "ui/scroll_bar.h"
 #include "ui/theme.h"
 #include "widgets/metrics.h"
 #include "widgets/sections.h"
@@ -62,7 +63,8 @@ Page::Page(SettingsWindow& window, std::string title)
 {
     m_content = setContent<PageContent>()->column;
     // The bar runs from under the floating header.
-    setVerticalBarPadding(SettingsWindow::headerHeight, Theme::current().smallRadius);
+    setVerticalBarPadding(SettingsWindow::headerHeight, ScrollBar::inset);
+    setBottomCornerRadius(Theme::current().windowRadius);
 }
 
 Page::~Page() = default;

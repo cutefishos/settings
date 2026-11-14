@@ -126,6 +126,7 @@ ChooseRegionDialog::ChooseRegionDialog(SettingsWindow& parent, Region& region)
     stack->setLayoutHints({.fillWidth = true, .fillHeight = true});
     stack->setClipsChildren(true);
     m_scroll = stack->addChild<ScrollView>();
+    m_scroll->setCornerRadius(Theme::current().bigRadius);
     m_scroll->setElastic(false);
     RegionColumn* column = m_scroll->setContent<RegionColumn>(m_scroll);
     column->onRevealed = [this] { m_revealSelection = false; };

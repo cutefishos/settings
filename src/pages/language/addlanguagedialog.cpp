@@ -105,6 +105,7 @@ AddLanguageDialog::AddLanguageDialog(SettingsWindow& parent, Language& language)
     stack->setLayoutHints({.fillWidth = true, .fillHeight = true});
     stack->setClipsChildren(true);
     m_scroll = stack->addChild<ScrollView>();
+    m_scroll->setCornerRadius(Theme::current().bigRadius);
     m_scroll->setElastic(false);
     m_rows = m_scroll->setContent<ColumnLayout>();
     m_rows->setSpacing(0);

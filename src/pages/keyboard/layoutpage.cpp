@@ -93,6 +93,7 @@ public:
     LayoutList()
     {
         m_list = addChild<LayoutListView>();
+        m_list->setCornerRadius(Theme::current().bigRadius);
         m_list->setElastic(false);
         m_list->setRowHeight(metrics::rowHeight);
         m_empty = addChild<Label>(tr("No layouts found"));
