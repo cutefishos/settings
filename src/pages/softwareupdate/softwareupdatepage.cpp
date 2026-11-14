@@ -92,9 +92,6 @@ public:
         m_progressRow = texts->addChild<RowLayout>();
         m_progressRow->setSpacing(metrics::controlSpacing);
         m_progressRow->setLayoutHints({.fillWidth = true});
-        // The stop glyph, not its button, ends at the content edge.
-        m_progressRow->setPadding({.right = metrics::trailingGlyphMargin("stop", kStopGlyph,
-                                                                         (kStopButton - kStopGlyph) / 2)});
         m_progress = m_progressRow->addChild<ProgressBar>();
         m_progress->setName("softwareupdate:progress");
         m_progress->setLayoutHints({.fillWidth = true, .alignment = Alignment::Center});
@@ -125,6 +122,14 @@ protected:
     void layout() override
     {
         m_stop->setGlyphColor(Theme::current().disabledText);
+        // The stop glyph, not its button, ends at the content edge, and the
+        // button reaches past a line as tall as the title's, so the title
+        // stays where it is over a second line of text.
+        const double overhang = std::max(0.0, (kStopButton - m_title->sizeHint().height) / 2);
+        m_progressRow->setPadding({.top = -overhang,
+                                   .right = metrics::trailingGlyphMargin("stop", kStopGlyph,
+                                                                         (kStopButton - kStopGlyph) / 2),
+                                   .bottom = -overhang});
         ListRow::layout();
     }
 
