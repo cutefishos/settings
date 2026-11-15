@@ -9,6 +9,8 @@
 
 #include "base/event_loop.h"
 #include "base/i18n.h"
+#include "base/paths.h"
+#include "base/settings.h"
 #include "base/timer.h"
 #include "ui/application.h"
 #include "ui/color_provider.h"
@@ -19,6 +21,7 @@
 #include "ui/label.h"
 #include "ui/painter.h"
 #include "ui/cell_layout.h"
+#include "ui/sidebar_divider.h"
 #include "ui/theme.h"
 #include "ui/window.h"
 #include "ui/window_header.h"
@@ -41,11 +44,13 @@ static constexpr size_t kMaxHistoryLength = 50;
 static constexpr uint32_t kBackKey = 0x1008ff26;
 static constexpr uint32_t kForwardKey = 0x1008ff27;
 
+static constexpr const char* kSidebarWidthKey = "Sidebar/width";
+
 // The sidebar's width on whole device pixels, so its edge and the page's
 // clip share one.
-static double sidebarWidth(double scale)
+static double snappedSidebarWidth(double width, double scale)
 {
-    return std::round(metrics::sidebarWidth * scale) / scale;
+    return std::round(width * scale) / scale;
 }
 
 // The header's own part before the window buttons: a RowLayout of back,
@@ -109,7 +114,7 @@ protected:
         const bool active = !window || window->isActive();
         title->setColor(active ? withAlpha(ColorId::Text, 0.85) : ColorRecipe(theme.disabledText));
         // The back chevron's tip lines up with the cards' left edge.
-        const double left = snap(sidebarWidth(scale) + metrics::pageMargin - (kButtonSize - kGlyphSize) / 2
+        const double left = snap(m_sidebar->geometry().width + metrics::pageMargin - (kButtonSize - kGlyphSize) / 2
                                  - kBackInkInset);
         m_row->setGeometry({left, 0, std::max(0.0, geometry().width - left - theme.smallSpacing),
                             geometry().height});
@@ -153,6 +158,22 @@ public:
         header = addChild<SettingsHeader>(window);
         bar = header->setContent<HeaderBar>(sidebar);
         header->setContentUnderButtons(true);
+        divider = addChild<SidebarDivider>(metrics::sidebarMinimumWidth, metrics::sidebarWidth,
+                                           metrics::sidebarWidth);
+        divider->setName("sidebarDivider");
+        const cutefish::base::Settings settings(cutefish::base::paths::cutefishConfig("settings"));
+        sidebarWidth = std::clamp(settings.doubleValue(kSidebarWidthKey, metrics::sidebarWidth),
+                                  metrics::sidebarMinimumWidth, metrics::sidebarWidth);
+        divider->onResized = [this](double width) {
+            sidebarWidth = width;
+            requestLayout();
+        };
+        divider->onFinished = [this](double width) {
+            sidebarWidth = width;
+            requestLayout();
+            cutefish::base::Settings settings(cutefish::base::paths::cutefishConfig("settings"));
+            settings.setValue(kSidebarWidthKey, width);
+        };
     }
 
     void setPage(std::unique_ptr<Page> page)
@@ -173,6 +194,7 @@ public:
         backdrop = addChild<HeaderBackdrop>(view);
         backdrop->setBaseColor(backdropBase);
         raiseChild(header);
+        raiseChild(divider);
         requestLayout();
     }
 
@@ -184,6 +206,8 @@ public:
     Color backdropBase;
     SettingsHeader* header;
     HeaderBar* bar;
+    SidebarDivider* divider;
+    double sidebarWidth;
 
 protected:
     void layout() override
@@ -192,8 +216,11 @@ protected:
         const double scale = window ? window->scale() : 1;
         const double width = geometry().width;
         const double height = geometry().height;
-        const double left = sidebarWidth(scale);
+        const double left = snappedSidebarWidth(sidebarWidth, scale);
         sidebar->setGeometry({0, 0, left, height});
+        divider->setSidebarWidth(left);
+        divider->setGeometry({left - SidebarDivider::kWidth / 2, 0, SidebarDivider::kWidth, height});
+        bar->requestLayout();
         pages->setGeometry({left, 0, std::max(0.0, width - left), height});
         for (const auto& page : pages->children())
             page->setGeometry({0, 0, pages->geometry().width, height});

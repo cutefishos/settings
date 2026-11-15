@@ -60,7 +60,9 @@ inline constexpr double formColumnSpacing = xl;
 inline constexpr double formRowSpacing = l;
 
 // Sidebar.
+// The default width, which is also the widest a drag makes the sidebar.
 inline constexpr double sidebarWidth = 230;
+inline constexpr double sidebarMinimumWidth = 180;
 inline constexpr double sidebarMargin = m;
 inline constexpr double sidebarItemHeight = 36;
 // The space above and below the 24 px icon tile, so the tile sits in an even inset.
