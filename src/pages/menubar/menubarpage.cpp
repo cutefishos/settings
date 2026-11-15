@@ -1,7 +1,9 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: BSD-3-Clause
 
+#include <memory>
 #include <string>
+#include <vector>
 
 #include "base/i18n.h"
 #include "pages/menubar/menubarsettings.h"
@@ -38,7 +40,7 @@ public:
             if (onToggled)
                 onToggled(checked);
         };
-        leading->addChild<RowIcon>(std::move(glyph), tint);
+        m_icon = leading->addChild<RowIcon>(std::move(glyph), tint);
         onClicked = [this] {
             m_checkBox->setChecked(!m_checkBox->isChecked());
             if (onToggled)
@@ -51,8 +53,16 @@ public:
 
     std::function<void(bool checked)> onToggled;
 
+protected:
+    void enabledChanged() override
+    {
+        m_icon->setOpacity(isEnabled() ? 1 : 0.4);
+        ListRow::enabledChanged();
+    }
+
 private:
     CheckBox* m_checkBox;
+    RowIcon* m_icon;
 };
 
 class MenuBarPage : public Page
@@ -63,22 +73,30 @@ public:
     {
         Section* controls = content()->addChild<Section>(tr("Menu Bar Controls"));
         Card* list = controls->addChild<Card>(Card::Style::List);
-        addControl(list, MenuBarSettings::kWiFi, tr("Wi-Fi"), "network-wireless-connected-100", Color::rgb(0x0067FF));
-        addControl(list, MenuBarSettings::kBluetooth, tr("Bluetooth"), "bluetooth.svg", Color::rgb(0x0067FF));
-        addControl(list, MenuBarSettings::kBattery, tr("Battery"), "battery.svg", Color::rgb(0x2EC347));
-        addControl(list, MenuBarSettings::kSound, tr("Sound"), "sound.svg", Color::rgb(0xF16884));
+        addControl(window, list, MenuBarSettings::kWiFi, "wlan");
+        addControl(window, list, MenuBarSettings::kBluetooth, "bluetooth");
+        addControl(window, list, MenuBarSettings::kBattery, "battery");
+        addControl(window, list, MenuBarSettings::kSound, "sound");
     }
 
 private:
-    void addControl(Card* list, const char* control, std::string text, std::string glyph, Color tint)
+    void addControl(SettingsWindow& window, Card* list, const char* control, const std::string& pageId)
     {
-        ControlRow* row = list->addChild<ControlRow>(std::move(text), std::move(glyph), tint);
+        const PageInfo* page = findPage(pageId);
+        if (!page)
+            return;
+        ControlRow* row = list->addChild<ControlRow>(tr(page->title.c_str()), page->icon, page->iconColor);
         row->setName(std::string("menubar:") + control);
         row->setChecked(m_settings.isControlShown(control));
         row->onToggled = [this, control](bool checked) { m_settings.setControlShown(control, checked); };
+        if (!page->watchAvailability)
+            return;
+        row->setEnabled(page->initiallyAvailable);
+        m_watches.push_back(page->watchAvailability(window, [row](bool available) { row->setEnabled(available); }));
     }
 
     MenuBarSettings m_settings;
+    std::vector<std::unique_ptr<AvailabilityWatch>> m_watches;
 };
 
 } // namespace
