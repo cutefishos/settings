@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-13 16:33+0800\n"
+"POT-Creation-Date: 2026-11-15 10:33+0800\n"
 "PO-Revision-Date: 2026-11-13 15:22+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -167,6 +167,7 @@ msgstr "Supprimer l'utilisateur « {name} » ? Son dossier personnel et son c
 #: src/pages/network/wlan/newnetworkdialog.cpp
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 #: src/pages/shortcuts/shortcutspage.cpp
+#: src/pages/softwareupdate/softwareupdatepage.cpp
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -2295,6 +2296,98 @@ msgstr "Tous les raccourcis reprennent leur valeur par défaut. Vos modification
 msgid "Restore"
 msgstr "Rétablir"
 
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Stop"
+msgstr "Arrêter"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp src/window/pagelist.cpp
+msgid "Software Update"
+msgstr "Mise à jour logicielle"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Updates"
+msgstr "Mises à jour"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Restart Now?"
+msgstr "Redémarrer maintenant ?"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "The applications close and the computer starts again, which finishes installing the updates. Save your work first."
+msgstr "Les applications se ferment et l'ordinateur redémarre, ce qui termine l'installation des mises à jour. Enregistrez d'abord votre travail."
+
+#. TRANSLATORS: the button that restarts the computer.
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Restart"
+msgstr "Redémarrer"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Checking for updates…"
+msgstr "Recherche de mises à jour…"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "The system is up to date"
+msgstr "Le système est à jour"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Check Now"
+msgstr "Rechercher maintenant"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+#, python-brace-format
+msgid "{n} update available"
+msgid_plural "{n} updates available"
+msgstr[0] "{n} mise à jour disponible"
+msgstr[1] "{n} mises à jour disponibles"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "You can keep working while they install."
+msgstr "Vous pouvez continuer à travailler pendant leur installation."
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Update Now"
+msgstr "Mettre à jour maintenant"
+
+#. TRANSLATORS: {percent} is how far the update has come, such as 80.
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+#, python-brace-format
+msgid "Installing updates… {percent}%"
+msgstr "Installation des mises à jour… {percent} %"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Installing updates…"
+msgstr "Installation des mises à jour…"
+
+#. TRANSLATORS: {percent} is how far the update has come, such as 42.
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+#, python-brace-format
+msgid "Downloading updates… {percent}%"
+msgstr "Téléchargement des mises à jour… {percent} %"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Downloading updates…"
+msgstr "Téléchargement des mises à jour…"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Updates installed"
+msgstr "Mises à jour installées"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Restart the computer to finish installing them."
+msgstr "Redémarrez l'ordinateur pour terminer leur installation."
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "The updates could not be installed"
+msgstr "Impossible d'installer les mises à jour"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Cannot check for updates"
+msgstr "Impossible de rechercher des mises à jour"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Check the network connection and try again."
+msgstr "Vérifiez la connexion réseau et réessayez."
+
 #: src/pages/sound/soundpage.cpp
 msgid "Virtual"
 msgstr "Virtuel"
@@ -2552,6 +2645,10 @@ msgstr "charge, limite de charge, santé de la batterie, capacité, historique, 
 #: src/window/pagelist.cpp
 msgid "energy, performance, power saving, sleep, turn off display"
 msgstr "énergie, performances, économie d'énergie, veille, éteindre l'écran"
+
+#: src/window/pagelist.cpp
+msgid "updates, upgrade, packages, security, install, restart"
+msgstr "mises à jour, mise à niveau, paquets, sécurité, installer, redémarrer"
 
 #: src/window/pagelist.cpp
 msgid "system, version, kernel, processor, memory, storage, hardware"

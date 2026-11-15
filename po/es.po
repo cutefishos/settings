@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-13 16:33+0800\n"
+"POT-Creation-Date: 2026-11-15 10:33+0800\n"
 "PO-Revision-Date: 2026-11-13 15:22+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -167,6 +167,7 @@ msgstr "¿Eliminar al usuario “{name}”? Su carpeta personal y su contenido s
 #: src/pages/network/wlan/newnetworkdialog.cpp
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 #: src/pages/shortcuts/shortcutspage.cpp
+#: src/pages/softwareupdate/softwareupdatepage.cpp
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -2295,6 +2296,98 @@ msgstr "Todos los atajos vuelven a su valor predeterminado. Se perderán tus cam
 msgid "Restore"
 msgstr "Restaurar"
 
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Stop"
+msgstr "Detener"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp src/window/pagelist.cpp
+msgid "Software Update"
+msgstr "Actualización de software"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Updates"
+msgstr "Actualizaciones"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Restart Now?"
+msgstr "¿Reiniciar ahora?"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "The applications close and the computer starts again, which finishes installing the updates. Save your work first."
+msgstr "Las aplicaciones se cierran y la computadora se reinicia, con lo que termina la instalación de las actualizaciones. Guarda tu trabajo primero."
+
+#. TRANSLATORS: the button that restarts the computer.
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Restart"
+msgstr "Reiniciar"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Checking for updates…"
+msgstr "Buscando actualizaciones…"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "The system is up to date"
+msgstr "El sistema está actualizado"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Check Now"
+msgstr "Buscar ahora"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+#, python-brace-format
+msgid "{n} update available"
+msgid_plural "{n} updates available"
+msgstr[0] "{n} actualización disponible"
+msgstr[1] "{n} actualizaciones disponibles"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "You can keep working while they install."
+msgstr "Puedes seguir trabajando mientras se instalan."
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Update Now"
+msgstr "Actualizar ahora"
+
+#. TRANSLATORS: {percent} is how far the update has come, such as 80.
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+#, python-brace-format
+msgid "Installing updates… {percent}%"
+msgstr "Instalando actualizaciones… {percent}%"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Installing updates…"
+msgstr "Instalando actualizaciones…"
+
+#. TRANSLATORS: {percent} is how far the update has come, such as 42.
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+#, python-brace-format
+msgid "Downloading updates… {percent}%"
+msgstr "Descargando actualizaciones… {percent}%"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Downloading updates…"
+msgstr "Descargando actualizaciones…"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Updates installed"
+msgstr "Actualizaciones instaladas"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Restart the computer to finish installing them."
+msgstr "Reinicia la computadora para terminar de instalarlas."
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "The updates could not be installed"
+msgstr "No se pudieron instalar las actualizaciones"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Cannot check for updates"
+msgstr "No se pueden buscar actualizaciones"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Check the network connection and try again."
+msgstr "Comprueba la conexión de red e inténtalo de nuevo."
+
 #: src/pages/sound/soundpage.cpp
 msgid "Virtual"
 msgstr "Virtual"
@@ -2552,6 +2645,10 @@ msgstr "carga, límite de carga, salud de la batería, capacidad, historial, por
 #: src/window/pagelist.cpp
 msgid "energy, performance, power saving, sleep, turn off display"
 msgstr "energía, rendimiento, ahorro de energía, suspensión, apagar pantalla"
+
+#: src/window/pagelist.cpp
+msgid "updates, upgrade, packages, security, install, restart"
+msgstr "actualizaciones, actualizar, paquetes, seguridad, instalar, reiniciar"
 
 #: src/window/pagelist.cpp
 msgid "system, version, kernel, processor, memory, storage, hardware"

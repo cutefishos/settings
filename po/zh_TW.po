@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-13 16:33+0800\n"
+"POT-Creation-Date: 2026-11-15 10:33+0800\n"
 "PO-Revision-Date: 2026-11-13 16:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -167,6 +167,7 @@ msgstr "要刪除使用者「{name}」嗎？其家目錄及其中的內容將被
 #: src/pages/network/wlan/newnetworkdialog.cpp
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 #: src/pages/shortcuts/shortcutspage.cpp
+#: src/pages/softwareupdate/softwareupdatepage.cpp
 msgid "Cancel"
 msgstr "取消"
 
@@ -2289,6 +2290,97 @@ msgstr "所有快速鍵都會恢復為預設值。您所做的變更將會遺失
 msgid "Restore"
 msgstr "恢復"
 
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Stop"
+msgstr "停止"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp src/window/pagelist.cpp
+msgid "Software Update"
+msgstr "軟體更新"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Updates"
+msgstr "更新項目"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Restart Now?"
+msgstr "要立即重新啟動嗎？"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "The applications close and the computer starts again, which finishes installing the updates. Save your work first."
+msgstr "應用程式將會關閉，電腦會重新啟動以完成更新的安裝。請先儲存您的工作。"
+
+#. TRANSLATORS: the button that restarts the computer.
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Restart"
+msgstr "重新啟動"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Checking for updates…"
+msgstr "正在檢查更新…"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "The system is up to date"
+msgstr "系統已是最新版本"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Check Now"
+msgstr "立即檢查"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+#, python-brace-format
+msgid "{n} update available"
+msgid_plural "{n} updates available"
+msgstr[0] "有 {n} 個可用的更新"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "You can keep working while they install."
+msgstr "安裝期間您可以繼續工作。"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Update Now"
+msgstr "立即更新"
+
+#. TRANSLATORS: {percent} is how far the update has come, such as 80.
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+#, python-brace-format
+msgid "Installing updates… {percent}%"
+msgstr "正在安裝更新… {percent}%"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Installing updates…"
+msgstr "正在安裝更新…"
+
+#. TRANSLATORS: {percent} is how far the update has come, such as 42.
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+#, python-brace-format
+msgid "Downloading updates… {percent}%"
+msgstr "正在下載更新… {percent}%"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Downloading updates…"
+msgstr "正在下載更新…"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Updates installed"
+msgstr "已安裝更新"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Restart the computer to finish installing them."
+msgstr "請重新啟動電腦以完成安裝。"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "The updates could not be installed"
+msgstr "無法安裝更新"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Cannot check for updates"
+msgstr "無法檢查更新"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Check the network connection and try again."
+msgstr "請檢查網路連線，然後再試一次。"
+
 #: src/pages/sound/soundpage.cpp
 msgid "Virtual"
 msgstr "虛擬"
@@ -2546,6 +2638,10 @@ msgstr "充電, 充電上限, 電池健康度, 容量, 歷史記錄, 百分比"
 #: src/window/pagelist.cpp
 msgid "energy, performance, power saving, sleep, turn off display"
 msgstr "能源, 效能, 省電, 睡眠, 關閉顯示器, 電源"
+
+#: src/window/pagelist.cpp
+msgid "updates, upgrade, packages, security, install, restart"
+msgstr "更新, 升級, 套件, 安全性, 安裝, 重新啟動, update"
 
 #: src/window/pagelist.cpp
 msgid "system, version, kernel, processor, memory, storage, hardware"

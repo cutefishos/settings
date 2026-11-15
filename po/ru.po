@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-13 16:33+0800\n"
+"POT-Creation-Date: 2026-11-15 10:33+0800\n"
 "PO-Revision-Date: 2026-11-13 12:00+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -107,7 +107,8 @@ msgstr "ОЗУ"
 msgid "Internal storage"
 msgstr "Встроенный накопитель"
 
-#: src/pages/about/aboutpage.cpp src/pages/about/licensespage.cpp src/window/pagelist.cpp
+#: src/pages/about/aboutpage.cpp src/pages/about/licensespage.cpp
+#: src/window/pagelist.cpp
 msgid "Open-Source Licenses"
 msgstr "Лицензии открытого ПО"
 
@@ -156,7 +157,17 @@ msgstr "Удалить этого пользователя"
 msgid "Delete user “{name}”? Their home directory and its contents will be permanently deleted. This cannot be undone."
 msgstr "Удалить пользователя «{name}»? Его домашняя папка и все ее содержимое будут удалены безвозвратно. Это действие нельзя отменить."
 
-#: src/pages/accounts/accountspage.cpp src/pages/accounts/picturedialog.cpp src/pages/accounts/userdialogs.cpp src/pages/datetime/timezonedialog.cpp src/pages/language/addlanguagedialog.cpp src/pages/language/chooseregiondialog.cpp src/pages/network/common/ipsettingsview.cpp src/pages/network/hotspot/hotspotpage.cpp src/pages/network/vpn/vpndialogs.cpp src/pages/network/wlan/newnetworkdialog.cpp src/pages/shortcuts/shortcuteditdialog.cpp src/pages/shortcuts/shortcutspage.cpp
+#: src/pages/accounts/accountspage.cpp src/pages/accounts/picturedialog.cpp
+#: src/pages/accounts/userdialogs.cpp src/pages/datetime/timezonedialog.cpp
+#: src/pages/language/addlanguagedialog.cpp
+#: src/pages/language/chooseregiondialog.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+#: src/pages/shortcuts/shortcutspage.cpp
+#: src/pages/softwareupdate/softwareupdatepage.cpp
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -172,7 +183,9 @@ msgstr "Выберите изображение"
 msgid "Choose File…"
 msgstr "Выбрать файл…"
 
-#: src/pages/accounts/picturedialog.cpp src/pages/network/common/ipsettingsview.cpp src/pages/network/proxy/proxypage.cpp src/pages/network/vpn/vpndialogs.cpp
+#: src/pages/accounts/picturedialog.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/proxy/proxypage.cpp src/pages/network/vpn/vpndialogs.cpp
 msgid "Save"
 msgstr "Сохранить"
 
@@ -183,7 +196,8 @@ msgid "Image files ({patterns})"
 msgstr "Файлы изображений ({patterns})"
 
 #. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
-#: src/pages/accounts/picturedialog.cpp src/pages/network/vpn/vpndialogs.cpp src/pages/network/vpn/vpnpage.cpp
+#: src/pages/accounts/picturedialog.cpp src/pages/network/vpn/vpndialogs.cpp
+#: src/pages/network/vpn/vpnpage.cpp
 msgid "All files (*)"
 msgstr "Все файлы (*)"
 
@@ -215,7 +229,8 @@ msgstr "Текущий пароль"
 msgid "New password"
 msgstr "Новый пароль"
 
-#: src/pages/accounts/userdialogs.cpp src/pages/network/hotspot/hotspotpage.cpp src/pages/network/wlan/newnetworkdialog.cpp
+#: src/pages/accounts/userdialogs.cpp src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
 msgid "Password"
 msgstr "Пароль"
 
@@ -247,7 +262,8 @@ msgstr "Новый пользователь"
 msgid "User name"
 msgstr "Имя пользователя"
 
-#: src/pages/accounts/userdialogs.cpp src/pages/language/addlanguagedialog.cpp src/pages/network/vpn/vpndialogs.cpp
+#: src/pages/accounts/userdialogs.cpp src/pages/language/addlanguagedialog.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
 msgid "Add"
 msgstr "Добавить"
 
@@ -275,15 +291,18 @@ msgstr "Авто"
 msgid "Accent color"
 msgstr "Акцентный цвет"
 
-#: src/pages/appearance/appearancepage.cpp src/pages/fonts/fontspage.cpp src/window/pagelist.cpp
+#: src/pages/appearance/appearancepage.cpp src/pages/fonts/fontspage.cpp
+#: src/window/pagelist.cpp
 msgid "Fonts"
 msgstr "Шрифты"
 
-#: src/pages/appearance/appearancepage.cpp src/pages/icontheme/iconthemepage.cpp src/window/pagelist.cpp
+#: src/pages/appearance/appearancepage.cpp
+#: src/pages/icontheme/iconthemepage.cpp src/window/pagelist.cpp
 msgid "Icon Theme"
 msgstr "Тема значков"
 
-#: src/pages/appearance/appearancepage.cpp src/pages/cursortheme/cursorthemepage.cpp src/window/pagelist.cpp
+#: src/pages/appearance/appearancepage.cpp
+#: src/pages/cursortheme/cursorthemepage.cpp src/window/pagelist.cpp
 msgid "Cursor Style"
 msgstr "Стиль курсора"
 
@@ -361,7 +380,8 @@ msgid "Poor"
 msgstr "Плохое"
 
 #. TRANSLATORS: a percentage, such as "92%".
-#: src/pages/battery/batterypage.cpp src/pages/display/displaypage.cpp src/pages/network/common/detailsdialog.cpp
+#: src/pages/battery/batterypage.cpp src/pages/display/displaypage.cpp
+#: src/pages/network/common/detailsdialog.cpp
 #, python-brace-format
 msgid "{percent}%"
 msgstr "{percent}%"
@@ -441,11 +461,13 @@ msgstr "Компьютер"
 msgid "Game controller"
 msgstr "Игровой контроллер"
 
-#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/keyboard/keyboardpage.cpp src/window/pagelist.cpp
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/window/pagelist.cpp
 msgid "Keyboard"
 msgstr "Клавиатура"
 
-#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/mouse/mousepage.cpp src/window/pagelist.cpp
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/mouse/mousepage.cpp
+#: src/window/pagelist.cpp
 msgid "Mouse"
 msgstr "Мышь"
 
@@ -482,7 +504,8 @@ msgctxt "device type"
 msgid "Display"
 msgstr "Дисплей"
 
-#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/network/vpn/vpneditor.cpp src/pages/network/wlan/newnetworkdialog.cpp
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
 msgid "Name"
 msgstr "Имя"
 
@@ -502,7 +525,8 @@ msgstr "Видим для других устройств"
 msgid "Allow incoming pairing"
 msgstr "Разрешить входящие запросы на создание пары"
 
-#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/network/common/detailsdialog.cpp
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+#: src/pages/network/common/detailsdialog.cpp
 msgid "Close"
 msgstr "Закрыть"
 
@@ -522,7 +546,8 @@ msgstr "Версия"
 msgid "Trusted"
 msgstr "Доверенное"
 
-#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/bluetooth/bluetoothpage.cpp
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+#: src/pages/bluetooth/bluetoothpage.cpp
 msgid "Blocked"
 msgstr "Заблокировано"
 
@@ -548,7 +573,8 @@ msgstr "{status} · {percent}%"
 msgid "Cancel pairing"
 msgstr "Отменить создание пары"
 
-#: src/pages/bluetooth/bluetoothpage.cpp src/pages/network/common/detailsdialog.cpp
+#: src/pages/bluetooth/bluetoothpage.cpp
+#: src/pages/network/common/detailsdialog.cpp
 msgid "Disconnect"
 msgstr "Отключиться"
 
@@ -560,7 +586,8 @@ msgstr "Видим для других"
 msgid "Not discoverable"
 msgstr "Не виден для других"
 
-#: src/pages/bluetooth/bluetoothpage.cpp src/pages/sound/soundpage.cpp src/window/pagelist.cpp
+#: src/pages/bluetooth/bluetoothpage.cpp src/pages/sound/soundpage.cpp
+#: src/window/pagelist.cpp
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
@@ -738,7 +765,9 @@ msgstr "Просмотр изображений"
 msgid "Terminal"
 msgstr "Терминал"
 
-#: src/pages/defaultapps/defaultappspage.cpp src/pages/fonts/fontspage.cpp src/pages/hotcorners/hotcornerspage.cpp src/pages/keyboard/keyboardpage.cpp src/pages/shortcuts/shortcutspage.cpp
+#: src/pages/defaultapps/defaultappspage.cpp src/pages/fonts/fontspage.cpp
+#: src/pages/hotcorners/hotcornerspage.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutspage.cpp
 msgid "None"
 msgstr "Нет"
 
@@ -904,7 +933,8 @@ msgstr "Большой"
 msgid "Magnification"
 msgstr "Увеличение"
 
-#: src/pages/dock/dockpage.cpp src/pages/network/vpn/vpneditor.cpp src/pages/notifications/notificationspage.cpp
+#: src/pages/dock/dockpage.cpp src/pages/network/vpn/vpneditor.cpp
+#: src/pages/notifications/notificationspage.cpp
 msgid "Off"
 msgstr "Выкл."
 
@@ -944,7 +974,8 @@ msgstr "Область свернутых окон"
 msgid "Desktop"
 msgstr "Рабочий стол"
 
-#: src/pages/dock/dockpage.cpp src/pages/hotcorners/hotcornerspage.cpp src/window/pagelist.cpp
+#: src/pages/dock/dockpage.cpp src/pages/hotcorners/hotcornerspage.cpp
+#: src/window/pagelist.cpp
 msgid "Hot Corners"
 msgstr "Активные углы"
 
@@ -996,7 +1027,8 @@ msgctxt "key"
 msgid "Control"
 msgstr "Control"
 
-#: src/pages/hotcorners/hotcorners.cpp src/pages/keyboard/keyboardpage.cpp src/pages/shortcuts/shortcutsmodel.cpp
+#: src/pages/hotcorners/hotcorners.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutsmodel.cpp
 msgctxt "key"
 msgid "Ctrl"
 msgstr "Ctrl"
@@ -1016,7 +1048,8 @@ msgctxt "key"
 msgid "Shift"
 msgstr "Shift"
 
-#: src/pages/hotcorners/hotcorners.cpp src/pages/keyboard/keyboardpage.cpp src/pages/shortcuts/shortcutsmodel.cpp
+#: src/pages/hotcorners/hotcorners.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutsmodel.cpp
 msgctxt "key"
 msgid "Command"
 msgstr "Command"
@@ -1100,7 +1133,8 @@ msgstr "Клавиша сочетаний"
 msgid "Layout"
 msgstr "Раскладка"
 
-#: src/pages/keyboard/keyboardpage.cpp src/pages/shortcuts/shortcutspage.cpp src/window/pagelist.cpp
+#: src/pages/keyboard/keyboardpage.cpp src/pages/shortcuts/shortcutspage.cpp
+#: src/window/pagelist.cpp
 msgid "Keyboard Shortcuts"
 msgstr "Сочетания клавиш"
 
@@ -1292,7 +1326,8 @@ msgstr "Подключаться автоматически"
 msgid "IP Settings"
 msgstr "Настройки IP"
 
-#: src/pages/network/common/detailsdialog.cpp src/pages/network/wlan/newnetworkdialog.cpp
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
 msgid "Security"
 msgstr "Безопасность"
 
@@ -1300,7 +1335,8 @@ msgstr "Безопасность"
 msgid "Signal"
 msgstr "Сигнал"
 
-#: src/pages/network/common/detailsdialog.cpp src/pages/network/vpn/vpndialogs.cpp
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
 msgid "IPv4 address"
 msgstr "Адрес IPv4"
 
@@ -1316,7 +1352,8 @@ msgstr "MAC-адрес"
 msgid "Gateway"
 msgstr "Шлюз"
 
-#: src/pages/network/common/detailsdialog.cpp src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/vpn/vpneditor.cpp
 msgid "DNS"
 msgstr "DNS"
 
@@ -1332,7 +1369,8 @@ msgstr "Настройка IPv4"
 msgid "IP Address"
 msgstr "IP-адрес"
 
-#: src/pages/network/common/ipsettingsview.cpp src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
 msgid "Required"
 msgstr "Обязательно"
 
@@ -1344,7 +1382,8 @@ msgstr "Маска подсети"
 msgid "Router"
 msgstr "Маршрутизатор"
 
-#: src/pages/network/common/ipsettingsview.cpp src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
 msgid "Optional"
 msgstr "Необязательно"
 
@@ -1368,7 +1407,8 @@ msgstr "DNS-серверы"
 msgid "These servers are asked before the network's own."
 msgstr "Эти серверы опрашиваются раньше собственных серверов сети."
 
-#: src/pages/network/common/ipsettingsview.cpp src/pages/network/vpn/vpndialogs.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
 msgid "Saving…"
 msgstr "Сохранение…"
 
@@ -1376,7 +1416,8 @@ msgstr "Сохранение…"
 msgid "Ethernet"
 msgstr "Ethernet"
 
-#: src/pages/network/hotspot/hotspotpage.cpp src/pages/network/networkpage.cpp src/pages/network/wlan/wlanpage.cpp src/window/pagelist.cpp
+#: src/pages/network/hotspot/hotspotpage.cpp src/pages/network/networkpage.cpp
+#: src/pages/network/wlan/wlanpage.cpp src/window/pagelist.cpp
 msgid "Hotspot"
 msgstr "Точка доступа"
 
@@ -1384,7 +1425,8 @@ msgstr "Точка доступа"
 msgid "Wi-Fi hotspot"
 msgstr "Точка доступа Wi-Fi"
 
-#: src/pages/network/hotspot/hotspotpage.cpp src/pages/network/wlan/newnetworkdialog.cpp
+#: src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
 msgid "Network name"
 msgstr "Имя сети"
 
@@ -1442,11 +1484,13 @@ msgstr "Пароль должен содержать не более 63 симв
 msgid "Network"
 msgstr "Сеть"
 
-#: src/pages/network/networkpage.cpp src/pages/network/vpn/vpnpage.cpp src/window/pagelist.cpp
+#: src/pages/network/networkpage.cpp src/pages/network/vpn/vpnpage.cpp
+#: src/window/pagelist.cpp
 msgid "VPN"
 msgstr "VPN"
 
-#: src/pages/network/networkpage.cpp src/pages/network/proxy/proxypage.cpp src/window/pagelist.cpp
+#: src/pages/network/networkpage.cpp src/pages/network/proxy/proxypage.cpp
+#: src/window/pagelist.cpp
 msgid "Proxy"
 msgstr "Прокси"
 
@@ -1597,7 +1641,8 @@ msgstr "Добавить узел"
 msgid "Peer"
 msgstr "Узел"
 
-#: src/pages/network/vpn/vpneditor.cpp src/pages/privacy/privacypage.cpp src/pages/shortcuts/shortcuteditdialog.cpp
+#: src/pages/network/vpn/vpneditor.cpp src/pages/privacy/privacypage.cpp
+#: src/pages/shortcuts/shortcuteditdialog.cpp
 msgid "Remove"
 msgstr "Удалить"
 
@@ -2257,6 +2302,99 @@ msgstr "Все сочетания вернутся к стандартным. В
 msgid "Restore"
 msgstr "Восстановить"
 
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Stop"
+msgstr "Остановить"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp src/window/pagelist.cpp
+msgid "Software Update"
+msgstr "Обновление ПО"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Updates"
+msgstr "Обновления"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Restart Now?"
+msgstr "Перезагрузить сейчас?"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "The applications close and the computer starts again, which finishes installing the updates. Save your work first."
+msgstr "Приложения закроются, и компьютер перезагрузится, чтобы завершить установку обновлений. Сначала сохраните работу."
+
+#. TRANSLATORS: the button that restarts the computer.
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Restart"
+msgstr "Перезагрузить"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Checking for updates…"
+msgstr "Поиск обновлений…"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "The system is up to date"
+msgstr "Система обновлена"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Check Now"
+msgstr "Проверить сейчас"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+#, python-brace-format
+msgid "{n} update available"
+msgid_plural "{n} updates available"
+msgstr[0] "Доступно {n} обновление"
+msgstr[1] "Доступно {n} обновления"
+msgstr[2] "Доступно {n} обновлений"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "You can keep working while they install."
+msgstr "Можно продолжать работу, пока они устанавливаются."
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Update Now"
+msgstr "Обновить сейчас"
+
+#. TRANSLATORS: {percent} is how far the update has come, such as 80.
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+#, python-brace-format
+msgid "Installing updates… {percent}%"
+msgstr "Установка обновлений… {percent}%"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Installing updates…"
+msgstr "Установка обновлений…"
+
+#. TRANSLATORS: {percent} is how far the update has come, such as 42.
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+#, python-brace-format
+msgid "Downloading updates… {percent}%"
+msgstr "Загрузка обновлений… {percent}%"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Downloading updates…"
+msgstr "Загрузка обновлений…"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Updates installed"
+msgstr "Обновления установлены"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Restart the computer to finish installing them."
+msgstr "Перезагрузите компьютер, чтобы завершить их установку."
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "The updates could not be installed"
+msgstr "Не удалось установить обновления"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Cannot check for updates"
+msgstr "Не удается проверить наличие обновлений"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Check the network connection and try again."
+msgstr "Проверьте сетевое подключение и повторите попытку."
+
 #: src/pages/sound/soundpage.cpp
 msgid "Virtual"
 msgstr "Виртуальное"
@@ -2516,6 +2654,10 @@ msgid "energy, performance, power saving, sleep, turn off display"
 msgstr "энергия, производительность, энергосбережение, сон, выключение дисплея"
 
 #: src/window/pagelist.cpp
+msgid "updates, upgrade, packages, security, install, restart"
+msgstr "обновления, обновить, пакеты, безопасность, установка, перезагрузка, update"
+
+#: src/window/pagelist.cpp
 msgid "system, version, kernel, processor, memory, storage, hardware"
 msgstr "система, версия, ядро, процессор, память, накопитель, оборудование"
 
@@ -2563,7 +2705,8 @@ msgstr "горячие клавиши, привязки клавиш"
 msgid "license, copyright, source code, open source"
 msgstr "лицензия, авторские права, исходный код, открытое ПО"
 
-#: src/window/settingswindow.cpp src/window/sidebar.cpp cutefish-settings.desktop
+#: src/window/settingswindow.cpp src/window/sidebar.cpp
+#: cutefish-settings.desktop
 msgid "Settings"
 msgstr "Настройки"
 
