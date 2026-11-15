@@ -41,6 +41,9 @@ static std::vector<PageInfo> makePages()
     add({.id = "dock", .name = "dock", .title = trNoop("Dock & Desktop"), .icon = "dock.svg",
          .iconColor = Color::rgb(0x8585FC), .category = trNoop("Desktop"),
          .keywords = trNoop("taskbar, position, size, auto hide, glass effect")});
+    add({.id = "menubar", .name = "menubar", .title = trNoop("Menu Bar"), .icon = "menubar.svg",
+         .iconColor = Color::rgb(0x0087ED), .category = trNoop("Desktop"),
+         .keywords = trNoop("top bar, controls, Wi-Fi, battery, sound, volume")});
     add({.id = "notifications", .name = "notifications", .title = trNoop("Notifications"),
          .icon = "notifications.svg", .iconColor = Color::rgb(0xF16884), .category = trNoop("Desktop"),
          .keywords = trNoop("do not disturb, banners, alerts")});
