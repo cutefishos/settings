@@ -40,6 +40,10 @@ public:
     SettingsWindow();
     ~SettingsWindow();
 
+    // The window's own settings file (settings.conf); tests point it at a
+    // scratch file.
+    static void setConfigPath(std::string path);
+
     cutefish::ui::Window& window() const { return *m_window; }
 
     // Shown once the entries that come and go with hardware have settled, or

@@ -46,6 +46,12 @@ static constexpr uint32_t kForwardKey = 0x1008ff27;
 
 static constexpr const char* kSidebarWidthKey = "Sidebar/width";
 
+static std::string& configPath()
+{
+    static std::string path = cutefish::base::paths::cutefishConfig("settings");
+    return path;
+}
+
 // The sidebar's width on whole device pixels, so its edge and the page's
 // clip share one.
 static double snappedSidebarWidth(double width, double scale)
@@ -161,7 +167,7 @@ public:
         divider = addChild<SidebarDivider>(metrics::sidebarMinimumWidth, metrics::sidebarWidth,
                                            metrics::sidebarWidth);
         divider->setName("sidebarDivider");
-        const cutefish::base::Settings settings(cutefish::base::paths::cutefishConfig("settings"));
+        const cutefish::base::Settings settings(configPath());
         sidebarWidth = std::clamp(settings.doubleValue(kSidebarWidthKey, metrics::sidebarWidth),
                                   metrics::sidebarMinimumWidth, metrics::sidebarWidth);
         divider->onResized = [this](double width) {
@@ -171,7 +177,7 @@ public:
         divider->onFinished = [this](double width) {
             sidebarWidth = width;
             requestLayout();
-            cutefish::base::Settings settings(cutefish::base::paths::cutefishConfig("settings"));
+            cutefish::base::Settings settings(configPath());
             settings.setValue(kSidebarWidthKey, width);
         };
     }
@@ -304,6 +310,11 @@ SettingsWindow::SettingsWindow()
 }
 
 SettingsWindow::~SettingsWindow() = default;
+
+void SettingsWindow::setConfigPath(std::string path)
+{
+    configPath() = std::move(path);
+}
 
 bool SettingsWindow::isActive() const
 {
