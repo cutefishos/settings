@@ -97,8 +97,8 @@ protected:
         if (m_current)
             painter.drawRoundedRect(localRect(), {theme.mediumRadius, 0, themeCorners()}, theme.text.withAlpha(0.05));
         if (m_pressed || m_current) {
-            painter.drawSmoothRectangle(
-                localRect(), theme.mediumRadius,
+            painter.drawRoundedRect(
+                localRect(), {theme.mediumRadius, 0, themeCorners()},
                 m_pressed ? color(ColorId::ItemPressed) : color(SettingsColor::SidebarItemCurrent));
         }
     }
