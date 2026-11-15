@@ -18,6 +18,7 @@ public:
     static constexpr const char* kWiFi = "wifi";
     static constexpr const char* kBattery = "battery";
     static constexpr const char* kSound = "sound";
+    static constexpr const char* kBluetooth = "bluetooth";
 
     MenuBarSettings();
 
@@ -29,6 +30,7 @@ private:
     bool m_wifi = true;
     bool m_battery = true;
     bool m_sound = true;
+    bool m_bluetooth = false;
 };
 
 } // namespace settings

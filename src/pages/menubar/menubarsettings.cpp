@@ -17,6 +17,7 @@ MenuBarSettings::MenuBarSettings()
     m_wifi = shell.boolValue("MenuBar/ShowWiFi", true);
     m_battery = shell.boolValue("MenuBar/ShowBattery", true);
     m_sound = shell.boolValue("MenuBar/ShowSound", true);
+    m_bluetooth = shell.boolValue("MenuBar/ShowBluetooth", false);
 }
 
 bool MenuBarSettings::isControlShown(const std::string& control) const
@@ -27,12 +28,18 @@ bool MenuBarSettings::isControlShown(const std::string& control) const
         return m_battery;
     if (control == kSound)
         return m_sound;
+    if (control == kBluetooth)
+        return m_bluetooth;
     return false;
 }
 
 void MenuBarSettings::setControlShown(const std::string& control, bool shown)
 {
-    bool* value = control == kWiFi ? &m_wifi : control == kBattery ? &m_battery : control == kSound ? &m_sound : nullptr;
+    bool* value = control == kWiFi        ? &m_wifi
+                  : control == kBattery   ? &m_battery
+                  : control == kSound     ? &m_sound
+                  : control == kBluetooth ? &m_bluetooth
+                                          : nullptr;
     if (!value || *value == shown)
         return;
     m_menuBar.send("setControlShown", control, shown);

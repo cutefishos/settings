@@ -64,6 +64,7 @@ public:
         Section* controls = content()->addChild<Section>(tr("Menu Bar Controls"));
         Card* list = controls->addChild<Card>(Card::Style::List);
         addControl(list, MenuBarSettings::kWiFi, tr("Wi-Fi"), "network-wireless-connected-100", Color::rgb(0x0067FF));
+        addControl(list, MenuBarSettings::kBluetooth, tr("Bluetooth"), "bluetooth.svg", Color::rgb(0x0067FF));
         addControl(list, MenuBarSettings::kBattery, tr("Battery"), "battery.svg", Color::rgb(0x2EC347));
         addControl(list, MenuBarSettings::kSound, tr("Sound"), "sound.svg", Color::rgb(0xF16884));
     }

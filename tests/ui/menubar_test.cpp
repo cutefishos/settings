@@ -33,8 +33,8 @@ struct FakeMenuBar
 TEST(MenuBarPage, ListsTheControls)
 {
     PageFixture page("menubar");
-    EXPECT_EQ(page.count("CheckBox"), 3);
-    for (const char* control : {"wifi", "battery", "sound"})
+    EXPECT_EQ(page.count("CheckBox"), 4);
+    for (const char* control : {"wifi", "bluetooth", "battery", "sound"})
         EXPECT_NE(findView<ListRow>(page.window->window().contentView(), std::string("menubar:") + control), nullptr);
 }
 
@@ -56,7 +56,7 @@ TEST(MenuBarPage, AClickOnARowTellsTheMenuBar)
 
     PageFixture page("menubar");
     Window& window = page.window->window();
-    for (const char* control : {"wifi", "battery", "sound"}) {
+    for (const char* control : {"wifi", "bluetooth", "battery", "sound"}) {
         auto* row = findView<ListRow>(window.contentView(), std::string("menubar:") + control);
         ASSERT_NE(row, nullptr);
         const RectF rect = row->geometry();
@@ -64,10 +64,11 @@ TEST(MenuBarPage, AClickOnARowTellsTheMenuBar)
     }
     ASSERT_TRUE(waitFor([&] {
         std::lock_guard guard(fake.mutex);
-        return fake.calls.size() == 3;
+        return fake.calls.size() == 4;
     }));
     std::lock_guard guard(fake.mutex);
     EXPECT_EQ(fake.calls[0].first, "wifi");
-    EXPECT_EQ(fake.calls[1].first, "battery");
-    EXPECT_EQ(fake.calls[2].first, "sound");
+    EXPECT_EQ(fake.calls[1].first, "bluetooth");
+    EXPECT_EQ(fake.calls[2].first, "battery");
+    EXPECT_EQ(fake.calls[3].first, "sound");
 }
