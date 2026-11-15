@@ -1,7 +1,9 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: BSD-3-Clause
 
+#include <algorithm>
 #include <array>
+#include <cmath>
 #include <functional>
 
 #include "base/i18n.h"
@@ -32,6 +34,57 @@ namespace {
 
 constexpr std::array<Color, 7> kAccentColors = {accent::blue, accent::red, accent::green, accent::purple,
                                                 accent::pink, accent::orange, accent::grey};
+
+// Children at their preferred sizes, left to right, with as much of the
+// spacing as the width leaves, down to the minimum.
+class FittingRow : public View
+{
+public:
+    FittingRow(double spacing, double minimumSpacing)
+        : m_spacing(spacing)
+        , m_minimumSpacing(minimumSpacing)
+    {
+    }
+
+    SizeF sizeHint() const override { return {childrenWidth() + gaps() * m_spacing, childrenHeight()}; }
+    double heightForWidth(double) const override { return childrenHeight(); }
+    double minimumWidth() const { return childrenWidth() + gaps() * m_minimumSpacing; }
+
+protected:
+    void layout() override
+    {
+        const double fitted = gaps() > 0 ? (geometry().width - childrenWidth()) / gaps() : 0;
+        const double spacing = std::clamp(fitted, m_minimumSpacing, m_spacing);
+        double x = 0;
+        for (const auto& child : children()) {
+            const SizeF size = child->sizeHint();
+            child->setGeometry({std::round(x), 0, size.width, size.height});
+            x += size.width + spacing;
+        }
+    }
+
+private:
+    double childrenWidth() const
+    {
+        double width = 0;
+        for (const auto& child : children())
+            width += child->sizeHint().width;
+        return width;
+    }
+
+    double childrenHeight() const
+    {
+        double height = 0;
+        for (const auto& child : children())
+            height = std::max(height, child->sizeHint().height);
+        return height;
+    }
+
+    double gaps() const { return children().empty() ? 0 : double(children().size() - 1); }
+
+    double m_spacing;
+    double m_minimumSpacing;
+};
 
 // One accent colour: a dot, ringed in its own colour while chosen or pressed.
 // The dot is a parallel curve of the ring, so both snap to the same circle
@@ -120,8 +173,7 @@ public:
     {
         Section* modes = content()->addChild<Section>(tr("Appearance"));
         Card* modeCard = modes->addChild<Card>();
-        RowLayout* tiles = modeCard->addChild<RowLayout>();
-        tiles->setSpacing(metrics::tileSpacing);
+        FittingRow* tiles = modeCard->addChild<FittingRow>(metrics::tileSpacing, metrics::xxs);
         // The 100x68 artwork at its own size inside the 4px inset.
         const SizeF preview{108, 76};
         m_light = tiles->addChild<ImageSelectionItem>(dataPath("images/light_mode.svg"), tr("Light"), preview);
@@ -133,17 +185,21 @@ public:
 
         Section* accents = content()->addChild<Section>(tr("Accent color"));
         Card* accentCard = accents->addChild<Card>();
-        Row* swatches = accentCard->addChild<Row>();
         // The ring sits smallSpacing inside its cell; it, like a preview's
-        // selection ring, starts on the text column.
-        LayoutHints swatchHints{.fillWidth = true};
-        swatchHints.margins.left = -Theme::current().smallSpacing;
-        swatches->setLayoutHints(swatchHints);
+        // selection ring, starts on the text column, and the last one ends
+        // on it at the narrowest, the cells overlapping in their margins.
+        const double ringMargin = Theme::current().smallSpacing;
+        FittingRow* swatches = accentCard->addChild<FittingRow>(0, -ringMargin);
         for (size_t i = 0; i < kAccentColors.size(); ++i) {
             AccentSwatch* swatch = swatches->addChild<AccentSwatch>(kAccentColors[i]);
             swatch->onClicked = [this, i] { m_appearance.setAccentColor(int(i)); };
             m_swatches.push_back(swatch);
         }
+        LayoutHints swatchHints{.fillWidth = true, .minimumWidth = swatches->minimumWidth()};
+        swatchHints.margins.left = -ringMargin;
+        swatchHints.margins.right = -ringMargin;
+        swatches->setLayoutHints(swatchHints);
+        tiles->setLayoutHints({.fillWidth = true, .minimumWidth = tiles->minimumWidth()});
 
         Card* links = content()->addChild<Card>(Card::Style::List);
         const std::array<std::tuple<const char*, const char*, Color, const char*>, 3> pages = {
