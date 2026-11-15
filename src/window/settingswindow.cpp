@@ -243,7 +243,7 @@ SettingsWindow::SettingsWindow()
     , m_revealTimer(std::make_unique<cutefish::base::Timer>())
 {
     m_window->setTitle(tr("Settings"));
-    m_window->resize({900, 610});
+    m_window->resize({882, 600});
     // Half of a 1280-wide screen, so the window can be split beside another.
     m_window->setMinimumSize({640, 600});
     // Under the key the Qt version's main.qml kept it.
