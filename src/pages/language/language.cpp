@@ -25,15 +25,6 @@ static constexpr const char* kService = "org.cutefish.Services";
 static constexpr const char* kPath = "/org/cutefish/Services/Language";
 static constexpr const char* kInterface = "org.cutefish.Services.Language";
 
-static std::string displayName(const icu::Locale& locale, const icu::Locale& displayLocale)
-{
-    icu::UnicodeString name;
-    locale.getDisplayName(displayLocale, name);
-    std::string utf8;
-    name.toUTF8String(utf8);
-    return utf8;
-}
-
 static icu::UnicodeString folded(const std::string& text)
 {
     icu::UnicodeString string = icu::UnicodeString::fromUTF8(text);
@@ -125,15 +116,14 @@ std::vector<LanguageEntry> Language::catalog(const std::string& displayCode)
         "zh_Hant_TW",  // Chinese, Traditional (Taiwan)
     };
     std::vector<LanguageEntry> entries;
-    const icu::Locale displayLocale(displayCode.c_str());
     for (const char* code : supportedSystemLanguages) {
         const icu::Locale locale(code);
         if (locale.isBogus() || !*locale.getLanguage())
             continue;
         LanguageEntry entry;
         entry.code = code;
-        entry.name = displayName(locale, locale);
-        entry.description = displayName(locale, displayLocale);
+        entry.name = Locale::languageName(code, code);
+        entry.description = Locale::languageName(code, displayCode);
         entry.searchText = entry.name + ' ' + entry.description + ' ' + entry.code;
         entries.push_back(std::move(entry));
     }
@@ -218,11 +208,9 @@ void Language::setPreferredCodes(std::vector<std::string> codes)
         return;
     m_preferredCodes = std::move(codes);
     m_preferred.clear();
-    const icu::Locale displayLocale(displayLanguage().c_str());
-    for (const std::string& code : m_preferredCodes) {
-        const icu::Locale locale(code.c_str());
-        m_preferred.push_back({code, displayName(locale, locale), displayName(locale, displayLocale), {}});
-    }
+    const std::string displayCode = displayLanguage();
+    for (const std::string& code : m_preferredCodes)
+        m_preferred.push_back({code, Locale::languageName(code, code), Locale::languageName(code, displayCode), {}});
     preferredLanguagesChanged.emit();
     availableLanguagesChanged.emit();
 }
