@@ -15,6 +15,7 @@
 #include "cutefish/packagekit/updates.h"
 #include "pages/softwareupdate/softwareupdate.h"
 #include "ui/button.h"
+#include "ui/color_mixer.h"
 #include "ui/dialog_window.h"
 #include "ui/header_button.h"
 #include "ui/icon.h"
@@ -23,6 +24,7 @@
 #include "ui/progress_bar.h"
 #include "ui/theme.h"
 #include "widgets/card.h"
+#include "widgets/iconbutton.h"
 #include "widgets/listrow.h"
 #include "widgets/metrics.h"
 #include "widgets/sections.h"
@@ -75,6 +77,7 @@ static std::string packageIcon(const std::string& package)
 
 static constexpr double kStopButton = 24;
 static constexpr double kStopGlyph = 16;
+static constexpr double kCheckGlyph = 14;
 
 // Keeps the stop button's place on the bar's line while the button hides, so
 // the bar keeps its length.
@@ -203,8 +206,22 @@ public:
         m_status->action()->onClicked = [this] { act(); };
         m_status->stop()->onClicked = [this] { m_update.cancel(); };
 
-        m_list = content()->addChild<Section>(tr("Updates"));
+        m_list = content()->addChild<ColumnLayout>();
         m_list->setName("softwareupdate:list");
+        m_list->setSpacing(metrics::sectionLabelSpacing);
+        m_list->setLayoutHints({.fillWidth = true});
+        RowLayout* header = m_list->addChild<RowLayout>();
+        header->setSpacing(0);
+        header->setLayoutHints({.fillWidth = true});
+        SectionLabel* label = header->addChild<SectionLabel>(tr("Updates"));
+        label->setMargins({metrics::cardHorizontalPadding, 0, metrics::s, 0});
+        label->setLayoutHints({});
+        m_check = header->addChild<IconButton>("refresh", kCheckGlyph);
+        m_check->setName("softwareupdate:check");
+        m_check->setColor(withAlpha(ColorId::Text, 0.85));
+        m_check->setLayoutHints({.alignment = Alignment::Center});
+        m_check->onClicked = [this] { m_update.check(); };
+        header->addChild<View>()->setLayoutHints({.fillWidth = true});
         m_listCard = m_list->addChild<Card>(Card::Style::List);
 
         m_subscription = m_update.changed.connect([this] { update(); });
@@ -311,6 +328,7 @@ private:
 
         const bool listed = state == SoftwareUpdate::State::Available || state == SoftwareUpdate::State::Updating;
         m_list->setVisible(listed && count > 0);
+        m_check->setVisible(state == SoftwareUpdate::State::Available);
         if (m_update.updates() != m_shownUpdates) {
             m_shownUpdates = m_update.updates();
             for (ListRow* row : m_rows)
@@ -328,7 +346,8 @@ private:
     std::vector<SoftwareUpdate::Update> m_shownUpdates;
 
     StatusRow* m_status;
-    Section* m_list;
+    ColumnLayout* m_list;
+    IconButton* m_check;
     Card* m_listCard;
     std::vector<ListRow*> m_rows;
     std::unique_ptr<ConfirmDialog> m_confirm;

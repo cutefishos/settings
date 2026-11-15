@@ -29,6 +29,7 @@
 #include "ui/label.h"
 #include "ui/progress_bar.h"
 #include "ui/window.h"
+#include "widgets/iconbutton.h"
 #include "widgets/listrow.h"
 #include "widgets/sections.h"
 #include "window/page.h"
@@ -239,6 +240,21 @@ TEST_F(SoftwareUpdatePageTest, InstallsAndSuggestsARestart)
     ASSERT_TRUE(action());
     EXPECT_TRUE(isShown(action()));
     EXPECT_EQ(actionText(), "Update Now");
+    // The button beside the list's title checks again.
+    auto* check = view("softwareupdate:check");
+    ASSERT_TRUE(check);
+    EXPECT_TRUE(isShown(check));
+    // It follows the title's text, centred on its line.
+    const auto labels = findAll<SectionLabel>(view("softwareupdate:list"));
+    ASSERT_FALSE(labels.empty());
+    Label* title = labels.front()->label();
+    const PointF titleOrigin = title->mapToWindow({0, 0});
+    const PointF checkOrigin = check->mapToWindow({0, 0});
+    EXPECT_NEAR(titleOrigin.y + title->geometry().height / 2, checkOrigin.y + check->geometry().height / 2, 0.5);
+    EXPECT_GT(checkOrigin.x, titleOrigin.x + title->geometry().width);
+    dynamic_cast<IconButton*>(check)->onClicked();
+    ASSERT_TRUE(waitFor([&] { return service->calls == std::vector<std::string>{"check"}; }));
+    service->calls.clear();
     action()->onClicked();
     ASSERT_TRUE(waitFor([&] { return service->calls == std::vector<std::string>{"update"}; }));
 
@@ -263,6 +279,7 @@ TEST_F(SoftwareUpdatePageTest, InstallsAndSuggestsARestart)
     EXPECT_FALSE(isShown(view("softwareupdate:detail")));
     EXPECT_FALSE(isShown(action()));
     EXPECT_TRUE(isShown(view("softwareupdate:list")));
+    EXPECT_FALSE(isShown(check));
     stop->onClicked();
     ASSERT_TRUE(waitFor([&] { return service->calls.back() == "cancel"; }));
 
