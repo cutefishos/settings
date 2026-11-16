@@ -84,6 +84,7 @@ install(FILES
 
 install(FILES
     src/datetime/60-cutefish-datetime.rules
+    src/about/60-cutefish-device-name.rules
     DESTINATION ${CMAKE_INSTALL_DATADIR}/polkit-1/rules.d
 )
 

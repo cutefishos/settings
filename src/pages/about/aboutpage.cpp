@@ -1,10 +1,14 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: BSD-3-Clause
 
+#include <cmath>
+
 #include "base/i18n.h"
 #include "pages/about/aboutinfo.h"
+#include "pages/about/devicename.h"
 #include "ui/label.h"
 #include "ui/cell_layout.h"
+#include "ui/text_field.h"
 #include "ui/theme.h"
 #include "widgets/card.h"
 #include "widgets/listrow.h"
@@ -19,6 +23,9 @@ using cutefish::i18n::format;
 using cutefish::i18n::tr;
 
 namespace settings {
+
+// Bluetooth names are at most 248 bytes.
+static constexpr size_t kNameLength = 248;
 
 namespace {
 
@@ -48,6 +55,44 @@ public:
         m_runningOn->setLayoutHints({.horizontalAlignment = Alignment::Center, .verticalAlignment = Alignment::Start});
 
         Card* card = content()->addChild<Card>(Card::Style::List);
+        ListRow* nameRow = card->addChild<ListRow>(tr("Device name"));
+        nameRow->setInteractive(false);
+        m_nameRow = nameRow;
+        m_name = nameRow->addContent<TextField>();
+        m_name->setName("about:name");
+        m_name->setFrameVisible(false);
+        m_name->setRightAligned(true);
+        m_name->setTextMargins(0, 0);
+        m_name->setText(m_deviceName.name());
+        m_name->onTextChanged = [this] {
+            if (m_name->text().size() > kNameLength) {
+                std::string text = m_name->text();
+                // Not inside a character.
+                size_t end = kNameLength;
+                while (end > 0 && (static_cast<unsigned char>(text[end]) & 0xc0) == 0x80)
+                    --end;
+                text.resize(end);
+                m_name->setText(text);
+            }
+        };
+        // Return keeps the field focused and selects the whole name; this
+        // comes before onEditingFinished.
+        m_name->onAccepted = [this] { m_selectOnFinish = true; };
+        m_name->onEditingFinished = [this] {
+            if (m_name->text().empty())
+                m_name->setText(m_deviceName.name());
+            else
+                m_deviceName.setName(m_name->text());
+            if (m_selectOnFinish) {
+                m_selectOnFinish = false;
+                m_name->selectAll();
+            }
+        };
+        m_nameChanged = m_deviceName.changed.connect([this] {
+            // Setting the same text again would drop the selection.
+            if (m_name->text() != m_deviceName.name())
+                m_name->setText(m_deviceName.name());
+        });
         const std::string model = about::computerModel();
         if (!model.empty())
             card->addChild<InfoRow>(tr("Model"), model);
@@ -67,11 +112,27 @@ protected:
     void layout() override
     {
         m_runningOn->setColor(Theme::current().disabledText);
+        // As wide as an InfoRow's value may grow, and as tall as a row
+        // leaves, so the name sits where the values do; a right-aligned field
+        // keeps 1.5 px past its text for the caret.
+        const double cap = std::round(m_nameRow->geometry().width * 0.65);
+        if (m_name->layoutHints().maximumWidth != cap) {
+            LayoutHints hints{.fillWidth = true,
+                              .preferredHeight = metrics::rowHeight - metrics::cardVerticalPadding,
+                              .maximumWidth = cap};
+            hints.margins.right = -1.5;
+            m_name->setLayoutHints(hints);
+        }
         Page::layout();
     }
 
 private:
+    DeviceName m_deviceName;
     Label* m_runningOn;
+    ListRow* m_nameRow;
+    TextField* m_name;
+    bool m_selectOnFinish = false;
+    cutefish::base::Subscription m_nameChanged;
 };
 
 } // namespace

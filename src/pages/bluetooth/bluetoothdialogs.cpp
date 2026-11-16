@@ -10,7 +10,6 @@
 #include "ui/dialog_window.h"
 #include "ui/cell_layout.h"
 #include "ui/switch.h"
-#include "ui/text_field.h"
 #include "widgets/card.h"
 #include "widgets/listrow.h"
 #include "widgets/metrics.h"
@@ -24,8 +23,6 @@ using cutefish::i18n::trNoop;
 namespace settings {
 
 static constexpr double kDialogWidth = 400;
-// Bluetooth names are at most 248 bytes.
-static constexpr size_t kNameLength = 248;
 
 // The kind of device behind each icon name BlueZ reports.
 static std::string deviceType(const std::string& icon)
@@ -79,24 +76,6 @@ AdapterDetailsDialog::AdapterDetailsDialog(Window* parent, std::shared_ptr<bluez
     ColumnLayout* content = makeContent(*m_dialog);
 
     Card* identity = content->addChild<Card>(Card::Style::List);
-    ListRow* nameRow = identity->addChild<ListRow>(tr("Name"));
-    nameRow->setInteractive(false);
-    nameRow->setMinimumRowHeight(metrics::controlRowHeight);
-    m_name = nameRow->addContent<TextField>();
-    m_name->setLayoutHints({.preferredWidth = 200, .horizontalAlignment = Alignment::End});
-    m_name->setText(m_adapter->name());
-    m_name->onTextChanged = [this] {
-        if (m_name->text().size() > kNameLength) {
-            std::string text = m_name->text();
-            // Not inside a character.
-            size_t end = kNameLength;
-            while (end > 0 && (static_cast<unsigned char>(text[end]) & 0xc0) == 0x80)
-                --end;
-            text.resize(end);
-            m_name->setText(text);
-        }
-    };
-    m_name->onAccepted = [this] { rename(); };
     m_address = identity->addChild<InfoRow>(tr("Address"));
 
     Card* switches = content->addChild<Card>(Card::Style::List);
@@ -108,10 +87,7 @@ AdapterDetailsDialog::AdapterDetailsDialog(Window* parent, std::shared_ptr<bluez
     m_pairable->onToggled = [this](bool checked) { m_adapter->setPairable(checked); };
 
     DialogButton* close = makeButtons(content)->addChild<DialogButton>(tr("Close"));
-    close->onClicked = [this] {
-        rename();
-        m_dialog->close();
-    };
+    close->onClicked = [this] { m_dialog->close(); };
 
     m_changed = m_adapter->changed.connect([this] { update(); });
     m_dialog->onClosed = [this] { m_changed.reset(); };
@@ -134,13 +110,6 @@ void AdapterDetailsDialog::update()
     m_discoverable->control()->setEnabled(m_adapter->powered());
     m_pairable->setChecked(m_adapter->pairable());
     m_pairable->control()->setEnabled(m_adapter->powered());
-}
-
-void AdapterDetailsDialog::rename()
-{
-    const std::string name = m_name->text();
-    if (!name.empty() && name != m_adapter->name())
-        m_adapter->setName(name);
 }
 
 DeviceDetailsDialog::DeviceDetailsDialog(Window* parent, std::shared_ptr<bluez::BluetoothObject> device)

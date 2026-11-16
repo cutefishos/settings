@@ -12,17 +12,15 @@
 namespace cutefish::ui {
 class DialogButton;
 class DialogWindow;
-class TextField;
 class Window;
 }
 
 namespace settings {
 
 class InfoRow;
-class ListRow;
 class SwitchRow;
 
-// An adapter's name, address, power, visibility and pairing.
+// An adapter's address, power, visibility and pairing.
 class AdapterDetailsDialog
 {
 public:
@@ -33,11 +31,9 @@ public:
 
 private:
     void update();
-    void rename();
 
     std::shared_ptr<cutefish::bluez::BluetoothObject> m_adapter;
     std::unique_ptr<cutefish::ui::DialogWindow> m_dialog;
-    cutefish::ui::TextField* m_name;
     InfoRow* m_address;
     SwitchRow* m_powered;
     SwitchRow* m_discoverable;

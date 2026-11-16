@@ -3,8 +3,15 @@
 
 #include <gtest/gtest.h>
 
+#include <functional>
+
 #include "pagetest.h"
 #include "pages/about/aboutinfo.h"
+#include "pages/about/devicename.h"
+#include "ui/keys.h"
+#include "ui/test_input.h"
+#include "ui/text_field.h"
+#include "window/page.h"
 
 TEST(AboutPage, ShowsTheSystemRows)
 {
@@ -14,6 +21,45 @@ TEST(AboutPage, ShowsTheSystemRows)
     // here; the model row depends on the machine's firmware.
     const int modelRows = settings::about::computerModel().empty() ? 0 : 1;
     EXPECT_EQ(page.count("settings::InfoRow"), 6 + modelRows);
+}
+
+TEST(AboutPage, EditsTheDeviceName)
+{
+    PageFixture page("about");
+    EXPECT_NE(page.dump().find("\"about:name\""), std::string::npos);
+    EXPECT_EQ(page.count("TextField"), 1);
+}
+
+TEST(AboutPage, ReturnSelectsTheDeviceName)
+{
+    using namespace cutefish::ui;
+    PageFixture page("about");
+    std::function<View*(View*)> find = [&](View* view) -> View* {
+        if (view->name() == "about:name")
+            return view;
+        for (const auto& child : view->children()) {
+            if (View* found = find(child.get()))
+                return found;
+        }
+        return nullptr;
+    };
+    auto* field = dynamic_cast<TextField*>(find(page.window->currentPage()));
+    ASSERT_NE(field, nullptr);
+    ASSERT_FALSE(field->text().empty());
+    TestInput::setKeyboardFocus(page.window->window(), true);
+    field->setFocus();
+    // The name as it is, so nothing is sent to hostnamed.
+    TestInput::typeKey(page.window->window(), key::Return);
+    EXPECT_TRUE(field->hasFocus());
+    EXPECT_EQ(field->selectedText(), field->text());
+}
+
+TEST(AboutPage, NamesTheDeviceAsHostnamedDoes)
+{
+    using settings::DeviceName;
+    EXPECT_EQ(DeviceName::chooseName("Kai’s Laptop", "reion-pc", "localhost"), "Kai’s Laptop");
+    EXPECT_EQ(DeviceName::chooseName("", "reion-pc", "localhost"), "reion-pc");
+    EXPECT_EQ(DeviceName::chooseName("", "", "localhost"), "localhost");
 }
 
 TEST(AboutPage, LinksToTheLicenses)
