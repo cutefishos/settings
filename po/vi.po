@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-15 10:33+0800\n"
+"POT-Creation-Date: 2026-11-16 11:29+0800\n"
 "PO-Revision-Date: 2026-11-13 16:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -78,6 +78,10 @@ msgstr "Giới thiệu"
 #, python-brace-format
 msgid "Running on {system}"
 msgstr "Đang chạy {system}"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Device name"
+msgstr "Tên thiết bị"
 
 #: src/pages/about/aboutpage.cpp
 msgid "Model"
@@ -503,11 +507,6 @@ msgstr "Máy quét"
 msgctxt "device type"
 msgid "Display"
 msgstr "Màn hình"
-
-#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/network/vpn/vpneditor.cpp
-#: src/pages/network/wlan/newnetworkdialog.cpp
-msgid "Name"
-msgstr "Tên"
 
 #: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/network/vpn/vpneditor.cpp
 msgid "Address"
@@ -1288,6 +1287,14 @@ msgstr "Ngôn ngữ hệ thống"
 msgid "Remove language"
 msgstr "Xóa ngôn ngữ"
 
+#: src/pages/menubar/menubarpage.cpp src/window/pagelist.cpp
+msgid "Menu Bar"
+msgstr "Thanh menu"
+
+#: src/pages/menubar/menubarpage.cpp
+msgid "Menu Bar Controls"
+msgstr "Điều khiển trên thanh menu"
+
 #: src/pages/mouse/mousepage.cpp
 msgid "Left hand"
 msgstr "Thuận tay trái"
@@ -1669,6 +1676,11 @@ msgstr "Keepalive"
 #, python-brace-format
 msgid "Peer {number}"
 msgstr "Peer {number}"
+
+#: src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Name"
+msgstr "Tên"
 
 #: src/pages/network/vpn/vpneditor.cpp
 msgid "Available to all users"
@@ -2574,6 +2586,10 @@ msgstr "nền, hình nền, ảnh màn hình nền, hình ảnh, wallpaper"
 #: src/window/pagelist.cpp
 msgid "taskbar, position, size, auto hide, glass effect"
 msgstr "thanh tác vụ, vị trí, kích thước, tự động ẩn, hiệu ứng kính, dock, taskbar"
+
+#: src/window/pagelist.cpp
+msgid "top bar, controls, Wi-Fi, Bluetooth, battery, sound, volume"
+msgstr "thanh trên cùng, thanh menu, điều khiển, wi-fi, bluetooth, pin, âm thanh, âm lượng, top bar"
 
 #: src/window/pagelist.cpp
 msgid "do not disturb, banners, alerts"

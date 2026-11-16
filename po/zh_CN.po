@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-15 10:33+0800\n"
+"POT-Creation-Date: 2026-11-16 11:29+0800\n"
 "PO-Revision-Date: 2026-11-13 16:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -78,6 +78,10 @@ msgstr "关于"
 #, python-brace-format
 msgid "Running on {system}"
 msgstr "运行于 {system}"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Device name"
+msgstr "设备名称"
 
 #: src/pages/about/aboutpage.cpp
 msgid "Model"
@@ -503,11 +507,6 @@ msgstr "扫描仪"
 msgctxt "device type"
 msgid "Display"
 msgstr "显示器"
-
-#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/network/vpn/vpneditor.cpp
-#: src/pages/network/wlan/newnetworkdialog.cpp
-msgid "Name"
-msgstr "名称"
 
 #: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/network/vpn/vpneditor.cpp
 msgid "Address"
@@ -1288,6 +1287,14 @@ msgstr "系统语言"
 msgid "Remove language"
 msgstr "移除语言"
 
+#: src/pages/menubar/menubarpage.cpp src/window/pagelist.cpp
+msgid "Menu Bar"
+msgstr "菜单栏"
+
+#: src/pages/menubar/menubarpage.cpp
+msgid "Menu Bar Controls"
+msgstr "菜单栏控制项"
+
 #: src/pages/mouse/mousepage.cpp
 msgid "Left hand"
 msgstr "左手"
@@ -1669,6 +1676,11 @@ msgstr "保活"
 #, python-brace-format
 msgid "Peer {number}"
 msgstr "对等体 {number}"
+
+#: src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Name"
+msgstr "名称"
 
 #: src/pages/network/vpn/vpneditor.cpp
 msgid "Available to all users"
@@ -2574,6 +2586,10 @@ msgstr "background, desktop picture, image, 背景, 桌面背景, 图片, 壁纸
 #: src/window/pagelist.cpp
 msgid "taskbar, position, size, auto hide, glass effect"
 msgstr "taskbar, position, size, auto hide, glass effect, 任务栏, 程序坞, 位置, 大小, 自动隐藏, 玻璃效果"
+
+#: src/window/pagelist.cpp
+msgid "top bar, controls, Wi-Fi, Bluetooth, battery, sound, volume"
+msgstr "top bar, controls, Wi-Fi, Bluetooth, battery, sound, volume, 顶栏, 菜单栏, 控制, 无线网络, 蓝牙, 电池, 声音, 音量"
 
 #: src/window/pagelist.cpp
 msgid "do not disturb, banners, alerts"
