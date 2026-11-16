@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "base/i18n.h"
+#include "cutefish/appearance/appearance.h"
 #include "pages/dock/docksettings.h"
 #include "ui/layout.h"
 #include "ui/cell_layout.h"
@@ -21,6 +22,7 @@
 #include "window/settingswindow.h"
 
 using namespace cutefish::ui;
+using cutefish::appearance::Appearance;
 using cutefish::i18n::tr;
 
 namespace settings {
@@ -130,6 +132,10 @@ public:
             m_settings.setGlassTint(value);
             glass->setValue(m_settings.glassTint());
         };
+        // Reduce Transparency gives the dock a grey of its own.
+        m_glass = glass;
+        m_subscription = m_appearance.changed.connect([this] { updateGlass(); });
+        updateGlass();
 
         SegmentedRow* mode = sliders->addChild<SegmentedRow>(
                 tr("Display mode"), std::vector<std::string>{tr("Always show"), tr("Always hide"), tr("Smart hide")});
@@ -149,6 +155,8 @@ public:
     }
 
 private:
+    void updateGlass() { m_glass->setEnabled(!m_appearance.reduceTransparency()); }
+
     void updateDirection()
     {
         for (size_t i = 0; i < m_directions.size(); ++i)
@@ -156,7 +164,10 @@ private:
     }
 
     DockSettings m_settings;
+    Appearance m_appearance;
+    cutefish::base::Subscription m_subscription;
     std::vector<ImageSelectionItem*> m_directions;
+    SliderRow* m_glass;
 };
 
 } // namespace

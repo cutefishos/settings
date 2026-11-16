@@ -201,6 +201,10 @@ public:
         swatches->setLayoutHints(swatchHints);
         tiles->setLayoutHints({.fillWidth = true, .minimumWidth = tiles->minimumWidth()});
 
+        Card* transparency = content()->addChild<Card>(Card::Style::List);
+        m_reduceTransparency = transparency->addChild<SwitchRow>(tr("Reduce Transparency"));
+        m_reduceTransparency->onToggled = [this](bool checked) { m_appearance.setReduceTransparency(checked); };
+
         Card* links = content()->addChild<Card>(Card::Style::List);
         const std::array<std::tuple<const char*, const char*, Color, const char*>, 3> pages = {
                 std::tuple{tr("Fonts"), "fonts.svg", Color::rgb(0xFE8433), "fonts"},
@@ -243,6 +247,7 @@ private:
         m_auto->setChecked(automatic);
         for (size_t i = 0; i < m_swatches.size(); ++i)
             m_swatches[i]->setChecked(theme.highlight == kAccentColors[i]);
+        m_reduceTransparency->setChecked(m_appearance.reduceTransparency());
     }
 
     Appearance m_appearance;
@@ -251,6 +256,7 @@ private:
     ImageSelectionItem* m_dark;
     ImageSelectionItem* m_auto;
     std::vector<AccentSwatch*> m_swatches;
+    SwitchRow* m_reduceTransparency;
 };
 
 } // namespace
