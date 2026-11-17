@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-16 11:29+0800\n"
+"POT-Creation-Date: 2026-11-17 19:32+0800\n"
 "PO-Revision-Date: 2026-11-13 16:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -294,6 +294,14 @@ msgstr "自动"
 #: src/pages/appearance/appearancepage.cpp
 msgid "Accent color"
 msgstr "强调色"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Reduce Transparency"
+msgstr "降低透明度"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Colored Window Buttons"
+msgstr "彩色窗口按钮"
 
 #: src/pages/appearance/appearancepage.cpp src/pages/fonts/fontspage.cpp
 #: src/window/pagelist.cpp
