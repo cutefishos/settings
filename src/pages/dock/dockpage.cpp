@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: 2026 Reion Wong <reionwong@gmail.com>
 // SPDX-License-Identifier: BSD-3-Clause
 
+#include <algorithm>
 #include <cmath>
 #include <vector>
 
@@ -31,6 +32,8 @@ namespace {
 
 // Rows below the sliders, near their height so the card keeps one rhythm.
 constexpr double kTallRowHeight = 64;
+// The least room beside the label inside each button of a segmented row.
+constexpr double kSegmentPadding = 8;
 
 // The magnification slider: off at its left end, then the magnified sizes;
 // below kMagnificationOn a drag is off, from there up it is at least the
@@ -45,7 +48,9 @@ double magnificationValue(int size)
     return size <= 0 ? kMagnificationOff : size;
 }
 
-// A segmented control over the right half of the row, as a SliderRow puts its slider.
+// A segmented control over the right half of the row, as a SliderRow puts its
+// slider, or under the label across the row once half the row leaves its
+// labels too little room.
 class SegmentedRow : public ListRow
 {
 public:
@@ -54,23 +59,64 @@ public:
     {
         setInteractive(false);
         setMinimumRowHeight(kTallRowHeight);
-        m_control = addContent<SegmentedControl>(std::move(items));
+        m_control = addChild<SegmentedControl>(std::move(items));
         m_control->setContentHeight(32);
     }
 
     SegmentedControl* control() const { return m_control; }
 
+    double heightForWidth(double width) const override
+    {
+        const double content = contentWidth(width);
+        if (isStacked(content))
+            return labelRowHeight(content, metrics::rowHeight) + m_control->sizeHint().height
+                   + metrics::cardVerticalPadding;
+        return labelRowHeight(content - inlineWidth(content) - metrics::rowSpacing, kTallRowHeight);
+    }
+
 protected:
     void layout() override
     {
-        const double width = std::round((geometry().width - 2 * metrics::cardHorizontalPadding) / 2);
-        if (m_control->layoutHints().preferredWidth != width)
-            m_control->setLayoutHints({.preferredWidth = width});
+        const double content = contentWidth(geometry().width);
+        const bool stacked = isStacked(content);
+        const double width = stacked ? content : inlineWidth(content);
+        LayoutHints hints = label()->layoutHints();
+        hints.margins.right = stacked ? 0 : width + metrics::rowSpacing;
+        if (!(hints.margins == label()->layoutHints().margins))
+            label()->setLayoutHints(hints);
+        if (stacked != m_stacked) {
+            m_stacked = stacked;
+            setMinimumRowHeight(stacked ? metrics::rowHeight : kTallRowHeight);
+        }
         ListRow::layout();
+
+        const double height = m_control->sizeHint().height;
+        const double row = rowHeight();
+        const double x = metrics::cardHorizontalPadding + content - width;
+        const double y = stacked ? row : std::round((row - height) / 2);
+        m_control->setGeometry({x, y, width, height});
     }
 
 private:
+    static double contentWidth(double width) { return std::max(0.0, width - 2 * metrics::cardHorizontalPadding); }
+    static double inlineWidth(double content) { return std::round(content / 2); }
+
+    // The buttons share the width equally, so each needs the widest label.
+    bool isStacked(double content) const
+    {
+        double widest = 0;
+        for (size_t i = 0; i < m_control->count(); ++i)
+            widest = std::max(widest, m_control->implicitItemWidth(i));
+        return m_control->count() * (widest + 2 * kSegmentPadding) + 2 * m_control->padding() > inlineWidth(content);
+    }
+
+    double labelRowHeight(double labelWidth, double minimum) const
+    {
+        return std::max(minimum, label()->heightForWidth(std::max(0.0, labelWidth)) + metrics::cardVerticalPadding);
+    }
+
     SegmentedControl* m_control;
+    bool m_stacked = false;
 };
 
 class DockPage : public Page
@@ -140,6 +186,7 @@ public:
         SegmentedRow* mode = sliders->addChild<SegmentedRow>(
                 tr("Display mode"), std::vector<std::string>{tr("Always show"), tr("Always hide"), tr("Smart hide")});
         SegmentedControl* visibility = mode->control();
+        visibility->setName("dock:displayMode");
         visibility->setCurrentIndex(m_settings.visibility());
         visibility->onCurrentChanged = [this](int index) { m_settings.setVisibility(index); };
 
