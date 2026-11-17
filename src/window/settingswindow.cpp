@@ -245,7 +245,7 @@ SettingsWindow::SettingsWindow()
     m_window->setTitle(tr("Settings"));
     m_window->resize({882, 600});
     // Half of a 1280-wide screen, so the window can be split beside another.
-    m_window->setMinimumSize({640, 600});
+    m_window->setMinimumSize({640, 500});
     // Under the key the Qt version's main.qml kept it.
     m_window->setRestoresSize("main");
     auto root = std::make_unique<SettingsRoot>(*this);
