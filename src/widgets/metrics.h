@@ -64,7 +64,7 @@ inline constexpr double formRowSpacing = l;
 inline constexpr double sidebarWidth = 230;
 inline constexpr double sidebarMinimumWidth = 180;
 inline constexpr double sidebarMargin = m;
-inline constexpr double sidebarItemHeight = 36;
+inline constexpr double sidebarItemHeight = 34;
 // The space above and below the 24 px icon tile, so the tile sits in an even inset.
 inline constexpr double sidebarItemPadding = (sidebarItemHeight - 24) / 2;
 inline constexpr double sidebarItemSpacing = xxs;
