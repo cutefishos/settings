@@ -22,13 +22,12 @@ namespace settings {
 
 static constexpr double kHeaderHeight = 44;
 static constexpr double kTitlePixelSize = 14;
-// With the window controls, a title bar as the toolkit's dialogs have: 32
-// high, the title centred on the window in a smaller size, clear of the
-// controls in their 32-pixel slot.
-static constexpr double kBarHeight = 32;
+// With the close control, a title bar as the toolkit's dialogs have: the
+// title centred on the window in a smaller size, on the close control's line
+// and clear of it.
+static constexpr double kBarHeight = window_controls::kDialogHeaderHeight;
 static constexpr double kBarTitlePixelSize = 12;
-static constexpr double kBarTitleInset = metrics::dialogWindowButtonsMargin + window_controls::kRowWidth
-        + (metrics::xxl - window_controls::kButton) + metrics::s;
+static constexpr double kBarTitleInset = window_controls::kDialogCloseInset + window_controls::kButton + metrics::s;
 
 // A ColumnLayout anchored to the window's left, right and top with the
 // dialog's padding, the title first in it; with the window controls, the
@@ -47,9 +46,7 @@ public:
         title->setWrap(true);
         title->setLayoutHints({.fillWidth = true});
         header = addChild<WindowHeader>(kBarHeight);
-        header->setMinimizeEnabled(false);
-        header->setMaximizeEnabled(false);
-        header->setButtonMargin(metrics::dialogWindowButtonsMargin);
+        header->setCloseOnly(true);
         barTitle = addChild<Label>(std::move(text));
         barTitle->setFontSize(kBarTitlePixelSize);
         barTitle->setTextAlignment(Label::TextAlignment::Center);
@@ -61,8 +58,6 @@ public:
     {
         controls = visible;
         header->setCloseVisible(visible);
-        header->setMinimizeVisible(visible);
-        header->setMaximizeVisible(visible);
         barTitle->setVisible(visible);
         title->setVisible(!visible);
         requestLayout();
@@ -94,7 +89,8 @@ protected:
         column->setGeometry({metrics::dialogPadding, top(), width,
                              std::max(0.0, geometry().height - top() - metrics::dialogPadding)});
         header->setGeometry({0, 0, geometry().width, controls ? kBarHeight : kHeaderHeight});
-        barTitle->setGeometry({kBarTitleInset, 0, std::max(0.0, geometry().width - 2 * kBarTitleInset), kBarHeight});
+        barTitle->setGeometry({kBarTitleInset, window_controls::kDialogCloseInset,
+                               std::max(0.0, geometry().width - 2 * kBarTitleInset), window_controls::kButton});
     }
 
 private:
