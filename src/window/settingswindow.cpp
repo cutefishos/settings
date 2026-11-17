@@ -57,9 +57,8 @@ static double snappedSidebarWidth(double width, double scale)
 }
 
 // The header's own part before the window buttons: a RowLayout of back,
-// forward and the page title, anchored from the sidebar's edge. The title is
-// FishUI's AlignedLabel on the sidebar title's baseline; the buttons line up
-// with the window buttons.
+// forward and the page title, anchored from the sidebar's edge. The buttons
+// line up with the window buttons, the title's capitals with the buttons.
 class HeaderBar : public View
 {
 public:
@@ -90,12 +89,6 @@ protected:
         const Window* window = this->window();
         const double scale = window ? window->scale() : 1;
         const auto snap = [scale](double value) { return std::round(value * scale) / scale; };
-        // Header and sidebar share the window's top edge. The title reads low
-        // on the sidebar title's baseline, so it sits 1px above it.
-        const double titleRaise = 1;
-        Label* sidebarTitle = m_sidebar->titleLabel();
-        const double textBaseline = sidebarTitle->geometry().y + sidebarTitle->baselineOffset() - titleRaise;
-
         const SizeF plate = navigation->sizeHint();
         LayoutHints buttons{.preferredWidth = plate.width, .preferredHeight = plate.height,
                             .verticalAlignment = Alignment::Start};
@@ -105,6 +98,9 @@ protected:
         if (!(navigation->layoutHints().margins == buttons.margins))
             navigation->setLayoutHints(buttons);
         LayoutHints text{.fillWidth = true, .verticalAlignment = Alignment::Start};
+        // The title's capitals are centred on the plate.
+        const double capCenter = buttons.margins.top + plate.height / 2;
+        const double textBaseline = snap(capCenter + title->capHeight() / 2);
         text.margins = {theme.smallSpacing, snap(textBaseline - title->baselineOffset()), 0, 0};
         if (!(title->layoutHints().margins == text.margins))
             title->setLayoutHints(text);
