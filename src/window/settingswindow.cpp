@@ -19,11 +19,13 @@
 #include "ui/header_button.h"
 #include "ui/keys.h"
 #include "ui/label.h"
+#include "ui/navigation_buttons.h"
 #include "ui/painter.h"
 #include "ui/cell_layout.h"
 #include "ui/sidebar_divider.h"
 #include "ui/theme.h"
 #include "ui/window.h"
+#include "ui/window_controls.h"
 #include "ui/window_header.h"
 #include "widgets/metrics.h"
 #include "window/page.h"
@@ -35,11 +37,6 @@ using cutefish::i18n::tr;
 
 namespace settings {
 
-static constexpr double kButtonSize = 32;
-static constexpr double kButtonsSpacing = 1;
-static constexpr double kGlyphSize = 16;
-// chevron-left.svg's stroke starts 3.25 of its 12 units in.
-static constexpr double kBackInkInset = 3.25 * kGlyphSize / 12;
 static constexpr size_t kMaxHistoryLength = 50;
 static constexpr uint32_t kBackKey = 0x1008ff26;
 static constexpr uint32_t kForwardKey = 0x1008ff27;
@@ -61,8 +58,8 @@ static double snappedSidebarWidth(double width, double scale)
 
 // The header's own part before the window buttons: a RowLayout of back,
 // forward and the page title, anchored from the sidebar's edge. The title is
-// FishUI's AlignedLabel on the sidebar title's baseline; the buttons stay
-// centred on its capitals.
+// FishUI's AlignedLabel on the sidebar title's baseline; the buttons line up
+// with the window buttons.
 class HeaderBar : public View
 {
 public:
@@ -70,22 +67,18 @@ public:
         : m_sidebar(sidebar)
     {
         m_row = addChild<RowLayout>();
-        m_row->setSpacing(kButtonsSpacing);
-        back = m_row->addChild<HeaderButton>(std::string(), kButtonSize);
-        back->setGlyph("chevron-left", kGlyphSize);
+        navigation = m_row->addChild<NavigationButtons>();
+        back = navigation->back();
         back->setName("back");
-        forward = m_row->addChild<HeaderButton>(std::string(), kButtonSize);
-        forward->setGlyph("chevron-right", kGlyphSize);
+        forward = navigation->forward();
         forward->setName("forward");
-        // Settings' NavigationButton plates.
-        for (HeaderButton* button : {back, forward})
-            button->setPlateAlphas({0.17, 0.26}, {0.21, 0.15});
         title = m_row->addChild<Label>();
         title->setName("title");
         title->setFontSize(metrics::points(metrics::headerTitlePointSize));
         title->setWeight(600);
     }
 
+    NavigationButtons* navigation;
     HeaderButton* back;
     HeaderButton* forward;
     Label* title;
@@ -102,16 +95,15 @@ protected:
         const double titleRaise = 1;
         Label* sidebarTitle = m_sidebar->titleLabel();
         const double textBaseline = sidebarTitle->geometry().y + sidebarTitle->baselineOffset() - titleRaise;
-        const double capCenter = snap(snap(textBaseline) - title->capHeight() / 2);
-        const double buttonTop = capCenter + titleRaise - kButtonSize / 2;
 
-        LayoutHints button{.preferredWidth = kButtonSize, .preferredHeight = kButtonSize,
-                           .verticalAlignment = Alignment::Start};
-        button.margins.top = buttonTop;
-        if (!(back->layoutHints().margins == button.margins)) {
-            back->setLayoutHints(button);
-            forward->setLayoutHints(button);
-        }
+        const SizeF plate = navigation->sizeHint();
+        LayoutHints buttons{.preferredWidth = plate.width, .preferredHeight = plate.height,
+                            .verticalAlignment = Alignment::Start};
+        // The plate is centred on the window buttons' line.
+        buttons.margins.top = static_cast<const WindowHeader*>(parent())->buttonsTop()
+                - (plate.height - window_controls::kButton) / 2;
+        if (!(navigation->layoutHints().margins == buttons.margins))
+            navigation->setLayoutHints(buttons);
         LayoutHints text{.fillWidth = true, .verticalAlignment = Alignment::Start};
         text.margins = {theme.smallSpacing, snap(textBaseline - title->baselineOffset()), 0, 0};
         if (!(title->layoutHints().margins == text.margins))
@@ -119,9 +111,8 @@ protected:
 
         const bool active = !window || window->isActive();
         title->setColor(active ? withAlpha(ColorId::Text, 0.85) : ColorRecipe(theme.disabledText));
-        // The back chevron's tip lines up with the cards' left edge.
-        const double left = snap(m_sidebar->geometry().width + metrics::pageMargin - (kButtonSize - kGlyphSize) / 2
-                                 - kBackInkInset);
+        // The plate keeps its top margin from the sidebar's edge too.
+        const double left = snap(m_sidebar->geometry().width + buttons.margins.top);
         m_row->setGeometry({left, 0, std::max(0.0, geometry().width - left - theme.smallSpacing),
                             geometry().height});
     }
