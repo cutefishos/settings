@@ -54,8 +54,6 @@ static std::string deviceType(const std::string& icon)
 // The dialog's content: the page's padding on top, as the window keeps it below.
 static ColumnLayout* makeContent(DialogWindow& dialog)
 {
-    // Close at the bottom closes it.
-    dialog.setCloseVisible(false);
     ColumnLayout* content = dialog.setContent<ColumnLayout>();
     content->setSpacing(metrics::dialogSpacing);
     return content;
@@ -85,9 +83,6 @@ AdapterDetailsDialog::AdapterDetailsDialog(Window* parent, std::shared_ptr<bluez
     m_discoverable->onToggled = [this](bool checked) { m_adapter->setDiscoverable(checked); };
     m_pairable = switches->addChild<SwitchRow>(tr("Allow incoming pairing"));
     m_pairable->onToggled = [this](bool checked) { m_adapter->setPairable(checked); };
-
-    DialogButton* close = makeButtons(content)->addChild<DialogButton>(tr("Close"));
-    close->onClicked = [this] { m_dialog->close(); };
 
     m_changed = m_adapter->changed.connect([this] { update(); });
     m_dialog->onClosed = [this] { m_changed.reset(); };
@@ -131,10 +126,7 @@ DeviceDetailsDialog::DeviceDetailsDialog(Window* parent, std::shared_ptr<bluez::
     m_blocked = switches->addChild<SwitchRow>(tr("Blocked"));
     m_blocked->onToggled = [this](bool checked) { m_device->setBlocked(checked); };
 
-    RowLayout* buttons = makeButtons(content);
-    DialogButton* close = buttons->addChild<DialogButton>(tr("Close"));
-    close->onClicked = [this] { m_dialog->close(); };
-    m_forget = buttons->addChild<DialogButton>(tr("Forget this device"), true);
+    m_forget = makeButtons(content)->addChild<DialogButton>(tr("Forget this device"), true);
     m_forget->setDestructive(true);
     m_forget->onClicked = [this] {
         m_device->forget();

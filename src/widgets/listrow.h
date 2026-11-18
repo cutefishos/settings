@@ -17,6 +17,7 @@ class Icon;
 class Label;
 class ListView;
 class Switch;
+class TextField;
 }
 
 namespace settings {
@@ -172,6 +173,27 @@ public:
 
 private:
     cutefish::ui::Switch* m_switch;
+};
+
+// A row whose value is typed into it: the label, then a text field of the
+// given width without a frame, the card being one, its text against the
+// row's end as a value's is. A press anywhere in the row goes to the field.
+class TextFieldRow : public ListRow
+{
+public:
+    TextFieldRow(std::string text, double fieldWidth);
+
+    cutefish::ui::TextField* field() const { return m_field; }
+    void setFieldWidth(double width);
+
+    bool acceptsPointer() const override { return true; }
+
+protected:
+    void pointerPress(const cutefish::ui::PointerEvent& event) override;
+    void pointerRelease(const cutefish::ui::PointerEvent& event) override;
+
+private:
+    cutefish::ui::TextField* m_field;
 };
 
 // A read-only row: the label, then its value in secondary text. Hidden while

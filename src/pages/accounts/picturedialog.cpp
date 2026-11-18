@@ -18,6 +18,7 @@
 #include "ui/painter.h"
 #include "ui/theme.h"
 #include "ui/window.h"
+#include "widgets/card.h"
 #include "widgets/metrics.h"
 
 using namespace cutefish;
@@ -180,16 +181,18 @@ PictureDialog::PictureDialog(SettingsWindow& parent, std::shared_ptr<accounts::U
     : FormDialog(parent, tr("Choose a picture"), kWidth)
     , m_account(std::move(account))
 {
-    setCloseVisible(false);
-
     m_preview = content()->addChild<PicturePreview>(m_account->userName());
     m_preview->setLayoutHints({.horizontalAlignment = Alignment::Center});
 
-    // The buttons keep more room above them than the dialog's spacing gives.
-    GridLayout* grid = content()->addChild<GridLayout>(kColumns);
-    grid->setColumnSpacing(metrics::m);
-    grid->setRowSpacing(metrics::m);
-    grid->setLayoutHints({.horizontalAlignment = Alignment::Center, .margins = {0, 0, 0, metrics::s}});
+    // The tiles keep the card's side padding to its top and bottom too, and
+    // five of them fill its width.
+    Card* card = content()->addChild<Card>();
+    card->setPadding({metrics::cardHorizontalPadding, metrics::cardHorizontalPadding, metrics::cardHorizontalPadding,
+                      metrics::cardHorizontalPadding});
+    GridLayout* grid = card->addChild<GridLayout>(kColumns);
+    grid->setColumnSpacing(metrics::xs);
+    grid->setRowSpacing(metrics::xs);
+    grid->setLayoutHints({.horizontalAlignment = Alignment::Center});
 
     // The service may keep a copy of a preset instead of its path, so a preset
     // is found by its contents too.
@@ -212,8 +215,6 @@ PictureDialog::PictureDialog(SettingsWindow& parent, std::shared_ptr<accounts::U
     choose->setName("picture-choose-file");
     choose->onClicked = [this] { chooseFile(); };
     buttons->addChild<View>()->setLayoutHints({.fillWidth = true});
-    DialogButton* cancel = buttons->addChild<DialogButton>(tr("Cancel"));
-    cancel->onClicked = [this] { requestClose(); };
     m_save = buttons->addChild<DialogButton>(tr("Save"), true);
     m_save->onClicked = [this] { save(); };
 

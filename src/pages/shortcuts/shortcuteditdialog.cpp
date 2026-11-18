@@ -10,6 +10,7 @@
 #include "base/event_loop.h"
 #include "base/i18n.h"
 #include "pages/shortcuts/shortcutkeys.h"
+#include "ui/button.h"
 #include "ui/dialog_window.h"
 #include "ui/event.h"
 #include "ui/keys.h"
@@ -18,7 +19,10 @@
 #include "ui/painter.h"
 #include "ui/cell_layout.h"
 #include "ui/theme.h"
+#include "widgets/card.h"
+#include "widgets/listrow.h"
 #include "widgets/metrics.h"
+#include "widgets/sections.h"
 
 using namespace cutefish::ui;
 using cutefish::i18n::tr;
@@ -27,7 +31,6 @@ namespace settings {
 
 static constexpr double kDialogWidth = 440;
 static constexpr double kRecorderHeight = 48;
-static constexpr Color kErrorColor = Color::rgb(0xE24B4B);
 
 static uint32_t compositorModifiers(uint32_t modifiers)
 {
@@ -81,14 +84,8 @@ protected:
         if (!m_pressed)
             return;
         setPressed(false);
-        if (!localRect().contains(event.position) || !onClicked)
-            return;
-        // After the event: the click rebuilds the rows this label is in.
-        cutefish::base::EventLoop::current()->post(
-                [callback = onClicked, alive = std::weak_ptr<int>(m_alive)] {
-                    if (alive.lock())
-                        callback();
-                });
+        if (localRect().contains(event.position) && onClicked)
+            onClicked();
     }
 
 private:
@@ -100,7 +97,6 @@ private:
 
     Label* m_label;
     bool m_pressed = false;
-    std::shared_ptr<int> m_alive = std::make_shared<int>(0);
 };
 
 } // namespace
@@ -137,14 +133,16 @@ protected:
     void layout() override
     {
         m_prompt->setColor(Theme::current().text);
-        // The RowLayout fills the field, inset by 12 at the sides.
-        m_row->setGeometry(localRect().adjusted(metrics::m, 0, -metrics::m, 0));
+        // The RowLayout fills the field, inset as a card's rows are.
+        m_row->setGeometry(
+                localRect().adjusted(metrics::cardHorizontalPadding, 0, -metrics::cardHorizontalPadding, 0));
     }
 
+    // A card's shape, in the accent colour while it takes the keys.
     void paint(Painter& painter) override
     {
         const Theme& theme = Theme::current();
-        painter.drawRoundedRect(localRect(), {theme.mediumRadius, 0, themeCorners()}, theme.highlight.withAlpha(0.12),
+        painter.drawRoundedRect(localRect(), {theme.bigRadius, 0, themeCorners()}, theme.highlight.withAlpha(0.12),
                                 1, theme.highlight);
     }
 
@@ -180,23 +178,19 @@ ShortcutEditDialog::ShortcutEditDialog(SettingsWindow& parent, ShortcutsModel& m
     , m_action(std::move(action))
 {
     ColumnLayout* column = content();
-    m_noShortcut = column->addChild<Label>(tr("No shortcut. Add one below."));
-    // The accelerators' rows, spaced as the dialog's own items are.
-    m_list = column->addChild<ColumnLayout>();
-    m_list->setSpacing(metrics::dialogSpacing);
-    m_list->setLayoutHints({.fillWidth = true});
+    m_empty = column->addChild<Card>();
+    m_noShortcut = m_empty->addChild<Label>(tr("No shortcut. Add one below."));
+    m_noShortcut->setWrap(true);
+    m_noShortcut->setLayoutHints({.fillWidth = true});
+    m_list = column->addChild<Card>(Card::Style::List);
     m_recorder = column->addChild<ShortcutRecorder>(*this);
     m_recorder->setName("shortcutdialog:recorder");
     m_recorder->setLayoutHints({.fillWidth = true});
-    m_messageLabel = column->addChild<Label>();
+    m_messageLabel = column->addChild<Footnote>();
     m_messageLabel->setName("shortcutdialog:message");
-    m_messageLabel->setWrap(true);
-    m_messageLabel->setFontSize(metrics::points(9));
-    m_messageLabel->setLayoutHints({.fillWidth = true});
 
-    RowLayout* buttons = column->addChild<RowLayout>();
-    buttons->setSpacing(metrics::dialogButtonSpacing);
-    buttons->setLayoutHints({.fillWidth = true, .margins = {0, metrics::xs, 0, 0}});
+    RowLayout* buttons = addButtonRow();
+    buttons->setLayoutHints({.fillWidth = true});
     m_add = buttons->addChild<DialogButton>(tr("Add shortcut"));
     m_add->onClicked = [this] { startRecording(std::nullopt); };
     m_restore = buttons->addChild<DialogButton>(tr("Restore default"));
@@ -233,29 +227,33 @@ void ShortcutEditDialog::refresh()
 void ShortcutEditDialog::update()
 {
     m_noShortcut->setColor(ColorId::DisabledText);
-    m_noShortcut->setVisible(m_accelerators.empty() && !m_recording);
+    m_empty->setVisible(m_accelerators.empty() && !m_recording);
 
+    // Kept until the event is over: a row's own button may be what rebuilds
+    // the rows.
+    std::vector<std::shared_ptr<View>> gone;
     while (!m_list->children().empty())
-        m_list->takeChild(m_list->children().back().get());
+        gone.push_back(m_list->takeChild(m_list->children().back().get()));
+    if (!gone.empty())
+        cutefish::base::EventLoop::current()->post([gone] {});
     m_list->setVisible(!m_accelerators.empty());
     for (const ShortcutsModel::Accelerator& accelerator : m_accelerators) {
-        RowLayout* row = m_list->addChild<RowLayout>();
-        row->setSpacing(metrics::rowSpacing);
-        row->setLayoutHints({.fillWidth = true});
+        ListRow* row = m_list->addChild<ListRow>();
+        row->setInteractive(false);
+        row->setContentSpacing(metrics::controlSpacing);
         const bool beingReplaced = m_recording && m_replacing && m_replacing->keysym == accelerator.keysym
                 && m_replacing->modifiers == accelerator.modifiers;
-        ShortcutKeys* keys = row->addChild<ShortcutKeys>(accelerator.parts);
-        keys->setDimmed(beingReplaced);
+        row->setLeading<ShortcutKeys>(accelerator.parts)->setDimmed(beingReplaced);
         if (accelerator.type == "user") {
-            Label* custom = row->addChild<Label>(tr("Custom"));
+            Label* custom = row->addContent<Label>(tr("Custom"));
             custom->setColor(ColorId::DisabledText);
             custom->setFontSize(metrics::points(8));
         }
-        row->addChild<View>()->setLayoutHints({.fillWidth = true});
+        row->addContent<View>()->setLayoutHints({.fillWidth = true});
         if (!m_recording) {
-            LinkLabel* change = row->addChild<LinkLabel>(tr("Change"));
+            Button* change = row->addContent<Button>(tr("Change"));
             change->onClicked = [this, accelerator] { startRecording(accelerator); };
-            LinkLabel* remove = row->addChild<LinkLabel>(tr("Remove"));
+            Button* remove = row->addContent<Button>(tr("Remove"));
             remove->onClicked = [this, accelerator] {
                 const ShortcutsModel::Result result =
                         m_model.removeAccelerator(m_action, accelerator.keysym, accelerator.modifiers);
@@ -271,7 +269,7 @@ void ShortcutEditDialog::update()
 
     m_messageLabel->setVisible(!m_message.empty());
     m_messageLabel->setText(m_message);
-    m_messageLabel->setColor(m_messageIsWarning ? ColorRecipe(ColorId::Text) : ColorRecipe(kErrorColor));
+    m_messageLabel->setColor(m_messageIsWarning ? ColorRecipe(ColorId::Text) : ColorRecipe(accent::red));
 
     m_add->setEnabled(!m_recording && m_accelerators.size() < 5);
     m_restore->setVisible(!m_isDefault);

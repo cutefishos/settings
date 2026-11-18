@@ -71,7 +71,6 @@ DetailsDialog::DetailsDialog(SettingsWindow& window, NetworkList& list, Kind kin
     , m_handler(std::make_unique<nm::Handler>())
     , m_dialog(std::make_unique<DialogWindow>(&window.window(), item.uniqueName, kWidth))
 {
-    m_dialog->setCloseVisible(false);
     auto content = std::make_unique<Content>();
     m_content = content.get();
     m_content->onEscape = [this] {
@@ -116,17 +115,13 @@ DetailsDialog::DetailsDialog(SettingsWindow& window, NetworkList& list, Kind kin
         };
     }
 
-    RowLayout* buttons = m_details->addChild<RowLayout>();
-    buttons->setSpacing(metrics::dialogButtonSpacing);
-    buttons->setLayoutHints({.horizontalAlignment = Alignment::End});
-    m_disconnect = buttons->addChild<DialogButton>(tr("Disconnect"));
+    m_disconnect = m_details->addChild<DialogButton>(tr("Disconnect"));
+    m_disconnect->setLayoutHints({.horizontalAlignment = Alignment::End});
     m_disconnect->onClicked = [this] {
         if (!m_list.isMock())
             m_handler->deactivateConnection(m_row.connectionPath, m_row.devicePath);
         close();
     };
-    DialogButton* closeButton = buttons->addChild<DialogButton>(tr("Close"));
-    closeButton->onClicked = [this] { close(); };
 
     m_dialog->setContentView(std::move(content));
     m_dialog->onBack = [this] { showIpSettings(false); };

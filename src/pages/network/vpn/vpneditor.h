@@ -13,9 +13,13 @@
 #include "ui/cell_layout.h"
 
 namespace cutefish::ui {
-class Label;
-class Switch;
 class TextField;
+}
+
+namespace settings {
+class Card;
+class Footnote;
+class SwitchRow;
 }
 
 namespace settings::network {
@@ -36,37 +40,29 @@ public:
     void setSecrets(const cutefish::networkmanager::VpnSecrets& secrets);
     cutefish::networkmanager::VpnValues collect() const;
     void focusFirst();
-    // Also measured: a label beside the editor sharing its column.
-    void measure(double width);
 
     const cutefish::networkmanager::VpnForm& form() const { return m_form; }
     bool installed() const { return m_form.installed; }
     bool complete() const;
-    // The label column's width, which a label beside the editor takes too.
-    double labelWidth() const;
 
     // Return in a field.
     std::function<void()> onAccepted;
     // Anything that changes complete() or the size.
     std::function<void()> onChanged;
 
-protected:
-    void layout() override;
-
 private:
     void changed();
 
     cutefish::networkmanager::VpnForm m_form;
-    double m_extraLabelWidth = 0;
-    cutefish::ui::Label* m_notInstalled;
-    cutefish::ui::RowLayout* m_nameRow;
-    cutefish::ui::Label* m_nameLabel;
+    Footnote* m_notInstalled;
+    // The name, then the first rows of the profile's kind.
+    Card* m_basic;
     cutefish::ui::TextField* m_name;
     PluginForm* m_plugin = nullptr;
     WireGuardEditor* m_wireGuard = nullptr;
-    cutefish::ui::ColumnLayout* m_switches;
-    cutefish::ui::Switch* m_shared;
-    cutefish::ui::Switch* m_ownNetworkOnly;
+    Card* m_switches;
+    SwitchRow* m_shared;
+    SwitchRow* m_ownNetworkOnly;
 };
 
 } // namespace settings::network

@@ -3,16 +3,10 @@
 
 #include "widgets/formdialog.h"
 
-#include <algorithm>
-
-#include "base/event_loop.h"
-#include "ui/keys.h"
-#include "ui/label.h"
 #include "ui/cell_layout.h"
-#include "ui/theme.h"
+#include "ui/dialog_window.h"
+#include "ui/keys.h"
 #include "ui/window.h"
-#include "ui/window_controls.h"
-#include "ui/window_header.h"
 #include "widgets/metrics.h"
 #include "window/settingswindow.h"
 
@@ -20,119 +14,36 @@ using namespace cutefish::ui;
 
 namespace settings {
 
-static constexpr double kHeaderHeight = 44;
-static constexpr double kTitlePixelSize = 14;
-// With the close control, a title bar as the toolkit's dialogs have: the
-// title centred on the window in a smaller size, on the close control's line
-// and clear of it.
-static constexpr double kBarHeight = window_controls::kDialogHeaderHeight;
-static constexpr double kBarTitlePixelSize = 12;
-static constexpr double kBarTitleInset = window_controls::kDialogCloseInset + window_controls::kButton + metrics::s;
-
-// A ColumnLayout anchored to the window's left, right and top with the
-// dialog's padding, the title first in it; with the window controls, the
-// title moves into a title bar over the column instead. The window is as
-// tall as the layout and the padding.
-class FormRoot : public View
-{
-public:
-    explicit FormRoot(std::string text)
-    {
-        column = addChild<ColumnLayout>();
-        column->setSpacing(metrics::dialogSpacing);
-        title = column->addChild<Label>(text);
-        title->setFontSize(kTitlePixelSize);
-        title->setWeight(600);
-        title->setWrap(true);
-        title->setLayoutHints({.fillWidth = true});
-        header = addChild<WindowHeader>(kBarHeight);
-        header->setCloseOnly(true);
-        barTitle = addChild<Label>(std::move(text));
-        barTitle->setFontSize(kBarTitlePixelSize);
-        barTitle->setTextAlignment(Label::TextAlignment::Center);
-        barTitle->setVerticallyCentered(true);
-        setControlsVisible(true);
-    }
-
-    void setControlsVisible(bool visible)
-    {
-        controls = visible;
-        header->setCloseVisible(visible);
-        barTitle->setVisible(visible);
-        title->setVisible(!visible);
-        requestLayout();
-    }
-
-    SizeF sizeHint() const override
-    {
-        const SizeF size = column->sizeHint();
-        return {size.width + 2 * metrics::dialogPadding, size.height + top() + metrics::dialogPadding};
-    }
-
-    double heightForWidth(double width) const override
-    {
-        return column->heightForWidth(std::max(0.0, width - 2 * metrics::dialogPadding)) + top() + metrics::dialogPadding;
-    }
-
-    ColumnLayout* column;
-    Label* title;
-    Label* barTitle;
-    WindowHeader* header;
-    bool controls = true;
-
-protected:
-    void layout() override
-    {
-        // Not filled to the window: a fixed-height dialog gives the rest to the
-        // layout's filling items, a fitted one is exactly as tall.
-        const double width = std::max(0.0, geometry().width - 2 * metrics::dialogPadding);
-        column->setGeometry({metrics::dialogPadding, top(), width,
-                             std::max(0.0, geometry().height - top() - metrics::dialogPadding)});
-        header->setGeometry({0, 0, geometry().width, controls ? kBarHeight : kHeaderHeight});
-        barTitle->setGeometry({kBarTitleInset, window_controls::kDialogCloseInset,
-                               std::max(0.0, geometry().width - 2 * kBarTitleInset), window_controls::kButton});
-    }
-
-private:
-    double top() const { return controls ? kBarHeight : metrics::dialogPadding; }
-};
-
 FormDialog::FormDialog(SettingsWindow& parent, std::string title, double width)
-    : m_window(std::make_unique<Window>())
-    , m_width(width)
+    : m_dialog(std::make_unique<DialogWindow>(&parent.window(), std::move(title), width))
 {
-    auto root = std::make_unique<FormRoot>(title);
-    m_root = root.get();
-    m_window->setTitle(title);
-    m_window->setContentView(std::move(root));
-    m_window->setTransientParent(&parent.window(), true);
-    m_window->onCloseRequested = [this] { requestClose(); };
-    m_window->addShortcut(NoModifier, key::Escape, [this] { requestClose(); });
+    m_content = m_dialog->setContent<ColumnLayout>();
+    m_content->setSpacing(metrics::dialogSpacing);
+    m_dialog->onClosed = [this] {
+        if (onClosed)
+            onClosed();
+    };
+    m_dialog->window()->onCloseRequested = [this] { requestClose(); };
+    m_dialog->window()->addShortcut(NoModifier, key::Escape, [this] { requestClose(); });
 }
 
 FormDialog::~FormDialog() = default;
 
-ColumnLayout* FormDialog::content() const
+Window* FormDialog::window() const
 {
-    return m_root->column;
-}
-
-Label* FormDialog::titleLabel() const
-{
-    return m_root->title;
+    return m_dialog->window();
 }
 
 void FormDialog::setTitle(std::string title)
 {
-    m_root->title->setText(title);
-    m_root->barTitle->setText(title);
-    if (m_window)
-        m_window->setTitle(title);
+    // The title's label goes with the window.
+    if (isOpen())
+        m_dialog->setTitle(std::move(title));
 }
 
 RowLayout* FormDialog::addButtonRow()
 {
-    RowLayout* row = m_root->column->addChild<RowLayout>();
+    RowLayout* row = m_content->addChild<RowLayout>();
     row->setSpacing(metrics::dialogButtonSpacing);
     row->setLayoutHints({.horizontalAlignment = Alignment::End});
     return row;
@@ -140,35 +51,14 @@ RowLayout* FormDialog::addButtonRow()
 
 void FormDialog::setFixedHeight(double height)
 {
-    m_fixedHeight = height;
-}
-
-void FormDialog::setCloseVisible(bool visible)
-{
-    m_root->setControlsVisible(visible);
-}
-
-void FormDialog::setBackgroundColor(std::optional<ColorRecipe> color)
-{
-    m_background = std::move(color);
-    if (m_window)
-        m_window->setBackgroundColor(m_background.value_or(ColorId::SecondBackground));
+    m_dialog->setHeight(height);
 }
 
 void FormDialog::show()
 {
-    if (!m_window)
+    if (!isOpen())
         return;
-    m_window->setBackgroundColor(m_background.value_or(ColorId::SecondBackground));
-    if (m_fixedHeight > 0) {
-        m_window->resize({m_width, m_fixedHeight});
-        m_window->setMinimumSize({m_width, m_fixedHeight});
-        m_window->setMaximumSize({m_width, m_fixedHeight});
-    } else {
-        m_window->resize({m_width, 0});
-        m_window->setFitsContentHeight(true);
-    }
-    m_window->show();
+    m_dialog->show();
     if (onShown)
         onShown();
 }
@@ -182,13 +72,9 @@ void FormDialog::requestClose()
 
 void FormDialog::close()
 {
-    if (!m_window)
+    if (!isOpen())
         return;
-    // The window may be handling the event that closes it.
-    std::shared_ptr<Window> window(std::move(m_window));
-    cutefish::base::EventLoop::current()->post([window] {});
-    if (onClosed)
-        onClosed();
+    m_dialog->close();
 }
 
 } // namespace settings

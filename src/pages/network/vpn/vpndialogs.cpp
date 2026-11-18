@@ -9,19 +9,20 @@
 #include "pages/network/common/formscroll.h"
 #include "pages/network/common/networklist.h"
 #include "pages/network/vpn/vpneditor.h"
-#include "ui/combo_box.h"
 #include "ui/dialog_window.h"
 #include "ui/file_chooser.h"
 #include "ui/keys.h"
-#include "ui/label.h"
 #include "ui/layout.h"
 #include "ui/cell_layout.h"
 #include "ui/theme.h"
 #include "ui/window.h"
+#include "ui/window_controls.h"
 #include "widgets/card.h"
 #include "widgets/formdialog.h"
 #include "widgets/listrow.h"
 #include "widgets/metrics.h"
+#include "widgets/rowcombobox.h"
+#include "widgets/sections.h"
 #include "window/settingswindow.h"
 
 using namespace cutefish::ui;
@@ -32,41 +33,16 @@ namespace nm = cutefish::networkmanager;
 namespace settings::network {
 
 static constexpr double kWidth = 460;
-// FishUI's dialog header, which the details dialog's content sits below.
-static constexpr double kHeaderHeight = 44;
-
-namespace {
+// The shared dialog's header, which the content sits below.
+static constexpr double kHeaderHeight = window_controls::kDialogHeaderHeight;
 
 // Red while it reports a failure, secondary text otherwise.
-class MessageLabel : public Label
+static void setMessage(Footnote* note, const std::string& text, bool problem)
 {
-public:
-    MessageLabel()
-    {
-        setWrap(true);
-        setLayoutHints({.fillWidth = true});
-    }
-
-    void setMessage(const std::string& text, bool problem)
-    {
-        m_problem = problem;
-        setText(text);
-        setVisible(!text.empty());
-        requestLayout();
-    }
-
-protected:
-    void layout() override
-    {
-        setColor(m_problem ? accent::red : Theme::current().disabledText);
-        Label::layout();
-    }
-
-private:
-    bool m_problem = true;
-};
-
-} // namespace
+    note->setText(text);
+    note->setColor(problem ? std::optional<ColorRecipe>(accent::red) : std::nullopt);
+    note->setVisible(!text.empty());
+}
 
 AddVpnDialog::AddVpnDialog(SettingsWindow& window, nm::Handler& handler)
     : m_window(window)
@@ -97,19 +73,16 @@ void AddVpnDialog::show()
     m_adding = false;
     m_error.clear();
     m_dialog = std::make_unique<FormDialog>(m_window, tr("Add VPN"), kWidth);
-    m_dialog->setCloseVisible(false);
     ColumnLayout* content = m_dialog->content();
 
-    RowLayout* kindRow = content->addChild<RowLayout>();
-    kindRow->setSpacing(metrics::dialogSpacing);
-    kindRow->setLayoutHints({.fillWidth = true});
-    m_kindLabel = kindRow->addChild<Label>(tr("Type"));
+    Card* kindCard = content->addChild<Card>(Card::Style::List);
+    ListRow* kindRow = kindCard->addChild<ListRow>(tr("Type"));
+    kindRow->setInteractive(false);
     m_kinds = m_handler.vpnKinds();
     std::vector<std::string> labels;
     for (const nm::vpn::Kind& kind : m_kinds)
         labels.push_back(kind.installed ? kind.label : format(tr("{type} (Not Installed)"), {{"type", kind.label}}));
-    m_kindBox = kindRow->addChild<ComboBox>(labels);
-    m_kindBox->setLayoutHints({.fillWidth = true});
+    m_kindBox = kindRow->addContent<RowComboBox>(labels);
     m_kindBox->setCurrentIndex(0);
     m_kindBox->onActivated = [this](int) { loadKind(); };
 
@@ -119,21 +92,18 @@ void AddVpnDialog::show()
     m_editor->onChanged = [this] { update(); };
     m_scroll = content->addChild<FormScroll>(std::move(editor), metrics::dialogPadding);
     // A long form scrolls instead of outgrowing the screen.
-    m_scroll->maximumHeight = [this, kindRow] {
+    m_scroll->maximumHeight = [this, kindCard] {
         const double width = kWidth - 2 * metrics::dialogPadding;
-        double height = m_window.window().size().height - 2 * metrics::xxl - 2 * metrics::dialogPadding
-                        - m_dialog->titleLabel()->heightForWidth(width - metrics::xxl) - kindRow->heightForWidth(width)
-                        - m_addButton->sizeHint().height - 3 * metrics::dialogSpacing;
+        double height = m_window.window().size().height - 2 * metrics::xxl - kHeaderHeight - metrics::dialogPadding
+                        - kindCard->heightForWidth(width) - m_addButton->sizeHint().height
+                        - 2 * metrics::dialogSpacing;
         if (m_errorLabel->isVisible())
             height -= m_errorLabel->heightForWidth(width) + metrics::dialogSpacing;
         return height;
     };
 
-    m_errorLabel = content->addChild<MessageLabel>();
-    RowLayout* buttons = m_dialog->addButtonRow();
-    DialogButton* cancel = buttons->addChild<DialogButton>(tr("Cancel"));
-    cancel->onClicked = [this] { m_dialog->close(); };
-    m_addButton = buttons->addChild<DialogButton>(tr("Add"), true);
+    m_errorLabel = content->addChild<Footnote>();
+    m_addButton = m_dialog->addButtonRow()->addChild<DialogButton>(tr("Add"), true);
     m_addButton->onClicked = [this] { add(); };
 
     loadKind();
@@ -148,7 +118,6 @@ void AddVpnDialog::loadKind()
     if (index < 0 || size_t(index) >= m_kinds.size())
         return;
     m_editor->load(m_handler.vpnForm(m_kinds[size_t(index)].kind, {}));
-    m_editor->measure(m_kindLabel->sizeHint().width);
     m_scroll->scrollToTop();
     m_error.clear();
     update();
@@ -170,10 +139,7 @@ void AddVpnDialog::update()
 {
     if (!m_dialog || !m_editor)
         return;
-    LayoutHints hints = m_kindLabel->layoutHints();
-    hints.preferredWidth = m_editor->labelWidth();
-    m_kindLabel->setLayoutHints(hints);
-    static_cast<MessageLabel*>(m_errorLabel)->setMessage(m_error, true);
+    setMessage(m_errorLabel, m_error, true);
     m_addButton->setEnabled(!m_adding && m_editor->complete());
     m_scroll->requestLayout();
 }
@@ -186,18 +152,15 @@ VpnDetailsDialog::VpnDetailsDialog(SettingsWindow& window, NetworkList& list, nm
     , m_connectionPath(std::move(connectionPath))
     , m_dialog(std::make_unique<DialogWindow>(&window.window(), std::string(), kWidth))
 {
-    m_dialog->setCloseVisible(false);
     auto content = std::make_unique<ColumnLayout>();
     m_content = content.get();
     m_content->setSpacing(metrics::dialogSpacing);
 
-    Card* formCard = m_content->addChild<Card>();
-    formCard->setPadding(Margins::all(metrics::cardHorizontalPadding));
     auto editor = std::make_unique<VpnEditor>();
     m_editor = editor.get();
     m_editor->onAccepted = [this] { save(); };
     m_editor->onChanged = [this] { update(); };
-    m_scroll = formCard->addChild<FormScroll>(std::move(editor), metrics::cardHorizontalPadding);
+    m_scroll = m_content->addChild<FormScroll>(std::move(editor), metrics::dialogPadding);
 
     m_statusCard = m_content->addChild<Card>(Card::Style::List);
     m_type = m_statusCard->addChild<InfoRow>(tr("Type"));
@@ -227,11 +190,11 @@ VpnDetailsDialog::VpnDetailsDialog(SettingsWindow& window, NetworkList& list, nm
         m_exportChooser->open();
     };
 
-    m_message = m_content->addChild<MessageLabel>();
+    m_message = m_content->addChild<Footnote>();
 
     RowLayout* buttons = m_content->addChild<RowLayout>();
     buttons->setSpacing(metrics::dialogButtonSpacing);
-    buttons->setLayoutHints({.horizontalAlignment = Alignment::End});
+    buttons->setLayoutHints({.fillWidth = true});
     DialogButton* remove = buttons->addChild<DialogButton>(tr("Remove VPN"));
     remove->setDestructive(true);
     remove->onClicked = [this] {
@@ -239,23 +202,22 @@ VpnDetailsDialog::VpnDetailsDialog(SettingsWindow& window, NetworkList& list, nm
         close();
     };
     buttons->addChild<View>()->setLayoutHints({.fillWidth = true});
-    DialogButton* cancel = buttons->addChild<DialogButton>(tr("Cancel"));
-    cancel->onClicked = [this] { close(); };
     m_saveButton = buttons->addChild<DialogButton>(tr("Save"), true);
     m_saveButton->onClicked = [this] { save(); };
 
     // A long form scrolls instead of outgrowing the main window.
     m_scroll->maximumHeight = [this, buttons] {
         const double width = kWidth - 2 * metrics::dialogPadding;
-        double height = m_window.window().size().height - 2 * metrics::xxl - kHeaderHeight
-                        - 2 * metrics::dialogPadding - m_statusCard->heightForWidth(width)
-                        - buttons->sizeHint().height - 2 * metrics::dialogSpacing;
+        double height = m_window.window().size().height - 2 * metrics::xxl - kHeaderHeight - metrics::dialogPadding
+                        - m_statusCard->heightForWidth(width) - buttons->sizeHint().height
+                        - 2 * metrics::dialogSpacing;
         if (m_message->isVisible())
             height -= m_message->heightForWidth(width) + metrics::dialogSpacing;
         return height;
     };
 
     m_dialog->setContentView(std::move(content));
+    m_dialog->onClosed = [this] { m_subscriptions.clear(); };
     m_dialog->window()->addShortcut(NoModifier, key::Escape, [this] { close(); });
 
     m_subscriptions.push_back(m_handler.vpnSecretsLoaded.connect(
@@ -308,7 +270,6 @@ void VpnDetailsDialog::close()
 {
     if (!m_dialog->window())
         return;
-    m_subscriptions.clear();
     m_dialog->close();
 }
 
@@ -333,8 +294,7 @@ void VpnDetailsDialog::update()
                                                                                    : tr("Not connected"));
     m_address->setValue(row->connectionState == nm::ConnectionStatus::Activated ? row->ipV4Address : std::string());
     m_export->setVisible(m_editor->form().exportable);
-    static_cast<MessageLabel*>(m_message)
-        ->setMessage(!m_error.empty() ? m_error : row->statusMessage, !m_error.empty());
+    setMessage(m_message, !m_error.empty() ? m_error : row->statusMessage, !m_error.empty());
     m_saveButton->setText(m_saving ? tr("Saving…") : tr("Save"));
     m_saveButton->setEnabled(!m_saving && m_editor->complete());
     m_scroll->requestLayout();

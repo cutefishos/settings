@@ -107,8 +107,8 @@ TEST(Accounts, ChangePasswordWantsTheSamePasswordTwice)
     ASSERT_EQ(fields.size(), 2u);
     EXPECT_EQ(fields[0]->echoMode(), TextField::EchoMode::Password);
     const auto buttons = findAll<DialogButton>(dialogWindow.contentView());
-    ASSERT_EQ(buttons.size(), 2u);
-    DialogButton* change = buttons[1];
+    ASSERT_EQ(buttons.size(), 1u);
+    DialogButton* change = buttons[0];
     EXPECT_FALSE(change->isEnabled());
 
     typeInto(dialogWindow, fields[0], "abc");
@@ -135,8 +135,8 @@ TEST(Accounts, AddUserShowsTheServicesAnswer)
     const auto fields = findAll<TextField>(dialogWindow.contentView());
     ASSERT_EQ(fields.size(), 3u);
     const auto buttons = findAll<DialogButton>(dialogWindow.contentView());
-    ASSERT_EQ(buttons.size(), 2u);
-    DialogButton* add = buttons[1];
+    ASSERT_EQ(buttons.size(), 1u);
+    DialogButton* add = buttons[0];
     typeInto(dialogWindow, fields[0], "alice");
     typeInto(dialogWindow, fields[1], "pw");
     EXPECT_FALSE(add->isEnabled());
@@ -302,8 +302,8 @@ TEST(Accounts, ThePictureDialogSavesOnlyAnotherPicture)
     View* content = dialog.window()->contentView();
     EXPECT_TRUE(findView(content, "picture-choose-file"));
     const std::vector<DialogButton*> buttons = findAll<DialogButton>(content);
-    ASSERT_EQ(buttons.size(), 3u);
-    // Choose File and Cancel, then Save, which waits for another picture.
+    ASSERT_EQ(buttons.size(), 2u);
+    // Choose File, then Save, which waits for another picture.
     EXPECT_TRUE(buttons.front()->isEnabled());
     EXPECT_FALSE(buttons.back()->isEnabled());
 }

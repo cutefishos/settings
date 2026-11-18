@@ -12,16 +12,18 @@
 #include "cutefish/networkmanager/handler.h"
 
 namespace cutefish::ui {
-class ComboBox;
 class DialogButton;
-class GridLayout;
-class Label;
 class TextField;
 }
 
 namespace settings {
+class Card;
+class Footnote;
 class FormDialog;
+class ListRow;
+class RowComboBox;
 class SettingsWindow;
+class TextFieldRow;
 }
 
 namespace settings::network {
@@ -50,7 +52,7 @@ public:
     void join();
 
     cutefish::ui::TextField* nameField() const { return m_name; }
-    cutefish::ui::ComboBox* securityBox() const { return m_security; }
+    RowComboBox* securityBox() const { return m_security; }
     cutefish::ui::TextField* userNameField() const { return m_userName; }
     cutefish::ui::TextField* passwordField() const { return m_password; }
     FormDialog* dialog() const { return m_dialog.get(); }
@@ -78,17 +80,16 @@ private:
     // 192-bit networks sign in with EAP-TLS, which needs certificates no field asks for.
     bool m_needsCertificate = false;
 
-    cutefish::ui::GridLayout* m_form = nullptr;
-    std::vector<cutefish::ui::Label*> m_labels;
-    cutefish::ui::Label* m_nameLabel = nullptr;
+    Card* m_form = nullptr;
+    TextFieldRow* m_nameRow = nullptr;
     cutefish::ui::TextField* m_name = nullptr;
-    cutefish::ui::Label* m_securityLabel = nullptr;
-    cutefish::ui::ComboBox* m_security = nullptr;
-    cutefish::ui::Label* m_userNameLabel = nullptr;
+    ListRow* m_securityRow = nullptr;
+    RowComboBox* m_security = nullptr;
+    TextFieldRow* m_userNameRow = nullptr;
     cutefish::ui::TextField* m_userName = nullptr;
-    cutefish::ui::Label* m_passwordLabel = nullptr;
+    TextFieldRow* m_passwordRow = nullptr;
     cutefish::ui::TextField* m_password = nullptr;
-    cutefish::ui::Label* m_certificateNote = nullptr;
+    Footnote* m_certificateNote = nullptr;
     cutefish::ui::DialogButton* m_joinButton = nullptr;
 };
 

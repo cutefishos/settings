@@ -17,18 +17,23 @@ class Handler;
 }
 
 namespace cutefish::ui {
-class ComboBox;
 class DialogButton;
-class Label;
-class Switch;
 class TextField;
+}
+
+namespace settings {
+class Card;
+class Footnote;
+class RowComboBox;
+class SwitchRow;
+class TextFieldRow;
 }
 
 namespace settings::network {
 
 // How a saved network gets its addresses and name servers, shown in place of
 // its details. Save writes the profile and applies it to the connection at
-// once; onFinished follows a save or Cancel.
+// once; onFinished follows a save.
 class IpSettingsView : public cutefish::ui::ColumnLayout
 {
 public:
@@ -37,18 +42,9 @@ public:
 
     std::function<void()> onFinished;
 
-protected:
-    void layout() override;
-
 private:
-    struct FormRow
-    {
-        cutefish::ui::RowLayout* row;
-        cutefish::ui::Label* label;
-    };
-
-    FormRow addRow(cutefish::ui::ColumnLayout* card, const std::string& label);
-    cutefish::ui::TextField* addField(cutefish::ui::RowLayout* row, const std::string& placeholder);
+    RowComboBox* addMethod(Card* card, const std::string& text);
+    TextFieldRow* addField(Card* card, const std::string& text, const std::string& placeholder);
     void load();
     cutefish::networkmanager::ip::Form collect() const;
     void fillFromCurrent(bool v4);
@@ -61,27 +57,24 @@ private:
     cutefish::networkmanager::ip::Form m_form;
     bool m_saving = false;
     std::string m_error;
-    std::vector<cutefish::ui::Label*> m_fieldLabels;
 
-    cutefish::ui::ComboBox* m_ipv4Method;
-    cutefish::ui::RowLayout* m_ipv4AddressRow;
+    RowComboBox* m_ipv4Method;
+    TextFieldRow* m_ipv4AddressRow;
     cutefish::ui::TextField* m_ipv4Address;
-    cutefish::ui::RowLayout* m_ipv4NetmaskRow;
+    TextFieldRow* m_ipv4NetmaskRow;
     cutefish::ui::TextField* m_ipv4Netmask;
-    cutefish::ui::RowLayout* m_ipv4GatewayRow;
+    TextFieldRow* m_ipv4GatewayRow;
     cutefish::ui::TextField* m_ipv4Gateway;
-    cutefish::ui::ComboBox* m_ipv6Method;
-    cutefish::ui::RowLayout* m_ipv6AddressRow;
+    RowComboBox* m_ipv6Method;
+    TextFieldRow* m_ipv6AddressRow;
     cutefish::ui::TextField* m_ipv6Address;
-    cutefish::ui::RowLayout* m_ipv6PrefixRow;
+    TextFieldRow* m_ipv6PrefixRow;
     cutefish::ui::TextField* m_ipv6Prefix;
-    cutefish::ui::RowLayout* m_ipv6GatewayRow;
+    TextFieldRow* m_ipv6GatewayRow;
     cutefish::ui::TextField* m_ipv6Gateway;
-    cutefish::ui::RowLayout* m_automaticDnsRow;
-    cutefish::ui::Switch* m_automaticDns;
+    SwitchRow* m_automaticDns;
     cutefish::ui::TextField* m_dns;
-    cutefish::ui::Label* m_message;
-    bool m_problem = false;
+    Footnote* m_message;
     cutefish::ui::DialogButton* m_saveButton;
 };
 

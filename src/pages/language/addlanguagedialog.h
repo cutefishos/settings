@@ -19,6 +19,7 @@ class ScrollView;
 
 namespace settings {
 
+class Footnote;
 class Language;
 class SearchField;
 
@@ -41,8 +42,7 @@ private:
     cutefish::ui::ScrollView* m_scroll;
     cutefish::ui::ColumnLayout* m_rows;
     cutefish::ui::Label* m_empty;
-    cutefish::ui::Label* m_error;
-    cutefish::ui::DialogButton* m_cancel;
+    Footnote* m_error;
     cutefish::ui::DialogButton* m_add;
     std::string m_selectedCode;
     bool m_adding = false;

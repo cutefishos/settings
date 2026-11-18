@@ -10,18 +10,17 @@
 #include "base/i18n.h"
 #include "cutefish/networkmanager/types.h"
 #include "pages/network/common/textchecks.h"
-#include "pages/network/common/rows.h"
 #include "ui/button.h"
-#include "ui/combo_box.h"
 #include "ui/file_chooser.h"
 #include "ui/label.h"
 #include "ui/cell_layout.h"
-#include "ui/switch.h"
 #include "ui/text_field.h"
 #include "ui/theme.h"
 #include "widgets/card.h"
 #include "widgets/listrow.h"
 #include "widgets/metrics.h"
+#include "widgets/rowcombobox.h"
+#include "widgets/sections.h"
 
 using namespace cutefish::ui;
 using cutefish::i18n::format;
@@ -31,8 +30,9 @@ namespace schema = cutefish::networkmanager::vpn::schema;
 
 namespace settings::network {
 
-// A longer label wraps rather than squeezing the fields.
-static constexpr double kMaximumLabelWidth = 140;
+static constexpr double kFieldWidth = 240;
+// A field sharing its width with another control keeps this much.
+static constexpr double kMinimumFieldWidth = 120;
 
 namespace {
 
@@ -72,33 +72,26 @@ private:
 
 } // namespace
 
-static Label* addFieldLabel(RowLayout* row, const std::string& text, std::vector<Label*>& labels)
+// Below a card, lined up with the card's text.
+static LinkLabel* addLink(ColumnLayout* parent, const std::string& text)
 {
-    Label* label = row->addChild<Label>(text);
-    label->setWrap(true);
-    labels.push_back(label);
-    return label;
+    LinkLabel* link = parent->addChild<LinkLabel>(text);
+    link->setLayoutHints({.margins = {metrics::cardHorizontalPadding, 0, metrics::cardHorizontalPadding, 0}});
+    return link;
 }
 
-static RowLayout* addFormRow(ColumnLayout* parent)
-{
-    RowLayout* row = parent->addChild<RowLayout>();
-    row->setSpacing(metrics::dialogSpacing);
-    row->setLayoutHints({.fillWidth = true});
-    return row;
-}
-
-// The fields of a plugin VPN: the basic ones, then the advanced ones by
-// section behind a toggle.
+// The fields of a plugin VPN: the basic ones as rows of the editor's first
+// card, then the advanced ones, a card per section, behind a toggle.
 class PluginForm : public ColumnLayout
 {
 public:
     std::function<void()> onAccepted;
     std::function<void()> onChanged;
 
-    PluginForm()
+    explicit PluginForm(Card* basic)
+        : m_basic(basic)
     {
-        setSpacing(metrics::formRowSpacing);
+        setSpacing(metrics::dialogSpacing);
         setLayoutHints({.fillWidth = true});
     }
 
@@ -115,7 +108,6 @@ public:
                 m_storage[field.key] = field.storage;
         }
         m_advancedShown = false;
-        m_advancedMeasured = false;
         build();
     }
 
@@ -157,42 +149,25 @@ public:
         return true;
     }
 
-    // The labels that share the editor's label column, as far as they have appeared.
-    std::vector<Label*> labels() const
-    {
-        std::vector<Label*> labels;
-        for (const FieldRow& row : m_rows) {
-            if (row.label && (!row.field->advanced || m_advancedMeasured))
-                labels.push_back(row.label);
-        }
-        return labels;
-    }
-
-    // Field labels other than switches' get the column's width.
-    void setLabelWidth(double width)
-    {
-        for (FieldRow& row : m_rows) {
-            if (!row.label || row.field->type == schema::Type::Bool)
-                continue;
-            LayoutHints hints = row.label->layoutHints();
-            if (hints.preferredWidth != width) {
-                hints.preferredWidth = width;
-                row.label->setLayoutHints(hints);
-            }
-        }
-    }
-
 private:
     struct FieldRow
     {
         const schema::FormField* field = nullptr;
-        RowLayout* row = nullptr;
-        Label* label = nullptr;
+        ListRow* row = nullptr;
+        TextFieldRow* fieldRow = nullptr;
         TextField* text = nullptr;
-        ComboBox* box = nullptr;
-        ComboBox* storage = nullptr;
-        Switch* toggle = nullptr;
+        RowComboBox* box = nullptr;
+        RowComboBox* storage = nullptr;
+        SwitchRow* toggle = nullptr;
         std::vector<uint32_t> storageValues;
+    };
+
+    // An advanced section and its rows in m_rows, hidden while none of them shows.
+    struct Group
+    {
+        Section* section = nullptr;
+        size_t first = 0;
+        size_t last = 0;
     };
 
     bool shown(const schema::Field& field) const
@@ -206,67 +181,69 @@ private:
         while (!children().empty())
             takeChild(children().front().get());
         m_rows.clear();
-        m_sectionTitles.clear();
+        m_groups.clear();
         m_rows.reserve(m_fields.size());
 
         bool hasAdvanced = false;
         for (const schema::FormField& field : m_fields) {
             if (!field.advanced)
-                addRow(this, field);
+                addRow(m_basic, field);
             hasAdvanced |= field.advanced;
         }
 
-        m_link = addChild<LinkLabel>(tr("Show advanced options"));
+        m_link = addLink(this, tr("Show advanced options"));
         m_link->setVisible(hasAdvanced);
         m_link->onClicked = [this] {
             m_advancedShown = !m_advancedShown;
-            m_advancedMeasured = true;
             update();
         };
 
         m_advanced = addChild<ColumnLayout>();
-        m_advanced->setSpacing(metrics::formRowSpacing);
+        m_advanced->setSpacing(metrics::dialogSpacing);
         m_advanced->setLayoutHints({.fillWidth = true});
         std::string section;
-        ColumnLayout* sectionColumn = nullptr;
+        Card* card = nullptr;
         for (const schema::FormField& field : m_fields) {
             if (!field.advanced)
                 continue;
-            if (!sectionColumn || field.section != section) {
+            if (!card || field.section != section) {
                 section = field.section;
-                sectionColumn = m_advanced->addChild<ColumnLayout>();
-                sectionColumn->setSpacing(metrics::formRowSpacing);
-                sectionColumn->setLayoutHints({.fillWidth = true});
-                Label* title = sectionColumn->addChild<Label>(section);
-                title->setWeight(600);
-                title->setLayoutHints({.fillWidth = true, .margins = {0, metrics::s, 0, 0}});
-                m_sectionTitles.push_back(title);
+                Section* group = m_advanced->addChild<Section>(section);
+                group->title()->setVisible(!section.empty());
+                card = group->addChild<Card>(Card::Style::List);
+                m_groups.push_back({group, m_rows.size(), m_rows.size()});
             }
-            addRow(sectionColumn, field);
+            addRow(card, field);
+            m_groups.back().last = m_rows.size();
         }
         reload();
     }
 
-    void addRow(ColumnLayout* parent, const schema::FormField& field)
+    TextFieldRow* addFieldRow(Card* card, FieldRow& row)
+    {
+        TextFieldRow* fieldRow = card->addChild<TextFieldRow>(row.field->label, kFieldWidth);
+        row.row = fieldRow;
+        row.fieldRow = fieldRow;
+        row.text = fieldRow->field();
+        row.text->onAccepted = [this] { accepted(); };
+        return fieldRow;
+    }
+
+    void addRow(Card* card, const schema::FormField& field)
     {
         FieldRow row;
         row.field = &field;
-        row.row = addFormRow(parent);
-        std::vector<Label*> unused;
-        row.label = addFieldLabel(row.row, field.label, unused);
+        const std::string key = field.key;
         switch (field.type) {
         case schema::Type::Password: {
-            row.text = row.row->addChild<TextField>();
+            TextFieldRow* fieldRow = addFieldRow(card, row);
             row.text->setPlaceholder(tr("Asked on connect"));
             row.text->setEchoMode(TextField::EchoMode::Password);
-            row.text->setLayoutHints({.fillWidth = true});
-            const std::string key = field.key;
             row.text->onTextEdited = [this, key, text = row.text] {
                 m_secrets[key] = text->text();
                 changed();
             };
-            row.text->onAccepted = [this] { accepted(); };
-            row.storage = row.row->addChild<ComboBox>();
+            row.storage = fieldRow->addContent<RowComboBox>();
             row.storage->onActivated = [this, index = m_rows.size()](int choice) {
                 FieldRow& current = m_rows[index];
                 if (choice >= 0 && size_t(choice) < current.storageValues.size())
@@ -276,14 +253,13 @@ private:
             break;
         }
         case schema::Type::File: {
-            row.text = row.row->addChild<TextField>();
+            TextFieldRow* fieldRow = addFieldRow(card, row);
             row.text->setPlaceholder(field.required ? tr("Required") : tr("Optional"));
-            row.text->setLayoutHints({.fillWidth = true});
-            const std::string key = field.key;
             row.text->onTextEdited = [this, key, text = row.text] { setValue(key, text->text()); };
-            row.text->onAccepted = [this] { accepted(); };
-            Button* choose = row.row->addChild<Button>(tr("Choose…"));
-            choose->setLayoutHints({.fillHeight = true});
+            Button* choose = fieldRow->addContent<Button>(tr("Choose…"));
+            // The field and its button share the other fields' width.
+            fieldRow->setFieldWidth(
+                    std::max(kMinimumFieldWidth, kFieldWidth - metrics::rowSpacing - choose->sizeHint().width));
             const std::string title = field.label;
             choose->onClicked = [this, key, title] {
                 m_fileChooser = std::make_unique<FileChooser>(window());
@@ -302,9 +278,9 @@ private:
             std::vector<std::string> labels;
             for (const schema::Choice& choice : field.choices)
                 labels.push_back(choice.label);
-            row.box = row.row->addChild<ComboBox>(labels);
-            row.box->setLayoutHints({.fillWidth = true});
-            const std::string key = field.key;
+            row.row = card->addChild<ListRow>(field.label);
+            row.row->setInteractive(false);
+            row.box = row.row->addContent<RowComboBox>(labels);
             row.box->onActivated = [this, key, choices = field.choices](int index) {
                 if (index >= 0 && size_t(index) < choices.size())
                     setValue(key, choices[size_t(index)].value);
@@ -312,27 +288,21 @@ private:
             break;
         }
         case schema::Type::Bool: {
-            row.label->setLayoutHints({.fillWidth = true});
-            row.toggle = row.row->addChild<Switch>();
-            setTrailingSwitchPadding(row.toggle);
-            const std::string key = field.key;
+            row.toggle = card->addChild<SwitchRow>(field.label);
+            row.row = row.toggle;
             row.toggle->onToggled = [this, key](bool checked) { setValue(key, checked ? "true" : "false"); };
             break;
         }
         default: {
-            const bool number = field.type == schema::Type::Number;
-            row.text = row.row->addChild<TextField>();
+            addFieldRow(card, row);
             row.text->setPlaceholder(!field.placeholder.empty() ? field.placeholder
                                      : field.required           ? tr("Required")
                                                                 : tr("Optional"));
-            row.text->setLayoutHints({.fillWidth = true});
-            if (number) {
+            if (field.type == schema::Type::Number) {
                 const long long maximum = field.maximum > 0 ? field.maximum : INT_MAX;
                 row.text->setValidator([maximum](std::string_view text) { return isNumberText(text, maximum); });
             }
-            const std::string key = field.key;
             row.text->onTextEdited = [this, key, text = row.text] { setValue(key, text->text()); };
-            row.text->onAccepted = [this] { accepted(); };
             break;
         }
         }
@@ -410,8 +380,16 @@ private:
                 const uint32_t storage = found == m_storage.end() ? nm::SecretAgentOwned : found->second;
                 const bool saving = storage != nm::SecretNotSaved && storage != nm::SecretNotRequired;
                 row.text->setVisible(saving);
-                row.storage->setLayoutHints({.fillWidth = !saving, .preferredWidth = 120});
+                // The field and its storage choice share the other fields' width.
+                const double choice = row.storage->sizeHint().width - row.storage->trailingOverhang();
+                row.fieldRow->setFieldWidth(std::max(kMinimumFieldWidth, kFieldWidth - metrics::rowSpacing - choice));
             }
+        }
+        for (const Group& group : m_groups) {
+            bool any = false;
+            for (size_t i = group.first; i < group.last; ++i)
+                any |= m_rows[i].row->isVisible();
+            group.section->setVisible(any);
         }
         m_link->setText(m_advancedShown ? tr("Hide advanced options") : tr("Show advanced options"));
         m_advanced->setVisible(m_advancedShown);
@@ -425,40 +403,39 @@ private:
     std::map<std::string, std::string> m_secrets;
     bool m_shared = false;
     bool m_advancedShown = false;
-    bool m_advancedMeasured = false;
+    Card* m_basic;
     std::vector<FieldRow> m_rows;
-    std::vector<Label*> m_sectionTitles;
+    std::vector<Group> m_groups;
     LinkLabel* m_link = nullptr;
     ColumnLayout* m_advanced = nullptr;
     std::unique_ptr<FileChooser> m_fileChooser;
 };
 
-// A WireGuard tunnel as wg-quick lays it out: the interface, then a card per peer.
+// A WireGuard tunnel as wg-quick lays it out: the interface, its first rows
+// in the editor's first card, then a card per peer.
 class WireGuardEditor : public ColumnLayout
 {
 public:
     std::function<void()> onAccepted;
     std::function<void()> onChanged;
 
-    WireGuardEditor()
+    explicit WireGuardEditor(Card* basic)
     {
-        setSpacing(metrics::formRowSpacing);
+        setSpacing(metrics::dialogSpacing);
         setLayoutHints({.fillWidth = true});
 
-        m_privateKey = addField(this, tr("Private key"), tr("Required"));
+        m_privateKey = addField(basic, tr("Private key"), tr("Required"));
         m_privateKey->setEchoMode(TextField::EchoMode::Password);
-        m_address = addField(this, tr("Address"), "10.0.0.2/24");
-        m_dns = addField(this, tr("DNS"), tr("Optional"));
+        m_address = addField(basic, tr("Address"), "10.0.0.2/24");
+        m_dns = addField(basic, tr("DNS"), tr("Optional"));
 
-        m_link = addChild<LinkLabel>(tr("Show advanced options"));
+        m_link = addLink(this, tr("Show advanced options"));
         m_link->onClicked = [this] {
             m_advancedShown = !m_advancedShown;
             update();
         };
 
-        m_advanced = addChild<ColumnLayout>();
-        m_advanced->setSpacing(metrics::formRowSpacing);
-        m_advanced->setLayoutHints({.fillWidth = true});
+        m_advanced = addChild<Card>(Card::Style::List);
         m_interface = addField(m_advanced, tr("Interface name"), tr("From the name"));
         m_interface->setMaximumLength(15);
         m_listenPort = addField(m_advanced, tr("Listen port"), tr("Automatic"));
@@ -466,18 +443,13 @@ public:
         m_fwmark = addField(m_advanced, tr("Firewall mark"), tr("Optional"));
         m_mtu = addField(m_advanced, tr("MTU"), tr("Automatic"));
         m_mtu->setValidator([](std::string_view text) { return isNumberText(text, INT_MAX); });
-        RowLayout* routes = addFormRow(m_advanced);
-        Label* routesLabel = routes->addChild<Label>(tr("Add routes for the peers' allowed IPs"));
-        routesLabel->setWrap(true);
-        routesLabel->setLayoutHints({.fillWidth = true});
-        m_peerRoutes = routes->addChild<Switch>();
-        setTrailingSwitchPadding(m_peerRoutes);
+        m_peerRoutes = m_advanced->addChild<SwitchRow>(tr("Add routes for the peers' allowed IPs"));
         m_peerRoutes->setChecked(true);
 
         m_peers = addChild<ColumnLayout>();
-        m_peers->setSpacing(metrics::formRowSpacing);
+        m_peers->setSpacing(metrics::dialogSpacing);
         m_peers->setLayoutHints({.fillWidth = true});
-        m_addPeer = addChild<LinkLabel>(tr("Add peer"));
+        m_addPeer = addLink(this, tr("Add peer"));
         m_addPeer->onClicked = [this] {
             addPeer({});
             update();
@@ -551,24 +523,11 @@ public:
                             [&blank](const PeerCard& card) { return blank(card.publicKey->text()); });
     }
 
-    std::vector<Label*> labels() const { return m_labels; }
-
-    void setLabelWidth(double width)
-    {
-        for (Label* label : m_labels) {
-            LayoutHints hints = label->layoutHints();
-            if (hints.preferredWidth != width) {
-                hints.preferredWidth = width;
-                label->setLayoutHints(hints);
-            }
-        }
-    }
-
 private:
     struct PeerCard
     {
         Card* card = nullptr;
-        Label* title = nullptr;
+        ListRow* header = nullptr;
         Button* remove = nullptr;
         TextField* publicKey = nullptr;
         TextField* presharedKey = nullptr;
@@ -576,17 +535,12 @@ private:
         TextField* endpoint = nullptr;
         TextField* allowedIps = nullptr;
         TextField* keepalive = nullptr;
-        // The five field labels, which leave the label column with the card.
-        Label* labels[5] = {};
     };
 
-    TextField* addField(ColumnLayout* parent, const char* label, const char* placeholder)
+    TextField* addField(Card* card, const char* label, const char* placeholder)
     {
-        RowLayout* row = addFormRow(parent);
-        addFieldLabel(row, label, m_labels);
-        TextField* field = row->addChild<TextField>();
+        TextField* field = card->addChild<TextFieldRow>(label, kFieldWidth)->field();
         field->setPlaceholder(placeholder);
-        field->setLayoutHints({.fillWidth = true});
         field->onTextEdited = [this] { changed(); };
         field->onAccepted = [this] {
             if (onAccepted)
@@ -598,22 +552,16 @@ private:
     void addPeer(const nm::vpn::WireGuardPeer& peer)
     {
         PeerCard card;
-        card.card = m_peers->addChild<Card>();
-        card.card->setPadding(Margins::all(metrics::cardHorizontalPadding));
-        card.card->setSpacing(metrics::formRowSpacing);
-        RowLayout* header = addFormRow(card.card);
-        card.title = header->addChild<Label>(tr("Peer"));
-        card.title->setWeight(600);
-        card.title->setLayoutHints({.fillWidth = true});
-        card.remove = header->addChild<Button>(tr("Remove"));
+        card.card = m_peers->addChild<Card>(Card::Style::List);
+        card.header = card.card->addChild<ListRow>(tr("Peer"));
+        card.header->setInteractive(false);
+        card.remove = card.header->addContent<Button>(tr("Remove"));
         Card* owner = card.card;
         card.remove->onClicked = [this, owner] {
             const auto found = std::find_if(m_peerCards.begin(), m_peerCards.end(),
                                             [owner](const PeerCard& card) { return card.card == owner; });
             if (found == m_peerCards.end())
                 return;
-            for (Label* label : {found->labels[0], found->labels[1], found->labels[2], found->labels[3], found->labels[4]})
-                std::erase(m_labels, label);
             m_peerCards.erase(found);
             // The card holds the button being clicked.
             std::shared_ptr<View> gone = m_peers->takeChild(owner);
@@ -635,7 +583,6 @@ private:
         card.keepalive = addField(card.card, tr("Keepalive"), tr("Off"));
         card.keepalive->setValidator([](std::string_view text) { return isNumberText(text, 65535); });
         card.keepalive->setText(peer.keepalive);
-        std::copy(m_labels.end() - 5, m_labels.end(), card.labels);
         TextField* preshared = card.presharedKey;
         card.presharedKey->onTextEdited = [this, owner, preshared] {
             // Clearing the field drops the stored key.
@@ -660,11 +607,9 @@ private:
         m_advanced->setVisible(m_advancedShown);
         const bool several = m_peerCards.size() > 1;
         for (size_t i = 0; i < m_peerCards.size(); ++i) {
-            m_peerCards[i].title->setText(several ? format(tr("Peer {number}"), {{"number", std::to_string(i + 1)}})
-                                                  : std::string(tr("Peer")));
+            m_peerCards[i].header->setText(several ? format(tr("Peer {number}"), {{"number", std::to_string(i + 1)}})
+                                                   : std::string(tr("Peer")));
             m_peerCards[i].remove->setVisible(several);
-            // The card's own air above it.
-            m_peerCards[i].card->setLayoutHints({.fillWidth = true, .margins = {0, metrics::s, 0, 0}});
         }
         // Without peers the column would still take a spacing.
         m_peers->setVisible(!m_peerCards.empty());
@@ -672,17 +617,16 @@ private:
         changed();
     }
 
-    std::vector<Label*> m_labels;
     TextField* m_privateKey;
     TextField* m_address;
     TextField* m_dns;
     LinkLabel* m_link;
-    ColumnLayout* m_advanced;
+    Card* m_advanced;
     TextField* m_interface;
     TextField* m_listenPort;
     TextField* m_fwmark;
     TextField* m_mtu;
-    Switch* m_peerRoutes;
+    SwitchRow* m_peerRoutes;
     ColumnLayout* m_peers;
     LinkLabel* m_addPeer;
     std::vector<PeerCard> m_peerCards;
@@ -692,42 +636,26 @@ private:
 
 VpnEditor::VpnEditor()
 {
-    setSpacing(metrics::formRowSpacing);
+    setSpacing(metrics::dialogSpacing);
     setLayoutHints({.fillWidth = true});
 
-    m_notInstalled = addChild<Label>();
-    m_notInstalled->setWrap(true);
-    m_notInstalled->setLayoutHints({.fillWidth = true});
+    m_notInstalled = addChild<Footnote>();
 
-    m_nameRow = addFormRow(this);
-    std::vector<Label*> unused;
-    m_nameLabel = addFieldLabel(m_nameRow, tr("Name"), unused);
-    m_name = m_nameRow->addChild<TextField>();
+    m_basic = addChild<Card>(Card::Style::List);
+    m_name = m_basic->addChild<TextFieldRow>(tr("Name"), kFieldWidth)->field();
     m_name->setPlaceholder(tr("Optional"));
-    m_name->setLayoutHints({.fillWidth = true});
     m_name->onAccepted = [this] {
         if (onAccepted)
             onAccepted();
     };
 
-    m_switches = addChild<ColumnLayout>();
-    m_switches->setSpacing(metrics::formRowSpacing);
-    m_switches->setLayoutHints({.fillWidth = true, .margins = {0, metrics::s, 0, 0}});
-    const auto addSwitch = [this](const char* text) {
-        RowLayout* row = addFormRow(m_switches);
-        Label* label = row->addChild<Label>(text);
-        label->setWrap(true);
-        label->setLayoutHints({.fillWidth = true});
-        Switch* toggle = row->addChild<Switch>();
-        setTrailingSwitchPadding(toggle);
-        return toggle;
-    };
-    m_shared = addSwitch(tr("Available to all users"));
+    m_switches = addChild<Card>(Card::Style::List);
+    m_shared = m_switches->addChild<SwitchRow>(tr("Available to all users"));
     m_shared->onToggled = [this](bool checked) {
         if (m_plugin)
             m_plugin->setShared(checked);
     };
-    m_ownNetworkOnly = addSwitch(tr("Use only for resources on its network"));
+    m_ownNetworkOnly = m_switches->addChild<SwitchRow>(tr("Use only for resources on its network"));
 }
 
 VpnEditor::~VpnEditor() = default;
@@ -735,7 +663,6 @@ VpnEditor::~VpnEditor() = default;
 void VpnEditor::load(const nm::VpnForm& form)
 {
     m_form = form;
-    m_extraLabelWidth = 0;
     m_name->setText(form.name);
     m_shared->setChecked(form.shared);
     m_ownNetworkOnly->setChecked(form.ownNetworkOnly);
@@ -746,11 +673,14 @@ void VpnEditor::load(const nm::VpnForm& form)
         takeChild(m_wireGuard);
     m_plugin = nullptr;
     m_wireGuard = nullptr;
+    // The kind's own rows follow the name's.
+    while (m_basic->children().size() > 1)
+        m_basic->takeChild(m_basic->children().back().get());
     if (form.installed) {
-        // Between the name and the switches.
+        // Between the first card and the switches.
         std::unique_ptr<View> switches = takeChild(m_switches);
         if (form.kind == "wireguard") {
-            m_wireGuard = addChild<WireGuardEditor>();
+            m_wireGuard = addChild<WireGuardEditor>(m_basic);
             m_wireGuard->onAccepted = [this] {
                 if (onAccepted)
                     onAccepted();
@@ -758,7 +688,7 @@ void VpnEditor::load(const nm::VpnForm& form)
             m_wireGuard->onChanged = [this] { changed(); };
             m_wireGuard->load(form.wireguard);
         } else {
-            m_plugin = addChild<PluginForm>();
+            m_plugin = addChild<PluginForm>(m_basic);
             m_plugin->onAccepted = [this] {
                 if (onAccepted)
                     onAccepted();
@@ -771,7 +701,7 @@ void VpnEditor::load(const nm::VpnForm& form)
 
     m_notInstalled->setText(format(tr("Install {package} to set up this kind of VPN."), {{"package", form.package}}));
     m_notInstalled->setVisible(!form.installed && !form.kind.empty());
-    m_nameRow->setVisible(form.installed);
+    m_basic->setVisible(form.installed);
     m_switches->setVisible(form.installed);
     changed();
 }
@@ -817,50 +747,11 @@ void VpnEditor::focusFirst()
     m_name->setFocus();
 }
 
-void VpnEditor::measure(double width)
-{
-    m_extraLabelWidth = std::max(m_extraLabelWidth, std::min(width, kMaximumLabelWidth));
-    changed();
-}
-
 void VpnEditor::changed()
 {
     requestLayout();
     if (onChanged)
         onChanged();
-}
-
-double VpnEditor::labelWidth() const
-{
-    std::vector<Label*> labels{m_nameLabel};
-    if (m_plugin) {
-        for (Label* label : m_plugin->labels())
-            labels.push_back(label);
-    }
-    if (m_wireGuard) {
-        for (Label* label : m_wireGuard->labels())
-            labels.push_back(label);
-    }
-    double width = m_extraLabelWidth;
-    for (const Label* label : labels)
-        width = std::max(width, std::min(label->sizeHint().width, kMaximumLabelWidth));
-    return width;
-}
-
-void VpnEditor::layout()
-{
-    m_notInstalled->setColor(Theme::current().disabledText);
-    const double width = labelWidth();
-    LayoutHints hints = m_nameLabel->layoutHints();
-    if (hints.preferredWidth != width) {
-        hints.preferredWidth = width;
-        m_nameLabel->setLayoutHints(hints);
-    }
-    if (m_plugin)
-        m_plugin->setLabelWidth(width);
-    if (m_wireGuard)
-        m_wireGuard->setLabelWidth(width);
-    ColumnLayout::layout();
 }
 
 } // namespace settings::network

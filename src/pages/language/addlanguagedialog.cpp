@@ -20,6 +20,7 @@
 #include "widgets/listrow.h"
 #include "widgets/metrics.h"
 #include "widgets/searchfield.h"
+#include "widgets/sections.h"
 
 using namespace cutefish;
 using namespace cutefish::ui;
@@ -80,10 +81,7 @@ AddLanguageDialog::AddLanguageDialog(SettingsWindow& parent, Language& language)
     : FormDialog(parent, tr("Add Language"), 460)
     , m_language(language)
 {
-    setCloseVisible(false);
     setFixedHeight(560);
-    // The page colour, so the card stands out as it does on a page.
-    setBackgroundColor(ColorId::Background);
 
     m_search = content()->addChild<SearchField>();
     m_search->setPlaceholder(tr("Search languages"));
@@ -111,14 +109,10 @@ AddLanguageDialog::AddLanguageDialog(SettingsWindow& parent, Language& language)
     m_rows->setSpacing(0);
     m_empty = stack->addChild<EmptyListOverlay>()->label();
 
-    m_error = content()->addChild<Label>();
-    m_error->setWrap(true);
-    m_error->setLayoutHints({.fillWidth = true});
+    m_error = content()->addChild<Footnote>();
+    m_error->setColor(accent::red);
 
-    RowLayout* buttons = addButtonRow();
-    m_cancel = buttons->addChild<DialogButton>(tr("Cancel"));
-    m_cancel->onClicked = [this] { requestClose(); };
-    m_add = buttons->addChild<DialogButton>(tr("Add"), true);
+    m_add = addButtonRow()->addChild<DialogButton>(tr("Add"), true);
     m_add->onClicked = [this] {
         m_adding = true;
         updateStates();
@@ -177,7 +171,6 @@ void AddLanguageDialog::updateStates()
 {
     m_search->setEnabled(!m_adding);
     m_scroll->setEnabled(!m_adding);
-    m_cancel->setEnabled(!m_adding);
     m_add->setEnabled(!m_selectedCode.empty() && !m_language.isSaving());
     m_error->setText(m_language.errorMessage());
     m_error->setVisible(!m_language.errorMessage().empty());

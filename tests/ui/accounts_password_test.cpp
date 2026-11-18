@@ -226,8 +226,8 @@ TEST(AccountsPassword, TheOwnAccountsDialogAsksTheCurrentPassword)
     for (TextField* field : fields)
         EXPECT_EQ(field->echoMode(), TextField::EchoMode::Password);
     const auto buttons = findAll<DialogButton>(dialogWindow.contentView());
-    ASSERT_EQ(buttons.size(), 2u);
-    DialogButton* change = buttons[1];
+    ASSERT_EQ(buttons.size(), 1u);
+    DialogButton* change = buttons[0];
 
     typeInto(dialogWindow, fields[0], "wrong");
     typeInto(dialogWindow, fields[1], "new password");

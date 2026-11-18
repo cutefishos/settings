@@ -13,7 +13,6 @@
 #include "widgets/formdialog.h"
 
 namespace cutefish::ui {
-class ColumnLayout;
 class DialogButton;
 class Label;
 struct KeyEvent;
@@ -21,6 +20,8 @@ struct KeyEvent;
 
 namespace settings {
 
+class Card;
+class Footnote;
 class ShortcutRecorder;
 
 // Edits the shortcuts of one action: remove any of them, add another by
@@ -64,10 +65,11 @@ private:
     // it records the Meta tap, which is how the launchpad key is bound.
     bool m_metaTapCandidate = false;
 
+    Card* m_empty;
     cutefish::ui::Label* m_noShortcut;
-    cutefish::ui::ColumnLayout* m_list;
+    Card* m_list;
     ShortcutRecorder* m_recorder;
-    cutefish::ui::Label* m_messageLabel;
+    Footnote* m_messageLabel;
     cutefish::ui::DialogButton* m_add;
     cutefish::ui::DialogButton* m_restore;
 };

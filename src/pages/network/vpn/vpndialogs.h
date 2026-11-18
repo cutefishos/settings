@@ -13,17 +13,17 @@
 
 namespace cutefish::ui {
 class ColumnLayout;
-class ComboBox;
 class DialogButton;
 class DialogWindow;
 class FileChooser;
-class Label;
 }
 
 namespace settings {
+class Footnote;
 class FormDialog;
 class InfoRow;
 class ListRow;
+class RowComboBox;
 class SettingsWindow;
 }
 
@@ -59,11 +59,10 @@ private:
     std::vector<cutefish::networkmanager::vpn::Kind> m_kinds;
     bool m_adding = false;
     std::string m_error;
-    cutefish::ui::Label* m_kindLabel = nullptr;
-    cutefish::ui::ComboBox* m_kindBox = nullptr;
+    RowComboBox* m_kindBox = nullptr;
     FormScroll* m_scroll = nullptr;
     VpnEditor* m_editor = nullptr;
-    cutefish::ui::Label* m_errorLabel = nullptr;
+    Footnote* m_errorLabel = nullptr;
     cutefish::ui::DialogButton* m_addButton = nullptr;
 };
 
@@ -104,7 +103,7 @@ private:
     InfoRow* m_status = nullptr;
     InfoRow* m_address = nullptr;
     ListRow* m_export = nullptr;
-    cutefish::ui::Label* m_message = nullptr;
+    Footnote* m_message = nullptr;
     cutefish::ui::DialogButton* m_saveButton = nullptr;
 };
 

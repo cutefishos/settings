@@ -7,15 +7,16 @@
 #include <cctype>
 
 #include "base/i18n.h"
-#include "ui/combo_box.h"
 #include "ui/dialog_window.h"
-#include "ui/label.h"
 #include "ui/layout.h"
 #include "ui/cell_layout.h"
 #include "ui/text_field.h"
 #include "ui/window.h"
+#include "widgets/card.h"
 #include "widgets/formdialog.h"
-#include "widgets/metrics.h"
+#include "widgets/listrow.h"
+#include "widgets/rowcombobox.h"
+#include "widgets/sections.h"
 
 using namespace cutefish::ui;
 using cutefish::i18n::format;
@@ -26,6 +27,7 @@ namespace nm = cutefish::networkmanager;
 namespace settings::network {
 
 static constexpr double kWidth = 400;
+static constexpr double kFieldWidth = 200;
 
 struct SecurityChoice
 {
@@ -165,7 +167,6 @@ void NewNetworkDialog::join()
 void NewNetworkDialog::build()
 {
     m_dialog = std::make_unique<FormDialog>(m_window, title(), kWidth);
-    m_dialog->setCloseVisible(false);
     m_dialog->onClosed = [this] {
         // Closing returns the dialog to a hidden network.
         m_accessPoint.clear();
@@ -175,58 +176,35 @@ void NewNetworkDialog::build()
     };
     ColumnLayout* content = m_dialog->content();
 
-    m_form = content->addChild<GridLayout>(2);
-    m_form->setColumnSpacing(metrics::dialogSpacing);
-    m_form->setRowSpacing(metrics::formRowSpacing);
-    m_form->setLayoutHints({.fillWidth = true});
-    m_labels.clear();
-
-    const auto addLabel = [this](const char* text) {
-        Label* label = m_form->addChild<Label>(text);
-        m_labels.push_back(label);
-        return label;
-    };
-    const auto addField = [this](const char* placeholder) {
-        TextField* field = m_form->addChild<TextField>();
-        field->setPlaceholder(placeholder);
-        field->setLayoutHints({.fillWidth = true});
-        field->onTextChanged = [this] { update(); };
-        field->onAccepted = [this] { join(); };
-        return field;
+    m_form = content->addChild<Card>(Card::Style::List);
+    const auto addField = [this](const char* label) {
+        TextFieldRow* row = m_form->addChild<TextFieldRow>(label, kFieldWidth);
+        row->field()->setPlaceholder(tr("Required"));
+        row->field()->onTextChanged = [this] { update(); };
+        row->field()->onAccepted = [this] { join(); };
+        return row;
     };
 
-    m_nameLabel = addLabel(tr("Name"));
-    m_name = addField(tr("Network name"));
-    m_securityLabel = addLabel(tr("Security"));
+    m_nameRow = addField(tr("Network name"));
+    m_name = m_nameRow->field();
+    m_securityRow = m_form->addChild<ListRow>(tr("Security"));
+    m_securityRow->setInteractive(false);
     std::vector<std::string> securities;
     for (const SecurityChoice& choice : kSecurities)
         securities.push_back(tr(choice.text));
-    m_security = m_form->addChild<ComboBox>(securities);
-    m_security->setLayoutHints({.fillWidth = true});
+    m_security = m_securityRow->addContent<RowComboBox>(securities);
     m_security->setCurrentIndex(kDefaultSecurity);
     m_security->onActivated = [this](int) { update(); };
-    m_userNameLabel = addLabel(tr("Username"));
-    m_userName = addField(tr("Username"));
-    m_passwordLabel = addLabel(tr("Password"));
-    m_password = addField(tr("Password"));
+    m_userNameRow = addField(tr("Username"));
+    m_userName = m_userNameRow->field();
+    m_passwordRow = addField(tr("Password"));
+    m_password = m_passwordRow->field();
     m_password->setEchoMode(TextField::EchoMode::Password);
 
-    // Hidden rows leave the grid, so the fields would move as they appear.
-    double labelWidth = 0;
-    for (const Label* label : m_labels)
-        labelWidth = std::max(labelWidth, label->sizeHint().width);
-    for (Label* label : m_labels)
-        label->setLayoutHints({.preferredWidth = labelWidth});
+    m_certificateNote = content->addChild<Footnote>(
+            tr("This network signs in with a certificate, which can't be set up here yet."));
 
-    m_certificateNote =
-            content->addChild<Label>(tr("This network signs in with a certificate, which can't be set up here yet."));
-    m_certificateNote->setWrap(true);
-    m_certificateNote->setLayoutHints({.fillWidth = true});
-
-    RowLayout* buttons = m_dialog->addButtonRow();
-    DialogButton* cancel = buttons->addChild<DialogButton>(tr("Cancel"));
-    cancel->onClicked = [this] { close(); };
-    m_joinButton = buttons->addChild<DialogButton>(tr("Join"), true);
+    m_joinButton = m_dialog->addButtonRow()->addChild<DialogButton>(tr("Join"), true);
     m_joinButton->onClicked = [this] { join(); };
 }
 
@@ -237,15 +215,14 @@ void NewNetworkDialog::update()
     const std::string type = security();
     const bool listed = !m_accessPoint.empty();
     const bool enterprise = type.ends_with("-eap");
+    const bool userName = enterprise && !m_needsCertificate;
+    const bool password = type != "none" && !m_needsCertificate;
     m_dialog->setTitle(title());
-    m_nameLabel->setVisible(!listed);
-    m_name->setVisible(!listed);
-    m_securityLabel->setVisible(!listed);
-    m_security->setVisible(!listed);
-    m_userNameLabel->setVisible(enterprise && !m_needsCertificate);
-    m_userName->setVisible(enterprise && !m_needsCertificate);
-    m_passwordLabel->setVisible(type != "none" && !m_needsCertificate);
-    m_password->setVisible(type != "none" && !m_needsCertificate);
+    m_nameRow->setVisible(!listed);
+    m_securityRow->setVisible(!listed);
+    m_userNameRow->setVisible(userName);
+    m_passwordRow->setVisible(password);
+    m_form->setVisible(!listed || userName || password);
     m_certificateNote->setVisible(m_needsCertificate);
     m_joinButton->setEnabled(canJoin());
 }

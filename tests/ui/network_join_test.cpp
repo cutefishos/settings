@@ -9,9 +9,9 @@
 
 #include "cutefish/networkmanager/handler.h"
 #include "pages/network/wlan/newnetworkdialog.h"
-#include "ui/combo_box.h"
 #include "ui/text_field.h"
 #include "widgets/formdialog.h"
+#include "widgets/rowcombobox.h"
 #include "window/settingswindow.h"
 
 using namespace settings;
@@ -44,6 +44,16 @@ struct JoinDialog : testing::Test
     std::vector<std::vector<std::string>> connects;
 };
 
+// A field shows while it and the row holding it do.
+bool shows(const cutefish::ui::View* view)
+{
+    for (; view; view = view->parent()) {
+        if (!view->isVisible())
+            return false;
+    }
+    return true;
+}
+
 } // namespace
 
 TEST_F(JoinDialog, JoinsAListedEnterpriseNetwork)
@@ -54,10 +64,10 @@ TEST_F(JoinDialog, JoinsAListedEnterpriseNetwork)
     EXPECT_EQ(dialog->security(), "wpa2-eap");
 
     // The network is known; only the sign-in is asked for, user name first.
-    EXPECT_FALSE(dialog->nameField()->isVisible());
-    EXPECT_FALSE(dialog->securityBox()->isVisible());
-    EXPECT_TRUE(dialog->userNameField()->isVisible());
-    EXPECT_TRUE(dialog->passwordField()->isVisible());
+    EXPECT_FALSE(shows(dialog->nameField()));
+    EXPECT_FALSE(shows(dialog->securityBox()));
+    EXPECT_TRUE(shows(dialog->userNameField()));
+    EXPECT_TRUE(shows(dialog->passwordField()));
     EXPECT_TRUE(dialog->userNameField()->hasFocus());
 
     EXPECT_FALSE(dialog->canJoin());
@@ -85,8 +95,8 @@ TEST_F(JoinDialog, CertificateNetworkCannotBeJoined)
     dialog->openNetwork(libraryAccessPoint, nm::WirelessNetwork{library.device, "Secure", nm::SecurityType::Wpa3SuiteB192});
     ASSERT_TRUE(dialog->isOpen());
     EXPECT_TRUE(dialog->needsCertificate());
-    EXPECT_FALSE(dialog->userNameField()->isVisible());
-    EXPECT_FALSE(dialog->passwordField()->isVisible());
+    EXPECT_FALSE(shows(dialog->userNameField()));
+    EXPECT_FALSE(shows(dialog->passwordField()));
 
     dialog->userNameField()->setText("alice");
     dialog->passwordField()->setText("secret");
@@ -115,8 +125,8 @@ TEST_F(JoinDialog, ClosingReturnsToHiddenNetworks)
     EXPECT_EQ(dialog->title(), "Add Other Network");
     EXPECT_EQ(dialog->security(), "wpa2-wpa3");
     EXPECT_EQ(dialog->userNameField()->text(), "");
-    EXPECT_TRUE(dialog->nameField()->isVisible());
-    EXPECT_TRUE(dialog->securityBox()->isVisible());
+    EXPECT_TRUE(shows(dialog->nameField()));
+    EXPECT_TRUE(shows(dialog->securityBox()));
     EXPECT_TRUE(dialog->nameField()->hasFocus());
     dialog->nameField()->setText("Garden");
     dialog->passwordField()->setText("garden pass");

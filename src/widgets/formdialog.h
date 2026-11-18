@@ -5,29 +5,23 @@
 
 #include <functional>
 #include <memory>
-#include <optional>
 #include <string>
-
-#include "ui/color_mixer.h"
-#include "ui/geometry.h"
 
 namespace cutefish::ui {
 class ColumnLayout;
-class Label;
+class DialogWindow;
 class RowLayout;
 class Window;
 }
 
 namespace settings {
 
-class FormRoot;
 class SettingsWindow;
 
 // Settings' own form dialogs (add a user, change a password, add a language,
-// join a network, edit a shortcut): a modal window over the settings window
-// with the window controls and its title centred in a title bar, or, without
-// them, its title in semibold first in the content; and a column of content
-// below. Its height follows the content unless fixed.
+// join a network, edit a shortcut): the shared dialog window over the
+// settings window, closed by its close control or Escape, and a column of
+// content below the title. Its height follows the content unless fixed.
 // A dialog is shown once: after it closes, make a new one.
 class FormDialog
 {
@@ -38,31 +32,26 @@ public:
     FormDialog(const FormDialog&) = delete;
     FormDialog& operator=(const FormDialog&) = delete;
 
-    cutefish::ui::Window* window() const { return m_window.get(); }
-    // The dialog's ColumnLayout, inside its padding: the title first (hidden
-    // while the title bar holds it), then what goes under it, with the
-    // dialog's spacing.
-    cutefish::ui::ColumnLayout* content() const;
-    cutefish::ui::Label* titleLabel() const;
+    // Null once the dialog has closed.
+    cutefish::ui::Window* window() const;
+    // The dialog's ColumnLayout, inside its padding, with the dialog's
+    // spacing.
+    cutefish::ui::ColumnLayout* content() const { return m_content; }
     void setTitle(std::string title);
     // A RowLayout of buttons aligned to the right, as the last item of the
     // content.
     cutefish::ui::RowLayout* addButtonRow();
 
-    // A fixed height lets the content's filling items share the space.
+    // The whole window's height; lets the content's filling items share the
+    // space.
     void setFixedHeight(double height);
-    // The window controls; hidden for dialogs whose own Cancel or Close button
-    // closes them, the title then first in the content.
-    void setCloseVisible(bool visible);
-    // Unset: the theme's second background colour.
-    void setBackgroundColor(std::optional<cutefish::ui::ColorRecipe> color);
 
     void show();
-    // Asks canClose first, as the close button and Escape do.
+    // Asks canClose first, as the close control and Escape do.
     void requestClose();
     // Closes at once; the window goes once the event being handled is over.
     void close();
-    bool isOpen() const { return m_window != nullptr; }
+    bool isOpen() const { return window() != nullptr; }
 
     // Returns false to keep the dialog open, e.g. while waiting for a reply.
     std::function<bool()> canClose;
@@ -70,11 +59,8 @@ public:
     std::function<void()> onClosed;
 
 private:
-    std::unique_ptr<cutefish::ui::Window> m_window;
-    FormRoot* m_root;
-    double m_width;
-    double m_fixedHeight = 0;
-    std::optional<cutefish::ui::ColorRecipe> m_background;
+    std::unique_ptr<cutefish::ui::DialogWindow> m_dialog;
+    cutefish::ui::ColumnLayout* m_content;
 };
 
 } // namespace settings

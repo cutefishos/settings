@@ -15,14 +15,15 @@ class AccountsManager;
 }
 
 namespace cutefish::ui {
-class ComboBox;
 class DialogButton;
-class GridLayout;
-class Label;
 class TextField;
 }
 
 namespace settings {
+
+class Card;
+class Footnote;
+class RowComboBox;
 
 // A new password for an account, typed twice. With a changer it is the
 // user's own: the current password is asked too, and the dialog stays open
@@ -43,12 +44,11 @@ private:
     void showError(const std::string& error);
 
     std::unique_ptr<PasswordChanger> m_changer;
-    cutefish::ui::GridLayout* m_form;
+    Card* m_form;
     cutefish::ui::TextField* m_current = nullptr;
     cutefish::ui::TextField* m_password;
     cutefish::ui::TextField* m_verify;
-    cutefish::ui::Label* m_error = nullptr;
-    cutefish::ui::DialogButton* m_cancel;
+    Footnote* m_error = nullptr;
     cutefish::ui::DialogButton* m_change;
 };
 
@@ -65,13 +65,12 @@ private:
     void setWaiting(bool waiting);
 
     cutefish::accounts::AccountsManager& m_manager;
-    cutefish::ui::GridLayout* m_form;
+    Card* m_form;
     cutefish::ui::TextField* m_name;
     cutefish::ui::TextField* m_password;
     cutefish::ui::TextField* m_verify;
-    cutefish::ui::ComboBox* m_type;
-    cutefish::ui::Label* m_error;
-    cutefish::ui::DialogButton* m_cancel;
+    RowComboBox* m_type;
+    Footnote* m_error;
     cutefish::ui::DialogButton* m_add;
     bool m_waiting = false;
 };

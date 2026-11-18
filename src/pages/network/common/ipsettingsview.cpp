@@ -3,21 +3,18 @@
 
 #include "pages/network/common/ipsettingsview.h"
 
-#include <algorithm>
 #include <cctype>
 
 #include "base/i18n.h"
 #include "cutefish/networkmanager/handler.h"
-#include "pages/network/common/rows.h"
-#include "ui/combo_box.h"
 #include "ui/dialog_window.h"
-#include "ui/label.h"
-#include "ui/switch.h"
 #include "ui/text_field.h"
 #include "ui/theme.h"
 #include "widgets/card.h"
 #include "widgets/listrow.h"
 #include "widgets/metrics.h"
+#include "widgets/rowcombobox.h"
+#include "widgets/sections.h"
 
 using namespace cutefish::ui;
 using cutefish::i18n::tr;
@@ -25,8 +22,7 @@ namespace nm = cutefish::networkmanager;
 
 namespace settings::network {
 
-// A label column for every card, as wide as the longest label up to this.
-static constexpr double kMaximumLabelWidth = 140;
+static constexpr double kFieldWidth = 200;
 
 static int indexOfMethod(const std::vector<nm::ip::Method>& methods, const std::string& value)
 {
@@ -45,18 +41,10 @@ static std::vector<std::string> methodLabels(const std::vector<nm::ip::Method>& 
     return labels;
 }
 
-static std::string currentValue(const ComboBox* box, const std::vector<nm::ip::Method>& methods)
+static std::string currentValue(const RowComboBox* box, const std::vector<nm::ip::Method>& methods)
 {
     const int index = box->currentIndex();
     return index >= 0 && size_t(index) < methods.size() ? methods[size_t(index)].value : std::string();
-}
-
-static Card* addCard(ColumnLayout* parent)
-{
-    Card* card = parent->addChild<Card>();
-    card->setPadding(Margins::all(metrics::cardHorizontalPadding));
-    card->setSpacing(metrics::formRowSpacing);
-    return card;
 }
 
 IpSettingsView::IpSettingsView(std::string connectionPath)
@@ -82,67 +70,44 @@ IpSettingsView::IpSettingsView(std::string connectionPath)
             update();
         }));
 
-    Card* ipv4 = addCard(this);
-    m_ipv4Method = addRow(ipv4, tr("Configure IPv4")).row->addChild<ComboBox>();
-    m_ipv4Method->setLayoutHints({.fillWidth = true});
+    Card* ipv4 = addChild<Card>(Card::Style::List);
+    m_ipv4Method = addMethod(ipv4, tr("Configure IPv4"));
     m_ipv4Method->onActivated = [this](int) {
         if (currentValue(m_ipv4Method, m_form.ipv4Methods) == "manual")
             fillFromCurrent(true);
         update();
     };
-    FormRow row = addRow(ipv4, tr("IP Address"));
-    m_ipv4AddressRow = row.row;
-    m_ipv4Address = addField(row.row, tr("Required"));
-    row = addRow(ipv4, tr("Subnet Mask"));
-    m_ipv4NetmaskRow = row.row;
-    m_ipv4Netmask = addField(row.row, "255.255.255.0");
-    row = addRow(ipv4, tr("Router"));
-    m_ipv4GatewayRow = row.row;
-    m_ipv4Gateway = addField(row.row, tr("Optional"));
+    m_ipv4AddressRow = addField(ipv4, tr("IP Address"), tr("Required"));
+    m_ipv4Address = m_ipv4AddressRow->field();
+    m_ipv4NetmaskRow = addField(ipv4, tr("Subnet Mask"), "255.255.255.0");
+    m_ipv4Netmask = m_ipv4NetmaskRow->field();
+    m_ipv4GatewayRow = addField(ipv4, tr("Router"), tr("Optional"));
+    m_ipv4Gateway = m_ipv4GatewayRow->field();
 
-    Card* ipv6 = addCard(this);
-    m_ipv6Method = addRow(ipv6, tr("Configure IPv6")).row->addChild<ComboBox>();
-    m_ipv6Method->setLayoutHints({.fillWidth = true});
+    Card* ipv6 = addChild<Card>(Card::Style::List);
+    m_ipv6Method = addMethod(ipv6, tr("Configure IPv6"));
     m_ipv6Method->onActivated = [this](int) {
         if (currentValue(m_ipv6Method, m_form.ipv6Methods) == "manual")
             fillFromCurrent(false);
         update();
     };
-    row = addRow(ipv6, tr("IP Address"));
-    m_ipv6AddressRow = row.row;
-    m_ipv6Address = addField(row.row, tr("Required"));
-    row = addRow(ipv6, tr("Prefix Length"));
-    m_ipv6PrefixRow = row.row;
-    m_ipv6Prefix = addField(row.row, "64");
-    row = addRow(ipv6, tr("Router"));
-    m_ipv6GatewayRow = row.row;
-    m_ipv6Gateway = addField(row.row, tr("Optional"));
+    m_ipv6AddressRow = addField(ipv6, tr("IP Address"), tr("Required"));
+    m_ipv6Address = m_ipv6AddressRow->field();
+    m_ipv6PrefixRow = addField(ipv6, tr("Prefix Length"), "64");
+    m_ipv6Prefix = m_ipv6PrefixRow->field();
+    m_ipv6GatewayRow = addField(ipv6, tr("Router"), tr("Optional"));
+    m_ipv6Gateway = m_ipv6GatewayRow->field();
 
-    Card* dns = addCard(this);
-    m_automaticDnsRow = dns->addChild<RowLayout>();
-    m_automaticDnsRow->setSpacing(metrics::dialogSpacing);
-    m_automaticDnsRow->setLayoutHints({.fillWidth = true});
-    Label* automaticLabel = m_automaticDnsRow->addChild<Label>(tr("Automatic DNS"));
-    automaticLabel->setWrap(true);
-    automaticLabel->setLayoutHints({.fillWidth = true});
-    m_automaticDns = m_automaticDnsRow->addChild<Switch>();
-    setTrailingSwitchPadding(m_automaticDns);
+    Card* dns = addChild<Card>(Card::Style::List);
+    m_automaticDns = dns->addChild<SwitchRow>(tr("Automatic DNS"));
     m_automaticDns->onToggled = [this](bool) { update(); };
-    row = addRow(dns, tr("DNS Servers"));
-    m_dns = addField(row.row, {});
+    m_dns = addField(dns, tr("DNS Servers"), {})->field();
 
-    m_message = addChild<Label>();
-    m_message->setWrap(true);
-    m_message->setLayoutHints({.fillWidth = true});
+    m_message = addChild<Footnote>();
 
     RowLayout* buttons = addChild<RowLayout>();
     buttons->setSpacing(metrics::dialogButtonSpacing);
     buttons->setLayoutHints({.horizontalAlignment = Alignment::End});
-    DialogButton* cancel = buttons->addChild<DialogButton>(tr("Cancel"));
-    cancel->onClicked = [this] {
-        if (onFinished)
-            onFinished();
-    };
     m_saveButton = buttons->addChild<DialogButton>(tr("Save"), true);
     m_saveButton->onClicked = [this] { save(); };
 
@@ -151,25 +116,20 @@ IpSettingsView::IpSettingsView(std::string connectionPath)
 
 IpSettingsView::~IpSettingsView() = default;
 
-IpSettingsView::FormRow IpSettingsView::addRow(ColumnLayout* card, const std::string& text)
+RowComboBox* IpSettingsView::addMethod(Card* card, const std::string& text)
 {
-    RowLayout* row = card->addChild<RowLayout>();
-    row->setSpacing(metrics::dialogSpacing);
-    row->setLayoutHints({.fillWidth = true});
-    Label* label = row->addChild<Label>(text);
-    label->setWrap(true);
-    m_fieldLabels.push_back(label);
-    return {row, label};
+    ListRow* row = card->addChild<ListRow>(text);
+    row->setInteractive(false);
+    return row->addContent<RowComboBox>();
 }
 
-TextField* IpSettingsView::addField(RowLayout* row, const std::string& placeholder)
+TextFieldRow* IpSettingsView::addField(Card* card, const std::string& text, const std::string& placeholder)
 {
-    TextField* field = row->addChild<TextField>();
-    field->setPlaceholder(placeholder);
-    field->setLayoutHints({.fillWidth = true});
-    field->onTextChanged = [this] { update(); };
-    field->onAccepted = [this] { save(); };
-    return field;
+    TextFieldRow* row = card->addChild<TextFieldRow>(text, kFieldWidth);
+    row->field()->setPlaceholder(placeholder);
+    row->field()->onTextChanged = [this] { update(); };
+    row->field()->onAccepted = [this] { save(); };
+    return row;
 }
 
 void IpSettingsView::load()
@@ -238,16 +198,15 @@ void IpSettingsView::update()
     // Only a family that asks the network for its addresses can be told its name servers too.
     const bool automaticFamily = form.ipv4Method == "auto" || form.ipv4Method == "dhcp" || form.ipv6Method == "auto"
                                  || form.ipv6Method == "dhcp";
-    for (RowLayout* row : {m_ipv4AddressRow, m_ipv4NetmaskRow, m_ipv4GatewayRow})
+    for (TextFieldRow* row : {m_ipv4AddressRow, m_ipv4NetmaskRow, m_ipv4GatewayRow})
         row->setVisible(ipv4Manual);
-    for (RowLayout* row : {m_ipv6AddressRow, m_ipv6PrefixRow, m_ipv6GatewayRow})
+    for (TextFieldRow* row : {m_ipv6AddressRow, m_ipv6PrefixRow, m_ipv6GatewayRow})
         row->setVisible(ipv6Manual);
-    m_automaticDnsRow->setVisible(automaticFamily);
+    m_automaticDns->setVisible(automaticFamily);
     m_dns->setPlaceholder(automaticFamily && m_automaticDns->isChecked() ? tr("Optional") : "1.1.1.1, 8.8.8.8");
 
     const nm::ip::Check result = nm::ip::check(form);
     const std::string problem = !m_error.empty() ? m_error : result.message;
-    m_problem = !problem.empty();
     std::string message = problem;
     bool hasDns = false;
     for (const char c : m_dns->text())
@@ -255,29 +214,12 @@ void IpSettingsView::update()
     if (message.empty() && automaticFamily && m_automaticDns->isChecked() && hasDns)
         message = tr("These servers are asked before the network's own.");
     m_message->setText(message);
+    m_message->setColor(problem.empty() ? std::optional<ColorRecipe>() : accent::red);
     m_message->setVisible(!message.empty());
 
     m_saveButton->setText(m_saving ? tr("Saving…") : tr("Save"));
     m_saveButton->setEnabled(!m_saving && result.complete);
     requestLayout();
-}
-
-void IpSettingsView::layout()
-{
-    const Theme& theme = Theme::current();
-    m_message->setColor(m_problem ? cutefish::ui::accent::red : theme.disabledText);
-
-    double labelWidth = 0;
-    for (const Label* label : m_fieldLabels)
-        labelWidth = std::max(labelWidth, std::min(label->sizeHint().width, kMaximumLabelWidth));
-    for (Label* label : m_fieldLabels) {
-        LayoutHints hints = label->layoutHints();
-        if (hints.preferredWidth != labelWidth) {
-            hints.preferredWidth = labelWidth;
-            label->setLayoutHints(hints);
-        }
-    }
-    ColumnLayout::layout();
 }
 
 } // namespace settings::network

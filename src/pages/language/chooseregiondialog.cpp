@@ -104,10 +104,7 @@ ChooseRegionDialog::ChooseRegionDialog(SettingsWindow& parent, Region& region)
     , m_region(region)
     , m_selectedCode(region.region())
 {
-    setCloseVisible(false);
     setFixedHeight(560);
-    // The page colour, so the card stands out as it does on a page.
-    setBackgroundColor(ColorId::Background);
 
     m_search = content()->addChild<SearchField>();
     m_search->setPlaceholder(tr("Search regions"));
@@ -134,10 +131,7 @@ ChooseRegionDialog::ChooseRegionDialog(SettingsWindow& parent, Region& region)
     m_rows->setSpacing(0);
     m_empty = stack->addChild<EmptyListOverlay>()->label();
 
-    RowLayout* buttons = addButtonRow();
-    DialogButton* cancel = buttons->addChild<DialogButton>(tr("Cancel"));
-    cancel->onClicked = [this] { requestClose(); };
-    m_choose = buttons->addChild<DialogButton>(tr("Choose"), true);
+    m_choose = addButtonRow()->addChild<DialogButton>(tr("Choose"), true);
     m_choose->onClicked = [this] {
         m_region.setRegion(m_selectedCode);
         close();

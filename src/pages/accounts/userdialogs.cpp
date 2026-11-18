@@ -7,13 +7,15 @@
 #include "cutefish/accounts/account_picture.h"
 #include "cutefish/accounts/accounts_manager.h"
 #include "pages/accounts/password.h"
-#include "ui/combo_box.h"
 #include "ui/dialog_window.h"
-#include "ui/label.h"
 #include "ui/cell_layout.h"
 #include "ui/text_field.h"
 #include "ui/theme.h"
+#include "widgets/card.h"
+#include "widgets/listrow.h"
 #include "widgets/metrics.h"
+#include "widgets/rowcombobox.h"
+#include "widgets/sections.h"
 
 using namespace cutefish;
 using namespace cutefish::ui;
@@ -22,52 +24,33 @@ using cutefish::i18n::tr;
 namespace settings {
 
 static constexpr double kWidth = 400;
+static constexpr double kFieldWidth = 200;
 
-static GridLayout* addForm(ColumnLayout* content)
+static TextField* addField(Card* card, const std::string& label, bool password)
 {
-    GridLayout* grid = content->addChild<GridLayout>(2);
-    grid->setColumnSpacing(metrics::dialogSpacing);
-    grid->setRowSpacing(metrics::formRowSpacing);
-    grid->setLayoutHints({.fillWidth = true});
-    return grid;
-}
-
-static TextField* addField(GridLayout* grid, const std::string& label, bool password)
-{
-    grid->addChild<Label>(label);
-    TextField* field = grid->addChild<TextField>();
-    field->setPlaceholder(label);
+    TextField* field = card->addChild<TextFieldRow>(label, kFieldWidth)->field();
+    field->setPlaceholder(tr("Required"));
     if (password)
         field->setEchoMode(TextField::EchoMode::Password);
-    field->setLayoutHints({.fillWidth = true});
     return field;
 }
 
-// Secondary text that wraps, recoloured with the theme.
-class SecondaryLabel : public Label
+// Why the dialog stays open, under its card; hidden until there is a reason.
+static Footnote* addError(ColumnLayout* content)
 {
-public:
-    using Label::Label;
-
-protected:
-    void layout() override
-    {
-        setColor(Theme::current().disabledText);
-        Label::layout();
-    }
-};
+    Footnote* error = content->addChild<Footnote>();
+    error->setColor(accent::red);
+    error->setVisible(false);
+    return error;
+}
 
 ChangePasswordDialog::ChangePasswordDialog(SettingsWindow& parent, const std::string& userName,
                                            std::unique_ptr<PasswordChanger> changer)
     : FormDialog(parent, tr("Change password"), kWidth)
     , m_changer(std::move(changer))
 {
-    setCloseVisible(false);
-    Label* name = content()->addChild<SecondaryLabel>(userName);
-    name->setWrap(true);
-    name->setLayoutHints({.fillWidth = true});
-
-    m_form = addForm(content());
+    m_form = content()->addChild<Card>(Card::Style::List);
+    m_form->addChild<InfoRow>(tr("User name"), userName);
     if (m_changer) {
         m_current = addField(m_form, tr("Current password"), true);
         m_password = addField(m_form, tr("New password"), true);
@@ -77,10 +60,7 @@ ChangePasswordDialog::ChangePasswordDialog(SettingsWindow& parent, const std::st
     m_verify = addField(m_form, tr("Verify password"), true);
 
     if (m_changer) {
-        m_error = content()->addChild<Label>();
-        m_error->setWrap(true);
-        m_error->setLayoutHints({.fillWidth = true});
-        m_error->setVisible(false);
+        m_error = addError(content());
         m_changer->onFinished = [this](PasswordChanger::Result result, const std::string& message) {
             switch (result) {
             case PasswordChanger::Result::Changed:
@@ -108,10 +88,7 @@ ChangePasswordDialog::ChangePasswordDialog(SettingsWindow& parent, const std::st
         };
     }
 
-    RowLayout* buttons = addButtonRow();
-    m_cancel = buttons->addChild<DialogButton>(tr("Cancel"));
-    m_cancel->onClicked = [this] { requestClose(); };
-    m_change = buttons->addChild<DialogButton>(tr("Change password"), true);
+    m_change = addButtonRow()->addChild<DialogButton>(tr("Change password"), true);
     m_change->onClicked = [this] { change(); };
 
     for (TextField* field : {m_current, m_password, m_verify}) {
@@ -129,7 +106,6 @@ void ChangePasswordDialog::update()
 {
     const bool waiting = m_changer && m_changer->isRunning();
     m_form->setEnabled(!waiting);
-    m_cancel->setEnabled(!waiting);
     m_change->setEnabled(!waiting && !m_password->text().empty() && m_password->text() == m_verify->text());
 }
 
@@ -159,25 +135,18 @@ AddUserDialog::AddUserDialog(SettingsWindow& parent, accounts::AccountsManager& 
     : FormDialog(parent, tr("Add new user"), kWidth)
     , m_manager(manager)
 {
-    setCloseVisible(false);
-    m_form = addForm(content());
+    m_form = content()->addChild<Card>(Card::Style::List);
     m_name = addField(m_form, tr("User name"), false);
     m_password = addField(m_form, tr("Password"), true);
     m_verify = addField(m_form, tr("Verify password"), true);
-    m_form->addChild<Label>(tr("Account type"));
-    m_type = m_form->addChild<ComboBox>(std::vector<std::string>{tr("Standard"), tr("Administrator")});
+    ListRow* type = m_form->addChild<ListRow>(tr("Account type"));
+    type->setInteractive(false);
+    m_type = type->addContent<RowComboBox>(std::vector<std::string>{tr("Standard"), tr("Administrator")});
     m_type->setCurrentIndex(0);
-    m_type->setLayoutHints({.fillWidth = true});
 
-    m_error = content()->addChild<Label>();
-    m_error->setWrap(true);
-    m_error->setLayoutHints({.fillWidth = true});
-    m_error->setVisible(false);
+    m_error = addError(content());
 
-    RowLayout* buttons = addButtonRow();
-    m_cancel = buttons->addChild<DialogButton>(tr("Cancel"));
-    m_cancel->onClicked = [this] { requestClose(); };
-    m_add = buttons->addChild<DialogButton>(tr("Add"), true);
+    m_add = addButtonRow()->addChild<DialogButton>(tr("Add"), true);
     m_add->onClicked = [this] { add(); };
 
     for (TextField* field : {m_name, m_password, m_verify})
@@ -190,7 +159,6 @@ AddUserDialog::AddUserDialog(SettingsWindow& parent, accounts::AccountsManager& 
 void AddUserDialog::update()
 {
     m_form->setEnabled(!m_waiting);
-    m_cancel->setEnabled(!m_waiting);
     m_add->setEnabled(!m_waiting && !m_name->text().empty() && !m_password->text().empty()
                       && m_password->text() == m_verify->text());
 }

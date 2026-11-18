@@ -16,6 +16,7 @@
 #include "ui/list_view.h"
 #include "ui/painter.h"
 #include "ui/switch.h"
+#include "ui/text_field.h"
 #include "ui/theme.h"
 #include "widgets/card.h"
 #include "widgets/metrics.h"
@@ -378,6 +379,34 @@ void SwitchRow::setChecked(bool checked)
 bool SwitchRow::isChecked() const
 {
     return m_switch->isChecked();
+}
+
+TextFieldRow::TextFieldRow(std::string text, double fieldWidth)
+    : ListRow(std::move(text))
+{
+    setInteractive(false);
+    m_field = addContent<TextField>();
+    m_field->setFrameVisible(false);
+    m_field->setRightAligned(true);
+    m_field->setTextMargins(0, 0);
+    setFieldWidth(fieldWidth);
+}
+
+void TextFieldRow::setFieldWidth(double width)
+{
+    // The field's own height would make the row higher than its neighbours.
+    m_field->setLayoutHints(
+            {.preferredWidth = width, .preferredHeight = metrics::rowHeight - metrics::cardVerticalPadding});
+}
+
+void TextFieldRow::pointerPress(const PointerEvent& event)
+{
+    if (event.button == MouseButton::Left && m_field->isVisible())
+        m_field->setFocus(FocusReason::Mouse);
+}
+
+void TextFieldRow::pointerRelease(const PointerEvent&)
+{
 }
 
 InfoRow::InfoRow(std::string text, std::string value)
