@@ -3,6 +3,7 @@
 
 #include <gtest/gtest.h>
 
+#include <algorithm>
 #include <chrono>
 #include <cmath>
 #include <csignal>
@@ -224,8 +225,10 @@ TEST_F(SoundPageTest, MultipleDevices)
     dragVolume(second, 0.57);
     ASSERT_TRUE(waitFor([&] { return std::abs(second->volume() - 0.57) < 0.0001; }));
     EXPECT_LT(std::abs(first->volume() - originalVolume), 0.0001);
-    EXPECT_TRUE(driver().findAll("mute").empty());
-    // With no mute switch, muting shows as zero.
+    // The volume is the card's one control for muting: there is no mute switch, and muting shows as zero.
+    const std::vector<std::string> controls = driver().texts("sound:sliders");
+    EXPECT_NE(std::find(controls.begin(), controls.end(), "Output volume"), controls.end());
+    EXPECT_EQ(std::find(controls.begin(), controls.end(), "Mute"), controls.end());
     second->setMuted(true);
     ASSERT_TRUE(waitFor([&] { return slider->value() == 0.0; }));
     dragVolume(second, 0.4);
@@ -241,7 +244,8 @@ TEST_F(SoundPageTest, MultipleDevices)
     ASSERT_TRUE(waitFor([&] { return shows("sound:volume:", source); }));
     const auto stream = find("settings-playback");
     ASSERT_TRUE(stream);
-    EXPECT_TRUE(driver().findAll("sound:stream:" + std::to_string(stream->index())).empty());
+    // A playing application is no device of its own.
+    EXPECT_EQ(driver().countShown("sound:device:" + std::to_string(stream->index())), 0u);
     EXPECT_FALSE(driver().showsText("Applications"));
     EXPECT_FALSE(driver().showsText("Test sound"));
 

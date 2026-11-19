@@ -179,6 +179,7 @@ public:
         m_noDevices->setEnabled(false);
 
         m_sliders = devices->addChild<Card>(Card::Style::List);
+        m_sliders->setName("sound:sliders");
         m_outputVolume = m_sliders->addChild<SliderRow>(tr("Output volume"));
         m_outputVolume->setIcons("audio-volume-zero", "audio-volume-high");
         m_outputVolume->setRange(AudioObject::MinimalVolume, AudioObject::NormalVolume);
