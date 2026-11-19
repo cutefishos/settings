@@ -28,6 +28,7 @@ public:
     {
         Card* card = content()->addChild<Card>(Card::Style::List);
         m_doNotDisturb = card->addChild<SwitchRow>(tr("Do Not Disturb"));
+        m_doNotDisturb->setName("notifications:doNotDisturb");
         m_doNotDisturb->setChecked(m_notifications.doNotDisturb());
         m_doNotDisturb->onToggled = [this](bool checked) { m_notifications.setDoNotDisturb(checked); };
         m_subscriptions.push_back(m_notifications.doNotDisturbChanged.connect(
@@ -35,6 +36,7 @@ public:
 
         Section* section = content()->addChild<Section>(tr("Applications"));
         m_empty = section->addChild<Card>();
+        m_empty->setName("notifications:empty");
         m_emptyLabel = m_empty->addChild<Label>(tr("Applications appear here after they send a notification."));
         m_emptyLabel->setWrap(true);
         m_emptyLabel->setLayoutHints({.fillWidth = true});
@@ -42,6 +44,7 @@ public:
         m_footnote = section->addChild<Footnote>(
                 tr("Notifications that skip the banner still go to the Notification Center. Turned off, "
                    "they are dropped."));
+        m_footnote->setName("notifications:footnote");
         m_subscriptions.push_back(m_notifications.applicationsChanged.connect([this] { updateApplications(); }));
         updateApplications();
     }
@@ -69,6 +72,7 @@ private:
             // Indexes follow Notifications::ApplicationMode.
             RowComboBox* mode = row->addContent<RowComboBox>(
                     std::vector<std::string>{tr("Banners"), tr("Notification Center only"), tr("Off")});
+            mode->setName("notifications:mode");
             mode->setCurrentIndex(application.mode);
             const std::string key = application.key;
             mode->onActivated = [this, key](int index) { m_notifications.setApplicationMode(key, index); };

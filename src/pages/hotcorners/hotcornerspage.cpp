@@ -37,6 +37,7 @@ public:
         : Page(window, tr("Hot Corners"))
     {
         m_unavailable = content()->addChild<Card>();
+        m_unavailable->setName("hotcorners:unavailable");
         m_unavailableLabel = m_unavailable->addChild<Label>(
                 tr("Hot corners are managed by the Cutefish compositor, which is not running."));
         m_unavailableLabel->setWrap(true);
@@ -53,6 +54,7 @@ public:
             ListRow* row = m_list->addChild<ListRow>(text);
             row->setInteractive(false);
             RowComboBox* box = row->addContent<RowComboBox>(actionNames);
+            box->setName("hotcorners:corner");
             const std::string name = corner;
             // Keys held while choosing are the ones the corner will ask for.
             box->onActivated = [this, name](int index) {
@@ -63,6 +65,7 @@ public:
         m_note = content()->addChild<Footnote>(
                 tr("Move the pointer into a corner of the screen to run its action. Hold modifier keys while "
                    "choosing an action to make the corner work only while they are held."));
+        m_note->setName("hotcorners:note");
         m_subscription = m_corners.changed.connect([this] { update(); });
         update();
     }

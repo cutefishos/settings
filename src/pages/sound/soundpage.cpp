@@ -112,7 +112,7 @@ public:
     explicit DeviceRow(std::shared_ptr<AudioObject> device)
         : m_device(std::move(device))
     {
-        setName("device-" + std::to_string(m_device->index()));
+        setName("sound:device:" + std::to_string(m_device->index()));
         m_type = addContent<SecondaryLabel>();
         m_check = addContent<TrailingIcon>("check", 18);
         update();
@@ -166,7 +166,7 @@ public:
         devices->setSpacing(metrics::l);
         devices->setLayoutHints({.fillWidth = true});
         m_tabs = devices->addChild<SegmentedControl>(std::vector<std::string>{tr("Output"), tr("Input")});
-        m_tabs->setName("tabs");
+        m_tabs->setName("sound:tabs");
         m_tabs->setLayoutHints({.fillWidth = true});
         m_tabs->onCurrentChanged = [this](int) {
             rebuildDevices();
@@ -191,7 +191,7 @@ public:
             }
         };
         m_balance = m_sliders->addChild<SliderRow>(tr("Balance"));
-        m_balance->setName("balance");
+        m_balance->setName("sound:balance");
         m_balance->setCaptions(trc("balance", "Left"), trc("balance", "Right"));
         m_balance->setRange(-1, 1);
         m_balance->setStepSize(0.02);
@@ -279,7 +279,7 @@ private:
         m_sliders->setVisible(inputs ? input != nullptr : output && output->hasVolume());
 
         m_outputVolume->setVisible(!inputs && output && output->hasVolume());
-        m_outputVolume->setName(output ? "volume-" + std::to_string(output->index()) : std::string());
+        m_outputVolume->setName(output ? "sound:volume:" + std::to_string(output->index()) : std::string());
         m_outputVolume->setValue(output && !output->muted() ? output->volume() : 0);
         m_outputVolume->setSliderEnabled(output && output->volumeWritable());
 
@@ -288,7 +288,7 @@ private:
         m_balance->setSliderEnabled(output && output->volumeWritable());
 
         m_inputVolume->setVisible(inputs && input && input->hasVolume());
-        m_inputVolume->setName(input ? "volume-" + std::to_string(input->index()) : std::string());
+        m_inputVolume->setName(input ? "sound:volume:" + std::to_string(input->index()) : std::string());
         m_inputVolume->setValue(input ? input->volume() : 0);
         m_inputVolume->setSliderEnabled(input && input->volumeWritable());
 

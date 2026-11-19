@@ -192,6 +192,7 @@ ShortcutEditDialog::ShortcutEditDialog(SettingsWindow& parent, ShortcutsModel& m
     RowLayout* buttons = addButtonRow();
     buttons->setLayoutHints({.fillWidth = true});
     m_add = buttons->addChild<DialogButton>(tr("Add shortcut"));
+    m_add->setName("shortcutdialog:add");
     m_add->onClicked = [this] { startRecording(std::nullopt); };
     m_restore = buttons->addChild<DialogButton>(tr("Restore default"));
     m_restore->onClicked = [this] {

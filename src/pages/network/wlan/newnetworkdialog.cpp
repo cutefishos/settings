@@ -187,24 +187,30 @@ void NewNetworkDialog::build()
 
     m_nameRow = addField(tr("Network name"));
     m_name = m_nameRow->field();
+    m_name->setName("join:name");
     m_securityRow = m_form->addChild<ListRow>(tr("Security"));
     m_securityRow->setInteractive(false);
     std::vector<std::string> securities;
     for (const SecurityChoice& choice : kSecurities)
         securities.push_back(tr(choice.text));
     m_security = m_securityRow->addContent<RowComboBox>(securities);
+    m_security->setName("join:security");
     m_security->setCurrentIndex(kDefaultSecurity);
     m_security->onActivated = [this](int) { update(); };
     m_userNameRow = addField(tr("Username"));
     m_userName = m_userNameRow->field();
+    m_userName->setName("join:userName");
     m_passwordRow = addField(tr("Password"));
     m_password = m_passwordRow->field();
+    m_password->setName("join:password");
     m_password->setEchoMode(TextField::EchoMode::Password);
 
     m_certificateNote = content->addChild<Footnote>(
             tr("This network signs in with a certificate, which can't be set up here yet."));
+    m_certificateNote->setName("join:certificate");
 
     m_joinButton = m_dialog->addButtonRow()->addChild<DialogButton>(tr("Join"), true);
+    m_joinButton->setName("join:join");
     m_joinButton->onClicked = [this] { join(); };
 }
 

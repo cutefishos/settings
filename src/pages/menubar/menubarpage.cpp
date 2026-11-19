@@ -35,6 +35,7 @@ public:
         RowLayout* leading = setLeading<RowLayout>();
         leading->setSpacing(12);
         m_checkBox = leading->addChild<CheckBox>();
+        m_checkBox->setName("menubar:check");
         m_checkBox->setPadding({});
         m_checkBox->onToggled = [this](bool checked) {
             if (onToggled)

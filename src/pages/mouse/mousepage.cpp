@@ -6,6 +6,7 @@
 #include "base/i18n.h"
 #include "pages/mouse/mouse.h"
 #include "ui/slider.h"
+#include "ui/switch.h"
 #include "widgets/card.h"
 #include "widgets/listrow.h"
 #include "widgets/sliderrow.h"
@@ -46,6 +47,7 @@ public:
         m_card->setName("mouse:card");
         m_leftHanded = m_card->addChild<SwitchRow>(tr("Left hand"));
         m_leftHanded->setName("mouse:leftHanded");
+        m_leftHanded->control()->setName("mouse:leftHandedSwitch");
         m_leftHanded->onToggled = [this](bool checked) { m_mouse.setLeftHanded(checked); };
         m_naturalScroll = m_card->addChild<SwitchRow>(tr("Natural scrolling"));
         m_naturalScroll->onToggled = [this](bool checked) { m_mouse.setNaturalScroll(checked); };

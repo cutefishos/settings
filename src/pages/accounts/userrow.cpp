@@ -227,6 +227,8 @@ void UserRow::update()
     const std::string userName = m_account->userName();
     const std::string realName = m_account->realName();
     setName("user:" + userName);
+    m_avatar->setName(name() + ":picture");
+    m_info->setName(name() + ":info");
     m_avatar->setUserName(userName);
     m_avatar->setPicture(m_account->iconFileName());
     m_userName->setText(userName);

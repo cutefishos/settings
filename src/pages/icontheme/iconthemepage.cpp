@@ -64,6 +64,7 @@ public:
         for (const IconTheme& theme : m_themes) {
             auto* item = grid->addChild<ImageSelectionItem>(std::make_unique<IconThemePreview>(theme.previewFiles),
                                                             theme.name, SizeF{104, 64}, 0);
+            item->setName("icontheme:theme");
             const std::string id = theme.id;
             // The choice shows at once and the service catches up, as the Qt
             // version's model did.

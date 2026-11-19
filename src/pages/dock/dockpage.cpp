@@ -134,6 +134,7 @@ public:
         for (int i = 0; i < 3; ++i) {
             ImageSelectionItem* tile = tiles->addChild<ImageSelectionItem>(dataPath(pictures[i]), names[i],
                                                                            SizeF{80, 80});
+            tile->setName("dock:position");
             tile->onClicked = [this, i] {
                 m_settings.setDirection(i);
                 updateDirection();
@@ -191,6 +192,7 @@ public:
         visibility->onCurrentChanged = [this](int index) { m_settings.setVisibility(index); };
 
         SwitchRow* area = sliders->addChild<SwitchRow>(tr("Minimized windows area"));
+        area->setName("dock:minimizedArea");
         area->setMinimumRowHeight(kTallRowHeight);
         area->setChecked(m_settings.minimizedArea());
         area->onToggled = [this](bool checked) { m_settings.setMinimizedArea(checked); };
@@ -198,6 +200,7 @@ public:
         Section* desktop = content()->addChild<Section>(tr("Desktop"));
         Card* corners = desktop->addChild<Card>(Card::Style::List);
         NavigationItem* hotCorners = corners->addChild<NavigationItem>(tr("Hot Corners"));
+        hotCorners->setName("dock:hotcorners");
         hotCorners->onClicked = [&window] { window.pushPage("hotcorners"); };
     }
 

@@ -95,16 +95,17 @@ public:
         });
         const std::string model = about::computerModel();
         if (!model.empty())
-            card->addChild<InfoRow>(tr("Model"), model);
-        card->addChild<InfoRow>(tr("System version"), about::prettyProductName());
-        card->addChild<InfoRow>(tr("System type"), about::architecture());
-        card->addChild<InfoRow>(tr("Kernel version"), about::kernelVersion());
-        card->addChild<InfoRow>(tr("Processor"), about::processor());
-        card->addChild<InfoRow>(tr("RAM"), about::memorySize());
-        card->addChild<InfoRow>(tr("Internal storage"), about::internalStorage());
+            card->addChild<InfoRow>(tr("Model"), model)->setName("about:info");
+        card->addChild<InfoRow>(tr("System version"), about::prettyProductName())->setName("about:info");
+        card->addChild<InfoRow>(tr("System type"), about::architecture())->setName("about:info");
+        card->addChild<InfoRow>(tr("Kernel version"), about::kernelVersion())->setName("about:info");
+        card->addChild<InfoRow>(tr("Processor"), about::processor())->setName("about:info");
+        card->addChild<InfoRow>(tr("RAM"), about::memorySize())->setName("about:info");
+        card->addChild<InfoRow>(tr("Internal storage"), about::internalStorage())->setName("about:info");
 
         Card* licensesCard = content()->addChild<Card>(Card::Style::List);
         NavigationItem* licenses = licensesCard->addChild<NavigationItem>(tr("Open-Source Licenses"));
+        licenses->setName("about:licenses");
         licenses->onClicked = [&window] { window.pushPage("licenses"); };
     }
 

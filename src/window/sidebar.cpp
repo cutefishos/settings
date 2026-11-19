@@ -279,7 +279,7 @@ Sidebar::Sidebar()
     // follows its baseline.
     m_title->setVisible(false);
     m_search = addChild<SearchField>();
-    m_search->setName("search");
+    m_search->setName("sidebar:search");
     m_search->onTextChanged = [this] { updateResults(); };
     m_search->onAccepted = [this] {
         if (isSearching() && m_currentResult >= 0)
@@ -287,6 +287,7 @@ Sidebar::Sidebar()
     };
 
     m_listScroll = addChild<ScrollView>();
+    m_listScroll->setName("sidebar:list");
     m_list = m_listScroll->setContent<SidebarList>();
     m_list->setNamePrefix("sidebar:");
     m_list->onClicked = [this](int index) {

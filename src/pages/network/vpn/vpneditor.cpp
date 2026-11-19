@@ -556,6 +556,7 @@ private:
         card.header = card.card->addChild<ListRow>(tr("Peer"));
         card.header->setInteractive(false);
         card.remove = card.header->addContent<Button>(tr("Remove"));
+        card.remove->setName("vpn:removePeer:" + std::to_string(m_peerCards.size()));
         Card* owner = card.card;
         card.remove->onClicked = [this, owner] {
             const auto found = std::find_if(m_peerCards.begin(), m_peerCards.end(),

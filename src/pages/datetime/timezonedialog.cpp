@@ -131,6 +131,7 @@ public:
     SearchBox()
     {
         field = addChild<SearchBoxField>();
+        field->setName("timezone:search");
         field->setPlaceholder(tr("Search city or country"));
         field->setFrameVisible(false);
         field->setTextMargins(metrics::m + 14 + metrics::s, metrics::m);

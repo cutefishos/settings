@@ -68,11 +68,11 @@ public:
         m_row = addChild<RowLayout>();
         navigation = m_row->addChild<NavigationButtons>();
         back = navigation->back();
-        back->setName("back");
+        back->setName("window:back");
         forward = navigation->forward();
-        forward->setName("forward");
+        forward->setName("window:forward");
         title = m_row->addChild<Label>();
-        title->setName("title");
+        title->setName("window:title");
         title->setFontSize(metrics::points(metrics::headerTitlePointSize));
         title->setWeight(600);
     }

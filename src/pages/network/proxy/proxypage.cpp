@@ -69,6 +69,7 @@ public:
         m_scriptRow = m_proxyItem->addChild<RowLayout>();
         m_scriptRow->setSpacing(metrics::controlSpacing);
         m_script = m_scriptRow->addChild<TextField>(m_proxy.scriptProxy());
+        m_script->setName("proxy:script");
         m_script->setLayoutHints({.fillWidth = true});
         m_script->onTextEdited = [this] { markChanged(); };
         Button* selectFile = m_scriptRow->addChild<Button>(tr("Select file"));
@@ -86,7 +87,9 @@ public:
         addLabel(tr("HTTP proxy"));
         m_http = addHostField(m_proxy.httpProxy());
         addLabel(tr("Port"));
+        m_http->setName("proxy:http");
         m_httpPort = addPortField(m_proxy.httpProxyPort());
+        m_httpPort->setName("proxy:httpPort");
         addSpacer();
         m_forFtp = m_grid->addChild<CheckBox>(tr("Also use this proxy for FTP"));
         m_forFtp->setLayoutHints({.fillWidth = true});
@@ -100,17 +103,22 @@ public:
         addLabel(tr("FTP proxy"));
         m_ftp = addHostField(m_proxy.ftpProxy());
         addLabel(tr("Port"));
+        m_ftp->setName("proxy:ftp");
         m_ftpPort = addPortField(m_proxy.ftpProxyPort());
+        m_ftpPort->setName("proxy:ftpPort");
         addLabel(tr("SOCKS proxy"));
         m_socks = addHostField(m_proxy.socksProxy());
         addLabel(tr("Port"));
+        m_socks->setName("proxy:socks");
         m_socksPort = addPortField(m_proxy.socksProxyPort());
+        m_socksPort->setName("proxy:socksPort");
 
         m_divider = m_proxyItem->addChild<Divider>();
         m_saveRow = m_proxyItem->addChild<RowLayout>();
         m_saveRow->setSpacing(metrics::rowSpacing);
         m_saveRow->addChild<View>()->setLayoutHints({.fillWidth = true});
         Button* save = m_saveRow->addChild<Button>(tr("Save"));
+        save->setName("proxy:save");
         save->onClicked = [this] { saveFields(); };
 
         m_subscription = m_proxy.changed.connect([this](unsigned fields) { reload(fields); });

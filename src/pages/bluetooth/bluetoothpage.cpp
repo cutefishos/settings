@@ -106,7 +106,7 @@ public:
 
     void update()
     {
-        setName(m_device->path());
+        setName("bluetooth:device:" + m_device->path());
         m_icon->setIconName(m_device->icon().empty() ? "bluetooth" : m_device->icon());
         m_name->setText(m_device->name());
         std::string status = m_device->blocked()  ? tr("Blocked")
@@ -181,7 +181,8 @@ public:
         m_busy->setDuration(std::chrono::milliseconds(1600));
         header->addChild<View>()->setLayoutHints({.fillWidth = true});
         m_placeholder = addChild<Footnote>();
-        m_placeholder->setName("placeholder");
+        m_placeholder->setName(filter == DevicesModel::PairedDevices ? "bluetooth:paired:placeholder"
+                                                                     : "bluetooth:other:placeholder");
         m_card = addChild<Card>(Card::Style::List);
         m_subscriptions.push_back(m_model.rowsChanged.connect([this] {
             rebuild();
@@ -245,7 +246,7 @@ public:
     explicit AdapterRow(std::shared_ptr<BluetoothObject> adapter)
         : m_adapter(std::move(adapter))
     {
-        setName("adapter:" + m_adapter->path());
+        setName("bluetooth:adapter:" + m_adapter->path());
         m_state = addContent<SecondaryLabel>();
         m_info = addContent<IconButton>("info", 20);
         update();

@@ -212,10 +212,11 @@ PictureDialog::PictureDialog(SettingsWindow& parent, std::shared_ptr<accounts::U
     RowLayout* buttons = addButtonRow();
     buttons->setLayoutHints({.fillWidth = true});
     DialogButton* choose = buttons->addChild<DialogButton>(tr("Choose File…"));
-    choose->setName("picture-choose-file");
+    choose->setName("picture:chooseFile");
     choose->onClicked = [this] { chooseFile(); };
     buttons->addChild<View>()->setLayoutHints({.fillWidth = true});
     m_save = buttons->addChild<DialogButton>(tr("Save"), true);
+    m_save->setName("picture:save");
     m_save->onClicked = [this] { save(); };
 
     select(m_initial);

@@ -32,6 +32,53 @@ foreach(directory ${page_directories})
     endif()
 endforeach()
 
+# The pages' models, which include nothing of the toolkit's ui: the logic
+# tests build on them without a window.
+set(SETTINGS_CORE_PAGE_SOURCES
+    about/aboutinfo.cpp
+    about/devicename.cpp
+    accounts/password.cpp
+    accounts/passwordchanger.cpp
+    battery/battery.cpp
+    battery/batteryhistory.cpp
+    battery/timeformat.cpp
+    datetime/time.cpp
+    defaultapps/defaultapplications.cpp
+    display/brightness.cpp
+    dock/docksettings.cpp
+    fonts/fontlist.cpp
+    hotcorners/hotcorners.cpp
+    icontheme/iconthemes.cpp
+    input/compositorservice.cpp
+    keyboard/inputmethod.cpp
+    keyboard/keyboard.cpp
+    language/language.cpp
+    language/region.cpp
+    menubar/menubarsettings.cpp
+    mouse/mouse.cpp
+    network/common/networklist.cpp
+    network/common/textchecks.cpp
+    network/proxy/proxysettings.cpp
+    notifications/notifications.cpp
+    power/powersettings.cpp
+    privacy/computercontrol.cpp
+    shortcuts/shortcutsmodel.cpp
+    softwareupdate/softwareupdate.cpp
+    touchpad/touchpad.cpp
+    wallpaper/wallpapers.cpp
+)
+set(SETTINGS_CORE_SOURCES src/window/options.cpp)
+foreach(source ${SETTINGS_CORE_PAGE_SOURCES})
+    string(REGEX REPLACE "/.*" "" page ${source})
+    if(page IN_LIST SETTINGS_BUILT_PAGES)
+        list(APPEND SETTINGS_CORE_SOURCES src/pages/${source})
+        list(REMOVE_ITEM SETTINGS_PAGE_SOURCES ${PROJECT_SOURCE_DIR}/src/pages/${source})
+    endif()
+endforeach()
+add_library(settings-core STATIC ${SETTINGS_CORE_SOURCES})
+target_include_directories(settings-core PUBLIC src)
+target_link_libraries(settings-core PUBLIC Cutefish::ToolkitBase)
+
 # Objects rather than an archive: a page is only referenced by its static
 # registration, which a linker would drop from an archive.
 add_library(settings-ui OBJECT
@@ -51,7 +98,6 @@ add_library(settings-ui OBJECT
     src/widgets/sliderrow.cpp
     src/widgets/standardbutton.cpp
     src/widgets/tilegrid.cpp
-    src/window/options.cpp
     src/window/page.cpp
     src/window/pagelist.cpp
     src/window/settingswindow.cpp
@@ -60,10 +106,10 @@ add_library(settings-ui OBJECT
 )
 target_include_directories(settings-ui PUBLIC src)
 target_compile_definitions(settings-ui PUBLIC SETTINGS_DATA_DIR="${SETTINGS_DATA_DIR}")
-target_link_libraries(settings-ui PUBLIC Cutefish::Toolkit)
+target_link_libraries(settings-ui PUBLIC settings-core Cutefish::Toolkit)
 
 # A page's own dependencies: src/pages/<page>/page.cmake finds and links
-# them to settings-ui.
+# them to settings-core, whose models need them, and through it to settings-ui.
 foreach(page ${SETTINGS_BUILT_PAGES})
     if(EXISTS ${PROJECT_SOURCE_DIR}/src/pages/${page}/page.cmake)
         include(${PROJECT_SOURCE_DIR}/src/pages/${page}/page.cmake)
@@ -89,5 +135,5 @@ install(FILES
 )
 
 if(BUILD_TESTING)
-    add_subdirectory(tests/ui)
+    add_subdirectory(tests)
 endif()

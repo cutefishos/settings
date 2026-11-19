@@ -53,14 +53,18 @@ ChangePasswordDialog::ChangePasswordDialog(SettingsWindow& parent, const std::st
     m_form->addChild<InfoRow>(tr("User name"), userName);
     if (m_changer) {
         m_current = addField(m_form, tr("Current password"), true);
+        m_current->setName("password:current");
         m_password = addField(m_form, tr("New password"), true);
     } else {
         m_password = addField(m_form, tr("Password"), true);
     }
+    m_password->setName("password:new");
     m_verify = addField(m_form, tr("Verify password"), true);
+    m_verify->setName("password:verify");
 
     if (m_changer) {
         m_error = addError(content());
+        m_error->setName("password:error");
         m_changer->onFinished = [this](PasswordChanger::Result result, const std::string& message) {
             switch (result) {
             case PasswordChanger::Result::Changed:
@@ -89,6 +93,7 @@ ChangePasswordDialog::ChangePasswordDialog(SettingsWindow& parent, const std::st
     }
 
     m_change = addButtonRow()->addChild<DialogButton>(tr("Change password"), true);
+    m_change->setName("password:change");
     m_change->onClicked = [this] { change(); };
 
     for (TextField* field : {m_current, m_password, m_verify}) {
@@ -137,16 +142,21 @@ AddUserDialog::AddUserDialog(SettingsWindow& parent, accounts::AccountsManager& 
 {
     m_form = content()->addChild<Card>(Card::Style::List);
     m_name = addField(m_form, tr("User name"), false);
+    m_name->setName("adduser:name");
     m_password = addField(m_form, tr("Password"), true);
+    m_password->setName("adduser:password");
     m_verify = addField(m_form, tr("Verify password"), true);
+    m_verify->setName("adduser:verify");
     ListRow* type = m_form->addChild<ListRow>(tr("Account type"));
     type->setInteractive(false);
     m_type = type->addContent<RowComboBox>(std::vector<std::string>{tr("Standard"), tr("Administrator")});
     m_type->setCurrentIndex(0);
 
     m_error = addError(content());
+    m_error->setName("adduser:error");
 
     m_add = addButtonRow()->addChild<DialogButton>(tr("Add"), true);
+    m_add->setName("adduser:add");
     m_add->onClicked = [this] { add(); };
 
     for (TextField* field : {m_name, m_password, m_verify})
