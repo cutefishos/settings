@@ -6,7 +6,6 @@
 #include <functional>
 #include <memory>
 #include <string>
-#include <vector>
 
 #include "base/signal.h"
 #include "cutefish/accounts/user_account.h"
@@ -51,9 +50,5 @@ private:
     cutefish::ui::Label* m_loggedIn;
     IconButton* m_info;
 };
-
-// The accounts in the service's order, the one logged in first.
-std::vector<std::shared_ptr<cutefish::accounts::UserAccount>>
-loggedInFirst(const std::vector<std::shared_ptr<cutefish::accounts::UserAccount>>& accounts, int64_t loggedInUid);
 
 } // namespace settings

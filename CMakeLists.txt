@@ -37,12 +37,14 @@ endforeach()
 set(SETTINGS_CORE_PAGE_SOURCES
     about/aboutinfo.cpp
     about/devicename.cpp
+    accounts/accountorder.cpp
     accounts/password.cpp
     accounts/passwordchanger.cpp
     battery/battery.cpp
     battery/batteryhistory.cpp
     battery/timeformat.cpp
     datetime/time.cpp
+    datetime/timezonemap.cpp
     defaultapps/defaultapplications.cpp
     display/brightness.cpp
     dock/docksettings.cpp
@@ -59,6 +61,7 @@ set(SETTINGS_CORE_PAGE_SOURCES
     network/common/networklist.cpp
     network/common/textchecks.cpp
     network/proxy/proxysettings.cpp
+    network/vpn/vpnformmodel.cpp
     notifications/notifications.cpp
     power/powersettings.cpp
     privacy/computercontrol.cpp

@@ -20,7 +20,6 @@
 #include "cutefish/timedate/time_date.h"
 
 using namespace cutefish;
-using namespace cutefish::ui;
 using cutefish::i18n::format;
 using cutefish::i18n::tr;
 using cutefish::i18n::trn;
@@ -231,7 +230,7 @@ void TimeZoneMap::select(const std::string& id)
     availableListChanged.emit();
 }
 
-PointF TimeZoneMap::position(const std::string& id, int width, int height) const
+base::PointF TimeZoneMap::position(const std::string& id, int width, int height) const
 {
     if (const Item* item = find(id))
         return {mapX(item->longitude) * width, mapY(item->latitude) * height};

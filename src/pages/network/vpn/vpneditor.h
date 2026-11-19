@@ -10,6 +10,7 @@
 #include <vector>
 
 #include "cutefish/networkmanager/handler.h"
+#include "pages/network/vpn/vpnformmodel.h"
 #include "ui/cell_layout.h"
 
 namespace cutefish::ui {
@@ -28,8 +29,8 @@ class PluginForm;
 class WireGuardEditor;
 
 // What a VPN profile is made of, for the Add VPN and details dialogs: its
-// name, the fields of its kind, and who may use it. load() takes
-// Handler::vpnForm(), collect() gives Handler::saveVpn() its form.
+// name, the fields of its kind, and who may use it, filled from and typed
+// into its VpnFormModel.
 class VpnEditor : public cutefish::ui::ColumnLayout
 {
 public:
@@ -41,8 +42,9 @@ public:
     cutefish::networkmanager::VpnValues collect() const;
     void focusFirst();
 
-    const cutefish::networkmanager::VpnForm& form() const { return m_form; }
-    bool installed() const { return m_form.installed; }
+    const VpnFormModel& model() const { return m_model; }
+    const cutefish::networkmanager::VpnForm& form() const { return m_model.form(); }
+    bool installed() const { return m_model.installed(); }
     bool complete() const;
 
     // Return in a field.
@@ -53,7 +55,7 @@ public:
 private:
     void changed();
 
-    cutefish::networkmanager::VpnForm m_form;
+    VpnFormModel m_model;
     Footnote* m_notInstalled;
     // The name, then the first rows of the profile's kind.
     Card* m_basic;

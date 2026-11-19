@@ -603,10 +603,10 @@ public:
         const RectF map = mapRect();
         if (zone.empty() || map.width <= 0)
             return {-1, -1};
-        const PointF point = m_dialog.map().position(zone, int(map.width), int(map.height));
-        if (point.x < 0)
-            return point;
-        return {map.x + point.x, map.y + point.y};
+        const base::PointF point = m_dialog.map().position(zone, int(map.width), int(map.height));
+        if (point.x() < 0)
+            return {point.x(), point.y()};
+        return {map.x + point.x(), map.y + point.y()};
     }
 
 protected:

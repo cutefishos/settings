@@ -84,20 +84,6 @@ TEST(Accounts, AddUserShowsTheServicesAnswer)
     EXPECT_EQ(driver->text("adduser:error"), "The accounts service cannot be reached");
 }
 
-TEST(Accounts, TheLoggedInAccountComesFirst)
-{
-    const auto make = [](int uid) {
-        return std::make_shared<accounts::UserAccount>("/org/freedesktop/Accounts/User" + std::to_string(uid),
-                                                       nullptr);
-    };
-    const std::vector<std::shared_ptr<accounts::UserAccount>> accounts {make(1001), make(1002), make(1000),
-                                                                       make(1003)};
-    std::vector<int64_t> uids;
-    for (const auto& account : loggedInFirst(accounts, 1000))
-        uids.push_back(account->userId());
-    EXPECT_EQ(uids, (std::vector<int64_t> {1000, 1001, 1002, 1003}));
-}
-
 TEST(Accounts, ARowOpensTheDetailsAndThePictureChangesIt)
 {
     auto account = std::make_shared<accounts::UserAccount>("/org/freedesktop/Accounts/User1000", nullptr);

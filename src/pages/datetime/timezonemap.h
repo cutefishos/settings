@@ -6,8 +6,8 @@
 #include <string>
 #include <vector>
 
+#include "base/geometry.h"
 #include "base/signal.h"
-#include "ui/geometry.h"
 
 namespace cutefish::timedate {
 class TimeDate;
@@ -55,7 +55,7 @@ public:
     void select(const std::string& id);
 
     // Where the zone sits on a map of the given size; (-1, -1) if unknown.
-    cutefish::ui::PointF position(const std::string& id, int width, int height) const;
+    cutefish::base::PointF position(const std::string& id, int width, int height) const;
     // The zone nearest to a point on a map of the given size; empty if there
     // are no zones.
     std::string nearest(int x, int y, int width, int height) const;

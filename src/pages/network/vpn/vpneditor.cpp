@@ -8,7 +8,6 @@
 
 #include "base/event_loop.h"
 #include "base/i18n.h"
-#include "cutefish/networkmanager/types.h"
 #include "pages/network/common/textchecks.h"
 #include "ui/button.h"
 #include "ui/file_chooser.h"
@@ -88,34 +87,23 @@ public:
     std::function<void()> onAccepted;
     std::function<void()> onChanged;
 
-    explicit PluginForm(Card* basic)
-        : m_basic(basic)
+    PluginForm(Card* basic, VpnFormModel& model)
+        : m_model(model)
+        , m_basic(basic)
     {
         setSpacing(metrics::dialogSpacing);
         setLayoutHints({.fillWidth = true});
     }
 
-    void load(const std::vector<schema::FormField>& fields, bool shared)
+    // The rows of the model's fields, after it was loaded.
+    void load()
     {
-        m_fields = fields;
-        m_shared = shared;
-        m_values.clear();
-        m_storage.clear();
-        m_secrets.clear();
-        for (const schema::FormField& field : fields) {
-            m_values[field.key] = field.type == schema::Type::Bool ? (field.checked ? "true" : "false") : field.value;
-            if (field.type == schema::Type::Password)
-                m_storage[field.key] = field.storage;
-        }
         m_advancedShown = false;
         build();
     }
 
-    void setShared(bool shared)
+    void sharedChanged()
     {
-        if (shared == m_shared)
-            return;
-        m_shared = shared;
         for (FieldRow& row : m_rows) {
             if (row.storage)
                 loadStorage(row);
@@ -123,30 +111,9 @@ public:
         update();
     }
 
-    void setSecrets(const std::map<std::string, std::string>& secrets)
+    void secretsChanged()
     {
-        m_secrets.clear();
-        for (const schema::FormField& field : m_fields) {
-            const auto found = secrets.find(field.key);
-            if (field.type == schema::Type::Password && found != secrets.end())
-                m_secrets[field.key] = found->second;
-        }
         reload();
-    }
-
-    const schema::Values& values() const { return m_values; }
-    const std::map<std::string, uint32_t>& storage() const { return m_storage; }
-    const std::map<std::string, std::string>& secrets() const { return m_secrets; }
-
-    bool complete() const
-    {
-        for (const schema::FormField& field : m_fields) {
-            const auto value = m_values.find(field.key);
-            const std::string text = value == m_values.end() ? std::string() : value->second;
-            if (field.required && shown(field) && text.find_first_not_of(" \t\n") == std::string::npos)
-                return false;
-        }
-        return true;
     }
 
 private:
@@ -159,7 +126,6 @@ private:
         RowComboBox* box = nullptr;
         RowComboBox* storage = nullptr;
         SwitchRow* toggle = nullptr;
-        std::vector<uint32_t> storageValues;
     };
 
     // An advanced section and its rows in m_rows, hidden while none of them shows.
@@ -170,22 +136,16 @@ private:
         size_t last = 0;
     };
 
-    bool shown(const schema::Field& field) const
-    {
-        std::vector<schema::Field> plain(m_fields.begin(), m_fields.end());
-        return schema::shown(field, plain, m_values);
-    }
-
     void build()
     {
         while (!children().empty())
             takeChild(children().front().get());
         m_rows.clear();
         m_groups.clear();
-        m_rows.reserve(m_fields.size());
+        m_rows.reserve(m_model.fields().size());
 
         bool hasAdvanced = false;
-        for (const schema::FormField& field : m_fields) {
+        for (const schema::FormField& field : m_model.fields()) {
             if (!field.advanced)
                 addRow(m_basic, field);
             hasAdvanced |= field.advanced;
@@ -203,7 +163,7 @@ private:
         m_advanced->setLayoutHints({.fillWidth = true});
         std::string section;
         Card* card = nullptr;
-        for (const schema::FormField& field : m_fields) {
+        for (const schema::FormField& field : m_model.fields()) {
             if (!field.advanced)
                 continue;
             if (!card || field.section != section) {
@@ -225,6 +185,7 @@ private:
         row.row = fieldRow;
         row.fieldRow = fieldRow;
         row.text = fieldRow->field();
+        row.text->setName("vpn:field:" + row.field->key);
         row.text->onAccepted = [this] { accepted(); };
         return fieldRow;
     }
@@ -240,14 +201,12 @@ private:
             row.text->setPlaceholder(tr("Asked on connect"));
             row.text->setEchoMode(TextField::EchoMode::Password);
             row.text->onTextEdited = [this, key, text = row.text] {
-                m_secrets[key] = text->text();
+                m_model.setSecret(key, text->text());
                 changed();
             };
             row.storage = fieldRow->addContent<RowComboBox>();
             row.storage->onActivated = [this, index = m_rows.size()](int choice) {
-                FieldRow& current = m_rows[index];
-                if (choice >= 0 && size_t(choice) < current.storageValues.size())
-                    m_storage[current.field->key] = current.storageValues[size_t(choice)];
+                m_model.setStorageIndex(*m_rows[index].field, choice);
                 update();
             };
             break;
@@ -311,19 +270,11 @@ private:
 
     void loadStorage(FieldRow& row)
     {
-        const uint32_t saveFlags = m_shared ? nm::SecretSystemOwned : nm::SecretAgentOwned;
-        std::vector<std::string> labels{m_shared ? tr("Saved for all") : tr("Saved"), tr("Ask each time")};
-        row.storageValues = {saveFlags, nm::SecretNotSaved};
-        if (row.field->allowNotRequired) {
-            labels.push_back(tr("Not needed"));
-            row.storageValues.push_back(nm::SecretNotRequired);
-        }
+        std::vector<std::string> labels;
+        for (const VpnFormModel::StorageChoice& choice : m_model.storageChoices(*row.field))
+            labels.push_back(choice.label);
         row.storage->setItems(labels);
-        const auto found = m_storage.find(row.field->key);
-        const uint32_t stored = found == m_storage.end() ? nm::SecretAgentOwned : found->second;
-        const uint32_t wanted = stored == 0 || stored == 1 ? saveFlags : stored;
-        const auto index = std::find(row.storageValues.begin(), row.storageValues.end(), wanted);
-        row.storage->setCurrentIndex(index == row.storageValues.end() ? 0 : int(index - row.storageValues.begin()));
+        row.storage->setCurrentIndex(m_model.storageIndex(*row.field));
     }
 
     // The fields read their values again.
@@ -331,23 +282,15 @@ private:
     {
         for (FieldRow& row : m_rows) {
             const std::string& key = row.field->key;
-            const auto value = m_values.find(key);
-            const std::string text = value == m_values.end() ? std::string() : value->second;
             if (row.field->type == schema::Type::Password) {
-                const auto secret = m_secrets.find(key);
-                row.text->setText(secret == m_secrets.end() ? std::string() : secret->second);
+                row.text->setText(m_model.secret(key));
                 loadStorage(row);
             } else if (row.text) {
-                row.text->setText(text);
+                row.text->setText(m_model.value(key));
             } else if (row.box) {
-                int index = 0;
-                for (size_t i = 0; i < row.field->choices.size(); ++i) {
-                    if (row.field->choices[i].value == text)
-                        index = int(i);
-                }
-                row.box->setCurrentIndex(index);
+                row.box->setCurrentIndex(m_model.choiceIndex(*row.field));
             } else if (row.toggle) {
-                row.toggle->setChecked(text == "true");
+                row.toggle->setChecked(m_model.value(key) == "true");
             }
         }
         update();
@@ -355,7 +298,7 @@ private:
 
     void setValue(const std::string& key, const std::string& value)
     {
-        m_values[key] = value;
+        m_model.setValue(key, value);
         update();
     }
 
@@ -374,12 +317,9 @@ private:
     void update()
     {
         for (FieldRow& row : m_rows) {
-            row.row->setVisible(shown(*row.field));
+            row.row->setVisible(m_model.shown(*row.field));
             if (row.storage) {
-                const auto found = m_storage.find(row.field->key);
-                const uint32_t storage = found == m_storage.end() ? nm::SecretAgentOwned : found->second;
-                const bool saving = storage != nm::SecretNotSaved && storage != nm::SecretNotRequired;
-                row.text->setVisible(saving);
+                row.text->setVisible(m_model.saved(row.field->key));
                 // The field and its storage choice share the other fields' width.
                 const double choice = row.storage->sizeHint().width - row.storage->trailingOverhang();
                 row.fieldRow->setFieldWidth(std::max(kMinimumFieldWidth, kFieldWidth - metrics::rowSpacing - choice));
@@ -397,11 +337,7 @@ private:
         changed();
     }
 
-    std::vector<schema::FormField> m_fields;
-    schema::Values m_values;
-    std::map<std::string, uint32_t> m_storage;
-    std::map<std::string, std::string> m_secrets;
-    bool m_shared = false;
+    VpnFormModel& m_model;
     bool m_advancedShown = false;
     Card* m_basic;
     std::vector<FieldRow> m_rows;
@@ -419,15 +355,21 @@ public:
     std::function<void()> onAccepted;
     std::function<void()> onChanged;
 
-    explicit WireGuardEditor(Card* basic)
+    WireGuardEditor(Card* basic, VpnFormModel& model)
+        : m_model(model)
     {
         setSpacing(metrics::dialogSpacing);
         setLayoutHints({.fillWidth = true});
 
-        m_privateKey = addField(basic, tr("Private key"), tr("Required"));
+        m_privateKey = addField(basic, tr("Private key"), tr("Required"),
+                                [this](const std::string& text) { m_model.wireGuard().privateKey = text; });
+        m_privateKey->setName("vpn:privateKey");
         m_privateKey->setEchoMode(TextField::EchoMode::Password);
-        m_address = addField(basic, tr("Address"), "10.0.0.2/24");
-        m_dns = addField(basic, tr("DNS"), tr("Optional"));
+        m_address = addField(basic, tr("Address"), "10.0.0.2/24",
+                             [this](const std::string& text) { m_model.wireGuard().addresses = text; });
+        m_address->setName("vpn:address");
+        m_dns = addField(basic, tr("DNS"), tr("Optional"),
+                         [this](const std::string& text) { m_model.wireGuard().dns = text; });
 
         m_link = addLink(this, tr("Show advanced options"));
         m_link->onClicked = [this] {
@@ -436,31 +378,38 @@ public:
         };
 
         m_advanced = addChild<Card>(Card::Style::List);
-        m_interface = addField(m_advanced, tr("Interface name"), tr("From the name"));
+        m_interface = addField(m_advanced, tr("Interface name"), tr("From the name"),
+                               [this](const std::string& text) { m_model.wireGuard().interfaceName = text; });
         m_interface->setMaximumLength(15);
-        m_listenPort = addField(m_advanced, tr("Listen port"), tr("Automatic"));
+        m_listenPort = addField(m_advanced, tr("Listen port"), tr("Automatic"),
+                                [this](const std::string& text) { m_model.wireGuard().listenPort = text; });
         m_listenPort->setValidator([](std::string_view text) { return isNumberText(text, 65535); });
-        m_fwmark = addField(m_advanced, tr("Firewall mark"), tr("Optional"));
-        m_mtu = addField(m_advanced, tr("MTU"), tr("Automatic"));
+        m_fwmark = addField(m_advanced, tr("Firewall mark"), tr("Optional"),
+                            [this](const std::string& text) { m_model.wireGuard().fwmark = text; });
+        m_mtu = addField(m_advanced, tr("MTU"), tr("Automatic"),
+                         [this](const std::string& text) { m_model.wireGuard().mtu = text; });
         m_mtu->setValidator([](std::string_view text) { return isNumberText(text, INT_MAX); });
         m_peerRoutes = m_advanced->addChild<SwitchRow>(tr("Add routes for the peers' allowed IPs"));
         m_peerRoutes->setChecked(true);
+        m_peerRoutes->onToggled = [this](bool checked) { m_model.wireGuard().peerRoutes = checked; };
 
         m_peers = addChild<ColumnLayout>();
         m_peers->setSpacing(metrics::dialogSpacing);
         m_peers->setLayoutHints({.fillWidth = true});
         m_addPeer = addLink(this, tr("Add peer"));
         m_addPeer->onClicked = [this] {
-            addPeer({});
+            m_model.addPeer();
+            addPeer(m_model.wireGuard().peers.back());
             update();
         };
     }
 
-    void load(const nm::vpn::WireGuardForm& form)
+    // The fields of the model's interface and peers, after it was loaded.
+    void load()
     {
+        const nm::vpn::WireGuardForm& form = m_model.wireGuard();
         m_interface->setText(form.interfaceName);
-        m_privateKey->setText({});
-        m_hasPrivateKey = false;
+        m_privateKey->setText(form.privateKey);
         m_address->setText(form.addresses);
         m_dns->setText(form.dns);
         m_listenPort->setText(form.listenPort);
@@ -473,54 +422,16 @@ public:
         m_peerCards.clear();
         for (const nm::vpn::WireGuardPeer& peer : form.peers)
             addPeer(peer);
-        if (m_peerCards.empty())
-            addPeer({});
         update();
     }
 
-    void setSecrets(const nm::VpnSecrets& secrets)
+    void secretsChanged()
     {
-        if (!secrets.privateKey.empty()) {
-            m_privateKey->setText(secrets.privateKey);
-            m_hasPrivateKey = true;
-        }
-        for (PeerCard& card : m_peerCards) {
-            const auto key = secrets.presharedKeys.find(card.publicKey->text());
-            if (key != secrets.presharedKeys.end())
-                card.presharedKey->setText(key->second);
-        }
+        const nm::vpn::WireGuardForm& form = m_model.wireGuard();
+        m_privateKey->setText(form.privateKey);
+        for (size_t i = 0; i < m_peerCards.size(); ++i)
+            m_peerCards[i].presharedKey->setText(form.peers[i].presharedKey);
         update();
-    }
-
-    nm::vpn::WireGuardForm collect() const
-    {
-        nm::vpn::WireGuardForm form;
-        form.interfaceName = m_interface->text();
-        form.privateKey = m_privateKey->text();
-        form.addresses = m_address->text();
-        form.dns = m_dns->text();
-        form.listenPort = m_listenPort->text();
-        form.fwmark = m_fwmark->text();
-        form.mtu = m_mtu->text();
-        form.peerRoutes = m_peerRoutes->isChecked();
-        for (const PeerCard& card : m_peerCards) {
-            form.peers.push_back({card.publicKey->text(), card.presharedKey->text(), card.hasPresharedKey,
-                                  card.endpoint->text(), card.allowedIps->text(), card.keepalive->text()});
-        }
-        return form;
-    }
-
-    bool complete() const
-    {
-        const auto blank = [](const std::string& text) { return text.find_first_not_of(" \t\n") == std::string::npos; };
-        if (blank(m_address->text()))
-            return false;
-        if (!m_hasPrivateKey && blank(m_privateKey->text()))
-            return false;
-        if (m_peerCards.empty())
-            return false;
-        return std::none_of(m_peerCards.begin(), m_peerCards.end(),
-                            [&blank](const PeerCard& card) { return blank(card.publicKey->text()); });
     }
 
 private:
@@ -531,22 +442,38 @@ private:
         Button* remove = nullptr;
         TextField* publicKey = nullptr;
         TextField* presharedKey = nullptr;
-        bool hasPresharedKey = false;
         TextField* endpoint = nullptr;
         TextField* allowedIps = nullptr;
         TextField* keepalive = nullptr;
     };
 
-    TextField* addField(Card* card, const char* label, const char* placeholder)
+    TextField* addField(Card* card, const char* label, const char* placeholder,
+                        std::function<void(const std::string& text)> edited)
     {
         TextField* field = card->addChild<TextFieldRow>(label, kFieldWidth)->field();
         field->setPlaceholder(placeholder);
-        field->onTextEdited = [this] { changed(); };
+        field->onTextEdited = [this, field, edited = std::move(edited)] {
+            edited(field->text());
+            changed();
+        };
         field->onAccepted = [this] {
             if (onAccepted)
                 onAccepted();
         };
         return field;
+    }
+
+    // The peer's place in the model, as its card's among the cards.
+    size_t peerIndex(const Card* owner) const
+    {
+        const auto found = std::find_if(m_peerCards.begin(), m_peerCards.end(),
+                                        [owner](const PeerCard& card) { return card.card == owner; });
+        return size_t(found - m_peerCards.begin());
+    }
+
+    nm::vpn::WireGuardPeer& peerOf(const Card* owner)
+    {
+        return m_model.wireGuard().peers[peerIndex(owner)];
     }
 
     void addPeer(const nm::vpn::WireGuardPeer& peer)
@@ -559,40 +486,38 @@ private:
         card.remove->setName("vpn:removePeer:" + std::to_string(m_peerCards.size()));
         Card* owner = card.card;
         card.remove->onClicked = [this, owner] {
-            const auto found = std::find_if(m_peerCards.begin(), m_peerCards.end(),
-                                            [owner](const PeerCard& card) { return card.card == owner; });
-            if (found == m_peerCards.end())
+            const size_t index = peerIndex(owner);
+            if (index == m_peerCards.size())
                 return;
-            m_peerCards.erase(found);
+            m_model.removePeer(index);
+            m_peerCards.erase(m_peerCards.begin() + ptrdiff_t(index));
             // The card holds the button being clicked.
             std::shared_ptr<View> gone = m_peers->takeChild(owner);
             update();
             cutefish::base::EventLoop::current()->post([gone] {});
         };
-        card.publicKey = addField(card.card, tr("Public key"), tr("Required"));
+        card.publicKey = addField(card.card, tr("Public key"), tr("Required"),
+                                  [this, owner](const std::string& text) { peerOf(owner).publicKey = text; });
+        card.publicKey->setName("vpn:publicKey:" + std::to_string(m_peerCards.size()));
         card.publicKey->setText(peer.publicKey);
         card.presharedKey = addField(card.card, tr("Preshared key"),
                                      // TRANSLATORS: a placeholder: the stored key stays unless a new one is typed.
-                                     peer.hasPresharedKey ? tr("Kept") : tr("Optional"));
+                                     peer.hasPresharedKey ? tr("Kept") : tr("Optional"),
+                                     [this, owner](const std::string& text) {
+                                         m_model.setPresharedKey(peerIndex(owner), text);
+                                     });
         card.presharedKey->setEchoMode(TextField::EchoMode::Password);
         card.presharedKey->setText(peer.presharedKey);
-        card.hasPresharedKey = peer.hasPresharedKey;
-        card.endpoint = addField(card.card, tr("Endpoint"), "vpn.example.com:51820");
+        card.endpoint = addField(card.card, tr("Endpoint"), "vpn.example.com:51820",
+                                 [this, owner](const std::string& text) { peerOf(owner).endpoint = text; });
         card.endpoint->setText(peer.endpoint);
-        card.allowedIps = addField(card.card, tr("Allowed IPs"), tr("All traffic"));
+        card.allowedIps = addField(card.card, tr("Allowed IPs"), tr("All traffic"),
+                                   [this, owner](const std::string& text) { peerOf(owner).allowedIps = text; });
         card.allowedIps->setText(peer.allowedIps);
-        card.keepalive = addField(card.card, tr("Keepalive"), tr("Off"));
+        card.keepalive = addField(card.card, tr("Keepalive"), tr("Off"),
+                                  [this, owner](const std::string& text) { peerOf(owner).keepalive = text; });
         card.keepalive->setValidator([](std::string_view text) { return isNumberText(text, 65535); });
         card.keepalive->setText(peer.keepalive);
-        TextField* preshared = card.presharedKey;
-        card.presharedKey->onTextEdited = [this, owner, preshared] {
-            // Clearing the field drops the stored key.
-            for (PeerCard& card : m_peerCards) {
-                if (card.card == owner)
-                    card.hasPresharedKey = !preshared->text().empty();
-            }
-            changed();
-        };
         m_peerCards.push_back(card);
     }
 
@@ -618,6 +543,7 @@ private:
         changed();
     }
 
+    VpnFormModel& m_model;
     TextField* m_privateKey;
     TextField* m_address;
     TextField* m_dns;
@@ -631,7 +557,6 @@ private:
     ColumnLayout* m_peers;
     LinkLabel* m_addPeer;
     std::vector<PeerCard> m_peerCards;
-    bool m_hasPrivateKey = false;
     bool m_advancedShown = false;
 };
 
@@ -644,7 +569,9 @@ VpnEditor::VpnEditor()
 
     m_basic = addChild<Card>(Card::Style::List);
     m_name = m_basic->addChild<TextFieldRow>(tr("Name"), kFieldWidth)->field();
+    m_name->setName("vpn:name");
     m_name->setPlaceholder(tr("Optional"));
+    m_name->onTextEdited = [this] { m_model.setName(m_name->text()); };
     m_name->onAccepted = [this] {
         if (onAccepted)
             onAccepted();
@@ -653,20 +580,24 @@ VpnEditor::VpnEditor()
     m_switches = addChild<Card>(Card::Style::List);
     m_shared = m_switches->addChild<SwitchRow>(tr("Available to all users"));
     m_shared->onToggled = [this](bool checked) {
+        if (checked == m_model.shared())
+            return;
+        m_model.setShared(checked);
         if (m_plugin)
-            m_plugin->setShared(checked);
+            m_plugin->sharedChanged();
     };
     m_ownNetworkOnly = m_switches->addChild<SwitchRow>(tr("Use only for resources on its network"));
+    m_ownNetworkOnly->onToggled = [this](bool checked) { m_model.setOwnNetworkOnly(checked); };
 }
 
 VpnEditor::~VpnEditor() = default;
 
 void VpnEditor::load(const nm::VpnForm& form)
 {
-    m_form = form;
-    m_name->setText(form.name);
-    m_shared->setChecked(form.shared);
-    m_ownNetworkOnly->setChecked(form.ownNetworkOnly);
+    m_model.load(form);
+    m_name->setText(m_model.name());
+    m_shared->setChecked(m_model.shared());
+    m_ownNetworkOnly->setChecked(m_model.ownNetworkOnly());
 
     if (m_plugin)
         takeChild(m_plugin);
@@ -680,22 +611,22 @@ void VpnEditor::load(const nm::VpnForm& form)
     if (form.installed) {
         // Between the first card and the switches.
         std::unique_ptr<View> switches = takeChild(m_switches);
-        if (form.kind == "wireguard") {
-            m_wireGuard = addChild<WireGuardEditor>(m_basic);
+        if (m_model.isWireGuard()) {
+            m_wireGuard = addChild<WireGuardEditor>(m_basic, m_model);
             m_wireGuard->onAccepted = [this] {
                 if (onAccepted)
                     onAccepted();
             };
             m_wireGuard->onChanged = [this] { changed(); };
-            m_wireGuard->load(form.wireguard);
+            m_wireGuard->load();
         } else {
-            m_plugin = addChild<PluginForm>(m_basic);
+            m_plugin = addChild<PluginForm>(m_basic, m_model);
             m_plugin->onAccepted = [this] {
                 if (onAccepted)
                     onAccepted();
             };
             m_plugin->onChanged = [this] { changed(); };
-            m_plugin->load(form.fields, form.shared);
+            m_plugin->load();
         }
         addChild(std::move(switches));
     }
@@ -709,38 +640,21 @@ void VpnEditor::load(const nm::VpnForm& form)
 
 void VpnEditor::setSecrets(const nm::VpnSecrets& secrets)
 {
+    m_model.setSecrets(secrets);
     if (m_plugin)
-        m_plugin->setSecrets(secrets.values);
+        m_plugin->secretsChanged();
     if (m_wireGuard)
-        m_wireGuard->setSecrets(secrets);
+        m_wireGuard->secretsChanged();
 }
 
 nm::VpnValues VpnEditor::collect() const
 {
-    nm::VpnValues values;
-    values.kind = m_form.kind;
-    values.name = m_name->text();
-    values.shared = m_shared->isChecked();
-    values.ownNetworkOnly = m_ownNetworkOnly->isChecked();
-    if (m_plugin) {
-        values.values = m_plugin->values();
-        values.storage = m_plugin->storage();
-        values.secrets = m_plugin->secrets();
-    }
-    if (m_wireGuard)
-        values.wireguard = m_wireGuard->collect();
-    return values;
+    return m_model.collect();
 }
 
 bool VpnEditor::complete() const
 {
-    if (!m_form.installed)
-        return false;
-    if (m_plugin)
-        return m_plugin->complete();
-    if (m_wireGuard)
-        return m_wireGuard->complete();
-    return false;
+    return m_model.complete();
 }
 
 void VpnEditor::focusFirst()

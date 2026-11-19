@@ -8,6 +8,7 @@
 #include "cutefish/accounts/accounts_manager.h"
 #include "base/event_loop.h"
 #include "base/i18n.h"
+#include "pages/accounts/accountorder.h"
 #include "pages/accounts/password.h"
 #include "pages/accounts/passwordchanger.h"
 #include "pages/accounts/picturedialog.h"
