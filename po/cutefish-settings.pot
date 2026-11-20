@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-17 19:32+0800\n"
+"POT-Creation-Date: 2026-11-20 18:47+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -162,14 +162,8 @@ msgstr ""
 msgid "Delete user “{name}”? Their home directory and its contents will be permanently deleted. This cannot be undone."
 msgstr ""
 
-#: src/pages/accounts/accountspage.cpp src/pages/accounts/picturedialog.cpp
-#: src/pages/accounts/userdialogs.cpp src/pages/datetime/timezonedialog.cpp
-#: src/pages/language/addlanguagedialog.cpp
-#: src/pages/language/chooseregiondialog.cpp
-#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/accounts/accountspage.cpp src/pages/datetime/timezonedialog.cpp
 #: src/pages/network/hotspot/hotspotpage.cpp
-#: src/pages/network/vpn/vpndialogs.cpp
-#: src/pages/network/wlan/newnetworkdialog.cpp
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 #: src/pages/shortcuts/shortcutspage.cpp
 #: src/pages/softwareupdate/softwareupdatepage.cpp
@@ -223,7 +217,18 @@ msgid "Administrator"
 msgstr ""
 
 #: src/pages/accounts/userdialogs.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Required"
+msgstr ""
+
+#: src/pages/accounts/userdialogs.cpp
 msgid "Change password"
+msgstr ""
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "User name"
 msgstr ""
 
 #: src/pages/accounts/userdialogs.cpp
@@ -261,10 +266,6 @@ msgstr ""
 
 #: src/pages/accounts/userdialogs.cpp
 msgid "Add new user"
-msgstr ""
-
-#: src/pages/accounts/userdialogs.cpp
-msgid "User name"
 msgstr ""
 
 #: src/pages/accounts/userdialogs.cpp src/pages/language/addlanguagedialog.cpp
@@ -531,11 +532,6 @@ msgstr ""
 
 #: src/pages/bluetooth/bluetoothdialogs.cpp
 msgid "Allow incoming pairing"
-msgstr ""
-
-#: src/pages/bluetooth/bluetoothdialogs.cpp
-#: src/pages/network/common/detailsdialog.cpp
-msgid "Close"
 msgstr ""
 
 #: src/pages/bluetooth/bluetoothdialogs.cpp
@@ -1381,11 +1377,6 @@ msgid "IP Address"
 msgstr ""
 
 #: src/pages/network/common/ipsettingsview.cpp
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Required"
-msgstr ""
-
-#: src/pages/network/common/ipsettingsview.cpp
 msgid "Subnet Mask"
 msgstr ""
 
@@ -1593,22 +1584,6 @@ msgid "Choose…"
 msgstr ""
 
 #: src/pages/network/vpn/vpneditor.cpp
-msgid "Saved for all"
-msgstr ""
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Saved"
-msgstr ""
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Ask each time"
-msgstr ""
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Not needed"
-msgstr ""
-
-#: src/pages/network/vpn/vpneditor.cpp
 msgid "Hide advanced options"
 msgstr ""
 
@@ -1692,7 +1667,6 @@ msgid "Peer {number}"
 msgstr ""
 
 #: src/pages/network/vpn/vpneditor.cpp
-#: src/pages/network/wlan/newnetworkdialog.cpp
 msgid "Name"
 msgstr ""
 
@@ -1707,6 +1681,22 @@ msgstr ""
 #: src/pages/network/vpn/vpneditor.cpp
 #, python-brace-format
 msgid "Install {package} to set up this kind of VPN."
+msgstr ""
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Saved for all"
+msgstr ""
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Saved"
+msgstr ""
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Ask each time"
+msgstr ""
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Not needed"
 msgstr ""
 
 #: src/pages/network/vpn/vpnpage.cpp

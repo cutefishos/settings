@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-17 19:32+0800\n"
+"POT-Creation-Date: 2026-11-20 18:47+0800\n"
 "PO-Revision-Date: 2026-11-13 16:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -161,14 +161,8 @@ msgstr "刪除此用戶"
 msgid "Delete user “{name}”? Their home directory and its contents will be permanently deleted. This cannot be undone."
 msgstr "要刪除用戶「{name}」嗎？其主目錄及其中的內容將被永久刪除。此操作無法還原。"
 
-#: src/pages/accounts/accountspage.cpp src/pages/accounts/picturedialog.cpp
-#: src/pages/accounts/userdialogs.cpp src/pages/datetime/timezonedialog.cpp
-#: src/pages/language/addlanguagedialog.cpp
-#: src/pages/language/chooseregiondialog.cpp
-#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/accounts/accountspage.cpp src/pages/datetime/timezonedialog.cpp
 #: src/pages/network/hotspot/hotspotpage.cpp
-#: src/pages/network/vpn/vpndialogs.cpp
-#: src/pages/network/wlan/newnetworkdialog.cpp
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 #: src/pages/shortcuts/shortcutspage.cpp
 #: src/pages/softwareupdate/softwareupdatepage.cpp
@@ -222,8 +216,19 @@ msgid "Administrator"
 msgstr "管理員"
 
 #: src/pages/accounts/userdialogs.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Required"
+msgstr "必填"
+
+#: src/pages/accounts/userdialogs.cpp
 msgid "Change password"
 msgstr "更改密碼"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "User name"
+msgstr "用戶名稱"
 
 #: src/pages/accounts/userdialogs.cpp
 msgid "Current password"
@@ -261,10 +266,6 @@ msgstr "密碼更改未能及時完成"
 #: src/pages/accounts/userdialogs.cpp
 msgid "Add new user"
 msgstr "新增用戶"
-
-#: src/pages/accounts/userdialogs.cpp
-msgid "User name"
-msgstr "用戶名稱"
 
 #: src/pages/accounts/userdialogs.cpp src/pages/language/addlanguagedialog.cpp
 #: src/pages/network/vpn/vpndialogs.cpp
@@ -531,11 +532,6 @@ msgstr "讓其他裝置可以看見"
 #: src/pages/bluetooth/bluetoothdialogs.cpp
 msgid "Allow incoming pairing"
 msgstr "允許傳入的配對"
-
-#: src/pages/bluetooth/bluetoothdialogs.cpp
-#: src/pages/network/common/detailsdialog.cpp
-msgid "Close"
-msgstr "關閉"
 
 #: src/pages/bluetooth/bluetoothdialogs.cpp
 msgid "Device type"
@@ -1375,11 +1371,6 @@ msgid "IP Address"
 msgstr "IP 地址"
 
 #: src/pages/network/common/ipsettingsview.cpp
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Required"
-msgstr "必填"
-
-#: src/pages/network/common/ipsettingsview.cpp
 msgid "Subnet Mask"
 msgstr "子網絡遮罩"
 
@@ -1587,22 +1578,6 @@ msgid "Choose…"
 msgstr "選擇…"
 
 #: src/pages/network/vpn/vpneditor.cpp
-msgid "Saved for all"
-msgstr "為所有用戶儲存"
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Saved"
-msgstr "已儲存"
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Ask each time"
-msgstr "每次都詢問"
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Not needed"
-msgstr "不需要"
-
-#: src/pages/network/vpn/vpneditor.cpp
 msgid "Hide advanced options"
 msgstr "隱藏進階選項"
 
@@ -1686,7 +1661,6 @@ msgid "Peer {number}"
 msgstr "對等端 {number}"
 
 #: src/pages/network/vpn/vpneditor.cpp
-#: src/pages/network/wlan/newnetworkdialog.cpp
 msgid "Name"
 msgstr "名稱"
 
@@ -1702,6 +1676,22 @@ msgstr "只用於其網絡上的資源"
 #, python-brace-format
 msgid "Install {package} to set up this kind of VPN."
 msgstr "請安裝 {package} 以設定這種 VPN。"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Saved for all"
+msgstr "為所有用戶儲存"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Saved"
+msgstr "已儲存"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Ask each time"
+msgstr "每次都詢問"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Not needed"
+msgstr "不需要"
 
 #: src/pages/network/vpn/vpnpage.cpp
 msgid "Add your user name to connect."
@@ -2723,3 +2713,6 @@ msgstr "設定"
 #: src/window/sidebar.cpp
 msgid "No results"
 msgstr "沒有結果"
+
+#~ msgid "Close"
+#~ msgstr "關閉"

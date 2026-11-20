@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-17 19:32+0800\n"
+"POT-Creation-Date: 2026-11-20 18:47+0800\n"
 "PO-Revision-Date: 2026-11-13 16:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -161,14 +161,8 @@ msgstr "Smazat tohoto uživatele"
 msgid "Delete user “{name}”? Their home directory and its contents will be permanently deleted. This cannot be undone."
 msgstr "Smazat uživatele „{name}“? Jeho domovská složka a její obsah budou trvale smazány. Tuto akci nelze vrátit."
 
-#: src/pages/accounts/accountspage.cpp src/pages/accounts/picturedialog.cpp
-#: src/pages/accounts/userdialogs.cpp src/pages/datetime/timezonedialog.cpp
-#: src/pages/language/addlanguagedialog.cpp
-#: src/pages/language/chooseregiondialog.cpp
-#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/accounts/accountspage.cpp src/pages/datetime/timezonedialog.cpp
 #: src/pages/network/hotspot/hotspotpage.cpp
-#: src/pages/network/vpn/vpndialogs.cpp
-#: src/pages/network/wlan/newnetworkdialog.cpp
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 #: src/pages/shortcuts/shortcutspage.cpp
 #: src/pages/softwareupdate/softwareupdatepage.cpp
@@ -222,8 +216,19 @@ msgid "Administrator"
 msgstr "Správce"
 
 #: src/pages/accounts/userdialogs.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Required"
+msgstr "Povinné"
+
+#: src/pages/accounts/userdialogs.cpp
 msgid "Change password"
 msgstr "Změnit heslo"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "User name"
+msgstr "Uživatelské jméno"
 
 #: src/pages/accounts/userdialogs.cpp
 msgid "Current password"
@@ -261,10 +266,6 @@ msgstr "Změna hesla nebyla včas dokončena"
 #: src/pages/accounts/userdialogs.cpp
 msgid "Add new user"
 msgstr "Přidat nového uživatele"
-
-#: src/pages/accounts/userdialogs.cpp
-msgid "User name"
-msgstr "Uživatelské jméno"
 
 #: src/pages/accounts/userdialogs.cpp src/pages/language/addlanguagedialog.cpp
 #: src/pages/network/vpn/vpndialogs.cpp
@@ -531,11 +532,6 @@ msgstr "Viditelné pro ostatní zařízení"
 #: src/pages/bluetooth/bluetoothdialogs.cpp
 msgid "Allow incoming pairing"
 msgstr "Povolit příchozí párování"
-
-#: src/pages/bluetooth/bluetoothdialogs.cpp
-#: src/pages/network/common/detailsdialog.cpp
-msgid "Close"
-msgstr "Zavřít"
 
 #: src/pages/bluetooth/bluetoothdialogs.cpp
 msgid "Device type"
@@ -1385,11 +1381,6 @@ msgid "IP Address"
 msgstr "Adresa IP"
 
 #: src/pages/network/common/ipsettingsview.cpp
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Required"
-msgstr "Povinné"
-
-#: src/pages/network/common/ipsettingsview.cpp
 msgid "Subnet Mask"
 msgstr "Maska podsítě"
 
@@ -1597,22 +1588,6 @@ msgid "Choose…"
 msgstr "Vybrat…"
 
 #: src/pages/network/vpn/vpneditor.cpp
-msgid "Saved for all"
-msgstr "Uloženo pro všechny"
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Saved"
-msgstr "Uloženo"
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Ask each time"
-msgstr "Pokaždé se zeptat"
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Not needed"
-msgstr "Není potřeba"
-
-#: src/pages/network/vpn/vpneditor.cpp
 msgid "Hide advanced options"
 msgstr "Skrýt pokročilé možnosti"
 
@@ -1696,7 +1671,6 @@ msgid "Peer {number}"
 msgstr "Protějšek {number}"
 
 #: src/pages/network/vpn/vpneditor.cpp
-#: src/pages/network/wlan/newnetworkdialog.cpp
 msgid "Name"
 msgstr "Název"
 
@@ -1712,6 +1686,22 @@ msgstr "Použít jen pro prostředky v její síti"
 #, python-brace-format
 msgid "Install {package} to set up this kind of VPN."
 msgstr "Pro nastavení tohoto druhu VPN nainstalujte {package}."
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Saved for all"
+msgstr "Uloženo pro všechny"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Saved"
+msgstr "Uloženo"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Ask each time"
+msgstr "Pokaždé se zeptat"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Not needed"
+msgstr "Není potřeba"
 
 #: src/pages/network/vpn/vpnpage.cpp
 msgid "Add your user name to connect."
@@ -2737,3 +2727,6 @@ msgstr "Nastavení"
 #: src/window/sidebar.cpp
 msgid "No results"
 msgstr "Žádné výsledky"
+
+#~ msgid "Close"
+#~ msgstr "Zavřít"

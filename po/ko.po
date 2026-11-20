@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-17 19:32+0800\n"
+"POT-Creation-Date: 2026-11-20 18:47+0800\n"
 "PO-Revision-Date: 2026-11-13 15:22+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -161,14 +161,8 @@ msgstr "이 사용자 삭제"
 msgid "Delete user “{name}”? Their home directory and its contents will be permanently deleted. This cannot be undone."
 msgstr "“{name}” 사용자를 삭제하겠습니까? 해당 사용자의 홈 디렉토리와 그 내용이 영구적으로 삭제됩니다. 이 작업은 취소할 수 없습니다."
 
-#: src/pages/accounts/accountspage.cpp src/pages/accounts/picturedialog.cpp
-#: src/pages/accounts/userdialogs.cpp src/pages/datetime/timezonedialog.cpp
-#: src/pages/language/addlanguagedialog.cpp
-#: src/pages/language/chooseregiondialog.cpp
-#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/accounts/accountspage.cpp src/pages/datetime/timezonedialog.cpp
 #: src/pages/network/hotspot/hotspotpage.cpp
-#: src/pages/network/vpn/vpndialogs.cpp
-#: src/pages/network/wlan/newnetworkdialog.cpp
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 #: src/pages/shortcuts/shortcutspage.cpp
 #: src/pages/softwareupdate/softwareupdatepage.cpp
@@ -222,8 +216,19 @@ msgid "Administrator"
 msgstr "관리자"
 
 #: src/pages/accounts/userdialogs.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Required"
+msgstr "필수"
+
+#: src/pages/accounts/userdialogs.cpp
 msgid "Change password"
 msgstr "암호 변경"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "User name"
+msgstr "사용자 이름"
 
 #: src/pages/accounts/userdialogs.cpp
 msgid "Current password"
@@ -261,10 +266,6 @@ msgstr "암호 변경이 제시간에 완료되지 않았습니다"
 #: src/pages/accounts/userdialogs.cpp
 msgid "Add new user"
 msgstr "새 사용자 추가"
-
-#: src/pages/accounts/userdialogs.cpp
-msgid "User name"
-msgstr "사용자 이름"
 
 #: src/pages/accounts/userdialogs.cpp src/pages/language/addlanguagedialog.cpp
 #: src/pages/network/vpn/vpndialogs.cpp
@@ -531,11 +532,6 @@ msgstr "다른 장치에서 검색 가능"
 #: src/pages/bluetooth/bluetoothdialogs.cpp
 msgid "Allow incoming pairing"
 msgstr "들어오는 페어링 허용"
-
-#: src/pages/bluetooth/bluetoothdialogs.cpp
-#: src/pages/network/common/detailsdialog.cpp
-msgid "Close"
-msgstr "닫기"
 
 #: src/pages/bluetooth/bluetoothdialogs.cpp
 msgid "Device type"
@@ -1375,11 +1371,6 @@ msgid "IP Address"
 msgstr "IP 주소"
 
 #: src/pages/network/common/ipsettingsview.cpp
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Required"
-msgstr "필수"
-
-#: src/pages/network/common/ipsettingsview.cpp
 msgid "Subnet Mask"
 msgstr "서브넷 마스크"
 
@@ -1587,22 +1578,6 @@ msgid "Choose…"
 msgstr "선택…"
 
 #: src/pages/network/vpn/vpneditor.cpp
-msgid "Saved for all"
-msgstr "모든 사용자용으로 저장됨"
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Saved"
-msgstr "저장됨"
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Ask each time"
-msgstr "매번 묻기"
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Not needed"
-msgstr "필요 없음"
-
-#: src/pages/network/vpn/vpneditor.cpp
 msgid "Hide advanced options"
 msgstr "고급 옵션 가리기"
 
@@ -1686,7 +1661,6 @@ msgid "Peer {number}"
 msgstr "피어 {number}"
 
 #: src/pages/network/vpn/vpneditor.cpp
-#: src/pages/network/wlan/newnetworkdialog.cpp
 msgid "Name"
 msgstr "이름"
 
@@ -1702,6 +1676,22 @@ msgstr "해당 네트워크의 리소스에만 사용"
 #, python-brace-format
 msgid "Install {package} to set up this kind of VPN."
 msgstr "이 종류의 VPN을 설정하려면 {package} 패키지를 설치하십시오."
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Saved for all"
+msgstr "모든 사용자용으로 저장됨"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Saved"
+msgstr "저장됨"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Ask each time"
+msgstr "매번 묻기"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Not needed"
+msgstr "필요 없음"
 
 #: src/pages/network/vpn/vpnpage.cpp
 msgid "Add your user name to connect."
@@ -2723,3 +2713,6 @@ msgstr "설정"
 #: src/window/sidebar.cpp
 msgid "No results"
 msgstr "결과 없음"
+
+#~ msgid "Close"
+#~ msgstr "닫기"

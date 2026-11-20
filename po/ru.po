@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-17 19:32+0800\n"
+"POT-Creation-Date: 2026-11-20 18:47+0800\n"
 "PO-Revision-Date: 2026-11-13 12:00+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -161,14 +161,8 @@ msgstr "Удалить этого пользователя"
 msgid "Delete user “{name}”? Their home directory and its contents will be permanently deleted. This cannot be undone."
 msgstr "Удалить пользователя «{name}»? Его домашняя папка и все ее содержимое будут удалены безвозвратно. Это действие нельзя отменить."
 
-#: src/pages/accounts/accountspage.cpp src/pages/accounts/picturedialog.cpp
-#: src/pages/accounts/userdialogs.cpp src/pages/datetime/timezonedialog.cpp
-#: src/pages/language/addlanguagedialog.cpp
-#: src/pages/language/chooseregiondialog.cpp
-#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/accounts/accountspage.cpp src/pages/datetime/timezonedialog.cpp
 #: src/pages/network/hotspot/hotspotpage.cpp
-#: src/pages/network/vpn/vpndialogs.cpp
-#: src/pages/network/wlan/newnetworkdialog.cpp
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 #: src/pages/shortcuts/shortcutspage.cpp
 #: src/pages/softwareupdate/softwareupdatepage.cpp
@@ -222,8 +216,19 @@ msgid "Administrator"
 msgstr "Администратор"
 
 #: src/pages/accounts/userdialogs.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Required"
+msgstr "Обязательно"
+
+#: src/pages/accounts/userdialogs.cpp
 msgid "Change password"
 msgstr "Изменение пароля"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "User name"
+msgstr "Имя пользователя"
 
 #: src/pages/accounts/userdialogs.cpp
 msgid "Current password"
@@ -261,10 +266,6 @@ msgstr "Изменение пароля не завершилось воврем
 #: src/pages/accounts/userdialogs.cpp
 msgid "Add new user"
 msgstr "Новый пользователь"
-
-#: src/pages/accounts/userdialogs.cpp
-msgid "User name"
-msgstr "Имя пользователя"
 
 #: src/pages/accounts/userdialogs.cpp src/pages/language/addlanguagedialog.cpp
 #: src/pages/network/vpn/vpndialogs.cpp
@@ -531,11 +532,6 @@ msgstr "Видим для других устройств"
 #: src/pages/bluetooth/bluetoothdialogs.cpp
 msgid "Allow incoming pairing"
 msgstr "Разрешить входящие запросы на создание пары"
-
-#: src/pages/bluetooth/bluetoothdialogs.cpp
-#: src/pages/network/common/detailsdialog.cpp
-msgid "Close"
-msgstr "Закрыть"
 
 #: src/pages/bluetooth/bluetoothdialogs.cpp
 msgid "Device type"
@@ -1385,11 +1381,6 @@ msgid "IP Address"
 msgstr "IP-адрес"
 
 #: src/pages/network/common/ipsettingsview.cpp
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Required"
-msgstr "Обязательно"
-
-#: src/pages/network/common/ipsettingsview.cpp
 msgid "Subnet Mask"
 msgstr "Маска подсети"
 
@@ -1597,22 +1588,6 @@ msgid "Choose…"
 msgstr "Выбрать…"
 
 #: src/pages/network/vpn/vpneditor.cpp
-msgid "Saved for all"
-msgstr "Сохранен для всех"
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Saved"
-msgstr "Сохранен"
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Ask each time"
-msgstr "Спрашивать каждый раз"
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Not needed"
-msgstr "Не требуется"
-
-#: src/pages/network/vpn/vpneditor.cpp
 msgid "Hide advanced options"
 msgstr "Скрыть дополнительные параметры"
 
@@ -1696,7 +1671,6 @@ msgid "Peer {number}"
 msgstr "Узел {number}"
 
 #: src/pages/network/vpn/vpneditor.cpp
-#: src/pages/network/wlan/newnetworkdialog.cpp
 msgid "Name"
 msgstr "Имя"
 
@@ -1712,6 +1686,22 @@ msgstr "Использовать только для ресурсов ее се�
 #, python-brace-format
 msgid "Install {package} to set up this kind of VPN."
 msgstr "Чтобы настроить VPN этого типа, установите {package}."
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Saved for all"
+msgstr "Сохранен для всех"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Saved"
+msgstr "Сохранен"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Ask each time"
+msgstr "Спрашивать каждый раз"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Not needed"
+msgstr "Не требуется"
 
 #: src/pages/network/vpn/vpnpage.cpp
 msgid "Add your user name to connect."
@@ -2737,3 +2727,6 @@ msgstr "Настройки"
 #: src/window/sidebar.cpp
 msgid "No results"
 msgstr "Нет результатов"
+
+#~ msgid "Close"
+#~ msgstr "Закрыть"

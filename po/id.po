@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-17 19:32+0800\n"
+"POT-Creation-Date: 2026-11-20 18:47+0800\n"
 "PO-Revision-Date: 2026-11-13 16:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -161,14 +161,8 @@ msgstr "Hapus pengguna ini"
 msgid "Delete user “{name}”? Their home directory and its contents will be permanently deleted. This cannot be undone."
 msgstr "Hapus pengguna “{name}”? Direktori home pengguna beserta isinya akan dihapus secara permanen. Tindakan ini tidak dapat dibatalkan."
 
-#: src/pages/accounts/accountspage.cpp src/pages/accounts/picturedialog.cpp
-#: src/pages/accounts/userdialogs.cpp src/pages/datetime/timezonedialog.cpp
-#: src/pages/language/addlanguagedialog.cpp
-#: src/pages/language/chooseregiondialog.cpp
-#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/accounts/accountspage.cpp src/pages/datetime/timezonedialog.cpp
 #: src/pages/network/hotspot/hotspotpage.cpp
-#: src/pages/network/vpn/vpndialogs.cpp
-#: src/pages/network/wlan/newnetworkdialog.cpp
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 #: src/pages/shortcuts/shortcutspage.cpp
 #: src/pages/softwareupdate/softwareupdatepage.cpp
@@ -222,8 +216,19 @@ msgid "Administrator"
 msgstr "Administrator"
 
 #: src/pages/accounts/userdialogs.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Required"
+msgstr "Wajib"
+
+#: src/pages/accounts/userdialogs.cpp
 msgid "Change password"
 msgstr "Ubah kata sandi"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "User name"
+msgstr "Nama pengguna"
 
 #: src/pages/accounts/userdialogs.cpp
 msgid "Current password"
@@ -261,10 +266,6 @@ msgstr "Perubahan kata sandi tidak selesai tepat waktu"
 #: src/pages/accounts/userdialogs.cpp
 msgid "Add new user"
 msgstr "Tambah pengguna baru"
-
-#: src/pages/accounts/userdialogs.cpp
-msgid "User name"
-msgstr "Nama pengguna"
 
 #: src/pages/accounts/userdialogs.cpp src/pages/language/addlanguagedialog.cpp
 #: src/pages/network/vpn/vpndialogs.cpp
@@ -531,11 +532,6 @@ msgstr "Terlihat oleh perangkat lain"
 #: src/pages/bluetooth/bluetoothdialogs.cpp
 msgid "Allow incoming pairing"
 msgstr "Izinkan penyandingan masuk"
-
-#: src/pages/bluetooth/bluetoothdialogs.cpp
-#: src/pages/network/common/detailsdialog.cpp
-msgid "Close"
-msgstr "Tutup"
 
 #: src/pages/bluetooth/bluetoothdialogs.cpp
 msgid "Device type"
@@ -1375,11 +1371,6 @@ msgid "IP Address"
 msgstr "Alamat IP"
 
 #: src/pages/network/common/ipsettingsview.cpp
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Required"
-msgstr "Wajib"
-
-#: src/pages/network/common/ipsettingsview.cpp
 msgid "Subnet Mask"
 msgstr "Subnet Mask"
 
@@ -1587,22 +1578,6 @@ msgid "Choose…"
 msgstr "Pilih…"
 
 #: src/pages/network/vpn/vpneditor.cpp
-msgid "Saved for all"
-msgstr "Disimpan untuk semua"
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Saved"
-msgstr "Disimpan"
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Ask each time"
-msgstr "Tanya setiap kali"
-
-#: src/pages/network/vpn/vpneditor.cpp
-msgid "Not needed"
-msgstr "Tidak diperlukan"
-
-#: src/pages/network/vpn/vpneditor.cpp
 msgid "Hide advanced options"
 msgstr "Sembunyikan opsi lanjutan"
 
@@ -1686,7 +1661,6 @@ msgid "Peer {number}"
 msgstr "Peer {number}"
 
 #: src/pages/network/vpn/vpneditor.cpp
-#: src/pages/network/wlan/newnetworkdialog.cpp
 msgid "Name"
 msgstr "Nama"
 
@@ -1702,6 +1676,22 @@ msgstr "Gunakan hanya untuk sumber daya di jaringannya"
 #, python-brace-format
 msgid "Install {package} to set up this kind of VPN."
 msgstr "Instal {package} untuk menyiapkan jenis VPN ini."
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Saved for all"
+msgstr "Disimpan untuk semua"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Saved"
+msgstr "Disimpan"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Ask each time"
+msgstr "Tanya setiap kali"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Not needed"
+msgstr "Tidak diperlukan"
 
 #: src/pages/network/vpn/vpnpage.cpp
 msgid "Add your user name to connect."
@@ -2723,3 +2713,6 @@ msgstr "Pengaturan"
 #: src/window/sidebar.cpp
 msgid "No results"
 msgstr "Tidak ada hasil"
+
+#~ msgid "Close"
+#~ msgstr "Tutup"
