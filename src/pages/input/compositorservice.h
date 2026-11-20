@@ -31,6 +31,8 @@ public:
 
     // Whether the service is running.
     bool isAvailable() const { return m_available; }
+    // Whether the service has the property: an older service may lack one.
+    bool hasProperty(const std::string& name) const { return find(name) != nullptr; }
 
     bool boolValue(const std::string& name, bool fallback) const;
     int intValue(const std::string& name, int fallback) const;

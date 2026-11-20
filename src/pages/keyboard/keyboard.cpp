@@ -191,4 +191,20 @@ void Keyboard::setShortcutConvention(const std::string& convention)
     m_service.call("setShortcutConvention", convention);
 }
 
+bool Keyboard::supportsCommandKey() const
+{
+    return m_service.isAvailable() && m_service.hasProperty("commandKey");
+}
+
+std::string Keyboard::commandKey() const
+{
+    const std::string key = supportsCommandKey() ? m_service.stringValue("commandKey") : "";
+    return key.empty() ? "auto" : key;
+}
+
+void Keyboard::setCommandKey(const std::string& key)
+{
+    m_service.call("setCommandKey", key);
+}
+
 } // namespace settings
