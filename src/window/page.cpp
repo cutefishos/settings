@@ -63,7 +63,7 @@ Page::Page(SettingsWindow& window, std::string title)
 {
     m_content = setContent<PageContent>()->column;
     // The bar runs from under the floating header.
-    setVerticalBarPadding(SettingsWindow::headerHeight, ScrollBar::inset);
+    setVerticalBarPadding(SettingsWindow::headerHeight + ScrollBar::inset, ScrollBar::inset);
     setBottomCornerRadius(Theme::current().windowRadius);
 }
 

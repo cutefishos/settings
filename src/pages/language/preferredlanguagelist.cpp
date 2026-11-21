@@ -14,6 +14,7 @@
 #include "ui/label.h"
 #include "ui/layout.h"
 #include "ui/menu.h"
+#include "ui/scroll_bar.h"
 #include "ui/cell_layout.h"
 #include "ui/painter.h"
 #include "ui/scroll_view.h"
@@ -270,8 +271,11 @@ PreferredLanguageList::PreferredLanguageList(Language& language)
     // The drag handles reach into the bar's strip and must take the press.
     m_scroll->setBarsBelowContent(true);
     m_scroll->setName("preferredLanguageView");
+    // The bar keeps clear of the card's top corners; the rows keep the card's padding.
+    m_scroll->setVerticalBarPadding(ScrollBar::cornerPadding(Theme::current().bigRadius), ScrollBar::inset);
     m_rows = m_scroll->setContent<ColumnLayout>();
     m_rows->setSpacing(0);
+    m_rows->setPadding({metrics::cardHorizontalPadding, 0, metrics::cardHorizontalPadding, 0});
     m_indicator = addChild<Indicator>(*this);
     setClipsChildren(true);
     setLayoutHints({.fillWidth = true});
@@ -336,7 +340,7 @@ void PreferredLanguageList::updateStates()
 void PreferredLanguageList::layout()
 {
     m_scroll->setGeometry(localRect());
-    m_indicator->setGeometry(localRect());
+    m_indicator->setGeometry(localRect().adjusted(metrics::cardHorizontalPadding, 0, -metrics::cardHorizontalPadding, 0));
 }
 
 // Above or below the rows a drop goes first or last; only leaving the list

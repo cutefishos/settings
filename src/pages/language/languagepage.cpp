@@ -84,8 +84,7 @@ public:
         Section* section = content()->addChild<Section>(tr("Preferred languages"));
         Card* card = section->addChild<Card>(Card::Style::List);
         PreferredLanguageList* list = card->addChild<PreferredLanguageList>(m_language);
-        list->setLayoutHints(
-                {.fillWidth = true, .margins = {metrics::cardHorizontalPadding, 0, metrics::cardHorizontalPadding, 0}});
+        list->setLayoutHints({.fillWidth = true});
 
         m_add = card->addChild<ListRow>(tr("Add language…"));
         m_add->setName("language:add");

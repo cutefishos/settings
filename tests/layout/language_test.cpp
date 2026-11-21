@@ -12,6 +12,7 @@
 #include "pages/language/language.h"
 #include "pages/language/preferredlanguagelist.h"
 #include "service_thread.h"
+#include "widgets/metrics.h"
 #include "ui/keys.h"
 #include "ui/layout.h"
 #include "ui/test_input.h"
@@ -43,11 +44,13 @@ struct DragFixture : ::testing::Test
         window.grab();
     }
 
-    // The middle of a row's drag handle, in window coordinates.
+    // The middle of a row's drag handle, in window coordinates: the rows keep
+    // the card's padding inside the list.
     PointF handle(int index) const
     {
         const RectF rect = list->geometry();
-        return {rect.right() - 16 + 9, rect.y + PreferredLanguageList::kRowHeight * (index + 0.5)};
+        return {rect.right() - metrics::cardHorizontalPadding - 16 + 9,
+                rect.y + PreferredLanguageList::kRowHeight * (index + 0.5)};
     }
     double rowY(double rows) const { return list->geometry().y + PreferredLanguageList::kRowHeight * rows; }
 
