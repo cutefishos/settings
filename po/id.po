@@ -300,10 +300,6 @@ msgstr "Warna aksen"
 msgid "Reduce Transparency"
 msgstr "Kurangi Transparansi"
 
-#: src/pages/appearance/appearancepage.cpp
-msgid "Colored Window Buttons"
-msgstr "Tombol Jendela Berwarna"
-
 #: src/pages/appearance/appearancepage.cpp src/pages/fonts/fontspage.cpp
 #: src/window/pagelist.cpp
 msgid "Fonts"

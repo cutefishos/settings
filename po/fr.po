@@ -300,10 +300,6 @@ msgstr "Couleur d'accentuation"
 msgid "Reduce Transparency"
 msgstr "Réduire la transparence"
 
-#: src/pages/appearance/appearancepage.cpp
-msgid "Colored Window Buttons"
-msgstr "Boutons de fenêtre colorés"
-
 #: src/pages/appearance/appearancepage.cpp src/pages/fonts/fontspage.cpp
 #: src/window/pagelist.cpp
 msgid "Fonts"

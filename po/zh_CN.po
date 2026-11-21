@@ -300,10 +300,6 @@ msgstr "强调色"
 msgid "Reduce Transparency"
 msgstr "降低透明度"
 
-#: src/pages/appearance/appearancepage.cpp
-msgid "Colored Window Buttons"
-msgstr "彩色窗口按钮"
-
 #: src/pages/appearance/appearancepage.cpp src/pages/fonts/fontspage.cpp
 #: src/window/pagelist.cpp
 msgid "Fonts"

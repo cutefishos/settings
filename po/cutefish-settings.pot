@@ -301,10 +301,6 @@ msgstr ""
 msgid "Reduce Transparency"
 msgstr ""
 
-#: src/pages/appearance/appearancepage.cpp
-msgid "Colored Window Buttons"
-msgstr ""
-
 #: src/pages/appearance/appearancepage.cpp src/pages/fonts/fontspage.cpp
 #: src/window/pagelist.cpp
 msgid "Fonts"

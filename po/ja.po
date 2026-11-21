@@ -300,10 +300,6 @@ msgstr "アクセントカラー"
 msgid "Reduce Transparency"
 msgstr "透明度を下げる"
 
-#: src/pages/appearance/appearancepage.cpp
-msgid "Colored Window Buttons"
-msgstr "カラーのウインドウボタン"
-
 #: src/pages/appearance/appearancepage.cpp src/pages/fonts/fontspage.cpp
 #: src/window/pagelist.cpp
 msgid "Fonts"

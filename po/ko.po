@@ -300,10 +300,6 @@ msgstr "강조 색상"
 msgid "Reduce Transparency"
 msgstr "투명도 줄이기"
 
-#: src/pages/appearance/appearancepage.cpp
-msgid "Colored Window Buttons"
-msgstr "컬러 창 버튼"
-
 #: src/pages/appearance/appearancepage.cpp src/pages/fonts/fontspage.cpp
 #: src/window/pagelist.cpp
 msgid "Fonts"
