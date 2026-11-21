@@ -14,6 +14,7 @@ namespace settings {
 enum class SettingsColor : uint16_t {
     SidebarBackground = uint16_t(cutefish::ui::ColorId::ApplicationFirst),
     SidebarItemCurrent,
+    SidebarSearch,
 
     RowHighlight,
     RowComboBoxHovered,

@@ -19,6 +19,7 @@ void addSettingsColors(ColorMixer& mixer, const Theme& theme)
     mixer[SettingsColor::SidebarBackground] =
         withAlpha(dark ? lighter(ColorId::Background, 1.5) : darker(ColorId::Background, 1.05), 0.7);
     mixer[SettingsColor::SidebarItemCurrent] = withAlpha(ColorId::Text, dark ? 0.1 : 0.05);
+    mixer[SettingsColor::SidebarSearch] = dark ? withAlpha(ColorId::Text, 0.08) : ColorRecipe(ColorId::SecondBackground);
 
     mixer[SettingsColor::RowHighlight] = withAlpha(ColorId::Text, dark ? 0.05 : 0.15);
     mixer[SettingsColor::RowComboBoxHovered] = withAlpha(ColorId::Text, dark ? 0.08 : 0.06);

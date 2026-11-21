@@ -280,6 +280,7 @@ Sidebar::Sidebar()
     m_title->setVisible(false);
     m_search = addChild<SearchField>();
     m_search->setName("sidebar:search");
+    m_search->setFill(SettingsColor::SidebarSearch);
     m_search->onTextChanged = [this] { updateResults(); };
     m_search->onAccepted = [this] {
         if (isSearching() && m_currentResult >= 0)
