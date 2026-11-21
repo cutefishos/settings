@@ -78,6 +78,26 @@ static std::string packageIcon(const std::string& package)
 static constexpr double kStopButton = 24;
 static constexpr double kStopGlyph = 16;
 static constexpr double kCheckGlyph = 14;
+static constexpr double kVersionWidth = 160;
+
+// A version no wider than kVersionWidth, its middle elided past that.
+class VersionLabel : public SecondaryLabel
+{
+public:
+    explicit VersionLabel(const std::string& version)
+        : SecondaryLabel(version)
+    {
+        setElide(Label::Elide::Middle);
+        setToolTip(version);
+    }
+
+    SizeF sizeHint() const override
+    {
+        SizeF size = SecondaryLabel::sizeHint();
+        size.width = std::min(size.width, kVersionWidth);
+        return size;
+    }
+};
 
 // Keeps the stop button's place on the bar's line while the button hides, so
 // the bar keeps its length.
@@ -190,7 +210,7 @@ public:
         summary->setElide(Label::Elide::Right);
         summary->setLayoutHints({.fillWidth = true});
         summary->setVisible(!update.summary.empty());
-        addContent<SecondaryLabel>(update.version);
+        addContent<VersionLabel>(update.version);
     }
 };
 
