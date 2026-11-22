@@ -47,7 +47,7 @@ static std::vector<PageInfo> makePages()
          .iconColor = Color::rgb(0x0087ED), .group = 2,
          .keywords = trNoop("monitor, screen, resolution, refresh rate, scaling, brightness, rotation")});
     add({.id = "menubar", .name = "menubar", .title = trNoop("Menu Bar"), .icon = "menubar.svg",
-         .iconColor = Color::rgb(0x0087ED), .group = 2,
+         .iconColor = Color::rgb(0x999999), .group = 2,
          .keywords = trNoop("top bar, controls, Wi-Fi, Bluetooth, battery, sound, volume")});
     add({.id = "background", .name = "background", .title = trNoop("Wallpaper"), .icon = "wallpaper.svg",
          .iconColor = Color::rgb(0x34B4A7), .group = 2,
