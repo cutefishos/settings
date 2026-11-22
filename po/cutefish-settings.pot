@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-22 21:43+0800\n"
+"POT-Creation-Date: 2026-11-22 21:56+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2583,11 +2583,11 @@ msgid "VPN, proxy, hotspot, tethering, internet"
 msgstr ""
 
 #: src/window/pagelist.cpp
-msgid "theme, dark mode, light mode, accent color, dim wallpaper"
+msgid "charge, charging limit, battery health, capacity, history, percentage"
 msgstr ""
 
 #: src/window/pagelist.cpp
-msgid "background, desktop picture, image"
+msgid "theme, dark mode, light mode, accent color, dim wallpaper"
 msgstr ""
 
 #: src/window/pagelist.cpp
@@ -2595,7 +2595,19 @@ msgid "taskbar, position, size, auto hide, glass effect"
 msgstr ""
 
 #: src/window/pagelist.cpp
+msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
+msgstr ""
+
+#: src/window/pagelist.cpp
 msgid "top bar, controls, Wi-Fi, Bluetooth, battery, sound, volume"
+msgstr ""
+
+#: src/window/pagelist.cpp
+msgid "background, desktop picture, image"
+msgstr ""
+
+#: src/window/pagelist.cpp
+msgid "Sound & Notifications"
 msgstr ""
 
 #: src/window/pagelist.cpp
@@ -2603,15 +2615,27 @@ msgid "do not disturb, banners, alerts"
 msgstr ""
 
 #: src/window/pagelist.cpp
-msgid "Devices"
-msgstr ""
-
-#: src/window/pagelist.cpp
-msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
-msgstr ""
-
-#: src/window/pagelist.cpp
 msgid "audio, volume, speakers, headphones, microphone, input, output"
+msgstr ""
+
+#: src/window/pagelist.cpp
+msgid "System"
+msgstr ""
+
+#: src/window/pagelist.cpp
+msgid "computer control, agents, allowed apps, permissions"
+msgstr ""
+
+#: src/window/pagelist.cpp
+msgid "energy, performance, power saving, sleep, turn off display"
+msgstr ""
+
+#: src/window/pagelist.cpp
+msgid "accounts, password, login, administrator, avatar"
+msgstr ""
+
+#: src/window/pagelist.cpp
+msgid "Devices"
 msgstr ""
 
 #: src/window/pagelist.cpp
@@ -2628,26 +2652,6 @@ msgstr ""
 
 #: src/window/pagelist.cpp
 msgid "touch, touch screen, touch panel"
-msgstr ""
-
-#: src/window/pagelist.cpp
-msgid "System"
-msgstr ""
-
-#: src/window/pagelist.cpp
-msgid "accounts, password, login, administrator, avatar"
-msgstr ""
-
-#: src/window/pagelist.cpp
-msgid "computer control, agents, allowed apps, permissions"
-msgstr ""
-
-#: src/window/pagelist.cpp
-msgid "charge, charging limit, battery health, capacity, history, percentage"
-msgstr ""
-
-#: src/window/pagelist.cpp
-msgid "energy, performance, power saving, sleep, turn off display"
 msgstr ""
 
 #: src/window/pagelist.cpp

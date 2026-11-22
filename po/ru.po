@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-22 21:43+0800\n"
+"POT-Creation-Date: 2026-11-22 21:56+0800\n"
 "PO-Revision-Date: 2026-11-13 12:00+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2589,36 +2589,60 @@ msgid "VPN, proxy, hotspot, tethering, internet"
 msgstr "VPN, прокси, точка доступа, режим модема, интернет"
 
 #: src/window/pagelist.cpp
-msgid "theme, dark mode, light mode, accent color, dim wallpaper"
-msgstr "тема, темный режим, светлый режим, акцентный цвет, затемнение обоев"
+msgid "charge, charging limit, battery health, capacity, history, percentage"
+msgstr "заряд, ограничение зарядки, состояние аккумулятора, батарея, емкость, история, процент"
 
 #: src/window/pagelist.cpp
-msgid "background, desktop picture, image"
-msgstr "фон, рисунок рабочего стола, изображение, картинка"
+msgid "theme, dark mode, light mode, accent color, dim wallpaper"
+msgstr "тема, темный режим, светлый режим, акцентный цвет, затемнение обоев"
 
 #: src/window/pagelist.cpp
 msgid "taskbar, position, size, auto hide, glass effect"
 msgstr "панель задач, расположение, размер, автоскрытие, эффект стекла"
 
 #: src/window/pagelist.cpp
+msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
+msgstr "монитор, экран, разрешение, частота обновления, масштаб, яркость, поворот"
+
+#: src/window/pagelist.cpp
 msgid "top bar, controls, Wi-Fi, Bluetooth, battery, sound, volume"
 msgstr "верхняя панель, строка меню, элементы управления, wi-fi, bluetooth, аккумулятор, батарея, звук, громкость"
+
+#: src/window/pagelist.cpp
+msgid "background, desktop picture, image"
+msgstr "фон, рисунок рабочего стола, изображение, картинка"
+
+#: src/window/pagelist.cpp
+msgid "Sound & Notifications"
+msgstr "Звук и уведомления"
 
 #: src/window/pagelist.cpp
 msgid "do not disturb, banners, alerts"
 msgstr "не беспокоить, баннеры, оповещения"
 
 #: src/window/pagelist.cpp
-msgid "Devices"
-msgstr "Устройства"
-
-#: src/window/pagelist.cpp
-msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
-msgstr "монитор, экран, разрешение, частота обновления, масштаб, яркость, поворот"
-
-#: src/window/pagelist.cpp
 msgid "audio, volume, speakers, headphones, microphone, input, output"
 msgstr "аудио, громкость, динамики, колонки, наушники, микрофон, вход, выход"
+
+#: src/window/pagelist.cpp
+msgid "System"
+msgstr "Система"
+
+#: src/window/pagelist.cpp
+msgid "computer control, agents, allowed apps, permissions"
+msgstr "управление компьютером, агенты, разрешенные приложения, разрешения"
+
+#: src/window/pagelist.cpp
+msgid "energy, performance, power saving, sleep, turn off display"
+msgstr "энергия, производительность, энергосбережение, сон, выключение дисплея"
+
+#: src/window/pagelist.cpp
+msgid "accounts, password, login, administrator, avatar"
+msgstr "учетные записи, пароль, вход, логин, администратор, аватар"
+
+#: src/window/pagelist.cpp
+msgid "Devices"
+msgstr "Устройства"
 
 #: src/window/pagelist.cpp
 msgid "input method, key repeat, keyboard style"
@@ -2635,26 +2659,6 @@ msgstr "трекпад, тачпад, касание, естественная �
 #: src/window/pagelist.cpp
 msgid "touch, touch screen, touch panel"
 msgstr "касание, сенсорный экран, сенсор, тачскрин"
-
-#: src/window/pagelist.cpp
-msgid "System"
-msgstr "Система"
-
-#: src/window/pagelist.cpp
-msgid "accounts, password, login, administrator, avatar"
-msgstr "учетные записи, пароль, вход, логин, администратор, аватар"
-
-#: src/window/pagelist.cpp
-msgid "computer control, agents, allowed apps, permissions"
-msgstr "управление компьютером, агенты, разрешенные приложения, разрешения"
-
-#: src/window/pagelist.cpp
-msgid "charge, charging limit, battery health, capacity, history, percentage"
-msgstr "заряд, ограничение зарядки, состояние аккумулятора, батарея, емкость, история, процент"
-
-#: src/window/pagelist.cpp
-msgid "energy, performance, power saving, sleep, turn off display"
-msgstr "энергия, производительность, энергосбережение, сон, выключение дисплея"
 
 #: src/window/pagelist.cpp
 msgid "system, version, kernel, processor, memory, storage, hardware"
@@ -2728,6 +2732,3 @@ msgstr "Настройки"
 #: src/window/sidebar.cpp
 msgid "No results"
 msgstr "Нет результатов"
-
-#~ msgid "Close"
-#~ msgstr "Закрыть"

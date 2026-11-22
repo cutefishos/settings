@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-22 21:43+0800\n"
+"POT-Creation-Date: 2026-11-22 21:56+0800\n"
 "PO-Revision-Date: 2026-11-13 16:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2575,36 +2575,60 @@ msgid "VPN, proxy, hotspot, tethering, internet"
 msgstr "VPN, 代理伺服器, 熱點, 網絡共享, 互聯網, proxy"
 
 #: src/window/pagelist.cpp
-msgid "theme, dark mode, light mode, accent color, dim wallpaper"
-msgstr "主題, 深色模式, 淺色模式, 強調色, 調暗牆紙, dark mode"
+msgid "charge, charging limit, battery health, capacity, history, percentage"
+msgstr "充電, 充電上限, 電池健康度, 容量, 歷史記錄, 百分比"
 
 #: src/window/pagelist.cpp
-msgid "background, desktop picture, image"
-msgstr "背景, 桌面圖片, 圖片, 影像, wallpaper"
+msgid "theme, dark mode, light mode, accent color, dim wallpaper"
+msgstr "主題, 深色模式, 淺色模式, 強調色, 調暗牆紙, dark mode"
 
 #: src/window/pagelist.cpp
 msgid "taskbar, position, size, auto hide, glass effect"
 msgstr "工作列, 位置, 大小, 自動隱藏, 玻璃效果, taskbar"
 
 #: src/window/pagelist.cpp
+msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
+msgstr "顯示器, 螢幕, 解像度, 刷新率, 縮放, 亮度, 旋轉, monitor"
+
+#: src/window/pagelist.cpp
 msgid "top bar, controls, Wi-Fi, Bluetooth, battery, sound, volume"
 msgstr "頂欄, 選單列, 控制, Wi-Fi, 藍牙, Bluetooth, 電池, 聲音, 音量, top bar"
+
+#: src/window/pagelist.cpp
+msgid "background, desktop picture, image"
+msgstr "背景, 桌面圖片, 圖片, 影像, wallpaper"
+
+#: src/window/pagelist.cpp
+msgid "Sound & Notifications"
+msgstr "聲音與通知"
 
 #: src/window/pagelist.cpp
 msgid "do not disturb, banners, alerts"
 msgstr "勿擾模式, 橫幅, 提示, 通知"
 
 #: src/window/pagelist.cpp
-msgid "Devices"
-msgstr "裝置"
-
-#: src/window/pagelist.cpp
-msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
-msgstr "顯示器, 螢幕, 解像度, 刷新率, 縮放, 亮度, 旋轉, monitor"
-
-#: src/window/pagelist.cpp
 msgid "audio, volume, speakers, headphones, microphone, input, output"
 msgstr "音訊, 音量, 揚聲器, 耳機, 麥克風, 輸入, 輸出, audio"
+
+#: src/window/pagelist.cpp
+msgid "System"
+msgstr "系統"
+
+#: src/window/pagelist.cpp
+msgid "computer control, agents, allowed apps, permissions"
+msgstr "電腦控制, 代理程式, 允許的 App, 權限, agent"
+
+#: src/window/pagelist.cpp
+msgid "energy, performance, power saving, sleep, turn off display"
+msgstr "能源, 效能, 省電, 睡眠, 關閉顯示器, 電源"
+
+#: src/window/pagelist.cpp
+msgid "accounts, password, login, administrator, avatar"
+msgstr "帳戶, 密碼, 登入, 管理員, 頭像, account"
+
+#: src/window/pagelist.cpp
+msgid "Devices"
+msgstr "裝置"
 
 #: src/window/pagelist.cpp
 msgid "input method, key repeat, keyboard style"
@@ -2621,26 +2645,6 @@ msgstr "軌跡板, 觸控式軌跡板, 輕點以點按, 自然捲動, 輔助按�
 #: src/window/pagelist.cpp
 msgid "touch, touch screen, touch panel"
 msgstr "觸控, 觸控螢幕, 觸控面板, touch"
-
-#: src/window/pagelist.cpp
-msgid "System"
-msgstr "系統"
-
-#: src/window/pagelist.cpp
-msgid "accounts, password, login, administrator, avatar"
-msgstr "帳戶, 密碼, 登入, 管理員, 頭像, account"
-
-#: src/window/pagelist.cpp
-msgid "computer control, agents, allowed apps, permissions"
-msgstr "電腦控制, 代理程式, 允許的 App, 權限, agent"
-
-#: src/window/pagelist.cpp
-msgid "charge, charging limit, battery health, capacity, history, percentage"
-msgstr "充電, 充電上限, 電池健康度, 容量, 歷史記錄, 百分比"
-
-#: src/window/pagelist.cpp
-msgid "energy, performance, power saving, sleep, turn off display"
-msgstr "能源, 效能, 省電, 睡眠, 關閉顯示器, 電源"
 
 #: src/window/pagelist.cpp
 msgid "system, version, kernel, processor, memory, storage, hardware"
@@ -2714,6 +2718,3 @@ msgstr "設定"
 #: src/window/sidebar.cpp
 msgid "No results"
 msgstr "沒有結果"
-
-#~ msgid "Close"
-#~ msgstr "關閉"

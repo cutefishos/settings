@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-22 21:43+0800\n"
+"POT-Creation-Date: 2026-11-22 21:56+0800\n"
 "PO-Revision-Date: 2026-11-13 16:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2575,36 +2575,60 @@ msgid "VPN, proxy, hotspot, tethering, internet"
 msgstr "vpn, proxy, điểm phát sóng, chia sẻ kết nối, tethering, internet"
 
 #: src/window/pagelist.cpp
-msgid "theme, dark mode, light mode, accent color, dim wallpaper"
-msgstr "chủ đề, chế độ tối, chế độ sáng, màu nhấn, làm tối hình nền, dark mode, theme"
+msgid "charge, charging limit, battery health, capacity, history, percentage"
+msgstr "sạc, giới hạn sạc, sức khỏe pin, pin, dung lượng, lịch sử, phần trăm, battery"
 
 #: src/window/pagelist.cpp
-msgid "background, desktop picture, image"
-msgstr "nền, hình nền, ảnh màn hình nền, hình ảnh, wallpaper"
+msgid "theme, dark mode, light mode, accent color, dim wallpaper"
+msgstr "chủ đề, chế độ tối, chế độ sáng, màu nhấn, làm tối hình nền, dark mode, theme"
 
 #: src/window/pagelist.cpp
 msgid "taskbar, position, size, auto hide, glass effect"
 msgstr "thanh tác vụ, vị trí, kích thước, tự động ẩn, hiệu ứng kính, dock, taskbar"
 
 #: src/window/pagelist.cpp
+msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
+msgstr "màn hình, độ phân giải, tần số quét, tỷ lệ, độ sáng, xoay, monitor, display"
+
+#: src/window/pagelist.cpp
 msgid "top bar, controls, Wi-Fi, Bluetooth, battery, sound, volume"
 msgstr "thanh trên cùng, thanh menu, điều khiển, wi-fi, bluetooth, pin, âm thanh, âm lượng, top bar"
+
+#: src/window/pagelist.cpp
+msgid "background, desktop picture, image"
+msgstr "nền, hình nền, ảnh màn hình nền, hình ảnh, wallpaper"
+
+#: src/window/pagelist.cpp
+msgid "Sound & Notifications"
+msgstr "Âm thanh & Thông báo"
 
 #: src/window/pagelist.cpp
 msgid "do not disturb, banners, alerts"
 msgstr "không làm phiền, biểu ngữ, cảnh báo, thông báo, notifications"
 
 #: src/window/pagelist.cpp
-msgid "Devices"
-msgstr "Thiết bị"
-
-#: src/window/pagelist.cpp
-msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
-msgstr "màn hình, độ phân giải, tần số quét, tỷ lệ, độ sáng, xoay, monitor, display"
-
-#: src/window/pagelist.cpp
 msgid "audio, volume, speakers, headphones, microphone, input, output"
 msgstr "âm thanh, âm lượng, loa, tai nghe, micrô, đầu vào, đầu ra, audio, volume"
+
+#: src/window/pagelist.cpp
+msgid "System"
+msgstr "Hệ thống"
+
+#: src/window/pagelist.cpp
+msgid "computer control, agents, allowed apps, permissions"
+msgstr "điều khiển máy tính, tác nhân, ứng dụng được phép, quyền, agents, permissions"
+
+#: src/window/pagelist.cpp
+msgid "energy, performance, power saving, sleep, turn off display"
+msgstr "năng lượng, nguồn điện, hiệu năng, tiết kiệm điện, ngủ, tắt màn hình, power"
+
+#: src/window/pagelist.cpp
+msgid "accounts, password, login, administrator, avatar"
+msgstr "tài khoản, người dùng, mật khẩu, đăng nhập, quản trị viên, ảnh đại diện, avatar"
+
+#: src/window/pagelist.cpp
+msgid "Devices"
+msgstr "Thiết bị"
 
 #: src/window/pagelist.cpp
 msgid "input method, key repeat, keyboard style"
@@ -2621,26 +2645,6 @@ msgstr "bàn di chuột, chạm để nhấp, cuộn tự nhiên, nhấp phụ, 
 #: src/window/pagelist.cpp
 msgid "touch, touch screen, touch panel"
 msgstr "cảm ứng, màn hình cảm ứng, bảng cảm ứng, touch, touchscreen"
-
-#: src/window/pagelist.cpp
-msgid "System"
-msgstr "Hệ thống"
-
-#: src/window/pagelist.cpp
-msgid "accounts, password, login, administrator, avatar"
-msgstr "tài khoản, người dùng, mật khẩu, đăng nhập, quản trị viên, ảnh đại diện, avatar"
-
-#: src/window/pagelist.cpp
-msgid "computer control, agents, allowed apps, permissions"
-msgstr "điều khiển máy tính, tác nhân, ứng dụng được phép, quyền, agents, permissions"
-
-#: src/window/pagelist.cpp
-msgid "charge, charging limit, battery health, capacity, history, percentage"
-msgstr "sạc, giới hạn sạc, sức khỏe pin, pin, dung lượng, lịch sử, phần trăm, battery"
-
-#: src/window/pagelist.cpp
-msgid "energy, performance, power saving, sleep, turn off display"
-msgstr "năng lượng, nguồn điện, hiệu năng, tiết kiệm điện, ngủ, tắt màn hình, power"
 
 #: src/window/pagelist.cpp
 msgid "system, version, kernel, processor, memory, storage, hardware"
@@ -2714,6 +2718,3 @@ msgstr "Cài đặt"
 #: src/window/sidebar.cpp
 msgid "No results"
 msgstr "Không có kết quả"
-
-#~ msgid "Close"
-#~ msgstr "Đóng"

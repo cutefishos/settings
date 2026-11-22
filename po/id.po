@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-22 21:43+0800\n"
+"POT-Creation-Date: 2026-11-22 21:56+0800\n"
 "PO-Revision-Date: 2026-11-13 16:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2575,36 +2575,60 @@ msgid "VPN, proxy, hotspot, tethering, internet"
 msgstr "VPN, proksi, proxy, hotspot, tethering, internet"
 
 #: src/window/pagelist.cpp
-msgid "theme, dark mode, light mode, accent color, dim wallpaper"
-msgstr "tema, mode gelap, mode terang, warna aksen, redupkan wallpaper, theme, dark mode"
+msgid "charge, charging limit, battery health, capacity, history, percentage"
+msgstr "isi daya, batas pengisian, kesehatan baterai, kapasitas, riwayat, persentase"
 
 #: src/window/pagelist.cpp
-msgid "background, desktop picture, image"
-msgstr "latar belakang, gambar desktop, gambar, wallpaper, background"
+msgid "theme, dark mode, light mode, accent color, dim wallpaper"
+msgstr "tema, mode gelap, mode terang, warna aksen, redupkan wallpaper, theme, dark mode"
 
 #: src/window/pagelist.cpp
 msgid "taskbar, position, size, auto hide, glass effect"
 msgstr "taskbar, bilah tugas, posisi, ukuran, sembunyikan otomatis, efek kaca"
 
 #: src/window/pagelist.cpp
+msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
+msgstr "monitor, layar, resolusi, laju penyegaran, skala, kecerahan, rotasi, display"
+
+#: src/window/pagelist.cpp
 msgid "top bar, controls, Wi-Fi, Bluetooth, battery, sound, volume"
 msgstr "bilah atas, bilah menu, kontrol, wi-fi, bluetooth, baterai, suara, volume, top bar"
+
+#: src/window/pagelist.cpp
+msgid "background, desktop picture, image"
+msgstr "latar belakang, gambar desktop, gambar, wallpaper, background"
+
+#: src/window/pagelist.cpp
+msgid "Sound & Notifications"
+msgstr "Suara & Notifikasi"
 
 #: src/window/pagelist.cpp
 msgid "do not disturb, banners, alerts"
 msgstr "jangan ganggu, banner, peringatan, notifikasi"
 
 #: src/window/pagelist.cpp
-msgid "Devices"
-msgstr "Perangkat"
-
-#: src/window/pagelist.cpp
-msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
-msgstr "monitor, layar, resolusi, laju penyegaran, skala, kecerahan, rotasi, display"
-
-#: src/window/pagelist.cpp
 msgid "audio, volume, speakers, headphones, microphone, input, output"
 msgstr "audio, volume, speaker, pengeras suara, headphone, mikrofon, masukan, keluaran, input, output"
+
+#: src/window/pagelist.cpp
+msgid "System"
+msgstr "Sistem"
+
+#: src/window/pagelist.cpp
+msgid "computer control, agents, allowed apps, permissions"
+msgstr "kendali komputer, agen, aplikasi yang diizinkan, izin, permissions"
+
+#: src/window/pagelist.cpp
+msgid "energy, performance, power saving, sleep, turn off display"
+msgstr "energi, performa, hemat daya, tidur, matikan layar, power"
+
+#: src/window/pagelist.cpp
+msgid "accounts, password, login, administrator, avatar"
+msgstr "akun, kata sandi, login, masuk, administrator, avatar, pengguna"
+
+#: src/window/pagelist.cpp
+msgid "Devices"
+msgstr "Perangkat"
 
 #: src/window/pagelist.cpp
 msgid "input method, key repeat, keyboard style"
@@ -2621,26 +2645,6 @@ msgstr "trackpad, ketuk untuk mengeklik, gulir alami, klik sekunder, kecepatan p
 #: src/window/pagelist.cpp
 msgid "touch, touch screen, touch panel"
 msgstr "sentuh, layar sentuh, panel sentuh, touch screen"
-
-#: src/window/pagelist.cpp
-msgid "System"
-msgstr "Sistem"
-
-#: src/window/pagelist.cpp
-msgid "accounts, password, login, administrator, avatar"
-msgstr "akun, kata sandi, login, masuk, administrator, avatar, pengguna"
-
-#: src/window/pagelist.cpp
-msgid "computer control, agents, allowed apps, permissions"
-msgstr "kendali komputer, agen, aplikasi yang diizinkan, izin, permissions"
-
-#: src/window/pagelist.cpp
-msgid "charge, charging limit, battery health, capacity, history, percentage"
-msgstr "isi daya, batas pengisian, kesehatan baterai, kapasitas, riwayat, persentase"
-
-#: src/window/pagelist.cpp
-msgid "energy, performance, power saving, sleep, turn off display"
-msgstr "energi, performa, hemat daya, tidur, matikan layar, power"
 
 #: src/window/pagelist.cpp
 msgid "system, version, kernel, processor, memory, storage, hardware"
@@ -2714,6 +2718,3 @@ msgstr "Pengaturan"
 #: src/window/sidebar.cpp
 msgid "No results"
 msgstr "Tidak ada hasil"
-
-#~ msgid "Close"
-#~ msgstr "Tutup"

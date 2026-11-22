@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-22 21:43+0800\n"
+"POT-Creation-Date: 2026-11-22 21:56+0800\n"
 "PO-Revision-Date: 2026-11-13 15:22+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2575,36 +2575,60 @@ msgid "VPN, proxy, hotspot, tethering, internet"
 msgstr "VPN, プロキシ, ホットスポット, テザリング, インターネット"
 
 #: src/window/pagelist.cpp
-msgid "theme, dark mode, light mode, accent color, dim wallpaper"
-msgstr "テーマ, ダークモード, ライトモード, アクセントカラー, 壁紙を暗く"
+msgid "charge, charging limit, battery health, capacity, history, percentage"
+msgstr "充電, 充電制限, バッテリーの状態, 容量, 履歴, パーセント, 残量"
 
 #: src/window/pagelist.cpp
-msgid "background, desktop picture, image"
-msgstr "背景, 壁紙, デスクトップピクチャ, 画像"
+msgid "theme, dark mode, light mode, accent color, dim wallpaper"
+msgstr "テーマ, ダークモード, ライトモード, アクセントカラー, 壁紙を暗く"
 
 #: src/window/pagelist.cpp
 msgid "taskbar, position, size, auto hide, glass effect"
 msgstr "タスクバー, 位置, サイズ, 自動的に隠す, ガラス効果"
 
 #: src/window/pagelist.cpp
+msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
+msgstr "モニタ, モニター, 画面, 解像度, リフレッシュレート, 拡大縮小, スケーリング, 明るさ, 回転"
+
+#: src/window/pagelist.cpp
 msgid "top bar, controls, Wi-Fi, Bluetooth, battery, sound, volume"
 msgstr "トップバー, メニューバー, コントロール, Wi-Fi, Bluetooth, バッテリー, サウンド, 音量"
+
+#: src/window/pagelist.cpp
+msgid "background, desktop picture, image"
+msgstr "背景, 壁紙, デスクトップピクチャ, 画像"
+
+#: src/window/pagelist.cpp
+msgid "Sound & Notifications"
+msgstr "サウンドと通知"
 
 #: src/window/pagelist.cpp
 msgid "do not disturb, banners, alerts"
 msgstr "おやすみモード, バナー, 通知, アラート"
 
 #: src/window/pagelist.cpp
-msgid "Devices"
-msgstr "デバイス"
-
-#: src/window/pagelist.cpp
-msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
-msgstr "モニタ, モニター, 画面, 解像度, リフレッシュレート, 拡大縮小, スケーリング, 明るさ, 回転"
-
-#: src/window/pagelist.cpp
 msgid "audio, volume, speakers, headphones, microphone, input, output"
 msgstr "オーディオ, 音量, スピーカ, スピーカー, ヘッドフォン, イヤホン, マイク, 入力, 出力"
+
+#: src/window/pagelist.cpp
+msgid "System"
+msgstr "システム"
+
+#: src/window/pagelist.cpp
+msgid "computer control, agents, allowed apps, permissions"
+msgstr "コンピュータの操作, エージェント, 許可したアプリ, アクセス許可, 権限"
+
+#: src/window/pagelist.cpp
+msgid "energy, performance, power saving, sleep, turn off display"
+msgstr "電源, エネルギー, パフォーマンス, 省電力, スリープ, ディスプレイをオフ"
+
+#: src/window/pagelist.cpp
+msgid "accounts, password, login, administrator, avatar"
+msgstr "アカウント, パスワード, ログイン, 管理者, アバター, ユーザ, ユーザー"
+
+#: src/window/pagelist.cpp
+msgid "Devices"
+msgstr "デバイス"
 
 #: src/window/pagelist.cpp
 msgid "input method, key repeat, keyboard style"
@@ -2621,26 +2645,6 @@ msgstr "トラックパッド, タッチパッド, タップでクリック, ナ
 #: src/window/pagelist.cpp
 msgid "touch, touch screen, touch panel"
 msgstr "タッチ, タッチスクリーン, タッチパネル"
-
-#: src/window/pagelist.cpp
-msgid "System"
-msgstr "システム"
-
-#: src/window/pagelist.cpp
-msgid "accounts, password, login, administrator, avatar"
-msgstr "アカウント, パスワード, ログイン, 管理者, アバター, ユーザ, ユーザー"
-
-#: src/window/pagelist.cpp
-msgid "computer control, agents, allowed apps, permissions"
-msgstr "コンピュータの操作, エージェント, 許可したアプリ, アクセス許可, 権限"
-
-#: src/window/pagelist.cpp
-msgid "charge, charging limit, battery health, capacity, history, percentage"
-msgstr "充電, 充電制限, バッテリーの状態, 容量, 履歴, パーセント, 残量"
-
-#: src/window/pagelist.cpp
-msgid "energy, performance, power saving, sleep, turn off display"
-msgstr "電源, エネルギー, パフォーマンス, 省電力, スリープ, ディスプレイをオフ"
 
 #: src/window/pagelist.cpp
 msgid "system, version, kernel, processor, memory, storage, hardware"
@@ -2714,6 +2718,3 @@ msgstr "設定"
 #: src/window/sidebar.cpp
 msgid "No results"
 msgstr "結果なし"
-
-#~ msgid "Close"
-#~ msgstr "閉じる"

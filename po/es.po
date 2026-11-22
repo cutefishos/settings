@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-22 21:43+0800\n"
+"POT-Creation-Date: 2026-11-22 21:56+0800\n"
 "PO-Revision-Date: 2026-11-13 15:22+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2582,36 +2582,60 @@ msgid "VPN, proxy, hotspot, tethering, internet"
 msgstr "VPN, proxy, punto de acceso, hotspot, anclaje, compartir internet, internet"
 
 #: src/window/pagelist.cpp
-msgid "theme, dark mode, light mode, accent color, dim wallpaper"
-msgstr "tema, modo oscuro, modo claro, color de acento, oscurecer fondo de pantalla"
+msgid "charge, charging limit, battery health, capacity, history, percentage"
+msgstr "carga, límite de carga, salud de la batería, capacidad, historial, porcentaje"
 
 #: src/window/pagelist.cpp
-msgid "background, desktop picture, image"
-msgstr "fondo, fondo de pantalla, imagen de escritorio, imagen, wallpaper"
+msgid "theme, dark mode, light mode, accent color, dim wallpaper"
+msgstr "tema, modo oscuro, modo claro, color de acento, oscurecer fondo de pantalla"
 
 #: src/window/pagelist.cpp
 msgid "taskbar, position, size, auto hide, glass effect"
 msgstr "barra de tareas, posición, tamaño, ocultar automáticamente, efecto de vidrio"
 
 #: src/window/pagelist.cpp
+msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
+msgstr "monitor, pantalla, resolución, frecuencia de actualización, escala, brillo, rotación"
+
+#: src/window/pagelist.cpp
 msgid "top bar, controls, Wi-Fi, Bluetooth, battery, sound, volume"
 msgstr "barra superior, barra de menús, controles, wi-fi, bluetooth, batería, sonido, volumen"
+
+#: src/window/pagelist.cpp
+msgid "background, desktop picture, image"
+msgstr "fondo, fondo de pantalla, imagen de escritorio, imagen, wallpaper"
+
+#: src/window/pagelist.cpp
+msgid "Sound & Notifications"
+msgstr "Sonido y notificaciones"
 
 #: src/window/pagelist.cpp
 msgid "do not disturb, banners, alerts"
 msgstr "no molestar, avisos, alertas"
 
 #: src/window/pagelist.cpp
-msgid "Devices"
-msgstr "Dispositivos"
-
-#: src/window/pagelist.cpp
-msgid "monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
-msgstr "monitor, pantalla, resolución, frecuencia de actualización, escala, brillo, rotación"
-
-#: src/window/pagelist.cpp
 msgid "audio, volume, speakers, headphones, microphone, input, output"
 msgstr "audio, volumen, altavoces, bocinas, auriculares, micrófono, entrada, salida"
+
+#: src/window/pagelist.cpp
+msgid "System"
+msgstr "Sistema"
+
+#: src/window/pagelist.cpp
+msgid "computer control, agents, allowed apps, permissions"
+msgstr "control de la computadora, agentes, apps permitidas, permisos"
+
+#: src/window/pagelist.cpp
+msgid "energy, performance, power saving, sleep, turn off display"
+msgstr "energía, rendimiento, ahorro de energía, suspensión, apagar pantalla"
+
+#: src/window/pagelist.cpp
+msgid "accounts, password, login, administrator, avatar"
+msgstr "cuentas, contraseña, inicio de sesión, administrador, avatar, foto"
+
+#: src/window/pagelist.cpp
+msgid "Devices"
+msgstr "Dispositivos"
 
 #: src/window/pagelist.cpp
 msgid "input method, key repeat, keyboard style"
@@ -2628,26 +2652,6 @@ msgstr "trackpad, touchpad, tocar para hacer clic, desplazamiento natural, clic 
 #: src/window/pagelist.cpp
 msgid "touch, touch screen, touch panel"
 msgstr "táctil, pantalla táctil, panel táctil"
-
-#: src/window/pagelist.cpp
-msgid "System"
-msgstr "Sistema"
-
-#: src/window/pagelist.cpp
-msgid "accounts, password, login, administrator, avatar"
-msgstr "cuentas, contraseña, inicio de sesión, administrador, avatar, foto"
-
-#: src/window/pagelist.cpp
-msgid "computer control, agents, allowed apps, permissions"
-msgstr "control de la computadora, agentes, apps permitidas, permisos"
-
-#: src/window/pagelist.cpp
-msgid "charge, charging limit, battery health, capacity, history, percentage"
-msgstr "carga, límite de carga, salud de la batería, capacidad, historial, porcentaje"
-
-#: src/window/pagelist.cpp
-msgid "energy, performance, power saving, sleep, turn off display"
-msgstr "energía, rendimiento, ahorro de energía, suspensión, apagar pantalla"
 
 #: src/window/pagelist.cpp
 msgid "system, version, kernel, processor, memory, storage, hardware"
@@ -2721,6 +2725,3 @@ msgstr "Configuración"
 #: src/window/sidebar.cpp
 msgid "No results"
 msgstr "No hay resultados"
-
-#~ msgid "Close"
-#~ msgstr "Cerrar"
