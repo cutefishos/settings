@@ -68,6 +68,11 @@ static std::vector<PageInfo> makePages()
     add({.id = "accounts", .name = "accounts", .title = trNoop("Users"), .icon = "accounts.svg",
          .iconColor = Color::rgb(0xDA7C43), .category = trNoop("System"),
          .keywords = trNoop("accounts, password, login, administrator, avatar")});
+    // Beside Users, as macOS keeps Touch ID & Password beside Users & Groups.
+    add({.id = "touchid", .name = "touchid", .title = trNoop("Touch ID"),
+         .icon = "fingerprint.svg", .iconColor = Color::rgb(0xDA7C43),
+         .category = trNoop("System"),
+         .keywords = trNoop("fingerprint, biometrics, unlock, Touch ID, login"), .initiallyAvailable = false});
     add({.id = "language", .name = "language", .title = trNoop("Language & Region"), .icon = "globe.svg",
          .iconColor = Color::rgb(0x20A7FF), .category = trNoop("System"),
          .keywords = trNoop("region, locale, system language, country, formats, first day of week, measurement "
