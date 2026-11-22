@@ -81,6 +81,9 @@ static std::vector<PageInfo> makePages()
     add({.id = "privacy", .name = "privacy", .title = trNoop("Privacy"), .icon = "lock",
          .iconColor = Color::rgb(0x418CFF), .category = trNoop("System"),
          .keywords = trNoop("computer control, agents, allowed apps, permissions")});
+    add({.id = "ripple", .name = "ripple", .title = trNoop("Ripple"), .icon = "ripple.svg",
+         .iconColor = Color::rgb(0x24A7FD), .category = trNoop("System"),
+         .keywords = trNoop("nearby, share, send, receive, airdrop, files, localsend, device")});
     add({.id = "battery", .name = "battery", .title = trNoop("Battery"), .icon = "battery.svg",
          .iconColor = Color::rgb(0x2EC347), .category = trNoop("System"),
          .keywords = trNoop("charge, charging limit, battery health, capacity, history, percentage")});
