@@ -249,7 +249,7 @@ struct DisplayPageTest : ::testing::Test
     TestDriver& driver() { return scenario->driver; }
     std::string currentText(const std::string& name)
     {
-        const auto* box = driver().find<RowComboBox>(name);
+        const auto* box = driver().find<settings::RowComboBox>(name);
         return box ? box->currentText() : std::string();
     }
     // The row of the combo box's drop-down chosen, as the user picks it.
@@ -273,7 +273,7 @@ TEST_F(DisplayPageTest, NamesTheOnlyScreen)
     EXPECT_FALSE(driver().shows("display:arrangement"));
     EXPECT_FALSE(driver().shows("display:error"));
     EXPECT_EQ(currentText("display:resolution"), "2160 × 1440 (Recommended)");
-    const auto* resolution = driver().find<RowComboBox>("display:resolution");
+    const auto* resolution = driver().find<settings::RowComboBox>("display:resolution");
     ASSERT_NE(resolution, nullptr);
     EXPECT_EQ(resolution->count(), 3);
     EXPECT_EQ(currentText("display:refresh"), "60.00 Hz");

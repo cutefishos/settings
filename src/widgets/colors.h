@@ -17,8 +17,6 @@ enum class SettingsColor : uint16_t {
     SidebarSearch,
 
     RowHighlight,
-    RowComboBoxHovered,
-    RowComboBoxOpen,
     StandardButtonBackground,
     KeyCap,
     PreferredLanguageTag,

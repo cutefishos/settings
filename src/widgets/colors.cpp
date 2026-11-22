@@ -22,8 +22,6 @@ void addSettingsColors(ColorMixer& mixer, const Theme& theme)
     mixer[SettingsColor::SidebarSearch] = dark ? withAlpha(ColorId::Text, 0.08) : ColorRecipe(ColorId::SecondBackground);
 
     mixer[SettingsColor::RowHighlight] = withAlpha(ColorId::Text, dark ? 0.05 : 0.15);
-    mixer[SettingsColor::RowComboBoxHovered] = withAlpha(ColorId::Text, dark ? 0.08 : 0.06);
-    mixer[SettingsColor::RowComboBoxOpen] = withAlpha(ColorId::Text, dark ? 0.12 : 0.1);
     mixer[SettingsColor::StandardButtonBackground] = dark ? Color::rgb(0x363636) : kWhite;
     mixer[SettingsColor::KeyCap] = dark ? lighter(ColorId::SecondBackground, 1.6)
                                         : darker(ColorId::SecondBackground, 1.08);

@@ -94,7 +94,6 @@ add_library(settings-ui OBJECT
     src/widgets/listrow.cpp
     src/widgets/metrics.cpp
     src/widgets/picture.cpp
-    src/widgets/rowcombobox.cpp
     src/widgets/rowicon.cpp
     src/widgets/searchfield.cpp
     src/widgets/sections.cpp

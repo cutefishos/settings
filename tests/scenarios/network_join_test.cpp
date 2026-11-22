@@ -43,7 +43,7 @@ struct JoinDialog : ::testing::Test
 
     std::string security(TestDriver& driver)
     {
-        const auto* box = driver.find<RowComboBox>("join:security");
+        const auto* box = driver.find<settings::RowComboBox>("join:security");
         return box ? box->currentText() : std::string();
     }
 
