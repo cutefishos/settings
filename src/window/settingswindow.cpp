@@ -327,6 +327,7 @@ void SettingsWindow::setAvailable(const PageInfo& page, bool available)
 {
     if (page.category.empty()) {
         m_sidebar->setSubPageAvailable(page.id, available);
+        subPageAvailabilityChanged.emit();
         return;
     }
     const bool present = std::find(m_available.begin(), m_available.end(), page.id) != m_available.end();
@@ -479,6 +480,11 @@ void SettingsWindow::joinWifi(const std::string& accessPoint, const std::string&
 std::string SettingsWindow::takePendingWifiJoin()
 {
     return std::exchange(m_pendingWifiJoin, {});
+}
+
+bool SettingsWindow::isSubPageAvailable(const std::string& id) const
+{
+    return m_sidebar->isSubPageAvailable(id);
 }
 
 void SettingsWindow::pushPage(const std::string& id)

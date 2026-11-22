@@ -64,6 +64,11 @@ public:
     // shown and so was not made again.
     cutefish::base::Signal<> wifiJoinRequested;
 
+    // Whether a sub page's service is there, as its availability watch last
+    // told; true while none has answered.
+    bool isSubPageAvailable(const std::string& id) const;
+    cutefish::base::Signal<> subPageAvailabilityChanged;
+
     // Opens a sub page of the current sidebar page.
     void pushPage(const std::string& id);
     void goBack();

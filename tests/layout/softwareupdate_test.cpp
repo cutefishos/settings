@@ -112,8 +112,6 @@ struct SoftwareUpdatePageTest : ::testing::Test
     bool openPage()
     {
         openWindow();
-        if (!waitFor([&] { return inSidebar(); }))
-            return false;
         settingsWindow->switchToPage("softwareupdate");
         window().grab();
         return settingsWindow->currentPage() && settingsWindow->currentPage()->title() == "Software Update";
@@ -125,11 +123,6 @@ struct SoftwareUpdatePageTest : ::testing::Test
     {
         auto* label = dynamic_cast<Label*>(view(name));
         return label && isShown(label) ? label->text() : std::string();
-    }
-    bool inSidebar()
-    {
-        window().grab();
-        return window().layoutDump().find("\"sidebar:softwareupdate\"") != std::string::npos;
     }
     // Lets the change reach the page, and lays it out again.
     bool shows(const std::string& title)

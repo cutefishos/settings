@@ -22,7 +22,7 @@ class DefaultAppsPage : public Page
 {
 public:
     explicit DefaultAppsPage(SettingsWindow& window)
-        : Page(window, tr("Default Applications"))
+        : Page(window, tr("Default Apps"))
     {
         Card* card = content()->addChild<Card>(Card::Style::List);
         const std::array<const char*, DefaultApplications::KindCount> titles = {

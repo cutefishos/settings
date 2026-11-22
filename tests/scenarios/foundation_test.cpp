@@ -35,7 +35,7 @@ TEST(Foundation, HistoryGoesBackAndForward)
     Scenario scenario;
     TestDriver& driver = scenario.driver;
     EXPECT_FALSE(canGoBack(driver));
-    open(driver, "sidebar:about");
+    open(driver, "sidebar:display");
     open(driver, "sidebar:dock");
     driver.click("dock:hotcorners");
     EXPECT_TRUE(driver.shows("page:hotcorners"));
@@ -69,12 +69,12 @@ TEST(Foundation, BackAndForwardKeys)
 {
     Scenario scenario;
     TestDriver& driver = scenario.driver;
-    open(driver, "sidebar:about");
+    open(driver, "sidebar:display");
     driver.setKeyboardFocus(true);
     driver.typeKey(key::Left, AltModifier);
     EXPECT_TRUE(driver.shows("page:wlan"));
     driver.typeKey(key::Right, AltModifier);
-    EXPECT_TRUE(driver.shows("page:about"));
+    EXPECT_TRUE(driver.shows("page:display"));
 }
 
 TEST(Foundation, SubPagesOpenUnderTheirSidebarPage)
@@ -96,8 +96,10 @@ TEST(Foundation, SearchMatchesWordStarts)
     // "fo" finds Fonts, a sub page of Appearance, but not Power's "performance".
     EXPECT_TRUE(driver.shows("result:fonts"));
     EXPECT_TRUE(driver.findAll("result:power").empty());
+    // Return opens the first result, Language & Region, for its "formats".
+    EXPECT_TRUE(driver.shows("result:language"));
     driver.typeKey(key::Return);
-    EXPECT_TRUE(driver.shows("page:fonts"));
+    EXPECT_TRUE(driver.shows("page:language"));
     // Escape clears the search and shows the sidebar again.
     driver.typeKey(key::Escape);
     EXPECT_TRUE(driver.shows("sidebar:appearance"));

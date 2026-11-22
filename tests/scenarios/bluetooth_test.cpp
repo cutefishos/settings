@@ -101,7 +101,7 @@ TEST_F(BluetoothPageTest, DiscoversWhileThePageShows)
     ASSERT_TRUE(waitFor([this] { return manager->scanning(); }));
     // Pairing prompts belong to the shell's agent, not to the page.
     EXPECT_FALSE(manager->agentEnabled());
-    open("about");
+    open("display");
     ASSERT_TRUE(waitFor([this] { return !manager->scanning(); }));
     open("bluetooth");
     ASSERT_TRUE(waitFor([this] { return manager->scanning(); }));

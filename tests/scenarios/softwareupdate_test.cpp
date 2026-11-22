@@ -56,15 +56,14 @@ struct SoftwareUpdatePageTest : ::testing::Test
 
     bool openPage()
     {
-        scenario.emplace();
-        if (!waitFor([&] { return inSidebar(); }))
+        scenario.emplace("general");
+        if (!waitFor([&] { return inGeneral(); }))
             return false;
-        scrollTo(driver(), "sidebar:list", "sidebar:softwareupdate");
-        driver().click("sidebar:softwareupdate");
+        driver().click("general:softwareupdate");
         return driver().shows("page:softwareupdate");
     }
 
-    bool inSidebar() { return !driver().findAll("sidebar:softwareupdate").empty(); }
+    bool inGeneral() { return driver().shows("general:softwareupdate"); }
     std::string text(const std::string& name) { return driver().shows(name) ? driver().text(name) : std::string(); }
     size_t restarts() const { return size_t(std::count(service->calls.begin(), service->calls.end(), "restart")); }
     // Lets the change reach the page, and lays it out again.
@@ -84,9 +83,8 @@ struct SoftwareUpdatePageTest : ::testing::Test
 
 TEST_F(SoftwareUpdatePageTest, WithoutPackageKitThereIsNoPage)
 {
-    scenario.emplace();
-    waitFor([] { return false; }, 200ms);
-    EXPECT_FALSE(inSidebar());
+    scenario.emplace("general");
+    EXPECT_TRUE(waitFor([&] { return driver().shows("general:language") && !inGeneral(); }));
 }
 
 TEST_F(SoftwareUpdatePageTest, InstallsAndSuggestsARestart)

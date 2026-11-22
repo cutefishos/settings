@@ -333,6 +333,11 @@ void Sidebar::retranslate()
     setEntries(m_entries);
 }
 
+bool Sidebar::isSubPageAvailable(const std::string& id) const
+{
+    return std::find(m_unavailableSubPages.begin(), m_unavailableSubPages.end(), id) == m_unavailableSubPages.end();
+}
+
 void Sidebar::setSubPageAvailable(const std::string& id, bool available)
 {
     auto it = std::find(m_unavailableSubPages.begin(), m_unavailableSubPages.end(), id);

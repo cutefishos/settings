@@ -32,6 +32,8 @@ static std::vector<PageInfo> makePages()
     add({.id = "network", .name = "network", .title = trNoop("Network"), .icon = "globe-grid.svg",
          .iconColor = Color::rgb(0x0067FF), .category = trNoop("Network"),
          .keywords = trNoop("VPN, proxy, hotspot, tethering, internet")});
+    add({.id = "general", .name = "general", .title = trNoop("General"), .icon = "general.svg",
+         .iconColor = Color::rgb(0x999999), .category = trNoop("Desktop")});
     add({.id = "appearance", .name = "appearance", .title = trNoop("Appearance"), .icon = "appearance.svg",
          .iconColor = Color::rgb(0x03B4CB), .category = trNoop("Desktop"),
          .keywords = trNoop("theme, dark mode, light mode, accent color, dim wallpaper")});
@@ -68,16 +70,6 @@ static std::vector<PageInfo> makePages()
     add({.id = "accounts", .name = "accounts", .title = trNoop("Users"), .icon = "accounts.svg",
          .iconColor = Color::rgb(0xDA7C43), .category = trNoop("System"),
          .keywords = trNoop("accounts, password, login, administrator, avatar")});
-    add({.id = "language", .name = "language", .title = trNoop("Language & Region"), .icon = "globe.svg",
-         .iconColor = Color::rgb(0x20A7FF), .category = trNoop("System"),
-         .keywords = trNoop("region, locale, system language, country, formats, first day of week, measurement "
-                            "system, temperature")});
-    add({.id = "datetime", .name = "datetime", .title = trNoop("Date & Time"), .icon = "datetime.svg",
-         .iconColor = Color::rgb(0x418CFF), .category = trNoop("System"),
-         .keywords = trNoop("clock, time zone, 24-hour time, NTP, sync")});
-    add({.id = "defaultapps", .name = "defaultapps", .title = trNoop("Default Applications"),
-         .icon = "defaultapps.svg", .iconColor = Color::rgb(0x418CFF), .category = trNoop("System"),
-         .keywords = trNoop("web browser, email client, terminal")});
     add({.id = "privacy", .name = "privacy", .title = trNoop("Privacy"), .icon = "lock",
          .iconColor = Color::rgb(0x418CFF), .category = trNoop("System"),
          .keywords = trNoop("computer control, agents, allowed apps, permissions")});
@@ -87,14 +79,29 @@ static std::vector<PageInfo> makePages()
     add({.id = "power", .name = "power", .title = trNoop("Power"), .icon = "power.svg",
          .iconColor = Color::rgb(0xFE8433), .category = trNoop("System"),
          .keywords = trNoop("energy, performance, power saving, sleep, turn off display")});
-    add({.id = "softwareupdate", .name = "softwareupdate", .title = trNoop("Software Update"),
-         .icon = "softwareupdate.svg", .iconColor = Color::rgb(0x999999), .category = trNoop("System"),
-         .keywords = trNoop("updates, upgrade, packages, security, install, restart")});
-    add({.id = "about", .name = "about", .title = trNoop("About"), .icon = "about.svg",
-         .iconColor = Color::rgb(0x24A7FD), .category = trNoop("System"),
-         .keywords = trNoop("system, version, kernel, processor, memory, storage, hardware")});
 
     // Sub pages, opened from inside a sidebar page; search lists them after it.
+    add({.id = "about", .name = "about", .title = trNoop("About"), .icon = "about.svg",
+         .iconColor = Color::rgb(0x24A7FD),
+         .keywords = trNoop("system, version, kernel, processor, memory, storage, hardware"),
+         .parentId = "general"});
+    add({.id = "language", .name = "language", .title = trNoop("Language & Region"), .icon = "globe.svg",
+         .iconColor = Color::rgb(0x20A7FF),
+         .keywords = trNoop("region, locale, system language, country, formats, first day of week, measurement "
+                            "system, temperature"),
+         .parentId = "general"});
+    add({.id = "datetime", .name = "datetime", .title = trNoop("Date & Time"), .icon = "datetime.svg",
+         .iconColor = Color::rgb(0x418CFF),
+         .keywords = trNoop("clock, time zone, 24-hour time, NTP, sync"),
+         .parentId = "general"});
+    add({.id = "defaultapps", .name = "defaultapps", .title = trNoop("Default Apps"),
+         .icon = "defaultapps.svg", .iconColor = Color::rgb(0x418CFF),
+         .keywords = trNoop("web browser, email client, terminal"),
+         .parentId = "general"});
+    add({.id = "softwareupdate", .name = "softwareupdate", .title = trNoop("Software Update"),
+         .icon = "softwareupdate.svg", .iconColor = Color::rgb(0x999999),
+         .keywords = trNoop("updates, upgrade, packages, security, install, restart"),
+         .parentId = "general"});
     add({.id = "vpn", .name = "vpn", .title = trNoop("VPN"), .icon = "network-vpn",
          .iconColor = Color::rgb(0x48484C), .keywords = trNoop("VPN, WireGuard, OpenVPN, tunnel, network"),
          .parentId = "network"});
@@ -119,7 +126,7 @@ static std::vector<PageInfo> makePages()
          .iconColor = Color::rgb(0x5E6AD2), .keywords = trNoop("hotkeys, key bindings"), .parentId = "keyboard"});
     add({.id = "licenses", .name = "licenses", .title = trNoop("Open-Source Licenses"), .icon = "about.svg",
          .iconColor = Color::rgb(0x24A7FD), .keywords = trNoop("license, copyright, source code, open source"),
-         .parentId = "about"});
+         .parentId = "general"});
     return pages;
 }
 

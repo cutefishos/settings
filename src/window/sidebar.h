@@ -37,6 +37,7 @@ public:
     const std::vector<const PageInfo*>& entries() const { return m_entries; }
     // Sub pages whose entry is unavailable stay out of search results.
     void setSubPageAvailable(const std::string& id, bool available);
+    bool isSubPageAvailable(const std::string& id) const;
 
     // The page shown, and the sidebar page it belongs to.
     void setCurrent(const std::string& page, const std::string& rootPage);
