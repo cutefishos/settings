@@ -68,7 +68,7 @@ inline constexpr double sidebarItemHeight = 34;
 // The space above and below the 24 px icon tile, so the tile sits in an even inset.
 inline constexpr double sidebarItemPadding = (sidebarItemHeight - 24) / 2;
 inline constexpr double sidebarItemSpacing = xxs;
-// Above a category label; below it stays tight so it groups with its items.
+// Between one category's entries and the next's.
 inline constexpr double sidebarCategorySpacing = l;
 
 // Dialogs.

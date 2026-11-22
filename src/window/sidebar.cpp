@@ -129,42 +129,24 @@ private:
     bool m_pressed = false;
 };
 
-// A category's name above its entries.
-class SidebarSection : public View
+// The space that sets a category's entries apart from the previous ones.
+class SidebarGap : public View
 {
 public:
-    explicit SidebarSection(std::string text)
+    explicit SidebarGap(double height)
+        : m_height(height)
     {
-        m_label = addChild<Label>(std::move(text));
-        m_label->setFontSize(metrics::points(kItemPointSize));
-        m_metrics = addChild<Label>("X");
-        m_metrics->setVisible(false);
     }
 
-    // The default font's line height, whole, so the rows below stay on the
-    // pixel grid.
-    SizeF sizeHint() const override
-    {
-        return {0, std::ceil(m_metrics->sizeHint().height) + metrics::sidebarCategorySpacing + metrics::xs};
-    }
-
-protected:
-    void layout() override
-    {
-        m_label->setColor(Theme::current().disabledText);
-        const SizeF label = m_label->sizeHint();
-        m_label->setGeometry({metrics::sidebarItemPadding, metrics::sidebarCategorySpacing,
-                              std::max(0.0, geometry().width - 2 * metrics::sidebarItemPadding), label.height});
-    }
+    SizeF sizeHint() const override { return {0, m_height}; }
 
 private:
-    Label* m_label;
-    Label* m_metrics;
+    double m_height;
 };
 
 // The entries of the sidebar or of a search, by category, as a list view
-// with sections lays them out: a section sits right above its first entry,
-// and the spacing runs between entries.
+// lays them out: a gap sets each category apart, and the spacing runs between
+// entries.
 class SidebarList : public View
 {
 public:
@@ -185,7 +167,7 @@ public:
             const Entry& entry = m_entries[i];
             if (i == 0 || entry.rootPage->category != category) {
                 category = entry.rootPage->category;
-                addChild<SidebarSection>(tr(category.c_str()));
+                addChild<SidebarGap>(i == 0 ? metrics::sidebarMargin : metrics::sidebarCategorySpacing);
             }
             SidebarItem* item = addChild<SidebarItem>(*entry.page);
             item->setName(m_namePrefix + entry.page->id);
@@ -250,14 +232,14 @@ private:
         double y = 0;
         bool first = true;
         for (const auto& child : children()) {
-            const bool section = dynamic_cast<SidebarSection*>(child.get()) != nullptr;
-            if (!section && !first)
+            const bool gap = dynamic_cast<SidebarGap*>(child.get()) != nullptr;
+            if (!gap && !first)
                 y += metrics::sidebarItemSpacing;
-            const double height = section ? child->sizeHint().height : metrics::sidebarItemHeight;
+            const double height = gap ? child->sizeHint().height : metrics::sidebarItemHeight;
             if (place)
                 child->setGeometry({metrics::sidebarMargin, y, width, height});
             y += height;
-            if (!section)
+            if (!gap)
                 first = false;
         }
         return y + metrics::sidebarMargin;
