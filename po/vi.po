@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-22 21:56+0800\n"
+"POT-Creation-Date: 2026-11-22 21:58+0800\n"
 "PO-Revision-Date: 2026-11-13 16:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -963,7 +963,7 @@ msgstr "Tự động ẩn thông minh"
 msgid "Minimized windows area"
 msgstr "Vùng cửa sổ thu nhỏ"
 
-#: src/pages/dock/dockpage.cpp src/window/pagelist.cpp
+#: src/pages/dock/dockpage.cpp
 msgid "Desktop"
 msgstr "Màn hình nền"
 
@@ -2599,20 +2599,12 @@ msgid "background, desktop picture, image"
 msgstr "nền, hình nền, ảnh màn hình nền, hình ảnh, wallpaper"
 
 #: src/window/pagelist.cpp
-msgid "Sound & Notifications"
-msgstr "Âm thanh & Thông báo"
-
-#: src/window/pagelist.cpp
 msgid "do not disturb, banners, alerts"
 msgstr "không làm phiền, biểu ngữ, cảnh báo, thông báo, notifications"
 
 #: src/window/pagelist.cpp
 msgid "audio, volume, speakers, headphones, microphone, input, output"
 msgstr "âm thanh, âm lượng, loa, tai nghe, micrô, đầu vào, đầu ra, audio, volume"
-
-#: src/window/pagelist.cpp
-msgid "System"
-msgstr "Hệ thống"
 
 #: src/window/pagelist.cpp
 msgid "computer control, agents, allowed apps, permissions"
@@ -2625,10 +2617,6 @@ msgstr "năng lượng, nguồn điện, hiệu năng, tiết kiệm điện, ng
 #: src/window/pagelist.cpp
 msgid "accounts, password, login, administrator, avatar"
 msgstr "tài khoản, người dùng, mật khẩu, đăng nhập, quản trị viên, ảnh đại diện, avatar"
-
-#: src/window/pagelist.cpp
-msgid "Devices"
-msgstr "Thiết bị"
 
 #: src/window/pagelist.cpp
 msgid "input method, key repeat, keyboard style"

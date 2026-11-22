@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-22 21:56+0800\n"
+"POT-Creation-Date: 2026-11-22 21:58+0800\n"
 "PO-Revision-Date: 2026-11-13 15:22+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -963,7 +963,7 @@ msgstr "스마트 숨기기"
 msgid "Minimized windows area"
 msgstr "최소화된 창 영역"
 
-#: src/pages/dock/dockpage.cpp src/window/pagelist.cpp
+#: src/pages/dock/dockpage.cpp
 msgid "Desktop"
 msgstr "데스크톱"
 
@@ -2599,20 +2599,12 @@ msgid "background, desktop picture, image"
 msgstr "배경, 바탕화면, 데스크톱 사진, 이미지, 그림"
 
 #: src/window/pagelist.cpp
-msgid "Sound & Notifications"
-msgstr "사운드 및 알림"
-
-#: src/window/pagelist.cpp
 msgid "do not disturb, banners, alerts"
 msgstr "방해 금지, 배너, 알림, 경고"
 
 #: src/window/pagelist.cpp
 msgid "audio, volume, speakers, headphones, microphone, input, output"
 msgstr "오디오, 음량, 볼륨, 스피커, 헤드폰, 마이크, 입력, 출력"
-
-#: src/window/pagelist.cpp
-msgid "System"
-msgstr "시스템"
 
 #: src/window/pagelist.cpp
 msgid "computer control, agents, allowed apps, permissions"
@@ -2625,10 +2617,6 @@ msgstr "에너지, 전력, 성능, 절전, 잠자기, 디스플레이 끄기"
 #: src/window/pagelist.cpp
 msgid "accounts, password, login, administrator, avatar"
 msgstr "계정, 사용자, 암호, 비밀번호, 로그인, 관리자, 아바타, 프로필 사진"
-
-#: src/window/pagelist.cpp
-msgid "Devices"
-msgstr "장치"
 
 #: src/window/pagelist.cpp
 msgid "input method, key repeat, keyboard style"
