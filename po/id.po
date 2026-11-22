@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-20 18:47+0800\n"
+"POT-Creation-Date: 2026-11-22 21:43+0800\n"
 "PO-Revision-Date: 2026-11-13 16:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -729,7 +729,7 @@ msgid "Yesterday"
 msgstr "Kemarin"
 
 #: src/pages/defaultapps/defaultappspage.cpp src/window/pagelist.cpp
-msgid "Default Applications"
+msgid "Default Apps"
 msgstr "Aplikasi Bawaan"
 
 #: src/pages/defaultapps/defaultappspage.cpp
@@ -1014,6 +1014,11 @@ msgstr "Penuh"
 #: src/pages/fonts/fontspage.cpp
 msgid "Anti-Aliasing"
 msgstr "Anti-Aliasing"
+
+#: src/pages/general/generalpage.cpp src/pages/shortcuts/shortcutsmodel.cpp
+#: src/window/pagelist.cpp
+msgid "General"
+msgstr "Umum"
 
 #: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
 msgctxt "key"
@@ -1909,10 +1914,6 @@ msgstr "Pulihkan bawaan"
 msgid "Change"
 msgstr "Ubah"
 
-#: src/pages/shortcuts/shortcutsmodel.cpp
-msgid "General"
-msgstr "Umum"
-
 #. TRANSLATORS: the group of keyboard shortcuts that act on windows.
 #: src/pages/shortcuts/shortcutsmodel.cpp
 msgid "Windows"
@@ -2630,18 +2631,6 @@ msgid "accounts, password, login, administrator, avatar"
 msgstr "akun, kata sandi, login, masuk, administrator, avatar, pengguna"
 
 #: src/window/pagelist.cpp
-msgid "region, locale, system language, country, formats, first day of week, measurement system, temperature"
-msgstr "wilayah, lokal, bahasa sistem, negara, format, hari pertama dalam seminggu, sistem pengukuran, suhu, region"
-
-#: src/window/pagelist.cpp
-msgid "clock, time zone, 24-hour time, NTP, sync"
-msgstr "jam, zona waktu, format 24 jam, NTP, sinkronisasi, sync"
-
-#: src/window/pagelist.cpp
-msgid "web browser, email client, terminal"
-msgstr "peramban web, browser, klien email, terminal"
-
-#: src/window/pagelist.cpp
 msgid "computer control, agents, allowed apps, permissions"
 msgstr "kendali komputer, agen, aplikasi yang diizinkan, izin, permissions"
 
@@ -2654,12 +2643,24 @@ msgid "energy, performance, power saving, sleep, turn off display"
 msgstr "energi, performa, hemat daya, tidur, matikan layar, power"
 
 #: src/window/pagelist.cpp
-msgid "updates, upgrade, packages, security, install, restart"
-msgstr "pembaruan, perbarui, peningkatan, paket, keamanan, instal, mulai ulang, update, upgrade"
-
-#: src/window/pagelist.cpp
 msgid "system, version, kernel, processor, memory, storage, hardware"
 msgstr "sistem, versi, kernel, prosesor, memori, penyimpanan, perangkat keras, hardware"
+
+#: src/window/pagelist.cpp
+msgid "region, locale, system language, country, formats, first day of week, measurement system, temperature"
+msgstr "wilayah, lokal, bahasa sistem, negara, format, hari pertama dalam seminggu, sistem pengukuran, suhu, region"
+
+#: src/window/pagelist.cpp
+msgid "clock, time zone, 24-hour time, NTP, sync"
+msgstr "jam, zona waktu, format 24 jam, NTP, sinkronisasi, sync"
+
+#: src/window/pagelist.cpp
+msgid "web browser, email client, terminal"
+msgstr "peramban web, browser, klien email, terminal"
+
+#: src/window/pagelist.cpp
+msgid "updates, upgrade, packages, security, install, restart"
+msgstr "pembaruan, perbarui, peningkatan, paket, keamanan, instal, mulai ulang, update, upgrade"
 
 #: src/window/pagelist.cpp
 msgid "VPN, WireGuard, OpenVPN, tunnel, network"

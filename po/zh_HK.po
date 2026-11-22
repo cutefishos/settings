@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-20 18:47+0800\n"
+"POT-Creation-Date: 2026-11-22 21:43+0800\n"
 "PO-Revision-Date: 2026-11-13 16:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -729,7 +729,7 @@ msgid "Yesterday"
 msgstr "昨天"
 
 #: src/pages/defaultapps/defaultappspage.cpp src/window/pagelist.cpp
-msgid "Default Applications"
+msgid "Default Apps"
 msgstr "預設應用程式"
 
 #: src/pages/defaultapps/defaultappspage.cpp
@@ -1014,6 +1014,11 @@ msgstr "完整"
 #: src/pages/fonts/fontspage.cpp
 msgid "Anti-Aliasing"
 msgstr "消除鋸齒"
+
+#: src/pages/general/generalpage.cpp src/pages/shortcuts/shortcutsmodel.cpp
+#: src/window/pagelist.cpp
+msgid "General"
+msgstr "一般"
 
 #: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
 msgctxt "key"
@@ -1909,10 +1914,6 @@ msgstr "恢復預設值"
 msgid "Change"
 msgstr "更改"
 
-#: src/pages/shortcuts/shortcutsmodel.cpp
-msgid "General"
-msgstr "一般"
-
 #. TRANSLATORS: the group of keyboard shortcuts that act on windows.
 #: src/pages/shortcuts/shortcutsmodel.cpp
 msgid "Windows"
@@ -2630,18 +2631,6 @@ msgid "accounts, password, login, administrator, avatar"
 msgstr "帳戶, 密碼, 登入, 管理員, 頭像, account"
 
 #: src/window/pagelist.cpp
-msgid "region, locale, system language, country, formats, first day of week, measurement system, temperature"
-msgstr "地區, 語系, 系統語言, 國家, 格式, 每週的第一天, 度量衡系統, 溫度, locale"
-
-#: src/window/pagelist.cpp
-msgid "clock, time zone, 24-hour time, NTP, sync"
-msgstr "時鐘, 時區, 24 小時制, NTP, 同步, 時間"
-
-#: src/window/pagelist.cpp
-msgid "web browser, email client, terminal"
-msgstr "網頁瀏覽器, 電郵客戶端, 終端機, 瀏覽器"
-
-#: src/window/pagelist.cpp
 msgid "computer control, agents, allowed apps, permissions"
 msgstr "電腦控制, 代理程式, 允許的 App, 權限, agent"
 
@@ -2654,12 +2643,24 @@ msgid "energy, performance, power saving, sleep, turn off display"
 msgstr "能源, 效能, 省電, 睡眠, 關閉顯示器, 電源"
 
 #: src/window/pagelist.cpp
-msgid "updates, upgrade, packages, security, install, restart"
-msgstr "更新, 升級, 套件, 安全性, 安裝, 重新啟動, update"
-
-#: src/window/pagelist.cpp
 msgid "system, version, kernel, processor, memory, storage, hardware"
 msgstr "系統, 版本, 核心, 處理器, 記憶體, 儲存空間, 硬件, kernel, CPU"
+
+#: src/window/pagelist.cpp
+msgid "region, locale, system language, country, formats, first day of week, measurement system, temperature"
+msgstr "地區, 語系, 系統語言, 國家, 格式, 每週的第一天, 度量衡系統, 溫度, locale"
+
+#: src/window/pagelist.cpp
+msgid "clock, time zone, 24-hour time, NTP, sync"
+msgstr "時鐘, 時區, 24 小時制, NTP, 同步, 時間"
+
+#: src/window/pagelist.cpp
+msgid "web browser, email client, terminal"
+msgstr "網頁瀏覽器, 電郵客戶端, 終端機, 瀏覽器"
+
+#: src/window/pagelist.cpp
+msgid "updates, upgrade, packages, security, install, restart"
+msgstr "更新, 升級, 套件, 安全性, 安裝, 重新啟動, update"
 
 #: src/window/pagelist.cpp
 msgid "VPN, WireGuard, OpenVPN, tunnel, network"

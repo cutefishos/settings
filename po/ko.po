@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-20 18:47+0800\n"
+"POT-Creation-Date: 2026-11-22 21:43+0800\n"
 "PO-Revision-Date: 2026-11-13 15:22+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -729,8 +729,8 @@ msgid "Yesterday"
 msgstr "어제"
 
 #: src/pages/defaultapps/defaultappspage.cpp src/window/pagelist.cpp
-msgid "Default Applications"
-msgstr "기본 애플리케이션"
+msgid "Default Apps"
+msgstr "기본 앱"
 
 #: src/pages/defaultapps/defaultappspage.cpp
 msgid "Web browser"
@@ -1014,6 +1014,11 @@ msgstr "최대"
 #: src/pages/fonts/fontspage.cpp
 msgid "Anti-Aliasing"
 msgstr "안티에일리어싱"
+
+#: src/pages/general/generalpage.cpp src/pages/shortcuts/shortcutsmodel.cpp
+#: src/window/pagelist.cpp
+msgid "General"
+msgstr "일반"
 
 #: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
 msgctxt "key"
@@ -1909,10 +1914,6 @@ msgstr "기본값 복원"
 msgid "Change"
 msgstr "변경"
 
-#: src/pages/shortcuts/shortcutsmodel.cpp
-msgid "General"
-msgstr "일반"
-
 #. TRANSLATORS: the group of keyboard shortcuts that act on windows.
 #: src/pages/shortcuts/shortcutsmodel.cpp
 msgid "Windows"
@@ -2630,18 +2631,6 @@ msgid "accounts, password, login, administrator, avatar"
 msgstr "계정, 사용자, 암호, 비밀번호, 로그인, 관리자, 아바타, 프로필 사진"
 
 #: src/window/pagelist.cpp
-msgid "region, locale, system language, country, formats, first day of week, measurement system, temperature"
-msgstr "지역, 로케일, locale, 시스템 언어, 국가, 형식, 주의 첫 번째 요일, 측정 단위, 온도"
-
-#: src/window/pagelist.cpp
-msgid "clock, time zone, 24-hour time, NTP, sync"
-msgstr "시계, 시간대, 표준 시간대, 24시간제, NTP, 동기화"
-
-#: src/window/pagelist.cpp
-msgid "web browser, email client, terminal"
-msgstr "웹 브라우저, 이메일 클라이언트, 메일, 터미널"
-
-#: src/window/pagelist.cpp
 msgid "computer control, agents, allowed apps, permissions"
 msgstr "컴퓨터 제어, 에이전트, 허용된 앱, 권한"
 
@@ -2654,12 +2643,24 @@ msgid "energy, performance, power saving, sleep, turn off display"
 msgstr "에너지, 전력, 성능, 절전, 잠자기, 디스플레이 끄기"
 
 #: src/window/pagelist.cpp
-msgid "updates, upgrade, packages, security, install, restart"
-msgstr "업데이트, 업그레이드, 패키지, 보안, 설치, 다시 시작, 재시작"
-
-#: src/window/pagelist.cpp
 msgid "system, version, kernel, processor, memory, storage, hardware"
 msgstr "시스템, 버전, 커널, 프로세서, CPU, 메모리, 저장 공간, 하드웨어"
+
+#: src/window/pagelist.cpp
+msgid "region, locale, system language, country, formats, first day of week, measurement system, temperature"
+msgstr "지역, 로케일, locale, 시스템 언어, 국가, 형식, 주의 첫 번째 요일, 측정 단위, 온도"
+
+#: src/window/pagelist.cpp
+msgid "clock, time zone, 24-hour time, NTP, sync"
+msgstr "시계, 시간대, 표준 시간대, 24시간제, NTP, 동기화"
+
+#: src/window/pagelist.cpp
+msgid "web browser, email client, terminal"
+msgstr "웹 브라우저, 이메일 클라이언트, 메일, 터미널"
+
+#: src/window/pagelist.cpp
+msgid "updates, upgrade, packages, security, install, restart"
+msgstr "업데이트, 업그레이드, 패키지, 보안, 설치, 다시 시작, 재시작"
 
 #: src/window/pagelist.cpp
 msgid "VPN, WireGuard, OpenVPN, tunnel, network"

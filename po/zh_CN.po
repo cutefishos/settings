@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-20 18:47+0800\n"
+"POT-Creation-Date: 2026-11-22 21:43+0800\n"
 "PO-Revision-Date: 2026-11-13 16:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -729,8 +729,8 @@ msgid "Yesterday"
 msgstr "昨天"
 
 #: src/pages/defaultapps/defaultappspage.cpp src/window/pagelist.cpp
-msgid "Default Applications"
-msgstr "默认应用程序"
+msgid "Default Apps"
+msgstr "默认应用"
 
 #: src/pages/defaultapps/defaultappspage.cpp
 msgid "Web browser"
@@ -1014,6 +1014,11 @@ msgstr "完全"
 #: src/pages/fonts/fontspage.cpp
 msgid "Anti-Aliasing"
 msgstr "抗锯齿"
+
+#: src/pages/general/generalpage.cpp src/pages/shortcuts/shortcutsmodel.cpp
+#: src/window/pagelist.cpp
+msgid "General"
+msgstr "通用"
 
 #: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
 msgctxt "key"
@@ -1909,10 +1914,6 @@ msgstr "恢复默认"
 msgid "Change"
 msgstr "更改"
 
-#: src/pages/shortcuts/shortcutsmodel.cpp
-msgid "General"
-msgstr "通用"
-
 #. TRANSLATORS: the group of keyboard shortcuts that act on windows.
 #: src/pages/shortcuts/shortcutsmodel.cpp
 msgid "Windows"
@@ -2630,18 +2631,6 @@ msgid "accounts, password, login, administrator, avatar"
 msgstr "accounts, password, login, administrator, avatar, 账户, 账号, 密码, 登录, 管理员, 头像"
 
 #: src/window/pagelist.cpp
-msgid "region, locale, system language, country, formats, first day of week, measurement system, temperature"
-msgstr "region, locale, system language, country, formats, first day of week, measurement system, temperature, 地区, 区域, 系统语言, 国家, 格式, 每周第一天, 度量衡, 温度"
-
-#: src/window/pagelist.cpp
-msgid "clock, time zone, 24-hour time, NTP, sync"
-msgstr "clock, time zone, 24-hour time, NTP, sync, 时钟, 时间, 时区, 24 小时制, 同步"
-
-#: src/window/pagelist.cpp
-msgid "web browser, email client, terminal"
-msgstr "web browser, email client, terminal, 浏览器, 邮件, 电子邮件, 终端"
-
-#: src/window/pagelist.cpp
 msgid "computer control, agents, allowed apps, permissions"
 msgstr "computer control, agents, allowed apps, permissions, 电脑控制, 代理, 智能体, 允许的应用, 权限"
 
@@ -2654,12 +2643,24 @@ msgid "energy, performance, power saving, sleep, turn off display"
 msgstr "energy, performance, power saving, sleep, turn off display, 能耗, 性能, 节能, 省电, 睡眠, 关闭显示器"
 
 #: src/window/pagelist.cpp
-msgid "updates, upgrade, packages, security, install, restart"
-msgstr "updates, upgrade, packages, security, install, restart, 更新, 升级, 软件包, 安全, 安装, 重新启动, 重启"
-
-#: src/window/pagelist.cpp
 msgid "system, version, kernel, processor, memory, storage, hardware"
 msgstr "system, version, kernel, processor, memory, storage, hardware, 系统, 版本, 内核, 处理器, 内存, 存储, 硬件"
+
+#: src/window/pagelist.cpp
+msgid "region, locale, system language, country, formats, first day of week, measurement system, temperature"
+msgstr "region, locale, system language, country, formats, first day of week, measurement system, temperature, 地区, 区域, 系统语言, 国家, 格式, 每周第一天, 度量衡, 温度"
+
+#: src/window/pagelist.cpp
+msgid "clock, time zone, 24-hour time, NTP, sync"
+msgstr "clock, time zone, 24-hour time, NTP, sync, 时钟, 时间, 时区, 24 小时制, 同步"
+
+#: src/window/pagelist.cpp
+msgid "web browser, email client, terminal"
+msgstr "web browser, email client, terminal, 浏览器, 邮件, 电子邮件, 终端"
+
+#: src/window/pagelist.cpp
+msgid "updates, upgrade, packages, security, install, restart"
+msgstr "updates, upgrade, packages, security, install, restart, 更新, 升级, 软件包, 安全, 安装, 重新启动, 重启"
 
 #: src/window/pagelist.cpp
 msgid "VPN, WireGuard, OpenVPN, tunnel, network"
