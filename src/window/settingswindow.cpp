@@ -272,7 +272,7 @@ SettingsWindow::SettingsWindow()
     m_languageChanged = Application::instance()->languageChanged.connect([this] { retranslate(); });
 
     for (const PageInfo& page : pages()) {
-        const bool sidebarPage = !page.category.empty();
+        const bool sidebarPage = page.group != 0;
         if (sidebarPage && page.initiallyAvailable)
             m_available.push_back(page.id);
         if (!page.watchAvailability)
@@ -325,7 +325,7 @@ void SettingsWindow::reveal()
 
 void SettingsWindow::setAvailable(const PageInfo& page, bool available)
 {
-    if (page.category.empty()) {
+    if (page.group == 0) {
         m_sidebar->setSubPageAvailable(page.id, available);
         subPageAvailabilityChanged.emit();
         return;
@@ -351,7 +351,7 @@ void SettingsWindow::updateSidebar()
 {
     std::vector<const PageInfo*> entries;
     for (const PageInfo& page : pages()) {
-        if (!page.category.empty() && std::find(m_available.begin(), m_available.end(), page.id) != m_available.end())
+        if (page.group != 0 && std::find(m_available.begin(), m_available.end(), page.id) != m_available.end())
             entries.push_back(&page);
     }
     m_sidebar->setEntries(std::move(entries));
@@ -454,7 +454,7 @@ void SettingsWindow::switchToPage(const std::string& name, const std::string& ac
     if (page) {
         // Entries that come with hardware may join the sidebar after the request.
         m_pendingPage = !page->initiallyAvailable && !isInSidebar(page->id) ? page->id : std::string();
-        if (page->category.empty()) {
+        if (page->group == 0) {
             // A sub page opens under its sidebar page, as if reached from there.
             if (isInSidebar(page->parentId)) {
                 m_pendingPage.clear();

@@ -20,9 +20,9 @@ struct PageInfo;
 class SearchField;
 class SidebarList;
 
-// The window's left column: its title, a search field, and the pages by
-// category. Typing lists matching pages, sub pages included, in place of the
-// categories; Up and Down move through them, Return opens one, Escape clears
+// The window's left column: its title, a search field, and the pages in
+// groups. Typing lists matching pages, sub pages included, in place of the
+// groups; Up and Down move through them, Return opens one, Escape clears
 // the search.
 class Sidebar : public cutefish::ui::View
 {

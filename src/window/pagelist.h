@@ -38,8 +38,9 @@ struct PageInfo
     // A file under images/sidebar/dark, or a toolkit glyph name.
     std::string icon;
     cutefish::ui::Color iconColor;
-    // Sidebar pages only.
-    std::string category;
+    // Sidebar pages only: the group they sit in, numbered from 1 in sidebar
+    // order; 0 for sub pages.
+    int group = 0;
     // Comma-separated search terms.
     std::string keywords;
     // Sub pages: the id of the sidebar page they are opened from.

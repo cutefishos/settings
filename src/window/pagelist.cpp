@@ -21,64 +21,64 @@ static std::vector<PageInfo> makePages()
     // Sidebar pages, in sidebar order. Ethernet and Bluetooth join it once
     // their hardware is found, after Wi-Fi.
     add({.id = "wlan", .name = "wlan", .title = trNoop("Wi-Fi"), .icon = "network-wireless-connected-100",
-         .iconColor = Color::rgb(0x0067FF), .category = trNoop("Network"),
+         .iconColor = Color::rgb(0x0067FF), .group = 1,
          .keywords = trNoop("wireless, WLAN, network, internet, password, DNS, IP address")});
     add({.id = "ethernet", .name = "ethernet", .title = trNoop("Ethernet"), .icon = "network.svg",
-         .iconColor = Color::rgb(0x0067FF), .category = trNoop("Network"),
+         .iconColor = Color::rgb(0x0067FF), .group = 1,
          .keywords = trNoop("wired, LAN, network, internet, cable, IP address"), .initiallyAvailable = false});
     add({.id = "bluetooth", .name = "bluetooth", .title = trNoop("Bluetooth"), .icon = "bluetooth.svg",
-         .iconColor = Color::rgb(0x0067FF), .category = trNoop("Network"),
+         .iconColor = Color::rgb(0x0067FF), .group = 1,
          .keywords = trNoop("wireless, devices, pairing, headphones"), .initiallyAvailable = false});
     add({.id = "network", .name = "network", .title = trNoop("Network"), .icon = "globe-grid.svg",
-         .iconColor = Color::rgb(0x0067FF), .category = trNoop("Network"),
+         .iconColor = Color::rgb(0x0067FF), .group = 1,
          .keywords = trNoop("VPN, proxy, hotspot, tethering, internet")});
     add({.id = "battery", .name = "battery", .title = trNoop("Battery"), .icon = "battery.svg",
-         .iconColor = Color::rgb(0x2EC347), .category = trNoop("Network"),
+         .iconColor = Color::rgb(0x2EC347), .group = 1,
          .keywords = trNoop("charge, charging limit, battery health, capacity, history, percentage")});
     add({.id = "general", .name = "general", .title = trNoop("General"), .icon = "general.svg",
-         .iconColor = Color::rgb(0x999999), .category = trNoop("Desktop")});
+         .iconColor = Color::rgb(0x999999), .group = 2});
     add({.id = "appearance", .name = "appearance", .title = trNoop("Appearance"), .icon = "appearance.svg",
-         .iconColor = Color::rgb(0x03B4CB), .category = trNoop("Desktop"),
+         .iconColor = Color::rgb(0x03B4CB), .group = 2,
          .keywords = trNoop("theme, dark mode, light mode, accent color, dim wallpaper")});
     add({.id = "dock", .name = "dock", .title = trNoop("Dock & Desktop"), .icon = "dock.svg",
-         .iconColor = Color::rgb(0x8585FC), .category = trNoop("Desktop"),
+         .iconColor = Color::rgb(0x8585FC), .group = 2,
          .keywords = trNoop("taskbar, position, size, auto hide, glass effect")});
     add({.id = "display", .name = "display", .title = trNoop("Display"), .icon = "display.svg",
-         .iconColor = Color::rgb(0x0087ED), .category = trNoop("Desktop"),
+         .iconColor = Color::rgb(0x0087ED), .group = 2,
          .keywords = trNoop("monitor, screen, resolution, refresh rate, scaling, brightness, rotation")});
     add({.id = "menubar", .name = "menubar", .title = trNoop("Menu Bar"), .icon = "menubar.svg",
-         .iconColor = Color::rgb(0x0087ED), .category = trNoop("Desktop"),
+         .iconColor = Color::rgb(0x0087ED), .group = 2,
          .keywords = trNoop("top bar, controls, Wi-Fi, Bluetooth, battery, sound, volume")});
     add({.id = "background", .name = "background", .title = trNoop("Wallpaper"), .icon = "wallpaper.svg",
-         .iconColor = Color::rgb(0x34B4A7), .category = trNoop("Desktop"),
+         .iconColor = Color::rgb(0x34B4A7), .group = 2,
          .keywords = trNoop("background, desktop picture, image")});
     add({.id = "notifications", .name = "notifications", .title = trNoop("Notifications"),
          .icon = "notifications.svg", .iconColor = Color::rgb(0xF16884),
-         .category = trNoop("Sound & Notifications"),
+         .group = 3,
          .keywords = trNoop("do not disturb, banners, alerts")});
     add({.id = "sound", .name = "sound", .title = trNoop("Sound"), .icon = "sound.svg",
-         .iconColor = Color::rgb(0xF16884), .category = trNoop("Sound & Notifications"),
+         .iconColor = Color::rgb(0xF16884), .group = 3,
          .keywords = trNoop("audio, volume, speakers, headphones, microphone, input, output")});
     add({.id = "privacy", .name = "privacy", .title = trNoop("Privacy"), .icon = "lock",
-         .iconColor = Color::rgb(0x418CFF), .category = trNoop("System"),
+         .iconColor = Color::rgb(0x418CFF), .group = 4,
          .keywords = trNoop("computer control, agents, allowed apps, permissions")});
     add({.id = "power", .name = "power", .title = trNoop("Power"), .icon = "power.svg",
-         .iconColor = Color::rgb(0xFE8433), .category = trNoop("System"),
+         .iconColor = Color::rgb(0xFE8433), .group = 4,
          .keywords = trNoop("energy, performance, power saving, sleep, turn off display")});
     add({.id = "accounts", .name = "accounts", .title = trNoop("Users"), .icon = "accounts.svg",
-         .iconColor = Color::rgb(0xDA7C43), .category = trNoop("System"),
+         .iconColor = Color::rgb(0xDA7C43), .group = 4,
          .keywords = trNoop("accounts, password, login, administrator, avatar")});
     add({.id = "keyboard", .name = "keyboard", .title = trNoop("Keyboard"), .icon = "keyboard.svg",
-         .iconColor = Color::rgb(0x5E6AD2), .category = trNoop("Devices"),
+         .iconColor = Color::rgb(0x5E6AD2), .group = 5,
          .keywords = trNoop("input method, key repeat, keyboard style")});
     add({.id = "mouse", .name = "mouse", .title = trNoop("Mouse"), .icon = "cursor.svg",
-         .iconColor = Color::rgb(0x3385FF), .category = trNoop("Devices"),
+         .iconColor = Color::rgb(0x3385FF), .group = 5,
          .keywords = trNoop("pointer speed, acceleration, natural scrolling, left-handed")});
     add({.id = "touchpad", .name = "touchpad", .title = trNoop("Touchpad"), .icon = "touchpad.svg",
-         .iconColor = Color::rgb(0x999999), .category = trNoop("Devices"),
+         .iconColor = Color::rgb(0x999999), .group = 5,
          .keywords = trNoop("trackpad, tap to click, natural scrolling, secondary click, pointer speed")});
     add({.id = "touchscreen", .name = "touchscreen", .title = trNoop("Touchscreen"), .icon = "touchscreen.svg",
-         .iconColor = Color::rgb(0x999999), .category = trNoop("Devices"),
+         .iconColor = Color::rgb(0x999999), .group = 5,
          .keywords = trNoop("touch, touch screen, touch panel")});
 
     // Sub pages, opened from inside a sidebar page; search lists them after it.

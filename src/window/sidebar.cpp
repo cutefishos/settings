@@ -129,7 +129,7 @@ private:
     bool m_pressed = false;
 };
 
-// The space that sets a category's entries apart from the previous ones.
+// The space that sets a group's entries apart from the previous ones.
 class SidebarGap : public View
 {
 public:
@@ -144,8 +144,8 @@ private:
     double m_height;
 };
 
-// The entries of the sidebar or of a search, by category, as a list view
-// lays them out: a gap sets each category apart, and the spacing runs between
+// The entries of the sidebar or of a search, by group, as a list view
+// lays them out: a gap sets each group apart, and the spacing runs between
 // entries.
 class SidebarList : public View
 {
@@ -162,12 +162,12 @@ public:
             takeChild(children().front().get());
         m_entries = std::move(entries);
         m_items.clear();
-        std::string category;
+        int group = 0;
         for (size_t i = 0; i < m_entries.size(); ++i) {
             const Entry& entry = m_entries[i];
-            if (i == 0 || entry.rootPage->category != category) {
-                category = entry.rootPage->category;
-                addChild<SidebarGap>(i == 0 ? metrics::sidebarMargin : metrics::sidebarCategorySpacing);
+            if (i == 0 || entry.rootPage->group != group) {
+                group = entry.rootPage->group;
+                addChild<SidebarGap>(i == 0 ? metrics::sidebarMargin : metrics::sidebarGroupSpacing);
             }
             SidebarItem* item = addChild<SidebarItem>(*entry.page);
             item->setName(m_namePrefix + entry.page->id);
@@ -436,7 +436,7 @@ static bool isCjk(const std::string& word)
     return false;
 }
 
-// Each word of the query must match the title, the category or a keyword.
+// Each word of the query must match the title or a keyword.
 // Latin words match from their start, so "fo" finds Fonts but not Performance.
 static bool matches(const std::vector<std::string>& words, const std::vector<std::string>& fields)
 {
@@ -486,14 +486,13 @@ void Sidebar::updateResults()
     if (searching) {
         const std::vector<std::string> words = queryWords(m_search->text());
         for (const PageInfo* entry : m_entries) {
-            if (matches(words, {tr(entry->title.c_str()), tr(entry->category.c_str()), tr(entry->keywords.c_str())}))
+            if (matches(words, {tr(entry->title.c_str()), tr(entry->keywords.c_str())}))
                 m_results.push_back({entry, entry});
             for (const PageInfo& sub : pages()) {
                 if (sub.parentId != entry->id
                     || std::find(m_unavailableSubPages.begin(), m_unavailableSubPages.end(), sub.id)
                             != m_unavailableSubPages.end()
-                    || !matches(words, {tr(sub.title.c_str()), tr(entry->title.c_str()), tr(entry->category.c_str()),
-                                        tr(sub.keywords.c_str())}))
+                    || !matches(words, {tr(sub.title.c_str()), tr(entry->title.c_str()), tr(sub.keywords.c_str())}))
                     continue;
                 m_results.push_back({&sub, entry});
             }
@@ -574,7 +573,7 @@ void Sidebar::layout()
     m_resultsScroll->setGeometry({0, listTop, width, height - listTop});
     m_noResults->setColor(theme.disabledText);
     const SizeF noResults = m_noResults->sizeHint();
-    m_noResults->setGeometry({std::round((width - noResults.width) / 2), listTop + metrics::sidebarCategorySpacing,
+    m_noResults->setGeometry({std::round((width - noResults.width) / 2), listTop + metrics::sidebarGroupSpacing,
                               noResults.width, noResults.height});
 }
 
