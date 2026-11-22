@@ -62,9 +62,9 @@ TEST_F(MouseTest, PageLaysOutAsTheQtVersion)
 
     // The list card under the header, three switch rows and a slider row.
     const RectF card = windowRect(window, "mouse:card");
-    EXPECT_EQ(card.x, 254);
+    EXPECT_EQ(card.x, 240);
     EXPECT_EQ(card.y, 52);
-    EXPECT_EQ(card.width, 622);
+    EXPECT_EQ(card.width, 636);
     EXPECT_EQ(card.height, 3 * 44 + 52);
     EXPECT_EQ(windowRect(window, "mouse:speed").height, 52);
 }

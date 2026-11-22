@@ -28,16 +28,16 @@ TEST(Foundation, SidebarLinesUpWithTheMetrics)
     const RectF search = windowRect(window, "sidebar:search");
     EXPECT_EQ(search.x, 12);
     EXPECT_EQ(search.y, 48);
-    EXPECT_EQ(search.width, 206);
+    EXPECT_EQ(search.width, 192);
     EXPECT_EQ(search.height, 28);
     // Wi-Fi opens first; its entry is 34 high and inset by the sidebar margin.
     const RectF wifi = windowRect(window, "sidebar:wlan");
     EXPECT_EQ(wifi.x, 12);
-    EXPECT_EQ(wifi.width, 206);
+    EXPECT_EQ(wifi.width, 192);
     EXPECT_EQ(wifi.height, 34);
     const RectF page = windowRect(window, "page:wlan");
-    EXPECT_EQ(page.x, 230);
-    EXPECT_EQ(page.width, 670);
+    EXPECT_EQ(page.x, 216);
+    EXPECT_EQ(page.width, 684);
 }
 
 TEST(ListRow, KeepsTheRowHeights)
