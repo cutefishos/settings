@@ -300,6 +300,10 @@ msgstr "Акцентный цвет"
 msgid "Reduce Transparency"
 msgstr "Уменьшить прозрачность"
 
+#: src/pages/appearance/appearancepage.cpp
+msgid "Colored Window Buttons"
+msgstr "Цветные кнопки окна"
+
 #: src/pages/appearance/appearancepage.cpp src/pages/fonts/fontspage.cpp
 #: src/window/pagelist.cpp
 msgid "Fonts"

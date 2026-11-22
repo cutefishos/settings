@@ -204,6 +204,8 @@ public:
         Card* transparency = content()->addChild<Card>(Card::Style::List);
         m_reduceTransparency = transparency->addChild<SwitchRow>(tr("Reduce Transparency"));
         m_reduceTransparency->onToggled = [this](bool checked) { m_appearance.setReduceTransparency(checked); };
+        m_coloredWindowControls = transparency->addChild<SwitchRow>(tr("Colored Window Buttons"));
+        m_coloredWindowControls->onToggled = [this](bool checked) { m_appearance.setColoredWindowControls(checked); };
 
         Card* links = content()->addChild<Card>(Card::Style::List);
         const std::array<std::tuple<const char*, const char*, Color, const char*>, 3> pages = {
@@ -248,6 +250,7 @@ private:
         for (size_t i = 0; i < m_swatches.size(); ++i)
             m_swatches[i]->setChecked(theme.highlight == kAccentColors[i]);
         m_reduceTransparency->setChecked(m_appearance.reduceTransparency());
+        m_coloredWindowControls->setChecked(m_appearance.coloredWindowControls());
     }
 
     Appearance m_appearance;
@@ -257,6 +260,7 @@ private:
     ImageSelectionItem* m_auto;
     std::vector<AccentSwatch*> m_swatches;
     SwitchRow* m_reduceTransparency;
+    SwitchRow* m_coloredWindowControls;
 };
 
 } // namespace

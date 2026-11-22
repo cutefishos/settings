@@ -300,6 +300,10 @@ msgstr "Cor de destaque"
 msgid "Reduce Transparency"
 msgstr "Reduzir transparência"
 
+#: src/pages/appearance/appearancepage.cpp
+msgid "Colored Window Buttons"
+msgstr "Botões de janela coloridos"
+
 #: src/pages/appearance/appearancepage.cpp src/pages/fonts/fontspage.cpp
 #: src/window/pagelist.cpp
 msgid "Fonts"
