@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-22 21:58+0800\n"
+"POT-Creation-Date: 2026-11-23 18:28+0800\n"
 "PO-Revision-Date: 2026-11-13 16:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -162,6 +162,7 @@ msgid "Delete user “{name}”? Their home directory and its contents will be p
 msgstr "要删除用户“{name}”吗？其个人目录及其中的内容将被永久删除。此操作无法撤销。"
 
 #: src/pages/accounts/accountspage.cpp src/pages/datetime/timezonedialog.cpp
+#: src/pages/fingerprint/fingerprintpage.cpp
 #: src/pages/network/hotspot/hotspotpage.cpp
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 #: src/pages/shortcuts/shortcutspage.cpp
@@ -170,6 +171,7 @@ msgid "Cancel"
 msgstr "取消"
 
 #: src/pages/accounts/accountspage.cpp
+#: src/pages/fingerprint/fingerprintpage.cpp
 msgid "Delete"
 msgstr "删除"
 
@@ -971,6 +973,148 @@ msgstr "桌面"
 #: src/window/pagelist.cpp
 msgid "Hot Corners"
 msgstr "触发角"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "The sensor could not read your finger. Try again."
+msgstr "传感器无法读取你的手指，请重试。"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "The swipe was too short. Try again."
+msgstr "滑动距离太短，请重试。"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "That was too fast. Try again, a little slower."
+msgstr "滑动太快了，请放慢一点再试。"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Center your finger on the sensor and try again."
+msgstr "请将手指放在传感器正中央，然后重试。"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Lift your finger, then place it on the sensor again."
+msgstr "请抬起手指，然后重新放到传感器上。"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "The sensor is busy"
+msgstr "传感器正忙"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Another program is using the fingerprint sensor. Close it and try again."
+msgstr "另一个程序正在使用指纹传感器。请关闭该程序后重试。"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "This fingerprint is already added"
+msgstr "此指纹已添加"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Try a different finger, or delete the fingerprint that is already stored."
+msgstr "请换一根手指，或删除已存储的该指纹。"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "The sensor is full"
+msgstr "传感器已满"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "The fingerprint sensor has no room for another fingerprint. Delete one and try again."
+msgstr "指纹传感器已无法再存储更多指纹。请删除一个后重试。"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "The sensor was disconnected"
+msgstr "传感器已断开连接"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Connect the fingerprint sensor again and try once more."
+msgstr "请重新连接指纹传感器，然后再试一次。"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Couldn’t add the fingerprint"
+msgstr "无法添加指纹"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Something went wrong while reading your finger. Try again."
+msgstr "读取手指时出错，请重试。"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Swipe your finger across the sensor"
+msgstr "请将手指滑过传感器"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Place your finger on the sensor"
+msgstr "请将手指放在传感器上"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Repeat until the fingerprint is complete."
+msgstr "请重复操作，直到指纹录入完成。"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Adjust your grip"
+msgstr "调整握持方式"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Keep lifting and resting your finger, changing its position a little each time."
+msgstr "请不断抬起并放下手指，每次稍微改变一下位置。"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Lift and rest your finger repeatedly."
+msgstr "请反复抬起并放下手指。"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Add Fingerprint"
+msgstr "添加指纹"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Done"
+msgstr "完成"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Fingerprint added"
+msgstr "指纹已添加"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Your fingerprint is ready to use."
+msgstr "你的指纹已可使用。"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Try Again"
+msgstr "重试"
+
+#: src/pages/fingerprint/fingerprintpage.cpp src/window/pagelist.cpp
+msgid "Fingerprint"
+msgstr "指纹"
+
+#: src/pages/fingerprint/fingerprintpage.cpp
+msgid "No fingerprints added"
+msgstr "尚未添加指纹"
+
+#: src/pages/fingerprint/fingerprintpage.cpp
+msgid "Add Fingerprint…"
+msgstr "添加指纹…"
+
+#: src/pages/fingerprint/fingerprintpage.cpp
+msgid "The fingerprints cannot be read. Manage them from your own desktop session."
+msgstr "无法读取指纹。请在你自己的桌面会话中管理指纹。"
+
+#: src/pages/fingerprint/fingerprintpage.cpp
+msgid "Delete this fingerprint"
+msgstr "删除此指纹"
+
+#: src/pages/fingerprint/fingerprintpage.cpp
+#, python-brace-format
+msgid "Delete “{name}”? You will no longer be able to use it to authenticate."
+msgstr "要删除“{name}”吗？删除后将无法再使用它进行身份验证。"
+
+#: src/pages/fingerprint/fingerprintpage.cpp
+msgid "The sensor is being used by another program. Try again in a moment."
+msgstr "传感器正被另一个程序使用，请稍后再试。"
+
+#: src/pages/fingerprint/fingerprintpage.cpp
+msgid "The fingerprint could not be deleted."
+msgstr "无法删除该指纹。"
+
+#: src/pages/fingerprint/fingers.cpp
+#, python-brace-format
+msgid "Fingerprint {number}"
+msgstr "指纹 {number}"
 
 #. TRANSLATORS: a font size in points, such as "9pt".
 #: src/pages/fonts/fontspage.cpp
@@ -2613,6 +2757,10 @@ msgstr "computer control, agents, allowed apps, permissions, 电脑控制, 代�
 #: src/window/pagelist.cpp
 msgid "energy, performance, power saving, sleep, turn off display"
 msgstr "energy, performance, power saving, sleep, turn off display, 能耗, 性能, 节能, 省电, 睡眠, 关闭显示器"
+
+#: src/window/pagelist.cpp
+msgid "fingerprint reader, sensor, biometrics, unlock, authenticate, scan, finger"
+msgstr "指纹读取器, 传感器, 生物识别, 解锁, 验证, 身份验证, 扫描, 手指"
 
 #: src/window/pagelist.cpp
 msgid "accounts, password, login, administrator, avatar"

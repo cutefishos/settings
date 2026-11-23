@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cutefish-settings\n"
 "Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
-"POT-Creation-Date: 2026-11-22 21:58+0800\n"
+"POT-Creation-Date: 2026-11-23 18:28+0800\n"
 "PO-Revision-Date: 2026-11-13 15:22+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -162,6 +162,7 @@ msgid "Delete user “{name}”? Their home directory and its contents will be p
 msgstr "¿Eliminar al usuario “{name}”? Su carpeta personal y su contenido se eliminarán de forma permanente. Esta acción no se puede deshacer."
 
 #: src/pages/accounts/accountspage.cpp src/pages/datetime/timezonedialog.cpp
+#: src/pages/fingerprint/fingerprintpage.cpp
 #: src/pages/network/hotspot/hotspotpage.cpp
 #: src/pages/shortcuts/shortcuteditdialog.cpp
 #: src/pages/shortcuts/shortcutspage.cpp
@@ -170,6 +171,7 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: src/pages/accounts/accountspage.cpp
+#: src/pages/fingerprint/fingerprintpage.cpp
 msgid "Delete"
 msgstr "Eliminar"
 
@@ -976,6 +978,148 @@ msgstr "Escritorio"
 #: src/window/pagelist.cpp
 msgid "Hot Corners"
 msgstr "Esquinas activas"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "The sensor could not read your finger. Try again."
+msgstr "El sensor no pudo leer tu dedo. Inténtalo de nuevo."
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "The swipe was too short. Try again."
+msgstr "El deslizamiento fue demasiado corto. Inténtalo de nuevo."
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "That was too fast. Try again, a little slower."
+msgstr "Fue demasiado rápido. Inténtalo de nuevo, un poco más despacio."
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Center your finger on the sensor and try again."
+msgstr "Centra el dedo en el sensor e inténtalo de nuevo."
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Lift your finger, then place it on the sensor again."
+msgstr "Levanta el dedo y vuelve a colocarlo en el sensor."
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "The sensor is busy"
+msgstr "El sensor está ocupado"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Another program is using the fingerprint sensor. Close it and try again."
+msgstr "Otro programa está usando el sensor de huellas. Ciérralo e inténtalo de nuevo."
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "This fingerprint is already added"
+msgstr "Esta huella ya está añadida"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Try a different finger, or delete the fingerprint that is already stored."
+msgstr "Prueba con otro dedo o elimina la huella que ya está guardada."
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "The sensor is full"
+msgstr "El sensor está lleno"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "The fingerprint sensor has no room for another fingerprint. Delete one and try again."
+msgstr "El sensor de huellas no tiene espacio para otra huella. Elimina una e inténtalo de nuevo."
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "The sensor was disconnected"
+msgstr "Se desconectó el sensor"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Connect the fingerprint sensor again and try once more."
+msgstr "Vuelve a conectar el sensor de huellas e inténtalo una vez más."
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Couldn’t add the fingerprint"
+msgstr "No se pudo añadir la huella"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Something went wrong while reading your finger. Try again."
+msgstr "Algo salió mal al leer tu dedo. Inténtalo de nuevo."
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Swipe your finger across the sensor"
+msgstr "Desliza el dedo por el sensor"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Place your finger on the sensor"
+msgstr "Coloca el dedo en el sensor"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Repeat until the fingerprint is complete."
+msgstr "Repite hasta que la huella esté completa."
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Adjust your grip"
+msgstr "Ajusta la posición del dedo"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Keep lifting and resting your finger, changing its position a little each time."
+msgstr "Sigue levantando y apoyando el dedo, cambiando un poco su posición cada vez."
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Lift and rest your finger repeatedly."
+msgstr "Levanta y apoya el dedo repetidamente."
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Add Fingerprint"
+msgstr "Añadir huella"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Done"
+msgstr "Hecho"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Fingerprint added"
+msgstr "Huella añadida"
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Your fingerprint is ready to use."
+msgstr "Tu huella está lista para usarse."
+
+#: src/pages/fingerprint/enrolldialog.cpp
+msgid "Try Again"
+msgstr "Reintentar"
+
+#: src/pages/fingerprint/fingerprintpage.cpp src/window/pagelist.cpp
+msgid "Fingerprint"
+msgstr "Huella"
+
+#: src/pages/fingerprint/fingerprintpage.cpp
+msgid "No fingerprints added"
+msgstr "No hay huellas añadidas"
+
+#: src/pages/fingerprint/fingerprintpage.cpp
+msgid "Add Fingerprint…"
+msgstr "Añadir huella…"
+
+#: src/pages/fingerprint/fingerprintpage.cpp
+msgid "The fingerprints cannot be read. Manage them from your own desktop session."
+msgstr "No se pueden leer las huellas. Adminístralas desde tu propia sesión de escritorio."
+
+#: src/pages/fingerprint/fingerprintpage.cpp
+msgid "Delete this fingerprint"
+msgstr "Eliminar esta huella"
+
+#: src/pages/fingerprint/fingerprintpage.cpp
+#, python-brace-format
+msgid "Delete “{name}”? You will no longer be able to use it to authenticate."
+msgstr "¿Eliminar «{name}»? Ya no podrás usarla para autenticarte."
+
+#: src/pages/fingerprint/fingerprintpage.cpp
+msgid "The sensor is being used by another program. Try again in a moment."
+msgstr "Otro programa está usando el sensor. Inténtalo de nuevo en un momento."
+
+#: src/pages/fingerprint/fingerprintpage.cpp
+msgid "The fingerprint could not be deleted."
+msgstr "No se pudo eliminar la huella."
+
+#: src/pages/fingerprint/fingers.cpp
+#, python-brace-format
+msgid "Fingerprint {number}"
+msgstr "Huella {number}"
 
 #. TRANSLATORS: a font size in points, such as "9pt".
 #: src/pages/fonts/fontspage.cpp
@@ -2620,6 +2764,10 @@ msgstr "control de la computadora, agentes, apps permitidas, permisos"
 #: src/window/pagelist.cpp
 msgid "energy, performance, power saving, sleep, turn off display"
 msgstr "energía, rendimiento, ahorro de energía, suspensión, apagar pantalla"
+
+#: src/window/pagelist.cpp
+msgid "fingerprint reader, sensor, biometrics, unlock, authenticate, scan, finger"
+msgstr "lector de huellas, sensor, biometría, desbloquear, autenticar, escanear, dedo"
 
 #: src/window/pagelist.cpp
 msgid "accounts, password, login, administrator, avatar"
