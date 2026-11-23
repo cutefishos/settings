@@ -42,7 +42,7 @@ UserDetailsDialog::UserDetailsDialog(SettingsWindow& window, std::shared_ptr<acc
 
     RowLayout* buttons = content->addChild<RowLayout>();
     buttons->setSpacing(metrics::dialogButtonSpacing);
-    buttons->setLayoutHints({.horizontalAlignment = Alignment::End});
+    buttons->setLayoutHints({.fillWidth = true});
     m_delete = buttons->addChild<DialogButton>(tr("Delete this user"), true);
     m_delete->setName("user:delete");
     m_delete->setDestructive(true);
@@ -51,7 +51,11 @@ UserDetailsDialog::UserDetailsDialog(SettingsWindow& window, std::shared_ptr<acc
         if (onDelete)
             onDelete();
     };
+    buttons->addChild<View>()->setLayoutHints({.fillWidth = true});
+    DialogButton* done = buttons->addChild<DialogButton>(tr("Done"));
+    done->onClicked = [this] { close(); };
 
+    m_dialog->setCloseVisible(false);
     m_dialog->setContentView(std::move(content));
     m_dialog->onClosed = [this] {
         m_changed.reset();

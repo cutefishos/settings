@@ -92,7 +92,11 @@ ChangePasswordDialog::ChangePasswordDialog(SettingsWindow& parent, const std::st
         };
     }
 
-    m_change = addButtonRow()->addChild<DialogButton>(tr("Change password"), true);
+    RowLayout* buttons = addButtonRow();
+    m_cancel = buttons->addChild<DialogButton>(tr("Cancel"));
+    m_cancel->setName("password:cancel");
+    m_cancel->onClicked = [this] { requestClose(); };
+    m_change = buttons->addChild<DialogButton>(tr("Change password"), true);
     m_change->setName("password:change");
     m_change->onClicked = [this] { change(); };
 
@@ -111,6 +115,7 @@ void ChangePasswordDialog::update()
 {
     const bool waiting = m_changer && m_changer->isRunning();
     m_form->setEnabled(!waiting);
+    m_cancel->setEnabled(!waiting);
     m_change->setEnabled(!waiting && !m_password->text().empty() && m_password->text() == m_verify->text());
 }
 
@@ -155,7 +160,11 @@ AddUserDialog::AddUserDialog(SettingsWindow& parent, accounts::AccountsManager& 
     m_error = addError(content());
     m_error->setName("adduser:error");
 
-    m_add = addButtonRow()->addChild<DialogButton>(tr("Add"), true);
+    RowLayout* buttons = addButtonRow();
+    m_cancel = buttons->addChild<DialogButton>(tr("Cancel"));
+    m_cancel->setName("adduser:cancel");
+    m_cancel->onClicked = [this] { requestClose(); };
+    m_add = buttons->addChild<DialogButton>(tr("Add"), true);
     m_add->setName("adduser:add");
     m_add->onClicked = [this] { add(); };
 
@@ -169,6 +178,7 @@ AddUserDialog::AddUserDialog(SettingsWindow& parent, accounts::AccountsManager& 
 void AddUserDialog::update()
 {
     m_form->setEnabled(!m_waiting);
+    m_cancel->setEnabled(!m_waiting);
     m_add->setEnabled(!m_waiting && !m_name->text().empty() && !m_password->text().empty()
                       && m_password->text() == m_verify->text());
 }

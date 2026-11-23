@@ -131,7 +131,10 @@ ChooseRegionDialog::ChooseRegionDialog(SettingsWindow& parent, Region& region)
     m_rows->setSpacing(0);
     m_empty = stack->addChild<EmptyListOverlay>()->label();
 
-    m_choose = addButtonRow()->addChild<DialogButton>(tr("Choose"), true);
+    RowLayout* buttons = addButtonRow();
+    DialogButton* cancel = buttons->addChild<DialogButton>(tr("Cancel"));
+    cancel->onClicked = [this] { requestClose(); };
+    m_choose = buttons->addChild<DialogButton>(tr("Choose"), true);
     m_choose->onClicked = [this] {
         m_region.setRegion(m_selectedCode);
         close();

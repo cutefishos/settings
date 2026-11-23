@@ -209,7 +209,11 @@ void NewNetworkDialog::build()
             tr("This network signs in with a certificate, which can't be set up here yet."));
     m_certificateNote->setName("join:certificate");
 
-    m_joinButton = m_dialog->addButtonRow()->addChild<DialogButton>(tr("Join"), true);
+    RowLayout* buttons = m_dialog->addButtonRow();
+    DialogButton* cancel = buttons->addChild<DialogButton>(tr("Cancel"));
+    cancel->setName("join:cancel");
+    cancel->onClicked = [this] { m_dialog->requestClose(); };
+    m_joinButton = buttons->addChild<DialogButton>(tr("Join"), true);
     m_joinButton->setName("join:join");
     m_joinButton->onClicked = [this] { join(); };
 }

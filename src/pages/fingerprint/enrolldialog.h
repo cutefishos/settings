@@ -24,7 +24,7 @@ class FingerprintView;
 // Records one fingerprint: a print that fills in as the finger is placed on
 // the sensor again and again, and what to do next under it. It opens on an
 // enrollment that has started, and closes at once when polkit was refused.
-// Only its close control (or Escape) closes it, which stops the enrollment.
+// Cancel (or Escape) closes it and stops the enrollment.
 class EnrollDialog : public FormDialog
 {
 public:
@@ -46,6 +46,7 @@ private:
     cutefish::ui::Label* m_detail;
     cutefish::ui::RowLayout* m_buttons;
     std::unique_ptr<cutefish::ui::Animation> m_fade;
+    cutefish::ui::DialogButton* m_cancel;
     cutefish::ui::DialogButton* m_action;
 };
 

@@ -143,6 +143,10 @@ EnrollDialog::EnrollDialog(SettingsWindow& parent, cutefish::fprint::Reader& rea
 
     m_buttons = addButtonRow();
     m_buttons->setLayoutHints({.fillWidth = true, .minimumHeight = kButtonHeight});
+    m_cancel = m_buttons->addChild<DialogButton>(tr("Cancel"));
+    m_cancel->setLayoutHints({.fillWidth = true});
+    m_cancel->setName("enroll:cancel");
+    m_cancel->onClicked = [this] { requestClose(); };
     m_action = m_buttons->addChild<DialogButton>(tr("Done"), true);
     m_action->setLayoutHints({.fillWidth = true});
     m_action->setName("enroll:action");
@@ -241,6 +245,8 @@ void EnrollDialog::update()
     m_detail->setColor(message.urgent ? ColorRecipe(ColorId::Text) : ColorRecipe(ColorId::DisabledText));
 
     const bool action = completed || (failed && retryable);
+    m_cancel->setText(failed && !retryable ? tr("Done") : tr("Cancel"));
+    m_cancel->setVisible(!completed);
     m_action->setText(completed ? tr("Done") : tr("Try Again"));
     showAction(action);
 }

@@ -202,6 +202,8 @@ ShortcutEditDialog::ShortcutEditDialog(SettingsWindow& parent, ShortcutsModel& m
         update();
     };
     buttons->addChild<View>()->setLayoutHints({.fillWidth = true});
+    DialogButton* done = buttons->addChild<DialogButton>(tr("Done"));
+    done->onClicked = [this] { requestClose(); };
 
     onClosed = [this] {
         stopRecording();

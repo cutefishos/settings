@@ -120,8 +120,8 @@ TEST_F(FingerprintTest, AddingAFingerprintFillsInThePrintStepByStep)
     EXPECT_FALSE(driver().find("fingerprint:add")->isEnabled());
 
     EXPECT_EQ(dialog->text("enroll:title"), "Place your finger on the sensor");
-    // The close control is the only way out while scanning.
-    EXPECT_TRUE(dialog->findAll("enroll:cancel").empty());
+    // Cancel is the way out while scanning.
+    EXPECT_TRUE(dialog->shows("enroll:cancel"));
     EXPECT_FALSE(dialog->shows("enroll:action"));
     auto* print = dialog->find<FingerprintView>("enroll:print");
     ASSERT_NE(print, nullptr);
@@ -146,6 +146,7 @@ TEST_F(FingerprintTest, AddingAFingerprintFillsInThePrintStepByStep)
     ASSERT_TRUE(TestDriver::waitFor([&] { return dialog->text("enroll:title") == "Fingerprint added"; }));
     EXPECT_EQ(print->progress(), 1);
     ASSERT_TRUE(dialog->shows("enroll:action"));
+    EXPECT_FALSE(dialog->shows("enroll:cancel"));
     EXPECT_EQ(dialog->text("enroll:action"), "Done");
 
     dialog->click("enroll:action");

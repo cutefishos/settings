@@ -75,6 +75,7 @@ private:
     SwitchRow* m_automaticDns;
     cutefish::ui::TextField* m_dns;
     Footnote* m_message;
+    cutefish::ui::DialogButton* m_cancelButton;
     cutefish::ui::DialogButton* m_saveButton;
 };
 

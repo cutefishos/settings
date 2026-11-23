@@ -9,7 +9,9 @@
 #include "base/i18n.h"
 #include "ui/dialog_window.h"
 #include "ui/cell_layout.h"
+#include "ui/keys.h"
 #include "ui/switch.h"
+#include "ui/window.h"
 #include "widgets/card.h"
 #include "widgets/listrow.h"
 #include "widgets/metrics.h"
@@ -84,8 +86,13 @@ AdapterDetailsDialog::AdapterDetailsDialog(Window* parent, std::shared_ptr<bluez
     m_pairable = switches->addChild<SwitchRow>(tr("Allow incoming pairing"));
     m_pairable->onToggled = [this](bool checked) { m_adapter->setPairable(checked); };
 
+    DialogButton* done = makeButtons(content)->addChild<DialogButton>(tr("Done"));
+    done->onClicked = [this] { m_dialog->close(); };
+
+    m_dialog->setCloseVisible(false);
     m_changed = m_adapter->changed.connect([this] { update(); });
     m_dialog->onClosed = [this] { m_changed.reset(); };
+    m_dialog->window()->addShortcut(NoModifier, key::Escape, [this] { m_dialog->close(); });
     update();
 }
 
@@ -126,13 +133,19 @@ DeviceDetailsDialog::DeviceDetailsDialog(Window* parent, std::shared_ptr<bluez::
     m_blocked = switches->addChild<SwitchRow>(tr("Blocked"));
     m_blocked->onToggled = [this](bool checked) { m_device->setBlocked(checked); };
 
-    m_forget = makeButtons(content)->addChild<DialogButton>(tr("Forget this device"), true);
+    RowLayout* buttons = makeButtons(content);
+    buttons->setLayoutHints({.fillWidth = true});
+    m_forget = buttons->addChild<DialogButton>(tr("Forget this device"), true);
     m_forget->setDestructive(true);
     m_forget->onClicked = [this] {
         m_device->forget();
         m_dialog->close();
     };
+    buttons->addChild<View>()->setLayoutHints({.fillWidth = true});
+    DialogButton* done = buttons->addChild<DialogButton>(tr("Done"));
+    done->onClicked = [this] { m_dialog->close(); };
 
+    m_dialog->setCloseVisible(false);
     m_changed = m_device->changed.connect([this] {
         const bool resolved = m_device->servicesResolved();
         if (resolved && !m_servicesResolved)
@@ -141,6 +154,7 @@ DeviceDetailsDialog::DeviceDetailsDialog(Window* parent, std::shared_ptr<bluez::
         update();
     });
     m_dialog->onClosed = [this] { m_changed.reset(); };
+    m_dialog->window()->addShortcut(NoModifier, key::Escape, [this] { m_dialog->close(); });
     m_device->readDeviceInformation();
     update();
 }

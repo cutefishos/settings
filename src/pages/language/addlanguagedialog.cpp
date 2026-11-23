@@ -112,7 +112,10 @@ AddLanguageDialog::AddLanguageDialog(SettingsWindow& parent, Language& language)
     m_error = content()->addChild<Footnote>();
     m_error->setColor(accent::red);
 
-    m_add = addButtonRow()->addChild<DialogButton>(tr("Add"), true);
+    RowLayout* buttons = addButtonRow();
+    m_cancel = buttons->addChild<DialogButton>(tr("Cancel"));
+    m_cancel->onClicked = [this] { requestClose(); };
+    m_add = buttons->addChild<DialogButton>(tr("Add"), true);
     m_add->onClicked = [this] {
         m_adding = true;
         updateStates();
@@ -171,6 +174,7 @@ void AddLanguageDialog::updateStates()
 {
     m_search->setEnabled(!m_adding);
     m_scroll->setEnabled(!m_adding);
+    m_cancel->setEnabled(!m_adding);
     m_add->setEnabled(!m_selectedCode.empty() && !m_language.isSaving());
     m_error->setText(m_language.errorMessage());
     m_error->setVisible(!m_language.errorMessage().empty());

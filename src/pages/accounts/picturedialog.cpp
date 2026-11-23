@@ -215,6 +215,9 @@ PictureDialog::PictureDialog(SettingsWindow& parent, std::shared_ptr<accounts::U
     choose->setName("picture:chooseFile");
     choose->onClicked = [this] { chooseFile(); };
     buttons->addChild<View>()->setLayoutHints({.fillWidth = true});
+    DialogButton* cancel = buttons->addChild<DialogButton>(tr("Cancel"));
+    cancel->setName("picture:cancel");
+    cancel->onClicked = [this] { requestClose(); };
     m_save = buttons->addChild<DialogButton>(tr("Save"), true);
     m_save->setName("picture:save");
     m_save->onClicked = [this] { save(); };

@@ -20,8 +20,8 @@ class SettingsWindow;
 
 // Settings' own form dialogs (add a user, change a password, add a language,
 // join a network, edit a shortcut): the shared dialog window over the
-// settings window, closed by its close control or Escape, and a column of
-// content below the title. Its height follows the content unless fixed.
+// settings window, closed by its Cancel or Done button, or Escape, and a column
+// of content below the title. Its height follows the content unless fixed.
 // A dialog is shown once: after it closes, make a new one.
 class FormDialog
 {

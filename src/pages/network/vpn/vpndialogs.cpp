@@ -16,7 +16,6 @@
 #include "ui/cell_layout.h"
 #include "ui/theme.h"
 #include "ui/window.h"
-#include "ui/window_controls.h"
 #include "widgets/card.h"
 #include "widgets/formdialog.h"
 #include "widgets/listrow.h"
@@ -33,8 +32,8 @@ namespace nm = cutefish::networkmanager;
 namespace settings::network {
 
 static constexpr double kWidth = 460;
-// The shared dialog's header, which the content sits below.
-static constexpr double kHeaderHeight = window_controls::kDialogHeaderHeight;
+// The shared dialog's header without window controls, which the content sits below.
+static constexpr double kHeaderHeight = 44;
 
 // Red while it reports a failure, secondary text otherwise.
 static void setMessage(Footnote* note, const std::string& text, bool problem)
@@ -103,8 +102,12 @@ void AddVpnDialog::show()
     };
 
     m_errorLabel = content->addChild<Footnote>();
-    m_addButton = m_dialog->addButtonRow()->addChild<DialogButton>(tr("Add"), true);
+    RowLayout* buttons = m_dialog->addButtonRow();
+    m_cancelButton = buttons->addChild<DialogButton>(tr("Cancel"));
+    m_cancelButton->onClicked = [this] { m_dialog->requestClose(); };
+    m_addButton = buttons->addChild<DialogButton>(tr("Add"), true);
     m_addButton->onClicked = [this] { add(); };
+    m_dialog->canClose = [this] { return !m_adding; };
 
     loadKind();
     m_dialog->show();
@@ -140,6 +143,7 @@ void AddVpnDialog::update()
     if (!m_dialog || !m_editor)
         return;
     setMessage(m_errorLabel, m_error, true);
+    m_cancelButton->setEnabled(!m_adding);
     m_addButton->setEnabled(!m_adding && m_editor->complete());
     m_scroll->requestLayout();
 }
@@ -202,6 +206,11 @@ VpnDetailsDialog::VpnDetailsDialog(SettingsWindow& window, NetworkList& list, nm
         close();
     };
     buttons->addChild<View>()->setLayoutHints({.fillWidth = true});
+    m_cancelButton = buttons->addChild<DialogButton>(tr("Cancel"));
+    m_cancelButton->onClicked = [this] {
+        if (!m_saving)
+            close();
+    };
     m_saveButton = buttons->addChild<DialogButton>(tr("Save"), true);
     m_saveButton->onClicked = [this] { save(); };
 
@@ -216,9 +225,13 @@ VpnDetailsDialog::VpnDetailsDialog(SettingsWindow& window, NetworkList& list, nm
         return height;
     };
 
+    m_dialog->setCloseVisible(false);
     m_dialog->setContentView(std::move(content));
     m_dialog->onClosed = [this] { m_subscriptions.clear(); };
-    m_dialog->window()->addShortcut(NoModifier, key::Escape, [this] { close(); });
+    m_dialog->window()->addShortcut(NoModifier, key::Escape, [this] {
+        if (!m_saving)
+            close();
+    });
 
     m_subscriptions.push_back(m_handler.vpnSecretsLoaded.connect(
         [this](const std::string& connection, const nm::VpnSecrets& secrets) {
@@ -295,6 +308,7 @@ void VpnDetailsDialog::update()
     m_address->setValue(row->connectionState == nm::ConnectionStatus::Activated ? row->ipV4Address : std::string());
     m_export->setVisible(m_editor->form().exportable);
     setMessage(m_message, !m_error.empty() ? m_error : row->statusMessage, !m_error.empty());
+    m_cancelButton->setEnabled(!m_saving);
     m_saveButton->setText(m_saving ? tr("Saving…") : tr("Save"));
     m_saveButton->setEnabled(!m_saving && m_editor->complete());
     m_scroll->requestLayout();

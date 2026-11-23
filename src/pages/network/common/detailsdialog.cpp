@@ -116,14 +116,20 @@ DetailsDialog::DetailsDialog(SettingsWindow& window, NetworkList& list, Kind kin
         };
     }
 
-    m_disconnect = m_details->addChild<DialogButton>(tr("Disconnect"));
-    m_disconnect->setLayoutHints({.horizontalAlignment = Alignment::End});
+    RowLayout* buttons = m_details->addChild<RowLayout>();
+    buttons->setSpacing(metrics::dialogButtonSpacing);
+    buttons->setLayoutHints({.fillWidth = true});
+    m_disconnect = buttons->addChild<DialogButton>(tr("Disconnect"));
     m_disconnect->onClicked = [this] {
         if (!m_list.isMock())
             m_handler->deactivateConnection(m_row.connectionPath, m_row.devicePath);
         close();
     };
+    buttons->addChild<View>()->setLayoutHints({.fillWidth = true});
+    DialogButton* done = buttons->addChild<DialogButton>(tr("Done"));
+    done->onClicked = [this] { close(); };
 
+    m_dialog->setCloseVisible(false);
     m_dialog->setContentView(std::move(content));
     m_dialog->onBack = [this] { showIpSettings(false); };
     m_dialog->onClosed = [this] {

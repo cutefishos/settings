@@ -49,6 +49,7 @@ private:
     cutefish::ui::TextField* m_password;
     cutefish::ui::TextField* m_verify;
     Footnote* m_error = nullptr;
+    cutefish::ui::DialogButton* m_cancel;
     cutefish::ui::DialogButton* m_change;
 };
 
@@ -71,6 +72,7 @@ private:
     cutefish::ui::TextField* m_verify;
     RowComboBox* m_type;
     Footnote* m_error;
+    cutefish::ui::DialogButton* m_cancel;
     cutefish::ui::DialogButton* m_add;
     bool m_waiting = false;
 };

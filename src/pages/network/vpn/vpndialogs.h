@@ -63,6 +63,7 @@ private:
     FormScroll* m_scroll = nullptr;
     VpnEditor* m_editor = nullptr;
     Footnote* m_errorLabel = nullptr;
+    cutefish::ui::DialogButton* m_cancelButton = nullptr;
     cutefish::ui::DialogButton* m_addButton = nullptr;
 };
 
@@ -104,6 +105,7 @@ private:
     InfoRow* m_address = nullptr;
     ListRow* m_export = nullptr;
     Footnote* m_message = nullptr;
+    cutefish::ui::DialogButton* m_cancelButton = nullptr;
     cutefish::ui::DialogButton* m_saveButton = nullptr;
 };
 

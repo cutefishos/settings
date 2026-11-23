@@ -17,6 +17,7 @@ namespace settings {
 FormDialog::FormDialog(SettingsWindow& parent, std::string title, double width)
     : m_dialog(std::make_unique<DialogWindow>(&parent.window(), std::move(title), width))
 {
+    m_dialog->setCloseVisible(false);
     m_content = m_dialog->setContent<ColumnLayout>();
     m_content->setSpacing(metrics::dialogSpacing);
     m_dialog->onClosed = [this] {

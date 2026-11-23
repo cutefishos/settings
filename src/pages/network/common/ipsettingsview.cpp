@@ -108,6 +108,11 @@ IpSettingsView::IpSettingsView(std::string connectionPath)
     RowLayout* buttons = addChild<RowLayout>();
     buttons->setSpacing(metrics::dialogButtonSpacing);
     buttons->setLayoutHints({.horizontalAlignment = Alignment::End});
+    m_cancelButton = buttons->addChild<DialogButton>(tr("Cancel"));
+    m_cancelButton->onClicked = [this] {
+        if (!m_saving && onFinished)
+            onFinished();
+    };
     m_saveButton = buttons->addChild<DialogButton>(tr("Save"), true);
     m_saveButton->onClicked = [this] { save(); };
 
@@ -217,6 +222,7 @@ void IpSettingsView::update()
     m_message->setColor(problem.empty() ? std::optional<ColorRecipe>() : accent::red);
     m_message->setVisible(!message.empty());
 
+    m_cancelButton->setEnabled(!m_saving);
     m_saveButton->setText(m_saving ? tr("Saving…") : tr("Save"));
     m_saveButton->setEnabled(!m_saving && result.complete);
     requestLayout();

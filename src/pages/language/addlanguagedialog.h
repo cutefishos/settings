@@ -43,6 +43,7 @@ private:
     cutefish::ui::ColumnLayout* m_rows;
     cutefish::ui::Label* m_empty;
     Footnote* m_error;
+    cutefish::ui::DialogButton* m_cancel;
     cutefish::ui::DialogButton* m_add;
     std::string m_selectedCode;
     bool m_adding = false;
