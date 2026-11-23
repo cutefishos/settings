@@ -47,13 +47,14 @@ std::vector<NetworkItem> mockNetworks()
 {
     const int64_t now = int64_t(std::time(nullptr));
     const auto wireless = [](std::string name, ConnectionStatus state, SecurityType security, std::string securityLabel,
-                             int signal, std::string icon) {
+                             std::string wifiType, int signal, std::string icon) {
         NetworkItem item;
         item.type = ConnectionType::Wireless;
         item.name = std::move(name);
         item.connectionState = state;
         item.securityType = security;
         item.securityTypeString = std::move(securityLabel);
+        item.wifiType = std::move(wifiType);
         item.signal = signal;
         item.icon = std::move(icon);
         return item;
@@ -61,7 +62,7 @@ std::vector<NetworkItem> mockNetworks()
 
     std::vector<NetworkItem> items;
     NetworkItem studio = wireless("Cutefish Studio", ConnectionStatus::Activated, SecurityType::Wpa2Psk,
-                                  "WPA2 Personal", 92, "network-wireless-connected-100");
+                                  "WPA2 Personal", "Wi-Fi 6 (802.11ax)", 92, "network-wireless-connected-100");
     studio.uuid = "mock-wifi-connected";
     studio.ipV4Address = "192.168.1.86";
     studio.ipV6Address = "fe80::1c2b:3aff:fe4d:5e6f";
@@ -72,18 +73,18 @@ std::vector<NetworkItem> mockNetworks()
     items.push_back(studio);
 
     NetworkItem coffee = wireless("Coffee Shop", ConnectionStatus::Deactivated, SecurityType::Wpa2Psk,
-                                  "WPA2 Personal", 74, "network-wireless-connected-100");
+                                  "WPA2 Personal", "Wi-Fi 5 (802.11ac)", 74, "network-wireless-connected-100");
     coffee.uuid = "mock-wifi-saved";
     coffee.timestamp = now - 3600;
     items.push_back(coffee);
 
-    NetworkItem guest = wireless("Guest Network", ConnectionStatus::Deactivated, SecurityType::None, "None", 51,
-                                 "network-wireless-connected-66");
+    NetworkItem guest = wireless("Guest Network", ConnectionStatus::Deactivated, SecurityType::None, "None",
+                                 "Wi-Fi 4 (802.11n)", 51, "network-wireless-connected-66");
     guest.timestamp = now - 7200;
     items.push_back(guest);
 
     NetworkItem neighbor = wireless("Neighbor Wi-Fi", ConnectionStatus::Deactivated, SecurityType::Sae, "WPA3 Personal",
-                                    28, "network-wireless-connected-33");
+                                    "Wi-Fi 6E (802.11ax)", 28, "network-wireless-connected-33");
     neighbor.timestamp = now - 10800;
     items.push_back(neighbor);
 

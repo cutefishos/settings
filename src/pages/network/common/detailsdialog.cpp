@@ -98,6 +98,7 @@ DetailsDialog::DetailsDialog(SettingsWindow& window, NetworkList& list, Kind kin
 
     m_addressCard = m_details->addChild<Card>(Card::Style::List);
     if (kind == Kind::Wireless) {
+        m_wifiType = m_addressCard->addChild<InfoRow>(tr("Wi-Fi type"));
         m_security = m_addressCard->addChild<InfoRow>(tr("Security"));
         m_signal = m_addressCard->addChild<InfoRow>(tr("Signal"));
     }
@@ -174,6 +175,7 @@ void DetailsDialog::update()
 
     if (m_kind == Kind::Wireless) {
         setSaved(!m_row.connectionPath.empty());
+        m_wifiType->setValue(m_row.wifiType);
         m_security->setValue(m_row.securityTypeString);
         // TRANSLATORS: a percentage, such as "92%".
         m_signal->setValue(format(tr("{percent}%"), {{"percent", std::to_string(m_row.signal)}}));

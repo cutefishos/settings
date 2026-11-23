@@ -1486,6 +1486,10 @@ msgid "Signal"
 msgstr "Tín hiệu"
 
 #: src/pages/network/common/detailsdialog.cpp
+msgid "Wi-Fi type"
+msgstr "Loại Wi-Fi"
+
+#: src/pages/network/common/detailsdialog.cpp
 #: src/pages/network/vpn/vpndialogs.cpp
 msgid "IPv4 address"
 msgstr "Địa chỉ IPv4"

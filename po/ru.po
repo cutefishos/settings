@@ -1496,6 +1496,10 @@ msgid "Signal"
 msgstr "Сигнал"
 
 #: src/pages/network/common/detailsdialog.cpp
+msgid "Wi-Fi type"
+msgstr "Тип Wi-Fi"
+
+#: src/pages/network/common/detailsdialog.cpp
 #: src/pages/network/vpn/vpndialogs.cpp
 msgid "IPv4 address"
 msgstr "Адрес IPv4"

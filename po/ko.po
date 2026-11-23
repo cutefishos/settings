@@ -1486,6 +1486,10 @@ msgid "Signal"
 msgstr "신호"
 
 #: src/pages/network/common/detailsdialog.cpp
+msgid "Wi-Fi type"
+msgstr "Wi-Fi 유형"
+
+#: src/pages/network/common/detailsdialog.cpp
 #: src/pages/network/vpn/vpndialogs.cpp
 msgid "IPv4 address"
 msgstr "IPv4 주소"

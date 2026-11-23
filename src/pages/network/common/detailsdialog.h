@@ -87,6 +87,7 @@ private:
     cutefish::ui::ColumnLayout* m_details = nullptr;
     cutefish::ui::ColumnLayout* m_savedCard = nullptr;
     SwitchRow* m_autoConnect = nullptr;
+    InfoRow* m_wifiType = nullptr;
     InfoRow* m_security = nullptr;
     InfoRow* m_signal = nullptr;
     cutefish::ui::ColumnLayout* m_addressCard = nullptr;

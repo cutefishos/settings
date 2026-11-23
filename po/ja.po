@@ -1486,6 +1486,10 @@ msgid "Signal"
 msgstr "信号強度"
 
 #: src/pages/network/common/detailsdialog.cpp
+msgid "Wi-Fi type"
+msgstr "Wi-Fi の種類"
+
+#: src/pages/network/common/detailsdialog.cpp
 #: src/pages/network/vpn/vpndialogs.cpp
 msgid "IPv4 address"
 msgstr "IPv4 アドレス"
