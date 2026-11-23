@@ -27,7 +27,7 @@ static constexpr double kWidth = 360;
 // and its buttons from jumping.
 // Keeps the lines of the words short enough to break evenly.
 static constexpr double kTextInset = 20;
-static constexpr double kHeight = 360;
+static constexpr double kHeight = 400;
 // The title and two lines of guidance.
 static constexpr double kWordsHeight = 76;
 static constexpr double kButtonHeight = 32;

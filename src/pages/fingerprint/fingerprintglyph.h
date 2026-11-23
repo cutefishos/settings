@@ -7,7 +7,8 @@
 
 namespace settings {
 
-// The fingerprint icon's outline, filling a square of the given side.
+// A print of dashed ridges whorled around a curled core, as the area its
+// strokes cover, centred in a square of the given side.
 cutefish::ui::Path fingerprintGlyph(double size);
 
 } // namespace settings

@@ -14,7 +14,7 @@ class Animation;
 
 namespace settings {
 
-// The sidebar's fingerprint icon drawn large. It starts grey and takes the
+// A print of dashed ridges. It starts grey and takes the
 // accent colour from the middle outwards as the print is recorded; a
 // complete print turns green.
 class FingerprintView : public cutefish::ui::View
@@ -33,7 +33,7 @@ public:
 
     cutefish::ui::SizeF sizeHint() const override { return {kSize, kSize}; }
 
-    static constexpr double kSize = 120;
+    static constexpr double kSize = 160;
 
 protected:
     void layout() override;
