@@ -48,6 +48,7 @@ set(SETTINGS_CORE_PAGE_SOURCES
     defaultapps/defaultapplications.cpp
     display/brightness.cpp
     dock/docksettings.cpp
+    fingerprint/fingers.cpp
     fonts/fontlist.cpp
     hotcorners/hotcorners.cpp
     icontheme/iconthemes.cpp

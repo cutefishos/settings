@@ -65,6 +65,10 @@ static std::vector<PageInfo> makePages()
     add({.id = "power", .name = "power", .title = trNoop("Power"), .icon = "power.svg",
          .iconColor = Color::rgb(0xFE8433), .group = 4,
          .keywords = trNoop("energy, performance, power saving, sleep, turn off display")});
+    add({.id = "fingerprint", .name = "fingerprint", .title = trNoop("Fingerprint"), .icon = "fingerprint.svg",
+         .iconColor = Color::rgb(0xFF5C6D), .group = 4,
+         .keywords = trNoop("fingerprint reader, sensor, biometrics, unlock, authenticate, scan, finger"),
+         .initiallyAvailable = false});
     add({.id = "accounts", .name = "accounts", .title = trNoop("Users"), .icon = "accounts.svg",
          .iconColor = Color::rgb(0xDA7C43), .group = 4,
          .keywords = trNoop("accounts, password, login, administrator, avatar")});

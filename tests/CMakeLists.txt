@@ -1,4 +1,6 @@
 find_package(GTest REQUIRED)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(SETTINGS_TEST_SYSTEMD REQUIRED IMPORTED_TARGET libsystemd)
 include(GoogleTest)
 
 # A layer's tests: each page adds its own <page>_test.cpp or
@@ -46,7 +48,7 @@ settings_page_tests(scenario_tests scenarios)
 add_executable(settings-scenario-tests scenarios/main.cpp ${scenario_tests})
 target_compile_definitions(settings-scenario-tests PRIVATE SETTINGS_SOURCE_DIR="${PROJECT_SOURCE_DIR}/src")
 target_include_directories(settings-scenario-tests PRIVATE support)
-target_link_libraries(settings-scenario-tests PRIVATE settings-ui GTest::gtest)
+target_link_libraries(settings-scenario-tests PRIVATE settings-ui PkgConfig::SETTINGS_TEST_SYSTEMD GTest::gtest)
 set_target_properties(settings-scenario-tests PROPERTIES TEST_LAUNCHER "${SETTINGS_TEST_LAUNCHER}")
 gtest_discover_tests(settings-scenario-tests PROPERTIES LABELS scenario)
 
