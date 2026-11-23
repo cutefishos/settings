@@ -241,14 +241,10 @@ TEST_F(FingerprintTest, DeletingAsksFirst)
     EXPECT_TRUE(TestDriver::waitFor([&] { return fake.releases == 1; }));
 }
 
-TEST_F(FingerprintTest, ThePrintIsCentredInTheCardAndInTheDialog)
+TEST_F(FingerprintTest, ThePrintIsCentredInTheDialog)
 {
     start({});
     open();
-    const RectF card = driver().frame("fingerprint:empty");
-    const RectF print = driver().frame("fingerprint:emptyprint");
-    EXPECT_NEAR(print.x + print.width / 2, card.x + card.width / 2, 0.5);
-
     auto dialog = addFingerprint();
     ASSERT_TRUE(dialog);
     dialog->layout();

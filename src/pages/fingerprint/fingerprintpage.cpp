@@ -11,7 +11,6 @@
 #include "base/timer.h"
 #include "cutefish/fprint/fingerprint_reader.h"
 #include "pages/fingerprint/enrolldialog.h"
-#include "pages/fingerprint/fingerprintview.h"
 #include "pages/fingerprint/fingers.h"
 #include "ui/button.h"
 #include "ui/cell_layout.h"
@@ -69,15 +68,7 @@ public:
         m_empty = content()->addChild<Card>();
         m_empty->setName("fingerprint:empty");
         m_empty->setLayoutHints({.fillWidth = true});
-        FingerprintView* print = m_empty->addChild<FingerprintView>();
-        print->setName("fingerprint:emptyprint");
-        print->setLayoutHints({.horizontalAlignment = Alignment::Center});
-        Label* title = m_empty->addChild<Label>(tr("No fingerprints added"));
-        title->setWeight(600);
-        title->setTextAlignment(Label::TextAlignment::Center);
-        title->setLayoutHints({.fillWidth = true});
-        m_emptyText = m_empty->addChild<Label>(tr("Add a fingerprint to use it to authenticate on this computer."));
-        m_emptyText->setWrap(true);
+        m_emptyText = m_empty->addChild<Label>(tr("No fingerprints added"));
         m_emptyText->setTextAlignment(Label::TextAlignment::Center);
         m_emptyText->setLayoutHints({.fillWidth = true});
 
