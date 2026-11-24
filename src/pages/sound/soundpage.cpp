@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cmath>
 #include <memory>
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -11,6 +12,7 @@
 #include "cutefish/audio/audio_model.h"
 #include "cutefish/audio/backend.h"
 #include "cutefish/audio/volume_monitor.h"
+#include "cutefish/bluez/manager.h"
 #include "base/signal.h"
 #include "ui/button.h"
 #include "ui/icon.h"
@@ -21,6 +23,7 @@
 #include "widgets/card.h"
 #include "widgets/listrow.h"
 #include "widgets/metrics.h"
+#include "widgets/rowcombobox.h"
 #include "widgets/sliderrow.h"
 #include "window/page.h"
 #include "window/pagelist.h"
@@ -49,6 +52,24 @@ static std::string deviceType(const AudioObject& device)
     if (active >= 0 && active < int(ports.size()) && ports[active].name.starts_with("hdmi"))
         return "HDMI";
     return tr("Built-in");
+}
+
+// BlueZ's Audio Sink profile: the headset as the A2DP sink of this computer.
+static constexpr const char* kA2dpSinkUuid = "0000110b-0000-1000-8000-00805f9b34fb";
+
+static bool isUsableProfile(const AudioObject::Choice& profile)
+{
+    return profile.name != "off" && profile.availability != AudioObject::Unavailable;
+}
+
+static bool isA2dpProfile(const AudioObject::Choice& profile)
+{
+    return profile.name.starts_with("a2dp-");
+}
+
+static bool isHeadsetProfile(const AudioObject::Choice& profile)
+{
+    return profile.name.starts_with("headset-");
 }
 
 static bool hasFrontPair(const AudioObject& device)
@@ -178,6 +199,17 @@ public:
         m_noDevices->setInteractive(false);
         m_noDevices->setEnabled(false);
 
+        // A headset's card picks between A2DP and the hands-free profile; the
+        // row only shows while there is a choice to make.
+        m_modeCard = devices->addChild<Card>(Card::Style::List);
+        m_modeCard->setName("sound:mode:card");
+        m_modeCard->setVisible(false);
+        ListRow* modeRow = m_modeCard->addChild<ListRow>(tr("Audio mode"));
+        modeRow->setInteractive(false);
+        m_mode = modeRow->addContent<RowComboBox>();
+        m_mode->setName("sound:mode");
+        m_mode->onActivated = [this](int index) { activateMode(index); };
+
         m_sliders = devices->addChild<Card>(Card::Style::List);
         m_sliders->setName("sound:sliders");
         m_outputVolume = m_sliders->addChild<SliderRow>(tr("Output volume"));
@@ -227,6 +259,12 @@ public:
             m_subscriptions.push_back(model->defaultNodeChanged.connect([this] { update(); }));
         }
         m_subscriptions.push_back(m_monitor.volumeChanged.connect([this] { updateMeter(); }));
+        // Cards are not in the sink and source models; their profiles can
+        // change without a node coming or going.
+        m_subscriptions.push_back(m_backend->objectAdded.connect(
+                [this](const std::shared_ptr<AudioObject>&) { update(); }));
+        m_subscriptions.push_back(m_backend->objectRemoved.connect(
+                [this](const std::shared_ptr<AudioObject>&) { update(); }));
         rebuildDevices();
         setOperationError({});
         update();
@@ -296,6 +334,129 @@ private:
         m_inputLevel->setVisible(inputs && input);
         m_monitor.setTarget(inputs ? input : nullptr);
         updateMeter();
+        updateMode();
+    }
+
+    // The Bluetooth card of the default sink or source. A headset is one card
+    // with an A2DP and a hands-free profile, and only one of them can be active.
+    void updateMode()
+    {
+        const std::shared_ptr<AudioObject> device =
+                showInputs() ? m_inputs.defaultNode() : m_outputs.defaultNode();
+        std::shared_ptr<AudioObject> card;
+        if (device && device->bus() == "bluetooth" && device->cardIndex() != AudioObject::InvalidId)
+            card = m_backend->object(device->cardIndex());
+
+        if (card != m_card.lock()) {
+            m_cardChanged.reset();
+            m_card = card;
+            if (card)
+                m_cardChanged = card->changed.connect([this] { updateMode(); });
+        }
+        m_modes.clear();
+        if (!card) {
+            m_pendingA2dp = false;
+            m_modeCard->setVisible(false);
+            return;
+        }
+
+        // activeProfileIndex() and setActiveProfileIndex() count positions in
+        // profiles(); the profiles' own index fields are PipeWire's ids.
+        int bestA2dp = -1;
+        int bestHeadset = -1;
+        for (size_t i = 0; i < card->profiles().size(); ++i) {
+            const AudioObject::Choice& profile = card->profiles()[i];
+            if (!isUsableProfile(profile))
+                continue;
+            if (isA2dpProfile(profile)) {
+                if (bestA2dp < 0 || profile.priority > card->profiles()[bestA2dp].priority)
+                    bestA2dp = int(i);
+            } else if (isHeadsetProfile(profile)) {
+                if (bestHeadset < 0 || profile.priority > card->profiles()[bestHeadset].priority)
+                    bestHeadset = int(i);
+            }
+        }
+
+        std::vector<std::string> items;
+        if (bestA2dp >= 0) {
+            m_modes.push_back({bestA2dp, Mode::A2dp});
+        } else {
+            // A headset whose A2DP link is not up yet only lists its
+            // hands-free profile. Asking BlueZ for the Audio Sink connects
+            // the high-quality link, and PipeWire adds its profile.
+            m_modes.push_back({-1, Mode::A2dp});
+        }
+        items.push_back(tr("High fidelity (A2DP)"));
+        if (bestHeadset >= 0) {
+            m_modes.push_back({bestHeadset, Mode::Headset});
+            items.push_back(tr("Headset (HFP)"));
+        }
+
+        m_modeCard->setVisible(items.size() > 1);
+        if (items.size() > 1) {
+            // The row names the kind of link, not the codec profile behind
+            // it, so any active A2DP or HFP profile checks the same item.
+            const int active = card->activeProfileIndex();
+            Mode::Kind activeKind = Mode::Other;
+            if (active >= 0 && active < int(card->profiles().size())) {
+                if (isA2dpProfile(card->profiles()[active]))
+                    activeKind = Mode::A2dp;
+                else if (isHeadsetProfile(card->profiles()[active]))
+                    activeKind = Mode::Headset;
+            }
+            int current = -1;
+            for (size_t i = 0; i < m_modes.size(); ++i) {
+                if (m_modes[i].kind == activeKind)
+                    current = int(i);
+            }
+            // Only when they change, so an open menu stays as it is.
+            const bool changed = m_modeItems != items;
+            if (changed) {
+                m_modeItems = items;
+                m_mode->setItems(std::move(items));
+            }
+            m_mode->setCurrentIndex(current);
+            // Rebuilding the items does not relabel a row whose index stays put.
+            if (changed)
+                m_mode->setDisplayText(std::nullopt);
+        }
+
+        if (m_pendingA2dp && bestA2dp >= 0) {
+            m_pendingA2dp = false;
+            if (card->activeProfileIndex() != bestA2dp)
+                card->setActiveProfileIndex(bestA2dp);
+        }
+    }
+
+    void activateMode(int index)
+    {
+        if (index < 0 || index >= int(m_modes.size()))
+            return;
+        const std::shared_ptr<AudioObject> card = m_card.lock();
+        if (!card)
+            return;
+        setOperationError({});
+        const Mode& mode = m_modes[index];
+        if (mode.profile >= 0) {
+            if (mode.profile != card->activeProfileIndex())
+                card->setActiveProfileIndex(mode.profile);
+            return;
+        }
+
+        // Connect the A2DP link; the card's profiles then include it, and
+        // updateMode() selects it.
+        const std::string path = card->property("api.bluez5.path");
+        if (path.empty())
+            return;
+        if (!m_bluez)
+            m_bluez = bluez::Manager::shared();
+        const std::shared_ptr<bluez::BluetoothObject> device = m_bluez ? m_bluez->object(path) : nullptr;
+        if (!device) {
+            setOperationError(tr("the Bluetooth device is not available"));
+            return;
+        }
+        m_pendingA2dp = true;
+        device->connectProfile(kA2dpSinkUuid);
     }
 
     void updateMeter()
@@ -304,6 +465,19 @@ private:
         const double volume = m_monitor.volume();
         m_inputLevel->setMeterLevel(volume > 0 ? std::max(0.0, 1 + std::log10(volume) * 20 / 50) : 0);
     }
+
+    struct Mode
+    {
+        enum Kind {
+            Other,
+            A2dp,
+            Headset,
+        };
+
+        // The card's profile, or -1 when BlueZ must connect A2DP first.
+        int profile = -1;
+        Kind kind = Other;
+    };
 
     std::shared_ptr<Backend> m_backend;
     AudioModel m_outputs;
@@ -317,6 +491,14 @@ private:
     Card* m_deviceCard;
     ListRow* m_noDevices;
     std::vector<DeviceRow*> m_rows;
+    Card* m_modeCard;
+    RowComboBox* m_mode;
+    std::vector<std::string> m_modeItems;
+    std::vector<Mode> m_modes;
+    std::weak_ptr<AudioObject> m_card;
+    base::Subscription m_cardChanged;
+    bool m_pendingA2dp = false;
+    std::shared_ptr<bluez::Manager> m_bluez;
     Card* m_sliders;
     SliderRow* m_outputVolume;
     SliderRow* m_balance;
