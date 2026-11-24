@@ -1,0 +1,2851 @@
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cutefish-settings\n"
+"Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
+"POT-Creation-Date: 2026-11-22 21:58+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "Unknown"
+msgstr "Bilinmiyor"
+
+#. TRANSLATORS: a processor model and its number of cores, such as "Intel Core
+#. i5 x 8".
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Allow incoming pairing"
+msgstr "Gelen eşleştirmeye izin ver"
+
+#: src/pages/display/displaypage.cpp
+#, python-brace-format
+msgid "The previous settings come back in {n} second."
+msgid_plural "The previous settings come back in {n} seconds."
+msgstr[0] "Önceki ayarlar {n} saniye içinde geri yüklenecek."
+msgstr[1] "Önceki ayarlar {n} saniye içinde geri yüklenecek."
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Fixed font"
+msgstr "Sabit genişlikli yazı tipi"
+
+#: src/pages/keyboard/keyboardpage.cpp src/pages/shortcuts/shortcutspage.cpp
+#: src/window/pagelist.cpp
+msgid "Keyboard Shortcuts"
+msgstr "Klavye Kısayolları"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid ""
+"Ctrl is the shortcut key and Alt switches windows. The shortcuts can be "
+"changed in Keyboard Shortcuts."
+msgstr ""
+"Ctrl kısayol tuşudur ve Alt pencereler arasında geçiş yapar. Kısayollar, "
+"Klavye Kısayolları bölümünden değiştirilebilir."
+
+#: src/pages/power/powerpage.cpp
+#, python-brace-format
+msgid "{n} minute"
+msgid_plural "{n} minutes"
+msgstr[0] "{n} dakika"
+msgstr[1] "{n} dakika"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Snap the window to the left"
+msgstr "Pencereyi sola yasla"
+
+#. TRANSLATORS: a processor model and its number of cores, such as "Intel Core
+#. i5 x 8".
+#: src/pages/about/aboutinfo.cpp
+#, python-brace-format
+msgid "{model} x {count}"
+msgstr "{model} x {count}"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "B"
+msgstr "B"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "KB"
+msgstr "bilgi bankası"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "MB"
+msgstr "MB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "GB"
+msgstr "Büyük Britanya"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "TB"
+msgstr "verem"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "PB"
+msgstr "PB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "EB"
+msgstr "EB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "ZB"
+msgstr "ZB"
+
+#: src/pages/about/aboutinfo.cpp
+msgid "YB"
+msgstr "YB"
+
+#. TRANSLATORS: a size, such as "16 GB".
+#: src/pages/about/aboutinfo.cpp
+#, python-brace-format
+msgid "{value} {unit}"
+msgstr "{value} {unit}"
+
+#. TRANSLATORS: the space used on the system disk and its size, such as "40 GB
+#. / 256 GB".
+#: src/pages/about/aboutinfo.cpp
+#, python-brace-format
+msgid "{used} / {total}"
+msgstr "{used} / {total}"
+
+#: src/pages/about/aboutpage.cpp src/window/pagelist.cpp
+msgid "About"
+msgstr "Hakkında"
+
+#: src/pages/about/aboutpage.cpp
+#, python-brace-format
+msgid "Running on {system}"
+msgstr "{system} üzerinde çalışıyor"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Device name"
+msgstr "Cihaz adı"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Model"
+msgstr "Modeli"
+
+#: src/pages/about/aboutpage.cpp
+msgid "System version"
+msgstr "Sistem sürümü"
+
+#: src/pages/about/aboutpage.cpp
+msgid "System type"
+msgstr "Sistem türü"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Kernel version"
+msgstr "Çekirdek sürümü"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Processor"
+msgstr "İşlemci"
+
+#: src/pages/about/aboutpage.cpp
+msgid "RAM"
+msgstr "RAM"
+
+#: src/pages/about/aboutpage.cpp
+msgid "Internal storage"
+msgstr "Dahili depolama"
+
+#: src/pages/about/aboutpage.cpp src/pages/about/licensespage.cpp
+#: src/window/pagelist.cpp
+msgid "Open-Source Licenses"
+msgstr "Açık Kaynak Lisansları"
+
+#: src/pages/about/licensespage.cpp
+msgid "Desktop and applications"
+msgstr "Masaüstü ve uygulamalar"
+
+#: src/pages/about/licensespage.cpp
+msgid ""
+"Terminal and the icon theme are under the GNU General Public License 3.0."
+msgstr "Terminal ve simge teması GNU Genel Kamu Lisansı 3.0 kapsamındadır."
+
+#: src/pages/about/licensespage.cpp
+msgid "Compositor"
+msgstr "Bileştirici"
+
+#: src/pages/about/licensespage.cpp
+msgid "Wayland and window management, designed after Chromium's Exo and Ash"
+msgstr ""
+"Chromium'un Exo ve Ash'inden sonra tasarlanan Wayland ve pencere yönetimi"
+
+#: src/pages/about/licensespage.cpp
+msgid "Xwayland window manager and selection bridge, adapted from sommelier"
+msgstr "Sommelier'den uyarlanan Xwayland pencere yöneticisi ve seçim köprüsü"
+
+#: src/pages/about/licensespage.cpp
+msgid "Pointer acceleration curve"
+msgstr "İşaretçi hızlanma eğrisi"
+
+#: src/pages/about/licensespage.cpp
+msgid ""
+"The source code of the pointer acceleration curve is available under the "
+"Apple Public Source License 2.0 at https://github.com/cutefishos/cutefish-"
+"compositor."
+msgstr ""
+"İşaretçi hızlanma eğrisinin kaynak kodu, https://github.com/cutefishos/"
+"cutefish-compositor adresindeki Apple Kamu Kaynak Lisansı 2.0 kapsamında "
+"mevcuttur."
+
+#: src/pages/accounts/accountspage.cpp src/window/pagelist.cpp
+msgid "Users"
+msgstr "Kullanıcılar"
+
+#: src/pages/accounts/accountspage.cpp
+msgid "Add user"
+msgstr "Kullanıcı ekle"
+
+#: src/pages/accounts/accountspage.cpp src/pages/accounts/userdetailsdialog.cpp
+msgid "Delete this user"
+msgstr "Bu kullanıcıyı sil"
+
+#: src/pages/accounts/accountspage.cpp
+#, python-brace-format
+msgid ""
+"Delete user “{name}”? Their home directory and its contents will be "
+"permanently deleted. This cannot be undone."
+msgstr ""
+"\"{name}\" kullanıcısı silinsin mi? Ana dizinleri ve içerikleri kalıcı "
+"olarak silinecek. Bu geri alınamaz."
+
+#: src/pages/accounts/accountspage.cpp src/pages/datetime/timezonedialog.cpp
+#: src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+#: src/pages/shortcuts/shortcutspage.cpp
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Cancel"
+msgstr "İptal et"
+
+#: src/pages/accounts/accountspage.cpp
+msgid "Delete"
+msgstr "Sil"
+
+#: src/pages/accounts/picturedialog.cpp
+msgid "Choose a picture"
+msgstr "Bir resim seçin"
+
+#: src/pages/accounts/picturedialog.cpp
+msgid "Choose File…"
+msgstr "Dosya Seç…"
+
+#: src/pages/accounts/picturedialog.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/proxy/proxypage.cpp src/pages/network/vpn/vpndialogs.cpp
+msgid "Save"
+msgstr "Kaydet"
+
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
+#: src/pages/accounts/picturedialog.cpp src/pages/wallpaper/wallpaperpage.cpp
+#, python-brace-format
+msgid "Image files ({patterns})"
+msgstr "Resim dosyaları ({patterns})"
+
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
+#: src/pages/accounts/picturedialog.cpp src/pages/network/vpn/vpndialogs.cpp
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "All files (*)"
+msgstr "Tüm dosyalar (*)"
+
+#: src/pages/accounts/userdetailsdialog.cpp src/pages/accounts/userdialogs.cpp
+msgid "Account type"
+msgstr "Hesap türü"
+
+#: src/pages/accounts/userdetailsdialog.cpp
+msgid "Change password…"
+msgstr "Şifre değiştir…"
+
+#: src/pages/accounts/userdetailsdialog.cpp src/pages/accounts/userdialogs.cpp
+msgid "Standard"
+msgstr "Standart"
+
+#: src/pages/accounts/userdetailsdialog.cpp src/pages/accounts/userdialogs.cpp
+msgid "Administrator"
+msgstr "Yönetici"
+
+#: src/pages/accounts/userdialogs.cpp
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Required"
+msgstr "Gerekli"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Change password"
+msgstr "Şifre değiştir"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "User name"
+msgstr "Kullanıcı adı"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Current password"
+msgstr "Mevcut Şifre"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "New password"
+msgstr "Yeni Şifre"
+
+#: src/pages/accounts/userdialogs.cpp src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Password"
+msgstr "Şifre"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Verify password"
+msgstr "Şifreyi doğrula"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The current password is incorrect"
+msgstr "Mevcut şifre yanlış"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The new password was not accepted"
+msgstr "Yeni şifre kabul edilmedi"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The password could not be changed"
+msgstr "Şifre değiştirilemedi"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "The password change did not finish in time"
+msgstr "Şifre değişikliği zamanında tamamlanmadı"
+
+#: src/pages/accounts/userdialogs.cpp
+msgid "Add new user"
+msgstr "Yeni kullanıcı ekle"
+
+#: src/pages/accounts/userdialogs.cpp src/pages/language/addlanguagedialog.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Add"
+msgstr "Ekle"
+
+#: src/pages/accounts/userrow.cpp
+msgid "Logged in"
+msgstr "Oturum aç"
+
+#: src/pages/appearance/appearancepage.cpp src/window/pagelist.cpp
+msgid "Appearance"
+msgstr "Görünüm"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Light"
+msgstr "Aydınlık"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Dark"
+msgstr "Karanlık"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Auto"
+msgstr "Otomatik"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Accent color"
+msgstr "Vurgu rengi"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Reduce Transparency"
+msgstr "Şeffaflığı Azaltın"
+
+#: src/pages/appearance/appearancepage.cpp
+msgid "Colored Window Buttons"
+msgstr "Renkli Pencere Düğmeleri"
+
+#: src/pages/appearance/appearancepage.cpp src/pages/fonts/fontspage.cpp
+#: src/window/pagelist.cpp
+msgid "Fonts"
+msgstr "Yazı tipleri"
+
+#: src/pages/appearance/appearancepage.cpp
+#: src/pages/icontheme/iconthemepage.cpp src/window/pagelist.cpp
+msgid "Icon Theme"
+msgstr "Simge Teması"
+
+#: src/pages/appearance/appearancepage.cpp
+#: src/pages/cursortheme/cursorthemepage.cpp src/window/pagelist.cpp
+msgid "Cursor Style"
+msgstr "İmleç Stili"
+
+#: src/pages/battery/battery.cpp
+#, python-brace-format
+msgid "Today at {time}"
+msgstr "Bugün {time}'da"
+
+#: src/pages/battery/battery.cpp
+#, python-brace-format
+msgid "Yesterday at {time}"
+msgstr "Dün saat {time}'da"
+
+#: src/pages/battery/batterypage.cpp
+msgid "History"
+msgstr "Tarih"
+
+#: src/pages/battery/batterypage.cpp
+msgid "24 hours"
+msgstr "24 saat"
+
+#: src/pages/battery/batterypage.cpp
+msgid "7 days"
+msgstr "7 gün"
+
+#: src/pages/battery/batterypage.cpp src/window/pagelist.cpp
+msgid "Battery"
+msgstr "Pil"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Health"
+msgstr "Sağlık"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Condition"
+msgstr "Durum"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Maximum capacity"
+msgstr "Maksimum kapasite"
+
+#: src/pages/battery/batterypage.cpp src/pages/battery/historygraph.cpp
+msgid "Charging"
+msgstr "Şarj oluyor"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Show percentage in menu bar"
+msgstr "Menü çubuğunda yüzdeyi göster"
+
+#. TRANSLATORS: the names of a computer's two batteries.
+#: src/pages/battery/batterypage.cpp
+msgid "Main"
+msgstr "Ana"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Extra"
+msgstr "Ekstra"
+
+#. TRANSLATORS: the name of one of a computer's batteries, such as "Battery
+#. 3".
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "Battery {n}"
+msgstr "Pil {n}"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Excellent"
+msgstr "Harika"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Normal"
+msgstr "Normal"
+
+#: src/pages/battery/batterypage.cpp
+msgid "Poor"
+msgstr "Zayıf"
+
+#. TRANSLATORS: a percentage, such as "92%".
+#: src/pages/battery/batterypage.cpp src/pages/display/displaypage.cpp
+#: src/pages/network/common/detailsdialog.cpp
+#, python-brace-format
+msgid "{percent}%"
+msgstr "{percent}%"
+
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "Last charged to {percent}%"
+msgstr "Son olarak %{percent} oranında ücretlendirildi"
+
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid "Limit charging to {percent}%"
+msgstr "Şarjı %{percent} ile sınırla"
+
+#: src/pages/battery/batterypage.cpp
+#, python-brace-format
+msgid ""
+"While plugged in, charging stops at {end}% and resumes below {start}%, so "
+"the battery wears more slowly."
+msgstr ""
+"Fişi takılıyken şarj işlemi %{end}'de durur ve %{start}'ın altında kaldığı "
+"yerden devam eder, böylece pil daha yavaş aşınır."
+
+#: src/pages/battery/batterypage.cpp
+msgid ""
+"This computer's battery controller did not keep the limit, so the battery "
+"still charges fully."
+msgstr ""
+"Bu bilgisayarın pil denetleyicisi sınırı korumadığından pil hâlâ tam olarak "
+"şarj oluyor."
+
+#: src/pages/battery/historygraph.cpp
+msgid "Fully charged"
+msgstr "Tamamen şarj oldu"
+
+#: src/pages/battery/historygraph.cpp
+msgid "Not charging"
+msgstr "Şarj olmuyor"
+
+#: src/pages/battery/historygraph.cpp
+msgid "On battery"
+msgstr "Pilde"
+
+#: src/pages/battery/historygraph.cpp
+msgid "Plugged in"
+msgstr "Takılı"
+
+#. TRANSLATORS: a weekday and a time in the graph's readout, such as "Mon 9:41
+#. AM".
+#: src/pages/battery/historygraph.cpp
+#, python-brace-format
+msgid "{day} {time}"
+msgstr "{day} {time}"
+
+#. TRANSLATORS: the battery state and the time in the graph's readout, such as
+#. "Charging · 9:41 AM".
+#: src/pages/battery/historygraph.cpp
+#, python-brace-format
+msgid "{state} · {time}"
+msgstr "{state} · {time}"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Audio device"
+msgstr "Ses cihazı"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Headphones"
+msgstr "Kulaklıklar"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Headset"
+msgstr "Kulaklık"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Camera"
+msgstr "Kamera"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Video camera"
+msgstr "Video kamera"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Computer"
+msgstr "Bilgisayar"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Game controller"
+msgstr "Oyun kumandası"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/window/pagelist.cpp
+msgid "Keyboard"
+msgstr "Klavye"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/mouse/mousepage.cpp
+#: src/window/pagelist.cpp
+msgid "Mouse"
+msgstr "Fare"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Drawing tablet"
+msgstr "Çizim tableti"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Modem"
+msgstr "Modem"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Media player"
+msgstr "Medya oynatıcı"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Network device"
+msgstr "Ağ cihazı"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Phone"
+msgstr "Telefon"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Printer"
+msgstr "Yazıcı"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Scanner"
+msgstr "Tarayıcı"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgctxt "device type"
+msgid "Display"
+msgstr "Ekran"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp src/pages/network/vpn/vpneditor.cpp
+msgid "Address"
+msgstr "Adres"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Powered"
+msgstr "Güçte"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Visible to other devices"
+msgstr "Diğer cihazlar tarafından görülebilir"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Device type"
+msgstr "Cihaz türü"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Model number"
+msgstr "Model numarası"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Version"
+msgstr "Sürüm"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Trusted"
+msgstr "Güvenilir"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Blocked"
+msgstr "Engellendi"
+
+#: src/pages/bluetooth/bluetoothdialogs.cpp
+msgid "Forget this device"
+msgstr "Bu cihazı unut"
+
+#: src/pages/bluetooth/bluetoothpage.cpp src/pages/network/vpn/vpndialogs.cpp
+msgid "Connected"
+msgstr "Bağlı"
+
+#: src/pages/bluetooth/bluetoothpage.cpp src/pages/network/vpn/vpndialogs.cpp
+msgid "Not connected"
+msgstr "Bağlı değil"
+
+#. TRANSLATORS: a device's connection and its battery level, such as
+#. "Connected · 80%".
+#: src/pages/bluetooth/bluetoothpage.cpp
+#, python-brace-format
+msgid "{status} · {percent}%"
+msgstr "{status} · %{percent}"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Cancel pairing"
+msgstr "Eşleştirmeyi iptal et"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Disconnect"
+msgstr "Bağlantıyı kes"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Discoverable"
+msgstr "Keşfedilebilir"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Not discoverable"
+msgstr "Keşfedilemez"
+
+#: src/pages/bluetooth/bluetoothpage.cpp src/pages/sound/soundpage.cpp
+#: src/window/pagelist.cpp
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "My devices"
+msgstr "Cihazlarım"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Other devices"
+msgstr "Diğer cihazlar"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Bluetooth service is unavailable"
+msgstr "Bluetooth hizmeti kullanılamıyor"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "Bluetooth is blocked by a hardware switch"
+msgstr "Bluetooth bir donanım anahtarı tarafından engellendi"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "No Bluetooth adapters found"
+msgstr "Bluetooth bağdaştırıcısı bulunamadı"
+
+#: src/pages/bluetooth/bluetoothpage.cpp
+msgid "No devices found. Make sure your device is discoverable."
+msgstr ""
+"Hiçbir cihaz bulunamadı. Cihazınızın keşfedilebilir olduğundan emin olun."
+
+#: src/pages/cursortheme/cursorthemepage.cpp
+msgid "Cursor theme"
+msgstr "İmleç teması"
+
+#: src/pages/cursortheme/cursorthemepage.cpp
+msgid "Cursor size"
+msgstr "İmleç boyutu"
+
+#: src/pages/datetime/datetimepage.cpp src/window/pagelist.cpp
+msgid "Date & Time"
+msgstr "Tarih ve Saat"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "Auto sync"
+msgstr "Otomatik senkronizasyon"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "24-hour time"
+msgstr "24 saatlik biçim"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "Time zone"
+msgstr "Zaman dilimi"
+
+#: src/pages/datetime/datetimepage.cpp
+msgid "Unable to use auto sync. Please ensure your NTP service is installed."
+msgstr ""
+"Otomatik senkronizasyon kullanılamıyor. Lütfen NTP hizmetinizin kurulu "
+"olduğundan emin olun."
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Search city or country"
+msgstr "Şehir veya ülkeyi arayın"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "No matching time zones"
+msgstr "Eşleşen saat dilimi yok"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Time Zone"
+msgstr "Zaman Dilimi"
+
+#. TRANSLATORS: the button that makes the chosen time zone the system's.
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Set"
+msgstr "Ayarla"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Click the map or search to choose a time zone"
+msgstr "Bir saat dilimi seçmek için haritayı tıklayın veya arama yapın"
+
+#. TRANSLATORS: a time zone's city and its country or region, such as "Paris,
+#. France".
+#: src/pages/datetime/timezonedialog.cpp
+#, python-brace-format
+msgid "{city}, {region}"
+msgstr "{city}, {region}"
+
+#: src/pages/datetime/timezonedialog.cpp
+msgid "Current time zone"
+msgstr "Geçerli saat dilimi"
+
+#: src/pages/datetime/timezonedialog.cpp
+#, python-brace-format
+msgid "Currently {zone}"
+msgstr "Currently {zone}"
+
+#: src/pages/datetime/timezonemap.cpp
+msgid "Same time as now"
+msgstr "Şimdikiyle aynı zamanda"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} hour ahead"
+msgid_plural "{n} hours ahead"
+msgstr[0] "{n} saat ileride"
+msgstr[1] "{n} saat ileride"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} hour behind"
+msgid_plural "{n} hours behind"
+msgstr[0] "{n} saat geride"
+msgstr[1] "{n} saat geride"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} min ahead"
+msgid_plural "{n} min ahead"
+msgstr[0] "{n} dk ileride"
+msgstr[1] "{n} dk ileride"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{n} min behind"
+msgid_plural "{n} min behind"
+msgstr[0] "{n} dk geride"
+msgstr[1] "{n} dk geride"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{hours} h {minutes} min ahead"
+msgstr "{hours} sa {minutes} dakika ileri"
+
+#: src/pages/datetime/timezonemap.cpp
+#, python-brace-format
+msgid "{hours} h {minutes} min behind"
+msgstr "{hours} sa {minutes} dk geri"
+
+#: src/pages/datetime/timezonemap.cpp
+msgid "Tomorrow"
+msgstr "Yarın"
+
+#: src/pages/datetime/timezonemap.cpp
+msgid "Yesterday"
+msgstr "Dün"
+
+#: src/pages/defaultapps/defaultappspage.cpp src/window/pagelist.cpp
+msgid "Default Apps"
+msgstr "Varsayılan Uygulamalar"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Web browser"
+msgstr "Web tarayıcısı"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Email client"
+msgstr "E-posta istemcisi"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Text editor"
+msgstr "Metin editörü"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Music player"
+msgstr "Müzik çalar"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Video player"
+msgstr "Video oynatıcı"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Image viewer"
+msgstr "Resim görüntüleyici"
+
+#: src/pages/defaultapps/defaultappspage.cpp
+msgid "Terminal"
+msgstr "terminal"
+
+#: src/pages/defaultapps/defaultappspage.cpp src/pages/fonts/fontspage.cpp
+#: src/pages/hotcorners/hotcornerspage.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "None"
+msgstr "Hiçbiri"
+
+#: src/pages/display/displaypage.cpp
+#, python-brace-format
+msgid "{item} (Recommended)"
+msgstr "{item} (Önerilen)"
+
+#: src/pages/display/displaypage.cpp src/window/pagelist.cpp
+msgid "Display"
+msgstr "Ekran"
+
+#: src/pages/display/displaypage.cpp
+msgid "Brightness"
+msgstr "Parlaklık"
+
+#: src/pages/display/displaypage.cpp
+msgid "Resolution"
+msgstr "Çözünürlük"
+
+#: src/pages/display/displaypage.cpp
+msgid "Refresh rate"
+msgstr "Yenileme hızı"
+
+#: src/pages/display/displaypage.cpp
+msgid "Scale"
+msgstr "Ölçek"
+
+#: src/pages/display/displaypage.cpp
+msgid "Rotation"
+msgstr "Döndürme"
+
+#: src/pages/display/displaypage.cpp
+msgctxt "rotation"
+msgid "Normal"
+msgstr "Normal"
+
+#: src/pages/display/displaypage.cpp
+msgid "Enabled"
+msgstr "Etkin"
+
+#: src/pages/display/displaypage.cpp
+msgid "Primary"
+msgstr "Öncelik"
+
+#: src/pages/display/displaypage.cpp src/pages/power/powerpage.cpp
+msgid "Mode"
+msgstr "Mod"
+
+#: src/pages/display/displaypage.cpp
+msgid "Position"
+msgstr "Konum"
+
+#: src/pages/display/displaypage.cpp
+msgid "Night Light"
+msgstr "Gece Aydınlatması"
+
+#: src/pages/display/displaypage.cpp
+msgid "Color temperature"
+msgstr "Renk sıcaklığı"
+
+#: src/pages/display/displaypage.cpp
+msgid "Less warm"
+msgstr "Daha az sıcak"
+
+#: src/pages/display/displaypage.cpp
+msgid "More warm"
+msgstr "Daha sıcak"
+
+#: src/pages/display/displaypage.cpp
+msgid "Schedule"
+msgstr "Takvim"
+
+#: src/pages/display/displaypage.cpp src/pages/power/powerpage.cpp
+msgid "Never"
+msgstr "Asla"
+
+#: src/pages/display/displaypage.cpp
+msgid "Sunset to sunrise"
+msgstr "Gün batımından gün doğumuna"
+
+#: src/pages/display/displaypage.cpp src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Custom"
+msgstr "Ortak"
+
+#: src/pages/display/displaypage.cpp
+msgid "Sunset"
+msgstr "Gün batımı"
+
+#: src/pages/display/displaypage.cpp
+msgid "Sunrise"
+msgstr "Gündoğumu"
+
+#: src/pages/display/displaypage.cpp
+msgid "From"
+msgstr "İtibaren"
+
+#: src/pages/display/displaypage.cpp
+msgid "To"
+msgstr "İle"
+
+#: src/pages/display/displaypage.cpp
+msgid "Screen"
+msgstr "Ekran"
+
+#: src/pages/display/displaypage.cpp
+msgid "Display configuration is unavailable in this session."
+msgstr "Bu oturumda ekran yapılandırması kullanılamıyor."
+
+#: src/pages/display/displaypage.cpp
+msgid "Keep these display settings?"
+msgstr "Bu ekran ayarları korunsun mu?"
+
+#: src/pages/display/displaypage.cpp
+msgid "Revert"
+msgstr "Geri al"
+
+#: src/pages/display/displaypage.cpp
+msgid "Keep"
+msgstr "Kale"
+
+#: src/pages/dock/dockpage.cpp src/window/pagelist.cpp
+msgid "Dock & Desktop"
+msgstr "Rıhtım ve Masaüstü"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Dock"
+msgstr "Rıhtım"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Left"
+msgstr "Sol"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Bottom"
+msgstr "Alt"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Right"
+msgstr "Sağ"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Size"
+msgstr "Boyut"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Small"
+msgstr "Küçük"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Large"
+msgstr "Büyük"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Magnification"
+msgstr "Büyütme"
+
+#: src/pages/dock/dockpage.cpp src/pages/network/vpn/vpneditor.cpp
+#: src/pages/notifications/notificationspage.cpp
+msgid "Off"
+msgstr "Kapalı"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Glass effect"
+msgstr "Cam efekti"
+
+#: src/pages/dock/dockpage.cpp
+msgid "More clear"
+msgstr "Daha net"
+
+#: src/pages/dock/dockpage.cpp
+msgid "More tinted"
+msgstr "Daha renkli"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Display mode"
+msgstr "Ekran modu"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Always show"
+msgstr "Her zaman göster"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Always hide"
+msgstr "Her zaman gizle"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Smart hide"
+msgstr "Akıllı gizleme"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Minimized windows area"
+msgstr "Küçültülmüş pencere alanı"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Desktop"
+msgstr "Masaüstü"
+
+#: src/pages/dock/dockpage.cpp src/pages/hotcorners/hotcornerspage.cpp
+#: src/window/pagelist.cpp
+msgid "Hot Corners"
+msgstr "Sıcak Köşeler"
+
+#. TRANSLATORS: a font size in points, such as "9pt".
+#: src/pages/fonts/fontspage.cpp
+#, python-brace-format
+msgid "{size}pt"
+msgstr "{size}pt"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "General font"
+msgstr "Genel yazı tipi"
+
+#: src/pages/fonts/fontspage.cpp
+#, python-brace-format
+msgid "{size} (Default)"
+msgstr "{size} (Varsayılan)"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Font size"
+msgstr "Yazı tipi boyutu"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Hinting"
+msgstr "ipucu"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Slight"
+msgstr "Hafif"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Medium"
+msgstr "Orta"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Full"
+msgstr "Tam"
+
+#: src/pages/fonts/fontspage.cpp
+msgid "Anti-Aliasing"
+msgstr "Kenar Yumuşatma"
+
+#: src/pages/general/generalpage.cpp src/pages/shortcuts/shortcutsmodel.cpp
+#: src/window/pagelist.cpp
+msgid "General"
+msgstr "Genel"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Control"
+msgstr "Kontrol"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Option"
+msgstr "Seçenek"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Alt"
+msgstr "Alternatif"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Shift"
+msgstr "Üst Karakter"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/keyboard/keyboardpage.cpp
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Command"
+msgstr "Komut"
+
+#: src/pages/hotcorners/hotcorners.cpp src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Meta"
+msgstr "Meta"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Show All Windows"
+msgstr "Tüm Pencereleri Göster"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Show Desktop"
+msgstr "Masaüstünü Göster"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Apps"
+msgstr "Uygulamalar"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Lock Screen"
+msgstr "Kilit Ekranı"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid ""
+"Hot corners are managed by the Cutefish compositor, which is not running."
+msgstr "Sıcak köşeler, çalışmayan Cutefish dizgicisi tarafından yönetiliyor."
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Top left"
+msgstr "Sol üst"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Top right"
+msgstr "Sağ üst"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Bottom left"
+msgstr "Sol alt"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid "Bottom right"
+msgstr "Sağ alt"
+
+#: src/pages/hotcorners/hotcornerspage.cpp
+msgid ""
+"Move the pointer into a corner of the screen to run its action. Hold "
+"modifier keys while choosing an action to make the corner work only while "
+"they are held."
+msgstr ""
+"Eylemini çalıştırmak için işaretçiyi ekranın bir köşesine taşıyın. Köşenin "
+"yalnızca basılı tutulduğunda çalışmasını sağlamak için bir eylem seçerken "
+"değiştirici tuşları basılı tutun."
+
+#. TRANSLATORS: the keys a hot corner needs held and its action, such as "Ctrl
+#. + Alt – Lock Screen".
+#: src/pages/hotcorners/hotcornerspage.cpp
+#, python-brace-format
+msgid "{keys} – {action}"
+msgstr "{keys} – {action}"
+
+#: src/pages/icontheme/iconthemepage.cpp
+msgid "Icon theme"
+msgstr "Simge teması"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Input method"
+msgstr "Giriş yöntemi"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Input methods can only be selected in a Cutefish Wayland session."
+msgstr "Giriş yöntemleri yalnızca Cutefish Wayland oturumunda seçilebilir."
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "The selected input method is not running."
+msgstr "Seçilen giriş yöntemi çalışmıyor."
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Applications started before the input method may need to be restarted."
+msgstr ""
+"Giriş yönteminden önce başlatılan uygulamaların yeniden başlatılması "
+"gerekebilir."
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Shortcut key"
+msgstr "Kısayol tuşu"
+
+#: src/pages/keyboard/keyboardpage.cpp src/pages/keyboard/layoutpage.cpp
+msgid "Layout"
+msgstr "Düzen"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Key repeat"
+msgstr "Tuş tekrarı"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Delay until repeat"
+msgstr "Tekrarlanana kadar gecikme"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid "Repeat rate"
+msgstr "Tekrar oranı"
+
+#: src/pages/keyboard/keyboardpage.cpp
+msgid ""
+"The key next to the space bar works as Command and the one beside it as "
+"Option, on any keyboard: Command+C copies, Command+Tab switches windows, "
+"Command+Q quits. The shortcuts can be changed in Keyboard Shortcuts."
+msgstr ""
+"Herhangi bir klavyede boşluk çubuğunun yanındaki tuş Komut olarak, yanındaki "
+"ise Seçenek olarak çalışır: Command+C kopyalar, Command+Sekme pencereleri "
+"değiştirir, Command+Q sonlandırılır. Kısayollar Klavye Kısayolları'nda "
+"değiştirilebilir."
+
+#: src/pages/keyboard/layoutpage.cpp
+msgid "No layouts found"
+msgstr "Düzen bulunamadı"
+
+#: src/pages/keyboard/layoutpage.cpp
+msgid "Search layouts"
+msgstr "Düzenleri ara"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "Add Language"
+msgstr "Dil Ekle"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "Search languages"
+msgstr "Dilleri ara"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "Loading languages…"
+msgstr "Diller yükleniyor…"
+
+#: src/pages/language/addlanguagedialog.cpp
+msgid "No languages found"
+msgstr "Dil bulunamadı"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Choose Region"
+msgstr "Bölge Seçin"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Search regions"
+msgstr "Bölgeleri ara"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Choose"
+msgstr "Seçmek"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "Loading regions…"
+msgstr "Bölgeler yükleniyor…"
+
+#: src/pages/language/chooseregiondialog.cpp
+msgid "No regions found"
+msgstr "Hiçbir bölge bulunamadı"
+
+#: src/pages/language/language.cpp
+msgid "Could not save preferred languages. Please try again."
+msgstr "Tercih edilen diller kaydedilemedi. Lütfen tekrar deneyin."
+
+#: src/pages/language/languagepage.cpp
+#, python-brace-format
+msgid "Automatic ({value})"
+msgstr "Otomatik ({value})"
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "US"
+msgstr "ABD"
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "UK"
+msgstr "İngiltere"
+
+#: src/pages/language/languagepage.cpp
+msgctxt "measurement system"
+msgid "Metric"
+msgstr "Metrik"
+
+#: src/pages/language/languagepage.cpp
+msgid "Fahrenheit (°F)"
+msgstr "Fahrenhayt (°F)"
+
+#: src/pages/language/languagepage.cpp
+msgid "Celsius (°C)"
+msgstr "Santigrat (°C)"
+
+#: src/pages/language/languagepage.cpp src/window/pagelist.cpp
+msgid "Language & Region"
+msgstr "Dil ve Bölge"
+
+#: src/pages/language/languagepage.cpp
+msgid "Preferred languages"
+msgstr "Tercih edilen diller"
+
+#: src/pages/language/languagepage.cpp
+msgid "Add language…"
+msgstr "Dil ekle…"
+
+#: src/pages/language/languagepage.cpp
+msgid ""
+"Drag a language to the top to make it the system language. Right-click a "
+"language to remove it."
+msgstr ""
+"Bir dili sistem dili yapmak için en üste sürükleyin. Kaldırmak için bir dili "
+"sağ tıklayın."
+
+#: src/pages/language/languagepage.cpp
+msgid "Region"
+msgstr "Bölge"
+
+#: src/pages/language/languagepage.cpp
+msgid "First day of week"
+msgstr "Haftanın ilk günü"
+
+#: src/pages/language/languagepage.cpp
+msgid "Measurement system"
+msgstr "Ölçüm sistemi"
+
+#: src/pages/language/languagepage.cpp
+msgid "Temperature"
+msgstr "Sıcaklık"
+
+#: src/pages/language/languagepage.cpp
+msgid ""
+"Applications that are already open may use the new region after they restart."
+msgstr ""
+"Zaten açık olan uygulamalar yeniden başlatıldıktan sonra yeni bölgeyi "
+"kullanabilir."
+
+#: src/pages/language/languagepage.cpp
+msgid "Format preview"
+msgstr "Biçim önizlemesi"
+
+#: src/pages/language/languagepage.cpp
+msgid "Date"
+msgstr "Tarih"
+
+#: src/pages/language/languagepage.cpp
+msgid "Date and time"
+msgstr "Tarih ve saat"
+
+#: src/pages/language/languagepage.cpp
+msgid "Number"
+msgstr "Sayı"
+
+#: src/pages/language/languagepage.cpp
+msgid "Currency"
+msgstr "Para birimi"
+
+#: src/pages/language/preferredlanguagelist.cpp
+msgid "System language"
+msgstr "Sistem dili"
+
+#: src/pages/language/preferredlanguagelist.cpp
+msgid "Remove language"
+msgstr "Dili kaldır"
+
+#: src/pages/menubar/menubarpage.cpp src/window/pagelist.cpp
+msgid "Menu Bar"
+msgstr "Menü Çubuğu"
+
+#: src/pages/menubar/menubarpage.cpp
+msgid "Menu Bar Controls"
+msgstr "Menü Çubuğu Kontrolleri"
+
+#: src/pages/mouse/mousepage.cpp
+msgid "Left hand"
+msgstr "Sol el"
+
+#: src/pages/mouse/mousepage.cpp src/pages/touchpad/touchpadpage.cpp
+msgid "Natural scrolling"
+msgstr "Doğal kaydırma"
+
+#: src/pages/mouse/mousepage.cpp
+msgid "Mouse acceleration"
+msgstr "Fare hızlandırma"
+
+#: src/pages/mouse/mousepage.cpp src/pages/touchpad/touchpadpage.cpp
+msgid "Pointer speed"
+msgstr "İşaretçi hızı"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Auto-Join"
+msgstr "Otomatik Katıl"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Connect Automatically"
+msgstr "Otomatik Olarak Bağlan"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "IP Settings"
+msgstr "IP Ayarları"
+
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Security"
+msgstr "Güvenlik"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Signal"
+msgstr "Sinyal"
+
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "IPv4 address"
+msgstr "IPv4 adresi"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "IPv6 address"
+msgstr "IPv6 adresi"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "MAC address"
+msgstr "MAC adresi"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Gateway"
+msgstr "Geçit"
+
+#: src/pages/network/common/detailsdialog.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "DNS"
+msgstr "DNS"
+
+#: src/pages/network/common/detailsdialog.cpp
+msgid "Forget this network"
+msgstr "Bu ağı unut"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Configure IPv4"
+msgstr "IPv4'ü yapılandırın"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "IP Address"
+msgstr "IP Adresi"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Subnet Mask"
+msgstr "Alt Ağ Maskesi"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Router"
+msgstr "Yönlendirici"
+
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Optional"
+msgstr "İsteğe bağlı"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Configure IPv6"
+msgstr "IPv6'yı yapılandırma"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Prefix Length"
+msgstr "Önek Uzunluğu"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "Automatic DNS"
+msgstr "Otomatik DNS"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "DNS Servers"
+msgstr "DNS Sunucuları"
+
+#: src/pages/network/common/ipsettingsview.cpp
+msgid "These servers are asked before the network's own."
+msgstr "Bu sunucular ağın kendi sunucularından önce sorulur."
+
+#: src/pages/network/common/ipsettingsview.cpp
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Saving…"
+msgstr "Kaydediliyor…"
+
+#: src/pages/network/ethernet/ethernetpage.cpp src/window/pagelist.cpp
+msgid "Ethernet"
+msgstr "Kablolu Ağ"
+
+#: src/pages/network/hotspot/hotspotpage.cpp src/pages/network/networkpage.cpp
+#: src/pages/network/wlan/wlanpage.cpp src/window/pagelist.cpp
+msgid "Hotspot"
+msgstr "Erişim Noktası"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Wi-Fi hotspot"
+msgstr "Wi-Fi erişim noktası"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Network name"
+msgstr "Ağ adı"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Generate password"
+msgstr "Şifre oluştur"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Turn On Wi-Fi Hotspot?"
+msgstr "Wi-Fi Erişim Noktası Açılsın mı?"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+#, python-brace-format
+msgid ""
+"Turning on the hotspot will disconnect from “{network}”, and you will not "
+"have access to the internet it provides."
+msgstr ""
+"Erişim noktasını açtığınızda “{network}” bağlantısı kesilecek ve onun "
+"sağladığı internete erişemeyeceksiniz."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Turn on"
+msgstr "Aç"
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid ""
+"Share this computer's internet connection by creating a Wi-Fi network other "
+"devices can join. The connection to share must come from a source other than "
+"Wi-Fi."
+msgstr ""
+"Diğer cihazların katılabileceği bir Wi-Fi ağı oluşturarak bu bilgisayarın "
+"internet bağlantısını paylaşın. Paylaşılacak bağlantının Wi-Fi dışında bir "
+"kaynaktan gelmesi gerekir."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Turn on Wi-Fi to use the hotspot."
+msgstr "Erişim noktasını kullanmak için Wi-Fi'yi açın."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "System policy prohibits use as a hotspot."
+msgstr "Sistem politikası, erişim noktası olarak kullanılmasını yasaklıyor."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+#, python-brace-format
+msgid ""
+"Other devices can join “{network}” with the password below. Turn off the "
+"hotspot to use Wi-Fi on this computer."
+msgstr ""
+"Diğer cihazlar aşağıdaki şifreyle “{network}”a katılabilir. Bu bilgisayarda "
+"Wi-Fi kullanmak için ortak erişim noktasını kapatın."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Network name cannot be empty."
+msgstr "Ağ adı boş olamaz."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "Network name is too long."
+msgstr "Ağ adı çok uzun."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "The password must have at least 8 characters."
+msgstr "Şifre en az 8 karakterden oluşmalıdır."
+
+#: src/pages/network/hotspot/hotspotpage.cpp
+msgid "The password must have at most 63 characters."
+msgstr "Şifre en fazla 63 karakterden oluşmalıdır."
+
+#: src/pages/network/networkpage.cpp src/window/pagelist.cpp
+msgid "Network"
+msgstr "Ağ"
+
+#: src/pages/network/networkpage.cpp src/pages/network/vpn/vpnpage.cpp
+#: src/window/pagelist.cpp
+msgid "VPN"
+msgstr "VPN"
+
+#: src/pages/network/networkpage.cpp src/pages/network/proxy/proxypage.cpp
+#: src/window/pagelist.cpp
+msgid "Proxy"
+msgstr "vekil"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "No proxy"
+msgstr "Proxy yok"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Use proxy auto configuration URL"
+msgstr "Proxy otomatik yapılandırma URL'sini kullan"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Use manually specified proxy configuration"
+msgstr "Manuel olarak belirtilen proxy yapılandırmasını kullan"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Select file"
+msgstr "Dosya seç"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "HTTP proxy"
+msgstr "HTTP proxy'si"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Port"
+msgstr "Liman"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "Also use this proxy for FTP"
+msgstr "Bu proxy'yi FTP için de kullan"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "FTP proxy"
+msgstr "FTP proxy'si"
+
+#: src/pages/network/proxy/proxypage.cpp
+msgid "SOCKS proxy"
+msgstr "SOCKS proxy'si"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Add VPN"
+msgstr "VPN ekle"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Type"
+msgstr "Tip"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+#, python-brace-format
+msgid "{type} (Not Installed)"
+msgstr "{type} (Kurulu Değil)"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Status"
+msgstr "Durum"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Export to file…"
+msgstr "Dosyaya aktar…"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Export VPN Configuration"
+msgstr "VPN Yapılandırmasını Dışa Aktar"
+
+#. TRANSLATORS: keep the ASCII parentheses and the pattern in them unchanged.
+#: src/pages/network/vpn/vpndialogs.cpp src/pages/network/vpn/vpnpage.cpp
+#, python-brace-format
+msgid "VPN configurations ({patterns})"
+msgstr "VPN yapılandırmaları ({patterns})"
+
+#: src/pages/network/vpn/vpndialogs.cpp
+msgid "Remove VPN"
+msgstr "VPN'yi kaldır"
+
+#: src/pages/network/vpn/vpndialogs.cpp src/pages/network/vpn/vpnpage.cpp
+msgid "Connecting…"
+msgstr "Bağlanıyor…"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Show advanced options"
+msgstr "Gelişmiş seçenekleri göster"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Asked on connect"
+msgstr "Bağlanıldığında soruldu"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Choose…"
+msgstr "Seç…"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Hide advanced options"
+msgstr "Gelişmiş seçenekleri gizle"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Private key"
+msgstr "Özel anahtar"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Interface name"
+msgstr "Arayüz adı"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "From the name"
+msgstr "Adından"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Listen port"
+msgstr "Bağlantı noktasını dinle"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Automatic"
+msgstr "Otomatik"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Firewall mark"
+msgstr "Güvenlik duvarı işareti"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "MTU"
+msgstr "MTU"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Add routes for the peers' allowed IPs"
+msgstr "Eşlerin izin verilen IP'leri için rota ekleyin"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Add peer"
+msgstr "Eş ekle"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Peer"
+msgstr "Akran"
+
+#: src/pages/network/vpn/vpneditor.cpp src/pages/privacy/privacypage.cpp
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Remove"
+msgstr "Kaldır"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Public key"
+msgstr "Ortak anahtar"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Preshared key"
+msgstr "Önceden paylaşılmış anahtar"
+
+#. TRANSLATORS: a placeholder: the stored key stays unless a new one is typed.
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Kept"
+msgstr "Değiştirilmedi"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Endpoint"
+msgstr "Uç nokta"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Allowed IPs"
+msgstr "İzin verilen IP'ler"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "All traffic"
+msgstr "Tüm trafik"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Keepalive"
+msgstr "Canlı tutmak"
+
+#: src/pages/network/vpn/vpneditor.cpp
+#, python-brace-format
+msgid "Peer {number}"
+msgstr "Eş {number}"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Name"
+msgstr "İsim"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Available to all users"
+msgstr "Tüm kullanıcılar tarafından kullanılabilir"
+
+#: src/pages/network/vpn/vpneditor.cpp
+msgid "Use only for resources on its network"
+msgstr "Yalnızca ağındaki kaynaklar için kullanın"
+
+#: src/pages/network/vpn/vpneditor.cpp
+#, python-brace-format
+msgid "Install {package} to set up this kind of VPN."
+msgstr "Bu tür bir VPN kurmak için {package} yükleyin."
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Saved for all"
+msgstr "Herkes için kaydedildi"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Saved"
+msgstr "Kaydedildi"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Ask each time"
+msgstr "Her seferinde sor"
+
+#: src/pages/network/vpn/vpnformmodel.cpp
+msgid "Not needed"
+msgstr "Gerekli değil"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Add your user name to connect."
+msgstr "Bağlanmak için kullanıcı adınızı ekleyin."
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Add VPN…"
+msgstr "VPN'i ekle…"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Import from file…"
+msgstr "Dosyadan içe aktar…"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Import VPN Configuration"
+msgstr "VPN Yapılandırmasını İçe Aktar"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid "Importing…"
+msgstr "İçe aktarılıyor…"
+
+#: src/pages/network/vpn/vpnpage.cpp
+msgid ""
+"Import the configuration file your VPN provider gives you, such as an "
+"OpenVPN .ovpn or a WireGuard .conf file."
+msgstr ""
+"OpenVPN .ovpn veya WireGuard .conf dosyası gibi VPN sağlayıcınızın size "
+"verdiği yapılandırma dosyasını içe aktarın."
+
+#. TRANSLATORS: a Wi-Fi network's security: none, anyone can join.
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Open"
+msgstr "Aç"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "WPA Enterprise"
+msgstr "WPA Kurumsal"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "WPA2 Enterprise"
+msgstr "WPA2 Kurumsal"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "WPA3 Enterprise"
+msgstr "WPA3 Kurumsal"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Add Other Network"
+msgstr "Başka Ağ Ekle"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+#, python-brace-format
+msgid "Join “{network}”"
+msgstr "“{network}”e katılın"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Username"
+msgstr "Kullanıcı adı"
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid ""
+"This network signs in with a certificate, which can't be set up here yet."
+msgstr "Bu ağ, henüz burada ayarlanamayan bir sertifikayla oturum açıyor."
+
+#: src/pages/network/wlan/newnetworkdialog.cpp
+msgid "Join"
+msgstr "Katılmak"
+
+#: src/pages/network/wlan/wlanpage.cpp src/window/pagelist.cpp
+msgid "Wi-Fi"
+msgstr "Wifi"
+
+#: src/pages/network/wlan/wlanpage.cpp
+msgid "Known networks"
+msgstr "Bilinen ağlar"
+
+#: src/pages/network/wlan/wlanpage.cpp
+msgid "Other networks"
+msgstr "Diğer ağlar"
+
+#: src/pages/network/wlan/wlanpage.cpp
+msgid "Add other…"
+msgstr "Başka ekle…"
+
+#: src/pages/notifications/notificationspage.cpp src/window/pagelist.cpp
+msgid "Notifications"
+msgstr "Bildirimler"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Do Not Disturb"
+msgstr "Rahatsız etmeyin"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Applications"
+msgstr "Uygulamalar"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Applications appear here after they send a notification."
+msgstr "Başvurular bildirim gönderdikten sonra burada görünür."
+
+#: src/pages/notifications/notificationspage.cpp
+msgid ""
+"Notifications that skip the banner still go to the Notification Center. "
+"Turned off, they are dropped."
+msgstr ""
+"Banner'ı atlayan bildirimler yine de Bildirim Merkezi'ne gider. "
+"Kapatıldığında bırakılırlar."
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Banners"
+msgstr "Afişler"
+
+#: src/pages/notifications/notificationspage.cpp
+msgid "Notification Center only"
+msgstr "Yalnızca Bildirim Merkezi"
+
+#: src/pages/power/powerpage.cpp
+msgid "Power save"
+msgstr "Güç tasarrufu"
+
+#: src/pages/power/powerpage.cpp
+msgid "Balanced"
+msgstr "Dengeli"
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance"
+msgstr "Performans"
+
+#: src/pages/power/powerpage.cpp src/window/pagelist.cpp
+msgid "Power"
+msgstr "Güç"
+
+#: src/pages/power/powerpage.cpp
+msgid "Turn off display when inactive on battery"
+msgstr "Pil etkin olmadığında ekranı kapatın"
+
+#: src/pages/power/powerpage.cpp
+msgid "Reduces performance and power consumption."
+msgstr "Performansı ve güç tüketimini azaltır."
+
+#: src/pages/power/powerpage.cpp
+msgid "Standard performance and power consumption."
+msgstr "Standart performans ve güç tüketimi."
+
+#: src/pages/power/powerpage.cpp
+msgid "Higher performance, with more power consumption and heat."
+msgstr "Daha fazla güç tüketimi ve ısı ile daha yüksek performans."
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance is limited because the computer is on your lap."
+msgstr "Bilgisayar kucağınızda olduğundan performansı sınırlıdır."
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance is limited because the computer is too hot."
+msgstr "Bilgisayar çok sıcak olduğundan performans sınırlıdır."
+
+#: src/pages/power/powerpage.cpp
+msgid "Performance is currently limited."
+msgstr "Performans şu anda sınırlıdır."
+
+#: src/pages/power/powerpage.cpp
+msgid "Turn off display when inactive on power adapter"
+msgstr "Güç adaptörü etkin olmadığında ekranı kapatın"
+
+#: src/pages/power/powerpage.cpp
+msgid "Turn off display when inactive"
+msgstr "Etkin olmadığında ekranı kapat"
+
+#: src/pages/power/powerpage.cpp
+msgid "Prevent automatic sleeping on power adapter when the display is off"
+msgstr "Ekran kapalıyken güç adaptöründe otomatik uyku moduna geçmeyi önleyin"
+
+#: src/pages/power/powerpage.cpp
+msgid "Prevent automatic sleeping when the display is off"
+msgstr "Ekran kapalıyken otomatik uyku moduna geçmeyi önleyin"
+
+#: src/pages/privacy/privacypage.cpp src/window/pagelist.cpp
+msgid "Privacy"
+msgstr "Mahremiyet"
+
+#: src/pages/privacy/privacypage.cpp
+msgid "Computer control"
+msgstr "Bilgisayar kontrolü"
+
+#: src/pages/privacy/privacypage.cpp
+msgid ""
+"Computer control is managed by the Cutefish compositor, which is not running."
+msgstr ""
+"Bilgisayar kontrolü, çalışmayan Cutefish dizgicisi tarafından yönetiliyor."
+
+#: src/pages/privacy/privacypage.cpp
+msgid "No apps are allowed to control this computer without asking."
+msgstr ""
+"Hiçbir uygulamanın bu bilgisayarı sormadan kontrol etmesine izin verilmiyor."
+
+#: src/pages/privacy/privacypage.cpp
+msgid ""
+"An app you always allow can let its agent see the screen and use the pointer "
+"and keyboard without asking first. The Stop button in the menu bar still "
+"shows while it is in control."
+msgstr ""
+"Her zaman izin verdiğiniz bir uygulama, temsilcisinin size sormadan ekranı "
+"görmesine ve işaretçiyi ve klavyeyi kullanmasına izin verebilir. Menü "
+"çubuğundaki Durdur düğmesi, kontrol sizdeyken görünmeye devam eder."
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Press the new shortcut…"
+msgstr "Yeni kısayola basın…"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Press the shortcut…"
+msgstr "Kısayol tuşuna basın…"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "No shortcut. Add one below."
+msgstr "Kısayol yok. Aşağıya bir tane ekleyin."
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Add shortcut"
+msgstr "Kısayol ekle"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Restore default"
+msgstr "Varsayılanı geri yükle"
+
+#: src/pages/shortcuts/shortcuteditdialog.cpp
+msgid "Change"
+msgstr "Değiştirmek"
+
+#. TRANSLATORS: the group of keyboard shortcuts that act on windows.
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Windows"
+msgstr "Windows"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Desks"
+msgstr "Masalar"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Screenshots and Recording"
+msgstr "Ekran Görüntüleri ve Kayıt"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Open Apps"
+msgstr "Uygulamaları Aç"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Lock the screen"
+msgstr "Ekranı kilitle"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show the clipboard history"
+msgstr "Pano geçmişini göster"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the next window"
+msgstr "Sonraki pencereye geç"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the previous window"
+msgstr "Önceki pencereye geç"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show all windows"
+msgstr "Tüm pencereleri göster"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show the desktop"
+msgstr "Masaüstünü göster"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Maximize or restore the window"
+msgstr "Pencereyi büyütün veya geri yükleyin"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Minimize the window"
+msgstr "Pencereyi simge durumuna küçült"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Quit the application"
+msgstr "Uygulamadan çık"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Hide the application"
+msgstr "Uygulamayı gizle"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Hide other applications"
+msgstr "Diğer uygulamaları gizle"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Toggle full screen"
+msgstr "Tam ekrana geçiş yap"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Snap the window to the right"
+msgstr "Pencereyi sağa yasla"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Close the window"
+msgstr "Pencereyi kapat"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Move the window to the next display"
+msgstr "Pencereyi sonraki ekrana taşı"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the desk on the left"
+msgstr "Soldaki masaya geçin"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to the desk on the right"
+msgstr "Sağdaki masaya geçin"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Move the window to the desk on the left"
+msgstr "Pencereyi soldaki masaya taşıyın"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Move the window to the desk on the right"
+msgstr "Pencereyi sağdaki masaya taşıyın"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Add a desk"
+msgstr "Masa ekle"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Remove the desk"
+msgstr "Masayı kaldır"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 1"
+msgstr "Masa 1'e geç"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 2"
+msgstr "Masa 2'ye geç"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 3"
+msgstr "Masa 3'e geç"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 4"
+msgstr "Masa 4'e geç"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 5"
+msgstr "Masa 5'e geç"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 6"
+msgstr "Masa 6'ya geç"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 7"
+msgstr "Masa 7'ye geç"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Switch to desk 8"
+msgstr "Masa 8'e geç"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Show the window on every desk"
+msgstr "Pencereyi her masada göster"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Save a picture of the screen"
+msgstr "Ekranın resmini kaydedin"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Copy a picture of the screen"
+msgstr "Ekranın resmini kopyalama"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Save a picture of the selected area"
+msgstr "Seçilen alanın resmini kaydedin"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Copy a picture of the selected area"
+msgstr "Seçilen alanın resmini kopyalayın"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Screenshot and recording options"
+msgstr "Ekran görüntüsü ve kayıt seçenekleri"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Stop screen recording"
+msgstr "Ekran kaydını durdur"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Esc"
+msgstr "Esc"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Enter"
+msgstr "Giriş"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Space"
+msgstr "Boşluk"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Backspace"
+msgstr "Geri tuşu"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Delete"
+msgstr "Sil"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Insert"
+msgstr "Sok"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Home"
+msgstr "Ev"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "End"
+msgstr "Son"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Page Up"
+msgstr "Sayfa Yukarı"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Page Down"
+msgstr "Sayfa Aşağı"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Print Screen"
+msgstr "Ekranı Yazdır"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Tab"
+msgstr "Sekme"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Menu"
+msgstr "Menü"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Volume Up"
+msgstr "Sesi Artırma"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Volume Down"
+msgstr "Sesi Kısma"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Mute"
+msgstr "Sessiz"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Brightness Up"
+msgstr "Parlaklığı Artırma"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Brightness Down"
+msgstr "Parlaklık Azaldı"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Play/Pause"
+msgstr "Oynat/Duraklat"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Pause"
+msgstr "Duraklat"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Next Track"
+msgstr "Sonraki Parça"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Previous Track"
+msgstr "Önceki Parça"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Stop"
+msgstr "Dur"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Calculator"
+msgstr "Hesap Makinesi"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "File Manager"
+msgstr "Dosya Yöneticisi"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Search"
+msgstr "Ara"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Home Page"
+msgstr "Ana Sayfa"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgctxt "key"
+msgid "Mail"
+msgstr "Posta"
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "The shortcut service is not available."
+msgstr "Kısayol hizmeti kullanılamıyor."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+#, python-brace-format
+msgid "This shortcut is already used by “{action}”."
+msgstr "Bu kısayol zaten “{action}” tarafından kullanılıyor."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+#, python-brace-format
+msgid "This shortcut is used by “{action}”. Press it again to reassign it."
+msgstr ""
+"Bu kısayol “{action}” tarafından kullanılıyor. Yeniden atamak için tekrar "
+"basın."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Include Control, Option or Command, or use a function key."
+msgstr "Kontrol, Seçenek veya Komut'u ekleyin veya bir işlev tuşu kullanın."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Include Ctrl, Alt or Meta, or use a function key."
+msgstr "Ctrl, Alt veya Meta ekleyin veya bir işlev tuşu kullanın."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shift cannot be the only modifier. Add Control, Option or Command."
+msgstr "Shift tek değiştirici olamaz. Kontrol, Seçenek veya Komut ekleyin."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "Shift cannot be the only modifier. Add Ctrl, Alt or Meta."
+msgstr "Shift tek değiştirici olamaz. Ctrl, Alt veya Meta ekleyin."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "This key cannot be used in a shortcut."
+msgstr "Bu tuş kısayolda kullanılamaz."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "This action already has the maximum of five shortcuts."
+msgstr "Bu eylemde zaten maksimum beş kısayol var."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid ""
+"Shortcuts without both Control and Command may be intercepted before "
+"applications see them. Press it again to keep it."
+msgstr ""
+"Hem Kontrol hem de Komut içermeyen kısayollar, uygulamalar onları görmeden "
+"önce ele geçirilebilir. Tutmak için tekrar basın."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid ""
+"Shortcuts without Meta may be intercepted before applications see them. "
+"Press it again to keep it."
+msgstr ""
+"Meta içermeyen kısayollar, uygulamalar onları görmeden önce ele "
+"geçirilebilir. Tutmak için tekrar basın."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid ""
+"Some default shortcuts are in use by other actions and were not restored."
+msgstr ""
+"Bazı varsayılan kısayollar diğer eylemler tarafından kullanılıyor ve geri "
+"yüklenmedi."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "This shortcut no longer exists."
+msgstr "Bu kısayol artık mevcut değil."
+
+#: src/pages/shortcuts/shortcutsmodel.cpp
+msgid "The shortcut could not be changed."
+msgstr "Kısayol değiştirilemedi."
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid ""
+"Keyboard shortcuts are managed by the Cutefish compositor, which is not "
+"running."
+msgstr ""
+"Klavye kısayolları, çalışmayan Cutefish dizgicisi tarafından yönetiliyor."
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Restore all defaults"
+msgstr "Tüm varsayılanları geri yükle"
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid ""
+"Click a system shortcut to change it. Shortcuts with both Control and "
+"Command are the safest choice: applications never get them."
+msgstr ""
+"Değiştirmek için bir sistem kısayoluna tıklayın. Hem Kontrol hem de Komut "
+"içeren kısayollar en güvenli seçimdir: uygulamalar bunları asla elde edemez."
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid ""
+"Click a system shortcut to change it. Shortcuts with Meta are the safest "
+"choice: applications never use them."
+msgstr ""
+"Değiştirmek için bir sistem kısayoluna tıklayın. Meta ile kısayollar en "
+"güvenli seçimdir: uygulamalar asla bunları kullanmaz."
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Every shortcut goes back to its default. Your changes will be lost."
+msgstr ""
+"Her kısayol varsayılan durumuna geri döner. Değişiklikleriniz kaybolacak."
+
+#: src/pages/shortcuts/shortcutspage.cpp
+msgid "Restore"
+msgstr "Eski haline getirmek"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Stop"
+msgstr "Dur"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp src/window/pagelist.cpp
+msgid "Software Update"
+msgstr "Yazılım Güncellemesi"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Updates"
+msgstr "Güncellemeler"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Restart Now?"
+msgstr "Şimdi Yeniden Başlatılsın mı?"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid ""
+"The applications close and the computer starts again, which finishes "
+"installing the updates. Save your work first."
+msgstr ""
+"Uygulamalar kapatılır ve bilgisayar yeniden başlatılarak güncellemelerin "
+"yüklenmesi tamamlanır. Öncelikle çalışmanızı kaydedin."
+
+#. TRANSLATORS: the button that restarts the computer.
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Restart"
+msgstr "Yeniden başlat"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Checking for updates…"
+msgstr "Güncellemeler kontrol ediliyor…"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "The system is up to date"
+msgstr "Sistem güncel"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Check Now"
+msgstr "Şimdi Kontrol Et"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+#, python-brace-format
+msgid "{n} update available"
+msgid_plural "{n} updates available"
+msgstr[0] "{n} güncelleme mevcut"
+msgstr[1] "{n} güncelleme mevcut"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "You can keep working while they install."
+msgstr "Onlar yüklenirken çalışmaya devam edebilirsiniz."
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Update Now"
+msgstr "Şimdi Güncelle"
+
+#. TRANSLATORS: {percent} is how far the update has come, such as 80.
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+#, python-brace-format
+msgid "Installing updates… {percent}%"
+msgstr "Güncellemeler yükleniyor…%{percent}"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Installing updates…"
+msgstr "Güncellemeler yükleniyor…"
+
+#. TRANSLATORS: {percent} is how far the update has come, such as 42.
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+#, python-brace-format
+msgid "Downloading updates… {percent}%"
+msgstr "Güncellemeler indiriliyor…%{percent}"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Downloading updates…"
+msgstr "Güncellemeler indiriliyor…"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Updates installed"
+msgstr "Güncellemeler kuruldu"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Restart the computer to finish installing them."
+msgstr "Yüklemeyi tamamlamak için bilgisayarı yeniden başlatın."
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "The updates could not be installed"
+msgstr "Güncelleştirmeler yüklenemedi"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Cannot check for updates"
+msgstr "Güncellemeler kontrol edilemiyor"
+
+#: src/pages/softwareupdate/softwareupdatepage.cpp
+msgid "Check the network connection and try again."
+msgstr "Ağ bağlantısını kontrol edin ve tekrar deneyin."
+
+#: src/pages/sound/soundpage.cpp
+msgid "Virtual"
+msgstr "Sanal"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Built-in"
+msgstr "Yerleşik"
+
+#: src/pages/sound/soundpage.cpp src/window/pagelist.cpp
+msgid "Sound"
+msgstr "Ses"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Connecting to the audio service…"
+msgstr "Ses hizmetine bağlanılıyor…"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Dismiss"
+msgstr "Kapat"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Output"
+msgstr "Çıkış"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Input"
+msgstr "Giriş"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Output volume"
+msgstr "Çıkış hacmi"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Balance"
+msgstr "Denge"
+
+#: src/pages/sound/soundpage.cpp src/widgets/sliderrow.cpp
+msgctxt "balance"
+msgid "Left"
+msgstr "Sol"
+
+#: src/pages/sound/soundpage.cpp src/widgets/sliderrow.cpp
+msgctxt "balance"
+msgid "Right"
+msgstr "Sağ"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Input volume"
+msgstr "Giriş hacmi"
+
+#: src/pages/sound/soundpage.cpp
+msgid "Input level"
+msgstr "Giriş seviyesi"
+
+#: src/pages/sound/soundpage.cpp
+#, python-brace-format
+msgid "Could not apply the audio change: {error}"
+msgstr "Ses değişikliği uygulanamadı: {error}"
+
+#: src/pages/sound/soundpage.cpp
+msgid "No input devices"
+msgstr "Giriş cihazı yok"
+
+#: src/pages/sound/soundpage.cpp
+msgid "No output devices"
+msgstr "Çıkış cihazı yok"
+
+#: src/pages/touchpad/touchpadpage.cpp src/window/pagelist.cpp
+msgid "Touchpad"
+msgstr "Dokunmatik yüzey"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Enable"
+msgstr "Olanak vermek"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Disable when a mouse is connected"
+msgstr "Fare bağlandığında devre dışı bırak"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Disable while typing"
+msgstr "Yazarken devre dışı bırak"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Tap to click"
+msgstr "Tıklamak için dokunun"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Tap and drag"
+msgstr "Dokunup sürükleyin"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Secondary click"
+msgstr "İkincil tıklama"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Two-finger press"
+msgstr "İki parmakla basma"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Bottom-right corner press"
+msgstr "Sağ alt köşeye basın"
+
+#: src/pages/touchpad/touchpadpage.cpp
+msgid "Scroll speed"
+msgstr "Kaydırma hızı"
+
+#: src/pages/touchscreen/touchscreenpage.cpp src/window/pagelist.cpp
+msgid "Touchscreen"
+msgstr "Dokunmatik ekran"
+
+#: src/pages/wallpaper/wallpapergrid.cpp src/pages/wallpaper/wallpaperpage.cpp
+msgid "Add wallpaper"
+msgstr "Duvar kağıdı ekle"
+
+#. TRANSLATORS: the number of wallpapers after a section's title, such as
+#. "(12)".
+#: src/pages/wallpaper/wallpapergrid.cpp
+#, python-brace-format
+msgid "({count})"
+msgstr "({count})"
+
+#: src/pages/wallpaper/wallpapergrid.cpp
+msgid "Show less"
+msgstr "Daha az göster"
+
+#: src/pages/wallpaper/wallpapergrid.cpp
+msgid "Show all"
+msgstr "Tümünü göster"
+
+#: src/pages/wallpaper/wallpaperpage.cpp src/window/pagelist.cpp
+msgid "Wallpaper"
+msgstr "Duvar kağıdı"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Your wallpapers"
+msgstr "Duvar kağıtlarınız"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgctxt "wallpaper section"
+msgid "System"
+msgstr "Sistem"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Colors"
+msgstr "Renkler"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Choose file…"
+msgstr "Dosya seç…"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Choose folder…"
+msgstr "Klasör seç…"
+
+#: src/pages/wallpaper/wallpaperpage.cpp
+msgid "Add Wallpaper Folder"
+msgstr "Duvar Kağıdı Klasörü Ekle"
+
+#: src/widgets/searchfield.cpp src/window/sidebar.cpp
+msgid "Search"
+msgstr "Ara"
+
+#: src/window/page.cpp
+msgid "This page is not ported yet."
+msgstr "Bu sayfa henüz taşınmadı."
+
+#: src/window/pagelist.cpp
+msgid "wireless, WLAN, network, internet, password, DNS, IP address"
+msgstr "kablosuz, WLAN, ağ, internet, şifre, DNS, IP adresi"
+
+#: src/window/pagelist.cpp
+msgid "wired, LAN, network, internet, cable, IP address"
+msgstr "kablolu, LAN, ağ, internet, kablo, IP adresi"
+
+#: src/window/pagelist.cpp
+msgid "wireless, devices, pairing, headphones"
+msgstr "kablosuz, cihazlar, eşleştirme, kulaklıklar"
+
+#: src/window/pagelist.cpp
+msgid "VPN, proxy, hotspot, tethering, internet"
+msgstr "VPN, proxy, sıcak nokta, bağlantı paylaşımı, internet"
+
+#: src/window/pagelist.cpp
+msgid "charge, charging limit, battery health, capacity, history, percentage"
+msgstr "şarj, şarj limiti, pil sağlığı, kapasite, geçmiş, yüzde"
+
+#: src/window/pagelist.cpp
+msgid "theme, dark mode, light mode, accent color, dim wallpaper"
+msgstr "tema, karanlık mod, açık mod, vurgu rengi, loş duvar kağıdı"
+
+#: src/window/pagelist.cpp
+msgid "taskbar, position, size, auto hide, glass effect"
+msgstr "görev çubuğu, konum, boyut, otomatik gizleme, cam efekti"
+
+#: src/window/pagelist.cpp
+msgid ""
+"monitor, screen, resolution, refresh rate, scaling, brightness, rotation"
+msgstr ""
+"monitör, ekran, çözünürlük, yenileme hızı, ölçeklendirme, parlaklık, döndürme"
+
+#: src/window/pagelist.cpp
+msgid "top bar, controls, Wi-Fi, Bluetooth, battery, sound, volume"
+msgstr "üst çubuk, kontroller, Wi-Fi, Bluetooth, pil, ses, ses seviyesi"
+
+#: src/window/pagelist.cpp
+msgid "background, desktop picture, image"
+msgstr "arka plan, masaüstü resmi, resim"
+
+#: src/window/pagelist.cpp
+msgid "do not disturb, banners, alerts"
+msgstr "rahatsız etmeyin, pankartlar, uyarılar"
+
+#: src/window/pagelist.cpp
+msgid "audio, volume, speakers, headphones, microphone, input, output"
+msgstr "ses, ses seviyesi, hoparlörler, kulaklıklar, mikrofon, giriş, çıkış"
+
+#: src/window/pagelist.cpp
+msgid "computer control, agents, allowed apps, permissions"
+msgstr "bilgisayar kontrolü, aracılar, izin verilen uygulamalar, izinler"
+
+#: src/window/pagelist.cpp
+msgid "energy, performance, power saving, sleep, turn off display"
+msgstr "enerji, performans, güç tasarrufu, uyku, ekranı kapat"
+
+#: src/window/pagelist.cpp
+msgid "accounts, password, login, administrator, avatar"
+msgstr "hesaplar, şifre, oturum açma adı, yönetici, avatar"
+
+#: src/window/pagelist.cpp
+msgid "input method, key repeat, keyboard style"
+msgstr "giriş yöntemi, tuş tekrarı, klavye stili"
+
+#: src/window/pagelist.cpp
+msgid "pointer speed, acceleration, natural scrolling, left-handed"
+msgstr "İşaretçi hızı, hızlanma, doğal kaydırma, solak"
+
+#: src/window/pagelist.cpp
+msgid ""
+"trackpad, tap to click, natural scrolling, secondary click, pointer speed"
+msgstr ""
+"izleme dörtgeni, tıklamak için dokunma, doğal kaydırma, ikincil tıklama, "
+"işaretçi hızı"
+
+#: src/window/pagelist.cpp
+msgid "touch, touch screen, touch panel"
+msgstr "dokunmatik, dokunmatik ekran, dokunmatik panel"
+
+#: src/window/pagelist.cpp
+msgid "system, version, kernel, processor, memory, storage, hardware"
+msgstr "sistem, sürüm, çekirdek, işlemci, bellek, depolama, donanım"
+
+#: src/window/pagelist.cpp
+msgid ""
+"region, locale, system language, country, formats, first day of week, "
+"measurement system, temperature"
+msgstr ""
+"bölge, yerel ayar, sistem dili, ülke, formatlar, haftanın ilk günü, ölçüm "
+"sistemi, sıcaklık"
+
+#: src/window/pagelist.cpp
+msgid "clock, time zone, 24-hour time, NTP, sync"
+msgstr "saat, saat dilimi, 24 saatlik zaman, NTP, senkronizasyon"
+
+#: src/window/pagelist.cpp
+msgid "web browser, email client, terminal"
+msgstr "web tarayıcısı, e-posta istemcisi, terminal"
+
+#: src/window/pagelist.cpp
+msgid "updates, upgrade, packages, security, install, restart"
+msgstr ""
+"güncellemeler, yükseltme, paketler, güvenlik, yükleme, yeniden başlatma"
+
+#: src/window/pagelist.cpp
+msgid "VPN, WireGuard, OpenVPN, tunnel, network"
+msgstr "VPN, WireGuard, OpenVPN, tünel, ağ"
+
+#: src/window/pagelist.cpp
+msgid "HTTP, HTTPS, SOCKS, FTP, PAC, network"
+msgstr "HTTP, HTTPS, SOCKS, FTP, PAC, ağ"
+
+#: src/window/pagelist.cpp
+msgid "tethering, share internet, access point, Wi-Fi, wireless"
+msgstr ""
+"internet paylaşımı, internet paylaşımı, erişim noktası, Wi-Fi, kablosuz"
+
+#: src/window/pagelist.cpp
+msgid "general font, fixed font, font size, anti-aliasing, hinting"
+msgstr ""
+"genel yazı tipi, sabit yazı tipi, yazı tipi boyutu, kenar yumuşatma, ipucu"
+
+#: src/window/pagelist.cpp
+msgid "icons"
+msgstr "simgeler"
+
+#: src/window/pagelist.cpp
+msgid "cursor theme, cursor size, pointer"
+msgstr "imleç teması, imleç boyutu, işaretçi"
+
+#: src/window/pagelist.cpp
+msgid "Keyboard Layout"
+msgstr "Klavye Düzeni"
+
+#: src/window/pagelist.cpp
+msgid "input source"
+msgstr "giriş kaynağı"
+
+#: src/window/pagelist.cpp
+msgid "screen corners, show desktop, show all windows"
+msgstr "ekran köşeleri, masaüstünü göster, tüm pencereleri göster"
+
+#: src/window/pagelist.cpp
+msgid "hotkeys, key bindings"
+msgstr "kısayol tuşları, tuş bağlamaları"
+
+#: src/window/pagelist.cpp
+msgid "license, copyright, source code, open source"
+msgstr "lisans, telif hakkı, kaynak kodu, açık kaynak"
+
+#: src/window/settingswindow.cpp src/window/sidebar.cpp
+#: cutefish-settings.desktop
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: src/window/sidebar.cpp
+msgid "No results"
+msgstr "Sonuç yok"
