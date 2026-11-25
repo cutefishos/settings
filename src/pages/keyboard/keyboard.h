@@ -46,6 +46,13 @@ public:
     // "pc", or "command" for the key next to the space bar working as Command.
     std::string shortcutConvention() const;
     void setShortcutConvention(const std::string& convention);
+    // Whether the compositor lets the Command key be chosen; an older one
+    // has no commandKey property.
+    bool supportsCommandKey() const;
+    // Which key is Command: "auto" for the key next to the space bar, or
+    // "alt", "meta" (Win, Command on an Apple keyboard) or "ctrl".
+    std::string commandKey() const;
+    void setCommandKey(const std::string& key);
 
     cutefish::base::Signal<>& changed() { return m_service.changed; }
 
