@@ -952,6 +952,18 @@ msgid "More tinted"
 msgstr ""
 
 #: src/pages/dock/dockpage.cpp
+msgid "Style"
+msgstr ""
+
+#: src/pages/dock/dockpage.cpp
+msgid "Floating"
+msgstr ""
+
+#: src/pages/dock/dockpage.cpp
+msgid "Docked"
+msgstr ""
+
+#: src/pages/dock/dockpage.cpp
 msgid "Display mode"
 msgstr ""
 

@@ -20,6 +20,7 @@ DockSettings::DockSettings()
     m_iconSize = int(shell.intValue("Dock/IconSize"));
     m_direction = int(shell.intValue("Dock/Direction"));
     m_visibility = int(shell.intValue("Dock/Visibility"));
+    m_style = shell.intValue("Dock/Style", 0) == 1 ? 1 : 0;
     m_glassTint = std::clamp(shell.doubleValue("Dock/GlassTint", 0.5), 0.0, 1.0);
     m_minimizedArea = shell.boolValue("Dock/MinimizedArea", true);
     m_magnifiedIconSize = int(shell.intValue("Dock/MagnifiedIconSize", 0));
@@ -48,6 +49,15 @@ void DockSettings::setVisibility(int visibility)
         return;
     m_dock.send("setVisibility", int32_t(visibility));
     m_visibility = visibility;
+}
+
+void DockSettings::setStyle(int style)
+{
+    style = style == 1 ? 1 : 0;
+    if (style == m_style)
+        return;
+    m_dock.send("setStyle", int32_t(style));
+    m_style = style;
 }
 
 void DockSettings::setGlassTint(double tint)

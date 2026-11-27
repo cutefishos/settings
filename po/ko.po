@@ -946,6 +946,18 @@ msgid "More tinted"
 msgstr "더 진하게"
 
 #: src/pages/dock/dockpage.cpp
+msgid "Style"
+msgstr "스타일"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Floating"
+msgstr "플로팅"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Docked"
+msgstr "고정"
+
+#: src/pages/dock/dockpage.cpp
 msgid "Display mode"
 msgstr "표시 방식"
 

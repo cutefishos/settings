@@ -40,6 +40,7 @@ TEST(DockPage, HasEveryControl)
     EXPECT_EQ(driver.countShown("dock:position"), 3u);
     for (const char* slider : {"dock:size", "dock:magnification", "dock:glass"})
         EXPECT_TRUE(driver.shows(slider)) << slider;
+    EXPECT_TRUE(driver.shows("dock:style"));
     EXPECT_TRUE(driver.shows("dock:displayMode"));
     EXPECT_TRUE(driver.shows("dock:hotcorners"));
     EXPECT_TRUE(driver.shows("dock:minimizedArea"));

@@ -25,6 +25,10 @@ public:
     int visibility() const { return m_visibility; }
     void setVisibility(int visibility);
 
+    // 0 floating, 1 docked.
+    int style() const { return m_style; }
+    void setStyle(int style);
+
     double glassTint() const { return m_glassTint; }
     void setGlassTint(double tint);
 
@@ -40,6 +44,7 @@ private:
     int m_iconSize = 0;
     int m_direction = 0;
     int m_visibility = 0;
+    int m_style = 0;
     double m_glassTint = 0.5;
     bool m_minimizedArea = true;
     int m_magnifiedIconSize = 0;

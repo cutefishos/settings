@@ -956,6 +956,18 @@ msgid "More tinted"
 msgstr "Bardziej przyciemniony"
 
 #: src/pages/dock/dockpage.cpp
+msgid "Style"
+msgstr "Styl"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Floating"
+msgstr "Pływający"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Docked"
+msgstr "Zadokowany"
+
+#: src/pages/dock/dockpage.cpp
 msgid "Display mode"
 msgstr "Tryb wyświetlania"
 

@@ -946,6 +946,18 @@ msgid "More tinted"
 msgstr "色调更浓"
 
 #: src/pages/dock/dockpage.cpp
+msgid "Style"
+msgstr "样式"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Floating"
+msgstr "悬浮"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Docked"
+msgstr "贴边"
+
+#: src/pages/dock/dockpage.cpp
 msgid "Display mode"
 msgstr "显示模式"
 

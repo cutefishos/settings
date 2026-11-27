@@ -956,6 +956,18 @@ msgid "More tinted"
 msgstr "Více tónované"
 
 #: src/pages/dock/dockpage.cpp
+msgid "Style"
+msgstr "Styl"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Floating"
+msgstr "Plovoucí"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Docked"
+msgstr "Ukotvený"
+
+#: src/pages/dock/dockpage.cpp
 msgid "Display mode"
 msgstr "Režim zobrazení"
 

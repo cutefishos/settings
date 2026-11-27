@@ -184,6 +184,13 @@ public:
         m_subscription = m_appearance.changed.connect([this] { updateGlass(); });
         updateGlass();
 
+        SegmentedRow* style = sliders->addChild<SegmentedRow>(
+                tr("Style"), std::vector<std::string>{tr("Floating"), tr("Docked")});
+        SegmentedControl* dockStyle = style->control();
+        dockStyle->setName("dock:style");
+        dockStyle->setCurrentIndex(m_settings.style());
+        dockStyle->onCurrentChanged = [this](int index) { m_settings.setStyle(index); };
+
         SegmentedRow* mode = sliders->addChild<SegmentedRow>(
                 tr("Display mode"), std::vector<std::string>{tr("Always show"), tr("Always hide"), tr("Smart hide")});
         SegmentedControl* visibility = mode->control();

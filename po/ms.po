@@ -946,6 +946,18 @@ msgid "More tinted"
 msgstr "Lebih berwarna"
 
 #: src/pages/dock/dockpage.cpp
+msgid "Style"
+msgstr "Gaya"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Floating"
+msgstr "Terapung"
+
+#: src/pages/dock/dockpage.cpp
+msgid "Docked"
+msgstr "Dilabuhkan"
+
+#: src/pages/dock/dockpage.cpp
 msgid "Display mode"
 msgstr "Mod paparan"
 
