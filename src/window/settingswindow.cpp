@@ -432,7 +432,11 @@ void SettingsWindow::updateBackground()
     if (m_root->backdrop)
         m_root->backdrop->setBaseColor(theme.background);
     const SizeF size = m_window->size();
-    m_window->setBackgroundBlur({0, 0, size.width, size.height}, theme.windowRadius);
+    const double left = m_sidebar->geometry().width > 0 ? m_sidebar->geometry().width : m_root->sidebarWidth;
+    const double radius = theme.windowRadius;
+    // Extend past the sidebar divider by the corner radius so the opaque
+    // content pane hides the right rounded corners cleanly.
+    m_window->setBackgroundBlur({0, 0, std::min(size.width, left + radius), size.height}, radius);
 }
 
 void SettingsWindow::switchToIndex(int index)
