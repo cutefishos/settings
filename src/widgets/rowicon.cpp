@@ -46,7 +46,8 @@ void RowIcon::layout()
 
 void RowIcon::paint(Painter& painter)
 {
-    painter.fillRoundedRect(localRect(), 6, LinearGradient::vertical(localRect(), m_tint.lighter(1.15), m_tint));
+    painter.fillRoundedRect(localRect(), 6, LinearGradient::vertical(localRect(), m_tint.lighter(1.15), m_tint),
+                            themeCorners());
 }
 
 } // namespace settings
